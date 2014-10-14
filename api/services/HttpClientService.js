@@ -1,13 +1,15 @@
 var https = require("https");
-var gunzip = require("zlib").createGunzip();
 
 // EmailService.js - in api/services
 module.exports = {
     httpsGET : function(options,calllback) {
          
         // Start the request
-        str = '';
+       
         https.get(options, function(response) {
+            
+            var gunzip = require("zlib").createGunzip();
+             str = '';
             response.pipe(gunzip);
              gunzip.on('data', function (chunk) {
                 str += chunk;

@@ -23,9 +23,12 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider'])
 	  $scope.rfp.telefonoContacto = "5544556677";
 
 	  $scope.search = function() {
+            
 		  $scope.showLoader = true;
 		  $scope.searchId = $scope.searchString.split(" ")[0];
-		  $http.get("http://yp-yoplanner.rhcloud.com/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
+          console.log("/recinto/findByCiudadId/"+$scope.searchId);
+		  $http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
+              console.log(data);    
 			  $scope.hotels = data.hotels;
 			  $scope.showSearch = false;
 		      $scope.hideResults = true;
@@ -76,7 +79,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider'])
  // gives another movie array on change
  $scope.updateMovies = function(typed){
      // MovieRetriever could be some service returning a promise
-	 $http.get("http://yp-yoplanner.rhcloud.com/search/cities/"+typed).success(function(data){
+     if(typed.length<3)return;
+	 $http.get("/search/cities/"+typed).success(function(data){
 		 $scope.movies  =  [];
 		  for(var i=0;i<data.autocomplete.length;i++){
 			  if(data.autocomplete[i].type=="city")
@@ -162,7 +166,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider'])
 	 
 	 
 	 console.log(angular.toJson( $scope.rfp));
-	 $http.post('http://yp-yoplanner.rhcloud.com/rfp/create',$scope.rfp).success(function(data){
+	 $http.post('/RFP',$scope.rfp).success(function(data){
 		 console.log(data);
 		 $scope.folioFinal = ""+data.id;
 		 $scope.rfp = null;

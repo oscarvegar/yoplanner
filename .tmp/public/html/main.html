@@ -1,0 +1,587 @@
+
+<!doctype html>
+<html lang="en-US" class="no-js" ng-app="yoPlannerApp">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YoPlanner | Cruceros</title>
+<meta name="description"
+	content="Specializing in premium and loose leaf tea, our tea house has hundreds of flavours.">
+
+<link rel='stylesheet' id='bones-stylesheet-css'
+	href='../wp-content/themes/theteafactory/library/css/style.css'
+	type='text/css' media='all' />
+<!--[if lt IE 9]><link rel='stylesheet' id='bones-ie-only-css'  href='http://www.theteafactory.ca/wp-content/themes/theteafactory/library/css/ie.css' type='text/css' media='all' /> <![endif]-->
+<link rel='canonical' href='index.html' />
+<meta charset="UTF-8">
+<title>YoPlanner</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/fancybox/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/muslider_style.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/vallenato.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/slidebars.min.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/fm.selectator.jquery.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/pikaday.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/bouncebox.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/jquery.timepicker.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/yp.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/autocomplete.css" />
+<link rel="stylesheet" type="text/css" media="screen"
+	href="../css/flexslider.css" />
+<script type="text/javascript">
+	try {
+		Typekit.load();
+	} catch (e) {
+	}
+</script>
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox.js"></script>
+<script type="text/javascript" src="../js/jquery.muslider-2.0.min.js"></script>
+<script type="text/javascript" src="../js/yp.js"></script>
+<script type="text/javascript" src="../js/services.js"></script>
+<script type="text/javascript" src="../js/vallenato.js"></script>
+<script type="text/javascript" src="../js/slidebars.min.js"></script>
+<script type="text/javascript" src="../js/fm.selectator.jquery.js"></script>
+<script type="text/javascript" src="../js/moment.js"></script>
+<script type="text/javascript" src="../js/pikaday.js"></script>
+<script type="text/javascript" src="../js/pikaday.jquery.js"></script>
+<script type="text/javascript" src="../js/jquery.bouncebox.1.0.js"></script>
+<script type="text/javascript" src="../js/jquery.timepicker.min.js"></script>
+<script type="text/javascript" src="../js/jquery.flexslider.min.js"></script>
+<script
+	src="../js/angular.min.js"></script>
+<script type="text/javascript" src="../js/autocomplete.js"></script>
+<script type="text/javascript" src="../js/angular-flexslider.js"></script>
+<script type="text/javascript" src="../js/ngyp.js"></script>
+
+</head>
+<body class="page page-id-5 page-template-default" ng-controller="RecintosController" >
+	<img ng-show="showLoader" src="../img/loading_icon.gif" style="z-index: 99999;position:absolute; margin-left:auto;margin-right:auto; margin-top:auto;margin-bottom:auto;top:0;bottom:0;left:0;right: 0;"/>
+	<div id="containeraa" class="page-our-teas" >
+		<header class="header" role="banner">
+			<div id="inner-header" class="row">
+				<nav class="top-bar" role="navigation">
+					<ul class="title-area">
+						<li class="name"><h1 id="logo">
+								<a href="./main.html "><img
+									src="../wp-content/themes/theteafactory/library/images/logo.svg" /></a>
+							</h1></li>
+						<li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+					</ul>
+					<section class="top-bar-section">
+						<ul id="menu-main-nav" class="right">
+							<li id="menu-item-202"
+								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a
+								href="../index.html"></a></li>
+							<li id="menu-item-16"
+								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16">
+								<!--<a href="../empresa/index.html"></a></li><li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a href="../servicios/index.html"></a></li><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a href="../hoteles/index.html">Hoteles</a></li>   
+        <li id="menu-item-16" class="has-dropdown show-dropdown menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-5 current_page_item current-menu-parent current_page_parent menu-item-16"><a href="../cruceros/index.html#black">Cruceros</a><ul class="sub-menu dropdown"><li id="menu-item-10003" class="menu-item menu-item-type-post_type menu-item-object-page tea-type-black menu-item-10003"><a href="index.html#black">Cruceros Populares</a></li><li id="menu-item-10001" class="menu-item menu-item-type-post_type menu-item-object-page tea-type-green menu-item-10001"><a href="index.html#green">Cruceros de Lujo</a></li><li id="menu-item-10002" class="menu-item menu-item-type-post_type menu-item-object-page tea-type-oolong menu-item-10002"><a href="index.html#oolong">Cruceros de Rìo</a>-->
+							</li>
+						</ul>
+						</li>
+						</ul>
+						<ul id="menu-secondary-menu" class="right">
+							<li id="menu-item-23"
+								class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a
+								onclick="showCotizar();">Cotizar</a></li>
+							<li id="menu-item-22"
+								class="menu-item menu-item-type-post_type menu-item-object-page has-dropdown menu-item-22"><a
+								onclick="sliderBars.slidebars.toggle('left')" href="#">Mi
+									selección</a></li>
+						</ul>
+						</li>
+						</ul>
+						<div id="mobile-contact">
+							<strong>Yo Planner</strong>
+							<div class="contact-info">
+								<p class="address"></p>
+					</section>
+				</nav>
+			</div>
+		</header>
+		<div id="mainContent"
+			class="navbar navbar-default navbar-fixed-top sb-slide">
+
+			<div id="resumen">
+				<div id="rfp_view" style="display: none;">
+
+					<div class="centrado">
+						<h2>Ingresa los datos de tu evento</h2>
+						<table>
+							<tr>
+								<td>Nombre</td>
+								<td><input id="rfp_nombre" type="text"
+									placeholder="Nombre de tu evento" class="floatlabel"
+									ng-model="rfp.nombre"></td>
+							</tr>
+							<tr>
+								<td>Fecha de Entrada</td>
+
+								<td><input id="rfp_fechaInicial"  type="text"
+									class="datepicker" placeholder="Selecciona..."
+									
+									ng-model="fechaInicialFor"  ng-change="muestraCuadritos();"></td>
+							</tr>
+							<tr>
+								<td>Fecha de Salida</td>
+								<td><input id="rfp_fechaFinal"  type="text"
+									class="datepicker" placeholder="Selecciona..."
+									
+									ng-model="fechaFinalFor"  ng-change="muestraCuadritos();"></td>
+							</tr>
+							<tr>
+								<td>Asistentes</td>
+								<td><input id="rfp.asistenciaEsperada" type="text"
+									placeholder="Número de Participantes"
+									ng-model="rfp.asistenciaEsperada"></td>
+
+							</tr>
+							<tr>
+								<td>Habitaciones Sencillas</td>
+								<td>
+									<table>
+										<thead>
+											<tr >
+												<th ng-repeat="day in configuracionHabitacionesSencillas">{{day.fecha | date:'dd/MM'}}</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr >
+												<td ng-repeat="day in configuracionHabitacionesSencillas"><input type="text" ng-model="day.habitaciones" size="5"></td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>Habitaciones Dobles</td>
+								<!-- <td><input id="rfp.habitacionesDobles" 
+													type="text" 
+													placeholder="Habitaciones Dobles" > 
+													</td>
+													 -->
+								<td><table>
+										<thead>
+											<tr>
+												<th ng-repeat="day in configuracionHabitacionesDobles">{{day.fecha | date:'dd/MM'}}</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td ng-repeat="day in configuracionHabitacionesDobles"><input type="text" ng-model="day.habitaciones" size="5"></td>
+											</tr>
+										</tbody>
+									</table></td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><br />Comentarios
+									Adicionales</td>
+							</tr>
+							<tr>
+								<td colspan="2"><textarea id="rfp.comentarios" cols="50"
+										placeholder="Preguntas, dudas, solicitudes especiales..."
+										ng-model="rfp.comentarios"></textarea></td>
+							</tr>
+						</table>
+
+						<a href="#" ng-click="validarDatosEvento();">Siguiente</a>
+
+
+
+					</div>
+
+
+				</div>
+				<div id="salones_view" style="display: none;">
+					Eventos Programados <br /> <a href="#" onclick="agregarSalon();">[+]
+						Ingresa un nuevo evento</a>
+					<div id="accordion-container"></div>
+					<a href="#" onclick=" $.fancybox.prev();">Regresar</a> <a href="#"
+						ng-click="validarDatosSalones();">Siguiente</a>
+
+				</div>
+
+				<div id="rfp_seleccion" style="display: none; text-align: center;">
+					<h1>Mi selección</h1>
+					<table >
+						<tr ng-repeat="selh in hotelesSeleccionados">
+						<td><img src="http://media.staticontent.com/media/pictures/{{selh.pictures[0]}}" width="80px"
+							height="60px" /></td>
+						<td>{{selh.name}}</td>
+						<td><img src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/></td>
+					</tr>
+
+					</table>
+					<br /> <br /> <br /> <a href="#" onclick=" $.fancybox.prev();">Regresar</a>
+					<a href="#" onclick=" $.fancybox.next();">Siguiente</a>
+
+				</div>
+
+				<div id="datos_contacto" style="display: none; text-align: center;">
+					<h1>Datos del Cliente</h1>
+					<form ng-submit="rfp_create()">
+					<table style="margin: 0px auto">
+						<tr>
+							<td><label>Nombre Completo <span class="red">*</span></label></td>
+							<td><input type="text" placeholder="Nombre con apellidos" required
+								ng-model="rfp.nombreCliente"></td>
+						</tr>
+						<tr>
+							<td><label>Email <span class="red">*</span></label></td>
+							<td><input type="email" ng-model="rfp.email" required
+								placeholder="alguien@example.com"></td>
+						</tr>
+						<tr>
+							<td><label>Telefono <span class="red">*</span></label></td>
+							<td><input type="text" required
+								ng-model="rfp.telefonoContacto"
+								placeholder="Ej. 04455565811"></td>
+						</tr>
+						<tr>
+							<td><label>Empresa <span class="red"></span></label></td>
+							<td><input type="text" ng-model="rfp.empresa"
+								placeholder="Empresa donde laboras"></td>
+						</tr>
+						<tr>
+							<td><label>Cargo <span class="red"></span></label></td>
+							<td><input type="text" ng-model="rfp.puesto"
+								placeholder="Cargo actual"></td>
+						</tr>
+						<tr>
+							<td><label>País:</label></td>
+							<td><input type="text"  
+								ng-model="rfp.paisText" /></td>
+						</tr>
+						<tr>
+							<td><label>Estado:</label></td>
+							<td><input type="text" ng-model="rfp.estadoText" />
+							</td>
+						</tr>
+						<tr>
+							<td><label>Ciudad:</label></td>
+							<td><input type="text" ng-model="rfp.ciudadText" />
+							</td>
+						</tr>
+					</table>
+					<br /> <br /> <br /> <a href="#" onclick=" $.fancybox.prev();">Regresar</a>
+					<button type="submit" value="Solicitar Cotización"></button> <a
+						href="#"
+						onclick="$('#rfp_resumen').html($('#resumen').html());$.fancybox.jumpto(5);">Resumen</a>
+					<a href="#" ng-click="logResume();">JSON</a> <br>
+					</form>
+				</div>
+			</div>
+			<div id="gracias" style="display: none;">
+				<h1>¡Gracias!</h1>
+				<br />
+				<h2>En menos de 24 hrs. un asesor YoPlanner se pondrá en
+					contacto contigo.</h2>
+				<br />
+				<h3>
+					Tu folio es el número <span id="folioRFP"
+						style="font-size: xx-large; color: navy;">{{folioFinal}}</span>, guárdalo para
+					futuras referencias.
+				</h3>
+				<br />
+				<h1>Gracias por usar el servicio de YoPlanner!</h1>
+			</div>
+
+			<div id="rfp_resumen" style="display: none;"></div>
+
+
+
+		</div>
+
+		<div id="templates" style="position: absolute; visibility: hidden;">
+
+			<div id="newSalon" style="width: 680px;">
+				<span onclick="eliminarEvento($(this));" style="float: right;">Eliminar&nbsp;&nbsp;&nbsp;</span>
+				<span onclick="clonarEvento($(this));" style="float: right;">Clonar&nbsp;&nbsp;&nbsp;</span>
+				<h2 class="accordion-header"></h2>
+				<div class="accordion-content">
+					<section id="rfp_salones">
+						<table>
+							<tr>
+								<td>Nombre del Evento</td>
+								<td>Número de Participantes</td>
+								<td>Fecha</td>
+								<td>Hora de Inicio</td>
+								<td>Hora de Fin</td>
+								<td colspan="3">Tipo de Evento</td>
+							</tr>
+							<tr>
+								<td><input type="text"
+									onblur="currentSalon.nombreEvento = this.value;"
+									onkeyup="$(this).closest('.accordion-content').prev().html(this.value);"></td>
+								<td><input type="text"
+									onblur="currentSalon.asistentes = this.value;" size="2"></td>
+								<td><input id="rfp_salon_fecha" type="text" readonly
+									type="text" class="datepicker"
+									onblur="currentSalon.fecha = parseDate(this.value);" size="20"></td>
+								<!-- <td><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+										    <input type="text" class="form-control" value="13:14" size="4" >
+										    <span class="input-group-addon">
+										        <span class="glyphicon glyphicon-time"></span>
+										    </span>
+										</div>
+									</td> -->
+								<td><input type="text" id="rfp_salon_horaInicio" size="6"
+									onblur="currentSalon.horaInicio = this.value;" /></td>
+
+								<td><input type="text" id="rfp_salon_horaFin"
+									class="timepicker" size="6"
+									onblur="currentSalon.horaFin = this.value" /></td>
+								<td colspan="3"><select id="rfp_tipoEvento"
+									onchange="currentSalon.tipoEvento.id = this.value;">
+										<option value="1">Desayuno</option>
+										<option value="2">Comida</option>
+										<option value="3">Cena</option>
+										<option value="4">Cocktail</option>
+										<option value="5">Sesión</option>
+										<option value="6">Breakout</option>
+										<option value="7">Oficina</option>
+										<option value="8">Bodega</option>
+										<option value="9">Otro</option>
+								</select></td>
+							</tr>
+							<tr>
+
+								<td>Montaje del Evento</td>
+								<!-- <td>Servicios</td> -->
+							</tr>
+							<tr>
+								<td id="tdConfSalon"></td>
+								<td id="tdServicios" colspan="100%"></td>
+							</tr>
+						</table>
+
+						<br />Comentarios Adicionales<br />
+						<textarea id="rfp_salon_comadicionales" cols="70"
+							onblur="currentSalon.comentarios = this.value;"></textarea>
+					</section>
+				</div>
+			</div>
+
+			<div id="tmpSlcConfigSalon">
+				<select id="selectConfig" name="selectConfig" class="selectConfig"
+					style="width: 200px; font-weight: bolder;"
+					onchange="currentSalon.tipoSalon.id = $(this).val();">
+
+					<option>Selecciona...</option>
+					<option value="1"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/auditorio.png'>">&nbsp;&nbsp;&nbsp;Auditorio</option>
+					<option value="2"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/banquete.png'>">&nbsp;&nbsp;&nbsp;Banquete</option>
+					<option value="3"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/coctel.png'>">&nbsp;&nbsp;&nbsp;Coctel</option>
+					<option value="4"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/escuela.png'>">&nbsp;&nbsp;&nbsp;Escuela</option>
+					<option value="5"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/herradura.png'>">&nbsp;&nbsp;&nbsp;Herradura</option>
+					<option value="6"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/imperial.png'>">&nbsp;&nbsp;&nbsp;Imperial</option>
+					<option value="7"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/mesaredonda.png'>">&nbsp;&nbsp;&nbsp;Mesas
+						Redondas</option>
+					<option value="8"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/mediaslunas.png'>">&nbsp;&nbsp;&nbsp;Medias
+						Lunas</option>
+					<option value="9"
+						data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>">&nbsp;&nbsp;&nbsp;Otro</option>
+
+
+				</select>
+			</div>
+			<!-- <div id="tmpSlcServicios">
+					<select id="selectServicios" name="selectServicios" class="selectServicios" multiple style="width: 400px;" onchange="currentSalon.servicios  = armaServicios($(this).val());">
+							<option value="1" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Alimentos y Bebidas</option>
+							<option value="2" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Aire Acondicionado</option>
+							<option value="3" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Café</option>
+							<option value="4" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Cañón</option>
+							<option value="5" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Equipo de Proyección</option>
+							<!-- <option value="6" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Equipo de Traducción</option>
+							<option value="7" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Internet</option>
+							<option value="8" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Microfono</option>
+							<option value="9" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Pantallas / TV</option>
+							<option value="10" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Podio</option>
+							<option value="11" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Rotafolio</option>
+							<option value="12" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Seguridad</option>
+							<option value="13" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Sistema de Sonido</option>
+							<option value="14" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Teleconferencia</option>
+							<option value="15" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Videoconferencia</option>
+						
+					</select>
+				</div> -->
+
+		</div>
+
+
+	</div>
+	<div id="leftSlider" class="sb-slidebar sb-right sb-style-push">
+		<div style="color: white;">
+			<h3>Mi selección</h3>
+			<table>
+				
+
+			</table>
+			<a href="#" onclick="sliderBars.slidebars.toggle('right')">Esconder</a>
+		</div>
+	</div>
+	<div id="box">
+		<table>
+			<tr style="width: 300px;">
+				<td><img src="" id="box_icon"></td>
+				<td>
+					<ul id="box_messages" compact="compact" type="disc"></ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<section >
+		<div id="leftSlider" class="sb-slidebar sb-left sb-style-overlay">
+			<div style="color: white;">
+				Mi selección
+				<a>
+				<table>
+					<tr ng-repeat="selh in hotelesSeleccionados">
+						<td><img src="http://media.staticontent.com/media/pictures/{{selh.pictures[0]}}" width="80px"
+							height="60px" /></td>
+						<td>{{selh.name}}</td>
+						<td><img src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/></td>
+					</tr>
+
+				</table>
+				</a>
+				<a href="#" onclick="sliderBars.slidebars.toggle('left');">Esconder</a>
+			</div>
+		</div>
+		<div >
+		
+			<div  ng-show="showSearch">
+			
+				<h1>
+					<span ></span>
+				</h1>
+				<h1 align="center">
+					<img src="../wp-content/uploads/2013/10/yp_logo.png"
+						alt="ok yo logo">
+				</h1>
+				<div align="center">
+					 <autocomplete ng-model="searchString" data="movies" on-type="updateMovies" style="width="100px;" on-select="buscar"></autocomplete>
+    				<a class="button" ng-click="search()" ng-show="!showLoader">Buscar en Yo Planner</a>
+						
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<div id="teas" ng-show="hideResults">
+					<ul id="green" class="tea-list" >
+						<li ng-repeat="hotel in hotels" style="cursor: pointer;">
+							<figure class="tea-type-green" ng-click="selectResult(hotel)" style="background-color: white;">
+								<div 
+									style="background-image: url(http://media.staticontent.com/media/pictures/{{hotel.pictures[0]}}); "></div>
+							</figure>
+							<h2>{{hotel.name}}</h2>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div ng-show="showDetail"
+			style="width: 100%; text-align: center; padding-left: 15%; padding-right: 15%;">
+			    
+	        	<flex-slider slide="pic in currentHotel.pictures">
+				    <li>
+				        <img src="http://media.staticontent.com/media/pictures/{{pic}}">
+				    </li>
+				</flex-slider>
+			        
+			   
+			
+			<h1 align="left">{{currentHotel.name}}</h1>
+			<p>{{currentHotel.description}}</p>
+			<br />
+			<h1 align="left">Servicios</h1>
+			<hr>
+			<ul>
+				<li ng-repeat="amen in currentHotel.amenities">{{amen.description}}</li>
+			</ul>
+			
+			<h1 align="left">Ubicacion</h1>
+			<iframe width="800" height="600" ng-src="{{currentHotelMap}}">
+			</iframe>
+			<div align="center">
+				<br> <br> <br> <a href="#green" class="button"
+					ng-click="showResults()">Regresar</a>
+				<br> <br> <br> <a href="#green" class="button"
+					ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0">Agregar a mi Selección</a>
+			</div>
+
+		</div>
+
+		
+
+
+		<div id="factory-footer">
+			<div class="tea-factory">
+				<div class="steam-puff">
+					<img src="" />
+				</div>
+				<div class="factory">
+					<img src="" class="factory-img" />
+				</div>
+			</div>
+			<div id="hills">
+				<div class="hill"></div>
+				<div class="hill"></div>
+				<div class="hill"></div>
+			</div>
+		</div>
+		
+
+	</section>
+	
+	<footer class="footer" role="contentinfo">
+			<div id="inner-footer" class="clearfix">
+				<div class="row">
+					<nav role="navigation" class="columns large-4">
+						<div align="left">
+
+							<p align="left" class="columns large-6 source-org copyright">&copy;
+								2014 Yo Planner, S.A. de C.V.</p>
+							<div align="left">
+								<a href="http://vainillastudio.com/"
+									class="columns large-6 we-made-this"></a>
+							</div>
+							<a href="http://vainillastudio.com/"
+								class="columns large-6 we-made-this"><h5>Diseñado por
+									www.vainillastudio.com</h5></a>
+						</div>
+				</div>
+
+			</div>
+		</footer>
+
+</body>
+</html>
