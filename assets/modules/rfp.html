@@ -1,0 +1,321 @@
+
+<div id="containeraa" class="page-our-teas" >
+   
+<div id="mainContent"
+     class="navbar navbar-default navbar-fixed-top sb-slide">
+
+    <div id="resumen">
+        <div id="rfp_view" style="display: none;">
+
+            <div class="centrado">
+                <h2>Ingresa los datos de tu evento</h2>
+                <table>
+                    <tr>
+                        <td>Nombre</td>
+                        <td><input id="rfp_nombre" type="text"
+                                   placeholder="Nombre de tu evento" class="floatlabel"
+                                   ng-model="rfp.nombre"></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de Entrada</td>
+
+                        <td><input id="rfp_fechaInicial"  type="text"
+                                   class="datepicker" placeholder="Selecciona..."
+
+                                   ng-model="fechaInicialFor"  ng-change="muestraCuadritos();"></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha de Salida</td>
+                        <td><input id="rfp_fechaFinal"  type="text"
+                                   class="datepicker" placeholder="Selecciona..."
+
+                                   ng-model="fechaFinalFor"  ng-change="muestraCuadritos();"></td>
+                    </tr>
+                    <tr>
+                        <td>Asistentes</td>
+                        <td><input id="rfp.asistenciaEsperada" type="text"
+                                   placeholder="Número de Participantes"
+                                   ng-model="rfp.asistenciaEsperada"></td>
+
+                    </tr>
+                    <tr>
+                        <td>Habitaciones Sencillas</td>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr >
+                                        <th ng-repeat="day in configuracionHabitacionesSencillas">{{day.fecha | date:'dd/MM'}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr >
+                                        <td ng-repeat="day in configuracionHabitacionesSencillas"><input type="text" ng-model="day.habitaciones" size="5"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Habitaciones Dobles</td>
+                        <!-- <td><input id="rfp.habitacionesDobles" 
+type="text" 
+placeholder="Habitaciones Dobles" > 
+</td>
+-->
+                        <td><table>
+                            <thead>
+                                <tr>
+                                    <th ng-repeat="day in configuracionHabitacionesDobles">{{day.fecha | date:'dd/MM'}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td ng-repeat="day in configuracionHabitacionesDobles"><input type="text" ng-model="day.habitaciones" size="5"></td>
+                                </tr>
+                            </tbody>
+                            </table></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center"><br />Comentarios
+                            Adicionales</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><textarea id="rfp.comentarios" cols="50"
+                                                  placeholder="Preguntas, dudas, solicitudes especiales..."
+                                                  ng-model="rfp.comentarios"></textarea></td>
+                    </tr>
+                </table>
+
+                <a href="#" ng-click="validarDatosEvento();">Siguiente</a>
+
+
+
+            </div>
+
+
+        </div>
+        <div id="salones_view" style="display: none;">
+            Eventos Programados <br /> <a href="#" onclick="agregarSalon();">[+]
+            Ingresa un nuevo evento</a>
+            <div id="accordion-container"></div>
+            <a href="#" onclick=" $.fancybox.prev();">Regresar</a> <a href="#"
+                                                                      ng-click="validarDatosSalones();">Siguiente</a>
+
+        </div>
+
+        <div id="rfp_seleccion" style="display: none; text-align: center;">
+            <h1>Mi selección</h1>
+            <table >
+                <tr ng-repeat="selh in hotelesSeleccionados">
+                    <td><img src="http://media.staticontent.com/media/pictures/{{selh.pictures[0]}}" width="80px"
+                             height="60px" /></td>
+                    <td>{{selh.name}}</td>
+                    <td><img src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/></td>
+                </tr>
+
+            </table>
+            <br /> <br /> <br /> <a href="#" onclick=" $.fancybox.prev();">Regresar</a>
+            <a href="#" onclick=" $.fancybox.next();">Siguiente</a>
+
+        </div>
+
+        <div id="datos_contacto" style="display: none; text-align: center;">
+            <h1>Datos del Cliente</h1>
+            <form ng-submit="rfp_create()">
+                <table style="margin: 0px auto">
+                    <tr>
+                        <td><label>Nombre Completo <span class="red">*</span></label></td>
+                        <td><input type="text" placeholder="Nombre con apellidos" required
+                                   ng-model="rfp.nombreCliente"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Email <span class="red">*</span></label></td>
+                        <td><input type="email" ng-model="rfp.email" required
+                                   placeholder="alguien@example.com"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Telefono <span class="red">*</span></label></td>
+                        <td><input type="text" required
+                                   ng-model="rfp.telefonoContacto"
+                                   placeholder="Ej. 04455565811"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Empresa <span class="red"></span></label></td>
+                        <td><input type="text" ng-model="rfp.empresa"
+                                   placeholder="Empresa donde laboras"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Cargo <span class="red"></span></label></td>
+                        <td><input type="text" ng-model="rfp.puesto"
+                                   placeholder="Cargo actual"></td>
+                    </tr>
+                    <tr>
+                        <td><label>País:</label></td>
+                        <td><input type="text"  
+                                   ng-model="rfp.paisText" /></td>
+                    </tr>
+                    <tr>
+                        <td><label>Estado:</label></td>
+                        <td><input type="text" ng-model="rfp.estadoText" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Ciudad:</label></td>
+                        <td><input type="text" ng-model="rfp.ciudadText" />
+                        </td>
+                    </tr>
+                </table>
+                <br /> <br /> <br /> <a href="#" onclick=" $.fancybox.prev();">Regresar</a>
+                <button type="submit" value="">Solicitar Cotización</button> <a
+                                                                                href="#"
+                                                                                onclick="$('#rfp_resumen').html($('#resumen').html());$.fancybox.jumpto(5);">Resumen</a>
+                
+            </form>
+        </div>
+    </div>
+    <div id="gracias" style="display: none;">
+        <h1>¡Gracias!</h1>
+        <br />
+        <h2>En menos de 24 hrs. un asesor YoPlanner se pondrá en
+            contacto contigo.</h2>
+        <br />
+        <h3>
+            Tu folio es el número <span id="folioRFP"
+                                        style="font-size: xx-large; color: navy;">{{folioFinal}}</span>, guárdalo para
+            futuras referencias.
+        </h3>
+        <br />
+        <h1>Gracias por usar el servicio de YoPlanner!</h1>
+    </div>
+
+    <div id="rfp_resumen" style="display: none;"></div>
+
+
+
+</div>
+
+<div id="templates" style="position: absolute; visibility: hidden;">
+
+    <div id="newSalon" style="width: 680px;">
+        <span onclick="eliminarEvento($(this));" style="float: right;">Eliminar&nbsp;&nbsp;&nbsp;</span>
+        <span onclick="clonarEvento($(this));" style="float: right;">Clonar&nbsp;&nbsp;&nbsp;</span>
+        <h2 class="accordion-header"></h2>
+        <div class="accordion-content">
+            <section id="rfp_salones">
+                <table>
+                    <tr>
+                        <td>Nombre del Evento</td>
+                        <td>Número de Participantes</td>
+                        <td>Fecha</td>
+                        <td>Hora de Inicio</td>
+                        <td>Hora de Fin</td>
+                        <td colspan="3">Tipo de Evento</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text"
+                                   onblur="currentSalon.nombreEvento = this.value;"
+                                   onkeyup="$(this).closest('.accordion-content').prev().html(this.value);"></td>
+                        <td><input type="text"
+                                   onblur="currentSalon.asistentes = this.value;" size="2"></td>
+                        <td><input id="rfp_salon_fecha" type="text" readonly
+                                   type="text" class="datepicker"
+                                   onblur="currentSalon.fecha = parseDate(this.value);" size="20"></td>
+                        <!-- <td><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+<input type="text" class="form-control" value="13:14" size="4" >
+<span class="input-group-addon">
+<span class="glyphicon glyphicon-time"></span>
+</span>
+</div>
+</td> -->
+                        <td><input type="text" id="rfp_salon_horaInicio" size="6"
+                                   onblur="currentSalon.horaInicio = this.value;" /></td>
+
+                        <td><input type="text" id="rfp_salon_horaFin"
+                                   class="timepicker" size="6"
+                                   onblur="currentSalon.horaFin = this.value" /></td>
+                        <td colspan="3"><select id="rfp_tipoEvento"
+                                                onchange="currentSalon.tipoEvento.id = this.value;">
+                            <option value="1">Desayuno</option>
+                            <option value="2">Comida</option>
+                            <option value="3">Cena</option>
+                            <option value="4">Cocktail</option>
+                            <option value="5">Sesión</option>
+                            <option value="6">Breakout</option>
+                            <option value="7">Oficina</option>
+                            <option value="8">Bodega</option>
+                            <option value="9">Otro</option>
+                            </select></td>
+                    </tr>
+                    <tr>
+
+                        <td>Montaje del Evento</td>
+                        <!-- <td>Servicios</td> -->
+                    </tr>
+                    <tr>
+                        <td id="tdConfSalon"></td>
+                        <td id="tdServicios" colspan="100%"></td>
+                    </tr>
+                </table>
+
+                <br />Comentarios Adicionales<br />
+                <textarea id="rfp_salon_comadicionales" cols="70"
+                          onblur="currentSalon.comentarios = this.value;"></textarea>
+            </section>
+        </div>
+    </div>
+
+    <div id="tmpSlcConfigSalon">
+        <select id="selectConfig" name="selectConfig" class="selectConfig"
+                style="width: 200px; font-weight: bolder;"
+                onchange="currentSalon.tipoSalon.id = $(this).val();">
+
+            <option>Selecciona...</option>
+            <option value="1"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/auditorio.png'>">&nbsp;&nbsp;&nbsp;Auditorio</option>
+            <option value="2"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/banquete.png'>">&nbsp;&nbsp;&nbsp;Banquete</option>
+            <option value="3"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/coctel.png'>">&nbsp;&nbsp;&nbsp;Coctel</option>
+            <option value="4"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/escuela.png'>">&nbsp;&nbsp;&nbsp;Escuela</option>
+            <option value="5"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/herradura.png'>">&nbsp;&nbsp;&nbsp;Herradura</option>
+            <option value="6"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/imperial.png'>">&nbsp;&nbsp;&nbsp;Imperial</option>
+            <option value="7"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/mesaredonda.png'>">&nbsp;&nbsp;&nbsp;Mesas
+                Redondas</option>
+            <option value="8"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/mediaslunas.png'>">&nbsp;&nbsp;&nbsp;Medias
+                Lunas</option>
+            <option value="9"
+                    data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>">&nbsp;&nbsp;&nbsp;Otro</option>
+
+
+        </select>
+    </div>
+    <!-- <div id="tmpSlcServicios">
+<select id="selectServicios" name="selectServicios" class="selectServicios" multiple style="width: 400px;" onchange="currentSalon.servicios  = armaServicios($(this).val());">
+<option value="1" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Alimentos y Bebidas</option>
+<option value="2" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Aire Acondicionado</option>
+<option value="3" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Café</option>
+<option value="4" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Cañón</option>
+<option value="5" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Equipo de Proyección</option>
+<!-- <option value="6" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Equipo de Traducción</option>
+<option value="7" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Internet</option>
+<option value="8" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Microfono</option>
+<option value="9" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Pantallas / TV</option>
+<option value="10" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Podio</option>
+<option value="11" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Rotafolio</option>
+<option value="12" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Seguridad</option>
+<option value="13" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Sistema de Sonido</option>
+<option value="14" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Teleconferencia</option>
+<option value="15" data-left="<img style='width:25px;height:25px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Videoconferencia</option>
+
+</select>
+</div> -->
+
+</div>
+
+
+</div>

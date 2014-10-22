@@ -15,20 +15,28 @@ module.exports = {
         };
         // Start the request
         HttpClientService.httpsGET(options,function(response){
-            var ids = "";
-            var data = JSON.parse(response).data;
-            for(var d in data){
-                   ids += data[d].internalId+",";
+            try{
+                var ids = "";
+                var data = JSON.parse(response).data;
+                var i=0;
+                for(var d in data){
+                    if(i>6)
+                        break;
+                    ids += data[d].internalId+",";
+                    i++;
+                }
+
+                options = {
+                    hostname : "api.despegar.com",
+                    path : "/hotels/"+ids+"?includeamenities=true&includesummary=true",
+                    headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
+                };
+                 HttpClientService.httpsGET(options,function(resp){
+                      res.send(resp);
+                 });
+            }catch(ex){
+                res.json(500,{})   
             }
-           
-            options = {
-                hostname : "api.despegar.com",
-                path : "/hotels/"+ids+"?includeamenities=true&includesummary=true",
-                headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
-            };
-             HttpClientService.httpsGET(options,function(resp){
-                  res.send(resp);
-             });
            
         });
     }

@@ -1,0 +1,24 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/Users/ovegar/node/yoplanner/tasks/register/build.js",
+        "C:/Users/ovegar/node/yoplanner/assets/wp-content/themes/theteafactory/library/js/foundation/foundation.min.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/linkAssets.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/linkAssetsBuild.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/linkAssetsBuildProd.js",
+        "C:/Users/ovegar/node/yoplanner/assets/hoteles/js/modernizr.custom.46884.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/syncAssets.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/pipeline.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/prod.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/compileAssets.js",
+        "C:/Users/ovegar/node/yoplanner/assets/modules/index.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/buildProd.js",
+        "C:/Users/ovegar/node/yoplanner/config/env/development.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/register/default.js",
+        "C:/Users/ovegar/node/yoplanner/Gruntfile.js",
+        "C:/Users/ovegar/node/yoplanner/app.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/config/watch.js",
+        "C:/Users/ovegar/node/yoplanner/tasks/config/uglify.js",
+        "C:/Users/ovegar/node/yoplanner/api/models/RFP.js",
+        "C:/Users/ovegar/node/yoplanner/api/controllers/SearchController.js"
+    ]
+}

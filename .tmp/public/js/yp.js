@@ -96,6 +96,7 @@ $(document).ready(function(){
 function setDatePickers(){
 	var dat = new Date();
     dat.setDate(dat.getDate() + 1);
+   
 	$('.datepicker').pikaday({ 
 		format: 'DD-MM-YYYY',
 		minDate:  dat,
@@ -111,6 +112,7 @@ function setDatePickers(){
 }
 
 function showCotizar(){
+    setDatePickers();
 	$.fancybox([
  	        	{href : '#rfp_view', title : 'Datos Generales'},
 	        	{href : '#salones_view', title : 'Mis Eventos'},

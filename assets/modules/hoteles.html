@@ -1,0 +1,42 @@
+<div ng-show="hideResults">
+    
+        <div class="resultados" ng-repeat="hotel in hotels" style="cursor: pointer;" ng-click="selectResult(hotel)">
+            
+            <h2 id="text"><span>{{hotel.name}}</span></h2>
+            <img src="http://media.staticontent.com/media/pictures/{{hotel.pictures[0]}}">
+        </div>
+    
+</div>
+<div ng-show="showDetail">
+    
+    <h1 align="left">{{currentHotel.name}}</h1>
+    <div style="width:600;height:300;">
+    <flex-slider slide="pic in currentHotel.pictures" >
+        <li>
+            <img src="http://media.staticontent.com/media/pictures/{{pic}}" width="500px" height="250px">
+        </li>
+    </flex-slider>
+    </div>
+
+
+    <p>{{currentHotel.description}}</p>
+    <br />
+    <h1 align="left">Servicios</h1>
+    <hr>
+    <ul>
+        <li ng-repeat="amen in currentHotel.amenities">{{amen.description}}</li>
+    </ul>
+
+    <h1 align="left">Ubicacion</h1>
+    <iframe width="800" height="600" ng-src="{{currentHotelMap}}">
+    </iframe>
+    <div align="center">
+        <br> <br> <br> <a href="#green" class="button"
+                          ng-click="showResults()">Regresar</a>
+        <br> <br> <br> <a href="#green" class="button"
+                          ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0">Agregar a mi Selección</a>
+    </div>
+
+</div>
+
+
