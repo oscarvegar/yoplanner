@@ -20,7 +20,7 @@ module.exports = {
                 var data = JSON.parse(response).data;
                 var i=0;
                 for(var d in data){
-                    if(i>6)
+                    if(i>9)
                         break;
                     ids += data[d].internalId+",";
                     i++;

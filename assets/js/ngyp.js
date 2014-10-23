@@ -15,6 +15,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.fechaInicialFor = null;
     $scope.fechaFinalFor = null;
     $scope.folioFinal = null;
+    $scope.showIndex = true;
 
     //pruebas
     $scope.rfp.paisText = "México";
@@ -28,10 +29,12 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
             console.log(data);
             $scope.hotels = data.hotels;
+            $scope.showIndex = false;
             $scope.showSearch = false;
             $scope.hideResults = true;
             $scope.showDetail = false;
             $scope.showLoader = false;
+            
         }).error(function (err){
             console.log(err);
             $scope.showLoader = false;
