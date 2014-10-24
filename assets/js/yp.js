@@ -123,8 +123,8 @@ function showCotizar(){
 	        ],{
 arrows: false,
 fitToView	: true,
-width		: '700px',
-height		: '500px',
+width		: '800px',
+height		: '600px',
 autoSize	: false,
 closeClick	: false,
 openEffect	: 'none',

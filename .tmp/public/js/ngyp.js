@@ -15,6 +15,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.fechaInicialFor = null;
     $scope.fechaFinalFor = null;
     $scope.folioFinal = null;
+    $scope.showIndex = true;
 
     //pruebas
     $scope.rfp.paisText = "México";
@@ -28,10 +29,12 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
             console.log(data);
             $scope.hotels = data.hotels;
+            $scope.showIndex = false;
             $scope.showSearch = false;
             $scope.hideResults = true;
             $scope.showDetail = false;
             $scope.showLoader = false;
+            
         }).error(function (err){
             console.log(err);
             $scope.showLoader = false;
@@ -98,9 +101,11 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             var totalDias = parseInt(($scope.rfp.fechaFinal.getTime() - $scope.rfp.fechaInicial.getTime())/86400000);
             $scope.configuracionHabitacionesSencillas = [];
             $scope.configuracionHabitacionesDobles = [];
+            console.log("Total dias");
+            console.log(totalDias);
             for(var i=0;i<totalDias;i++){
-                $scope.configuracionHabitacionesSencillas.push({tipoHabitacion:1,fecha:new Date($scope.rfp.fechaInicial.getTime()+(86400000*(i)))});
-                $scope.configuracionHabitacionesDobles.push({tipoHabitacion:2,fecha:new Date($scope.rfp.fechaInicial.getTime()+(86400000*(i)))});
+                $scope.configuracionHabitacionesSencillas.push({tipoHabitacion:1,fecha:moment($scope.rfp.fechaInicial).add(i,'day').toDate()});
+                $scope.configuracionHabitacionesDobles.push({tipoHabitacion:2,fecha:moment($scope.rfp.fechaInicial).add(i,'day').toDate()});
 
             };
 

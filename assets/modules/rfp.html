@@ -86,7 +86,7 @@ placeholder="Habitaciones Dobles" >
                     </tr>
                 </table>
 
-                <a href="#" ng-click="validarDatosEvento();">Siguiente</a>
+                <button ng-click="validarDatosEvento();">Siguiente</button>
 
 
 
@@ -98,8 +98,8 @@ placeholder="Habitaciones Dobles" >
             Eventos Programados <br /> <a href="#" onclick="agregarSalon();">[+]
             Ingresa un nuevo evento</a>
             <div id="accordion-container"></div>
-            <a href="#" onclick=" $.fancybox.prev();">Regresar</a> <a href="#"
-                                                                      ng-click="validarDatosSalones();">Siguiente</a>
+            <button onclick=" $.fancybox.prev();">Regresar</button> <button
+                                                                      ng-click="validarDatosSalones();">Siguiente</button>
 
         </div>
 
@@ -114,8 +114,8 @@ placeholder="Habitaciones Dobles" >
                 </tr>
 
             </table>
-            <br /> <br /> <br /> <a href="#" onclick=" $.fancybox.prev();">Regresar</a>
-            <a href="#" onclick=" $.fancybox.next();">Siguiente</a>
+            <br /> <br /> <br /> <button onclick=" $.fancybox.prev();">Regresar</button>
+            <button  onclick=" $.fancybox.next();">Siguiente</button>
 
         </div>
 
@@ -165,10 +165,8 @@ placeholder="Habitaciones Dobles" >
                         </td>
                     </tr>
                 </table>
-                <br /> <br /> <br /> <a href="#" onclick=" $.fancybox.prev();">Regresar</a>
-                <button type="submit" value="">Solicitar Cotización</button> <a
-                                                                                href="#"
-                                                                                onclick="$('#rfp_resumen').html($('#resumen').html());$.fancybox.jumpto(5);">Resumen</a>
+                <br /> <br /> <br /> <button onclick=" $.fancybox.prev();">Regresar</button>
+                <button type="submit" value="">Solicitar Cotización</button> <button onclick="$('#rfp_resumen').html($('#resumen').html());$.fancybox.jumpto(5);">Resumen</button>
                 
             </form>
         </div>
@@ -184,8 +182,13 @@ placeholder="Habitaciones Dobles" >
                                         style="font-size: xx-large; color: navy;">{{folioFinal}}</span>, guárdalo para
             futuras referencias.
         </h3>
+        <div style="text-align:center">
         <br />
         <h1>Gracias por usar el servicio de YoPlanner!</h1>
+        <br />
+        
+        <button onclick="window.location='/'">Aceptar</button>
+            </div>
     </div>
 
     <div id="rfp_resumen" style="display: none;"></div>
@@ -197,8 +200,8 @@ placeholder="Habitaciones Dobles" >
 <div id="templates" style="position: absolute; visibility: hidden;">
 
     <div id="newSalon" style="width: 680px;">
-        <span onclick="eliminarEvento($(this));" style="float: right;">Eliminar&nbsp;&nbsp;&nbsp;</span>
-        <span onclick="clonarEvento($(this));" style="float: right;">Clonar&nbsp;&nbsp;&nbsp;</span>
+        <span onclick="eliminarEvento($(this));" style="float: right;"><br>Eliminar&nbsp;&nbsp;&nbsp;</span>
+        <span onclick="clonarEvento($(this));" style="float: right;"><br>Clonar&nbsp;&nbsp;&nbsp;</span>
         <h2 class="accordion-header"></h2>
         <div class="accordion-content">
             <section id="rfp_salones">
