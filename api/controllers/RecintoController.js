@@ -4,9 +4,10 @@
  * @description :: Server-side logic for managing Recintoes
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-var resSize = 8;
+
 module.exports = {
 	findByCiudadId: function(req,res){
+        var resSize = 8;
         var id = req.allParams().id;
         var options = {
             hostname : "api.despegar.com",
@@ -20,11 +21,13 @@ module.exports = {
                 var data = JSON.parse(response).data;
                 
                 var p = 0;
+                console.log(req.param('p'));
                 if(req.param('p')){
                     p = req.param('p');
                     resSize = 9;
                 }
                 console.log(p);
+                console.log(resSize);
                 for(var d in data){
                     if(d>=(resSize+(p*resSize)))
                         break;

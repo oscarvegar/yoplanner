@@ -5,6 +5,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.showDetail = false;
     $scope.searchString = null;
     $scope.searchId = null;
+    $scope.lastSearchId = null;
     $scope.currentHotel = null;
     $scope.currentHotelMap = null;
     $scope.hotelesSeleccionados = [];
@@ -24,7 +25,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.rfp.telefonoContacto = "5544556677";
     $scope.currentPage = 0;
     $scope.search = function() {
-        if(!$scope.searchId)return;
+        if($scope.searchId==null)return;
         $scope.showLoader = true;
        // $scope.searchId = $scope.searchString.split(" ")[0];
         $http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
@@ -36,6 +37,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.showDetail = false;
             $scope.showLoader = false;
             $scope.currentPage=1;
+            $scope.lastSearchId = $scope.searchId==null?$scope.lastSearchId:$scope.searchId;
+            $scope.searchId = null;
             document.getElementById("topContent").scrollIntoView();
         }).error(function (err){
             console.log(err);
@@ -46,7 +49,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     
     $scope.masResultados = function(){
          $scope.showMostrarMas = true;
-        $http.get("/recinto/findByCiudadId/"+$scope.searchId+"?p="+$scope.currentPage).success(function (data){
+        $http.get("/recinto/findByCiudadId/"+$scope.lastSearchId+"?p="+$scope.currentPage).success(function (data){
              $scope.showMostrarMas = false;
             console.log(data);
             $scope.hotels = $scope.hotels.concat(data.hotels);
@@ -105,7 +108,6 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     // gives another movie array on change
     $scope.updateMovies = function(typed){
         // MovieRetriever could be some service returning a promise
-        console.log(typed)
         if(typed.length<4)return;
         $http.get("/search/cities/"+typed).success(function(data){
             $scope.movies  =  [];
