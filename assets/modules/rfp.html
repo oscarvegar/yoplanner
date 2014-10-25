@@ -8,6 +8,7 @@
         <div id="rfp_view" style="display: none;text-align:center">
 
             <div >
+                <form ng-submit="validarDatosEvento()">
                 <h1>Ingresa los datos de tu evento</h1>
                 <table style="margin-left:auto;margin-right:auto">
                     <tr>
@@ -19,21 +20,21 @@
                     <tr>
                         <td>Fecha de Entrada</td>
 
-                        <td><input id="rfp_fechaInicial"  type="text"
+                        <td><input id="rfp_fechaInicial"  type="text" required
                                    class="datepicker" placeholder="Selecciona..."
 
                                    ng-model="fechaInicialFor"  ng-change="muestraCuadritos();"></td>
                     </tr>
                     <tr>
                         <td>Fecha de Salida</td>
-                        <td><input id="rfp_fechaFinal"  type="text"
+                        <td><input id="rfp_fechaFinal"  type="text" required
                                    class="datepicker" placeholder="Selecciona..."
 
                                    ng-model="fechaFinalFor"  ng-change="muestraCuadritos();"></td>
                     </tr>
                     <tr>
                         <td>Asistentes</td>
-                        <td><input id="rfp.asistenciaEsperada" type="text"
+                        <td><input id="rfp.asistenciaEsperada" type="text" required
                                    placeholder="Número de Participantes"
                                    ng-model="rfp.asistenciaEsperada"></td>
 
@@ -86,10 +87,10 @@ placeholder="Habitaciones Dobles" >
                     </tr>
                 </table>
 
-                <button ng-click="validarDatosEvento();">Siguiente</button>
+                <button type="submit">Siguiente</button>
 
 
-
+                    </form>
             </div>
 
 
