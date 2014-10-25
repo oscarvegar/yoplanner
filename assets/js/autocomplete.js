@@ -102,7 +102,7 @@ app.directive('autocomplete', function() {
         "placeholder": "Ingresa tu destino o ciudad...",
         "class": "",
         "id": "",
-        "inputclass": "",
+        "inputclass": "ypautocomplete",
         "inputid": ""
       };
 

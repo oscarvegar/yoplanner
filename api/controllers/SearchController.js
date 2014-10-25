@@ -12,7 +12,7 @@ module.exports = {
         var id = req.allParams().id;
         var options = {
             hostname : "api.despegar.com",
-            path : "/autocomplete/"+id,
+            path : "/autocomplete/cities/"+id,
             //options.method = "GET";
             headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
         };
