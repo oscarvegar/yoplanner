@@ -17,16 +17,16 @@
 
 .resultados{
     
-    width: 330px;
-    height: 200px;
+    width: 337px;
+    height: 344px;
     float: left;   
     padding-left: 10px;
     position: relative;
 }
 .resultados img{
     
-    width: 320px;
-    height: 190px;
+    width: 317px;
+    height: 324px;
     position:absolute;
     left:0;
     top:0;   
@@ -51,16 +51,16 @@
 
 .resultadosBig{
     
-    width: 660px;
-    height: 400px;
+    width: 674px;
+    height: 344px;
     float: left;   
     padding-left: 10px;
     position: relative;
 }
 .resultadosBig img{
     
-    width: 650px;
-    height: 390px;
+    width: 654px;
+    height: 324px;
     position:absolute;
     left:0;
     top:0;   

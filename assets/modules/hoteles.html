@@ -1,4 +1,4 @@
-<div ng-show="hideResults"  style="width:990px">
+<div ng-show="hideResults"  >
     
         <div  ng-repeat="hotel in hotels" style="cursor: pointer;" ng-click="selectResult(hotel)">
             <div class="resultadosBig" ng-if="$index == 0">
@@ -12,15 +12,15 @@
         </div>
     <div style="clear: both"></div>
     
-    <button style="width:990px" ng-click="masResultados()" ng-hide="showMostrarMas">Mas Resultados</button>
+    <button ng-click="masResultados()" ng-hide="showMostrarMas">Mas Resultados</button>
     <div ng-show="showMostrarMas">
         <br>
         <img src="../img/lblue.gif"  style="width:30px;height:30px;">
     </div>
 </div>
-<div ng-show="showDetail" style="width:990px">
+<div ng-show="showDetail" >
     
-    <h1 align="left">{{currentHotel.name}}</h1>
+    <h1 >{{currentHotel.name}}</h1>
     <div style="width:600;height:300;">
     <flex-slider slide="pic in currentHotel.pictures" >
         <li>
