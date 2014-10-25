@@ -22,6 +22,7 @@ module.exports = {
                 var p = 0;
                 if(req.param('p')){
                     p = req.param('p');
+                    resSize = 9;
                 }
                 console.log(p);
                 for(var d in data){
