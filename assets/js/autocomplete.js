@@ -80,8 +80,10 @@ app.directive('autocomplete', function() {
       // selecting a suggestion with RIGHT ARROW or ENTER
       $scope.select = function(suggestion){
         if(suggestion){
-          $scope.searchParam = suggestion;
+          $scope.searchParam = suggestion.substr(suggestion.indexOf(' ')+1);
           $scope.searchFilter = suggestion;
+            $scope.$parent.searchId = suggestion.substr(0,suggestion.indexOf(' '));
+            
           if($scope.onSelect)
             $scope.onSelect(suggestion);
         }
@@ -89,6 +91,7 @@ app.directive('autocomplete', function() {
         $scope.completing = false;
         setTimeout(function(){watching = true;},1000);
         $scope.setIndex(-1);
+          $scope.$parent.search();
       };
 
 
@@ -243,7 +246,7 @@ app.directive('autocomplete', function() {
               val="{{ suggestion }}"\
               ng-class="{ active: ($index === selectedIndex) }"\
               ng-click="select(suggestion)"\
-              ng-bind-html="suggestion | highlight:searchParam"></li>\
+              ng-bind-html="suggestion.substr(suggestion.indexOf(\' \')+1) | highlight:searchParam"></li>\
           </ul>\
         </div>'
   };

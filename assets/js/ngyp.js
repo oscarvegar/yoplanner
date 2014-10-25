@@ -25,7 +25,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.currentPage = 0;
     $scope.search = function() {
         $scope.showLoader = true;
-        $scope.searchId = $scope.searchString.split(" ")[0];
+        console.log($scope.searchId);
+       // $scope.searchId = $scope.searchString.split(" ")[0];
         $http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
             console.log(data);
             $scope.hotels = data.hotels;
@@ -104,8 +105,11 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     // gives another movie array on change
     $scope.updateMovies = function(typed){
         // MovieRetriever could be some service returning a promise
+        console.log(typed)
+        if(typed.length<4)return;
         $http.get("/search/cities/"+typed).success(function(data){
             $scope.movies  =  [];
+            if(data.autocomplete == null)return;
             for(var i=0;i<data.autocomplete.length;i++){
                 if(data.autocomplete[i].type=="city")
                     $scope.movies.push(data.autocomplete[i].id+" "+data.autocomplete[i].name);
