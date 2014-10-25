@@ -18,12 +18,21 @@ module.exports = {
             try{
                 var ids = "";
                 var data = JSON.parse(response).data;
-                var i=0;
+                
+                var p = 0;
+                if(req.param('p')){
+                    p = req.param('p');
+                }
+                console.log(p);
                 for(var d in data){
-                    if(i>9)
+                    if(d>=(9+(p*9)))
                         break;
+                    else if(d<(9*p)){
+                        continue;
+                    }
+                    console.log(data[d].internalId);
                     ids += data[d].internalId+",";
-                    i++;
+                    
                 }
 
                 options = {

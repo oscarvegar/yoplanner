@@ -5,11 +5,11 @@
      class="navbar navbar-default navbar-fixed-top sb-slide">
 
     <div id="resumen">
-        <div id="rfp_view" style="display: none;">
+        <div id="rfp_view" style="display: none;text-align:center">
 
-            <div class="centrado">
-                <h2>Ingresa los datos de tu evento</h2>
-                <table>
+            <div >
+                <h1>Ingresa los datos de tu evento</h1>
+                <table style="margin-left:auto;margin-right:auto">
                     <tr>
                         <td>Nombre</td>
                         <td><input id="rfp_nombre" type="text"
@@ -94,9 +94,9 @@ placeholder="Habitaciones Dobles" >
 
 
         </div>
-        <div id="salones_view" style="display: none;">
-            Eventos Programados <br /> <a href="#" onclick="agregarSalon();">[+]
-            Ingresa un nuevo evento</a>
+        <div id="salones_view" style="display: none;text-align:center;">
+            <h1>Eventos Programados</h1> <a href="#" onclick="agregarSalon();"><h2>[+]
+            Ingresa un nuevo evento</h2></a>
             <div id="accordion-container"></div>
             <button onclick=" $.fancybox.prev();">Regresar</button> <button
                                                                       ng-click="validarDatosSalones();">Siguiente</button>
@@ -166,7 +166,7 @@ placeholder="Habitaciones Dobles" >
                     </tr>
                 </table>
                 <br /> <br /> <br /> <button onclick=" $.fancybox.prev();">Regresar</button>
-                <button type="submit" value="">Solicitar Cotización</button> <button onclick="$('#rfp_resumen').html($('#resumen').html());$.fancybox.jumpto(5);">Resumen</button>
+                <button type="submit" ng-click="rfp_create()">Solicitar Cotización</button> <button onclick="$('#rfp_resumen').html($('#resumen').html());$.fancybox.jumpto(5);">Resumen</button>
                 
             </form>
         </div>
@@ -179,7 +179,7 @@ placeholder="Habitaciones Dobles" >
         <br />
         <h3>
             Tu folio es el número <span id="folioRFP"
-                                        style="font-size: xx-large; color: navy;">{{folioFinal}}</span>, guárdalo para
+                                        style="font-size: xx-large; color: navy;">{{folioFinal.substring(folioFinal.length-6)}}</span>, guárdalo para
             futuras referencias.
         </h3>
         <div style="text-align:center">

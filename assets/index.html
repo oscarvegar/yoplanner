@@ -34,76 +34,6 @@
         <script type="text/javascript">try{Typekit.load();}catch(e){}
         </script> 
         <style>
-            .tea-type-green {
-                border-color: #0098c2;
-            }
-            .tea-type-green {
-                background-color: #0098c2;
-                color: rgb(99, 138, 114);
-            }
-            .tea-type-green header {
-                color: #0098c2;
-            }
-            .tea-type-green .tea-fill,
-            .tea-type-green .button {
-                background-color: rgb(99, 138, 114);
-            }
-            .tea-type-green .button:hover {
-                background-color: #0098c2;
-            }
-            .tea-type-green .description {
-                color: rgb(99, 138, 114);
-            }
-
-
-            .tea-type-oolong {
-                border-color: #005c88;
-            }
-            .tea-type-oolong {
-                background-color: #005c88;
-                color: rgb(169, 132, 41);
-            }
-            .tea-type-oolong header {
-                color: #005c88;
-            }
-            .tea-type-oolong .tea-fill,
-            .tea-type-oolong .button {
-                background-color: rgb(169, 132, 41);
-            }
-            .tea-type-oolong .button:hover {
-                background-color: #005c88;
-            }
-            .tea-type-oolong .description {
-                color: rgb(169, 132, 41);
-            }
-
-
-            .tea-type-black {
-                border-color: #00b9e2;
-            }
-            .tea-type-black {
-                background-color: #00b9e2;
-                color: rgb(53, 59, 59);
-            }
-            .tea-type-black header {
-                color: #00b9e2;
-            }
-            .tea-type-black .tea-fill,
-            .tea-type-black .button {
-                background-color: rgb(53, 59, 59);
-            }
-            .tea-type-black .button:hover {
-                background-color: #00b9e2;
-            }
-            .tea-type-black {
-                color: #00b9e2;
-            }
-            .tea-type-black .tea-fill {
-                background-color: #00b9e2;
-            }
-            .tea-type-black .description {
-                color: rgb(120, 132, 132);
-            }
 
             .no-js .home.page.page-id-24.page-template-default #content #inner-content #main #content #inner-content #main div div table tr td div .flag {
                 text-align: center;
@@ -163,7 +93,7 @@
         <script type="text/javascript" src="../modules/rfp.js"></script>
         <script type="text/javascript" src="../js/ngyp.js"></script>
     </head>
-    <body  ng-controller="RecintosController">
+    <body  ng-controller="RecintosController" style="text-align:center;">
 
         <div id="container" class="">
             <header class="header" role="banner"><div id="inner-header" class="row">
@@ -192,18 +122,19 @@
 
             </div>
             <div>
-                <div style="width:62%;float:left;padding-left:25%">
+                <div style="width:62%;float:left;padding-left:25%" id="topContent">
                     <autocomplete  ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
 
                 </div>
                 <div style="float:left">
-                    <a class="button" ng-click="search()" ng-show="!showLoader">Buscar en Yo Planner</a>
+                    <a class="button" ng-click="search()" ng-show="!showLoader">Buscar en Yo Planner</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader">
                 </div>
             </div>
             
     <br>
     <br>
     <br>
+           
             <div style="width:1300px;">
                 <hoteles ng-show="true"></hoteles>
             </div>

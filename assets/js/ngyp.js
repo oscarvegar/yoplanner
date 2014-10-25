@@ -16,13 +16,13 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.fechaFinalFor = null;
     $scope.folioFinal = null;
     $scope.showIndex = true;
-
+    $scope.showMostrarMas = false;
     //pruebas
     $scope.rfp.paisText = "México";
     $scope.rfp.nombreCliente = "oscar";
     $scope.rfp.email = "osc@fo.com";
     $scope.rfp.telefonoContacto = "5544556677";
-
+    $scope.currentPage = 0;
     $scope.search = function() {
         $scope.showLoader = true;
         $scope.searchId = $scope.searchString.split(" ")[0];
@@ -34,34 +34,55 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.hideResults = true;
             $scope.showDetail = false;
             $scope.showLoader = false;
-            
+            $scope.currentPage=1;
+            document.getElementById("topContent").scrollIntoView();
         }).error(function (err){
             console.log(err);
             $scope.showLoader = false;
         });
 
     };
+    
+    $scope.masResultados = function(){
+         $scope.showMostrarMas = true;
+        $http.get("/recinto/findByCiudadId/"+$scope.searchId+"?p="+$scope.currentPage).success(function (data){
+             $scope.showMostrarMas = false;
+            console.log(data);
+            $scope.hotels = $scope.hotels.concat(data.hotels);
+            $scope.currentPage++;
+            
+        }).error(function (err){
+            console.log(err);
+            $scope.showLoader = false;
+        });
+        
+    };
     $scope.showResults = function() {
         $scope.showSearch = false;
         $scope.hideResults = true;
         $scope.showDetail = false;
-
+        
+            document.getElementById("topContent").scrollIntoView();
 
     };
 
 
     $scope.selectResult = function(hotel) {
+        
         $scope.currentHotel = hotel;
         $scope.currentHotelMap= $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q="+$scope.currentHotel.geoLocation.latitude+","+$scope.currentHotel.geoLocation.longitude);
         $scope.hideResults = false;
         $scope.showDetail = true;
+        document.getElementById("topContent").scrollIntoView();
+        
     };
     $scope.agregarYRegresar = function() {
         $scope.showSearch = false;
         $scope.hideResults = true;
         $scope.showDetail = false;
         $scope.hotelesSeleccionados.push($scope.currentHotel);
-        sliderBars.slidebars.toggle('left');
+        //sliderBars.slidebars.toggle('left');
+        document.getElementById("topContent").scrollIntoView();
     };
 
     $scope.existeEnSeleccion = function(hotel){

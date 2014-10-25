@@ -1,0 +1,11 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/Users/ovegar/node/yoplanner/assets/wp-content/themes/theteafactory/library/js/foundation/foundation.min.js",
+        "C:/Users/ovegar/node/yoplanner/assets/use.typekit.net/cdn8fet.js",
+        "C:/Users/ovegar/node/yoplanner/assets/platform.twitter.com/widgets.js",
+        "C:/Users/ovegar/node/yoplanner/assets/js/ngyp.js",
+        "C:/Users/ovegar/node/yoplanner/assets/js/zebra_datepicker.js",
+        "C:/Users/ovegar/node/yoplanner/assets/js/yp.js",
+        "C:/Users/ovegar/node/yoplanner/assets/js/vallenato.js"
+    ]
+}

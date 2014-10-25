@@ -1,13 +1,19 @@
-<div ng-show="hideResults">
+<div ng-show="hideResults"  style="width:990px">
     
         <div class="resultados" ng-repeat="hotel in hotels" style="cursor: pointer;" ng-click="selectResult(hotel)">
             
             <h2 id="text"><span>{{hotel.name}}</span></h2>
             <img src="http://media.staticontent.com/media/pictures/{{hotel.pictures[0]}}">
         </div>
+    <div style="clear: both"></div>
     
+    <button style="width:990px" ng-click="masResultados()" ng-hide="showMostrarMas">Mas Resultados</button>
+    <div ng-show="showMostrarMas">
+        <br>
+        <img src="../img/lblue.gif"  style="width:30px;height:30px;">
+    </div>
 </div>
-<div ng-show="showDetail">
+<div ng-show="showDetail" style="width:990px">
     
     <h1 align="left">{{currentHotel.name}}</h1>
     <div style="width:600;height:300;">
