@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing Recintoes
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-
+var resSize = 8;
 module.exports = {
 	findByCiudadId: function(req,res){
         var id = req.allParams().id;
@@ -25,9 +25,9 @@ module.exports = {
                 }
                 console.log(p);
                 for(var d in data){
-                    if(d>=(9+(p*9)))
+                    if(d>=(resSize+(p*resSize)))
                         break;
-                    else if(d<(9*p)){
+                    else if(d<(resSize*p)){
                         continue;
                     }
                     console.log(data[d].internalId);
