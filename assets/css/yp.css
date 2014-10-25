@@ -84,8 +84,8 @@
     
 }
 .flexslider {
-    width: 800px;
-    height: 400px;
+    width: 100%;
+    text-align: center;
 }
 
 .flexslider .slides img {
@@ -106,3 +106,53 @@
     list-style-type:none;
   border: 0px solid black;
 }
+
+.hotelDetail{
+     text-align: left;  
+}
+.hotelDetail h1{
+    font-weight: bold;
+    font-size: 50px;
+    font-style: normal;
+    
+}
+.hotelDetail p{
+    font-weight: bold;
+    font-size: 16px;
+    font-style: normal;
+    text-align: justify;
+}
+.hotelDetail hr{
+    height: 15px;
+  
+}
+.detservicios li{
+    font-weight: bold;
+    float: left;
+    width: 24%;
+  
+}
+
+
+
+body{
+    margin:0px;
+}
+.header-contl {
+    width:50%;
+    position:fixed;
+    top:90%;
+    text-align: left;
+    left:10px;
+    z-index: 99999;
+}
+.header-contr {
+    width:50%;
+    position:fixed;
+    top:90%;
+    text-align: right;
+    right:0px;
+    z-index: 99999;
+}
+
+

@@ -1,32 +1,43 @@
 <div ng-show="hideResults"  >
-    
-        <div  ng-repeat="hotel in hotels" style="cursor: pointer;" ng-click="selectResult(hotel)">
-            <div class="resultadosBig" ng-if="$index == 0">
-                <h2 id="text"><span>{{hotel.name}}</span></h2>
-                <img src="http://media.staticontent.com/media/pictures/{{hotel.pictures[0]}}">
-            </div>
-            <div class="resultados" ng-if="$index > 0">
-                <h2 id="text"><span>{{hotel.name}}</span></h2>
-                <img src="http://media.staticontent.com/media/pictures/{{hotel.pictures[0]}}">
-            </div>
+
+    <div  ng-repeat="hotel in hotels" style="cursor: pointer;" ng-click="selectResult(hotel)">
+        <div class="resultadosBig" ng-if="$index == 0">
+            <h2 id="text"><span>{{hotel.name}}</span></h2>
+            <img src="http://media.staticontent.com/media/pictures/{{hotel.pictures[0]}}">
         </div>
+        <div class="resultados" ng-if="$index > 0">
+            <h2 id="text"><span>{{hotel.name}}</span></h2>
+            <img src="http://media.staticontent.com/media/pictures/{{hotel.pictures[0]}}">
+        </div>
+    </div>
     <div style="clear: both"></div>
-    
+
     <button ng-click="masResultados()" ng-hide="showMostrarMas" style="width:100%">Mas Resultados</button>
     <div ng-show="showMostrarMas">
         <br>
         <img src="../img/lblue.gif"  style="width:30px;height:30px;">
     </div>
 </div>
-<div ng-show="showDetail" >
-    
-    <h1 >{{currentHotel.name}}</h1>
-    <div style="width:600;height:300;">
-    <flex-slider slide="pic in currentHotel.pictures" >
-        <li>
-            <img src="http://media.staticontent.com/media/pictures/{{pic}}" width="500px" height="250px">
-        </li>
-    </flex-slider>
+
+
+
+<div ng-show="showDetail" class="hotelDetail">
+
+    <div class="header-contl">
+        <button  class="button" ng-click="showResults()" >Regresar</button>
+    </div>
+    <div class="header-contr">
+        <button  class="button" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0" >Agregar a <br> Selección</button>
+    </div>
+
+    <h1>{{currentHotel.name}}</h1>
+
+    <div >
+        <flex-slider slide="pic in currentHotel.pictures" >
+            <li>
+                <img src="http://media.staticontent.com/media/pictures/{{pic}}" width="800px" height="600px">
+            </li>
+        </flex-slider>
     </div>
 
 
@@ -34,19 +45,17 @@
     <br />
     <h1 align="left">Servicios</h1>
     <hr>
-    <ul>
+    <ul class="detservicios">
         <li ng-repeat="amen in currentHotel.amenities">{{amen.description}}</li>
     </ul>
-
-    <h1 align="left">Ubicacion</h1>
-    <iframe width="800" height="600" ng-src="{{currentHotelMap}}">
+    <div style="clear: both"></div>
+    <br>
+    <br>
+    <h1 align="left">Ubicación</h1>
+    <hr>
+    <iframe width="100%" height="500" ng-src="{{currentHotelMap}}" readonly>
     </iframe>
-    <div align="center">
-        <br> <br> <br> <a href="#green" class="button"
-                          ng-click="showResults()">Regresar</a>
-        <br> <br> <br> <a href="#green" class="button"
-                          ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0">Agregar a mi Selección</a>
-    </div>
+
 
 </div>
 

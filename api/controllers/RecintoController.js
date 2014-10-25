@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing Recintoes
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-
+//https://api.despegar.com/v3/hotels/availabilities?site=MX&checkin_date=2014-10-25&checkout_date=2014-10-30&destination=982&distribution=1&language=es&sorting=stars_descending&stars=3%2C4%2C5&pagesize=8
 module.exports = {
 	findByCiudadId: function(req,res){
         var resSize = 8;
@@ -16,25 +16,21 @@ module.exports = {
         };
         // Start the request
         HttpClientService.httpsGET(options,function(response){
-            try{
+            try{ 
                 var ids = "";
                 var data = JSON.parse(response).data;
                 
                 var p = 0;
-                console.log(req.param('p'));
                 if(req.param('p')){
                     p = req.param('p');
                     resSize = 9;
                 }
-                console.log(p);
-                console.log(resSize);
                 for(var d in data){
                     if(d>=(resSize+(p*resSize)))
                         break;
                     else if(d<(resSize*p)){
                         continue;
                     }
-                    console.log(data[d].internalId);
                     ids += data[d].internalId+",";
                     
                 }
