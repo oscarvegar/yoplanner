@@ -20,12 +20,13 @@
     width: 330px;
     height: 200px;
     float: left;   
+    padding-left: 10px;
     position: relative;
 }
 .resultados img{
     
-    width: 400px;
-    height: 200px;
+    width: 320px;
+    height: 190px;
     position:absolute;
     left:0;
     top:0;   
@@ -48,6 +49,39 @@
     
 }
 
+.resultadosBig{
+    
+    width: 660px;
+    height: 400px;
+    float: left;   
+    padding-left: 10px;
+    position: relative;
+}
+.resultadosBig img{
+    
+    width: 650px;
+    height: 390px;
+    position:absolute;
+    left:0;
+    top:0;   
+}
+.resultadosBig h2  {
+    z-index:100;
+    position:absolute;    
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    
+}
+.resultadosBig h2 span{
+   color: white; 
+   font: bold 24px/45px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;    
+    
+}
 .flexslider {
     width: 800px;
     height: 400px;
