@@ -80,6 +80,7 @@ app.directive('autocomplete', function() {
       // selecting a suggestion with RIGHT ARROW or ENTER
       $scope.select = function(suggestion){
         if(suggestion){
+             if(suggestion == $scope.searchParam)return;
           $scope.searchParam = suggestion.substr(suggestion.indexOf(' ')+1);
           $scope.searchFilter = suggestion;
             $scope.$parent.searchId = suggestion.substr(0,suggestion.indexOf(' '));
@@ -91,6 +92,7 @@ app.directive('autocomplete', function() {
         $scope.completing = false;
         setTimeout(function(){watching = true;},1000);
         $scope.setIndex(-1);
+         
           $scope.$parent.search();
       };
 
@@ -105,7 +107,7 @@ app.directive('autocomplete', function() {
         "placeholder": "Ingresa tu destino o ciudad...",
         "class": "",
         "id": "",
-        "inputclass": "ypautocomplete",
+        "inputclass": "",
         "inputid": ""
       };
 
@@ -244,9 +246,8 @@ app.directive('autocomplete', function() {
               ng-repeat="suggestion in suggestions | filter:searchFilter | orderBy:\'toString()\' track by $index"\
               index="{{ $index }}"\
               val="{{ suggestion }}"\
-              ng-class="{ active: ($index === selectedIndex) }"\
               ng-click="select(suggestion)"\
-              ng-bind-html="suggestion.substr(suggestion.indexOf(\' \')+1) | highlight:searchParam"></li>\
+              ng-bind-html="suggestion.substr(suggestion.indexOf(\' \')+1) | highlight:searchParam" \></li>\
           </ul>\
         </div>'
   };

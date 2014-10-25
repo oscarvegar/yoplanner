@@ -24,8 +24,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.rfp.telefonoContacto = "5544556677";
     $scope.currentPage = 0;
     $scope.search = function() {
+        if(!$scope.searchId)return;
         $scope.showLoader = true;
-        console.log($scope.searchId);
        // $scope.searchId = $scope.searchString.split(" ")[0];
         $http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
             console.log(data);

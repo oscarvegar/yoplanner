@@ -92,3 +92,17 @@
     width: 800px;
     height: 400px;
 }
+
+.autocomplete{
+    
+    
+}
+.autocomplete ul{
+    top: 30px;
+    color: red;
+     border: 0px solid #90bade;
+}
+.autocomplete ul li{
+    list-style-type:none;
+  border: 0px solid black;
+}
