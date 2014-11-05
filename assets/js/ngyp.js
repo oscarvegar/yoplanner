@@ -1,3 +1,4 @@
+var server = "http://vps-1161051-22046.manage.myhosting.com:1337";
 angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp'])
 .controller('RecintosController', ["$scope","$http","$sce","$filter",function($scope,$http,$sce,$filter) {
     $scope.showSearch = true;
@@ -28,7 +29,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         if($scope.searchId==null)return;
         $scope.showLoader = true;
        // $scope.searchId = $scope.searchString.split(" ")[0];
-        $http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
+        $http.get(server+"/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
             console.log(data);
             $scope.hotels = data.hotels;
             $scope.showIndex = false;
@@ -49,7 +50,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     
     $scope.masResultados = function(){
          $scope.showMostrarMas = true;
-        $http.get("/recinto/findByCiudadId/"+$scope.lastSearchId+"?p="+$scope.currentPage).success(function (data){
+        $http.get(server+"/recinto/findByCiudadId/"+$scope.lastSearchId+"?p="+$scope.currentPage).success(function (data){
              $scope.showMostrarMas = false;
             console.log(data);
             $scope.hotels = $scope.hotels.concat(data.hotels);
@@ -109,7 +110,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.updateMovies = function(typed){
         // MovieRetriever could be some service returning a promise
         if(typed.length<4)return;
-        $http.get("/search/cities/"+typed).success(function(data){
+        $http.get(server+"/search/cities/"+typed).success(function(data){
             $scope.movies  =  [];
             if(data.autocomplete == null)return;
             for(var i=0;i<data.autocomplete.length;i++){
@@ -194,7 +195,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
 
         console.log(angular.toJson( $scope.rfp));
-        $http.post('/RFP',$scope.rfp).success(function(data){
+        $http.post(server+'/RFP',$scope.rfp).success(function(data){
             $scope.folioFinal = ""+data.id;
             $scope.rfp = null;
             $scope.rfp = {};
