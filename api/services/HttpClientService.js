@@ -20,7 +20,10 @@ module.exports = {
                 // your code here if you want to use the results !
               });
 
-        });
+        }).on('error', function(e) {
+            console.error(e);
+            calllback(null);
+        });;
 
     }   
 

@@ -9,6 +9,10 @@ module.exports = {
 	findByCiudadId: function(req,res){
         var resSize = 8;
         var id = req.allParams().id;
+        if(id == null || id.isEmptyObject){
+            return res.json(404);
+        }
+        console.log(id);
         var options = {
             hostname : "api.despegar.com",
             path : "/cities/"+id+"/pointsofinterest?pointtypes=H",
@@ -19,7 +23,9 @@ module.exports = {
             try{ 
                 var ids = "";
                 var data = JSON.parse(response).data;
-                
+                if(data == null || data.length == 0){
+                    return res.json(404);   
+                }
                 var p = 0;
                 if(req.param('p')){
                     p = req.param('p');
