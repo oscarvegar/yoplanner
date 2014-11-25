@@ -19,6 +19,11 @@
         "C:/Users/ovegar/node/yoplanner/tasks/config/watch.js",
         "C:/Users/ovegar/node/yoplanner/tasks/config/uglify.js",
         "C:/Users/ovegar/node/yoplanner/api/models/RFP.js",
-        "C:/Users/ovegar/node/yoplanner/api/controllers/SearchController.js"
+        "C:/Users/ovegar/node/yoplanner/api/controllers/SearchController.js",
+        "/Users/oscar.vega/mine/yoplanner/tasks/register/syncAssets.js",
+        "/Users/oscar.vega/mine/yoplanner/tasks/register/compileAssets.js",
+        "/Users/oscar.vega/mine/yoplanner/tasks/register/prod.js",
+        "/Users/oscar.vega/mine/yoplanner/tasks/register/linkAssetsBuildProd.js",
+        "/Users/oscar.vega/mine/yoplanner/tasks/register/linkAssetsBuild.js"
     ]
 }
