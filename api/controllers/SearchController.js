@@ -11,8 +11,8 @@ module.exports = {
     cities: function(req,res){
         try{
             var id = req.allParams().id;
-            if(id.length > 10)
-                return res.json(500)
+            //if(id.length > 10)
+                //return res.json(500)
             var options = {
                 hostname : "api.despegar.com",
                 path : "/autocomplete/cities/"+id,

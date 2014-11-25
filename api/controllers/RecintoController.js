@@ -11,7 +11,6 @@ module.exports = {
         var hotelesVendidos = {PCM:[353356,352782]};
         var resSize = 11;
         var id = req.allParams().id;
-        
         var options = {
             hostname : "api.despegar.com",
             path : "/availability/cities/"+id+"/hotels?sort=stars&order=desc&includehotel=true&stars=3-4-5&type=RSR-HOT",
