@@ -15,7 +15,7 @@ module.exports = {
         var id = req.allParams().id;
         var options = {
             hostname : "api.despegar.com",
-            path : "/availability/cities/"+id+"/hotels?sort=stars&order=desc&includehotel=true&stars=3-4-5&type=RSR-HOT",
+            path : "/availability/cities/"+id+"/hotels?sort=stars&order=desc&includehotel=true&stars=3-4-5&type=RSR-HOT&pagesize=100",
             headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
         };
         // Start the request
