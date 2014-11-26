@@ -57,7 +57,7 @@ module.exports = {
                     path : "/hotels/"+ids+"?includeamenities=true&includesummary=true",
                     headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
                 };
-                if(ids.length==0)return res.json([]);
+                if(ids.length==0)return res.json({hotels:[]});
                 HttpClientService.httpsGET(options,function(resp){
                     if(resp==null)return res.json(500);
                     var hoteles = JSON.parse(resp);
