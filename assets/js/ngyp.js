@@ -1,4 +1,4 @@
-var server = "http://vps-1161051-22046.manage.myhosting.com:1337";
+var server = "http://mitianguis.mx:1337";
 angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp'])
 .controller('RecintosController', ["$scope","$http","$sce","$filter",function($scope,$http,$sce,$filter) {
     $scope.showSearch = true;
