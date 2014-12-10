@@ -143,6 +143,22 @@
               href="css/autocomplete.css" />
         <link rel="stylesheet" type="text/css" media="screen"
               href="css/flexslider.css" />
+        <link rel="stylesheet" type="text/css" media="screen"
+              href="css/estilos.css" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300,200,100' rel='stylesheet' type='text/css'>
+		
+		<script src="https://apis.google.com/js/platform.js" async defer>
+		<script>
+			window.___gcfg = {
+			lang: 'es-MX',
+			parsetags: 'explicit'
+			};
+		</script>
+		<!-- Place this tag in your head or just before your close body tag. -->
+		<!--<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>-->
+
+	
         <script type="text/javascript">
             try {
                 Typekit.load();
@@ -172,49 +188,68 @@
         <script type="text/javascript" src="modules/rfp.js"></script>
         <script type="text/javascript" src="js/ngyp.js"></script>
     </head>
-    <header class="header" role="banner" ><div  style="width:1200px;text-align:center;margin-left:auto;margin-right:auto;" >
-                <nav class="top-bar" role="navigation"><ul class="title-area"><li class="name"><h1 id="logo"><a href="index.html"><img src="wp-content/uploads/2013/09/yp logo.png" width="222" height="56" alt=""></a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li></ul> <section class="top-bar-section"><ul id="menu-main-nav" class="right"><li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a href="index.html">Inicio</a></li>	<li id="menu-item-202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-202"><a href="empresa/index.html">Empresa</a></li><li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="servicios/index.html">Servicios</a></li> <li id="menu-item-16" class="has-dropdown show-dropdown menu-item menu-item-type-post_type menu-item-object-page menu-item-16"><a href="cruceros/index.html#black">cruceros</a><ul class="sub-menu dropdown"><li id="menu-item-10003" class="menu-item menu-item-type-post_type menu-item-object-page tea-type-black menu-item-10003"><a href="cruceros/index.html#black">Cruceros Populares</a></li><li id="menu-item-10001" class="menu-item menu-item-type-post_type menu-item-object-page tea-type-green menu-item-10001"><a href="cruceros/index.html#green">Cruceros de Lujo</a></li><li id="menu-item-10002" class="menu-item menu-item-type-post_type menu-item-object-page tea-type-oolong menu-item-10002"><a href="cruceros/index.html#oolong">Cruceros de Río</a></li></ul></li></li></ul><ul id="menu-secondary-menu" class="right"><li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li><li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page has-dropdown menu-item-22"><a href="contacto/index.html">Contacto</a><ul class="sub-menu dropdown"><li id="menu-item-344" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-344"><a href="contact/index.html">Contacto</a></li><li id="menu-item-343" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-343"><a href="contact/bolsa_de_trabajo/index.html">Bolsa de Trabajo</a></li></ul></li><li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="#" onclick="showCotizar();">Cotizar</a></li></ul>
-                    <div id="mobile-contact"> <strong>Yo Planner</strong><div class="contact-info"><p class="address">Telefono: (55) 62 74 - 62 91;   
-                        Correo: contacto@Yoplanner.com</p></div></div></section> </nav></div></header>
+    
+
     <body  ng-controller="RecintosController"  >
-
-        
-            
+	
+		<div id="botones">
+			<div class="clearfix contenedor no-mar">
+				<ul class="clearfix">
+					<li><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li>
+					<li><a href="contacto/index.html">Contacto</a></li>
+					<li><a href="#"  onclick="showCotizar();">Cotizar</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="full-width header-wrapper">
+			<div id="header">
+				<div class="contenedor clearfix">
+					<div class="logo-header">
+						<a href="index.html">
+							<img src="wp-content/uploads/2013/09/yp logo.png">
+						</a>
+					</div>
+					<div class="header-menu">
+						<ul class="clearfix">
+							<li><a href="index.html">Inicio</a></li>
+							<li><a href="empresa/index.html">Empresa</a></li>
+							<li><a href="servicios/index.html">Servicios</a></li>
+							<li><a href="cruceros/index.html#black">Cruceros</a>
+								<ul class="cruceros-drop">
+									<li><a href="cruceros/index.html#black">Cruceros Populares</a></li>
+									<li><a href="cruceros/index.html#green">Cruceros de Lujo</a></li>
+									<li><a href="cruceros/index.html#oolong">Cruceros de Río</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="inicio-seccion">
+			<img src="img/principal.jpg">
+			<div class="full-width bg-black clearfix">
+				<div class="contenedor clearfix">
+					<a class="btn-reserva" href="#" ng-click="showResults()" ng-show="showDetail" >Regresar</a>
+					<div id="buscador" class="col-55">
+						<autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
+						<button ng-click="search()" ng-show="!showLoader" >Buscar</button> <img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader || false">
+						<div class="caja-busqueda">
+							<ul>
+								<li><a href="#">Ejemplo Búsqueda</a></li>
+								<li><a href="#">Ejemplo Búsqueda</a></li>
+								<li><a href="#">Ejemplo Búsqueda</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
         <div style="width:1020px;text-align:center;margin-left:auto;margin-right:auto;">
-            <div id="banner-wrapper">
 
 
-                <div id="banner">
-                    <div id="time-for-tea">
-
-                        <img src="wp-content/uploads/2013/09/logo yo planner.png"  />
-
-
-
-                    </div>
-                    <div id="factory" class="a&quot;factory&quot;"> </div>
-                </div>
-                <p>
-
-                    <a href="http://www.yoplanner.com/reservaciones/">
-                        <img src="reservar.png" alt="" width="110" height="64" align="right"></a>
-                </p>
-
-            </div>
-            <div>
-                <div style="width:62%;float:left;padding-left:25%" id="topContent">
-                    
-                    <autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
-
-                </div>
-                <div style="float:left">
-                    <a class="button" ng-click="search()" ng-show="!showLoader">Buscar en Yo Planner</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader">
-                </div>
-            </div>
-            
-    <br>
-    <br>
-    <br>
            <div style="clear: both"></div>
             <div >
                
@@ -227,30 +262,67 @@
 
         </div>
 
+        <span class="mobile-block"></span></div></div></div>
+		<div id="footer">
+			<div class="contenedor footer-wrapper clearfix">
+				
+				<div class="mapa-sitio col-33">
+					<div class="col-inner">
+						<p class="tit-b">Mapa de sitio</p>
+						<ul>
+							<li><a href="#">Empresa</a></li>
+							<li><a href="#">Reserva</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Políticas de Privacidad</a></li>
+							<li><a href="#">Servicios</a></li>
+							<li><a href="#">Cruceros</a></li>
+							<li><a href="#">Contacto</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-33">
+					<div class="col-inner contacto">
+						<p class="tit-b">Contáctanos</p>
+						<p class="cont-p">Teléfono: (55) 62 74 - 62 91</br>
+							Correo: <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a></p>
+					</div>
+				</div>
+				<div class="col-33">
+					<div class="col-inner clearfix" >
+						<div style="width: 100%;" class="clearfix">
+							<p class="tit-b">Noticias y Promociones</p>
+							<div id="buscador-ft">
+								<input type="text">
+								<button>Buscar</button>
+							</div>
+						</div>
+						<div style="margin-top:40px;">
+							<p class="tit-b">Redes sociales</p>
+							<div class="clearfix redes-ft">
+								<ul class="social-ft">	
+									<li><a href="#"><img src="/img/twitter.png"></a></li>
+									<li><a href="#"><img src="/img/fb.png"></a></li>
+									<li><a href="#"><img src="/img/goplus.png"></a></li>
+									<li><a href="#"><img src="/img/yt.png"></a></li>
+									<li><a href="#"><img src="/img/instagram.png"></a></li>
+									<li><a href="#"><img src="/img/pinterest.png"></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr class="ln-ft">
+				<p class="disc-ft">2014 Yo Planner, S.A. de C.V.</p>
+			</div>
+		</div>
 
-        <br> 
-        <br> 
-        <br> 
-        <br> 
-        <br> 
-        <br> 
-        <br>
-        <span class="mobile-block"></span></div></div></div><footer class="footer" role="contentinfo"><div id="inner-footer" class="clearfix"><div class="row"> <nav role="navigation" class="columns large-4"><h4>Mapa de Sitio</h4><ul id="menu-explore" class="nav footer-nav clearfix"><li id="menu-item-39" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39"><a href="empresa/index.html">Empresa</a><li id="menu-item-56" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-56"><a href="servicios/index.html">Servicios</a></li><li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="reservaciones/index.html">Reserva</a></li><li id="menu-item-45" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45"><a href="cruceros/index.html#black">Cruceros</a></li><li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-55"><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li><li id="menu-item-36" class="menu-item menu-item-type-post_type menu-item-object-page has-dropdown menu-item-36"><a href="contacto/index.html">Contacto</a></li><br><li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38"><a href="politicadeprivacidad/index.html">Políticas de Privacidad</a></li></ul> </nav><div class="columns large-5">
-<h4>Contáctanos</h4><div class="contact-info">
-<p class="address">Teléfono: (55) 62 74 - 62 91</p><dl class="hours"><dt>Correo</dt>
-<dd><a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a></dd>
-</div></div><div class="columns large-3"><div class="sign-up"><h4>Noticias y Promociones</h4><form action="mailto:01.agodinez@gmail.com" method="post" id="cm_form" class="simple-form"> <input type="email" name="cm-jhyupl-jhyupl" id="jhyupl-jhyupl" placeholder="" /> <button type="submit" class="button">Enviar</button></form></div><div class="hide"><h4>Gracias</h4><p>We'll be in touch!</p></div><div class="social"><h4>Redes Sociales</h4> 
-<a href="https://www.facebook.com/Yoplanner" target="_blank"><img src="wp-content/uploads/2013/09/logo fb.png" alt="YoPlanner Facebook" WIDTH="28px" HEIGHT="28px" border="0" align="justify"></a> 
-<a href="https://twitter.com/Yoplanner" target="_blank"><img src="wp-content/uploads/2013/09/logo twitter.png" alt="YoPlanner Facebook" WIDTH="28px" HEIGHT="28px" border="0" align="justify"></a> 
-<a href="https://plus.google.com/+YoplannerMx/posts" target="_blank"><img src="wp-content/uploads/2013/09/logo g+.png" alt="YoPlanner Facebook" WIDTH="28px" HEIGHT="28px" border="0" align="justify"></a> 
-
-</div></div></div></div><div class="row break"><p class=""> 2014 Yo Planner, S.A. de C.V.</p></div></div></footer></div> 
 
 <script src="wp-content/themes/theteafactory/library/js/foundation/foundation.min.js" type="text/javascript"></script> 
 <script src="wp-content/themes/theteafactory/library/js/vendor/jquery.fittext.js"></script>
 
 
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTt1xwb7Zss1Nx1ym0xlC1gbgBZ47LP4"></script>
 
 
 </body>

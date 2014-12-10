@@ -17,21 +17,95 @@
         <br>
         <img src="../img/lblue.gif"  style="width:30px;height:30px;">
     </div>
+	
+	
+
 </div>
 
 
 
 <div ng-show="showDetail" class="hotelDetail">
-
-    <div class="header-contl">
-        <button  class="button" ng-click="showResults()" >Regresar</button>
-    </div>
-    <div class="header-contr">
-        <button  class="button" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0" >Agregar a <br> Selección</button>
-    </div>
-
+	
+	<div class="contenedor clearfix">
+		<div id="flx-sldr" class="clearfix col-55">
+			<div id="slider" class="flexslider">
+				<ul class="slides">
+					<li ng-repeat="pic in currentHotel.pictures">
+						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
+					</li>
+					<li ng-repeat="pic in currentHotel.pictures">
+						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
+					</li>
+				</ul>
+			</div>
+			<div id="carousel" class="flexslider">
+				<ul class="slides">
+					<li ng-repeat="pic in currentHotel.pictures">
+						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
+					</li>
+					<li ng-repeat="pic in currentHotel.pictures">
+						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="descripcion-hotel" class="col-40">
+			<h1 class="htl-name">{{currentHotel.name}}</h1>
+			<p class="hotel-desc">{{currentHotel.description}}</p>
+		</div>
+		<div id="servicios" class="clearfix">
+			<ul class="servicios-lista clearfix">
+				<li ng-repeat="amen in currentHotel.amenities">{{amen.description}}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="full-width grey clearfix pad-0">
+		<div class="contenedor clearfix">
+			<div class="col-4">
+				<a class="btn-reserva btn-3 btn-rsrvr" href="#"  >Reservar</a>
+			</div>
+			<div class="col-4">
+				<a class="btn-reserva btn-3 btn-ctzr" href="#" onclick="showCotizar();" >Cotizar</a>
+			</div>
+			<div class="col-4">
+				<a class="btn-reserva btn-3 btn-agrgr" href="#" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0" >Agregar</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="full-width clearfix pad-top-0">
+		<div id="cd-google-map">
+			<!-- #google-container will contain the map  -->
+			<div id="google-container"></div>
+			<!-- #cd-zoom-in and #zoom-out will be used to create our custom buttons for zooming-in/out -->
+			<div id="cd-zoom-in"></div>
+			<div id="cd-zoom-out"></div>
+		</div>
+	</div>
+	<div class="contenedor">
+		<div class="clearfix">
+			<div class="col-40" id="gp-content">
+				<div class="g-post" data-href="https://plus.google.com/113624413123385492768/posts/ZAZUKWoFnso"></div>
+			</div>
+			
+			<script>
+				//gapi.post.go();
+			</script>
+			
+			
+			<div id="reviews-hotel" class="col-6">
+				<h2>Mapa de Salones</h2>
+				<hr class="style-round">
+				<div class="mapa-de-salones">
+					<img src="/img/mapa-prueba.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<!--	
     <h1>{{currentHotel.name}}</h1>
-
+	
     <div >
         <flex-slider slide="pic in currentHotel.pictures" >
             <li>
@@ -56,6 +130,70 @@
     <iframe width="100%" height="500" ng-src="{{currentHotelMap}}" readonly>
     </iframe>
 
+-->
+
+
+
+<div class="contenedor">
+	<div class="blog clearfix">
+		<div class="col-3 articulo-blog">
+			<div class="img-articulo-container">
+				<img src="/img/slider1.jpg">
+			</div>
+			<div class="text-articulo-container articulo-container-1">
+				<a href="#" class="titulo-articulo">Titulo artículo</a>
+				<p class="articulo-texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.</p>
+				</div>
+		</div>
+		<div class="col-6 articulo-blog">
+			<div class="img-articulo-container" style="height:380px;">
+				<img src="/img/slider2.jpg">
+			</div>
+			<div class="caja-texto-articulo">
+				<a href="#" class="titulo-articulo">Titulo artículo</a>
+				<p class="articulo-texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.</p>
+				</div>
+		</div>
+		<div class="col-3 articulo-blog">
+		<div class="img-articulo-container">
+			<img src="/img/slider3.jpg">
+		</div>			
+		<div class="text-articulo-container articulo-container-2">
+			<a href="#" class="titulo-articulo">Titulo artículo</a>
+			<p class="articulo-texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.</p>
+			</div>
+		</div>
+	</div>
+	<div class="contenedor redes-youtube clearfix">
+		<div class="col-60 video-youtube">
+			<iframe width="724" height="407" src="//www.youtube.com/embed/A9LTDpnkQr4?controls=0" frameborder="0" allowfullscreen=""></iframe>
+		</div>
+		<div class="col-30">
+			<div class="redes-sociales">
+				<h2 class="white">Síguenos en nuestras redes sociales</h2>
+				<div class="clearfix contenedor-iconos">
+					<ul class="social">	
+						<li><a href="#"><img src="/img/twitter.png"></a></li>
+						<li><a href="#"><img src="/img/fb.png"></a></li>
+						<li><a href="#"><img src="/img/goplus.png"></a></li>
+						<li><a href="#"><img src="/img/yt.png"></a></li>
+						<li><a href="#"><img src="/img/instagram.png"></a></li>
+						<li><a href="#"><img src="/img/pinterest.png"></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 </div>
 
