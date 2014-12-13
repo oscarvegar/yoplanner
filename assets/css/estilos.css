@@ -403,6 +403,7 @@ html body .green, html body .hover-green:hover {
     transition: opacity .2s ease-in-out;
     -moz-transition: opacity .2s ease-in-out;
     -webkit-transition: opacity .2s ease-in-out;
+    height: 100%;
 }
 
 .img-articulo-container img:hover{
@@ -546,6 +547,9 @@ html body .green, html body .hover-green:hover {
     width: 100%;
 }
 
+.ng-scope p{
+    margin-top: 10px;
+}
 
 .col-4{
     width: 27%;
@@ -553,7 +557,7 @@ html body .green, html body .hover-green:hover {
 }
 
 #header{
-    background: #fafafa;
+    background: rgba(250,250,250,0.8);
     padding: 1px 0px;
     border-top: 1px solid rgba(0,0,0,0.03);
     border-bottom: 1px solid rgba(0,0,0,0.03);
@@ -576,7 +580,7 @@ html body .green, html body .hover-green:hover {
 .header-menu ul li{
     float: left;
     padding: 15px 0px;
-    width: 25%;
+    width: 119px;
     font-size: 16px;
     text-transform: uppercase;
     position: relative;
@@ -638,8 +642,21 @@ html body .green, html body .hover-green:hover {
     left: 75px;
 }
 
+.cruceros-drop{
+    width: 200px;
+    right: -48px;
+}
+
+.cruceros-drop li a{
+    width: 100%;
+    padding: 0px;
+}
+
 .header-wrapper{
-    background-color: #fff;
+    padding: 0px;
+    position: absolute;
+    z-index: 4;
+    width: 100%;
 }
 
 #footer{
@@ -923,9 +940,22 @@ html body .green, html body .hover-green:hover {
 }
 
 
+.btn-mas-resultados{
+    width: 167px;
+    border-radius: 14px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px;
+    padding: 20px 24px;
+}
 
-
-
+.flex-viewport{
+    height: 369px;
+}
 
 
 

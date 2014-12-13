@@ -75,7 +75,32 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.selectResult = function(hotel) {
 		$scope.currentHotel = hotel;
 		
+		// try {
+			// $('#carousel').flexslider('destroy');
+			// $('#slider').flexslider('destroy');
+			
+		// } catch(e) {}
+		
+		// $('#carousel').flexslider({
+			// animation: "slide",
+			// controlNav: false,
+			// animationLoop: false,
+			// slideshow: false,
+			// itemWidth: 210,
+			// itemMargin: 5,
+			// asNavFor: '#slider'
+		// });
+
+		// $('#slider').flexslider({
+			// animation: "slide",
+			// controlNav: false,
+			// animationLoop: false,
+			// slideshow: false,
+			// sync: "#carousel"
+		// });
+		
 		window.setTimeout(function() {
+			  
 			//set your google maps parameters
 			var latitude = $scope.currentHotel.geoLocation.latitude,
 				longitude = $scope.currentHotel.geoLocation.longitude,

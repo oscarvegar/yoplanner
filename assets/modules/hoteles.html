@@ -12,7 +12,7 @@
     </div>
     <div style="clear: both"></div>
 
-    <button ng-click="masResultados()" ng-hide="showMostrarMas" style="width:100%">Mas Resultados</button>
+    <button ng-click="masResultados()" ng-hide="showMostrarMas" class="btn-mas-resultados">Más Resultados</button>
     <div ng-show="showMostrarMas">
         <br>
         <img src="../img/lblue.gif"  style="width:30px;height:30px;">
@@ -27,28 +27,64 @@
 <div ng-show="showDetail" class="hotelDetail">
 	
 	<div class="contenedor clearfix">
+		
+		<div id="flx-sldr" class="clearfix col-55">
+			<flex-slider slide="pic in currentHotel.pictures" animation="slide" control-nav="false" animation-loop="false" slideshow="false">
+				<li >
+					<img ng-src="http://media.staticontent.com/media/pictures/{{pic}}">
+				</li>
+			</flex-slider>
+		</div>
+		
+		<!--
+		<div id="flx-sldr" class="clearfix col-55">
+			<flex-slider slide="pic in currentHotel.pictures" animation="slide" control-nav="thumbnails" animation-loop="false" slideshow="false">
+				<li data-thumb="http://media.staticontent.com/media/pictures/{{pic}}">
+					<img ng-src="http://media.staticontent.com/media/pictures/{{pic}}">
+				</li>
+			</flex-slider>
+		</div>
+		-->
+		
+		<!--
+		<div id="flx-sldr" class="clearfix col-55">
+			<div id="slider" >
+				<flex-slider id="slider_2" slide="pic in currentHotel.pictures track by $index" animation="slide" control-nav="false" animation-loop="false" slideshow="false" sync="#carousel_2">
+					<li>
+						<img ng-src="http://media.staticontent.com/media/pictures/{{pic}}" style="width: 800px; height:600px; " >
+					</li>
+				</flex-slider>
+
+			</div>
+			<div id="carousel" >
+				<flex-slider id="carousel_2" slide="pic in currentHotel.pictures track by $index" animation="slide" control-nav="false" animation-loop="false" slideshow="false" as-nav-for="#slider_2" >
+					<li>
+						<img ng-src="{{pic}}" >
+					</li>
+				</flex-slider>
+			</div>
+		</div>
+		-->
+		
+		<!--
 		<div id="flx-sldr" class="clearfix col-55">
 			<div id="slider" class="flexslider">
 				<ul class="slides">
 					<li ng-repeat="pic in currentHotel.pictures">
-						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
-					</li>
-					<li ng-repeat="pic in currentHotel.pictures">
-						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
+						<img ng-src="http://media.staticontent.com/media/pictures/{{pic}}" style="width: 800px; height:600px; " >
 					</li>
 				</ul>
 			</div>
 			<div id="carousel" class="flexslider">
 				<ul class="slides">
 					<li ng-repeat="pic in currentHotel.pictures">
-						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
-					</li>
-					<li ng-repeat="pic in currentHotel.pictures">
-						<img src="http://media.staticontent.com/media/pictures/{{pic}}" />
+						<img ng-src="http://media.staticontent.com/media/pictures/{{pic}}" >
 					</li>
 				</ul>
 			</div>
 		</div>
+		-->
+		
 		<div id="descripcion-hotel" class="col-40">
 			<h1 class="htl-name">{{currentHotel.name}}</h1>
 			<p class="hotel-desc">{{currentHotel.description}}</p>
@@ -150,7 +186,7 @@
 		</div>
 		<div class="col-6 articulo-blog">
 			<div class="img-articulo-container" style="height:380px;">
-				<img src="/img/slider2.jpg">
+				<img src="/img/slider1.jpg">
 			</div>
 			<div class="caja-texto-articulo">
 				<a href="#" class="titulo-articulo">Titulo artículo</a>
@@ -186,8 +222,8 @@
 						<li><a href="#"><img src="/img/fb.png"></a></li>
 						<li><a href="#"><img src="/img/goplus.png"></a></li>
 						<li><a href="#"><img src="/img/yt.png"></a></li>
-						<li><a href="#"><img src="/img/instagram.png"></a></li>
-						<li><a href="#"><img src="/img/pinterest.png"></a></li>
+						<!-- <li><a href="#"><img src="/img/instagram.png"></a></li>
+						<li><a href="#"><img src="/img/pinterest.png"></a></li> -->
 					</ul>
 				</div>
 			</div>

@@ -179,7 +179,8 @@
         <script type="text/javascript" src="js/pikaday.jquery.js"></script>
         <script type="text/javascript" src="js/jquery.bouncebox.1.0.js"></script>
         <script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
-        <script type="text/javascript" src="js/jquery.flexslider.min.js"></script>
+        <!--<script type="text/javascript" src="js/jquery.flexslider.min.js"></script>-->
+        <script type="text/javascript" src="js/jquery.flexslider.js"></script>
         <script src="js/angular.min.js"></script>
         <script type="text/javascript" src="js/autocomplete.js"></script>
         <script type="text/javascript" src="js/angular-flexslider.js"></script>
@@ -192,7 +193,7 @@
 
     <body  ng-controller="RecintosController"  >
 	
-		<div id="botones">
+		<!-- <div id="botones">
 			<div class="clearfix contenedor no-mar">
 				<ul class="clearfix">
 					<li><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li>
@@ -200,7 +201,7 @@
 					<li><a href="#"  onclick="showCotizar();">Cotizar</a></li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 		<div class="full-width header-wrapper">
 			<div id="header">
 				<div class="contenedor clearfix">
@@ -211,7 +212,6 @@
 					</div>
 					<div class="header-menu">
 						<ul class="clearfix">
-							<li><a href="index.html">Inicio</a></li>
 							<li><a href="empresa/index.html">Empresa</a></li>
 							<li><a href="servicios/index.html">Servicios</a></li>
 							<li><a href="cruceros/index.html#black">Cruceros</a>
@@ -221,6 +221,9 @@
 									<li><a href="cruceros/index.html#oolong">Cruceros de Río</a></li>
 								</ul>
 							</li>
+                            <li><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li>
+                            <li><a href="contacto/index.html">Contacto</a></li>
+                            <li><a href="#"  onclick="showCotizar();">Cotizar</a></li>
 						</ul>
 					</div>
 				</div>
@@ -258,7 +261,7 @@
             <index ng-if="showIndex"></index>
             <rfp></rfp>
         </div>
-        <div class="row">
+        <div class="row index-p">
 
         </div>
 
@@ -304,8 +307,8 @@
 									<li><a href="#"><img src="/img/fb.png"></a></li>
 									<li><a href="#"><img src="/img/goplus.png"></a></li>
 									<li><a href="#"><img src="/img/yt.png"></a></li>
-									<li><a href="#"><img src="/img/instagram.png"></a></li>
-									<li><a href="#"><img src="/img/pinterest.png"></a></li>
+									<!-- <li><a href="#"><img src="/img/instagram.png"></a></li>
+									<li><a href="#"><img src="/img/pinterest.png"></a></li> -->
 								</ul>
 							</div>
 						</div>
