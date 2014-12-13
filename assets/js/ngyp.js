@@ -309,8 +309,10 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 			});
 		
 		}, 1000);
-		
-		gapi.post.go();
+        
+        if(typeof gapi !== "undefined") {
+            gapi.post.go();
+        }
 
 	
         
