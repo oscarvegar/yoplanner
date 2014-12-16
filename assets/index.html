@@ -231,7 +231,8 @@
 		</div>
 		
 		<div class="inicio-seccion">
-			<img src="img/principal.jpg">
+			<img src="img/principal.jpg" ng-show="showIndex">
+            <div style="height:225px;" ng-show="!showIndex"></div>
 			<div class="full-width bg-black clearfix">
 				<div class="contenedor clearfix">
 					<a class="btn-reserva" href="#" ng-click="showResults()" ng-show="showDetail" >Regresar</a>
