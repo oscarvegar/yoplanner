@@ -159,7 +159,7 @@ h1{
 }
 
 .hotel-desc{
-    font-size: 1em!important;
+    font-size: 14px!important;
     line-height: 1.45;
     color: #9a9a9a!important;
     text-align: justify!important;
@@ -482,7 +482,7 @@ html body .green, html body .hover-green:hover {
 
 .social li{
     float: left;
-    padding: 0px 39.5px 18px;
+    padding: 0px 37.5px 18px;
 }
 
 .contenedor-iconos{
@@ -750,9 +750,10 @@ html body .green, html body .hover-green:hover {
 }
 .inicio-seccion {
     position: relative;
+    max-height: 550px;
+    overflow: hidden;
 }
 .inicio-seccion img {
-    max-height: 550px;
     width: 100%;
 }
 .bg-black {
@@ -837,17 +838,17 @@ html body .green, html body .hover-green:hover {
 .resultados{
     padding-left: 0px;
     width: 325px;
-    margin: 5px;
+    margin: 7px;
 }
 
 
 .resultadosBig {
     width: 660px;
     height: 341px;
-    margin-top: 7px;
+    margin-top: 9px;
     padding-left: 0px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 8px;
 }
 
 .resultadosBig h2{
@@ -958,11 +959,25 @@ html body .green, html body .hover-green:hover {
     height: 369px;
 }
 
+.titulo-articulo-home{
+    font-size: 21px;
+}
 
+.articulo-texto-home{
+    font-size: 11px!important;
+}
 
+.video-youtube-home{
+    width: 67.5%;
+}
 
+.redes-home{
+    width: 25.5%;
+}
 
-
+.redes-sociales-home{
+    height: 388px;
+}
 
 
 
