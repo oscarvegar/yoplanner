@@ -752,6 +752,7 @@ html body .green, html body .hover-green:hover {
     position: relative;
 }
 .inicio-seccion img {
+    max-height: 550px;
     width: 100%;
 }
 .bg-black {
