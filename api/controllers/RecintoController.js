@@ -10,7 +10,7 @@
 module.exports = {
     findByCiudadId: function(req,res){
         var hotelesVendidos = {PCM:[353356,352782]};
-        var hotelesProspecto = {MEX:[291554,642043]};
+        var hotelesProspecto = {MEX:[291554,642043,572877]};
         var resSize = 11;
         var id = req.allParams().id;
         var options = {
