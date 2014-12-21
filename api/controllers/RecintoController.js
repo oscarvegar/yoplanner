@@ -21,7 +21,7 @@ module.exports = {
         // Start the request
         HttpClientService.httpsGET(options,function(response){
             if(response==null)return res.json(500);
-            try{ 
+           
 
                 var data = JSON.parse(response);
                 var ids = "";
@@ -84,11 +84,7 @@ module.exports = {
                     }
                     res.json(hoteles);
                 });
-            }catch(ex){
-                console.log(ex);
-                res.json(500,{})   
-            }
-
+           
         });
     }
 };
