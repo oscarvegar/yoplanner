@@ -1,7 +1,7 @@
 var server = "http://yoplanner.com";
 server = "http://localhost:1337";
-angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp'])
-.controller('RecintosController', ["$scope","$http","$sce","$filter",function($scope,$http,$sce,$filter) {
+angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp','cgNotify'])
+.controller('RecintosController', ["$scope","$http","$sce","$filter","notify",function($scope,$http,$sce,$filter,notify) {
     $scope.showSearch = true;
     $scope.hideResults = false;
     $scope.showDetail = false;
@@ -324,6 +324,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         
     };
     $scope.agregarYRegresar = function() {
+    	notify('Hotel agregado a Mi Selección');
         $scope.showSearch = false;
         $scope.hideResults = true;
         $scope.showDetail = false;
