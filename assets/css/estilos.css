@@ -1006,6 +1006,11 @@ html body .green, html body .hover-green:hover {
     font-weight: 500;
     float: right;
 }
+.banner{
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
 
 
 
