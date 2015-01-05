@@ -1,5 +1,5 @@
 var server = "http://yoplanner.com";
-server = "http://localhost:1337";
+//server = "http://localhost:1337";
 angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp','cgNotify'])
 .controller('RecintosController', ["$scope","$http","$sce","$filter","notify",function($scope,$http,$sce,$filter,notify) {
     $scope.showSearch = true;
