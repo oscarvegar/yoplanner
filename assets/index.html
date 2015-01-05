@@ -222,8 +222,22 @@
 								</ul>
 							</li>
                             <li><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li>
-                            <li><a href="contacto/index.html">Contacto</a></li>
-                            <li><a href="#"  onclick="showCotizar();">Cotizar</a></li>
+                            <!--li><a href="contacto/index.html">Contacto</a></li-->
+                            <li style="width:170px;"><a href="#"  >Mi selección</a>
+                                <ul class="cruceros-drop" >
+                                    <li ng-show="hotelesSeleccionados.length==0">No hay hoteles seleccionados</li>
+                                    <li ng-repeat="selh in hotelesSeleccionados">
+                                        <img class="hand"src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/>{{selh.name}}
+                                        <!--br/><img src="http://media.staticontent.com/media/pictures/{{selh.pictures[0]}}" width="80px"
+                             height="60px" /-->
+
+
+                                    </li>
+                                    <li ng-show="hotelesSeleccionados.length>0" class="hand" onclick="showCotizar();">Cotiza Ya!</li>
+                                   
+                                </ul>
+                               
+                            </li>
 						</ul>
 					</div>
 				</div>
@@ -239,13 +253,7 @@
 					<div id="buscador" class="col-55">
 						<autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
 						<button ng-click="search()" ng-show="!showLoader" >Buscar</button> <img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader || false">
-						<div class="caja-busqueda">
-							<ul>
-								<li><a href="#">Ejemplo Búsqueda</a></li>
-								<li><a href="#">Ejemplo Búsqueda</a></li>
-								<li><a href="#">Ejemplo Búsqueda</a></li>
-							</ul>
-						</div>
+						
 					</div>
 				</div>
 			</div>

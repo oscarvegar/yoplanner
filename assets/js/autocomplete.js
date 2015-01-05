@@ -104,7 +104,7 @@ app.directive('autocomplete', function() {
 
       // Default atts
       scope.attrs = {
-        "placeholder": "Ingresa tu destino o ciudad...",
+        "placeholder": "¿Qué destino quieres buscar?",
         "class": "",
         "id": "",
         "inputclass": "",
@@ -234,14 +234,14 @@ app.directive('autocomplete', function() {
     },
     template: '\
         <div class="autocomplete {{ attrs.class }}" id="{{ attrs.id }}">\
-          <input\
+          <input onclick="this.focus();this.select()"\
             type="text"\
             ng-model="searchParam"\
             placeholder="{{ attrs.placeholder }}"\
             class="{{ attrs.inputclass }}"\
             id="{{ attrs.inputid }}"/>\
           <ul ng-show="completing && suggestions.length>0">\
-            <li\
+            <li  style=" cursor: pointer; cursor: hand;"\
               suggestion\
               ng-repeat="suggestion in suggestions | filter:searchFilter | orderBy:\'toString()\' track by $index"\
               index="{{ $index }}"\

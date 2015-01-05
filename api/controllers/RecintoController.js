@@ -21,8 +21,6 @@ module.exports = {
         // Start the request
         HttpClientService.httpsGET(options,function(response){
             if(response==null)return res.json(500);
-           
-
                 var data = JSON.parse(response);
                 var ids = "";
                 var p = 0;

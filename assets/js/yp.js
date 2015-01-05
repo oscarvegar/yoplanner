@@ -118,8 +118,8 @@ function showCotizar(){
 	        	{href : '#salones_view', title : 'Mis Eventos'},
 	        	{href : '#rfp_seleccion', title : 'Mi Selección'},
 	        	{href : '#datos_contacto', title : 'Contacto'},
-	        	{href : '#gracias', title : 'Eventos'},
-	        	{href : '#rfp_resumen', title : 'Resumen'},
+	        	{href : '#gracias', title : 'Gracias'}
+	        	//{href : '#rfp_resumen', title : 'Resumen'},
 	        ],{
 arrows: false,
 fitToView	: true,

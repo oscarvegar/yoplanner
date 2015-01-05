@@ -20,6 +20,7 @@ module.exports = {
                 headers : {"X-ApiKey":" 53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
             };
             HttpClientService.httpsGET(options,function(response){
+                if(response==null)res.json(500);
                 res.send(response);
 
             });

@@ -98,9 +98,10 @@
     
 }
 .autocomplete ul{
-    top: 30px;
-    color: red;
-     border: 0px solid #90bade;
+    top: 45px;
+    color: gray;
+    border: 0px;
+    cursor: hand;
 }
 .autocomplete ul li{
     list-style-type:none;
@@ -154,5 +155,8 @@ body{
     right:0px;
     z-index: 99999;
 }
-
+.hand{
+cursor: pointer;
+cursor: hand;
+}
 

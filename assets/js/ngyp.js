@@ -1,4 +1,5 @@
 var server = "http://yoplanner.com";
+server = "http://localhost:1337";
 angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp'])
 .controller('RecintosController', ["$scope","$http","$sce","$filter",function($scope,$http,$sce,$filter) {
     $scope.showSearch = true;
@@ -19,11 +20,11 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.folioFinal = null;
     $scope.showIndex = true;
     $scope.showMostrarMas = false;
-    //pruebas
+    /*
     $scope.rfp.paisText = "México";
     $scope.rfp.nombreCliente = "oscar";
     $scope.rfp.email = "osc@fo.com";
-    $scope.rfp.telefonoContacto = "5544556677";
+    $scope.rfp.telefonoContacto = "5544556677";*/
     $scope.currentPage = 0;
     $scope.search = function() {
         if($scope.searchId==null)return;
@@ -291,7 +292,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 				center: new google.maps.LatLng(latitude, longitude),
 				zoom: map_zoom,
 				panControl: false,
-				zoomControl: false,
+				zoomControl: true,
 				mapTypeControl: false,
 				streetViewControl: false,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,

@@ -1,24 +1,39 @@
-var https = require("https");
+var https = require("https"),
+  zlib = require("zlib");
 
 // EmailService.js - in api/services
 module.exports = {
-    httpsGET : function(options,calllback) {
+    httpsGET : function(options,callback) {
          
         // Start the request
        
         https.get(options, function(response) {
             
-            var gunzip = require("zlib").createGunzip();
-             str = '';
-            response.pipe(gunzip);
-             gunzip.on('data', function (chunk) {
-                str += chunk;
+              
+             var chunks = [];
+            //response.pipe(gunzip);
+             response.on('data', function (chunk) {
+                chunks.push(chunk);
               });
 
-              gunzip.on('end', function () {
-                  calllback(str);
+              response.on('end', function () {
+                   var buffer = Buffer.concat(chunks);
+                  var encoding = response.headers['content-encoding'];
+                  if (encoding == 'gzip') {
+                    zlib.gunzip(buffer, function(err, decoded) {
+                      callback(decoded && decoded.toString());
+                    });
+                  } else if (encoding == 'deflate') {
+                    zlib.inflate(buffer, function(err, decoded) {
+                      callback(decoded && decoded.toString());
+                    })
+                  } else {
+                    callback(null, buffer.toString());
+                  }
+                  
                 // your code here if you want to use the results !
               });
+              
 
         }).on('error', function(e) {
             console.error(e);
