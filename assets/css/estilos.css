@@ -989,6 +989,23 @@ html body .green, html body .hover-green:hover {
 .buscadorRes{
    top:115px;
 }
+.numberCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+
+    width: 15px;
+    height: 15px;
+    padding: -1px;
+
+    background: #CF1020;
+    border: 0px solid #666;
+    color: white;
+    text-align: center;
+
+    font: 12px Arial, sans-serif;
+    font-weight: 500;
+    float: right;
+}
 
 
 

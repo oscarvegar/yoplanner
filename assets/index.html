@@ -194,7 +194,7 @@
     </head>
     
 
-    <body  ng-controller="RecintosController"  >
+    <body  ng-controller="RecintosController" ng-cloak >
 	
 		<!-- <div id="botones">
 			<div class="clearfix contenedor no-mar">
@@ -227,7 +227,7 @@
 							</li>
                             <li><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li>
                             <!--li><a href="contacto/index.html">Contacto</a></li-->
-                             <li style="width:170px;"><a href="#">Mi selección</a>
+                             <li style="width:170px;"><a href="#">Mi selección<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></a>
                                 <ul class="cruceros-drop" >
                                     <li ng-show="hotelesSeleccionados.length==0">No hay hoteles seleccionados</li>
                                     <li ng-repeat="selh in hotelesSeleccionados" ng-click="selectResult(selh)" class="hand">
