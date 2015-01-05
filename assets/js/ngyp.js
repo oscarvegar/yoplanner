@@ -1,4 +1,4 @@
-var server = "http://yoplanner.com";
+var server = "";
 //server = "http://localhost:1337";
 angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp','cgNotify'])
 .controller('RecintosController', ["$scope","$http","$sce","$filter","notify",function($scope,$http,$sce,$filter,notify) {
@@ -20,6 +20,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.folioFinal = null;
     $scope.showIndex = true;
     $scope.showMostrarMas = false;
+    $scope.searchClass = "buscadorIni";
     /*
     $scope.rfp.paisText = "México";
     $scope.rfp.nombreCliente = "oscar";
@@ -41,6 +42,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.currentPage=1;
             $scope.lastSearchId = $scope.searchId==null?$scope.lastSearchId:$scope.searchId;
             $scope.searchId = null;
+            $scope.searchClass = "buscadorRes";
             document.getElementById("topContent").scrollIntoView();
         }).error(function (err){
             console.log(err);

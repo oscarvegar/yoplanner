@@ -205,7 +205,8 @@
 				</ul>
 			</div>
 		</div> -->
-		<div class="full-width header-wrapper">
+		<div class="full-width header-wrapper" style="z-index:1000">
+            <div style="overflow:auto"></div>
 			<div id="header">
 				<div class="contenedor clearfix">
 					<div class="logo-header">
@@ -229,7 +230,7 @@
                              <li style="width:170px;"><a href="#">Mi selección</a>
                                 <ul class="cruceros-drop" >
                                     <li ng-show="hotelesSeleccionados.length==0">No hay hoteles seleccionados</li>
-                                    <li ng-repeat="selh in hotelesSeleccionados">
+                                    <li ng-repeat="selh in hotelesSeleccionados" ng-click="selectResult(selh)" class="hand">
                                         <img class="hand"src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/>{{selh.name}}
                                         <!--br/><img src="http://media.staticontent.com/media/pictures/{{selh.pictures[0]}}" width="80px"
                              height="60px" /-->
@@ -246,41 +247,33 @@
 				</div>
 			</div>	
 		</div>
-		
-		<div class="inicio-seccion">
-			<img src="img/principal.jpg" ng-show="showIndex">
-            <div style="height:225px;" ng-show="!showIndex"></div>
-			<div class="full-width bg-black clearfix">
-				<div class="contenedor clearfix">
-					<a class="btn-reserva" href="#" ng-click="showResults()" ng-show="showDetail" >Regresar</a>
-					<div id="buscador" class="col-55">
-						<autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
-						<button ng-click="search()" ng-show="!showLoader" >Buscar</button> <img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader || false">
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		
-        <div style="width:1020px;text-align:center;margin-left:auto;margin-right:auto;">
-
-
-           <div style="clear: both"></div>
-            <div >
-               
-                
-            </div>
-            <index ng-if="showIndex"></index>
-            <rfp></rfp>
-        </div>
-        <hoteles ng-show="true"></hoteles>
+		<div style="position:relative">
+    		<div class="inicio-seccion" >
+    			<img src="img/principal.jpg" ng-show="showIndex">
+    		</div>
+       </div>
+   
+        <div class="full-width  clearfix bg-black"  ng-class="searchClass"style="position:relative;z-index:120;">
+                    <div class="contenedor clearfix ">
+                        <a class="btn-reserva" href="#" ng-click="showResults()" ng-show="showDetail" >Regresar</a>
+                        <div id="buscador" class="col-55">
+                            <autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
+                            <button ng-click="search()" ng-show="!showLoader" >Buscar</button> <img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader || false">
+                            
+                        </div>
+                    </div>
+                </div>
+       
+     <div ng-class="searchClass" style="position:relative">
         
-        <div class="row index-p">
 
-        </div>
-
-        <span class="mobile-block"></span></div></div></div>
-		<div id="footer">
+                <index ng-if="showIndex"></index>
+                <rfp></rfp>
+                <hoteles ng-show="true"></hoteles>
+        
+    </div>
+        
+		<div id="footer" style="position:relative;top:200px;" >
 			<div class="contenedor footer-wrapper clearfix">
 				
 				<div class="mapa-sitio col-33">
@@ -306,13 +299,13 @@
 				</div>
 				<div class="col-33">
 					<div class="col-inner clearfix" >
-						<div style="width: 100%;" class="clearfix">
+						<!--div style="width: 100%;" class="clearfix">
 							<p class="tit-b">Noticias y Promociones</p>
 							<div id="buscador-ft">
 								<input type="text">
 								<button>Buscar</button>
 							</div>
-						</div>
+						</div-->
 						<div style="margin-top:40px;">
 							<p class="tit-b">Redes sociales</p>
 							<div class="clearfix redes-ft">

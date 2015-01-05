@@ -22,6 +22,7 @@
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    overflow:visible;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -68,6 +69,7 @@ body{
 }
 
 .contenedor{
+    position: relative;
 	width: 1020px;
 	margin: 25px auto;
 }
@@ -979,6 +981,13 @@ html body .green, html body .hover-green:hover {
 
 .redes-sociales-home{
     height: 388px;
+}
+
+.buscadorIni{
+   top:-110px;
+}
+.buscadorRes{
+   top:115px;
 }
 
 

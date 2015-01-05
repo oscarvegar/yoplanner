@@ -37,7 +37,7 @@ module.exports = {
 
         }).on('error', function(e) {
             console.error(e);
-            calllback(null);
+            callback(null);
         });;
 
     }   
