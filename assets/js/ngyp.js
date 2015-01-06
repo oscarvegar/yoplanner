@@ -486,6 +486,17 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
     };
 
+    $scope.inicio = function(){
+    	$scope.showIndex = true;
+            $scope.showSearch = false;
+            $scope.hideResults = false;
+            $scope.showDetail = false;
+            $scope.showLoader = false;
+
+            $scope.searchClass = "buscadorIni";
+    		$scope.footerClass = "footerIni";
+    }
+
 
 
 
