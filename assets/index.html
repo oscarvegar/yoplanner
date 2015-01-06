@@ -184,6 +184,7 @@
         <!--<script type="text/javascript" src="js/jquery.flexslider.min.js"></script>-->
         <script type="text/javascript" src="js/jquery.flexslider.js"></script>
         <script src="js/angular.min.js"></script>
+        <script src="js/angular-cookies.js"></script>
         <script type="text/javascript" src="js/autocomplete.js"></script>
         <script type="text/javascript" src="js/angular-flexslider.js"></script>
         <script type="text/javascript" src="modules/ext/angular-notify.min.js"></script>
@@ -253,7 +254,7 @@
     		</div>
        </div>
    
-        <div class="full-width  clearfix bg-black"  ng-class="searchClass"style="position:relative;z-index:120;">
+        <div id="buscadorbox" class="full-width  clearfix bg-black"  ng-class="searchClass"style="position:relative;z-index:120;">
                     <div class="contenedor clearfix ">
                         <a class="btn-reserva" href="#" ng-click="showResults()" ng-show="showDetail" >Regresar</a>
                         <div id="buscador" class="col-55">
@@ -271,71 +272,78 @@
                 <index ng-if="showIndex"></index>
                 <rfp></rfp>
                 <hoteles ng-show="true"></hoteles>
-        
+        		
     </div>
         
-		<div id="footer" style="position:relative;top:200px;" >
-			<div class="contenedor footer-wrapper clearfix">
-				
-				<div class="mapa-sitio col-33">
-					<div class="col-inner">
-						<p class="tit-b">Mapa de sitio</p>
-						<ul>
-							<li><a href="#">Empresa</a></li>
-							<li><a href="#">Reserva</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Políticas de Privacidad</a></li>
-							<li><a href="#">Servicios</a></li>
-							<li><a href="#">Cruceros</a></li>
-							<li><a href="#">Contacto</a></li>
-						</ul>
-					</div>
+	
+
+
+	<script src="wp-content/themes/theteafactory/library/js/foundation/foundation.min.js" type="text/javascript"></script> 
+	<script src="wp-content/themes/theteafactory/library/js/vendor/jquery.fittext.js"></script>
+
+
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTt1xwb7Zss1Nx1ym0xlC1gbgBZ47LP4"></script>
+
+
+	</body>
+	<footer>
+<div id="footer" ng-class="footerClass">
+		<div class="contenedor footer-wrapper clearfix">
+			
+			<div class="mapa-sitio col-33">
+				<div class="col-inner">
+					<p class="tit-b">Mapa de sitio</p>
+					<ul>
+						<li><a href="empresa">Empresa</a></li>
+						<li><a href="reservaciones">Reserva</a></li>
+						<li><a href="http://www.yoplanner.com.mx/blog">Blog</a></li>
+						<li><a href="politicadeprivacidad">Políticas de Privacidad</a></li>
+						<li><a href="servicios">Servicios</a></li>
+						<li><a href="cruceros">Cruceros</a></li>
+						<li><a href="contacto">Contacto</a></li>
+					</ul>
 				</div>
-				<div class="col-33">
-					<div class="col-inner contacto">
-						<p class="tit-b">Contáctanos</p>
-						<p class="cont-p">Teléfono: (55) 62 74 - 62 91</br>
-							Correo: <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a></p>
-					</div>
+			</div>
+			<div class="col-33">
+				<div class="col-inner contacto">
+					<p class="tit-b">Contáctanos</p>
+					<p class="cont-p">Teléfono: (55) 62 74 - 62 91</br>
+						Correo: <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a></p>
 				</div>
-				<div class="col-33">
-					<div class="col-inner clearfix" >
-						<!--div style="width: 100%;" class="clearfix">
-							<p class="tit-b">Noticias y Promociones</p>
-							<div id="buscador-ft">
-								<input type="text">
-								<button>Buscar</button>
-							</div>
-						</div-->
-						<div style="margin-top:40px;">
-							<p class="tit-b">Redes sociales</p>
-							<div class="clearfix redes-ft">
-								<ul class="social-ft">	
-									<li><a href="#"><img src="/img/twitter.png"></a></li>
-									<li><a href="#"><img src="/img/fb.png"></a></li>
-									<li><a href="#"><img src="/img/goplus.png"></a></li>
-									<li><a href="#"><img src="/img/yt.png"></a></li>
-									<!-- <li><a href="#"><img src="/img/instagram.png"></a></li>
-									<li><a href="#"><img src="/img/pinterest.png"></a></li> -->
-								</ul>
-							</div>
+			</div>
+			<div class="col-33">
+				<div class="col-inner clearfix" >
+					<!--div style="width: 100%;" class="clearfix">
+						<p class="tit-b">Noticias y Promociones</p>
+						<div id="buscador-ft">
+							<input type="text">
+							<button>Buscar</button>
+						</div>
+					</div-->
+					<div style="margin-top:40px;">
+						<p class="tit-b">Redes sociales</p>
+						<div class="clearfix redes-ft">
+							<ul class="social-ft">	
+								<li><a href="//twitter.com/yoplanner"><img src="/img/twitter.png"></a></li>
+								<li><a href="//facebook.com/yoplanner"><img src="/img/fb.png"></a></li>
+								<li><!-- Coloca este código en el lugar donde quieras que se muestre la insignia. -->
+<a href="https://plus.google.com/113624413123385492768?prsrc=3"
+   rel="publisher" target="_top" style="text-decoration:none;">
+<img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/>
+</a></li>
+								<li><a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg"><img src="/img/yt.png"></a></li>
+								<!-- <li><a href="#"><img src="/img/instagram.png"></a></li>
+								<li><a href="#"><img src="/img/pinterest.png"></a></li> -->
+							</ul>
 						</div>
 					</div>
 				</div>
-				<hr class="ln-ft">
-				<p class="disc-ft">2014 Yo Planner, S.A. de C.V.</p>
 			</div>
+			<hr class="ln-ft">
+			<p class="disc-ft">2014 Yo Planner, S.A. de C.V.</p>
 		</div>
-
-
-<script src="wp-content/themes/theteafactory/library/js/foundation/foundation.min.js" type="text/javascript"></script> 
-<script src="wp-content/themes/theteafactory/library/js/vendor/jquery.fittext.js"></script>
-
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTt1xwb7Zss1Nx1ym0xlC1gbgBZ47LP4"></script>
-
-
-</body>
+	</div>
+	</footer>
 <!-- Mirrored from www.theteafactory.ca/ by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 15 Jan 2014 06:30:49 GMT -->
 </html>

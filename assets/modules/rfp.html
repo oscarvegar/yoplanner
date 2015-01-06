@@ -40,41 +40,23 @@
 
                     </tr>
                     <tr>
-                        <td>Habitaciones Sencillas</td>
+                        <td style="vertical-align:middle">Habitaciones Sencillas</td>
                         <td>
-                            <table>
-                                <thead>
-                                    <tr >
-                                        <th ng-repeat="day in configuracionHabitacionesSencillas">{{day.fecha | date:'dd/MM'}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr >
-                                        <td ng-repeat="day in configuracionHabitacionesSencillas"><input type="text" ng-model="day.habitaciones" size="5"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div ng-repeat="day in configuracionHabitacionesSencillas" style="float:left">
+                                    {{day.fecha | date:'dd/MM'}}<br/>
+                                    <input type="text" ng-model="day.habitaciones" size="5">
+                               
+                            </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>Habitaciones Dobles</td>
-                        <!-- <td><input id="rfp.habitacionesDobles" 
-type="text" 
-placeholder="Habitaciones Dobles" > 
-</td>
--->
-                        <td><table>
-                            <thead>
-                                <tr>
-                                    <th ng-repeat="day in configuracionHabitacionesDobles">{{day.fecha | date:'dd/MM'}}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td ng-repeat="day in configuracionHabitacionesDobles"><input type="text" ng-model="day.habitaciones" size="5"></td>
-                                </tr>
-                            </tbody>
-                            </table></td>
+                        <td style="vertical-align:middle">Habitaciones Dobles</td>
+                        <td>
+                            <div ng-repeat="day in configuracionHabitacionesDobles" style="float:left">
+                                {{day.fecha | date:'dd/MM'}}<br>
+                                <input type="text" ng-model="day.habitaciones" size="5">
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center"><br />Comentarios

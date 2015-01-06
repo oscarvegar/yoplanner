@@ -1,7 +1,16 @@
 var server = "";
+
 //server = "http://localhost:1337";
-angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp','cgNotify'])
-.controller('RecintosController', ["$scope","$http","$sce","$filter","notify",function($scope,$http,$sce,$filter,notify) {
+angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp','cgNotify','ngCookies'])
+.controller('RecintosController', ["$scope","$http","$sce","$filter","notify","$cookieStore",function($scope,$http,$sce,$filter,notify,$cookieStore) {
+    $scope.divideTipoHabitaciones = function(tipo,arre){
+    	var res = [];
+    	for(i in arre){
+    		if(arre[i].tipoHabitacion==tipo)
+    			res.push(arre[i]);
+    	}
+    	return res;
+    }
     $scope.showSearch = true;
     $scope.hideResults = false;
     $scope.showDetail = false;
@@ -10,17 +19,22 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.lastSearchId = null;
     $scope.currentHotel = null;
     $scope.currentHotelMap = null;
-    $scope.hotelesSeleccionados = [];
+    $scope.hotelesSeleccionados = window.localStorage.hotelesSeleccionados!=null?JSON.parse(window.localStorage.hotelesSeleccionados):[];
     $scope.showLoader = false;
-    $scope.rfp = {};
-    $scope.configuracionHabitacionesDobles = [];
-    $scope.configuracionHabitacionesSencillas = [];
-    $scope.fechaInicialFor = null;
-    $scope.fechaFinalFor = null;
+    $scope.rfp =  window.localStorage.rfp!=null?JSON.parse(window.localStorage.rfp):{};
+    $scope.configuracionHabitacionesDobles = $scope.rfp.configuracionHabitaciones!=null?$scope.divideTipoHabitaciones(2,$scope.rfp.configuracionHabitaciones):[];
+    $scope.configuracionHabitacionesSencillas = $scope.rfp.configuracionHabitaciones!=null?$scope.divideTipoHabitaciones(1,$scope.rfp.configuracionHabitaciones):[];
+    $scope.fechaInicialFor = $scope.rfp.fechaInicial!=null?moment($scope.rfp.fechaInicial).format('DD-MM-YYYY'):null;
+    $scope.fechaFinalFor = $scope.rfp.fechaFinal!=null?moment($scope.rfp.fechaFinal).format('DD-MM-YYYY'):null;
+    if($scope.rfp.fechaInicial!=null){
+    	$scope.rfp.fechaInicial = parseDate($scope.fechaInicialFor);
+    	$scope.rfp.fechaFinal = parseDate($scope.fechaFinalFor);
+    }
     $scope.folioFinal = null;
     $scope.showIndex = true;
     $scope.showMostrarMas = false;
     $scope.searchClass = "buscadorIni";
+    $scope.footerClass = "footerIni";
     /*
     $scope.rfp.paisText = "México";
     $scope.rfp.nombreCliente = "oscar";
@@ -43,7 +57,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.lastSearchId = $scope.searchId==null?$scope.lastSearchId:$scope.searchId;
             $scope.searchId = null;
             $scope.searchClass = "buscadorRes";
-            document.getElementById("topContent").scrollIntoView();
+    		$scope.footerClass = "footerRes";
+            document.getElementById("buscadorbox").scrollIntoView();
         }).error(function (err){
             console.log(err);
             $scope.showLoader = false;
@@ -69,8 +84,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.showSearch = false;
         $scope.hideResults = true;
         $scope.showDetail = false;
-        
-            document.getElementById("topContent").scrollIntoView();
+        document.getElementById("buscadorbox").scrollIntoView();
 
     };
 
@@ -322,7 +336,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.currentHotelMap= $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q="+$scope.currentHotel.geoLocation.latitude+","+$scope.currentHotel.geoLocation.longitude);
         $scope.hideResults = false;
         $scope.showDetail = true;
-        document.getElementById("topContent").scrollIntoView();
+        document.getElementById("buscadorbox").scrollIntoView();
         
     };
     $scope.agregarYRegresar = function() {
@@ -332,7 +346,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.showDetail = false;
         $scope.hotelesSeleccionados.push($scope.currentHotel);
         //sliderBars.slidebars.toggle('left');
-        document.getElementById("topContent").scrollIntoView();
+        document.getElementById("buscadorbox").scrollIntoView();
+        window.localStorage.setItem('hotelesSeleccionados',JSON.stringify($scope.hotelesSeleccionados));
     };
 
     $scope.existeEnSeleccion = function(hotel){
@@ -347,6 +362,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
     $scope.deleteSelection = function(hotel){
         $scope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
+         window.localStorage.setItem('hotelesSeleccionados',JSON.stringify($scope.hotelesSeleccionados));
     };
 
 
@@ -397,6 +413,9 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         }
         rfp.fechaInicial = $scope.rfp.fechaInicial;
         rfp.fechaFinal = $scope.rfp.fechaFinal;
+         $scope.rfp.configuracionHabitaciones = $scope.configuracionHabitacionesSencillas.concat($scope.configuracionHabitacionesDobles);
+
+        window.localStorage.setItem('rfp',JSON.stringify($scope.rfp));
         $.fancybox.next();
 
     };
@@ -415,6 +434,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         }
         $scope.rfp.salones = rfp.salones;
         console.log($scope.rfp.salones);
+        window.localStorage.setItem('rfp',JSON.stringify($scope.rfp));
         $.fancybox.next();
     };
 
@@ -424,8 +444,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             return;
         }
 
-        $scope.rfp.configuracionHabitaciones = $scope.configuracionHabitacionesSencillas.concat($scope.configuracionHabitacionesDobles);
-
+       
         $scope.rfp.recintos = [];
         for(var i = 0; i<$scope.hotelesSeleccionados.length;i++){
             $scope.rfp.recintos.push(
@@ -452,7 +471,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.configuracionHabitacionesSencillas = [];
             $scope.fechaInicialFor = null;
             $scope.fechaFinalFor = null;
-
+            window.localStorage.removeItem('rfp');
+            window.localStorage.removeItem('hotelesSeleccionados');
 
             $.fancybox.next();
         }).error(function(data){

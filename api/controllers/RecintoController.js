@@ -8,6 +8,15 @@
 //https://api.despegar.com/v3/hotels/availabilities?site=MX&checkin_date=2014-10-25&checkout_date=2014-10-30&destination=982&distribution=1&language=es&sorting=stars_descending&stars=3%2C4%2C5&pagesize=8
 ///availability/cities/{id}/hotels
 module.exports = {
+    findByRFP: function(req,res){
+        params = req.allParams();
+        RFP.findOne({id:params.rfp}).populate('recintos').exec(function(err,data){
+            console.log(err);
+            console.log(data);
+            if(err)console.log(err);
+            return res.json(data.recintos);
+        });
+    },
     findByCiudadId: function(req,res){
         var hotelesVendidos = {PCM:[352782,353356]};
         var hotelesProspecto = {MEX:[291554,642043,572877]};

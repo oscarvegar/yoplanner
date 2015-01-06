@@ -10,7 +10,7 @@ module.exports = {
     autoPK: false,
     attributes: {
         id:{
-            type:"integer",
+            type:"string",
             primaryKey: true
         },
         rfps: {
