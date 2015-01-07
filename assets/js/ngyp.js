@@ -91,7 +91,15 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
     $scope.selectResult = function(hotel) {
 		$scope.currentHotel = hotel;
-		
+		$scope.showIndex = false;
+        $scope.showSearch = false;
+        $scope.hideResults = true;
+        $scope.showDetail = false;
+        $scope.showLoader = false;
+
+        $scope.searchClass = "buscadorRes";
+		$scope.footerClass = "footerRes";
+		document.getElementById("buscadorbox").scrollIntoView();
 		// try {
 			// $('#carousel').flexslider('destroy');
 			// $('#slider').flexslider('destroy');
