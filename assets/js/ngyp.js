@@ -96,10 +96,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.hideResults = true;
         $scope.showDetail = false;
         $scope.showLoader = false;
-
         $scope.searchClass = "buscadorRes";
 		$scope.footerClass = "footerRes";
-		document.getElementById("buscadorbox").scrollIntoView();
 		// try {
 			// $('#carousel').flexslider('destroy');
 			// $('#slider').flexslider('destroy');
@@ -346,6 +344,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.showDetail = true;
         document.getElementById("buscadorbox").scrollIntoView();
         
+		document.getElementById("buscadorbox").scrollIntoView();
     };
     $scope.agregarYRegresar = function() {
     	notify('Hotel agregado a Mi Selección');

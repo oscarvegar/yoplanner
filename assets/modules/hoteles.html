@@ -25,7 +25,20 @@
 
 
 <div ng-show="showDetail" class="hotelDetail">
-	
+	<!--div class="full-width grey clearfix pad-0">
+		<div class="contenedor clearfix">
+			<div class="col-4">
+				<a class="btn-reserva btn-3 btn-rsrvr" href="reservaciones" target="javascript:void(0)"  >Reservar</a>
+			</div>
+			<div class="col-4">
+				<div>&nbsp;</div>
+				<a class="btn-reserva btn-3 btn-ctzr" href="#" onclick="showCotizar();" >Cotizar</a>
+			</div>
+			<div class="col-4">
+				<a class="btn-reserva btn-3 btn-agrgr" href="#" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0" >Agregar a Mi Selección</a>
+			</div>
+		</div>
+	</div-->
 	<div class="contenedor clearfix">
 		
 		<div id="flx-sldr" class="clearfix col-55">
@@ -97,20 +110,7 @@
 		</div>
         -->
 	</div>
-	<div class="full-width grey clearfix pad-0">
-		<div class="contenedor clearfix">
-			<div class="col-4">
-				<a class="btn-reserva btn-3 btn-rsrvr" href="reservaciones" target="javascript:void(0)"  >Reservar</a>
-			</div>
-			<div class="col-4">
-				<div>&nbsp;</div>
-				<!--a class="btn-reserva btn-3 btn-ctzr" href="#" onclick="showCotizar();" >Cotizar</a-->
-			</div>
-			<div class="col-4">
-				<a class="btn-reserva btn-3 btn-agrgr" href="#" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0" >Agregar a Mi Selección</a>
-			</div>
-		</div>
-	</div>
+	
 	
 	<div class="full-width clearfix pad-top-0">
 		<div id="cd-google-map">

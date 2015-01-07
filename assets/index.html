@@ -256,11 +256,15 @@
    
         <div id="buscadorbox" class="full-width  clearfix bg-black"  ng-class="searchClass"style="position:relative;z-index:120;">
                     <div class="contenedor clearfix ">
-                        <a class="btn-reserva" href="#" ng-click="showResults()" ng-show="showDetail" >Regresar</a>
+                        <div style="float:left;margin-left:-150px;"><a class="btn-reserva"  href="#" ng-click="showResults()" ng-show="showDetail && hotels.length>0" >Regresar</a></div><div style="float:left" ng-show="showDetail"><a class="btn-reserva btn-3 "  href="reservaciones" target="javascript:void(0)"  >Reservar</a></div>
+				<div style="float:left;padding-left:50px;" ng-show="showDetail">
+				<a class="btn-reserva"  href="#" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0" >Agregar a Mi Selección</a></div>
                         <div id="buscador" class="col-55">
                             <autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
                             <button ng-click="search()" ng-show="!showLoader" >Buscar</button> <img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader || false">
-                            
+                           
+				
+		
                         </div>
                     </div>
                 </div>
