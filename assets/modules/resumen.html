@@ -19,18 +19,22 @@
         		width: 10%;
         		padding-top: 20px;
         		padding-left:10px;
+        		border-bottom: thin dotted;
+        		font-size: 12px;
         	}
         	.label{
         		font-weight: bold;
+        		font-size: 13px;
         	}
         	.logo{
         		
-        		float: left;
+        		float: right;
+        		margin-right: -10%;
         	}
         	.head p{
         		float: right;
         	}
-        	h1, h2{
+        	h1, h3,h2{
         		text-align: center;
         		font-family:Impact, Charcoal, sans-serif;
         		font-weight: lighter;
@@ -39,49 +43,62 @@
         	.clear{
         		clear: both;
         	}
+        	.spacer{
+        		text-align: center;
+        		height: 200px;
+        	}
+        	.printIcon{
+        		width: 120px;
+        		height: 120px;
+        		cursor: pointer;
+				cursor: hand;
+        	}
+        	.hand{
+        		cursor: pointer, hand;
+        	}
         </style>
 	</head>
-	<body ng-controller="ResumenController" style="width:70%;margin-left:15%;border-style:solid;">
+	<body ng-controller="ResumenController" style="width:80%;margin-left:10%;">
 		<div class="head">
-			<img src="../img/yp-logo.png" class="logo">
-			<p><b>Yo Planner S.A. de C.V. </b><br>
+			<img src="../img/yp-logo.png" class="logo" style="width:200px;height:60px;">
+			<!--p><b>Yo Planner S.A. de C.V. </b><br>
 				<b>RFC: YPL111202TY5</b><br>
                 Lago Andrómaco 53 – 1303<br>
                 Col. Ampliación Granada<br>
-                México, D.F. 11520</p>
+                México, D.F. 11520</p-->
 		<div>
 		<div class="clear"/>
-			<h1>SOLICITUD DE COTIZACIÓN</h1>
+			<h2>SOLICITUD DE COTIZACIÓN</h2>
 		
-		<div>
-			<h2>DATOS DEL GRUPO</h2>
+		<div >
+			<h3>DATOS DEL GRUPO</h3>
 				<table class="table">
 					<tr>
-						<td>
+						
 						<td class="label">NOMBRE</td>
-						<td>{{rfp.nombre}}</td>
-						<td>
+						<td colspan="2">{{rfp.nombre}}</td>
+						
 						<td class="label">FECHA DE ENTRADA</td>
-						<td>{{rfp.fechaInicial}}</td>
-						<td>
+						<td colspan="2">{{formatDateNormal(rfp.fechaInicial)}}</td>
+						
 						<td class="label">FECHA DE SALIDA</td>
-						<td>{{rfp.fechaFinal}}</td>
-						<td>
+						<td colspan="2">{{formatDateNormal(rfp.fechaFinal)}}</td>
+						
 					</tr>
 					<tr>
-						<td/>
+						
 						<td class="label">ASISTENTES</td>
-						<td>{{rfp.asistenciaEsperada}}</td>
-						<td>
+						<td colspan=2>{{rfp.asistenciaEsperada}}</td>
+						
 						<td class="label">HAB. SENCILLAS</td>
-						<td><a ng-repeat="hab in rfp.sencillas">{{formatDate(hab.fecha)}} - {{hab.habitaciones}}<br></a></td>
-						<td/>
+						<td colspan=2><a ng-repeat="hab in rfp.sencillas">{{formatDate(hab.fecha)}} - {{hab.habitaciones}}<br></a></td>
+						
 						<td class="label">HAB. DOBLES</td>
-						<td><a ng-repeat="hab in rfp.dobles">{{formatDate(hab.fecha)}} - {{hab.habitaciones}}<br></a></td>
-						<td/>
+						<td colspan=2><a ng-repeat="hab in rfp.dobles">{{formatDate(hab.fecha)}} - {{hab.habitaciones}}<br></a></td>
+						
 					</tr>
 					<tr>
-						<td>
+						
 						<td class="label">COMENTARIOS ADICIONALES</td>
 						<td colspan="8">{{rfp.comentarios}}</td>
 					</tr>
@@ -89,46 +106,43 @@
 			
 		</div>
 		<div>
-			<h2>EVENTOS</h2>
+			<h3>EVENTOS</h3>
 				<div ng-repeat="salon in rfp.salones">
 				<table class="table" >
 					<tr>
-						<td>
+						
 						<td class="label">NOMBRE EVENTO</td>
-						<td colspan=4>{{salon.nombreEvento}}</td>
-						<td>
+						<td colspan=5>{{salon.nombreEvento}}</td>
+						
 						<td class="label">PARTICIPANTES</td>
-						<td>{{salon.asistentes}}</td>
-						<td>
+						<td colspan=2>{{salon.asistentes}}</td>
+						
 					</tr>
 					<tr>
 
-						<td>
+						
 						<td class="label">FECHA</td>
-						<td>{{salon.fecha}}</td>
-						<td/>
+						<td colspan=2>{{formatDateNormal(salon.fecha)}}</td>
+						
 						<td class="label">HORA INICIO</td>
-						<td>{{salon.horaInicio}}</td>
-						<td>
+						<td colspan=2>{{salon.horaInicio}}</td>
+						
 						<td class="label">HORA FIN</td>
-						<td>{{salon.horaFin}}</td>
-						<td>
+						<td colspan=2>{{salon.horaFin}}</td>
+						
 					</tr>
 					<tr>
-						<td>
+						
 						<td class="label">TIPO DE EVENTO</td>
-						<td>{{salon.tipoEvento.descripcion}}</td>
-						<td>
+						<td colspan=2>{{salon.tipoEvento.description}}</td>
+						
 						<td class="label">MONTAJE</td>
-						<td>{{salon.tipoSalon.descripcion}}</td>
-						<td>
-						<td></td>
-						<td></td>
-						<td>
+						<td colspan=5>{{salon.tipoSalon.description}}</td>
+						
 					</tr>
 
 					<tr>
-						<td>
+						
 						<td class="label">COMENTARIOS ADICIONALES</td>
 						<td colspan="8">{{salon.comentarios}}</td>
 					</tr>
@@ -136,58 +150,56 @@
 				<hr>
 				</div>
 		</div>
+		
 		<div>
-			<h2>DATOS DEL GRUPO</h2>
-				<table class="table">
-					<tr>
-						<td>
-						<td class="label">NOMBRE</td>
-						<td>{{rfp.nombreCliente}}</td>
-						<td>
-						<td class="label">FECHA DE ENTRADA</td>
-						<td>{{rfp.telefonoContacto}}</td>
-						<td>
-						<td class="label">FECHA DE SALIDA</td>
-						<td>{{rfp.email}}</td>
-						<td>
-					</tr>
-					<tr>
-						<td/>
-						<td class="label">ASISTENTES</td>
-						<td>{{rfp.nombreCliente}}</td>
-						<td>
-						<td class="label">HAB. SENCILLAS</td>
-						<td>{{rfp.telefonoContacto}}</td>
-						<td/>
-						<td class="label">HAB. DOBLES</td>
-						<td>{{rfp.telefonoContacto}}</td>
-						<td/>
-					</tr>
-					<tr>
-						<td>
-						<td class="label">COMENTARIOS ADICIONALES</td>
-						<td colspan="8">{{rfp.email}}</td>
-					</tr>
-				</table>
+			<h3>SELECCIÓN DE HOTELES</h3>
+				<div   style="text-align:center;">
+				<b ng-repeat="recinto in rfp.recintos">{{recinto.name}}</b>
+				</div>
 			
 		</div>
 		<div>
-			<h2>SELECCIÓN DE HOTELES</h2>
+			<h3>DATOS DEL CLIENTE</h3>
 				<table class="table">
 					<tr>
-						<td>
+						
 						<td class="label">NOMBRE</td>
-						<td>{{rfp.nombreCliente}}</td>
-						<td>
-						<td class="label">FECHA DE ENTRADA</td>
-						<td>{{rfp.telefonoContacto}}</td>
-						<td>
-						<td class="label">FECHA DE SALIDA</td>
-						<td>{{rfp.email}}</td>
-						<td>
+						<td colspan=2>{{rfp.nombreCliente}}</td>
+						
+						<td class="label">E-MAIL</td>
+						<td colspan=2>{{rfp.email}}</td>
+						
+						<td class="label">TELEFONO</td>
+						<td colspan=2>{{rfp.telefonoContacto}}</td>
+						
+					</tr>
+					<tr>
+						
+						<td class="label">EMPRESA</td>
+						<td colspan=2>{{rfp.empresa}}</td>
+						
+						<td class="label">CARGO</td>
+						<td colspan=2>{{rfp.puesto}}</td>
+						
+						<td class="label">PAÍS</td>
+						<td colspan=2>{{rfp.paisText}}</td>
+						
+					</tr>
+					<tr>
+						
+						<td class="label">ESTADO</td>
+						<td colspan=2>{{rfp.estadoText}}</td>
+						
+						<td class="label">CIUDAD</td>
+						<td colspan=5>{{rfp.ciudadText}}</td>
 					</tr>
 				</table>
-			
+				<div class="spacer" style="text-align:center">
+					<br>
+					<br>
+					<br>
+					<img src="../img/printer-icon.png" class="printIcon" onclick="this.parentNode.style.display='none';window.print();this.parentNode.style.display='inline'"><br>Imprimir
+				</div>
 		</div>
 	</body>
 </html>
