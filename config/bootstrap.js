@@ -10,6 +10,87 @@
  */
 
 module.exports.bootstrap = function(cb) {
+	TipoEvento.find({_id:"1"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:1,description:"Desayuno"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"2"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:2,description:"Comida"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"3"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:3,description:"Cena"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"4"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:4,description:"Cocktail"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"5"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:5,description:"Sesión"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"6"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:6,description:"Breakout"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"7"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:7,description:"Oficina"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"8"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:8,description:"Bodega"}).exec(console.log);
+	});
+	TipoEvento.find({_id:"9"}).exec(function(err,data){
+		if(data.length == 0)
+			TipoEvento.create({id:9,description:"Otro"}).exec(console.log);
+	});
+
+
+
+	Montaje.find({_id:"1"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:1,description:"Auditorio"}).exec(console.log);
+	});
+	Montaje.find({_id:"2"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:2,description:"Banquete"}).exec(console.log);
+	});
+	Montaje.find({_id:"3"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:3,description:"Coctel"}).exec(console.log);
+	});
+	Montaje.find({_id:"4"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:4,description:"Escuela"}).exec(console.log);
+	});
+
+	Montaje.find({_id:"5"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:5,description:"Herradura"}).exec(console.log);
+	});
+
+	Montaje.find({_id:"6"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:6,description:"Imperial"}).exec(console.log);
+	});
+
+	Montaje.find({_id:"7"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:7,description:"Mesas"}).exec(console.log);
+	});
+
+	Montaje.find({_id:"8"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:8,description:"Medias Lunas"}).exec(console.log);
+	});
+
+	Montaje.find({_id:"9"}).exec(function(err,data){
+		if(data.length == 0)
+			Montaje.create({id:9,description:"Otro"}).exec(console.log);
+	});
+	
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)

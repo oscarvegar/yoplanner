@@ -12,17 +12,21 @@ angular.module('yoPlannerAppResume', [])
 	    }
 		console.log(queryDict);
 		console.log($scope.rfp);
-		$http.get("/rfp/"+queryDict.rfp).success(function(data,status){
-			console.log(data);
-			$scope.rfp=data;
-
-		$scope.rfp.sencillas = $scope.divideTipoHabitaciones(1,$scope.rfp.configuracionHabitaciones);
-		$scope.rfp.dobles = $scope.divideTipoHabitaciones(2,$scope.rfp.configuracionHabitaciones);
-
+		$http.get("/tipoEvento").success(function(data,status){
+			$scope.tipoEventos = data;
+			$http.get("/montaje").success(function(data,status){
+				$scope.montajes = data;
+				$http.get("/rfp/"+queryDict.rfp).success(function(data,status){
+					console.log(data);
+					$scope.rfp=data;
+					$scope.rfp.sencillas = $scope.divideTipoHabitaciones(1,$scope.rfp.configuracionHabitaciones);
+					$scope.rfp.dobles = $scope.divideTipoHabitaciones(2,$scope.rfp.configuracionHabitaciones);
+				});
+			});
+		});
 		$scope.formatDate= function(date){
 			return (moment(date).format("DD/MM"))
 			
 		}
-		});
 	}]);
    
