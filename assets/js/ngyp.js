@@ -502,6 +502,9 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
     //$scope.salonesModificados = [];
     $scope.agregarEventoSalon = function(){
+    	if($scope.rfp.salones==null){
+    		$scope.rfp.salones = []
+    	}
     	var newObj = {};
     	newObj.fecha = moment($scope.rfp.fechaInicial).format('DD-MM-YYYY')
     	$scope.rfp.salones.push(newObj);
