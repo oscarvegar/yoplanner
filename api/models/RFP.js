@@ -39,10 +39,14 @@ module.exports = {
     afterCreate : function(rfp,next){
         var options = {};
         options.subject = "RFP Recibida ✔";
-        options.html = "<html><h3>Hemos Recibido tu solicitud, puedes consultarla en cualquier momento en el siguiente link</h3>\
+        options.html = "<html><br>Buen Día! \
         <br><br> \
+        Muchas gracias por utilizar <b>Yo Planner</b>, hemos recibido tu solicitud y pronto nos estaremos poniendo en contacto contigo. \
+        <br><br> \
+        Para ver tu propuesta o imprimir da click en el siguiente enlace: \
+        <br><br>\
         http://htmltopdfapi.com/querybuilder/api.php?url=http://yoplanner.com/modules/resumen.html?rfp="+rfp.id+
-        "<br><br><h2>Gracias por utilizar el servicio de YoPlanner</h2></html>";
+        "<br><br>Saludos,<br><img src='http://yoplanner.com/img/firma.png'></html>";
         EmailService.sendEmail(options);
         next();
 
