@@ -322,8 +322,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 				zoom: map_zoom,
 				panControl: false,
 				zoomControl: true,
-				mapTypeControl: false,
-				streetViewControl: false,
+				mapTypeControl: true,
+				streetViewControl: true,
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 				scrollwheel: false,
 				styles: style,
@@ -390,7 +390,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.movies  =  [];
             if(data.autocomplete == null)return;
             for(var i=0;i<data.autocomplete.length;i++){
-                if(data.autocomplete[i].type=="city")
+                //if(data.autocomplete[i].type=="city"
+                	console.log(data.autocomplete);
                     $scope.movies.push(data.autocomplete[i].id+" "+data.autocomplete[i].name);
             }
 

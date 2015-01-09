@@ -134,7 +134,7 @@ function showCotizar(){
 	$.fancybox([
  	        	{href : '#rfp_view', title : 'Datos Generales'},
 	        	{href : '#salones_view', title : 'Mis Eventos'},
-	        	{href : '#rfp_seleccion', title : 'Mi Selección'},
+	        	//{href : '#rfp_seleccion', title : 'Mi Selección'},
 	        	{href : '#datos_contacto', title : 'Contacto'},
 	        	{href : '#gracias', title : 'Gracias'}
 	        	//{href : '#rfp_resumen', title : 'Resumen'},

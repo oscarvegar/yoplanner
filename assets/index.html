@@ -7,85 +7,7 @@
         }
     </style>
     <head>
-        <style>
-            .tea-type-green {
-                border-color: #0098c2;
-            }
-            .tea-type-green {
-                background-color: #0098c2;
-                color: rgb(99, 138, 114);
-            }
-            .tea-type-green header {
-                color: #0098c2;
-            }
-            .tea-type-green .tea-fill,
-            .tea-type-green .button {
-                background-color: rgb(99, 138, 114);
-            }
-            .tea-type-green .button:hover {
-                background-color: #0098c2;
-            }
-            .tea-type-green .description {
-                color: rgb(99, 138, 114);
-            }
-
-
-            .tea-type-oolong {
-                border-color: #005c88;
-            }
-            .tea-type-oolong {
-                background-color: #005c88;
-                color: rgb(169, 132, 41);
-            }
-            .tea-type-oolong header {
-                color: #005c88;
-            }
-            .tea-type-oolong .tea-fill,
-            .tea-type-oolong .button {
-                background-color: rgb(169, 132, 41);
-            }
-            .tea-type-oolong .button:hover {
-                background-color: #005c88;
-            }
-            .tea-type-oolong .description {
-                color: rgb(169, 132, 41);
-            }
-
-
-            .tea-type-black {
-                border-color: #00b9e2;
-            }
-            .tea-type-black {
-                background-color: #00b9e2;
-                color: rgb(53, 59, 59);
-            }
-            .tea-type-black header {
-                color: #00b9e2;
-            }
-            .tea-type-black .tea-fill,
-            .tea-type-black .button {
-                background-color: rgb(53, 59, 59);
-            }
-            .tea-type-black .button:hover {
-                background-color: #00b9e2;
-            }
-            .tea-type-black {
-                color: #00b9e2;
-            }
-            .tea-type-black .tea-fill {
-                background-color: #00b9e2;
-            }
-            .tea-type-black .description {
-                color: rgb(120, 132, 132);
-            }
-
-            .no-js .home.page.page-id-24.page-template-default #content #inner-content #main #content #inner-content #main div div table tr td div .flag {
-                text-align: center;
-            }
-            d {
-                text-align: center;
-            }
-        </style>
+        
         <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Hoteles, Cruceros, Grupos y Convenciones | YoPlanner.com</title>		
         <meta name="description" content="Con Yo Planner obtén la mejor asesoría gratuita para la adquisición de hoteles, cruceros, grupos y convenciones. Blog de Viajes, RFP y reservaciones en línea.">
@@ -217,8 +139,13 @@
 					</div>
 					<div class="header-menu">
 						<ul class="clearfix">
-							<li><a href="empresa/index.html">Empresa</a></li>
-							<li><a href="servicios/index.html">Servicios</a></li>
+							<li style="width:190px;"><a href="javascript:void(0)">¿Quienes Somos?</a>
+                                <ul class="cruceros-drop">
+                                    <li><a href="empresa/index.html">Empresa</a></li>
+                                    <li><a href="servicios/index.html">Servicios</a></li>
+                                </ul>
+                            </li>
+							<li><a href="/reservaciones">Reservar</a></li>
 							<li><a href="cruceros/index.html#black">Cruceros</a>
 								<ul class="cruceros-drop">
 									<li><a href="cruceros/index.html#black">Cruceros Populares</a></li>
@@ -228,17 +155,17 @@
 							</li>
                             <li><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li>
                             <!--li><a href="contacto/index.html">Contacto</a></li-->
-                             <li style="width:170px;"><a href="#">Mi selección<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></a>
+                             <li style="width:150px;"><a href="#">Mi selección<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></a>
                                 <ul class="cruceros-drop" >
                                     <li ng-show="hotelesSeleccionados.length==0">No hay hoteles seleccionados</li>
-                                    <li ng-repeat="selh in hotelesSeleccionados" ng-click="selectResult(selh)" class="hand">
-                                        <img class="hand"src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/>{{selh.name}}
+                                    <li style="text-align:left" ng-repeat="selh in hotelesSeleccionados" ng-click="selectResult(selh)"  ><a href="javascript:void(0)">
+                                        &nbsp;&nbsp;<img class="hand"src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/>&nbsp;&nbsp;{{selh.name}}</a>
                                         <!--br/><img src="http://media.staticontent.com/media/pictures/{{selh.pictures[0]}}" width="80px"
                              height="60px" /-->
 
 
                                     </li>
-                                    <li ng-show="hotelesSeleccionados.length>0" class="hand" onclick="showCotizar();">Cotiza Ya!</li>
+                                    <li ng-show="hotelesSeleccionados.length>0" class="hand" onclick="showCotizar();" class="bolder" ><a href="javascript:void(0)"class="bolder"><h1>Cotizar Selección</h1></a></li>
                                    
                                 </ul>
                                
@@ -282,10 +209,7 @@
 	
 
 
-	<script src="wp-content/themes/theteafactory/library/js/foundation/foundation.min.js" type="text/javascript"></script> 
-	<script src="wp-content/themes/theteafactory/library/js/vendor/jquery.fittext.js"></script>
-
-
+	
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTt1xwb7Zss1Nx1ym0xlC1gbgBZ47LP4"></script>
 
@@ -345,7 +269,7 @@
 				</div>
 			</div>
 			<hr class="ln-ft">
-			<p class="disc-ft">2014 Yo Planner, S.A. de C.V.</p>
+			<p class="disc-ft">2015 Yo Planner, S.A. de C.V.</p>
 		</div>
 	</div>
 	</footer>

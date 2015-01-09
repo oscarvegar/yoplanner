@@ -13,13 +13,15 @@ module.exports = {
             var id = req.allParams().id;
             //if(id.length > 10)
                 //return res.json(500)
+                console.log("PATH >>>>>/autocomplete/cities/"+id);
             var options = {
                 hostname : "api.despegar.com",
                 path : "/autocomplete/cities/"+id,
                 //options.method = "GET";
-                headers : {"X-ApiKey":" 53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
+                headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
             };
             HttpClientService.httpsGET(options,function(response){
+                console.log(response);
                 if(response==null)res.json(500);
                 res.send(response);
 

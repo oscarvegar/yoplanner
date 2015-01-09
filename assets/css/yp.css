@@ -1,3 +1,8 @@
+@font-face {
+    font-family: cabin;
+    src: url(fonts/cabin/Cabin-Regular.otf);
+}
+
 .red{
 	color: red;
 }
@@ -176,3 +181,21 @@ cursor: hand;
 .label{
     font-weight: bolder;
 }
+
+.justify{
+    text-align: left;
+}
+
+.bolder{
+    font-weight: bolder;
+    font-family: cabin;
+    font-size: 15px;
+}
+
+.cabin{
+    font-family: cabin;
+}
+.center{
+    text-align: center;
+}
+

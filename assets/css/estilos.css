@@ -2,7 +2,10 @@
    v2.0 | 20110126
    License: none (public domain)
    */
-
+@font-face {
+    font-family: cabin;
+    src: url(fonts/cabin/Cabin-Regular.otf);
+}
    html, body, div, span, applet, object, iframe,
    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
    a, abbr, acronym, address, big, cite, code,
@@ -70,7 +73,7 @@ body{
 
 .contenedor{
     position: relative;
-	width: 1020px;
+	width: 1200px;
 	margin: 25px auto;
 }
 
@@ -566,7 +569,7 @@ html body .green, html body .hover-green:hover {
 }
 
 .logo-header{
-    width: 200px;
+    width: 300px;
     float: left;
 }
 
@@ -575,6 +578,7 @@ html body .green, html body .hover-green:hover {
 }
 
 .header-menu{
+    font-family: cabin;
     width: 70%;
     float: right;
 }
@@ -1006,6 +1010,9 @@ html body .green, html body .hover-green:hover {
     font: 12px Arial, sans-serif;
     font-weight: 500;
     float: right;
+
+    margin-top: -10px;
+    margin-right: 10px;
 }
 .banner{
     margin-top: 30px;

@@ -2,14 +2,17 @@
     <div id="containeraa" class="page-our-teas" >
        
     <div id="mainContent"
-         class="navbar navbar-default navbar-fixed-top sb-slide">
+         class="navbar navbar-default navbar-fixed-top sb-slide cabin">
 
-        <div id="resumen">
-            <div id="rfp_view" style="display: none;text-align:center">
+        <div id="resumen" class="cabin">
+            <div id="rfp_view" style="display: none;text-align:left">
 
                 <div >
-                    <form ng-submit="validarDatosEvento()">
-                    <h1>Ingresa los datos de tu evento</h1>
+                    <form ng-submit="validarDatosEvento()" class="cabin">
+                    <br>
+                    <br>
+                    <h1 class="center">Ingresa los datos de tu evento</h1>
+                    <br>  
                     <table style="margin-left:auto;margin-right:auto">
                         <tr>
                             <td>Nombre</td>
@@ -40,7 +43,7 @@
 
                         </tr>
                         <tr>
-                            <td style="vertical-align:middle">Habitaciones Sencillas</td>
+                            <td style="vertical-align:middle" ng-show="configuracionHabitacionesSencillas.length>0">Habitaciones Sencillas</td>
                             <td>
                                 <div ng-repeat="day in configuracionHabitacionesSencillas" style="float:left">
                                         {{day.fecha | date:'dd/MM'}}<br/>
@@ -50,7 +53,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td style="vertical-align:middle">Habitaciones Dobles</td>
+                            <td style="vertical-align:middle" ng-show="configuracionHabitacionesDobles.length>0">Habitaciones Dobles</td>
                             <td>
                                 <div ng-repeat="day in configuracionHabitacionesDobles" style="float:left">
                                     {{day.fecha | date:'dd/MM'}}<br>
@@ -68,20 +71,28 @@
                                                       ng-model="rfp.comentarios"></textarea></td>
                         </tr>
                     </table>
-
-                    <button type="submit">Siguiente</button>
-
+                    <div>
+                    <button type="submit"  class="btn-reserva hand"  style="float:right;margin-right:25px;">Siguiente</button>
+                    <div>
 
                         </form>
                 </div>
 
 
             </div>
-            <div id="salones_view" style="display: none;text-align:center" >
-                <h1>Eventos Programados</h1> 
-                <a href="javascrip:void(0)" ng-click="agregarEventoSalon();">
-                    <h2>[+]Ingresa un nuevo evento</h2></a>
-                    <div id="accordion-container">
+            <div id="salones_view" style="display: none;text-align:center;height:100%;" >
+                <br>
+                <br>    
+                <div href="javascrip:void(0)" >
+                    <div><h1 class="cabin">Eventos Programados</h1> </div>
+                    <div style="float:right;margin-right:25px;margin-top:-25px;"> <a class="btn-reserva" style="height:10px;" href="#" ng-click="agregarEventoSalon();"><pre style="margin-top:-8px;">Agregar Evento</pre></a></div>
+                    </div>
+
+
+                    <div class="clear"/>
+                    <br>
+                    <br>   
+                    <div id="accordion-container" ng-show="rfp.salones.length>0">
                         <div id="newSalon" style="width: 750px;" ng-repeat="currentSalon in rfp.salones">
                             <a href="javascript:void(0)" ng-click="eliminarSalon(currentSalon)" style="float: right;"><br/>Eliminar&nbsp;&nbsp;&nbsp;</a>
                             <a href="javascript:void(0)" ng-click="clonarSalon(currentSalon)" style="float: right;"><br> Clonar&nbsp;&nbsp;&nbsp;</a>
@@ -182,13 +193,20 @@
                             </div>
                          </div>
 
-                   
-                <button onclick=" $.fancybox.prev();">Regresar</button> <button
-                                                                          ng-click="validarDatosSalones();">Siguiente</button>
+                <br>
+                <div style="height:60%" ng-show="rfp.salones==null || rfp.salones.length==0"></div>
+                <div style="float:left;margin-left:25px;"><a onclick=" $.fancybox.prev();"  class="btn-reserva hand">Regresar</a>
+                </div>
+                    
+                <div style="float:right;margin-right:25px;">
+                    <a  class="btn-reserva hand" style="float:right;margin-right:25px;"
+                                                                          ng-click="validarDatosSalones();">Siguiente</a> </div>
+                
+                
 
             </div>
 
-            <div id="rfp_seleccion" style="display: none; text-align: center;">
+            <!--div id="rfp_seleccion" style="display: none; text-align: center;">
                 <h1>Mi selección</h1>
                 <table >
                     <tr ng-repeat="selh in hotelesSeleccionados">
@@ -199,14 +217,18 @@
                     </tr>
 
                 </table>
-                <br /> <br /> <br /> <button onclick=" $.fancybox.prev();">Regresar</button>
-                <button  onclick=" $.fancybox.next();">Siguiente</button>
+                <br /> <br /> 
+               
+                <button style="float:left;margin-left:25px;" onclick=" $.fancybox.prev();">Regresar</button>
+                <button  style="float:right;margin-right:25px;" onclick=" $.fancybox.next();">Siguiente</button>
 
-            </div>
+            </div-->
 
-            <div id="datos_contacto" style="display: none; text-align: center;">
-                <h1>Datos del Cliente</h1>
-                <form ng-submit="rfp_create()">
+            <div id="datos_contacto" style="display: none; text-align: left;">
+                <br><br>
+                <h1 class="cabin center" >Datos del Cliente</h1>
+                <br><br>
+                <form ng-submit="rfp_create()" class="cabin">
                     <table style="margin: 0px auto">
                         <tr>
                             <td><label>Nombre Completo <span class="red">*</span></label></td>
@@ -225,8 +247,8 @@
                                        placeholder="Ej. 04455565811"></td>
                         </tr>
                         <tr>
-                            <td><label>Empresa <span class="red"></span></label></td>
-                            <td><input type="text" ng-model="rfp.empresa"
+                            <td><label>Empresa <span class="red">*</span></label></td>
+                            <td><input type="text" ng-model="rfp.empresa" required
                                        placeholder="Empresa donde laboras"></td>
                         </tr>
                         <tr>
@@ -236,22 +258,22 @@
                         </tr>
                         <tr>
                             <td><label>País:</label></td>
-                            <td><input type="text"  
+                            <td><input type="text"   placeholder="Ej. Mexico"
                                        ng-model="rfp.paisText" /></td>
                         </tr>
                         <tr>
                             <td><label>Estado:</label></td>
-                            <td><input type="text" ng-model="rfp.estadoText" />
+                            <td><input type="text" ng-model="rfp.estadoText" placeholder="Ej. Distrito Federal"/>
                             </td>
                         </tr>
                         <tr>
                             <td><label>Ciudad:</label></td>
-                            <td><input type="text" ng-model="rfp.ciudadText" />
+                            <td><input type="text" ng-model="rfp.ciudadText" placeholder="Ej. Miguel Hidalgo"/>
                             </td>
                         </tr>
                     </table>
-                    <br /> <br /> <br /> <button onclick=" $.fancybox.prev();">Regresar</button>
-                    <button type="submit" >Solicitar Cotización</button> 
+                    <br /> <br /> <br /> <button onclick=" $.fancybox.prev();" class="btn-reserva hand" style="float:left;margin-left:25px;">Regresar</button>
+                    <button class="btn-reserva hand" type="submit" style="float:right;margin-right:25px;">Solicitar Cotización</button> 
                     
                 </form>
             </div>
@@ -271,7 +293,7 @@
             <h1>Gracias por usar el servicio de YoPlanner!</h1>
             <br />
             
-            <button onclick="window.location='/'">Aceptar</button>
+            <button onclick="window.location='/'" class="btn-reserva hand">Aceptar</button>
                 </div>
         </div>
 
