@@ -9,10 +9,9 @@
 
                 <div >
                     <form ng-submit="validarDatosEvento()" class="cabin">
-                    <br>
-                    <br>
-                    <h1 class="center">Ingresa los datos de tu evento</h1>
-                    <br>  
+                    <br><br>
+                    <h1 class="htl-name" style="text-align:center;">Ingresa los datos de tu evento</h1>
+                    <br> 
                     <table style="margin-left:auto;margin-right:auto">
                         <tr>
                             <td>Nombre</td>
@@ -66,9 +65,9 @@
                                 Adicionales</td>
                         </tr>
                         <tr>
-                            <td colspan="2"><textarea id="rfp.comentarios" cols="50"
+                            <td colspan="2"><textarea id="rfp.comentarios" cols="50" style="height:70px;"
                                                       placeholder="Preguntas, dudas, solicitudes especiales..."
-                                                      ng-model="rfp.comentarios"></textarea></td>
+                                                      ng-model="rfp.comentarios" ></textarea></td>
                         </tr>
                     </table>
                     <div>
@@ -84,14 +83,14 @@
                 <br>
                 <br>    
                 <div href="javascrip:void(0)" >
-                    <div><h1 class="cabin">Eventos Programados</h1> </div>
-                    <div style="float:right;margin-right:25px;margin-top:-25px;"> <a class="btn-reserva" style="height:10px;" href="#" ng-click="agregarEventoSalon();"><pre style="margin-top:-8px;">Agregar Evento</pre></a></div>
+                    <div><h1 class="htl-name" style="text-align:center;">Eventos Programados</h1> </div>
+                    <div style="float:right;margin-right:25px;margin-top:-50px;"> <a class="btn-reserva" style="height:10px;" href="#" ng-click="agregarEventoSalon();"><pre style="margin-top:-8px;">Agregar Evento</pre></a></div>
                     </div>
 
 
                     <div class="clear"/>
                     <br>
-                    <br>   
+                    
                     <div id="accordion-container" ng-show="rfp.salones.length>0">
                         <div id="newSalon" style="width: 750px;" ng-repeat="currentSalon in rfp.salones">
                             <a href="javascript:void(0)" ng-click="eliminarSalon(currentSalon)" style="float: right;"><br/>Eliminar&nbsp;&nbsp;&nbsp;</a>
@@ -186,7 +185,7 @@
                        <div class="clear"/>
 
                     <br /><label  class="label">Comentarios Adicionales</label><br />
-                    <textarea id="rfp_salon_comadicionales" cols="70"
+                    <textarea id="rfp_salon_comadicionales" cols="70" style="height:70px;"
                               ng-model="currentSalon.comentarios"></textarea>
                 </section>
             </div>
@@ -226,7 +225,7 @@
 
             <div id="datos_contacto" style="display: none; text-align: left;">
                 <br><br>
-                <h1 class="cabin center" >Datos del Cliente</h1>
+                <h1 class="htl-name" style="text-align:center;" >Datos del Cliente</h1>
                 <br><br>
                 <form ng-submit="rfp_create()" class="cabin">
                     <table style="margin: 0px auto">
