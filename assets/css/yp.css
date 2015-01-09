@@ -173,3 +173,6 @@ cursor: hand;
 .alert-danger hr{border-top-color:#e4b9c0}
 .alert-danger .alert-link{color:#843534}
 
+.label{
+    font-weight: bolder;
+}

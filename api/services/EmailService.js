@@ -16,8 +16,8 @@ exports.sendEmail = function(options){
        from: "Notificación ✔ YoPlanner <oscarvegar@gmail.com>", // sender address.  Must be the same as authenticated user if using Gmail.
        to: "daniel.muller@yoplanner.com,oscarman2001@hotmail.com", // receiver
        subject: options.subject,//"RFP Recibida ✔", // subject
-       text: options.text // body
-        
+       text: options.text, // body
+       html: options.html
     }, function(error, info){  //callback
        if(error){
            console.log(error);

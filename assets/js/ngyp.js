@@ -2,7 +2,8 @@ var server = "";
 
 //server = "http://localhost:1337";
 angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','yp-hoteles','yp-rfp','cgNotify','ngCookies'])
-.controller('RecintosController', ["$scope","$http","$sce","$filter","notify","$cookieStore",function($scope,$http,$sce,$filter,notify,$cookieStore) {
+
+.controller('RecintosController', ["$scope","$http","$sce","$filter","notify","$cookieStore","$timeout",function($scope,$http,$sce,$filter,notify,$cookieStore,$timeout) {
     $scope.divideTipoHabitaciones = function(tipo,arre){
     	var res = [];
     	for(i in arre){
@@ -35,12 +36,18 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     $scope.showMostrarMas = false;
     $scope.searchClass = "buscadorIni";
     $scope.footerClass = "footerIni";
+    if($scope.rfp.salones){
+    	for(var i in $scope.rfp.salones)
+    		$timeout(function(){$scope.refrescarSalones(i)}, 3000);
+    }
+    
     /*
     $scope.rfp.paisText = "México";
     $scope.rfp.nombreCliente = "oscar";
     $scope.rfp.email = "osc@fo.com";
     $scope.rfp.telefonoContacto = "5544556677";*/
     $scope.currentPage = 0;
+    console.log($scope.rfp);
     $scope.search = function() {
         if($scope.searchId==null)return;
         $scope.showLoader = true;
@@ -358,6 +365,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     };
 
     $scope.existeEnSeleccion = function(hotel){
+    	if(hotel==null)return;
         for(var i=0;i<$scope.hotelesSeleccionados.length;i++){
             if(hotel.id == $scope.hotelesSeleccionados[i].id){
                 return i;
@@ -428,19 +436,6 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     };
 
     $scope.validarDatosSalones = function(){
-        for(var i=0;i<rfp.salones.length;i++){
-            var salon = rfp.salones[i];
-            if(salon.fecha.getTime() < rfp.fechaInicial.getTime()){
-                alert("La fecha para el salón no puede ser menor a la fecha de entrada","error");
-                return;
-            }
-            if(salon.fecha.getTime() > rfp.fechaFinal.getTime()){
-                alert("La fecha para el salón no puede ser mayor a la fecha de salida.","error");
-                return;
-            }
-        }
-        $scope.rfp.salones = rfp.salones;
-        console.log($scope.rfp.salones);
         window.localStorage.setItem('rfp',JSON.stringify($scope.rfp));
         $.fancybox.next();
     };
@@ -504,7 +499,66 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     		$scope.footerClass = "footerIni";
     }
 
+    //$scope.salonesModificados = [];
+    $scope.agregarEventoSalon = function(){
+    	var newObj = {};
+    	newObj.fecha = moment($scope.rfp.fechaInicial).format('DD-MM-YYYY')
+    	$scope.rfp.salones.push(newObj);
+    	//$scope.salonesModificados.push($scope.rfp.salones.length-1);
+    	$timeout(function(){$scope.refrescarSalones($scope.rfp.salones.length-1)}, 300);
+    	//$timeout(setDatePickers(),333)
+    }
+
+    $scope.clonarSalon = function(salon){
+		$scope.rfp.salones.push(angular.copy(salon));
+		$timeout(function(){$scope.refrescarSalones($scope.rfp.salones.length-1)}, 300);
+    }
+
+    $scope.eliminarSalon = function(salon){
+    	for(var i in $scope.rfp.salones){
+    		if($scope.rfp.salones[i]==salon){
+    			$scope.rfp.salones.splice(i,1);
+    			return;
+    		}
+    	}
+    }
+
+   
+    $scope.refrescarSalones = function(idx){
+    	
+    		console.log(idx);
+    		$('.rfp_salon_horaInicio'+idx).timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
+    		$('.rfp_salon_horaFin'+idx).timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
+
+    		
+	 		//$(".rfp_salon_horaFin0").timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
+    		
+    		$("#selectConfigSalon"+idx).selectator({
+				showAllOptionsOnFocus: true,
+				labels: {
+					search: 'Buscar...'
+				}
+			});
+
+			$("#selectConfigTipo"+idx).selectator({
+				showAllOptionsOnFocus: true,
+				labels: {
+					search: 'Buscar...'
+				}
+			});
+
+    		setDatePickers()
+			bindAccordion()
+    	
 
 
-
-}]);
+    	//$scope.salonesModificados = [];
+    }
+}]).directive('repeatDone', function() {
+      return function(scope, element, attrs) {
+          if (scope.$last) {
+            scope.$eval(attrs.repeatDone);
+          }
+        
+      }
+    });

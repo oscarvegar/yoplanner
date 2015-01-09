@@ -111,6 +111,24 @@ function setDatePickers(){
 	});
 }
 
+function setTimePickers(clase){
+	var dat = new Date();
+    dat.setDate(dat.getDate() + 1);
+   
+	$('.datepicker').pikaday({ 
+		format: 'DD-MM-YYYY',
+		minDate:  dat,
+		i18n: {
+            previousMonth : 'Mes Anterior',
+            nextMonth     : 'Mes Siguiente',
+            months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+            weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+            weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab']
+        }
+			
+	});
+}
+
 function showCotizar(){
     setDatePickers();
 	$.fancybox([
@@ -151,17 +169,23 @@ function agregarSalon(){
 		}
 	});*/
 	$newTab.find("#rfp_tipoEvento").val(1);
-	 $newTab.find("#rfp_salon_horaInicio").timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
-	 $newTab.find("#rfp_salon_horaFin").timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
-	var $slcConf = $("#tmpSlcConfigSalon").find("#selectConfig").clone();
+	 
+	var $slcConf = $("#tmpSlcConfigSalon").find("#selectConfigSalon").clone();
+	var $slcConfTip = $("#tmpSlcConfigTipo").find("#selectConfigTipo").clone();
 	$newTab.find("#tdConfSalon").append($slcConf);
-	$newTab.find("#tdConfSalon").find("#selectConfig").selectator({
+	$newTab.find("#tdConfSalon").find("#selectConfigSalon").selectator({
 		showAllOptionsOnFocus: true,
 		labels: {
 			search: 'Buscar...'
 		}
 	});
-	
+	$newTab.find("#tdConfTipo").append($slcConfTip);
+	$newTab.find("#tdConfTipo").find("#selectConfigTipo").selectator({
+		showAllOptionsOnFocus: true,
+		labels: {
+			search: 'Buscar...'
+		}
+	});
 
 	currentSalon = {tipoSalon:{},tipoEvento:{}};
 	$acHeader.data("salon",currentSalon); 
@@ -183,60 +207,9 @@ function armaServicios(seleccion){
 	return servicios;
 }
 
-function eliminarEvento($evento){
-	var delSalon = $evento.next().next().data("salon");
-	for(var i=0;i<rfp.salones.length;i++){
-		if(delSalon == rfp.salones[i])
-			rfp.salones.splice( i, 1 );
-	}
-	$evento.parent().remove();
-}
 
-function clonarEvento($evento){
-	
 
-	var $newTab = $evento.parent().clone();
-	
-	var $acHeader = $newTab.find(".accordion-header");
-	
-	//var $currSServ = $newTab.find("#tdServicios").find("#selectator_selectServicios");
-	
-	/*$newTab.find("#tdServicios").find("#selectServicios").selectator({
-		chosenItems: [1,2],
-		showAllOptionsOnFocus: true,
-		labels: {
-			search: 'Buscar...'
-		}
-	});
 
-	$currSServ.remove();*/
-	
-	$newTab.find("#tdConfSalon").find("#selectator_selectConfig").remove();
-	$newTab.find("#tdConfSalon").find("#selectConfig").val($evento.parent().find("#selectConfig").val());
-	$newTab.find("#tdConfSalon").find("#selectConfig").selectator({
-		showAllOptionsOnFocus: true,
-		labels: {
-			search: 'Buscar...'
-		}
-	});
-	 $newTab.find("#rfp_tipoEvento").val($evento.parent().find("#rfp_tipoEvento").val());
-	 $newTab.find("#rfp_salon_horaInicio").val($evento.parent().find("#rfp_salon_horaInicio").val());
-	 $newTab.find("#rfp_salon_horaInicio") .timepicker({"step":30,'timeFormat': 'H:i' });
-	 $newTab.find("#rfp_salon_horaFin").val($evento.parent().find("#rfp_salon_horaFin").val());
-	 $newTab.find("#rfp_salon_horaFin") .timepicker({"step":30,'timeFormat': 'H:i' });
-	 $newTab.find("#rfp_salon_comadicionales").val($evento.parent().find("#rfp_salon_comadicionales").val());
-	
-
-	currentSalon = JSON.parse(JSON.stringify(currentSalon));
-	currentSalon.fecha = parseDate($newTab.find("#rfp_salon_fecha").val());
-	$acHeader.data("salon",currentSalon); 
-	$("#accordion-container").append($newTab);
-	rfp.salones.push(currentSalon);
-	bindAccordion();
-
-	setDatePickers();
-
-}
 
 function validarDatosEvento(){
 	if(rfp.fechaInicial == null || rfp.fechaFinal == null){
