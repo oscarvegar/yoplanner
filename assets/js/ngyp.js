@@ -437,6 +437,10 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     };
 
     $scope.validarDatosSalones = function(){
+        
+        for(var i in $scope.rfp.salones){
+        	$scope.rfp.salones[i].fecha = parseDate($scope.rfp.salones[i].fechaStr);
+        }
         window.localStorage.setItem('rfp',JSON.stringify($scope.rfp));
         $.fancybox.next();
     };

@@ -16,7 +16,8 @@ module.exports = {
         },
         tipoEvento:{
         	model:'tipoEvento'
-        }
+        },
+        fecha:'date'
     }
 };
 
