@@ -40,7 +40,16 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     	for(var i in $scope.rfp.salones)
     		$timeout(function(){$scope.refrescarSalones(i)}, 3000);
     }
-    
+
+    var urlParams = {}
+	location.search.substr(1).split("&").forEach(function(item) {urlParams[item.split("=")[0]] = item.split("=")[1]})
+    if(urlParams.hid!=null){
+    	$http.get(server+"/recinto/findById/"+urlParams.hid).success(function(data){
+    		console.log(data);
+    		$scope.currentHotel = data.hotels[0];
+    		$scope.selectResult($scope.currentHotel);
+    	});
+    }
     /*
     $scope.rfp.paisText = "México";
     $scope.rfp.nombreCliente = "oscar";
@@ -385,6 +394,10 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     // gives another movie array on change
     $scope.updateMovies = function(typed){
         // MovieRetriever could be some service returning a promise
+        if(typed.length==0){
+        	$scope.movies  =  [];
+        	return;
+        }
         if(typed.length<4)return;
         $http.get(server+"/search/cities/"+typed).success(function(data){
             $scope.movies  =  [];

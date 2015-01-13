@@ -11,14 +11,26 @@ module.exports = {
     findByRFP: function(req,res){
         params = req.allParams();
         RFP.findOne({id:params.rfp}).populate('recintos').exec(function(err,data){
-            console.log(err);
-            console.log(data);
             if(err)console.log(err);
             return res.json(data.recintos);
         });
     },
+    findById: function(req,res){
+        var params = req.allParams();
+        var id = params.id;
+        var options = {
+            hostname : "api.despegar.com",
+            path : "/hotels/"+id,
+            headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
+        };
+        // Start the request
+        HttpClientService.httpsGET(options,function(response){
+            return res.json(JSON.parse(response));
+        });
+
+    },
     findByCiudadId: function(req,res){
-        var hotelesVendidos = {PCM:[352782,353356]};
+        var hotelesVendidos = {PCM:[{hid:352782,fotoPrincipal:"10e328ef-a102-4387-aaaa-65cf86d20d10"},{hid:353356,fotoPrincipal:null}]};
         var hotelesProspecto = {MEX:[291554,642043,572877]};
         var resSize = 11;
         var id = req.allParams().id;
@@ -35,18 +47,16 @@ module.exports = {
                 var p = 0;
                 if(req.param('p')){
                     p = req.param('p');
-                    console.log(p);
                     if(parseInt(p)==1){
-                        console.log("p es uno");
                         for(var i in hotelesProspecto[id]){
-                            ids += hotelesProspecto[id][i]+",";
+                            ids += hotelesProspecto[id][i].hid+",";
                         }
                     }
                     resSize = 12;
                 }else if(hotelesVendidos[id]){
                     if(hotelesVendidos[id].length>0){
                         for(var i in hotelesVendidos[id]){
-                            ids += hotelesVendidos[id][i]+",";
+                            ids += hotelesVendidos[id][i].hid+",";
                         }
                     }
                 }
@@ -72,10 +82,13 @@ module.exports = {
                     //logica para hoteles vendidos
                     if(hotelesVendidos[id]){
                         for(var i=0;i<hotelesVendidos[id].length;i++){
-
+                            
                             for(var j in hoteles.hotels){
-                                if(hoteles.hotels[j].id==hotelesVendidos[id][i]){
+                                if(hoteles.hotels[j].id==hotelesVendidos[id][i].hid){
                                     var hot = hoteles.hotels[j];
+                                    if(hotelesVendidos[id][i].fotoPrincipal!=null){
+                                        hot.fotoPrincipal = hotelesVendidos[id][i].fotoPrincipal;
+                                    }
                                     hoteles.hotels.splice(j,1);
                                     arrResHot.push(hot);
                                     break;
@@ -85,8 +98,6 @@ module.exports = {
                         hoteles.hotels = arrResHot.concat(hoteles.hotels);
                     }
                     if(p==1 && hotelesProspecto[id]){
-                        console.log(hoteles.hotels.length);
-                        console.log((hoteles.hotels.length-hotelesProspecto[id].length));
                         hoteles.hotels.splice((hoteles.hotels.length-hotelesProspecto[id].length-1),hotelesProspecto[id].length);
                     }
                     res.json(hoteles);
