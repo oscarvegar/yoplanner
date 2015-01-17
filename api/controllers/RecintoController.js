@@ -49,7 +49,7 @@ module.exports = {
                     p = req.param('p');
                     if(parseInt(p)==1){
                         for(var i in hotelesProspecto[id]){
-                            ids += hotelesProspecto[id][i].hid+",";
+                            ids += hotelesProspecto[id][i]+",";
                         }
                     }
                     resSize = 12;
@@ -98,6 +98,11 @@ module.exports = {
                         hoteles.hotels = arrResHot.concat(hoteles.hotels);
                     }
                     if(p==1 && hotelesProspecto[id]){
+                        console.log(id)
+                        console.log(hoteles.hotels)
+                        console.log(hoteles.hotels.length)
+                        console.log(hotelesProspecto[id])
+                        console.log(hotelesProspecto[id].length)
                         hoteles.hotels.splice((hoteles.hotels.length-hotelesProspecto[id].length-1),hotelesProspecto[id].length);
                     }
                     res.json(hoteles);
