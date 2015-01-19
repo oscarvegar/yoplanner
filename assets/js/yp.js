@@ -72,12 +72,13 @@ $(document).ready(function(){
     
 });	
 
-
+var pickerIni, pickerFin;
 function setDatePickers(){
 	var dat = new Date();
     dat.setDate(dat.getDate() + 1);
    
-	$('.datepicker').pikaday({ 
+	pickerIni = new Pikaday({ 
+		field: $('#rfp_fechaInicial')[0],
 		format: 'DD-MM-YYYY',
 		minDate:  dat,
 		i18n: {
@@ -87,8 +88,22 @@ function setDatePickers(){
             weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
             weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab']
         }
-			
-	});
+
+	 });
+
+	pickerFin = new Pikaday({ 
+		field: $('#rfp_fechaFinal')[0],
+		format: 'DD-MM-YYYY',
+		minDate:  dat,
+		i18n: {
+            previousMonth : 'Mes Anterior',
+            nextMonth     : 'Mes Siguiente',
+            months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+            weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+            weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab']
+        }
+
+	 });
 }
 function setDatePickersEvt(min,max){
 	var dat = new Date();
@@ -109,23 +124,6 @@ function setDatePickersEvt(min,max){
 	});
 }
 
-function setTimePickers(clase){
-	var dat = new Date();
-    dat.setDate(dat.getDate() + 1);
-   
-	$('.datepicker').pikaday({ 
-		format: 'DD-MM-YYYY',
-		minDate:  dat,
-		i18n: {
-            previousMonth : 'Mes Anterior',
-            nextMonth     : 'Mes Siguiente',
-            months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
-            weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
-            weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab']
-        }
-			
-	});
-}
 
 function showCotizar(){
     setDatePickers();

@@ -413,7 +413,12 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     };
 
     $scope.muestraCuadritos = function(){
-        if($scope.fechaInicialFor && $scope.fechaFinalFor){
+    	if($scope.fechaInicialFor && !$scope.fechaFinalFor){
+			//$scope.fechaFinalFor = $scope.fechaInicialFor;
+			
+			pickerFin.gotoDate(pickerIni.getDate());
+		}
+        else if($scope.fechaInicialFor && $scope.fechaFinalFor){
             $scope.rfp.fechaInicial = parseDate($scope.fechaInicialFor);
             $scope.rfp.fechaFinal = parseDate($scope.fechaFinalFor);
             var totalDias = parseInt(($scope.rfp.fechaFinal.getTime() - $scope.rfp.fechaInicial.getTime())/86400000);
