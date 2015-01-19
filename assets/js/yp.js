@@ -33,27 +33,7 @@ function checkCookie(cname) {
     return false;
 }
 
-function alert(text,tipo){
-	if(tipo == "info" || tipo == null){
-		$("#box_icon").attr('src',"../img/icon/notice.png");
-	}else if(tipo == "error"){
-		$("#box_icon").attr('src',"../img/icon/error.png");
-	}else if(tipo == "warn"){
-		$("#box_icon").src="../img/icon/warning.png";
-	}else if(tipo == "success"){
-		$("#box_icon").src="../img/icon/success.png";
-	}
-	$("#box_messages").html("");
-	if(text instanceof Array){
-		for(var i=0;i<text.length;i++){
-			$("#box_messages").append("<li>"+text[i]+"</li>");
-		}
-	}else
-		$("#box_messages").append("<li>"+text+"</li>");
-	$('#box').bounceBoxShow();
-	setTimeout(function() { $('#box').bounceBoxHide(); }, 2000);
 
-}
 
 
 $(document).ready(function(){
@@ -100,6 +80,24 @@ function setDatePickers(){
 	$('.datepicker').pikaday({ 
 		format: 'DD-MM-YYYY',
 		minDate:  dat,
+		i18n: {
+            previousMonth : 'Mes Anterior',
+            nextMonth     : 'Mes Siguiente',
+            months        : ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+            weekdays      : ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+            weekdaysShort : ['Dom','Lun','Mar','Mie','Jue','Vie','Sab']
+        }
+			
+	});
+}
+function setDatePickersEvt(min,max){
+	var dat = new Date();
+    dat.setDate(dat.getDate() + 1);
+   
+	$('.datepickerEvt').pikaday({ 
+		format: 'DD-MM-YYYY',
+		minDate:  min,
+		maxDate:  max,
 		i18n: {
             previousMonth : 'Mes Anterior',
             nextMonth     : 'Mes Siguiente',

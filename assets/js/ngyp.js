@@ -434,16 +434,16 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
     $scope.validarDatosEvento = function(){
         if($scope.rfp.fechaInicial == null || $scope.rfp.fechaFinal == null){
-            alert("Las fechas son obligatorias.","error");
+            alert("Las fechas son obligatorias.");
             return;
         }if($scope.rfp.fechaFinal.getTime() < $scope.rfp.fechaInicial.getTime()){
-            alert("La fecha final no puede ser menor a la fecha inicial.","error"); 
+            alert("La fecha final no puede ser menor a la fecha inicial."); 
             return;
         }
         rfp.fechaInicial = $scope.rfp.fechaInicial;
         rfp.fechaFinal = $scope.rfp.fechaFinal;
          $scope.rfp.configuracionHabitaciones = $scope.configuracionHabitacionesSencillas.concat($scope.configuracionHabitacionesDobles);
-
+         setDatePickersEvt($scope.rfp.fechaInicial,$scope.rfp.fechaFinal)
         window.localStorage.setItem('rfp',JSON.stringify($scope.rfp));
         $.fancybox.next();
 
@@ -523,7 +523,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     		$scope.rfp.salones = []
     	}
     	var newObj = {};
-    	newObj.fecha = moment($scope.rfp.fechaInicial).format('DD-MM-YYYY')
+
+    	newObj.fechaStr = moment($scope.rfp.fechaInicial).format('DD-MM-YYYY')
     	$scope.rfp.salones.push(newObj);
     	//$scope.salonesModificados.push($scope.rfp.salones.length-1);
     	$timeout(function(){$scope.refrescarSalones($scope.rfp.salones.length-1)}, 300);
@@ -568,7 +569,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 				}
 			});
 
-    		setDatePickers()
+    		setDatePickersEvt($scope.rfp.fechaInicial,$scope.rfp.fechaFinal)
 			bindAccordion()
     	
 

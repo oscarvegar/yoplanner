@@ -38,6 +38,7 @@ module.exports = {
     },
     afterCreate : function(rfp,next){
         var options = {};
+        options.to = rfp.email,
         options.subject = "RFP Recibida ✔";
         options.html = "<html><br>Buen Día! \
         <br><br> \

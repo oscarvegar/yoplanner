@@ -112,7 +112,7 @@
                             <div style="float:left;padding-left:10px;">
                                 <label class="label">Fecha</label><br>
                                 <input id="rfp_salon_fecha" type="text" readonly
-                                       type="text" class="datepicker"
+                                       type="text" class="datepickerEvt"
                                        ng-model="currentSalon.fechaStr" size="20">
                             </div>
                             <!-- <td><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
@@ -277,22 +277,15 @@
                 </form>
             </div>
         </div>
-        <div id="gracias" style="display: none;">
-            <h1>¡Gracias!</h1>
+        <div id="gracias" style="display: none;text-align:center;">
+            <img src="img/HotelesYoPlanner.png" ></img>
             <br />
-            <h2>En menos de 24 hrs. un asesor YoPlanner se pondrá en
-                contacto contigo.</h2>
-            <br />
-            <h3>
-                Tu folio es el número <span id="folioRFP"
-                                            style="font-size: xx-large; color: navy;">{{folioFinal.substring(folioFinal.length-6)}}</span>, guárdalo para futuras referencias.
-            </h3>
-            <div style="text-align:center">
-            <br />
-            <h1>Gracias por usar el servicio de YoPlanner!</h1>
+            <h1>Solicitud enviada correctamente con el folio <span id="folioRFP"
+                                            style="font-size: xx-large; color: navy;">{{folioFinal.substring(folioFinal.length-6)}}</span> consérvalo para futuras referencias. <br>Hemos enviado una notificación a tu correo electrónico.</h1>
             <br />
             
-            <button onclick="window.location='/'" class="btn-reserva hand">Aceptar</button>
+            <div style="text-align:center">
+            <button onclick="window.location='/'" class="btn hand" style="text-align:center;">Aceptar</button>
                 </div>
         </div>
 
