@@ -91,6 +91,10 @@ module.exports.bootstrap = function(cb) {
 			Montaje.create({id:9,description:"Otro"}).exec(console.log);
 	});
 	
+	Config.find({key:"defaultGPost"}).exec(function(err,data){
+		if(data.length == 0)
+			Config.create({key:"defaultGPost",value:"https://plus.google.com/113624413123385492768/posts/gXtfiJkXv1a"}).exec(console.log);
+	});
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)

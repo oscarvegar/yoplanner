@@ -33,7 +33,7 @@ module.exports = {
     },
     findByCiudadId: function(req,res){
         var hotelesVendidos = {PCM:[{hid:352782 ,fotoPrincipal:URL_PICTURES+"10e328ef-a102-4387-aaaa-65cf86d20d10"},{hid:353356,fotoPrincipal:null}]};
-        var hotelesProspecto = {MEX:[{hid:291554},{hid:642043},{hid:572877}],CUN:[{hid:681932,fotoPrincipal:URL_CUSTOM_PICTURES+"681932/Four Points Cancun.jpg",customPictures:["681932/Four Points Cancun.jpg","681932/Four Points Cancun 2.jpg"]}]};
+        var hotelesProspecto = {MEX:[{hid:291554},{hid:642043},{hid:572877}],CUN:[{hid:681932,customPost:"https://plus.google.com/113624413123385492768/posts/bdoPUUzwCmw",fotoPrincipal:URL_CUSTOM_PICTURES+"681932/Four Points Cancun.jpg",customPictures:["681932/Four Points Cancun.jpg","681932/Four Points Cancun 2.jpg"]}]};
         var resSize = 11;
         var id = req.allParams().id;
         var options = {
@@ -111,6 +111,10 @@ module.exports = {
                                     var hot = hoteles.hotels[j];
                                     if(hotelesProspecto[id][i].fotoPrincipal!=null){
                                         hot.fotoPrincipal = hotelesProspecto[id][i].fotoPrincipal;
+                                        
+                                    }
+                                    if(hotelesProspecto[id][i].customPost!=null){
+                                        hot.customPost = hotelesProspecto[id][i].customPost;
                                         
                                     }
                                     if(hotelesProspecto[id][i].customPictures!=null){

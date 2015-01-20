@@ -50,13 +50,12 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     		$scope.selectResult($scope.currentHotel);
     	});
     }
-    /*
-    $scope.rfp.paisText = "México";
-    $scope.rfp.nombreCliente = "oscar";
-    $scope.rfp.email = "osc@fo.com";
-    $scope.rfp.telefonoContacto = "5544556677";*/
     $scope.currentPage = 0;
     console.log($scope.rfp);
+    $http.get(server+'/config/param/defaultGPost').success(function(data){
+    	console.log(data)
+    	$scope.defaultGPOST = data.value;
+    });
     $scope.search = function() {
         if($scope.searchId==null)return;
         $scope.showLoader = true;
@@ -348,7 +347,14 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 			});
 		
 		}, 1000);
-        
+        var gpost = document.getElementById('gp-content');
+        gpost.innerHTML="";
+        if($scope.currentHotel.customPost!=null)
+        	gpost.innerHTML= '<div class="g-post" id="gposthotel" data-href="'+$scope.currentHotel.customPost+'"></div>';
+       	else{
+    		gpost.innerHTML= '<div class="g-post" id="gposthotel" data-href="'+$scope.defaultGPOST+'"></div>';
+    	}
+         
         if(typeof gapi !== "undefined") {
             gapi.post.go();
         }
