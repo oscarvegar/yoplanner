@@ -7,6 +7,8 @@
 //a3172e4050774a9a9bdca7f6ebe50a2f 
 //https://api.despegar.com/v3/hotels/availabilities?site=MX&checkin_date=2014-10-25&checkout_date=2014-10-30&destination=982&distribution=1&language=es&sorting=stars_descending&stars=3%2C4%2C5&pagesize=8
 ///availability/cities/{id}/hotels
+var URL_PICTURES = "http://media.staticontent.com/media/pictures/";
+var URL_CUSTOM_PICTURES = "http://yoplanner.com/img/hoteles/";
 module.exports = {
     findByRFP: function(req,res){
         params = req.allParams();
@@ -30,8 +32,8 @@ module.exports = {
 
     },
     findByCiudadId: function(req,res){
-        var hotelesVendidos = {PCM:[{hid:352782,fotoPrincipal:"10e328ef-a102-4387-aaaa-65cf86d20d10"},{hid:353356,fotoPrincipal:null}]};
-        var hotelesProspecto = {MEX:[291554,642043,572877]};
+        var hotelesVendidos = {PCM:[{hid:352782 ,fotoPrincipal:URL_PICTURES+"10e328ef-a102-4387-aaaa-65cf86d20d10"},{hid:353356,fotoPrincipal:null}]};
+        var hotelesProspecto = {MEX:[{hid:291554},{hid:642043},{hid:572877}],CUN:[{hid:681932,fotoPrincipal:URL_CUSTOM_PICTURES+"681932/Four Points Cancun.jpg",customPictures:["681932/Four Points Cancun.jpg","681932/Four Points Cancun 2.jpg"]}]};
         var resSize = 11;
         var id = req.allParams().id;
         var options = {
@@ -49,7 +51,7 @@ module.exports = {
                     p = req.param('p');
                     if(parseInt(p)==1){
                         for(var i in hotelesProspecto[id]){
-                            ids += hotelesProspecto[id][i]+",";
+                            ids += hotelesProspecto[id][i].hid+",";
                         }
                     }
                     resSize = 12;
@@ -78,6 +80,11 @@ module.exports = {
                 HttpClientService.httpsGET(options,function(resp){
                     if(resp==null)return res.json(500);
                     var hoteles = JSON.parse(resp);
+                    for(var i in hoteles.hotels){
+                        for(var j in hoteles.hotels[i].pictures){
+                            hoteles.hotels[i].pictures[j] = URL_PICTURES + hoteles.hotels[i].pictures[j];
+                        }
+                    }
                     var arrResHot = [];
                     //logica para hoteles vendidos
                     if(hotelesVendidos[id]){
@@ -98,12 +105,27 @@ module.exports = {
                         hoteles.hotels = arrResHot.concat(hoteles.hotels);
                     }
                     if(p==1 && hotelesProspecto[id]){
-                        console.log(id)
-                        console.log(hoteles.hotels)
-                        console.log(hoteles.hotels.length)
-                        console.log(hotelesProspecto[id])
-                        console.log(hotelesProspecto[id].length)
+                        for(var i=0;i<hotelesProspecto[id].length;i++){
+                            for(var j in hoteles.hotels){
+                                if(hoteles.hotels[j].id==hotelesProspecto[id][i].hid){
+                                    var hot = hoteles.hotels[j];
+                                    if(hotelesProspecto[id][i].fotoPrincipal!=null){
+                                        hot.fotoPrincipal = hotelesProspecto[id][i].fotoPrincipal;
+                                        
+                                    }
+                                    if(hotelesProspecto[id][i].customPictures!=null){
+                                        for(var k in hotelesProspecto[id][i].customPictures){
+                                            hotelesProspecto[id][i].customPictures[k] = URL_CUSTOM_PICTURES + hotelesProspecto[id][i].customPictures[k];
+                                        }
+                                        hot.pictures = hotelesProspecto[id][i].customPictures.concat(hot.pictures);
+                                        
+                                    }
+                                    break;
+                                }
+                            }
+                        }
                         hoteles.hotels.splice((hoteles.hotels.length-hotelesProspecto[id].length-1),hotelesProspecto[id].length);
+                       
                     }
                     res.json(hoteles);
                 });

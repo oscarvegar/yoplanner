@@ -3,11 +3,11 @@
     <div  ng-repeat="hotel in hotels" style="cursor: pointer;" ng-click="selectResult(hotel)">
         <div class="resultadosBig" ng-if="$index == 0">
             <h2 id="text"><span>{{hotel.name}}</span></h2>
-            <img src="http://media.staticontent.com/media/pictures/{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}">
+            <img src="{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}">
         </div>
         <div class="resultados" ng-if="$index > 0">
             <h2 id="text"><span>{{hotel.name}}</span></h2>
-            <img src="http://media.staticontent.com/media/pictures/{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}">
+            <img src="{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}">
         </div>
     </div>
     <div style="clear: both"></div>
@@ -44,7 +44,7 @@
 		<div id="flx-sldr" class="clearfix col-55">
 			<flex-slider slide="pic in currentHotel.pictures" animation="slide" slideshow="true" control-nav="false" animation-loop="false" slideshow="false" slideshowSpeed="3000">
 				<li >
-					<img ng-src="http://media.staticontent.com/media/pictures/{{pic}}">
+					<img ng-src="{{pic}}">
 				</li>
 			</flex-slider>
 		</div>
