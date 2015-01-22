@@ -57,6 +57,7 @@ module.exports = {
                 var data = JSON.parse(response);
                 var ids = "";
                 var p = 0;
+                var restaVendidos = 0;
                 if(req.param('p')){
                     p = req.param('p');
                     if(parseInt(p)==1){
@@ -67,13 +68,14 @@ module.exports = {
                     resSize = 12;
                 }else if(hotelesVendidos[id]){
                     if(hotelesVendidos[id].length>0){
+                        restaVendidos = hotelesVendidos[id].length;
                         for(var i in hotelesVendidos[id]){
                             ids += hotelesVendidos[id][i].hid+",";
                         }
                     }
                 }
                 for(var d in data.availability){
-                    if(d>=(resSize+(p*resSize)))
+                    if(d>=(resSize - restaVendidos +(p*resSize)))
                         break;
                     else if(d<(resSize*p)){
                         continue;
