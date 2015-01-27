@@ -76,11 +76,20 @@ module.exports = {
                         }
                     }
                 }
+                availability:
                 for(var d in data.availability){
                     if(d>=(resSize - restaVendidos +(p*resSize)))
                         break;
                     else if(d<(resSize*p)){
                         continue;
+                    }
+                    //verifica si ya existe el id en la consulta
+                    var items = ids.split(",");
+                    for(var s in items){
+                        if(items[s]==data.availability[d].hotel.id){
+                            resSize+=1;
+                            continue availability;
+                        }
                     }
                     ids += data.availability[d].hotel.id+",";
 
