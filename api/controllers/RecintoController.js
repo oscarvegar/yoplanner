@@ -33,6 +33,7 @@ module.exports = {
     },
     findByCiudadId: function(req,res){
         var hotelesVendidos = {
+                MEX:[{hid:291348},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
                 CVJ:[{hid:264485,fotoPrincipal:URL_PICTURES+"ffea4faa-f894-4db2-8e4b-8bfe7786c3fc"}],
                 CUN:[{hid:214327},{hid:214570},{hid:563172},{hid:214692}],
                 RM0:[{hid:214327},{hid:214572},{hid:214570},{hid:563172},{hid:214692}], 
