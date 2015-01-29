@@ -146,14 +146,18 @@
                                     <li><a href="servicios/index.html">Servicios</a></li>
                                 </ul>
                             </li>
-							<li><a href="/reservaciones">Reservar</a></li>
-							<li><a href="cruceros/index.html#black">Cruceros</a>
-								
-							</li>
+							<li><a href="">VIAJA</a>
+                                <ul class="cruceros-drop">
+                                    <li><a href="/reservaciones" >Reserva Individual</a></li>
+                                    <li><a href="/cruceros/index.html#black">Cruceros</a>
+                                    </li>
+                                </ul>
+                            </li>
+							
                             <li><a href="http://www.yoplanner.com.mx/blog/" target="_blank" style="margin-left:-50px;">Blog</a></li>
                             <li><a href="/promociones/index.html" style="margin-left:-50px;">Promociones</a></li>
                             <!--li><a href="contacto/index.html">Contacto</a></li-->
-                             <li style="width:150px;"><a href="#">Mi selección<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></a>
+                             <li style="width:150px;"><a href="#"><img src="/img/wcarrito.png" style="height:15px;witdh:15px;"/>Mi selección<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></a>
                                 <ul class="cruceros-drop" >
                                     <li ng-show="hotelesSeleccionados.length==0">No hay hoteles seleccionados</li>
                                     <li style="text-align:left" ng-repeat="selh in hotelesSeleccionados" ng-click="selectResult(selh)"  ><a href="javascript:void(0)">
@@ -181,9 +185,29 @@
    
         <div ng-show="!showInfo" id="buscadorbox" class="full-width  clearfix bg-black"  ng-class="searchClass"style="position:relative;z-index:120;">
             <div class="contenedor clearfix ">
-                <div style="float:left;margin-left:-150px;"><a class="btn-reserva"  href="#" ng-click="showResults()" ng-show="showDetail && hotels.length>0" >Regresar</a></div><div style="float:left" ng-show="showDetail"><a class="btn-reserva btn-3 "  href="reservaciones" target="javascript:void(0)"  >Reservar</a></div>
-		<div style="float:left;padding-left:50px;" ng-show="showDetail">
-		<a class="btn-reserva"  href="#" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0" >Agregar a Mi Selección</a></div>
+
+                <div class="pasosContainer">
+                    <div class="pasos" ng-show="showIndex && !showInfo"><img src="/img/search.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 1: Busca tu destino</div></div>
+              
+                    <div class="pasos" ng-show="hideResults"><img src="/img/seleccionar.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 2: Selecciona un hotel</div></div>
+                    <div ng-show="showDetail && hotels.length>0">
+                        <div>
+                        <a href="#" class="pasos regresar" ng-click="showResults()" ng-show="showDetail && hotels.length>0">
+                            <img src="/img/back.png" style="margin-left:-150px;"><div class="pasosText"></div>
+                        </a>
+                        </div>
+                        <div style="margin-top:-70px;">
+                        <a href="#" class="pasos" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0">
+                            <img src="/img/hotel.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 3: Agrega a tu selección&nbsp;&nbsp;&nbsp;<img src="/img/plus.png"style="width:25px;height:25px;"/></div>
+                        </a>
+                        </div>
+                    </div>
+
+                    
+                    
+                </div>
+                
+		
                 <div id="buscador" class="col-55">
                     <autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
                     <button ng-click="search()" ng-show="!showLoader" >Buscar</button> <img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader || false">

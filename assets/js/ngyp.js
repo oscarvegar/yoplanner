@@ -73,7 +73,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.searchId = null;
             $scope.searchClass = "buscadorRes";
     		$scope.footerClass = "footerRes";
-            document.getElementById("buscadorbox").scrollIntoView();
+            //document.getElementById("buscadorbox").scrollIntoView();
         }).error(function (err){
             console.log(err);
             $scope.showLoader = false;
