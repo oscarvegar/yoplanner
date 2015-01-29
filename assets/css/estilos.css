@@ -603,6 +603,7 @@ html body .green, html body .hover-green:hover {
     font-family: cabin;
     width: 75%;
     float: right;
+    z-index: 9999;
 }
 
 .header-menu ul li{
