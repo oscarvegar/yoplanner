@@ -1078,15 +1078,19 @@ table {
   
   /* Table reset stuff */
   border-collapse: collapse; border-spacing: 0; 
+  border-top:  2px solid black;
+  border-right:  2px solid black;
+  border-left: 2px solid black;
 }
         
-td, th {  border: 0 none; height: 30px; }
+td, th {  border: 0 none; height: 50px; }
             
 th {
   /* Gradient Background */
     background: linear-gradient(#333 0%,#444 100%);
     color: #FFF; font-weight: bold;
     height: 40px;
+    padding: 10px;
 }
         
 td { background: #FAFAFA; text-align: center; vertical-align: middle}
@@ -1099,12 +1103,16 @@ tr:nth-child(odd) td { background: #FDFDFD; }
     
 
 /* Add border-radius to specific cells! */
-tr:first-child th:nth-child(2) { 
+tr:first-child th:nth-child(1) { 
   border-radius: 5px 0 0 0; 
 } 
 
 tr:first-child th:last-child { 
   border-radius: 0 5px 0 0; 
+}
+
+tr:last-child  { 
+  border-bottom: 2px solid black;
 }
 
 

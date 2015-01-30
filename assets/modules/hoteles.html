@@ -48,7 +48,7 @@
 		<h2>Información de Salones</h2>
 		<hr class="style-round" style="width:70%;margin-left:15%;">
 	<p>
-				<table class="row header" >
+				<table class="row header" cellspacing="10">
 					<thead>
 						<th><br>Salón</th>
 						<th><br>Tamaño</th>
@@ -60,7 +60,7 @@
 						<th><br>Escuela</th>
 						<th><br>Auditorio</th>
 						<th><br>1/2 Luna</th>
-						<th><br>Imperiales</th>
+						<th><br>Imperial</th>
 					</thead>
 					<tbody>
 						<tr ng-repeat="sal in currentHotel.salones">
@@ -89,57 +89,25 @@
 			<div id="cd-zoom-out"></div>
 		</div>
 	</div>
-	<div class="contenedor">
-		<div class="clearfix">
-			<div class="col-40" id="gp-content">
+	<br>
+	<br>
+	<div >
+		<div style="margin-left:100px;">
+			<div class="col-40" id="gp-content" style="float:left;width:30%">
 				
 			</div>
 			
-			<script>
-				//gapi.post.go();
-			</script>
-			
-			
-			<div id="reviews-hotel" class="col-6">
-				<h2>Mapa de Salones</h2>
+			<div id="reviews-hotel"  style="float:left;width:60%;margin-left:100px;">
+				<h2>Video de la Propiedad</h2>
 				<hr class="style-round">
-				<div class="mapa-de-salones">
-					<img src="/img/mapa-prueba.jpg">
-				</div>
+				<div class="col-60 video-youtube">
+			<iframe width="724" height="407" src="//www.youtube.com/embed/9GdVZfIBvxQ?controls=1" frameborder="0" allowfullscreen=""></iframe>
+		</div>
 			</div>
 		</div>
 	</div>
 	
-<!--	
-    <h1>{{currentHotel.name}}</h1>
-	
-    <div >
-        <flex-slider slide="pic in currentHotel.pictures" >
-            <li>
-                <img src="http://media.staticontent.com/media/pictures/{{pic}}" width="800px" height="600px">
-            </li>
-        </flex-slider>
-    </div>
-
-
-    <p>{{currentHotel.description}}</p>
-    <br />
-    <h1 align="left">Servicios</h1>
-    <hr>
-    <ul class="detservicios">
-        <li ng-repeat="amen in currentHotel.amenities">{{amen.description}}</li>
-    </ul>
-    <div style="clear: both"></div>
-    <br>
-    <br>
-    <h1 align="left">Ubicación</h1>
-    <hr>
-    <iframe width="100%" height="500" ng-src="{{currentHotelMap}}" readonly>
-    </iframe>
-
--->
-
-
+<div style="clear:both"/>
 
 <div class="contenedor">
 	<div class="blog clearfix">
@@ -172,10 +140,8 @@ Definitivamente salir de vacaciones, ya sea  con la familia, amigos  o con la pa
 			</div>
 		</div>
 	</div>
-	<div class="contenedor redes-youtube clearfix">
-		<div class="col-60 video-youtube">
-			<iframe width="724" height="407" src="//www.youtube.com/embed/9GdVZfIBvxQ?controls=1" frameborder="0" allowfullscreen=""></iframe>
-		</div>
+	<!--div class="contenedor redes-youtube clearfix">
+		
 		<div class="col-30">
 			<div class="redes-sociales">
 				<h2 class="white">Síguenos en nuestras redes sociales</h2>
@@ -192,7 +158,7 @@ Definitivamente salir de vacaciones, ya sea  con la familia, amigos  o con la pa
 				</div>
 			</div>
 		</div>
-	</div>
+	</div-->
 </div>
 
 </div>
