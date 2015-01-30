@@ -1083,14 +1083,13 @@ table {
   border-left: 2px solid black;
 }
         
-td, th {  border: 0 none; height: 50px; }
+td, th {  border: 0 none; height: 30px; }
             
 th {
   /* Gradient Background */
     background: linear-gradient(#333 0%,#444 100%);
     color: #FFF; font-weight: bold;
-    height: 40px;
-    padding: 10px;
+    padding: 7px;
 }
         
 td { background: #FAFAFA; text-align: center; vertical-align: middle}
