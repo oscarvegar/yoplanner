@@ -17,6 +17,9 @@ module.exports = {
             collection: 'rfp',
             via: 'recintos',
             dominant:true
+        },
+        salones: {
+            collection: 'salonRecinto'
         }
     }
 };

@@ -79,6 +79,7 @@ app.directive('autocomplete', function() {
 
       // selecting a suggestion with RIGHT ARROW or ENTER
       $scope.select = function(suggestion){
+        console.log("SELECTING >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         if(suggestion){
              if(suggestion == $scope.searchParam)return;
           $scope.searchParam = suggestion.substr(suggestion.indexOf(' ')+1);
@@ -144,15 +145,7 @@ app.directive('autocomplete', function() {
         }
       }, true);
 
-      document.addEventListener("blur", function(e){
-        // disable suggestions on blur
-        // we do a timeout to prevent hiding it before a click event is registered
-        setTimeout(function() {
-          scope.select();
-          scope.setIndex(-1);
-          scope.$apply();
-        }, 200);
-      }, true);
+     
 
       element[0].addEventListener("keydown",function (e){
         var keycode = e.keyCode || e.which;

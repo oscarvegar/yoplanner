@@ -1,4 +1,4 @@
-<div ng-show="hideResults" style="width:1020px;text-align:center;margin-left:auto;margin-right:auto;" >
+<div ng-if="hideResults" style="width:1020px;text-align:center;margin-left:auto;margin-right:auto;" >
 
     <div  ng-repeat="hotel in hotels" style="cursor: pointer;" ng-click="selectResult(hotel)">
         <div class="resultadosBig" ng-if="$index == 0">
@@ -40,11 +40,46 @@
 		<div id="descripcion-hotel" class="col-40">
 			<h1 class="htl-name">{{currentHotel.name}}</h1>
 			<p class="hotel-desc">{{currentHotel.description}}</p>
+			
 		</div>
       
 	</div>
-	
-	
+	<div ng-if="currentHotel.salones!=null && currentHotel.salones.length > 0" class="full-width clearfix pad-top-0" style="text-align:center;">
+		<h2>Información de Salones</h2>
+		<hr class="style-round" style="width:70%;margin-left:15%;">
+	<p>
+				<table class="row header" >
+					<thead>
+						<th><br>Salón</th>
+						<th><br>Tamaño</th>
+						<th><br>Alto</th>
+						<th><br>Ancho</th>
+						<th><br>Herradura</th>
+						<th><br>Banquete</th>
+						<th><br>Coctel</th>
+						<th><br>Escuela</th>
+						<th><br>Auditorio</th>
+						<th><br>1/2 Luna</th>
+						<th><br>Imperiales</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="sal in currentHotel.salones">
+							<td>{{sal.nombre}}</td>
+							<td>{{sal.tamano}}</td>
+							<td>{{sal.alto}}</td>
+							<td>{{sal.ancho}}</td>
+							<td>{{sal.herradura}}</td>
+							<td>{{sal.banquete}}</td>
+							<td>{{sal.coctel}}</td>
+							<td>{{sal.escuela}}</td>
+							<td>{{sal.auditorio}}</td>
+							<td>{{sal.medialuna}}</td>
+							<td>{{sal.imperial}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</p>
+	</div>
 	<div class="full-width clearfix pad-top-0">
 		<div id="cd-google-map">
 			<!-- #google-container will contain the map  -->

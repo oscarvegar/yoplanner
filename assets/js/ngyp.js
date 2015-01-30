@@ -62,7 +62,6 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
        // $scope.searchId = $scope.searchString.split(" ")[0];
         $http.get(server+"/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
             console.log(data);
-            $scope.hotels = data.hotels;
             $scope.showIndex = false;
             $scope.showSearch = false;
             $scope.hideResults = true;
@@ -73,6 +72,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             $scope.searchId = null;
             $scope.searchClass = "buscadorRes";
     		$scope.footerClass = "footerRes";
+
+            $scope.hotels = data.hotels;
             //document.getElementById("buscadorbox").scrollIntoView();
         }).error(function (err){
             console.log(err);
@@ -364,9 +365,16 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.currentHotelMap= $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q="+$scope.currentHotel.geoLocation.latitude+","+$scope.currentHotel.geoLocation.longitude);
         $scope.hideResults = false;
         $scope.showDetail = true;
-        document.getElementById("buscadorbox").scrollIntoView();
+        if($scope.currentHotel.salones==null){
+	        $http.get("/salonrecinto/findByRecintoId/"+$scope.currentHotel.id).success(function(data){
+	        	$scope.currentHotel.salones = data;
+	        	document.getElementById("buscadorbox").scrollIntoView();
+	        }).error(function(err){
+	        	console.log(err);
+	        })
+	    }
         
-		document.getElementById("buscadorbox").scrollIntoView();
+        
     };
     $scope.agregarYRegresar = function() {
     	notify('Hotel agregado a Mi Selección');
@@ -398,13 +406,16 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
 
     // gives another movie array on change
+
     $scope.updateMovies = function(typed){
         // MovieRetriever could be some service returning a promise
+        if(new Date().getTime() - $scope.lastType < 500)return;
         if(typed.length==0){
         	$scope.movies  =  [];
         	return;
         }
         if(typed.length<4)return;
+        $scope.lastType = new Date().getTime();
         $http.get(server+"/search/cities/"+typed).success(function(data){
             $scope.movies  =  [];
             if(data.autocomplete == null)return;
