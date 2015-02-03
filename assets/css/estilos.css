@@ -787,6 +787,7 @@ html body .green, html body .hover-green:hover {
 }
 .inicio-seccion img {
     width: 100%;
+    height:100%;
 }
 .bg-black {
     position: absolute;
