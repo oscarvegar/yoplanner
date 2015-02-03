@@ -8,7 +8,7 @@
 module.exports = {
 	webhook:function(req,res){
 		console.log(">>>>> PUSH DETECTADO <<<<<");
-		res.send(200); 
+		res.send(200);
 	}
 };
 
