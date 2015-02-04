@@ -1092,8 +1092,14 @@ html body .green, html body .hover-green:hover {
     color: #FFF; font-weight: bold;
     padding: 7px;
 }
+.tablaDetalle td {
+  /* Gradient Background */
+    
+    padding: 7px;
+}
         
 .detalleHotel td { background: #FAFAFA; text-align: center; vertical-align: middle}
+.tablaDetalle td { background: #FAFAFA; text-align: left; vertical-align: middle}
 
 /* Zebra Stripe Rows */
         
