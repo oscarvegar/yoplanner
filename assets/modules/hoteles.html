@@ -37,9 +37,49 @@
 		</div>
 		
 		
-		<div id="descripcion-hotel" class="col-40">
+		<div id="descripcion-hotel" class="col-40 detalleHotel" >
 			<h1 class="htl-name">{{currentHotel.name}}</h1>
-			<p class="hotel-desc">{{currentHotel.description}}</p>
+			<div class="hotel-desc" ng-if="currentHotel.infoExtra==undefined">{{currentHotel.description}}</div>
+			<div ng-if="currentHotel.infoExtra!=undefined">
+				<table>
+					<tr>
+						<td>Total de Habitaciones</td>
+						<td>886</td>
+					</tr>
+					<tr>
+						<td>Total de Suites</td>
+						<td>74</td>
+					</tr>
+					<tr>
+						<td>Habitaciones Una Cama</td>
+						<td>568</td>
+					</tr>
+					<tr>
+						<td>Habitaciones Dos Camas</td>
+						<td>318</td>
+					</tr>
+					<tr>
+						<td>Total de Salones</td>
+						<td>14</td>
+					</tr>
+					<tr>
+						<td>Total Metros Cuadrados</td>
+						<td>3300</td>
+					</tr>
+					<tr>
+						<td>Salon Más Grande</td>
+						<td>9856</td>
+					</tr>
+					<tr>
+						<td>Máxima Capacidad en Salón</td>
+						<td>1800</td>
+					</tr>
+					<tr>
+						<td>Plan</td>
+						<td>Todo Incluido</td>
+					</tr>
+				</table>
+			</div>
 			
 		</div>
       

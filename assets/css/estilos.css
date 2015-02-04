@@ -1073,7 +1073,7 @@ html body .green, html body .hover-green:hover {
     float: left;
 }
 
-table { 
+.detalleHotel table { 
   color: #333;
   font-family: Helvetica, Arial, sans-serif;
   
@@ -1084,34 +1084,34 @@ table {
   border-left: 2px solid black;
 }
         
-td, th {  border: 0 none; height: 30px; }
+.detalleHotel td, th {  border: 0 none; height: 30px; }
             
-th {
+.detalleHotel th {
   /* Gradient Background */
     background: linear-gradient(#333 0%,#444 100%);
     color: #FFF; font-weight: bold;
     padding: 7px;
 }
         
-td { background: #FAFAFA; text-align: center; vertical-align: middle}
+.detalleHotel td { background: #FAFAFA; text-align: center; vertical-align: middle}
 
 /* Zebra Stripe Rows */
         
-tr:nth-child(even) td { background: #EEE; } 
-tr:nth-child(odd) td { background: #FDFDFD; }
+.detalleHotel tr:nth-child(even) td { background: #EEE; } 
+.detalleHotel tr:nth-child(odd) td { background: #FDFDFD; }
 
     
 
 /* Add border-radius to specific cells! */
-tr:first-child th:nth-child(1) { 
+.detalleHotel tr:first-child th:nth-child(1) { 
   border-radius: 5px 0 0 0; 
 } 
 
-tr:first-child th:last-child { 
+.detalleHotel tr:first-child th:last-child { 
   border-radius: 0 5px 0 0; 
 }
 
-tr:last-child  { 
+.detalleHotel tr:last-child  { 
   border-bottom: 2px solid black;
 }
 

@@ -20,6 +20,10 @@ module.exports = {
         },
         salones: {
             collection: 'salonRecinto'
+        },
+        infoExtra: {
+            model: 'infoExtraRecinto'
+            //via: 'recinto',
         }
     }
 };

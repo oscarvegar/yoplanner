@@ -373,6 +373,15 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 	        	console.log(err);
 	        })
 	    }
+        if($scope.currentHotel.infoExtra==null){
+	        $http.get("/infoExtraRecinto/findByRecintoId/"+$scope.currentHotel.id).success(function(data){
+	        	console.log(data)
+	        	$scope.currentHotel.infoExtra = data;
+	        	//document.getElementById("buscadorbox").scrollIntoView();
+	        }).error(function(err){
+	        	console.log(err);
+	        })
+	    }
         
         
     };
