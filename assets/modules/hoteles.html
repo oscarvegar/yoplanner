@@ -39,8 +39,8 @@
 		
 		<div id="descripcion-hotel" class="col-40" >
 			<h1 class="htl-name">{{currentHotel.name}}</h1>
-			<div class="hotel-desc" ng-if="currentHotel.infoExtra==undefined">{{currentHotel.description}}</div>
-			<div ng-if="currentHotel.infoExtra!=undefined">
+			<div class="hotel-desc" ng-if="currentHotel.infoExtra==null || currentHotel.infoExtra.length==0">{{currentHotel.description}}</div>
+			<div ng-if="currentHotel.infoExtra!=null && currentHotel.infoExtra.length>0">
 				<table class="detalleHotel tablaDetalle" cellspacing="25" >
 					<tr>
 						<td>Total de Habitaciones</td>
