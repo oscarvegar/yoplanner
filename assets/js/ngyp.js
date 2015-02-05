@@ -114,6 +114,23 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.showLoader = false;
         $scope.searchClass = "buscadorRes";
 		$scope.footerClass = "footerRes";
+		 if($scope.currentHotel.salones==null){
+	        $http.get("/salonrecinto/findByRecintoId/"+$scope.currentHotel.id).success(function(data){
+	        	$scope.currentHotel.salones = data;
+	        	
+	        }).error(function(err){
+	        	console.log(err);
+	        })
+	    }
+        if($scope.currentHotel.infoExtra==null){
+	        $http.get("/infoExtraRecinto/findByRecintoId/"+$scope.currentHotel.id).success(function(data){
+	        	console.log(data)
+	        	$scope.currentHotel.infoExtra = data;
+	        	//document.getElementById("buscadorbox").scrollIntoView();
+	        }).error(function(err){
+	        	console.log(err);
+	        })
+	    }
 		// try {
 			// $('#carousel').flexslider('destroy');
 			// $('#slider').flexslider('destroy');
@@ -365,23 +382,8 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         $scope.currentHotelMap= $sce.trustAsResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q="+$scope.currentHotel.geoLocation.latitude+","+$scope.currentHotel.geoLocation.longitude);
         $scope.hideResults = false;
         $scope.showDetail = true;
-        if($scope.currentHotel.salones==null){
-	        $http.get("/salonrecinto/findByRecintoId/"+$scope.currentHotel.id).success(function(data){
-	        	$scope.currentHotel.salones = data;
-	        	document.getElementById("buscadorbox").scrollIntoView();
-	        }).error(function(err){
-	        	console.log(err);
-	        })
-	    }
-        if($scope.currentHotel.infoExtra==null){
-	        $http.get("/infoExtraRecinto/findByRecintoId/"+$scope.currentHotel.id).success(function(data){
-	        	console.log(data)
-	        	$scope.currentHotel.infoExtra = data;
-	        	//document.getElementById("buscadorbox").scrollIntoView();
-	        }).error(function(err){
-	        	console.log(err);
-	        })
-	    }
+        document.getElementById("buscadorbox").scrollIntoView();
+       
         
         
     };
