@@ -6,6 +6,10 @@
     font-family: cabin;
     src: url(fonts/cabin/Cabin-Regular.otf);
 }
+html{
+
+    background-color: #f0f0f0;
+}
    html, body, div, span, applet, object, iframe,
    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
    a, abbr, acronym, address, big, cite, code,
@@ -26,6 +30,7 @@
     font: inherit;
     vertical-align: baseline;
     overflow:visible;
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -35,7 +40,7 @@ footer, header, hgroup, menu, nav, section {
 body {
     line-height: 1;
     background-color: #f0f0f0;
-     width: 1400px;
+    
 }
 ol, ul {
     list-style: none;
@@ -592,8 +597,8 @@ html body .green, html body .hover-green:hover {
     position: absolute;
     width: 350px;
     float: left;
-    margin-left: -120px;
-    margin-top: -20px;
+    text-align: left;
+    
 }
 
 .logo-header img{
@@ -602,7 +607,7 @@ html body .green, html body .hover-green:hover {
 
 .header-menu{
     font-family: cabin;
-    width: 75%;
+    width: 1200px;
     float: right;
     z-index: 9999;
 }
@@ -688,10 +693,11 @@ html body .green, html body .hover-green:hover {
     padding: 0px;
     position: absolute;
     z-index: 4;
-    width: 100%;
+    width: 1200px;
 }
 
 #footer{
+    width:1200px;
     background-color: #2f2f2f;
     color: #fff;
 }
@@ -784,7 +790,7 @@ html body .green, html body .hover-green:hover {
     
 }
 .inicio-seccion img {
-    width: 100%;
+    width: 1200px;
     height:500px;
 }
 .bg-black {

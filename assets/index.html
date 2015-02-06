@@ -114,27 +114,19 @@
     
 
     <body  ng-controller="RecintosController" ng-cloak >
-	
-		<!-- <div id="botones">
-			<div class="clearfix contenedor no-mar">
-				<ul class="clearfix">
-					<li><a href="http://www.yoplanner.com.mx/blog/">Blog</a></li>
-					<li><a href="contacto/index.html">Contacto</a></li>
-					<li><a href="#"  onclick="showCotizar();">Cotizar</a></li>
-				</ul>
-			</div>
-		</div> -->
-		<div class="full-width header-wrapper" style="z-index:1000">
-            <div style="overflow:auto"></div>
+	   <div style="width: 1200px;margin:0 auto;">
+		
+		<div class=" header-wrapper" style="z-index:1000">
+            <div ></div>
 			<div id="header">
-				<div class="contenedor clearfix">
+				<div class="">
 					<div class="logo-header">
 						<a href="javascript:void(0)" ng-click="inicio()">
 							<img src="wp-content/uploads/2013/09/yp logo.png">
 						</a>
 					</div>
-					<div class="header-menu">
-						<ul class="clearfix">
+					<div class="header-menu" style="padding-left:350px;">
+						<ul >
 							<li style="width:190px;"><a href="javascript:void(0)">¿Quienes Somos?</a>
                                 <ul class="cruceros-drop">
                                     <li><a href="empresa/index.html" >Empresa</a></li>
@@ -192,12 +184,12 @@
                     <div ng-show="showDetail && hotels.length>0">
                         <div>
                         <a href="#" class="pasos regresar" ng-click="showResults()" ng-show="showDetail && hotels.length>0">
-                            <img src="/img/back.png" style="margin-left:-150px;"><div class="pasosText"></div>
+                            <img src="/img/back.png" style="margin-left:-75px;"><div class="pasosText"></div>
                         </a>
                         </div>
-                        <div style="margin-top:-70px;">
+                        <div style="margin-top:-70px;margin-left:20px;">
                         <a href="#" class="pasos" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0">
-                            <img src="/img/hotel.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 3: Agrega a tu selección&nbsp;&nbsp;&nbsp;<img src="/img/plus.png"style="width:25px;height:25px;"/></div>
+                            <img src="/img/hotel.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 3: Agrega a tu selección&nbsp;<img src="/img/plus.png"style="width:25px;height:25px;"/></div>
                         </a>
                         </div>
                     </div>
@@ -234,66 +226,68 @@
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTt1xwb7Zss1Nx1ym0xlC1gbgBZ47LP4"></script>
 
-
-	</body>
-	<footer>
+        
+        <footer>
 <div id="footer" ng-class="footerClass">
-		<div class="contenedor footer-wrapper clearfix">
-			
-			<div class="mapa-sitio col-33">
-				<div class="col-inner">
-					<p class="tit-b">Mapa de sitio</p>
-					<ul>
-						<li><a target="javascript:void(0)" href="empresa">Empresa</a></li>
-						<li><a target="javascript:void(0)" href="reservaciones">Reserva</a></li>
-						<li><a target="javascript:void(0)" href="http://www.yoplanner.com.mx/blog">Blog</a></li>
-						<li><a target="javascript:void(0)" href="politicadeprivacidad">Políticas de Privacidad</a></li>
-						<li><a target="javascript:void(0)" href="servicios">Servicios</a></li>
-						<li><a target="javascript:void(0)" href="cruceros">Cruceros</a></li>
-						<li><a target="javascript:void(0)" href="contacto">Contacto</a></li>
+        <div class="contenedor footer-wrapper clearfix">
+            
+            <div class="mapa-sitio col-33">
+                <div class="col-inner">
+                    <p class="tit-b">Mapa de sitio</p>
+                    <ul>
+                        <li><a target="javascript:void(0)" href="empresa">Empresa</a></li>
+                        <li><a target="javascript:void(0)" href="reservaciones">Reserva</a></li>
+                        <li><a target="javascript:void(0)" href="http://www.yoplanner.com.mx/blog">Blog</a></li>
+                        <li><a target="javascript:void(0)" href="politicadeprivacidad">Políticas de Privacidad</a></li>
+                        <li><a target="javascript:void(0)" href="servicios">Servicios</a></li>
+                        <li><a target="javascript:void(0)" href="cruceros">Cruceros</a></li>
+                        <li><a target="javascript:void(0)" href="contacto">Contacto</a></li>
                                 <li><a target="javascript:void(0)" href="/unete">Bolsa de Trabajo</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-33">
-				<div class="col-inner contacto">
-					<p class="tit-b">Contáctanos</p>
-					<p class="cont-p">Teléfono: (55) 62 74 - 62 91</br>
-						Correo: <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a></p>
-				</div>
-			</div>
-			<div class="col-33">
-				<div class="col-inner clearfix" >
-					<!--div style="width: 100%;" class="clearfix">
-						<p class="tit-b">Noticias y Promociones</p>
-						<div id="buscador-ft">
-							<input type="text">
-							<button>Buscar</button>
-						</div>
-					</div-->
-					<div style="margin-top:40px;">
-						<p class="tit-b">Redes sociales</p>
-						<div class="clearfix redes-ft">
-							<ul class="social-ft">	
-								<li><a target="javascript:void(0)" href="//twitter.com/yoplanner"><img src="/img/twitter.png"></a></li>
-								<li><a target="javascript:void(0)" href="//facebook.com/yoplanner"><img src="/img/fb.png"></a></li>
-								<li><!-- Coloca este código en el lugar donde quieras que se muestre la insignia. -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-33">
+                <div class="col-inner contacto">
+                    <p class="tit-b">Contáctanos</p>
+                    <p class="cont-p">Teléfono: (55) 62 74 - 62 91</br>
+                        Correo: <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a></p>
+                </div>
+            </div>
+            <div class="col-33">
+                <div class="col-inner clearfix" >
+                    <!--div style="width: 100%;" class="clearfix">
+                        <p class="tit-b">Noticias y Promociones</p>
+                        <div id="buscador-ft">
+                            <input type="text">
+                            <button>Buscar</button>
+                        </div>
+                    </div-->
+                    <div style="margin-top:40px;">
+                        <p class="tit-b">Redes sociales</p>
+                        <div class="clearfix redes-ft">
+                            <ul class="social-ft">  
+                                <li><a target="javascript:void(0)" href="//twitter.com/yoplanner"><img src="/img/twitter.png"></a></li>
+                                <li><a target="javascript:void(0)" href="//facebook.com/yoplanner"><img src="/img/fb.png"></a></li>
+                                <li><!-- Coloca este código en el lugar donde quieras que se muestre la insignia. -->
 <a target="javascript:void(0)" href="https://plus.google.com/113624413123385492768?prsrc=3"
    rel="publisher" target="_top" style="text-decoration:none;">
 <img src="/img/goplus.png" alt="Google+" />
 </a></li>
-								<li><a target="javascript:void(0)" href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg"><img src="/img/yt.png"></a></li>
-								<!-- <li><a href="#"><img src="/img/instagram.png"></a></li>
-								<li><a href="#"><img src="/img/pinterest.png"></a></li> -->
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<hr class="ln-ft">
-			<p class="disc-ft">2015 Yo Planner, S.A. de C.V.</p>
-		</div>
-	</div>
-	</footer>
+                                <li><a target="javascript:void(0)" href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg"><img src="/img/yt.png"></a></li>
+                                <!-- <li><a href="#"><img src="/img/instagram.png"></a></li>
+                                <li><a href="#"><img src="/img/pinterest.png"></a></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="ln-ft">
+            <p class="disc-ft">2015 Yo Planner, S.A. de C.V.</p>
+        </div>
+    </div>
+    </footer>
+</div>
+	</body>
+	
 <!-- Mirrored from www.theteafactory.ca/ by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 15 Jan 2014 06:30:49 GMT -->
 </html>
