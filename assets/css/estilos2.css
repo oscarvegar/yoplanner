@@ -118,6 +118,11 @@ body{
     width: 71%;
     padding: 0px 10px;
 }
+
+.col-80{
+    width: 80%;
+    padding: 0px 10px;
+}
 #buscador {
     float: right;
 }
@@ -447,13 +452,13 @@ html body .green, html body .hover-green:hover {
     background-color: #ddd;
     height: 290px;
     margin-top: 0px;
-    padding: 15px;
+    
     font-weight: 200;
 
 }
 .caja-texto-articulo{
     background-color: #003a56;
-    height: 140px;
+    height: 200px;
     padding: 15px;
     font-weight: 200;
 }
@@ -491,7 +496,7 @@ html body .green, html body .hover-green:hover {
 .video-youtube{
     float: left;
     padding: 0px;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 .col-30{
@@ -511,7 +516,7 @@ html body .green, html body .hover-green:hover {
 
 .social li{
     float: left;
-    padding: 0px 37.5px 18px;
+    padding: 0px 50.5px 18px;
 }
 
 .contenedor-iconos{
