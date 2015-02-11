@@ -10,7 +10,7 @@ module.exports = {
 		console.log(req.allParams().id)
 		var id = req.allParams().id;
 		Config.findOne({key:id}).exec(function(err,data){
-			console.log(data)
+			//console.log(data)
 			return res.json(data);
 		});
 

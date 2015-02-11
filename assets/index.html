@@ -166,8 +166,8 @@
 			</div>	
 		</div>
 		<div style="position:relative">
-            <div ng-show="showIndex" style="color:white;font-weight:bold;font-size:10px;position:absolute;z-index:2;text-align:center;width:100%;margin-top:130px;">
-                <p style="font-size:30px">Cotiza tu próximo grupo en 3 sencillos pasos</p></div>
+            <div ng-show="showIndex" style="position:absolute;z-index:2;text-align:center;margin-top:130px;">
+                <img src="/img/deja.png" style="width:60%"></div>
     		<div class="inicio-seccion" ng-show="showIndex && !showInfo">
     			<img src="img/principal.jpg" >
 
@@ -175,10 +175,11 @@
        </div>
        
         <div ng-show="!showInfo" id="buscadorbox" class="full-width  clearfix bg-black"  ng-class="searchClass"style="position:relative;z-index:120;">
+            <div ng-show="showIndex && !showInfo" class="pasosContainer pasos" style="position:absolute;margin-top:25px;margin-left:173px;" >Cotiza tu grupo en 3 pasos</div>
             <div class="contenedor clearfix ">
 
                 <div class="pasosContainer">
-                    <div class="pasos" ng-show="showIndex && !showInfo"><img src="/img/search.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 1: Busca tu destino</div></div>
+                    <div class="pasos" ng-show="showIndex && !showInfo"><img src="/img/search.png"><div class="pasosText" style="margin-top:-30px;">&nbsp;&nbsp;&nbsp;Paso 1: Busca tu destino</div></div>
               
                     <div class="pasos" ng-show="hideResults"><img src="/img/seleccionar.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 2: Selecciona un hotel</div></div>
                     <div ng-show="showDetail && hotels.length>0">
