@@ -49,7 +49,7 @@ module.exports = {
                 SD6:[{hid:363032},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
                 SJD:[{hid:363032},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
                 CL1:[{hid:363032},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                PCM:[{hid:352782 ,fotoPrincipal:URL_PICTURES+"10e328ef-a102-4387-aaaa-65cf86d20d10"},{hid:353356,fotoPrincipal:null}]};
+                PCM:[{hid:352782 ,fotoPrincipal:URL_CUSTOM_PICTURES+"352782/ppcmain.jpg"},{hid:353356,fotoPrincipal:null}]};
         
         var hotelesProspecto = {
                 MEX:[{hid:291554},{hid:642043},{hid:572877}],
