@@ -624,9 +624,11 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     	//$scope.salonesModificados = [];
     }
 
-    $scope.sliderGoToHotel = function(elem){
-    	console.log(elem)
-    }
+    $timeout(function(){
+    	gapi.page.go()
+    }, 2000)
+
+
 }]).directive('repeatDone', function() {
       return function(scope, element, attrs) {
           if (scope.$last) {
