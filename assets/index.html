@@ -110,6 +110,22 @@
         <script type="text/javascript" src="modules/hoteles.js"></script>
         <script type="text/javascript" src="modules/rfp.js"></script>
         <script type="text/javascript" src="js/ngyp.js"></script>
+
+        <style>
+            .inicio-seccion  {
+                height: 503px;
+            }
+            .inicio-seccion .flex-viewport {
+                width: 100%;
+                height: 500px;
+            }
+            .inicio-seccion .flex-viewport img{
+                width: 100%;
+                height: 500px;
+            }
+
+
+        </style>
     </head>
     
 
@@ -169,7 +185,11 @@
             <div ng-show="showIndex" style="position:absolute;z-index:2;text-align:center;margin-top:130px;">
                 <img src="/img/deja.png" style="width:60%"></div>
     		<div class="inicio-seccion" ng-show="showIndex && !showInfo">
-    			<img src="img/principal.jpg" >
+    			<flex-slider slide="pic in mainPics" animation="slide" slideshow="true" control-nav="false" animation-loop="true"  slideshow-speed="4000" >
+                    <li >
+                        <img ng-src="{{pic}}" >
+                    </li>
+                </flex-slider>
 
     		</div>
        </div>

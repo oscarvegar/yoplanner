@@ -12,6 +12,9 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     	}
     	return res;
     }
+
+    $scope.mainPics = ['img/slider/05.jpg','img/slider/04.jpg','img/slider/03.jpg','img/slider/01.jpg']
+
     $scope.showSearch = true;
     $scope.hideResults = false;
     $scope.showDetail = false;
