@@ -12,9 +12,9 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     	}
     	return res;
     }
-
+    $scope.linkDirecto = false;
     $scope.mainPics = ['img/slider/05.jpg','img/slider/04.jpg','img/slider/03.jpg']
-
+    $scope.showFooter = true;
     $scope.showSearch = true;
     $scope.hideResults = false;
     $scope.showDetail = false;
@@ -47,10 +47,16 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     var urlParams = {}
 	location.search.substr(1).split("&").forEach(function(item) {urlParams[item.split("=")[0]] = item.split("=")[1]})
     if(urlParams.hid!=null){
+    	$scope.showIndex = false;
+    	$scope.showFooter = false;
+    	$scope.linkDirecto = true;
     	$http.get(server+"/recinto/findById/"+urlParams.hid).success(function(data){
     		console.log(data);
     		$scope.currentHotel = data.hotels[0];
     		$scope.selectResult($scope.currentHotel);
+    		$scope.showFooter = true;
+    		$scope.hotels = data.hotels;
+    		//existeEnSeleccion(currentHotel)<0
     	});
     }
     $scope.currentPage = 0;
@@ -402,7 +408,9 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     };
 
     $scope.existeEnSeleccion = function(hotel){
-    	if(hotel==null)return;
+    	console.log("HOTEL>>>>>>>>>>>>>>>>",hotel)
+    	console.log("SELS>>>>>>>>>>>>>>>>",$scope.hotelesSeleccionados)
+    	if(hotel==null)return -1;
         for(var i=0;i<$scope.hotelesSeleccionados.length;i++){
             if(hotel.id == $scope.hotelesSeleccionados[i].id){
                 return i;
@@ -543,7 +551,10 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     };
 
     $scope.inicio = function(){
+
     	$scope.showIndex = true;
+    	$scope.showInfo = false;
+    	$scope.showIndex = false;
             $scope.showSearch = false;
             $scope.hideResults = false;
             $scope.showDetail = false;
@@ -611,6 +622,10 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
 
 
     	//$scope.salonesModificados = [];
+    }
+
+    $scope.sliderGoToHotel = function(elem){
+    	console.log(elem)
     }
 }]).directive('repeatDone', function() {
       return function(scope, element, attrs) {

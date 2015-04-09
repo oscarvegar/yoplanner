@@ -136,12 +136,12 @@
             <div ></div>
 			<div id="header">
 				<div class="">
-					<div class="logo-header">
-						<a href="javascript:void(0)" ng-click="inicio()">
+					<div class="logo-header" style="z-index:99999">
+						<a href="/" >
 							<img src="wp-content/uploads/2013/09/yp logo.png">
 						</a>
 					</div>
-					<div class="contenedor clearfix header-menu" style="padding-left:350px;">
+					<div class="contenedor  header-menu" style="padding-left:350px;">
 						<ul class="clearfix">
 							<li style="width:190px;"><a href="javascript:void(0)">¿Quienes Somos?</a>
                                 <ul class="cruceros-drop">
@@ -185,9 +185,9 @@
             <div ng-show="showIndex" style="position:absolute;z-index:2;text-align:center;margin-top:130px;">
                 <img src="/img/deja.png" style="width:60%"></div>
     		<div class="inicio-seccion" ng-show="showIndex && !showInfo">
-    			<flex-slider slide="pic in mainPics" animation="slide" slideshow="true" control-nav="false" animation-loop="true"  slideshow-speed="4000" >
+    			<flex-slider slide="pic in mainPics" animation="slide" slideshow="true" control-nav="false" animation-loop="true"  slideshow-speed="4000" ng-click="sliderGoToHotel(this)">
                     <li >
-                        <img ng-src="{{pic}}" >
+                        <a href="javascript:void(0)"><img ng-src="{{pic}}"></a>
                     </li>
                 </flex-slider>
 
@@ -236,9 +236,9 @@
                         <script id="despegar-root-js" type="text/javascript" src="//www.despegar.com.mx/comunidadafiliados/widgetGenerator/widgetCore.js" data-id="13754" data-context-path="//www.despegar.com.mx/comunidadafiliados">
                         </script>
                     </div>
-                    <a  href="https://plus.google.com/113624413123385492768?prsrc=3" target="javascript:void(0)"><img style="margin-left:1%;width:33%;float:left;height:340px;" src="./img/banner/Banner1.jpg" /></a>
+                    <a  href="?hid=352782" target="javascript:void(0)"><img style="margin-left:1%;width:33%;float:left;height:340px;" src="./img/banner/Banner1.jpg" /></a>
 
-                    <a  href="https://plus.google.com/113624413123385492768?prsrc=3" target="javascript:void(0)"><img style="margin-left:3%;width:33%;float:left;height:340px;" src="./img/banner/Banner2.jpg" /></a>
+                    <a  href="http://www.nizuc.com/es/" target="_blank"><img style="margin-left:3%;width:33%;float:left;height:340px;" src="./img/banner/Banner2.jpg" /></a>
                 </div>
                 <div style="clear:both"/>
                 <index ng-if="showIndex && !showInfo"></index>
@@ -250,8 +250,8 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTt1xwb7Zss1Nx1ym0xlC1gbgBZ47LP4"></script>
 
         <div style="clear:both"/>
-        <footer>
-<div id="footer" ng-class="footerClass">
+        <footer >
+<div ng-show="showFooter" id="footer" ng-class="footerClass">
         <div class="contenedor footer-wrapper clearfix">
             
             <div class="mapa-sitio col-33">
