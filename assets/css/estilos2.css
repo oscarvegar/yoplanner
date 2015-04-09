@@ -971,7 +971,9 @@ html body .green, html body .hover-green:hover {
     top: 0;
 }
 
-
+.flexslider{
+       border:0px solid #fff
+}
 .flexslider .slides img {
     width: 100%;
     height: auto;

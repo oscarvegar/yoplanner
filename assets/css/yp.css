@@ -91,6 +91,7 @@
 .flexslider {
     width: 100%;
     text-align: center;
+    border:1px solid #fff
 }
 
 .flexslider .slides img {

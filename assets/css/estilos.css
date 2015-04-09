@@ -991,6 +991,7 @@ html body .green, html body .hover-green:hover {
 
 .flex-viewport{
     height: 369px;
+    border: none;
 }
 
 .titulo-articulo-home{
