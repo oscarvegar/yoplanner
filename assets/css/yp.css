@@ -199,3 +199,7 @@ cursor: hand;
     text-align: center;
 }
 
+.widgetDespegar{
+    width: 30%;
+    float: left;
+}

@@ -589,7 +589,7 @@ html body .green, html body .hover-green:hover {
 
 .logo-header{
     position: absolute;
-    width: 350px;
+    width: 300px;
     float: left;
     margin-left: -120px;
     margin-top: -20px;
@@ -1044,12 +1044,6 @@ html body .green, html body .hover-green:hover {
     width: 100%;
     text-align: center;
 }
-.footerIni{
-    margin-top: -100px;
-}
-.footerRes{
-    margin-top: 200px;
-}
 .pasos{
     
     color: white;
@@ -1120,8 +1114,6 @@ html body .green, html body .hover-green:hover {
 /*.detalleHotel tr:last-child  { 
   border-bottom: 2px solid black;
 }*/ 
-
-
 
 
 
