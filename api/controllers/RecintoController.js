@@ -57,6 +57,7 @@ module.exports = {
                 CUN:[{hid:681932,customPost:"https://plus.google.com/113624413123385492768/posts/bdoPUUzwCmw",fotoPrincipal:URL_CUSTOM_PICTURES+"681932/Four Points Cancun.jpg",customPictures:["681932/Four Points Cancun.jpg","681932/Four Points Cancun 2.jpg"]}]};
         var resSize = 11;
         var id = req.allParams().id;
+        sails.log.info("ID",id)
         var options = {
             hostname : "api.despegar.com",
             path : "/availability/cities/"+id+"/hotels?sort=stars&order=desc&includehotel=true&stars=3-4-5&type=RSR-HOT&pagesize=100",
@@ -140,7 +141,11 @@ module.exports = {
                         }
                         hoteles.hotels = arrResHot.concat(hoteles.hotels);
                     }
+                    sails.log.info("pagina",p)
+                    sails.log.info("hotelesProspecto",hotelesProspecto[id])
+                    
                     if(p==1 && hotelesProspecto[id]){
+                        sails.log.info("ES PROSPECTO Y PAGGINA UNO")
                         for(var i=0;i<hotelesProspecto[id].length;i++){
                             for(var j in hoteles.hotels){
                                 if(hoteles.hotels[j].id==hotelesProspecto[id][i].hid){
