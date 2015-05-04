@@ -53,6 +53,7 @@ module.exports = {
         
         var hotelesProspecto = {
                 MEX:[{hid:291554},{hid:642043},{hid:572877}],
+                PVR:[{hid:643681}],
                 CUN:[{hid:681932,customPost:"https://plus.google.com/113624413123385492768/posts/bdoPUUzwCmw",fotoPrincipal:URL_CUSTOM_PICTURES+"681932/Four Points Cancun.jpg",customPictures:["681932/Four Points Cancun.jpg","681932/Four Points Cancun 2.jpg"]}]};
         var resSize = 11;
         var id = req.allParams().id;
