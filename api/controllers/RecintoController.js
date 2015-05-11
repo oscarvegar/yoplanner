@@ -141,11 +141,7 @@ module.exports = {
                         }
                         hoteles.hotels = arrResHot.concat(hoteles.hotels);
                     }
-                    sails.log.info("pagina",p)
-                    sails.log.info("hotelesProspecto",hotelesProspecto[id])
-                    
                     if(p==1 && hotelesProspecto[id]){
-                        sails.log.info("ES PROSPECTO Y PAGGINA UNO")
                         for(var i=0;i<hotelesProspecto[id].length;i++){
                             for(var j in hoteles.hotels){
                                 if(hoteles.hotels[j].id==hotelesProspecto[id][i].hid){
