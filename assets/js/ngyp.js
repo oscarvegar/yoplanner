@@ -134,7 +134,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
         if($scope.currentHotel.infoExtra==null){
 	        $http.get("/infoExtraRecinto/findByRecintoId/"+$scope.currentHotel.id).success(function(data){
 	        	console.log(data)
-	        	$scope.currentHotel.infoExtra = data;
+	        	$scope.currentHotel.infoExtra = data[0];
 	        	//document.getElementById("buscadorbox").scrollIntoView();
 	        }).error(function(err){
 	        	console.log(err);
