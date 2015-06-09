@@ -13,7 +13,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     	return res;
     }
     $scope.linkDirecto = false;
-    $scope.mainPics = ['img/slider/05.jpg','img/slider/04.jpg','img/slider/03.jpg']
+    $scope.mainPics = ['img/slider/03.jpg','img/slider/04.jpg','img/hoteles/363032/main.jpg']
     $scope.showFooter = true;
     $scope.showSearch = true;
     $scope.hideResults = false;
