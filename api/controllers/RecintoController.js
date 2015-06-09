@@ -8,7 +8,7 @@
 //https://api.despegar.com/v3/hotels/availabilities?site=MX&checkin_date=2014-10-25&checkout_date=2014-10-30&destination=982&distribution=1&language=es&sorting=stars_descending&stars=3%2C4%2C5&pagesize=8
 ///availability/cities/{id}/hotels
 var URL_PICTURES = "http://media.staticontent.com/media/pictures/";
-var URL_CUSTOM_PICTURES = "http://yoplanner.com/img/hoteles/";
+var URL_CUSTOM_PICTURES = "./img/hoteles/";
 module.exports = {
     findByRFP: function(req,res){
         params = req.allParams();
@@ -46,9 +46,9 @@ module.exports = {
                 CUN:[{hid:214327},{hid:214570},{hid:563172},{hid:214692}],
                 RM0:[{hid:214327},{hid:214572},{hid:214570},{hid:563172},{hid:214692}], 
                 //SD6:[{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                SD6:[{hid:363032},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                SJD:[{hid:363032},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                CL1:[{hid:363032},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
+                SD6:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg",customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
+                SJD:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg",customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
+                CL1:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg",customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
                 PCM:[{hid:352782 ,fotoPrincipal:URL_CUSTOM_PICTURES+"352782/ppcmain.jpg"},{hid:353356,fotoPrincipal:null}]};
         
         var hotelesProspecto = {
@@ -131,6 +131,14 @@ module.exports = {
                                     }
                                     if(hotelesVendidos[id][i].customPost!=null){
                                         hot.customPost = hotelesVendidos[id][i].customPost;
+                                        
+                                    }
+                                    if(hotelesVendidos[id][i].customPictures!=null){
+                                        for(var k in hotelesVendidos[id][i].customPictures){
+                                            hotelesVendidos[id][i].customPictures[k] = URL_CUSTOM_PICTURES + hotelesVendidos[id][i].customPictures[k];
+                                        }
+                                        //hot.pictures = hotelesVendidos[id][i].customPictures.concat(hot.pictures);
+                                        hot.pictures = hotelesVendidos[id][i].customPictures;
                                         
                                     }
                                     hoteles.hotels.splice(j,1);
