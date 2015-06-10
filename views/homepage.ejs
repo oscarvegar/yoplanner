@@ -1,74 +1,582 @@
-<!-- Default home page -->
-<link type="text/css" href='http://sailsjs.org/styles/fonts.css' rel='stylesheet'/>
-<style>
-    /* Styles included inline since you'll probably be deleting this page anyway */
-    html,body{text-align:left;font-size:1em}html,body,img,form,textarea,input,fieldset,div,p,div,ul,li,ol,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,code{margin:0;padding:0}ul,li{list-style:none}img{display:block}a img{border:0}a{text-decoration:none;font-weight:normal;font-family:inherit}*:active,*:focus{outline:0;-moz-outline-style:none}h1,h2,h3,h4,h5,h6{font-weight:normal}div.clear{clear:both}.clearfix:after{clear:both;content:".";display:block;font-size:0;height:0;line-height:0;visibility:hidden}body{font-family:"Open Sans",Arial,sans-serif;font-weight:300;}.top-bar {width: 100%; background-color: #e4f0f1; padding: 15px 0;}.top-bar .container img {float: left;}.top-bar .container ul {float: right; padding-top: 25px;}.top-bar .container li {float: left; width: 125px; text-align: center; font-size: 15px; color:#000; font-weight: 600;}.top-bar .container a li:hover {color: #118798; -webkit-transition:color 200ms; -moz-transition:color 200ms; -o-transition:color 200ms;transition:color 200ms;}.container{width: 80%; max-width: 1200px; margin: auto;}div.header {-webkit-transition: 6s; -moz-transition: 6s; -o-transition: 6s;transition: 6s; background: rgba(4, 36, 41, 0.89) url(http://sailsjs.org/images/img_sailsShadow.png) no-repeat 42% bottom; padding: 100px 0 65px;}.header h1#main-title{color: #fff; font-weight: 300; font-size: 2.5em;}.header h3{color: #b1eef7; font-style: italic; font-weight: 300;}.header h3 code{font-style: normal!important; background-color: rgba(255,255,255,0.5); font-weight: 300; color:#0e6471; margin: 0px 5px;}div.main.container{padding: 50px 0;}h1 {color: #118798; font-weight: 300;}code {font-size: inherit; font-family: 'Consolas', 'Monaco', monospace; padding:4px 5px 1px; background-color: #f3f5f7}a{color: #118798; font-weight: 300; text-decoration: underline;}a:hover {color: #0e6471; -webkit-transition:color 200ms; -moz-transition:color 200ms; -o-transition:color 200ms;transition:color 200ms;}p{line-height: 1.5em;}blockquote{background-color: #e4f0f1; padding: 25px; line-height: 1.5em; margin: 15px 0;}blockquote span{font-weight: 600; padding-right: 5px;}ul.getting-started{padding: 25px 75px 25px 0; width: 70%; float: left; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}ul.getting-started li{padding: 25px 0;}ul.getting-started li h3 {padding-bottom: 10px; font-size: 25px; font-weight: 300;}.sprite{background:url(http://sailsjs.org/images/newapp.sprite.png) no-repeat; position: absolute; left: 0; top:0;}.getting-started .sprite{margin-left:10px;padding-left:60px;height:42px;width:0; float: left;}.getting-started .one{background-position:0 0}.getting-started .two{background-position:0 -42px}.getting-started .three{background-position:0 -83px}div.step {position: relative; padding-left: 70px; opacity: 0.9;}div.step:hover{ opacity: 1;}div.links {float: left; width: 30%; max-width: 325px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; background-color: #f3f5f7; border: 1px solid #ebebeb; padding: 25px 45px 35px;}div.links h3 {color: #727272; text-align: center; font-size: 28px; font-weight: 300;}div.links h4 {color: #727272; font-size: 17px; font-weight: 600; padding: 15px 0 10px;}div.links .link-list a {text-decoration: none; font-weight: 400;}div.links .link-list a li {padding: 0px 0px 5px 10px;}div.default-page{min-width: 1200px;}.pocket{display:none;}
-</style>
-<script type="text/javascript">
-setTimeout(function sunrise () {
-    document.getElementsByClassName('header')[0].style.backgroundColor = '#118798';
-}, 0);
-</script>
-
-<div class="default-page">
-    <div class="header">
-        <h1 id="main-title" class="container"><%= __('A brand new app.') %></h1>
-        <h3 class="container">You're looking at: <code><%= view.pathFromApp + '.' +view.ext %></code></h3>
-    </div>
-    <div class="main container clearfix">
-        <!-- <h1>Getting started</h1>
-        <p>Don't worry, we've got your back.</p> -->
-        <ul class="getting-started">
-            <li class="clearfix">
-                <div class="step">
-                    <div class="sprite one"></div>
-                    <h3>Generate a REST API.</h3>
-                    <p>
-                        Run <code>sails generate api user</code>.  This will create two files: a <a href="http://sailsjs.org/#/documentation/concepts/ORM/Models.html">model</a> <code class="pocket">api/models/User.js</code> and a <a href="http://sailsjs.org/#/documentation/concepts/Controllers">controller</a><code class="pocket">api/controllers/UserController.js</code>.
-                    </p>
+<!--Content Central -->
+            <section class="content-central">
+                <!-- Shadow Semiboxed Layout -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
                 </div>
-            </li>
-            <li class="clearfix">
-                <div class="step">
-                    <div class="sprite two"></div>
-                    <h3>
-                        Lift your app.
-                    </h3>
-                    <p>
-                        Run <code>sails lift</code> to start up your app server.  If you visit <a target="_blank" href="http://localhost:1337/user"><code>http://localhost:1337/user</code></a> in your browser, you'll see a <a href="http://sailsjs.org/#/documentation/reference/blueprint-api">WebSocket-compatible</a> user API.
-                    </p>
+                <!-- End Shadow Semiboxed Layout -->
+
+                <!-- End content info - Services Items-->
+                <div class="content_info">
+                    <div class="content_resalt">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Info Resalt - Info Services -->
+                                <div class="col-md-4 ">
+                                    <div class="services-lines-info">
+                                        <h2>WELCOME TO THEME TRAVELIA</h2>
+                                        <p class="lead">
+                                            Book cheap hotels and make payment facilities.
+                                            <span class="line"></span>
+                                        </p>
+
+                                        <p>Find a wide variety of airline tickets and cheap flights, hotels, tour packages, car rentals, cruises and more in travelia.com.You can choose your favorite destination and start planning your long-awaited vacation. You can also check availability of flights. </p>
+                                    </div>
+                                </div>   
+                                <!-- End Info Resalt - Info Services --> 
+
+                                <!-- Services Items -->
+                                <div class="col-md-8">
+                                    <ul class="services-lines">
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-bicycle"></i>
+                                                <h5>Special Activities</h5>
+                                            </div>
+                                        </li>
+                                         <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-plane"></i>
+                                                <h5>Travel Arrangements</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-user"></i>
+                                                <h5>Private Guide</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-search-plus"></i>
+                                                <h5>Location Manager</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-map-marker"></i>
+                                                <h5>Handpicked Hotels</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-money"></i>
+                                                <h5>Best Price Guarantee</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-bank"></i>
+                                                <h5>Trust & Safety</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-line-chart"></i>
+                                                <h5>Best Travel Agent</h5>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div> 
+                                <!-- End Services Items --> 
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <!-- End content info - Services Items --> 
+
+                <!-- End content info - Vacations Destinatios-->
+                <div class="content_info">
+                    <!-- Title -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="titles">
+                                <h2>The <span>Popular</span> Destinations </h2>
+                                <i class="fa fa-bicycle"></i>
+                                <hr class="tall">
+                            </div>                    
+                        </div>
+                    </div>
+                    <!-- End Title-->
+
+                    <!-- content-boxes-->
+                    <div class="content-boxes">
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="image-boxed">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/1.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                            <div class="info-boxed boxed-top">
+                                <h3>
+                                    Hot Baloon Special Journey<br>
+                                    <span>DPM, CBE, TAMILNADU</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The Royal National is in London near Covent Garden.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 45</div>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="image-boxed">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/2.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                            <div class="info-boxed boxed-top">
+                                <h3>
+                                    The Grand Canyons<br>
+                                    <span>PEELAMEDU, CBE, INDIA</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The Holiday Inn Bilbao is in a prime location next to the Basilica of Begoña.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 65</div>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="info-boxed boxed-bottom">
+                                <h3>
+                                    Weekdays in Thailand<br>
+                                    <span>PEELAMEDU, CBE, INDIA</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The spacious rooms have a bathroom with hairdryer, direct dial telephone.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 30</div>
+                            </div>
+                            <div class="image-boxed image-bottom">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/3.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="info-boxed boxed-bottom">
+                                <h3>
+                                    Peek Mountain View<br>
+                                    <span>LAS VEGAS, NEVADA</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The Golden Bay, heated and opened in 2003, with a total of 380 rooms.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 80</div>
+                            </div>
+                            <div class="image-boxed image-bottom">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/4.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+                    </div>
+                    <!-- End content-boxes-->
+                </div>   
+                <!-- End content info - Vacations Destinatios--> 
+
+                <!-- End content info - Features-->
+                <div class="content_info">
+                    <!-- Title -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="titles">
+                                <h2><span>¿</span>Why <span>Book</span> in travelia<span>?</span></h2>
+                                <i class="fa fa-plane"></i>
+                                <hr class="tall">
+                            </div>                    
+                        </div>
+                    </div>
+                    <!-- End Title-->
+
+                    <!-- content-->
+                    <div class="container">
+                        <div class="row padding-bottom">
+                            <div class="col-md-4">
+                                <div class="item-feature text-center">
+                                    <div class="head-feature">
+                                        <span>Up</span>
+                                        <br>
+                                        <div class="title-feature">
+                                            <i class="fa fa-sun-o left-icon"></i>
+                                            <i class="fa fa-umbrella right-icon"></i>
+                                            30
+                                        </div><span>%</span>
+                                        <br>
+                                        <span>discount</span>
+                                    </div>
+                                    <div class="info-feature">
+                                        <p>For over 4 years offering the best plans at the best price with exclusive discounts.</p> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="item-feature text-center">
+                                    <div class="head-feature">
+                                        <span>over</span>
+                                        <br>
+                                        <div class="title-feature">
+                                            <i class="fa fa-thumbs-o-up left-icon"></i>
+                                            <i class="fa fa-heart right-icon"></i>
+                                            1 million
+                                        </div>
+                                        <br>
+                                        <span>Reviews</span>
+                                    </div>
+                                    <div class="info-feature">
+                                        <p>Browse and compare the views of users and safe acertarás.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="item-feature text-center">
+                                    <div class="head-feature">
+                                        <span>pays</span>
+                                        <br>
+                                        <div class="title-feature">
+                                            <i class="fa fa-check right-icon"></i>
+                                            the price 
+                                        </div>
+                                        <br>
+                                        <span>+ low</span>
+                                    </div>
+                                    <div class="info-feature">
+                                        <p>All days Escape at the best price in offers for our products.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End content-->
+                </div>   
+                <!-- End content info - Features--> 
+
+                <!-- End Promotion Boxes - Parallax Section -->
+                <div class="content_info">
+                    <!-- Parallax Background -->
+                    <div class="bg_parallax image_04_parallax"></div>
+                    <!-- Parallax Background -->
+
+                    <!-- Content Parallax-->
+                    <div class="opacy_bg_02 padding-bottom">
+                        <!-- Title -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="titles">
+                                    <h2>The <span>Promotions</span> Bonus</h2>
+                                    <i class="fa fa-money"></i>
+                                    <hr class="tall">
+                                </div>                    
+                            </div>
+                        </div>
+                        <!-- End Title-->
+
+                        <!-- content-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/1.png" alt="img">
+                                        </div>
+
+                                        <div class="promotion-box-center color-1">
+                                           <div class="prince">
+                                                30
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 30% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <!-- promotion-box-header-->
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/2.png" alt="img">
+                                        </div>
+                                        <!-- End promotion-box-header-->
+
+                                        <!-- promotion-box-center-->
+                                        <div class="promotion-box-center color-2">
+                                            <div class="prince">
+                                                70
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+                                        <!-- End promotion-box-center-->
+
+                                        <!-- promotion-box-info-->
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 70% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                        <!-- End promotion-box-info-->
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/5.png" alt="img">
+                                        </div>
+
+                                        <div class="promotion-box-center color-3">
+                                            <div class="prince">
+                                                50
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 50% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/3.png" alt="img">
+                                        </div>
+
+                                        <div class="promotion-box-center color-4">
+                                            <div class="prince">
+                                                60
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 60% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End content-->
+                    </div>  
+                    <!-- End Content Parallax--> 
+                </div>   
+                <!-- End Promotion Boxes - Parallax Section --> 
+
+                <!-- End content - Slide Features-->
+                <div class="content_info content_resalt">
+                    <ul id="slide-features">
+                        <li>
+                            <!-- content-->
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Info Resalt - Info Services -->
+                                    <div class="col-md-5">
+                                        <div class="services-lines-info">
+                                            <h2>We Provide You An Ultimate Travel Experience</h2>
+                                            <p class="lead">
+                                                Book cheap hotels and make payment facilities.
+                                                <span class="line"></span>
+                                            </p>
+
+                                            <p>Find a wide variety of airline tickets and cheap flights, hotels, tour packages, car rentals, cruises and more in travelia.com.You can choose your favorite destination and start planning your long-awaited vacation. You can also check availability of flights and hotels quickly and easily, in order to find the option that best suits your needs.</p>
+                                            <br>
+                                            <p>Book cheap hotels and make payment facilities, free cancellation when the hotel so provides, compare prices and find all the options for your vacation.</p>
+                                            <br>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-md-7">
+                                        <img src="img/service.png" class="img-responsive" alt="">
+                                    </div>  
+                                </div>
+                            </div>
+                            <!-- End content-->
+                        </li>
+                        <!-- Item Slide Features  -->
+                        <li>
+                            <div class="container">
+                                <div class="row padding-top">
+                                    <div class="col-md-6">
+                                        <div class="img-hover">
+                                            <div class="overlay"> <a href="img/gallery-2/2.jpg" class="fancybox"><i class="fa fa-plus-circle"></i></a></div>
+                                            <img src="img/gallery-2/2.jpg" alt="" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="services-lines-info">
+                                            <h2>Explore our latest tours </h2>
+                                            <p class="lead">
+                                                Select Travelia Theme And Receive our discounts by e-mail.
+                                                <span class="line"></span>
+                                            </p>
+
+                                            <p>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip travelia.com.</p>
+                                            <br>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                               </div> 
+                               <!-- End Row  -->
+                            </div> 
+                            <!-- End Container  -->
+                        </li>
+                        <!-- End Item Slide Features  -->
+                    </ul>
+                </div>   
+                <!-- End content - Slide Features--> 
+                
+                <!-- content info - testimonials-->
+                <div class="content_info">
+                    <!-- Parallax Background -->
+                    <div class="bg_parallax image_02_parallax"></div>
+                    <!-- Parallax Background -->
+
+                    <div class="opacy_bg_02">
+                        <!-- Testimonial Propertie-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="info-testimonial">
+                                       <ul id="testimonials">
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/1.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Jeniffer Martinez</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>Spectacular, excellent personal, restaurants and very good drinks, highly recommended.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/2.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Juan Rendon</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </li>
+
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/3.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Federick Gordon</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </li>
+                                       </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="testimonial-info">
+                                        <h2>TESTIMONIALS</h2>
+                                        <P>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip travelia.com.</P>
+                                        <a href="#" class="btn btn-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Testimonial Propertie-->
+                    </div>
                 </div>
-            </li>
-            <li class="clearfix">
-                <div class="step">
-                    <div class="sprite three"></div>
-                    <h3>
-                        Dive in.
-                    </h3>
-                    <p>Blueprints are just the beginning.  You'll probably also want to learn how to customize your app's <a href="http://sailsjs.org/#/documentation/concepts/Routes">routes</a>, set up <a href="http://sailsjs.org/#/documentation/concepts/Policies">security policies</a>, configure your <a href="http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html">data sources</a>, and build custom <a target="_blank" href="http://sailsjs.org/#/documentation/concepts/Controllers?q=actions">controller actions</a>. For more help getting started, check out the links on this page.</p>
+                <!-- End content info - testimonials-->
 
-                </div>
-            </li>
-        </ul>
-        <div class="links">
-            <!-- <h3>Links</h3> -->
-            <ul class="link-list">
-
-                <h4>Docs</h4>
-                <a target="_blank" href="http://sailsjs.org/#/documentation/anatomy/myApp"><li>App Structure</li></a>
-                <a target="_blank" href="http://sailsjs.org/#/documentation/reference"><li>Reference</li></a>
-                <a target="_blank" href="http://sailsjs.org/#/documentation/concepts/extending-sails/Adapters/adapterList.html"><li>Supported Databases</li></a>
-
-                <h4>Tutorials</h4>
-                <a target="_blank" href="http://links.sailsjs.org/community/sails101"><li>Sails 101</li></a>
-
-                <h4>Community</h4>
-                <a target="_blank" href="http://stackoverflow.com/search?q=sails.js"><li>StackOverFlow</li></a>
-                <a target="_blank" href="https://github.com/balderdashy/sails"><li>GitHub</li></a>
-                <a target="_blank" href="https://groups.google.com/forum/#!forum/sailsjs"><li>Google Group</li></a>
-                <a target="_blank" href="http://webchat.freenode.net/"><li>IRC (#sailsjs on freenode)</li></a>
-
-            </ul>
-        </div>
-    </div>
-</div>
+                <!-- Twitter Section -->
+                <div class="section-twitter">
+                    <i class="fa fa-twitter icon-big"></i>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <h2>Our recents <span class="text-resalt">twitts</span>.</h2>
+                                </div>
+                                <div id="twitter"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <!-- End Twitter Section -->  
+            </section>
+            <!-- End Content Central -->
