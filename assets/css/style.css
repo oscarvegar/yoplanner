@@ -863,7 +863,7 @@ hr.tall{
 	border-right: 0;
 }
 .filter-header .input-large{
-	width: 35%;
+	width: 75%;
 	background: #fff url("../img/icons/location.png") no-repeat scroll left 6px;
 	padding-left: 40px;
 }
