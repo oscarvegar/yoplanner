@@ -21,6 +21,7 @@
 	position: relative;
 	margin-top: -170px;
 	margin-bottom: -150px;
+	z-index:20;
 }
 .layout-semiboxed footer .container{
 	width: 1230px !important;

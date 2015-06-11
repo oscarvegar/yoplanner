@@ -170,6 +170,10 @@ angular.module('rfp-module', [])
     	}
     	return res;
     }
+
+
+  
+
 	$scope.init();
     
 })

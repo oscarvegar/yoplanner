@@ -14,6 +14,7 @@
   <link href="css/style.css" rel="stylesheet" media="screen">
   <!-- Theme CSS -->
   <link href="css/timepicker/jquery.timepicker.css" rel="stylesheet" media="screen">
+  <link href="css/autocomplete/autocomplete.css" rel="stylesheet" media="screen">
   <link href="css/yp.css" rel="stylesheet" media="screen">
   <!-- Responsive CSS -->
   <link href="css/theme-responsive.css" rel="stylesheet" media="screen">
@@ -309,11 +310,10 @@
                   <!-- END TITLE HEADER-->
 
                   <!-- FILTER HEADER-->
-                  <div class="filter-header">
+                  <div class="filter-header" ng-controller="AutocompleteController">
                     <form action="#">
-                      <input type="text" required="required" placeholder="¿Que destino quieres buscar?" class="input-large">
-
-                      <input type="submit" value="Buscar" ng-click="mostrarRFP()">
+                      <autocomplete   ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity"></autocomplete>
+                      
                     </form>
                   </div>
                   <!-- END FILTER HEADER-->
@@ -521,6 +521,8 @@
          <!-- ======================= Angular libs =========================== -->
         <script type="text/javascript" src="js/angular.min.js"></script>
         <script type="text/javascript" src="ng/yoplanner.js"></script>
+        <!-- Autocomplete -->
+        <script src="js/autocomplete/autocomplete.js"></script> 
         <script type="text/javascript" src="ng/controllers/RFPController.js"></script>
 
          <!-- ======================= End Angular libs =========================== -->

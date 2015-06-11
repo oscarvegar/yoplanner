@@ -1,0 +1,46 @@
+/* AUTOCOMPLETE */
+
+.autocomplete{
+  width: 100%;
+  position: relative;
+
+}
+
+.autocomplete input{
+  font-size: 1.2em;
+  width: 100%;
+  padding:0.4em;
+}
+
+.autocomplete ul{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  margin-top: 50px;
+
+}
+
+.autocomplete li{
+  color:white;
+  font-weight: bold;
+  text-align: left;
+  list-style:none;
+  width: 100%;
+  padding:0.4em;
+  background-color: #42A9D3;
+}
+
+.autocomplete li.active{
+  width: 100%;
+  background-color: #4bf;
+}
+
+.autocomplete .highlight {
+  background-color: #989898;
+}
+
+.autocomplete li.active .highlight {
+  background: #989898;
+  color: #fff;
+}
