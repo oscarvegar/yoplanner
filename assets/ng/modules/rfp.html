@@ -1,43 +1,45 @@
 
-    <div id="containeraa" class="page-our-teas" >
        
-    <div id="mainContent"
-         class="navbar navbar-default navbar-fixed-top sb-slide cabin">
+    <div id="mainContent" ng-controller="RFPController">
 
         <div id="resumen" class="cabin">
             <div id="rfp_view" style="display: none;text-align:left">
 
                 <div >
                     <form ng-submit="validarDatosEvento()" class="cabin">
-                    <br><br>
-                    <h1 class="htl-name" style="text-align:center;">Datos del Grupo</h1>
-                    <br> 
-                    <table style="margin-left:auto;margin-right:auto">
+                    
+                    <div class="titles">
+                        <h2 ><span>Datos del Grupo</span></h2>
+                    </div>
+                    <table style="margin-left:auto;margin-right:auto;margin-top:-20px;">
                         <tr>
                             <td>Nombre</td>
                             <td><input id="rfp_nombre" type="text"
-                                       placeholder="Nombre de tu evento" class="floatlabel"
+                                       placeholder="Nombre de tu evento" class="form-control"
                                        ng-model="rfp.nombre"></td>
                         </tr>
                         <tr>
                             <td>Fecha de Entrada</td>
 
-                            <td><input id="rfp_fechaInicial"  type="text" required
-                                       class="datepicker" placeholder="Selecciona..."
+                            <td>
+
+
+                            <input id="rfp_fechaInicial"  type="text" required
+                                       class="date-input-rfp form-control" placeholder="Selecciona..."
 
                                        ng-model="fechaInicialFor"  ng-change="muestraCuadritos();"></td>
                         </tr>
                         <tr>
                             <td>Fecha de Salida</td>
                             <td><input id="rfp_fechaFinal"  type="text" required
-                                       class="datepicker" placeholder="Selecciona..."
+                                       class="date-input-rfp form-control" placeholder="Selecciona..."
 
                                        ng-model="fechaFinalFor"  ng-change="muestraCuadritos();"></td>
                         </tr>
                         <tr>
                             <td>Asistentes</td>
                             <td><input id="rfp.asistenciaEsperada" type="text" required
-                                       placeholder="Número de Participantes"
+                                       placeholder="Participantes" class="form-control"
                                        ng-model="rfp.asistenciaEsperada"></td>
 
                         </tr>
@@ -46,7 +48,7 @@
                             <td>
                                 <div ng-repeat="day in configuracionHabitacionesSencillas" style="float:left">
                                         {{day.fecha | date:'dd/MM'}}<br/>
-                                        <input type="text" ng-model="day.habitaciones" size="5">
+                                        <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
                                    
                                 </div>
                             </td>
@@ -56,7 +58,7 @@
                             <td>
                                 <div ng-repeat="day in configuracionHabitacionesDobles" style="float:left">
                                     {{day.fecha | date:'dd/MM'}}<br>
-                                    <input type="text" ng-model="day.habitaciones" size="5">
+                                    <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
                                 </div>
                             </td>
                         </tr>
@@ -71,7 +73,7 @@
                         </tr>
                     </table>
                     <div>
-                    <button type="submit"  class="btn-reserva hand"  style="float:right;margin-right:25px;">Siguiente</button>
+                    <button type="submit"  class="btn btn-primary"  style="float:right;margin-right:25px;">Siguiente</button>
                     <div>
 
                         </form>
@@ -80,12 +82,10 @@
 
             </div>
             <div id="salones_view" style="display: none;text-align:center;height:100%;" >
-                <br>
-                <br>    
                 <div href="javascrip:void(0)" >
-                    <div><h1 class="htl-name" style="text-align:center;">Eventos Programados</h1> </div>
-                    <div style="float:right;margin-right:25px;margin-top:-50px;"> <a class="btn-reserva" style="height:10px;" href="#" ng-click="agregarEventoSalon();"><pre style="margin-top:-8px;">Agregar Evento</pre></a></div>
-                    </div>
+                    <div class="titles"><h2 ><span>Eventos Programados</span></h2> </div>
+                    <div style="float:right;margin-right:25px;margin-top:-50px;"> <button class="btn btn-primary" href="javascript:;" ng-click="agregarEventoSalon();">Agregar Evento</button></div>
+                    </div> 
 
 
                     <div class="clear"/>
@@ -93,53 +93,54 @@
                     
                     <div id="accordion-container" ng-show="rfp.salones.length>0">
                         <div id="newSalon" style="width: 750px;" ng-repeat="currentSalon in rfp.salones">
-                            <a href="javascript:void(0)" ng-click="eliminarSalon(currentSalon)" style="float: right;"><br/>Eliminar&nbsp;&nbsp;&nbsp;</a>
-                            <a href="javascript:void(0)" ng-click="clonarSalon(currentSalon)" style="float: right;"><br> Clonar&nbsp;&nbsp;&nbsp;</a>
-                            <h2 class="accordion-header">Nuevo Evento</h2>
+                           
+                                <a href="javascript:void(0)" ng-click="eliminarSalon(currentSalon)" style="float: right;">Eliminar&nbsp;&nbsp;&nbsp;</a>
+                                <a href="javascript:void(0)" ng-click="clonarSalon(currentSalon)" style="float: right;">Clonar&nbsp;&nbsp;&nbsp;</a>
+                                <h2 class="accordion-header">Nuevo Evento</h2>
+                            
                             <div class="accordion-content">
                             <section id="rfp_salones">
-                            
                             <br>
-                            <div style="float:left;"><label class="label">Nombre del Evento</label><br><input type="text"
-                                       ng-model="currentSalon.nombreEvento"
-                                       onkeyup="$(this).closest('.accordion-content').prev().html(this.value);">
-                            </div>
-                            <div style="float:left;padding-left:10px;">
-                                <label class="label">Número de Participantes</label><br>
-                                <input type="text"
-                                        ng-model="currentSalon.asistentes" size="2">
-                            </div>
-                            <div style="float:left;padding-left:10px;">
-                                <label class="label">Fecha</label><br>
-                                <input id="rfp_salon_fecha" type="text" readonly
-                                       type="text" class="datepickerEvt"
-                                       ng-model="currentSalon.fechaStr" size="20">
-                            </div>
-                            <!-- <td><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
-    <input type="text" class="form-control" value="13:14" size="4" >
-    <span class="input-group-addon">
-    <span class="glyphicon glyphicon-time"></span>
-    </span>
-    </div>
-    </td> -->
-                            <div style="float:left;padding-left:10px;">
-                                <label class="label">Hora de Inicio</label><br>
-                                <input type="text"  class="rfp_salon_horaInicio{{$index}}" size="6"
-                                       ng-model="currentSalon.horaInicio" />
-                            </div>
+                            <div class="row">
+                                <div style="float:left;margin-left:20px;"><label>Nombre del Evento</label><br><input type="text" class="form-control"
+                                           ng-model="currentSalon.nombreEvento"
+                                           onkeyup="$(this).closest('.accordion-content').prev().html(this.value);">
+                                </div>
+                                <div style="float:left;padding-left:10px;">
+                                    <label>No.Participantes</label><br>
+                                    <input type="text" class="form-control"
+                                            ng-model="currentSalon.asistentes" size="5">
+                                </div>
+                                <div style="float:left;padding-left:10px;">
+                                    <label >Fecha</label><br>
+                                    <input id="rfp_salon_fecha{{$index}}" type="text" 
+                                           type="text" class="datepickerEvt{{$index}} form-control"
+                                           ng-model="currentSalon.fechaStr" size="10">
+                                </div>
+                                <!-- <td><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true">
+        <input type="text" class="form-control" value="13:14" size="4" >
+        <span class="input-group-addon">
+        <span class="glyphicon glyphicon-time"></span>
+        </span>
+        </div>
+        </td> -->
+                                <div style="float:left;padding-left:10px;">
+                                    <label >Hora de Inicio</label><br>
+                                    <input type="text"  classbtn btn-primary="rfp_salon_horaInicio{{$index}} form-control" size="6"
+                                           ng-model="currentSalon.horaInicio" />
+                                </div>
 
-                            <div style="float:left;padding-left:10px;">
-                                <label class="label">Hora de Fin</label><br>
-                                <input type="text" class="rfp_salon_horaFin{{$index}}"
-                                        size="6"
-                                       ng-model="currentSalon.horaFin" />
+                                <div style="float:left;padding-left:10px;">
+                                    <label >Hora de Fin</label><br>
+                                    <input type="text" class="rfp_salon_horaFin{{$index}} form-control"
+                                            size="6"
+                                           ng-model="currentSalon.horaFin" />
+                                </div>
                             </div>
-                           
-                        <div class="clear"/>
-                        <br>
-                        <br>
-                         <div style="float:left"><label class="label">Tipo de Evento</label><br>
-                             <select id="selectConfigTipo{{$index}}" name="selectConfigTipo" class="selectConfigTipo{{$index}}"
+                            <br>
+                            <div class="row">
+                         <div style="float:left;margin-left:20px;"><label>Tipo de Evento</label><br>
+                             <select id="selectConfigTipo{{$index}}" name="selectConfigTipo" class="selectConfigTipo{{$index}} form-control"
                                     style="width: 200px; font-weight: bolder;"
                                     ng-model="currentSalon.tipoEvento">
                                 <option value="1">Desayuno</option>
@@ -153,8 +154,8 @@
                                 <option value="9">Otro</option>
                             </select>
                         </div>
-                        <div style="float:left;padding-left:10px;"><label class="label">Montaje del Evento</label><br>
-                            <select id="selectConfigSalon{{$index}}" name="selectConfigSalon" class="selectConfigSalon{{$index}}"
+                        <div style="float:left;padding-left:10px;"><label>Montaje del Evento</label><br>
+                            <select id="selectConfigSalon{{$index}}" name="selectConfigSalon" class="selectConfigSalon{{$index}} form-control"
                     style="width: 200px; font-weight: bolder;"
                     ng-model="currentSalon.tipoSalon">
                                 <option value="1"
@@ -173,7 +174,7 @@
                                         data-left="<img style='width:25px;height:25px;margin-top:0px;' src='../img/icon/mesaredonda.png'>">&nbsp;&nbsp;&nbsp;Mesas
                                     Redondas</option>
                                 <option value="8"
-                                        data-left="<img style='width:25px;height:25px;margin-top:0px;' src='../img/icon/mediaslunas.png'>">&nbsp;&nbsp;&nbsp;Medias
+                                        data-le;margin-left:20px;ft="<img style='width:25px;height:25px;margin-top:0px;' src='../img/icon/mediaslunas.png'>">&nbsp;&nbsp;&nbsp;Medias
                                     Lunas</option>
                                 <option value="9"
                                         data-left="<img style='width:25px;height:25px;margin-top:0px;' src='../img/icon/otro.png'>">&nbsp;&nbsp;&nbsp;Otro</option>
@@ -181,12 +182,13 @@
 
                             </select>
                         </div>
-                            <!-- <td>Servicios</td> -->
-                       <div class="clear"/>
-
-                    <br /><label  class="label">Comentarios Adicionales</label><br />
-                    <textarea id="rfp_salon_comadicionales" cols="70" style="height:70px;"
-                              ng-model="currentSalon.comentarios"></textarea>
+                        </div>
+                        <br>
+                    <div class="row">
+                        <label>Comentarios Adicionales</label><br />
+                        <textarea id="rfp_salon_comadicionales" cols="70" style="height:70px;"
+                            ng-model="currentSalon.comentarios"></textarea>
+                    </div>
                 </section>
             </div>
                             </div>
@@ -194,12 +196,12 @@
 
                 <br>
                 <div style="height:60%" ng-show="rfp.salones==null || rfp.salones.length==0"></div>
-                <div style="float:left;margin-left:25px;"><a onclick=" $.fancybox.prev();"  class="btn-reserva hand">Regresar</a>
+                <div style="float:left;margin-left:25px;"><button onclick=" $.fancybox.prev();"  class="btn btn-primary">Regresar</button>
                 </div>
                     
                 <div style="float:right;margin-right:25px;">
-                    <a  class="btn-reserva hand" style="float:right;margin-right:25px;"
-                                                                          ng-click="validarDatosSalones();">Siguiente</a> </div>
+                    <button  class="btn btn-primary" style="float:right;margin-right:25px;"
+                                                                          ng-click="validarDatosSalones();">Siguiente</button> </div>
                 
                 
 
@@ -224,55 +226,55 @@
             </div-->
 
             <div id="datos_contacto" style="display: none; text-align: left;">
-                <br><br>
-                <h1 class="htl-name" style="text-align:center;" >Datos del Cliente</h1>
-                <br><br>
-                <form ng-submit="rfp_create()" class="cabin">
+                <div class="titles">
+                    <h2><span>Datos del Cliente</span></h2>
+                </div>
+                <form ng-submit="rfp_create()" style="margin-top:-20px;">
                     <table style="margin: 0px auto">
                         <tr>
                             <td><label>Nombre Completo <span class="red">*</span></label></td>
                             <td><input type="text" placeholder="Nombre con apellidos" required
-                                       ng-model="rfp.nombreCliente"></td>
+                                       class="form-control" ng-model="rfp.nombreCliente"></td>
                         </tr>
                         <tr>
                             <td><label>Email <span class="red">*</span></label></td>
                             <td><input type="email" ng-model="rfp.email" required
-                                       placeholder="alguien@example.com"></td>
+                                       class="form-control" placeholder="alguien@example.com"></td>
                         </tr>
                         <tr>
                             <td><label>Telefono <span class="red">*</span></label></td>
                             <td><input type="text" required
                                        ng-model="rfp.telefonoContacto"
-                                       placeholder="Ej. 04455565811"></td>
+                                       class="form-control" placeholder="Ej. 04455565811"></td>
                         </tr>
                         <tr>
                             <td><label>Empresa <span class="red">*</span></label></td>
                             <td><input type="text" ng-model="rfp.empresa" required
-                                       placeholder="Empresa donde laboras"></td>
+                                       class="form-control" placeholder="Empresa donde laboras"></td>
                         </tr>
                         <tr>
                             <td><label>Cargo <span class="red"></span></label></td>
                             <td><input type="text" ng-model="rfp.puesto"
-                                       placeholder="Cargo actual"></td>
+                                       class="form-control" placeholder="Cargo actual"></td>
                         </tr>
                         <tr>
                             <td><label>País:</label></td>
                             <td><input type="text"   placeholder="Ej. Mexico"
-                                       ng-model="rfp.paisText" /></td>
+                                       class="form-control" ng-model="rfp.paisText" /></td>
                         </tr>
                         <tr>
                             <td><label>Estado:</label></td>
-                            <td><input type="text" ng-model="rfp.estadoText" placeholder="Ej. Distrito Federal"/>
+                            <td><input class="form-control" type="text" ng-model="rfp.estadoText" placeholder="Ej. Distrito Federal"/>
                             </td>
                         </tr>
                         <tr>
                             <td><label>Ciudad:</label></td>
-                            <td><input type="text" ng-model="rfp.ciudadText" placeholder="Ej. Miguel Hidalgo"/>
+                            <td><input class="form-control" type="text" ng-model="rfp.ciudadText" placeholder="Ej. Miguel Hidalgo"/>
                             </td>
                         </tr>
                     </table>
-                    <br /> <br /> <br /> <button onclick=" $.fancybox.prev();" class="btn-reserva hand" style="float:left;margin-left:25px;">Regresar</button>
-                    <button class="btn-reserva hand" type="submit" style="float:right;margin-right:25px;">Solicitar Cotización</button> 
+                    <br /> <br /> <br /> <button onclick=" $.fancybox.prev();" class="btn btn-primary" style="float:left;margin-left:25px;">Regresar</button>
+                    <button class="btn btn-primary" type="submit" style="float:right;margin-right:25px;">Solicitar Cotización</button> 
                     
                 </form>
             </div>
@@ -280,12 +282,12 @@
         <div id="gracias" style="display: none;text-align:center;">
             <img src="img/HotelesYoPlanner.png" ></img>
             <br />
-            <h1>Solicitud enviada correctamente con el folio <span id="folioRFP"
-                                            style="font-size: xx-large; color: navy;">{{folioFinal.substring(folioFinal.length-6)}}</span> consérvalo para futuras referencias. <br>Hemos enviado una notificación a tu correo electrónico.</h1>
+            <h2>Solicitud enviada correctamente con el folio <span id="folioRFP"
+                                            style="font-size: xx-large; color: navy;">{{folioFinal.substring(folioFinal.length-6)}}</span> consérvalo para futuras referencias. <br>Hemos enviado una notificación a tu correo electrónico.</h2>
             <br />
             
             <div style="text-align:center">
-            <button onclick="window.location='/'" class="btn hand" style="text-align:center;">Aceptar</button>
+            <button onclick="window.location='/'" class="btn btn-primary" style="text-align:center;">Aceptar</button>
                 </div>
         </div>
 

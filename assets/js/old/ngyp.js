@@ -624,9 +624,6 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     	//$scope.salonesModificados = [];
     }
 
-    $timeout(function(){
-    	gapi.page.go()
-    }, 2000)
 
 
 }]).directive('repeatDone', function() {

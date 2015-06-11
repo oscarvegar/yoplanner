@@ -10,6 +10,10 @@
 // Email: support@iwthemes.com
 // Copyright: (C) 2015
 
+function parseDate(date){
+  return moment(date, "YYYY-MM-DD").toDate();
+}
+
 $(document).ready(function($) {
 
 	'use strict';
@@ -36,8 +40,7 @@ $(document).ready(function($) {
   $("#header").sticky({topSpacing:0});
 
   //=================================== datepicker ===================================//
-  $(".date-input" ).datepicker();
-
+  
   //=================================== Loader =====================================//
   jQuery(window).load(function() {
     jQuery(".status").fadeOut();
