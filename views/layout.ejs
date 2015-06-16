@@ -267,73 +267,29 @@
               </header>
               <!-- End Header-->
 
-              <!-- Slide And Filter Section-->    
-              <section class="tp-banner-container">
-                <!-- SLIDE  -->
-                <div class="tp-banner" >
-                  <!-- SLIDES CONTENT-->
-                  <ul> 
-                    <!-- SLIDE  -->
-                    <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-                      <!-- MAIN IMAGE -->
-                      <img src="img/hoteles/363032/main.jpg"  alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
-                      <!-- LAYERS -->
-                    </li>
-
-                    <!-- SLIDE  -->
-                    <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-                      <!-- MAIN IMAGE -->
-                      <img src="img/slide/3.jpg"  alt="fullslide1" data-bgposition="top center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
-                      <!-- LAYERS -->
-                    </li>
-
-                    
-                    <!-- SLIDE  -->
-                    <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
-                      <!-- MAIN IMAGE -->
-                      <img src="img/slide/4.jpg"  alt="fullslide1" data-bgposition="left center" data-kenburns="on" data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
-                      <!-- LAYERS -->
-                    </li>
-                  </ul> 
-                  <!-- END SLIDES  --> 
-                  <div class="tp-bannertimer"></div>  
-                </div>
-                <!-- SLIDE CONTENT-->
-
-                <!-- FILTER HEADER - TITLE HEADER-->
-                <div class="filter-title">
-                  <!-- TITLE HEADER-->
-                  <div class="title-header">
-                    <h1>YOPLANNER LO HACE.</h1>
-                    <p class="lead">YoPlanner el mejor meeting planner de américa latína.</p>
-                  </div>
-                  <!-- END TITLE HEADER-->
-
-                  <!-- FILTER HEADER-->
-                  <div class="filter-header" ng-controller="AutocompleteController">
-                    <form action="#">
-                      <autocomplete   ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity"></autocomplete>
-                      
-                    </form>
-                  </div>
-                  <!-- END FILTER HEADER-->
-                </div>
-                <!-- END FILTERHEADER - TITLE HEADER -->
-              </section>       
-              <!-- End Slide And Filter Section-->
-
               <%- body %>
 
               <!-- ****** MODAL DE RFP ***** -->
                  <rfp></rfp>
 
-
-
-
-
               <!-- footer-->
               <footer id="footer" class="footer-v1">
                 <div class="container">
+                  <div class="row">
+                    <div class="col-md-12">
+
+                      <hr>
+                      <pre>
+                        <!-- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams -->
+                        $state = {{$state.current.name}}
+                        $stateParams = {{$stateParams}}
+                        $state full url = {{ $state.$current.url.source }}
+                        <!-- $state.$current is not a public api, we are using it to
+                        display the full url for learning purposes-->
+                      </pre>
+                    
+                    </div>
+                  </div>
                   <div class="row">
                     <!-- Title Footer-->
                     <div class="col-md-5">
@@ -341,40 +297,40 @@
                         <h2>Save on your plans!
                           <br> <span>Select YoPlanner Theme And Receive</span>
                           <br> our discounts by e-mail.</h2>
-                        </div>
-
-                        <p>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</p>
                       </div>
-                      <!-- End Title Footer-->
 
-                      <div class="col-md-7">
-                        <div class="row">                             
-                          <!-- Social Us-->
-                          <div class="col-md-3">
-                            <h3>FOLLOW US</h3>
-                            <ul class="social">
-                              <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="#">Facebook</a></li>
-                              <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="#">Twitter</a></li>
-                              <li class="github"><span><i class="fa fa-github"></i></span><a href="#">Github</a></li>
-                            </ul>
-                          </div>
-                          <!-- End Social Us-->
+                      <p>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</p>
+                    </div>
+                    <!-- End Title Footer-->
 
-                          <!-- Recent links-->
-                          <div class="col-md-5">
-                            <h3>TRAVEL SPECIALISTS </h3>
-                            <ul>
-                              <li><i class="fa fa-check"></i> <a href="#">Golf Vacations</a></li>
-                              <li><i class="fa fa-check"></i> <a href="#">Disney Parks Vacations</a></li>
-                              <li><i class="fa fa-check"></i> <a href="#">Vacations As Advertised</a></li>                                    
-                            </ul>
-                          </div>
-                          <!-- End Recent links-->
+                    <div class="col-md-7">
+                      <div class="row">                             
+                        <!-- Social Us-->
+                        <div class="col-md-3">
+                          <h3>FOLLOW US</h3>
+                          <ul class="social">
+                            <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="#">Facebook</a></li>
+                            <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="#">Twitter</a></li>
+                            <li class="github"><span><i class="fa fa-github"></i></span><a href="#">Github</a></li>
+                          </ul>
+                        </div>
+                        <!-- End Social Us-->
 
-                          <!-- Contact Us-->
-                          <div class="col-md-4">
-                           <h3>CONTACT US</h3>
-                           <ul class="contact_footer">
+                        <!-- Recent links-->
+                        <div class="col-md-5">
+                          <h3>TRAVEL SPECIALISTS </h3>
+                          <ul>
+                            <li><i class="fa fa-check"></i> <a href="#">Golf Vacations</a></li>
+                            <li><i class="fa fa-check"></i> <a href="#">Disney Parks Vacations</a></li>
+                            <li><i class="fa fa-check"></i> <a href="#">Vacations As Advertised</a></li>                                    
+                          </ul>
+                        </div>
+                        <!-- End Recent links-->
+
+                        <!-- Contact Us-->
+                        <div class="col-md-4">
+                          <h3>CONTACT US</h3>
+                          <ul class="contact_footer">
                             <li>
                               <i class="fa fa-envelope"></i> <a href="#">example@example.com</a>
                             </li>
@@ -498,32 +454,17 @@
 
             <!-- ======================= End JQuery libs =========================== -->
 
-            <!--Slider Function-->
-            <script type="text/javascript">
-              jQuery(document).ready(function() {
-                jQuery('.tp-banner').show().revolution({
-                  dottedOverlay:"none",
-                  delay:5000,
-                  startwidth:1170,
-                  startheight:925,
-                  minHeight:500,
-                  navigationType:"none",
-                  navigationArrows:"solo",
-                  navigationStyle:"preview1"
-                });             
-            }); //ready
-
-
-          </script>
-          <!--End Slider Function-->
-
-
          <!-- ======================= Angular libs =========================== -->
         <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/angular/angular-route.min.js"></script>
+        <script type="text/javascript" src="js/angular/angular-animate.min.js"></script>
+        <script type="text/javascript" src="js/angular-ui/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="js/angular-mod/ngStorage.min.js"></script>
         <script type="text/javascript" src="ng/yoplanner.js"></script>
         <!-- Autocomplete -->
         <script src="js/autocomplete/autocomplete.js"></script> 
         <script type="text/javascript" src="ng/controllers/RFPController.js"></script>
+        <script type="text/javascript" src="ng/controllers/HotelCtrlr.js"></script>
 
          <!-- ======================= End Angular libs =========================== -->
 

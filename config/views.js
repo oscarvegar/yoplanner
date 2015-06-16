@@ -32,7 +32,6 @@ module.exports.views = {
 
   engine: 'ejs',
   
-
   /****************************************************************************
   *                                                                           *
   * Layouts are simply top-level HTML templates you can use as wrappers for   *
@@ -57,8 +56,6 @@ module.exports.views = {
   *                                                                           *
   ****************************************************************************/
 
-  layout: 'layout'
-
   /****************************************************************************
   *                                                                           *
   * Using Multiple Layouts with EJS                                           *
@@ -77,5 +74,18 @@ module.exports.views = {
   *                                                                           *
   ****************************************************************************/
 
-  
+  layout: 'layout',
+
+  /****************************************************************************
+   *                                                                           *
+   * Partials are simply top-level snippets you can leverage to reuse template *
+   * for your server-side views. If you're using handlebars, you can take      *
+   * advantage of Sails' built-in `partials` support.                          *
+   *                                                                           *
+   * If `false` or empty partials will be located in the same folder as views. *
+   * Otherwise, if a string is specified, it will be interpreted as the        *
+   * relative path to your partial files from `views/` folder.                 *
+   *                                                                           *
+   ****************************************************************************/
+  partials: 'partials/'
 };

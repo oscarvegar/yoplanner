@@ -1,0 +1,463 @@
+
+            <!-- Section Title-->    
+            <div class="section-title-detailed" ng-controller="HotelController">
+                <!-- Single Carousel-->
+                <div id="single-carousel">
+                    <div class="img-hover" ng-repeat="pic in currentHotel.pictures">
+                        <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>
+                        <img ng-src="{{pic}}" alt="" class="img-responsive">
+                    </div>
+                </div>
+                <!-- End Single Carousel-->
+
+                <!-- Section Title-->
+                <div class="title-detailed">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <h2>{{currentHotel.name}} 
+                                    <span>{{currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')}}</span>
+                                </h2>
+                            </div>
+
+                            <div class="col-md-3">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Section Title-->
+            </div>   
+            <!-- End Section Title-->
+
+            <!--Content Central -->
+            <div class="content-central" ng-controller="HotelController">
+                <!-- Shadow Semiboxed -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+                </div>
+                <!-- End Shadow Semiboxed -->
+
+                <!-- End content info - Features-->
+                <div class="content_info skin_base no-overflow">
+                    <div class="container wow fadeInUp">
+                        <div class="row">
+                            <!-- Services Items -->
+                            <div class="col-md-9">
+                                <ul class="services-lines services-lines-left">
+                                    <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-bicycle"></i>
+                                            <h5>Special Activities</h5>
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-plane"></i>
+                                            <h5>Travel Arrangements</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-user"></i>
+                                            <h5>Private Guide</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-search-plus"></i>
+                                            <h5>Location Manager</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-map-marker"></i>
+                                            <h5>Handpicked Hotels</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-money"></i>
+                                            <h5>Best Price Guarantee</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-bank"></i>
+                                            <h5>Trust & Safety</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-service-line">
+                                            <i class="fa fa-line-chart"></i>
+                                            <h5>Best Travel Agent</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div> 
+                            <!-- End Services Items --> 
+
+                            <!-- Form Detailed -->
+                            <div class="col-md-3">
+                                <div class="form-detailed">
+                                    <div class="header-detailed">
+                                        <div class="price-detailed">
+                                            $55
+                                        </div>
+
+                                        <div class="frequency-detailed">
+                                            Per Night
+                                        </div>
+                                    </div>
+                                    <!--
+                                    <form action="#">
+                                        <label>Arrival</label>
+                                        <input type="text" required="required" placeholder="Select Arrival" class="date-input">
+                                        <label>Output</label>
+                                        <input type="text" required="required" placeholder="Select Output" class="date-input">
+                                        <label>Guests</label>
+                                        <div class="selector">
+                                            <select class="guests-input">
+                                                <option value="1">1 Guests</option>
+                                                <option value="2">2 Guests</option>
+                                                <option value="3">3 Guests</option>
+                                                <option value="4">4 Guests</option>
+                                                <option value="5">5+ Guests</option>
+                                            </select>
+                                            <span class="custom-select">Select Guests</span>
+                                        </div>
+                                        <input type="submit" value="Search">
+                                    </form>
+                                     -->
+                                </div>
+                            </div>   
+                            <!-- End Form Detailed --> 
+                        </div>
+                    </div>
+                </div>   
+                <!-- End content info - Features--> 
+
+                <!-- End content info - Grey Section-->
+                <div class="content_info">
+                    <!-- Info Resalt-->
+                    <div class="content_resalt paddings-mini tabs-detailed">
+                        <div class="container wow fadeInUp">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- Nav Tabs-->
+                                    <ul class="nav nav-tabs" id="myTab">
+                                       <li class="active">
+                                            <a href="#hotel" data-toggle="tab"><i class="fa fa-home"></i> Descripción</a>
+                                        </li>
+                                        <li>
+                                            <a href="#saloons" data-toggle="tab"><i class="fa fa-camera"></i> Salones</a>
+                                        </li>
+                                       <li>
+                                            <a href="#extraInfo" data-toggle="tab"><i class="fa fa-check"></i>Información Extra</a>
+                                        </li>
+                                    </ul>
+                                    <!-- End Nav Tabs-->
+
+                                    <div class="tab-content">
+                                        <!-- Tab One - Hotel -->
+                                        <div class="tab-pane active" id="hotel">                                        
+                                            <h2>Informacion del hotel</h2>
+                                            <p>{{currentHotel.description}}</p>
+
+                                            <h3>Rom facilities </h3>
+                                            
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">
+                                                        <li><i class="fa fa-check"></i> Climate control</li>
+                                                        <li><i class="fa fa-check"></i> Air conditioning</li>
+                                                        <li><i class="fa fa-check"></i> Direct-dial phone</li>
+                                                        <li><i class="fa fa-check"></i> Minibar</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">
+                                                        <li><i class="fa fa-check"></i> Wake-up calls</li>
+                                                        <li><i class="fa fa-check"></i> Daily housekeeping</li>
+                                                        <li><i class="fa fa-check"></i> Private bathroom</li>
+                                                        <li><i class="fa fa-check"></i> Hair dryer</li> 
+                                                    </ul>                                   
+                                                </div>  
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">                              
+                                                        <li><i class="fa fa-check"></i> Makeup/shaving mirror</li>
+                                                        <li><i class="fa fa-check"></i> Shower/tub combination</li>
+                                                        <li><i class="fa fa-check"></i> Satellite TV service</li>
+                                                        <li><i class="fa fa-check"></i> Electronic/magnetic keys</li>   
+                                                    </ul>                                   
+                                                </div>                                  
+                                            </div>
+                                        </div>
+                                        <!-- end Tab One - Hotel -->
+
+                                        <!-- Tab Two - Salones -->
+                                        <div class="tab-pane" id="saloons">
+                                            <p>The Aqua Hotel Onabrava is located in Santa Susanna, in the beautiful Costa Brava, a few steps from the beach.The 350 rooms are equipped with air conditioning and heating, telephone, private bathroom with hairdryer and minibar. They also have flat-screen TVs and balconies.</p>
+
+                                            <h3>Hotel facilities </h3>
+
+                                            <ul class="services-lines full-services">
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-bicycle"></i>
+                                                        <h5>Special Activities</h5>
+                                                    </div>
+                                                </li>
+                                                 <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-plane"></i>
+                                                        <h5>Travel Arrangements</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-user"></i>
+                                                        <h5>Private Guide</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-search-plus"></i>
+                                                        <h5>Location Manager</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-map-marker"></i>
+                                                        <h5>Handpicked Hotels</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-money"></i>
+                                                        <h5>Best Price Guarantee</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-bank"></i>
+                                                        <h5>Trust &amp; Safety</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-line-chart"></i>
+                                                        <h5>Best Travel Agent</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-bed"></i>
+                                                        <h5>Great Beds</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-automobile"></i>
+                                                        <h5>Automobile</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-fax"></i>
+                                                        <h5>Fax Service</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-soccer-ball-o"></i>
+                                                        <h5> Sports</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-taxi"></i>
+                                                        <h5>taxi Service</h5>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="item-service-line">
+                                                        <i class="fa fa-credit-card"></i>
+                                                        <h5>Credit Card</h5>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                            <h3>Rom facilities </h3>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">
+                                                        <li><i class="fa fa-check"></i> Climate control</li>
+                                                        <li><i class="fa fa-check"></i> Air conditioning</li>
+                                                        <li><i class="fa fa-check"></i> Direct-dial phone</li>
+                                                        <li><i class="fa fa-check"></i> Minibar</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">
+                                                        <li><i class="fa fa-check"></i> Wake-up calls</li>
+                                                        <li><i class="fa fa-check"></i> Daily housekeeping</li>
+                                                        <li><i class="fa fa-check"></i> Private bathroom</li>
+                                                        <li><i class="fa fa-check"></i> Hair dryer</li> 
+                                                    </ul>                                   
+                                                </div>  
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">                              
+                                                        <li><i class="fa fa-check"></i> Makeup/shaving mirror</li>
+                                                        <li><i class="fa fa-check"></i> Shower/tub combination</li>
+                                                        <li><i class="fa fa-check"></i> Satellite TV service</li>
+                                                        <li><i class="fa fa-check"></i> Electronic/magnetic keys</li>   
+                                                    </ul>                                   
+                                                </div>                                  
+                                            </div>
+                                        </div>
+                                        <!-- end Tab Two - Salones -->
+
+                                        <!-- Tab Theree - Informacion Extra -->
+                                        <div class="tab-pane" id="extraInfo">
+                                            <div class="accrodation">
+                                                <!-- section 1 -->
+                                                <span class="acc-trigger"><a href="#">Mision</a></span>
+                                                <div class="acc-container">
+                                                    <div class="content">
+                                                        Book cheap hotels and make payment facilities, free cancellation when the hotel so provides, compare prices and find all the options for your vacation.
+                                                    </div>
+                                                </div>
+                                              
+                                                <!-- section 2 -->
+                                                <span class="acc-trigger"><a href="#">Vision</a></span>
+                                                <div class="acc-container">
+                                                    <div class="content">
+                                                        You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.
+                                                    </div>
+                                                </div>
+                                           
+                                                <!-- section 3 -->
+                                                <span class="acc-trigger"><a href="#">What we offer?</a></span>
+                                                <div class="acc-container">
+                                                    <div class="content">
+                                                        Find a wide variety of airline tickets and cheap flights, hotels, tour packages, car rentals, cruises and more in YoPlanner.com.You can choose your favorite destination and start planning your long-awaited vacation.
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- section 4 -->
+                                                <span class="acc-trigger active"><a href="#">Our services</a></span>
+                                                <div class="acc-container">
+                                                    <div class="content">
+                                                        You can also check availability of flights and hotels quickly and easily, in order to find the option that best suits your needs.Book cheap hotels and make payment facilities, free cancellation when the hotel so provides, compare prices and find all the options for your vacation.
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <!-- End accrodation -->
+                                        </div>
+                                        <!-- Tend ab Theree - Informacion Extra -->
+                                    </div>  
+                                </div>                 
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Info Resalt-->
+                </div>   
+                <!-- End content info - Grey Section--> 
+
+                <!-- content info - testimonials-->
+                <div class="content_info">
+                    <!-- Parallax Background -->
+                    <div class="bg_parallax image_02_parallax"></div>
+                    <!-- Parallax Background -->
+
+                    <div class="opacy_bg_02">
+                        <!-- Testimonial Propertie-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="info-testimonial">
+                                       <ul id="testimonials">
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/1.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Jeniffer Martinez</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>Spectacular, excellent personal, restaurants and very good drinks, highly recommended.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/2.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Juan Rendon</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </li>
+
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/3.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Federick Gordon</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </li>
+                                       </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="testimonial-info">
+                                        <h2>TESTIMONIALS</h2>
+                                        <P>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</P>
+                                        <a href="#" class="btn btn-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Testimonial Propertie-->
+                    </div>
+                </div>
+                <!-- End content info - testimonials-->
+            </div>
+            <!-- End Content Central -->
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    //=================================== Carousel Services  ==============================//    
+                    $("#single-carousel, #single-carousel-sidebar").owlCarousel({
+                          items : 1,
+                          autoPlay: 4000,  
+                        navigation : true,
+                        autoHeight : true,
+                        slideSpeed : 400,
+                        singleItem: true,
+                        pagination : false
+                    });
+                }); //ready
+            </script>

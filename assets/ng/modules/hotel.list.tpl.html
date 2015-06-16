@@ -1,0 +1,111 @@
+
+            <!-- Section Title-->    
+            <div class="section-title-01">
+                <!-- Parallax Background -->
+                <div class="bg_parallax image_02_parallax"></div>
+                <!-- Parallax Background -->
+
+                <!-- Content Parallax-->
+                <div class="opacy_bg_02">
+                     <div class="container">
+                        <h1>Resultados Búsqueda</h1>
+                        <div class="crumbs">
+                            <ul>
+                                <li><a href="/#">Inicio</a></li>
+                                <li>/</li>
+                                <li>Resultados Búsqueda</li>                                       
+                            </ul>    
+                        </div>
+                    </div>  
+                </div>  
+                <!-- End Content Parallax--> 
+            </div>   
+            <!-- End Section Title-->
+
+            <!--Content Central -->
+            <section class="content-central" ng-controller="HotelController">
+                <!-- Shadow Semiboxed -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+                </div>
+                <!-- End Shadow Semiboxed -->
+
+                <!-- End content info - Vacations Destinatios-->
+                <div class="content_info">
+                    <div class="paddings-mini">
+                        <div class="container">
+                            <!--
+                            <!- Nav Filters ->
+                            <div class="portfolioFilter">
+                                <a href="#" data-filter="*" class="current">Show All</a>
+                                <a href="#beach" data-filter=".beach">Beach</a>
+                                <a href="#nature" data-filter=".nature">Nature</a>
+                                <a href="#extreme" data-filter=".extreme">Extreme</a>
+                                <a href="#romantic" data-filter=".romantic">Romantic</a>
+                            </div>
+                            <!- End Nav Filters ->
+                             -->
+
+                            <!-- Items Gallery filters-->
+                            <div class="row portfolioContainer">
+                                
+                                <!-- Item Gallery-->
+                                <div class="col-xs-12 col-sm-6 {{$index == 0 ? 'col-md-8' : 'col-md-4'}} nature" ng-repeat="hotel in hotels" ng-click="selectResult(hotel)">
+                                    <div class="img-hover">
+                                        <img ng-src="{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}" alt="" class="img-responsive">
+                                        <div class="overlay"><a ng-href="{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}" class="fancybox"><i class="fa fa-plus-circle"></i></a></div>
+                                    </div>
+
+                                    <div class="info-gallery">
+                                        <h3>
+                                            {{hotel.name}}<br>
+                                            <span>{{$selectedCity}}</span>
+                                        </h3>
+                                        <hr class="separator">
+                                        <p>{{(hotel.description.length > 300) ? hotel.description.substr(0,297) + '...' : hotel.description}}</p>
+                                        <ul class="starts">
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                        </ul>
+                                        <!-- <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div> -->
+                                        <div class="content-btn"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
+                                        <!-- <div class="content-btn" ng-click="selectResult(hotel)"><a href="javascript:void(0)" class="btn btn-primary">Ver Detalles</a></div> -->
+                                        <!-- <div class="price"><span>$</span><b>From</b>45</div> -->
+                                    </div>
+                                </div>
+                                <!-- End Item Gallery-->
+                            </div>   
+                            <!-- End Items Gallery filters-->       
+
+                            <button ng-click="masResultados()" ng-hide="showMostrarMas" class="btn-reserva" style="float:right;">Más Resultados</button>
+                            <div ng-show="showMostrarMas">
+                                <br>
+                                <img src="img/lblue.gif"  style="width:30px;height:30px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <!-- End content info - Vacations Destinatios--> 
+            </section>
+            <!-- End Content Central -->
+
+            <script type="text/javascript">
+
+                //=================================== Ligbox  ===========================================//   
+                $(document).ready(function() {
+                    $(".fancybox").fancybox({
+                        openEffect  : 'elastic',
+                        closeEffect : 'elastic',
+
+                        helpers : {
+                            title : {
+                                type : 'inside'
+                            }
+                        }
+                    });
+                }); //ready
+
+            </script>
