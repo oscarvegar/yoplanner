@@ -28,11 +28,14 @@ module.exports = {
         // Start the request
         HttpClientService.httpsGET(options,function(response){
             response = JSON.parse(response);
-            for(var i in response.hotels){
-                for(var j in response.hotels[i].pictures){
-                    
+
+            if(response.hotels) {
+                for(var i in response.hotels){
+                    for(var j in response.hotels[i].pictures){
+                        
                         response.hotels[i].pictures[j] = URL_PICTURES + response.hotels[i].pictures[j];
-                    
+                        
+                    }
                 }
             }
             return res.json(response);
