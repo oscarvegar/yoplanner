@@ -52,8 +52,9 @@
                                 <!-- Item Gallery-->
                                 <div class="col-xs-12 col-sm-6 {{$index == 0 ? 'col-md-8' : 'col-md-4'}} nature" ng-repeat="hotel in hotels" ng-click="selectResult(hotel)">
                                     <div class="img-hover">
-                                        <img ng-src="{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}" alt="" class="img-responsive">
-                                        <div class="overlay"><a ng-href="{{hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]}}" class="fancybox"><i class="fa fa-plus-circle"></i></a></div>
+                                        <!-- <p>{{(hotel.fotoPrincipal!=null?(hotel.fotoPrincipal.search('.jpg|.png|.gif') > 0 ? hotel.fotoPrincipal : hotel.fotoPrincipal + '.png' ):(hotel.pictures[0].search('.jpg|.png|.gif') > 0 ? hotel.pictures[0] : hotel.pictures[0] + '.png' ))}}</p> -->
+                                        <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive">
+                                        <div class="overlay"><a ng-href="{{(hotel.fotoPrincipal!=null?(hotel.fotoPrincipal.search('.jpg|.png|.gif') > 0 ? hotel.fotoPrincipal : hotel.fotoPrincipal + '.png' ):(hotel.pictures[0].search('.jpg|.png|.gif') > 0 ? hotel.pictures[0] : hotel.pictures[0] + '.png' ))}}" class="fancybox"><i class="fa fa-plus-circle"></i></a></div>
                                     </div>
 
                                     <div class="info-gallery">

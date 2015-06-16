@@ -29,7 +29,7 @@ module.exports = {
         HttpClientService.httpsGET(options,function(response){
             response = JSON.parse(response);
 
-            if(response.hotels) {
+            if(response && response.hotels) {
                 for(var i in response.hotels){
                     for(var j in response.hotels[i].pictures){
                         

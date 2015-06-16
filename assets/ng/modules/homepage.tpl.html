@@ -640,6 +640,30 @@
             <!--Slider Function-->
             <script type="text/javascript">
                 $(document).ready(function() {
+
+                    //=================================== Carousel features  ==================================//
+                    $("#slide-features").owlCarousel({
+                        autoPlay: false,
+                        items : 1,
+                        navigation : true,
+                        autoHeight : true,
+                        slideSpeed : 400,
+                        singleItem: true,
+                        pagination : true
+                    });
+                    
+                    //=================================== Carousel testimonials  ===============================//  
+                    $("#testimonials").owlCarousel({
+                        items : 1,
+                        autoPlay: 3200,  
+                        navigation : false,
+                        autoHeight : true,
+                        slideSpeed : 400,
+                        singleItem: true,
+                        pagination : true
+                    });
+
+                    // Slider Function-->
                     $('.tp-banner').show().revolution({
                         dottedOverlay:"none",
                         delay:5000,
@@ -649,7 +673,8 @@
                         navigationType:"none",
                         navigationArrows:"solo",
                         navigationStyle:"preview1"
-                    });             
+                    });
+                    // End Slider Function-->
                 }); //ready
           </script>
           <!--End Slider Function-->

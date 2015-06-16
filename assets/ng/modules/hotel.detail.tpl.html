@@ -3,9 +3,11 @@
             <div class="section-title-detailed" ng-controller="HotelController">
                 <!-- Single Carousel-->
                 <div id="single-carousel">
-                    <div class="img-hover" ng-repeat="pic in currentHotel.pictures">
+                    <div ng-repeat="pic in currentHotel.pictures">
+                    <div class="img-hover">
                         <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>
                         <img ng-src="{{pic}}" alt="" class="img-responsive">
+                    </div>
                     </div>
                 </div>
                 <!-- End Single Carousel-->
@@ -451,13 +453,36 @@
                 $(document).ready(function() {
                     //=================================== Carousel Services  ==============================//    
                     $("#single-carousel, #single-carousel-sidebar").owlCarousel({
-                          items : 1,
-                          autoPlay: 4000,  
+                        items : 1,
+                        autoPlay: 4000,  
                         navigation : true,
                         autoHeight : true,
                         slideSpeed : 400,
                         singleItem: true,
                         pagination : false
+                    });
+                    
+                    //=================================== Carousel testimonials  ===============================//  
+                    $("#testimonials").owlCarousel({
+                        items : 1,
+                        autoPlay: 3200,  
+                        navigation : false,
+                        autoHeight : true,
+                        slideSpeed : 400,
+                        singleItem: true,
+                        pagination : true
+                    });
+
+                    //=================================== Ligbox  ===========================================//   
+                    $(".fancybox").fancybox({
+                        openEffect  : 'elastic',
+                        closeEffect : 'elastic',
+
+                        helpers : {
+                            title : {
+                                type : 'inside'
+                            }
+                        }
                     });
                 }); //ready
             </script>

@@ -210,17 +210,15 @@ $(document).ready(function($) {
    });
 
   // Slider Function-->
-    $(document).ready(function() {
-      $('.tp-banner').show().revolution({
-        dottedOverlay:"none",
-        delay:5000,
-        startwidth:1170,
-        startheight:925,
-        minHeight:500,
-        navigationType:"none",
-        navigationArrows:"solo",
-        navigationStyle:"preview1"
-      });             
-    }); //ready
+  $('.tp-banner').show().revolution({
+    dottedOverlay:"none",
+    delay:5000,
+    startwidth:1170,
+    startheight:925,
+    minHeight:500,
+    navigationType:"none",
+    navigationArrows:"solo",
+    navigationStyle:"preview1"
+  });
   // End Slider Function-->
 });	

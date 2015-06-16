@@ -176,37 +176,39 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         $http.get("/recinto/findById/"+hotelId).success(function(data){
         	$log.info("SELECTED HOTEL > > > >", data);
 
-        	if(data.hotels.length > 0) {
-        		$rootScope.selectedHotel = data.hotels[data.hotels.length-1];
+        	if(data) {
+	        	if(data.hotels.length > 0) {
+	        		$rootScope.selectedHotel = data.hotels[data.hotels.length-1];
+	        	}
+	        	
+	        	if(data.salones && data.salones.length > 0) {
+	        		$rootScope.selectedHotel.salones = data.salones[data.salones.length-1];
+	        	}
+
+	        	if(data.infoExtra && data.infoExtra.length > 0) {
+	        		$rootScope.selectedHotel.infoExtra = data.infoExtra[data.infoExtra.length-1];
+	        	}
+
+	 			$scope.currentHotel = $rootScope.selectedHotel;
+
+			 	if($rootScope.selectedHotel.salones==null) {
+			        $http.get("/salonrecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
+			        	$log.info("SALONES > > > >", data);
+			        	$rootScope.selectedHotel.salones = data;
+			        }).error(function(err){
+			        	$log.error(err);
+			        });
+			    }
+
+		        if($rootScope.selectedHotel.infoExtra==null) {
+			        $http.get("/infoExtraRecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
+			        	$log.info("INFO EXTRA > > > >", data);
+			        	$rootScope.selectedHotel.infoExtra = data;
+			        }).error(function(err){
+			        	$log.error(err);
+			        });
+			    }
         	}
-        	
-        	if(data.salones && data.salones.length > 0) {
-        		$rootScope.selectedHotel.salones = data.salones[data.salones.length-1];
-        	}
-
-        	if(data.infoExtra && data.infoExtra.length > 0) {
-        		$rootScope.selectedHotel.infoExtra = data.infoExtra[data.infoExtra.length-1];
-        	}
-
- 			$scope.currentHotel = $rootScope.selectedHotel;
-
-		 	if($rootScope.selectedHotel.salones==null) {
-		        $http.get("/salonrecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
-		        	$log.info("SALONES > > > >", data);
-		        	$rootScope.selectedHotel.salones = data;
-		        }).error(function(err){
-		        	$log.error(err);
-		        });
-		    }
-
-	        if($rootScope.selectedHotel.infoExtra==null) {
-		        $http.get("/infoExtraRecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
-		        	$log.info("INFO EXTRA > > > >", data);
-		        	$rootScope.selectedHotel.infoExtra = data;
-		        }).error(function(err){
-		        	$log.error(err);
-		        });
-		    }
 
         }).error(function(err){
         	$log.error(err);
