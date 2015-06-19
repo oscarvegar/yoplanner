@@ -70,9 +70,9 @@
                                 <!-- Item Gallery-->
                                 <div class="{{$index==0?'col-md-offset-2 col-md-8':'col-md-4 '}}"  ng-click="selectResult(hotel)">
                                     <div class="" >
-                                        <div >
+                                        <div class="col-md-12 col-xs-12 col-sm-12">
                                             <!-- <p>{{(hotel.fotoPrincipal!=null?(hotel.fotoPrincipal.search('.jpg|.png|.gif') > 0 ? hotel.fotoPrincipal : hotel.fotoPrincipal + '.png' ):(hotel.pictures[0].search('.jpg|.png|.gif') > 0 ? hotel.pictures[0] : hotel.pictures[0] + '.png' ))}}</p> -->
-                                            <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="col-md-12" style="height:300px">
+                                            <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt=""  style="width:100%"
                                             
                                         </div>
 
