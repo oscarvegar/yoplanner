@@ -494,7 +494,6 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
     };
 
     $scope.validarDatosSalones = function(){
-        
         for(var i in $scope.rfp.salones){
         	$scope.rfp.salones[i].fecha = parseDate($scope.rfp.salones[i].fechaStr);
         }
@@ -508,7 +507,7 @@ angular.module('yoPlannerApp', ['autocomplete','angular-flexslider','yp-index','
             return;
         }
 
-       
+   
         $scope.rfp.recintos = [];
         for(var i = 0; i<$scope.hotelesSeleccionados.length;i++){
             $scope.rfp.recintos.push(

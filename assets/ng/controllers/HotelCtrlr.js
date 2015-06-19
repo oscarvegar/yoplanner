@@ -101,6 +101,8 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 			templateUrl: "ng/modules/hotel.detail.tpl.html",
 			controller: "HotelController"
 		});
+
+	
 	
 });
 
