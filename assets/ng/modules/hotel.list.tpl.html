@@ -33,7 +33,7 @@
                 <!-- End content info - Vacations Destinatios-->
                 <div class="content_info">
                     <div class="paddings-mini">
-                        <div class="container">
+                        <div class="container results">
                             <!--
                             <!- Nav Filters ->
                             <div class="portfolioFilter">
@@ -50,38 +50,40 @@
                             <div class="row portfolioContainer">
                                 
                                 <!-- Item Gallery-->
-                                <div class="col-xs-12 col-sm-6 {{$index == 0 ? 'col-md-8' : 'col-md-4'}} nature" ng-repeat="hotel in hotels" ng-click="selectResult(hotel)">
-                                    <div class="img-hover">
-                                        <!-- <p>{{(hotel.fotoPrincipal!=null?(hotel.fotoPrincipal.search('.jpg|.png|.gif') > 0 ? hotel.fotoPrincipal : hotel.fotoPrincipal + '.png' ):(hotel.pictures[0].search('.jpg|.png|.gif') > 0 ? hotel.pictures[0] : hotel.pictures[0] + '.png' ))}}</p> -->
-                                        <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive">
-                                        <div class="overlay"><a ng-href="{{(hotel.fotoPrincipal!=null?(hotel.fotoPrincipal.search('.jpg|.png|.gif') > 0 ? hotel.fotoPrincipal : hotel.fotoPrincipal + '.png' ):(hotel.pictures[0].search('.jpg|.png|.gif') > 0 ? hotel.pictures[0] : hotel.pictures[0] + '.png' ))}}" class="fancybox"><i class="fa fa-plus-circle"></i></a></div>
-                                    </div>
+                                <div class="col-xs-12 col-sm-4 {{$index == 0 ? 'col-md-8' : 'col-md-4'}} panel panel-default" ng-repeat="hotel in hotels" ng-click="selectResult(hotel)">
+                                    <div>
+                                        <div >
+                                            <!-- <p>{{(hotel.fotoPrincipal!=null?(hotel.fotoPrincipal.search('.jpg|.png|.gif') > 0 ? hotel.fotoPrincipal : hotel.fotoPrincipal + '.png' ):(hotel.pictures[0].search('.jpg|.png|.gif') > 0 ? hotel.pictures[0] : hotel.pictures[0] + '.png' ))}}</p> -->
+                                            <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive">
+                                            
+                                        </div>
 
-                                    <div class="info-gallery">
-                                        <h3>
-                                            {{hotel.name}}<br>
-                                            <span>{{$selectedCity}}</span>
-                                        </h3>
-                                        <hr class="separator">
-                                        <p>{{(hotel.description.length > 300) ? hotel.description.substr(0,297) + '...' : hotel.description}}</p>
-                                        <ul class="starts">
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
-                                        </ul>
-                                        <!-- <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div> -->
-                                        <div class="content-btn"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
-                                        <!-- <div class="content-btn" ng-click="selectResult(hotel)"><a href="javascript:void(0)" class="btn btn-primary">Ver Detalles</a></div> -->
-                                        <!-- <div class="price"><span>$</span><b>From</b>45</div> -->
+                                        <div class="info-gallery">
+                                            <h3>
+                                                {{hotel.name}}<br>
+                                                <span>{{$selectedCity}}</span>
+                                            </h3>
+                                            <hr class="separator">
+                                            <p>{{(hotel.description.length > 300) ? hotel.description.substr(0,297) + '...' : hotel.description}}</p>
+                                            <ul class="starts">
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                            </ul>
+                                            <!-- <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div> -->
+                                            <div class="content-btn"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
+                                            <!-- <div class="content-btn" ng-click="selectResult(hotel)"><a href="javascript:void(0)" class="btn btn-primary">Ver Detalles</a></div> -->
+                                            <!-- <div class="price"><span>$</span><b>From</b>45</div> -->
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- End Item Gallery-->
                             </div>   
                             <!-- End Items Gallery filters-->       
 
-                            <button ng-click="masResultados()" ng-hide="showMostrarMas" class="btn-reserva" style="float:right;">Más Resultados</button>
+                            <button ng-click="masResultados()" ng-hide="showMostrarMas" class="btn btn-primary" style="float:right;">Más Resultados</button>
                             <div ng-show="showMostrarMas">
                                 <br>
                                 <img src="img/lblue.gif"  style="width:30px;height:30px;">

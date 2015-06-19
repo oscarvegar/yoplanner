@@ -61,3 +61,26 @@
 	-webkit-border-radius: 0 0 5px 5px;
 	border-radius: 0 0 5px 5px;
 }
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+
+.results .row {
+ -moz-column-width: 25em;
+ -webkit-column-width: 25em;
+ -moz-column-gap: .5em;
+ -webkit-column-gap: .5em; 
+  
+}.results .firstrow {
+ -moz-column-width: 50em;
+ -webkit-column-width: 50em;
+ -moz-column-gap: .5em;
+ -webkit-column-gap: .5em; 
+  
+}
+
+.results .panel {
+ display: inline-block;
+ margin:  .5em;
+ padding:  0; 
+ width:98%;
+}
