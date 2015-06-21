@@ -1,16 +1,21 @@
 
             <!-- Section Title-->    
             <div class="section-title-detailed" ng-controller="HotelController">
-                <!-- Single Carousel-->
+                <!-- Single Carousel -->
+                <!--
                 <div id="single-carousel">
                     <div ng-repeat="pic in currentHotel.pictures">
-                    <div class="img-hover">
-                        <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>
-                        <img ng-src="{{pic}}" alt="" class="img-responsive">
-                    </div>
+                            <div class="img-hover">
+                                <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>
+                                <img ng-src="{{pic}}" alt="" class="img-responsive">
+                            </div>
+                        </div>
+                        <div class="owl-item" style="width: 1414px;">
                     </div>
                 </div>
-                <!-- End Single Carousel-->
+                 -->
+                <sngl-krsl pictures="currentHotel.pictures"></sngl-krsl>
+                <!-- End Single Carousel -->
 
                 <!-- Section Title-->
                 <div class="title-detailed">
@@ -451,16 +456,18 @@
 
             <script type="text/javascript">
                 $(document).ready(function() {
-                    //=================================== Carousel Services  ==============================//    
-                    $("#single-carousel, #single-carousel-sidebar").owlCarousel({
-                        items : 1,
-                        autoPlay: 4000,  
-                        navigation : true,
-                        autoHeight : true,
-                        slideSpeed : 400,
-                        singleItem: true,
-                        pagination : false
-                    });
+                    setTimeout( function() {
+                        //=================================== Carousel Services  ==============================//    
+                        $("#single-carousel, #single-carousel-sidebar").owlCarousel({
+                            items : 1,
+                            autoPlay: 4000,  
+                            navigation : true,
+                            autoHeight : true,
+                            slideSpeed : 400,
+                            singleItem: true,
+                            pagination : false
+                        });
+                    }, 5000);
                     
                     //=================================== Carousel testimonials  ===============================//  
                     $("#testimonials").owlCarousel({
