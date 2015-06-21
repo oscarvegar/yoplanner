@@ -256,3 +256,60 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.init();
 	});
 });
+
+HotelModule.directive('snglKrsl', function(){
+	// Runs during compile
+	return {
+		// name: '',
+		// priority: 1,
+		// terminal: true,
+		scope: {
+			pictures: '='
+		}, // {} = isolate, true = child, false/undefined = no change
+		// controller: function($scope, $element, $attrs, $transclude) {},
+		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
+		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
+		/*
+		template: '                <div id="single-carousel">'
+				+ '	                <div class="owl-wrapper-outer autoHeight">'
+				+ '		                <div class="owl-wrapper">'
+				+ '			                <div class="owl-item" ng-repeat="pic in pictures">'
+				+ '			                    <div class="img-hover">'
+				+ '			                        <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>'
+				+ '			                        <img ng-src="{{pic}}" alt="" class="img-responsive">'
+				+ '			                    </div>'
+				+ '			            	</div>'
+				+ '		            	</div>'
+				+ '	            	</div>'
+				+ '                </div>',
+		*/
+		templateUrl: '/ng/directives/sngl-krsl.html',
+		replace: true,
+		// transclude: true,
+		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
+		link: function($scope, iElm, iAttrs, controller) {
+			/*
+			$scope.$watch(iAttrs.pictures, function(value) {
+				setTimeout(function() {
+					// only if we have images since .slidesjs() can't
+					// be called more than once
+					console.log("attrs.start is:");
+					console.dir(iAttrs.start);
+					if (value.length > 0) {
+			            //=================================== Carousel Services  ==============================//    
+			            $("#single-carousel, #single-carousel-sidebar").owlCarousel({
+			                items : 1,
+			                autoPlay: 4000,  
+			                navigation : true,
+			                autoHeight : true,
+			                slideSpeed : 400,
+			                singleItem: true,
+			                pagination : false
+			            });
+					}
+				}, 1);
+			});
+			*/
+		}
+	}
+});
