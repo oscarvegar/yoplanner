@@ -25,6 +25,7 @@ angular.module('rfp-module', [])
 	        ],{
 			arrows: false,
 			fitToView	: true,
+            margin      : 80,
 			width		: '800px',
 			height		: '600px',
 			autoSize	: false,
@@ -136,7 +137,7 @@ angular.module('rfp-module', [])
 
 
         console.log(angular.toJson( $scope.rfp));
-        $http.post(server+'/RFP',$scope.rfp).success(function(data){
+        $http.post('/RFP',$scope.rfp).success(function(data){
             $scope.folioFinal = ""+data.id;
             $scope.rfp = null;
             $scope.rfp = {};

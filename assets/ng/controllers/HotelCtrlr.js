@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var HotelModule = angular.module('yoPlannerApp.hotel', ['ngRoute', 'ui.router', 'ngAnimate', 'ngStorage']);
+var HotelModule = angular.module('yoPlannerApp.hotel', ['ngRoute', 'ui.router', 'ngAnimate', 'ngStorage', 'uiGmapgoogle-maps', 'youtube-embed', 'cgNotify']);
 
 HotelModule.constant('MONGOLAB_CONFIG', {
 	baseUrl: '/databases/',
@@ -35,7 +35,7 @@ HotelModule.run(function($rootScope, $state, $stateParams) {
 	$rootScope.$stateParams = $stateParams;
 });
 
-HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
 	/*
 	$routeProvider
 		.when('/hotel/:hotelId', {
@@ -102,12 +102,24 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 			controller: "HotelController"
 		});
 
-	
+	/////////////////////////////////
+	// GoogleMapApi Configurations //
+	/////////////////////////////////
+
+	// Google Maps SDK Async Loader
+	uiGmapGoogleMapApiProvider.configure({
+		// key: 'your api key',
+		v: '3.17',
+		libraries: 'weather,geometry,visualization'
+	});
 	
 });
 
-HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams, $state, $stateParams, $localStorage) {
+HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams, $state, $stateParams, $localStorage, uiGmapGoogleMapApi, notify) {
 	$log.info('HotelController');
+	$scope.Math = window.Math;
+	$scope.$storage = $localStorage;
+    $rootScope.hotelesSeleccionados = $scope.$storage.hotelesSeleccionados!=null?JSON.parse($scope.$storage.hotelesSeleccionados):[];
 
 	$scope.findAllHotelsByCity = function(searchId) {
 		searchId = searchId ? searchId : ($rootScope.searchId ? $rootScope.searchId : $stateParams.searchId);
@@ -143,7 +155,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     	$log.info('HotelController.selectResult');
     	$rootScope.selectedHotel = hotel;
     	$log.info(hotel);
-
+/*
 	 	if($rootScope.selectedHotel.salones==null) {
 	        $http.get("/salonrecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
 	        	$log.info("SALONES > > > >",data)
@@ -166,21 +178,38 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 	        	$log.error(err);
 	        })
 	    }
-
+*/
     };
 
     $scope.findSelectedHotelDetail = function() {
     	$log.info('HotelController.findSelectedHotelDetail');
+    	$scope.videoID = '9GdVZfIBvxQ';
+    	$scope.videoURL = 'https://www.youtube.com/watch?v=9GdVZfIBvxQ';
+    	$scope.playerVars = {
+		    controls: 1,
+		    autoplay: 0
+		};
 
 		var searchId = searchId ? searchId : ($rootScope.searchId ? $rootScope.searchId : $stateParams.searchId);
 		var hotelId = hotelId ? hotelId : ($rootScope.hotelId ? $rootScope.hotelId : $stateParams.hotelId);
 
         $http.get("/recinto/findById/"+hotelId).success(function(data){
-        	$log.info("SELECTED HOTEL > > > >", data);
+        	$log.info("SELECTED HOTEL SEARCH > > > >", data);
+    		$log.info("SELECTED HOTEL ROOT_SCOPE > > > >", $rootScope.selectedHotel);
 
         	if(data) {
 	        	if(data.hotels.length > 0) {
-	        		$rootScope.selectedHotel = data.hotels[data.hotels.length-1];
+	        		var hotelTMP = data.hotels[data.hotels.length-1];
+
+	        		$scope.initilizeGooMap(hotelTMP);
+
+	        		if($rootScope.selectedHotel) {
+		        		hotelTMP["amenities"] = $rootScope.selectedHotel.amenities;
+		        		hotelTMP["fotoPrincipal"] = $rootScope.selectedHotel.fotoPrincipal;
+		        		hotelTMP["reviewSummary"] = $rootScope.selectedHotel.reviewSummary;
+	        		}
+
+	        		$rootScope.selectedHotel = hotelTMP;
 	        	}
 	        	
 	        	if(data.salones && data.salones.length > 0) {
@@ -205,7 +234,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		        if($rootScope.selectedHotel.infoExtra==null) {
 			        $http.get("/infoExtraRecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
 			        	$log.info("INFO EXTRA > > > >", data);
-			        	$rootScope.selectedHotel.infoExtra = data;
+			        	$rootScope.selectedHotel.infoExtra = data[data.length-1];
 			        }).error(function(err){
 			        	$log.error(err);
 			        });
@@ -216,6 +245,89 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         	$log.error(err);
         });
 
+    };
+
+    $scope.initilizeGooMap = function(hotelTMP) {
+
+		// Map Initial Location
+		var initLatitude = hotelTMP.geoLocation.latitude;
+		var initLongitude = hotelTMP.geoLocation.longitude;
+		var initFullAddress = hotelTMP.address.fullAddress + (hotelTMP.address.postalCode ? ', C. P. ' + hotelTMP.address.postalCode : '');
+		
+		$scope.marker = {
+			id: 1,
+			latitude: initLatitude,
+			longitude: initLongitude,
+			icon: "/img/img-theme/pin.png",
+			options: {
+				animation: 1
+			}
+		};
+		$scope.map = {
+			center: {
+				latitude: initLatitude+0.015,	//	y's
+				longitude: initLongitude-0.05	//	x's
+			},
+			options: {
+				disableDefaultUI: !0,
+				mapTypeControl: !1
+			},
+			zoom: 14,
+			markers: [
+				{
+					id: 1,
+					icon: '../img/img-theme/pin.png',
+					latitude: initLatitude,
+					longitude: initLongitude,
+					showWindow: false,
+					options: {
+						animation: 1
+					},
+					info: {
+						coords: {
+							latitude: initLatitude,
+							longitude: initLongitude
+						},
+						options: {
+							boxClass: 'custom-info-window',
+							closeBoxDiv: '<div" class="pull-right" style="position: relative; cursor: pointer; margin: -20px -15px;">X</div>',
+							disableAutoPan: true
+						},
+						show: true,
+						hotel: {
+							name: hotelTMP.name,
+							fullAddress: initFullAddress
+						}
+					}
+				}
+			]
+		};
+
+    };
+
+    $scope.agregarYRegresar = function() {
+    	$log.info('Hotel agregado a Mi Selección');
+    	notify('Hotel agregado a Mi Selección');
+
+        $rootScope.hotelesSeleccionados.push($scope.currentHotel);
+        $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+    };
+
+    $rootScope.existeEnSeleccion = function(hotel){
+    	$log.info("HOTEL>>>>>>>>>>>>>>>>",hotel);
+    	$log.info("SELS>>>>>>>>>>>>>>>>",$rootScope.hotelesSeleccionados);
+    	if(hotel==null)return -1;
+        for(var i=0;i<$rootScope.hotelesSeleccionados.length;i++){
+            if(hotel.id == $rootScope.hotelesSeleccionados[i].id){
+                return i;
+            };
+        };
+        return -1;
+    }; 
+
+    $rootScope.deleteSelection = function(hotel){
+        $rootScope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
+        $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
 
 	$scope.init = function() {
@@ -229,7 +341,8 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$log.info($stateParams.hotelId);
 
 		if($rootScope.$selectedCity) {
-			// $localStorage.$selectedCity = $rootScope.$selectedCity;
+			// $scope.$storage.selectedCity = $rootScope.$selectedCity;
+			/*
 			if($scope.$storage) {
 				$scope.$storage.selectedCity = $rootScope.$selectedCity;
 			} else {
@@ -237,8 +350,12 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					selectedCity: $rootScope.$selectedCity
 				});
 			}
+			*/
+			$scope.$storage = $localStorage.$default({
+				selectedCity: $rootScope.$selectedCity
+			});
 		} else {
-			$rootScope.$selectedCity = $localStorage.selectedCity;
+			$rootScope.$selectedCity = $scope.$storage.selectedCity;
 		}
 
  		if($routeParams.hotelId || $rootScope.hotelId || $stateParams.hotelId) {
@@ -251,12 +368,18 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 	};
 
+    // uiGmapGoogleMapApi is a promise.
+    // The "then" callback function provides the google.maps object.
+    uiGmapGoogleMapApi.then(function(maps) {
+    	maps.visualRefresh = true;
+    });
+
 	$scope.$evalAsync(function() {
 		$log.info('HotelController.$evalAsync');
 		$scope.init();
 	});
 });
-
+/*
 HotelModule.directive('snglKrsl', function(){
 	// Runs during compile
 	return {
@@ -269,7 +392,7 @@ HotelModule.directive('snglKrsl', function(){
 		// controller: function($scope, $element, $attrs, $transclude) {},
 		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		/*
+		*
 		template: '                <div id="single-carousel">'
 				+ '	                <div class="owl-wrapper-outer autoHeight">'
 				+ '		                <div class="owl-wrapper">'
@@ -282,13 +405,13 @@ HotelModule.directive('snglKrsl', function(){
 				+ '		            	</div>'
 				+ '	            	</div>'
 				+ '                </div>',
-		*/
+		*
 		templateUrl: '/ng/directives/sngl-krsl.html',
 		replace: true,
 		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
-			/*
+			*
 			$scope.$watch(iAttrs.pictures, function(value) {
 				setTimeout(function() {
 					// only if we have images since .slidesjs() can't
@@ -309,7 +432,8 @@ HotelModule.directive('snglKrsl', function(){
 					}
 				}, 1);
 			});
-			*/
+			*
 		}
 	}
 });
+*/

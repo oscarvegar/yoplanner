@@ -57,6 +57,11 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			url: "",
 			templateUrl: "ng/modules/homepage.tpl.html",
 			controller: "AutocompleteController"
+		})
+		.state('index2', {
+			url: "/",
+			templateUrl: "ng/modules/homepage.tpl.html",
+			controller: "AutocompleteController"
 		});
 	
 });

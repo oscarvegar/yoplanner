@@ -34,9 +34,7 @@
                                 </h2>
                             </div>
 
-                            <div class="col-md-3">
-
-                            </div>
+                            <div class="col-md-3"></div>
                         </div>
                     </div>
                 </div>
@@ -55,8 +53,9 @@
                 <!-- End content info - Features-->
                 <div class="content_info skin_base no-overflow">
                     <div class="container wow fadeInUp">
+                        <!--
                         <div class="row">
-                            <!-- Services Items -->
+                            <!- Services Items ->
                             <div class="col-md-9">
                                 <ul class="services-lines services-lines-left">
                                     <li>
@@ -109,9 +108,9 @@
                                     </li>
                                 </ul>
                             </div> 
-                            <!-- End Services Items --> 
+                            <!- End Services Items -> 
 
-                            <!-- Form Detailed -->
+                            <!- Form Detailed ->
                             <div class="col-md-3">
                                 <div class="form-detailed">
                                     <div class="header-detailed">
@@ -123,7 +122,6 @@
                                             Per Night
                                         </div>
                                     </div>
-                                    <!--
                                     <form action="#">
                                         <label>Arrival</label>
                                         <input type="text" required="required" placeholder="Select Arrival" class="date-input">
@@ -142,10 +140,20 @@
                                         </div>
                                         <input type="submit" value="Search">
                                     </form>
-                                     -->
                                 </div>
                             </div>   
-                            <!-- End Form Detailed --> 
+                            <!- End Form Detailed -> 
+                        </div>
+                         -->
+                        <div class="row">
+                            <div class="col-md-9"></div>
+                            <div class="col-md-3">
+                                <div class="form-detailed">
+                                    <div class="header-detailed">
+                                        <button ng-click="agregarYRegresar()" class="btn btn-success col-md-12">Agregar a Mi Selección</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>   
@@ -161,13 +169,13 @@
                                     <!-- Nav Tabs-->
                                     <ul class="nav nav-tabs" id="myTab">
                                        <li class="active">
-                                            <a href="#hotel" data-toggle="tab"><i class="fa fa-home"></i> Descripción</a>
+                                            <a href="?#hotel" data-toggle="tab"><i class="fa fa-home"></i> Descripción</a>
                                         </li>
                                         <li>
-                                            <a href="#saloons" data-toggle="tab"><i class="fa fa-camera"></i> Salones</a>
+                                            <a href="?#saloons" data-toggle="tab"><i class="fa fa-hotel"></i> Habitaciones y Salones</a>
                                         </li>
                                        <li>
-                                            <a href="#extraInfo" data-toggle="tab"><i class="fa fa-check"></i>Información Extra</a>
+                                            <a href="?#extraInfo" data-toggle="tab"><i class="fa fa-map-marker"></i>Ubicación</a>
                                         </li>
                                     </ul>
                                     <!-- End Nav Tabs-->
@@ -178,201 +186,153 @@
                                             <h2>Información del hotel</h2>
                                             <p>{{currentHotel.description}}</p>
 
-                                            <h3>Rom facilities </h3>
+                                            <h3>Equipamiento y servicios del hotel</h3>
                                             
                                             <div class="row">
+                                                <!--
+                                                <p>{{Math.ceil(currentHotel.amenities.length / 3)}}</p>
+                                                <div ng-repeat="amenity in currentHotel.amenities">
+                                                    <p>{{$index}}</p>
+                                                    <p>{{(currentHotel.amenities.length / 3)}}</p>
+                                                    <p>{{Math.floor(currentHotel.amenities.length / 3)}}</p>
+                                                    <p>{{Math.ceil(currentHotel.amenities.length / 3)}}</p>
+                                                    <p>{{(((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) )}}</p>
+                                                    <p>{{($index%(((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ))}}</p>
+                                                    <p>{{(($index%(((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) )) == 0)}}</p>
+                                                </div>
+                                                 -->
+
                                                 <div class="col-md-4">
                                                     <ul class="list-styles">
-                                                        <li><i class="fa fa-check"></i> Climate control</li>
-                                                        <li><i class="fa fa-check"></i> Air conditioning</li>
-                                                        <li><i class="fa fa-check"></i> Direct-dial phone</li>
-                                                        <li><i class="fa fa-check"></i> Minibar</li>
+                                                        <li ng-repeat="amenity in currentHotel.amenities" ng-if="$index < ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) )"><i class="fa fa-check"></i> {{amenity.description}}</li>
                                                     </ul>
                                                 </div>
+
                                                 <div class="col-md-4">
                                                     <ul class="list-styles">
-                                                        <li><i class="fa fa-check"></i> Wake-up calls</li>
-                                                        <li><i class="fa fa-check"></i> Daily housekeeping</li>
-                                                        <li><i class="fa fa-check"></i> Private bathroom</li>
-                                                        <li><i class="fa fa-check"></i> Hair dryer</li> 
-                                                    </ul>                                   
-                                                </div>  
+                                                        <li ng-repeat="amenity in currentHotel.amenities" ng-if="$index >= ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ) && $index < ( ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ) * 2 )"><i class="fa fa-check"></i> {{amenity.description}}</li>
+                                                    </ul>
+                                                </div>
+
                                                 <div class="col-md-4">
-                                                    <ul class="list-styles">                              
-                                                        <li><i class="fa fa-check"></i> Makeup/shaving mirror</li>
-                                                        <li><i class="fa fa-check"></i> Shower/tub combination</li>
-                                                        <li><i class="fa fa-check"></i> Satellite TV service</li>
-                                                        <li><i class="fa fa-check"></i> Electronic/magnetic keys</li>   
-                                                    </ul>                                   
-                                                </div>                                  
+                                                    <ul class="list-styles">
+                                                        <li ng-repeat="amenity in currentHotel.amenities" ng-if="$index >= ( ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ) * 2 )"><i class="fa fa-check"></i> {{amenity.description}}</li>
+                                                    </ul>
+                                                </div>
+
                                             </div>
                                         </div>
                                         <!-- end Tab One - Hotel -->
 
                                         <!-- Tab Two - Salones -->
                                         <div class="tab-pane" id="saloons">
-                                            <p>The Aqua Hotel Onabrava is located in Santa Susanna, in the beautiful Costa Brava, a few steps from the beach.The 350 rooms are equipped with air conditioning and heating, telephone, private bathroom with hairdryer and minibar. They also have flat-screen TVs and balconies.</p>
-
-                                            <h3>Hotel facilities </h3>
-
-                                            <ul class="services-lines full-services">
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-bicycle"></i>
-                                                        <h5>Special Activities</h5>
-                                                    </div>
-                                                </li>
-                                                 <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-plane"></i>
-                                                        <h5>Travel Arrangements</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-user"></i>
-                                                        <h5>Private Guide</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-search-plus"></i>
-                                                        <h5>Location Manager</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-map-marker"></i>
-                                                        <h5>Handpicked Hotels</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-money"></i>
-                                                        <h5>Best Price Guarantee</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-bank"></i>
-                                                        <h5>Trust &amp; Safety</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-line-chart"></i>
-                                                        <h5>Best Travel Agent</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-bed"></i>
-                                                        <h5>Great Beds</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-automobile"></i>
-                                                        <h5>Automobile</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-fax"></i>
-                                                        <h5>Fax Service</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-soccer-ball-o"></i>
-                                                        <h5> Sports</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-taxi"></i>
-                                                        <h5>taxi Service</h5>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="item-service-line">
-                                                        <i class="fa fa-credit-card"></i>
-                                                        <h5>Credit Card</h5>
-                                                    </div>
-                                                </li>
-                                            </ul>
-
-                                            <h3>Rom facilities </h3>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <h3>Información de las habitaciones y salones</h3>
+                                                    <table class="detalleHotel tablaDetalle">
+                                                        <tr>
+                                                            <td>Total de Habitaciones</td>
+                                                            <td>{{currentHotel.infoExtra.totalHabitaciones}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total de Suites</td>
+                                                            <td>{{currentHotel.infoExtra.totalSuites}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Habitaciones Una Cama</td>
+                                                            <td>{{currentHotel.infoExtra.totalUnaCama}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Habitaciones Dos Camas</td>
+                                                            <td>{{currentHotel.infoExtra.TotalDosCamas}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total de Salones</td>
+                                                            <td>{{currentHotel.infoExtra.numeroSalones}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total Metros Cuadrados</td>
+                                                            <td>{{currentHotel.infoExtra.metrosTotales}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Salon Más Grande (Mts2)</td>
+                                                            <td>{{currentHotel.infoExtra.salonMasGrandeMetros}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Máxima Capacidad en Salón (Pax)</td>
+                                                            <td>{{currentHotel.infoExtra.salonMasGrandePersonas}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Plan</td>
+                                                            <td>Todo Incluido</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h3>Equipamiento y servicios de los salones </h3>
+                                                    <table class="detalleHotel tablaDetalle">
+                                                        <thead>
+                                                            <th><br>Salón</th>
+                                                            <th><br>Tamaño</th>
+                                                            <th><br>Alto</th>
+                                                            <th><br>Ancho</th>
+                                                            <th><br>Herradura</th>
+                                                            <th><br>Banquete</th>
+                                                            <th><br>Coctel</th>
+                                                            <th><br>Escuela</th>
+                                                            <th><br>Auditorio</th>
+                                                            <th><br>1/2 Luna</th>
+                                                            <th><br>Imperial</th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="saloon in currentHotel.salones">
+                                                                <td>{{saloon.nombre}}</td>
+                                                                <td>{{saloon.tamano}}</td>
+                                                                <td>{{saloon.alto}}</td>
+                                                                <td>{{saloon.ancho}}</td>
+                                                                <td>{{saloon.herradura}}</td>
+                                                                <td>{{saloon.banquete}}</td>
+                                                                <td>{{saloon.coctel}}</td>
+                                                                <td>{{saloon.escuela}}</td>
+                                                                <td>{{saloon.auditorio}}</td>
+                                                                <td>{{saloon.medialuna}}</td>
+                                                                <td>{{saloon.imperial}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
 
                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <ul class="list-styles">
-                                                        <li><i class="fa fa-check"></i> Climate control</li>
-                                                        <li><i class="fa fa-check"></i> Air conditioning</li>
-                                                        <li><i class="fa fa-check"></i> Direct-dial phone</li>
-                                                        <li><i class="fa fa-check"></i> Minibar</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <ul class="list-styles">
-                                                        <li><i class="fa fa-check"></i> Wake-up calls</li>
-                                                        <li><i class="fa fa-check"></i> Daily housekeeping</li>
-                                                        <li><i class="fa fa-check"></i> Private bathroom</li>
-                                                        <li><i class="fa fa-check"></i> Hair dryer</li> 
-                                                    </ul>                                   
-                                                </div>  
-                                                <div class="col-md-4">
-                                                    <ul class="list-styles">                              
-                                                        <li><i class="fa fa-check"></i> Makeup/shaving mirror</li>
-                                                        <li><i class="fa fa-check"></i> Shower/tub combination</li>
-                                                        <li><i class="fa fa-check"></i> Satellite TV service</li>
-                                                        <li><i class="fa fa-check"></i> Electronic/magnetic keys</li>   
-                                                    </ul>                                   
-                                                </div>                                  
                                             </div>
                                         </div>
                                         <!-- end Tab Two - Salones -->
 
                                         <!-- Tab Theree - Informacion Extra -->
                                         <div class="tab-pane" id="extraInfo">
-                                            <div class="accrodation">
-                                                <!-- section 1 -->
-                                                <span class="acc-trigger"><a href="#">Mision</a></span>
-                                                <div class="acc-container">
-                                                    <div class="content">
-                                                        Book cheap hotels and make payment facilities, free cancellation when the hotel so provides, compare prices and find all the options for your vacation.
-                                                    </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
+                                                        <ui-gmap-marker ng-repeat="m in map.markers" coords="m" icon="m.icon" idKey="m.id" options="m.options">
+                                                            <ui-gmap-window ng-cloak  coords="m.info.coords" isIconVisibleOnClick="false" options="m.info.options">
+                                                                <strong>{{m.info.hotel.name + ' / ' + m.info.hotel.fullAddress}}</strong>
+                                                            </ui-gmap-window>
+                                                        </ui-gmap-marker>
+                                                    </ui-gmap-google-map>
                                                 </div>
-                                              
-                                                <!-- section 2 -->
-                                                <span class="acc-trigger"><a href="#">Vision</a></span>
-                                                <div class="acc-container">
-                                                    <div class="content">
-                                                        You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.
-                                                    </div>
-                                                </div>
-                                           
-                                                <!-- section 3 -->
-                                                <span class="acc-trigger"><a href="#">What we offer?</a></span>
-                                                <div class="acc-container">
-                                                    <div class="content">
-                                                        Find a wide variety of airline tickets and cheap flights, hotels, tour packages, car rentals, cruises and more in YoPlanner.com.You can choose your favorite destination and start planning your long-awaited vacation.
-                                                    </div>
-                                                </div>
-                                                
-                                                <!-- section 4 -->
-                                                <span class="acc-trigger active"><a href="#">Our services</a></span>
-                                                <div class="acc-container">
-                                                    <div class="content">
-                                                        You can also check availability of flights and hotels quickly and easily, in order to find the option that best suits your needs.Book cheap hotels and make payment facilities, free cancellation when the hotel so provides, compare prices and find all the options for your vacation.
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                            <!-- End accrodation -->
+                                            </div>
+
+                                            <!-- Google Map -> 
+                                            <div class="row">
+                                                <div id="map"></div>
+                                            </div>
+                                            <!- End Google Map -->
+
                                         </div>
                                         <!-- Tend ab Theree - Informacion Extra -->
                                     </div>  
-                                </div>                 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -439,10 +399,12 @@
                                 </div>
 
                                 <div class="col-md-8">
-                                    <div class="testimonial-info">
-                                        <h2>TESTIMONIALS</h2>
-                                        <P>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</P>
-                                        <a href="#" class="btn btn-primary">View Details</a>
+                                    <div class="testimonial-info-2">
+                                        <!-- Use 'youtube-video' as an element or attribute. -->
+                                        <!--
+                                        <youtube-video video-id="videoID" player-vars="playerVars" player-width="'100%'" player-height="'400px'"></youtube-video>
+                                         -->
+                                        <youtube-video video-url="videoURL" player-vars="playerVars" player-width="'100%'" player-height="'400px'"></youtube-video>
                                     </div>
                                 </div>
                             </div>
@@ -459,12 +421,24 @@
                     setTimeout( function() {
                         //=================================== Carousel Services  ==============================//    
                         $("#single-carousel, #single-carousel-sidebar").owlCarousel({
-                            items : 1,
-                            autoPlay: 4000,  
-                            navigation : true,
-                            autoHeight : true,
-                            slideSpeed : 400,
+
+                            // Most important owl features
+                            // items : 1,
                             singleItem: true,
+
+                            //Autoplay
+                            autoPlay: 4000,
+
+                            // Navigation
+                            navigation : true,
+
+                            // Navigation
+                            autoHeight : true,
+
+                            //Basic Speeds
+                            slideSpeed : 400,
+
+                            //Pagination
                             pagination : false
                         });
                     }, 5000);
@@ -493,3 +467,72 @@
                     });
                 }); //ready
             </script>
+
+            <!--  ======================= Begin Google Map  ============================== -->
+            <!-- <script src="http://maps.google.com/maps/api/js?sensor=false"></script> -->
+            <script type="text/javascript">
+                /*
+                    Map Settings
+                    Find the Latitude and Longitude of your address:    
+                    - http://universimmedia.pagesperso-orange.fr/geo/loc.htm    
+                    - http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+                */
+/*
+                // Map Markers
+                var mapMarkers = [{
+                    address: "217 Summit Boulevard, Birmingham, AL 35243",
+                    html: "<strong>Alabama Office</strong><br>217 Summit Boulevard, Birmingham, AL 35243<br><br><a href='#' onclick='mapCenterAt({latitude: 33.44792, longitude: -86.72963, zoom: 16}, event)'>[+] zoom here</a>",
+                    icon: {
+                        image: "img/img-theme/pin.png",
+                        iconsize: [26, 46],
+                        iconanchor: [12, 46]
+                    }
+                },{
+                    address: "645 E. Shaw Avenue, Fresno, CA 93710",
+                    html: "<strong>California Office</strong><br>645 E. Shaw Avenue, Fresno, CA 93710<br><br><a href='#' onclick='mapCenterAt({latitude: 36.80948, longitude: -119.77598, zoom: 16}, event)'>[+] zoom here</a>",
+                    icon: {
+                        image: "img/img-theme/pin.png",
+                        iconsize: [26, 46],
+                        iconanchor: [12, 46]
+                    }
+                },{
+                    address: "New York, NY 10017",
+                    html: "<strong>New York Office</strong><br>New York, NY 10017<br><br><a href='#' onclick='mapCenterAt({latitude: 40.75198, longitude: -73.96978, zoom: 16}, event)'>[+] zoom here</a>",
+                    icon: {
+                        image: "img/img-theme/pin.png",
+                        iconsize: [26, 46],
+                        iconanchor: [12, 46]
+                    }
+                }];
+
+                // Map Initial Location
+                var initLatitude = 38.09024;
+                var initLongitude = -98.71289;
+
+                // Map Extended Settings
+                var mapSettings = {
+                    controls: {
+                        panControl: true,
+                        zoomControl: true,
+                        mapTypeControl: true,
+                        scaleControl: true,
+                        streetViewControl: true,
+                        overviewMapControl: true
+                    },
+                    scrollwheel: false,
+                    markers: mapMarkers,
+                    latitude: initLatitude,
+                    longitude: initLongitude,
+                    zoom: 5
+                };
+                
+                $("#map").gMap(mapSettings);
+
+                // Map Center At
+                var mapCenterAt = function(options, e) {
+                    e.preventDefault();
+                    $("#map").gMap("centerAt", options);
+                }
+*/
+            </script>
+            <!--  ======================= End Google Map  ============================== -->

@@ -15,6 +15,7 @@
   <!-- Theme CSS -->
   <link href="css/timepicker/jquery.timepicker.css" rel="stylesheet" media="screen">
   <link href="css/autocomplete/autocomplete.css" rel="stylesheet" media="screen">
+  <link href="css/notify/angular-notify.css" rel="stylesheet" media="screen">
   <link href="css/yp.css" rel="stylesheet" media="screen">
   <!-- Responsive CSS -->
   <link href="css/theme-responsive.css" rel="stylesheet" media="screen">
@@ -116,41 +117,24 @@
                       </ul>
                     </li>
 
-                    <li> <a href="#">PACKAGES</a> 
-                      <div class="drop-down full-width hover-fade"><!-- full width drop down with 4 columns + images -->
-                        <ul><!-- column one -->
-                          <li>
-                            <h2><span>Punta</span> Cana</h2>
-                            <a href="packages-index.html"><img src="img/gallery-2/1.jpg" alt="image 1"> </a> 
-                            <p>Punta Cana is a cape located east of the Dominican Republic in the province of La Altagracia.</p>
-                            <a href="packages-index.html" class="btn btn-primary">View Details</a>
-                          </li>
-                        </ul>
+                    <li> <a href="#">MI SELECCIÓN</a> 
+                      <div class="drop-down full-width hover-fade" ng-controller="HotelController"><!-- full width drop down with 4 columns + images -->
+                        <div class="col-md-9"></div>
+                        <div class="col-md-3">
+                          <a href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
+                        </div>
 
-                        <ul><!-- column two -->
+                        <ul ng-repeat="hotel in hotelesSeleccionados"><!-- column $index -->
                           <li>
-                            <h2><span>Santa</span> Marta</h2>
-                            <a href="packages-index.html"><img src="img/gallery-2/2.jpg" alt="image 1"> </a> 
-                            <p>Santa Marta, officially Tourism, Cultural and Historic District of Santa Marta is a Colombian city.</p>
-                            <a href="packages-index.html" class="btn btn-primary">View Details</a>
-                          </li>
-                        </ul>
-
-                        <ul><!-- column three -->
-                          <li>
-                            <h2><span>Isla</span> de San Andres</h2>
-                            <a href="packages-index.html"><img src="img/gallery-2/3.jpg" alt="image 1"> </a> 
-                            <p>San Andres Island is the largest of the islands forming part of the Archipelago of San Andrés.</p>
-                            <a href="packages-index.html" class="btn btn-primary">View Details</a>
-                          </li>
-                        </ul>
-
-                        <ul><!-- column four -->
-                          <li>
-                            <h2><span>Cartagena</span> de Indias</h2>
-                            <a href="packages-index.html"><img src="img/gallery-2/4.jpg" alt="image 1"> </a> 
-                            <p>Cartagena de Indias, officially Tourist and Cultural District of Cartagena de Indias Cartagena de Indias abbreviated.</p>
-                            <a href="packages-index.html" class="btn btn-primary">View Details</a>
+                            <h2><span>{{hotel.name}}</span></h2>
+                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1"> </a>
+                            <p>{{(hotel.description.length > 100) ? hotel.description.substr(0,97) + '...' : hotel.description}}</p>
+                            <div class="col-md-3">
+                              <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalle</a>
+                            </div>
+                            <div class="col-md-9">
+                              <a href="javascript:void(0);" ng-click="deleteSelection(hotel)" class="btn btn-danger" style="background: #d9534f !important;">Quitar de Mi Selección</a>
+                            </div>
                           </li>
                         </ul>
                       </div>
@@ -250,14 +234,11 @@
                     <li class="search-bar"> <i class="fa fa-search"></i><!-- search bar -->
                       <ul class="drop-down hover-expand">
                         <li>
-                          <form method="post" action="#">
-                            <table>
-                              <tr>
-                                <td> <input type="search" required="required" name="serach_bar" placeholder="Type Keyword Here"> </td>
-                                <td> <input type="submit" value="Search"> </td>
-                              </tr>
-                            </table>
-                          </form>
+                          <div class="filter-header" ng-controller="AutocompleteController">
+                            <form action="#">
+                              <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity"></autocomplete>
+                            </form>
+                          </div>
                         </li>
                       </ul>
                     </li>           
@@ -461,11 +442,18 @@
         <script type="text/javascript" src="js/angular-ui/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="js/angular-mod/ngStorage.min.js"></script>
         <!-- <script type="text/javascript" src="js/angular-mod/owlcarousel-angularjs-directive.js"></script> -->
+        <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="js/lodash/lodash.min.js"></script>
+        <script type="text/javascript" src="js/angular-ui/angular-google-maps.min.js"></script>
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <script type="text/javascript" src="js/angular-mod/angular-youtube-embed.js"></script>
+        <script type="text/javascript" src="js/angular-mod/angular-notify.min.js"></script>
         <script type="text/javascript" src="ng/yoplanner.js"></script>
         <!-- Autocomplete -->
         <script src="js/autocomplete/autocomplete.js"></script> 
         <script type="text/javascript" src="ng/controllers/RFPController.js"></script>
         <script type="text/javascript" src="ng/controllers/HotelCtrlr.js"></script>
+        <script type="text/javascript" src="ng/directives/HotelDrctv.js"></script>
 
          <!-- ======================= End Angular libs =========================== -->
 
