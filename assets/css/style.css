@@ -1179,7 +1179,7 @@ span.custom-select {
 
 /* section-title-detailed --------------------------*/
 .section-title-detailed{
-  max-height: 700px;
+  max-height: 1024px;
   height: auto; 
   width: 100%;
   overflow: hidden;
