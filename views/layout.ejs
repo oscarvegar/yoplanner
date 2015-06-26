@@ -120,16 +120,16 @@
                     <li> <a href="#">MI SELECCIÓN</a> 
                       <div class="drop-down full-width hover-fade" ng-controller="HotelController"><!-- full width drop down with 4 columns + images -->
                         <div class="col-md-9"></div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 content-btn">
                           <a href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
                         </div>
 
                         <ul ng-repeat="hotel in hotelesSeleccionados"><!-- column $index -->
                           <li>
                             <h2><span>{{hotel.name}}</span></h2>
-                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1"> </a>
+                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1"> </a>
                             <p>{{(hotel.description.length > 100) ? hotel.description.substr(0,97) + '...' : hotel.description}}</p>
-                            <div class="col-md-3">
+                            <div class="col-md-3 content-btn" ng-click="selectResult(hotel)">
                               <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalle</a>
                             </div>
                             <div class="col-md-9">

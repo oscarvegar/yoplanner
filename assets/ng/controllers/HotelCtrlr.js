@@ -115,7 +115,7 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 	
 });
 
-HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams, $state, $stateParams, $localStorage, uiGmapGoogleMapApi, notify) {
+HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams, $state, $stateParams, $localStorage, uiGmapGoogleMapApi, uiGmapIsReady, notify) {
 	$log.info('HotelController');
 	$scope.Math = window.Math;
 	$scope.$storage = $localStorage;
@@ -267,11 +267,14 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			center: {
 				latitude: initLatitude+0.015,	//	y's
 				longitude: initLongitude-0.05	//	x's
+				// latitude: initLatitude,	//	y's
+				// longitude: initLongitude	//	x's
 			},
 			options: {
 				disableDefaultUI: !0,
 				mapTypeControl: !1
 			},
+			showMap: false,
 			zoom: 14,
 			markers: [
 				{
@@ -305,6 +308,21 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
     };
 
+	$scope.renderMap = function(showMap) {
+		// alert('renderMap :: ' + showMap);
+		// $scope.initilizeGooMap($rootScope.selectedHotel);
+		if(!showMap) {
+			$scope.map.showMap = !showMap;
+		}
+		
+		setTimeout(function () {
+			if($scope.map.getGMap) {
+				google.maps.event.trigger($scope.map.getGMap(), "resize");
+			}
+		}, 1000);
+		
+	}
+
     $scope.agregarYRegresar = function() {
     	$log.info('Hotel agregado a Mi Selección');
     	notify('Hotel agregado a Mi Selección');
@@ -332,6 +350,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 	$scope.init = function() {
 		$log.info('HotelController.init');
+		$scope.map = {showMap: false};
 		$log.info($routeParams.searchId);
 		$log.info($routeParams.hotelId);
 		// $scope.params.kuponId
@@ -371,7 +390,20 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     // uiGmapGoogleMapApi is a promise.
     // The "then" callback function provides the google.maps object.
     uiGmapGoogleMapApi.then(function(maps) {
-    	maps.visualRefresh = true;
+    	$log.info('maps', maps);
+    	// maps.visualRefresh = true;
+    });
+
+    uiGmapIsReady.promise(1).then(function(instances) {
+		if($scope.map.getGMap) {
+			google.maps.event.trigger($scope.map.getGMap(), "resize");
+		}
+
+        instances.forEach(function(inst) {
+            var map = inst.map;
+            var uuid = map.uiGmap_id;
+            var mapInstanceNumber = inst.instance; // Starts at 1.
+        });
     });
 
 	$scope.$evalAsync(function() {

@@ -169,13 +169,13 @@
                                     <!-- Nav Tabs-->
                                     <ul class="nav nav-tabs" id="myTab">
                                        <li class="active">
-                                            <a href="?#hotel" data-toggle="tab"><i class="fa fa-home"></i> Descripción</a>
+                                            <a href="?#hotel" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-home"></i> Descripción</a>
                                         </li>
                                         <li>
-                                            <a href="?#saloons" data-toggle="tab"><i class="fa fa-hotel"></i> Habitaciones y Salones</a>
+                                            <a href="?#saloons" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-hotel"></i> Habitaciones y Salones</a>
                                         </li>
                                        <li>
-                                            <a href="?#extraInfo" data-toggle="tab"><i class="fa fa-map-marker"></i>Ubicación</a>
+                                            <a href="?#extraInfo" ng-click="renderMap(false)" data-toggle="tab"><i class="fa fa-map-marker"></i>Ubicación</a>
                                         </li>
                                     </ul>
                                     <!-- End Nav Tabs-->
@@ -313,7 +313,7 @@
 
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
+                                                    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options" control="map" ng-if="map.showMap">
                                                         <ui-gmap-marker ng-repeat="m in map.markers" coords="m" icon="m.icon" idKey="m.id" options="m.options">
                                                             <ui-gmap-window ng-cloak  coords="m.info.coords" isIconVisibleOnClick="false" options="m.info.options">
                                                                 <strong>{{m.info.hotel.name + ' / ' + m.info.hotel.fullAddress}}</strong>
