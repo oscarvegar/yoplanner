@@ -969,3 +969,6 @@
 	opacity: 1;
 	outline: none;
 }
+.flat-mega-menu .mi-seleccion:hover {
+	color: #42A9D3 !important;
+}
