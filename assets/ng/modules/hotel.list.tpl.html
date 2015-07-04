@@ -42,7 +42,7 @@
                         <div class="container">
                             <!-- Items Gallery filters-->
                             <div class="row portfolioContainer">
-                                <!-- Item Gallery-->
+                                <!-- Item Gallery - No Results -->
                                 <div class="col-xs-12 col-sm-6 col-md-12" ng-if="hotels.length && hotels.length<=0">
                                     <div class="info-gallery">
                                         <h3>
@@ -50,8 +50,8 @@
                                         </h3>
                                     </div>
                                 </div>
-                                <!-- End Item Gallery-->
-                                <!-- Item Gallery-->
+                                <!-- End Item Gallery - No Results -->
+                                <!-- Item Gallery - Main First Results -->
                                 <div class="col-xs-12 col-sm-6 {{$first?'col-md-8':'col-md-4'}}" ng-repeat="hotel in hotels" ng-click="selectResult(hotel)">
                                     <div class="img-hover">
                                         <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="{{$first?'width: 748px;height: 231.422px;':'width: 360px;height: 231.422px;'}}">
@@ -70,8 +70,8 @@
                                         <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
                                     </div>
                                 </div>
-                                <!-- End Item Gallery-->
-                                <!-- Item Gallery-->
+                                <!-- End Item Gallery - Main First Results -->
+                                <!-- Item Gallery - More Results -->
                                 <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="hotel in moreHotels" ng-click="selectResult(hotel)">
                                     <div class="img-hover">
                                         <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="width: 262.5px;height: 163.922px;">
@@ -90,7 +90,7 @@
                                         <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
                                     </div>
                                 </div>
-                                <!-- End Item Gallery-->
+                                <!-- End Item Gallery - More Results -->
                             </div>   
                             <!-- End Items Gallery filters-->       
                         </div>
