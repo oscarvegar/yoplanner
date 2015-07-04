@@ -2,18 +2,6 @@
             <!-- Section Title-->    
             <div class="section-title-detailed" ng-controller="HotelController">
                 <!-- Single Carousel -->
-                <!--
-                <div id="single-carousel">
-                    <div ng-repeat="pic in currentHotel.pictures">
-                            <div class="img-hover">
-                                <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>
-                                <img ng-src="{{pic}}" alt="" class="img-responsive">
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 1414px;">
-                    </div>
-                </div>
-                 -->
                 <sngl-krsl pictures="currentHotel.pictures"></sngl-krsl>
                 <!-- End Single Carousel -->
 
@@ -23,11 +11,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <ul class="starts">
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                    <li ng-repeat="i in starRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
                                 </ul>
                                 <h2>{{currentHotel.name}} 
                                     <span>{{currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')}}</span>
@@ -53,104 +37,12 @@
                 <!-- content info - Features-->
                 <div class="content_info skin_base no-overflow">
                     <div class="container wow fadeInUp">
-                        <!--
-                        <div class="row">
-                            <!- Services Items ->
-                            <div class="col-md-9">
-                                <ul class="services-lines services-lines-left">
-                                    <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-bicycle"></i>
-                                            <h5>Special Activities</h5>
-                                        </div>
-                                    </li>
-                                     <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-plane"></i>
-                                            <h5>Travel Arrangements</h5>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-user"></i>
-                                            <h5>Private Guide</h5>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-search-plus"></i>
-                                            <h5>Location Manager</h5>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-map-marker"></i>
-                                            <h5>Handpicked Hotels</h5>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-money"></i>
-                                            <h5>Best Price Guarantee</h5>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-bank"></i>
-                                            <h5>Trust & Safety</h5>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="item-service-line">
-                                            <i class="fa fa-line-chart"></i>
-                                            <h5>Best Travel Agent</h5>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div> 
-                            <!- End Services Items -> 
-
-                            <!- Form Detailed ->
-                            <div class="col-md-3">
-                                <div class="form-detailed">
-                                    <div class="header-detailed">
-                                        <div class="price-detailed">
-                                            $55
-                                        </div>
-
-                                        <div class="frequency-detailed">
-                                            Per Night
-                                        </div>
-                                    </div>
-                                    <form action="#">
-                                        <label>Arrival</label>
-                                        <input type="text" required="required" placeholder="Select Arrival" class="date-input">
-                                        <label>Output</label>
-                                        <input type="text" required="required" placeholder="Select Output" class="date-input">
-                                        <label>Guests</label>
-                                        <div class="selector">
-                                            <select class="guests-input">
-                                                <option value="1">1 Guests</option>
-                                                <option value="2">2 Guests</option>
-                                                <option value="3">3 Guests</option>
-                                                <option value="4">4 Guests</option>
-                                                <option value="5">5+ Guests</option>
-                                            </select>
-                                            <span class="custom-select">Select Guests</span>
-                                        </div>
-                                        <input type="submit" value="Search">
-                                    </form>
-                                </div>
-                            </div>   
-                            <!- End Form Detailed -> 
-                        </div>
-                         -->
                         <div class="row">
                             <div class="col-md-9"></div>
                             <div class="col-md-3">
                                 <div class="form-detailed">
                                     <div class="header-detailed">
-                                        <button ng-click="agregarYRegresar()" class="btn btn-success col-md-12">Agregar a Mi Selección</button>
+                                        <button ng-click="$back()" class="btn btn-success fa fa-arrow-left col-md-12"> Regresar</button>
                                     </div>
                                 </div>
                             </div>
@@ -350,9 +242,9 @@
 
                 <!-- content info - testimonials-->
                 <div class="content_info">
-                    <!-- Parallax Background ->
-                    <div class="bg_parallax image_02_parallax"></div>
-                    <!- Parallax Background -->
+                    <!-- Parallax Background -->
+                    <div class="bg_parallax image_{{imgBgAcronym}}_parallax"></div>
+                    <!-- Parallax Background -->
 
                     <div class="opacy_bg_02">
                         <!-- Testimonial Propertie-->
@@ -426,29 +318,40 @@
 
             <script type="text/javascript">
                 $(document).ready(function() {
+                    console.log('$(document).ready(function())');
                     setTimeout( function() {
-                        //=================================== Carousel Services  ==============================//    
-                        $("#single-carousel, #single-carousel-sidebar").owlCarousel({
+                        $('#single-carousel').imagesLoaded()
+                            .always( function() {
+                                console.log('always.(#single-carousel)');
+                                $('.preloader').fadeOut('slow');
+                                //=================================== Carousel Services  ==============================//    
+                                $("#single-carousel, #single-carousel-sidebar").owlCarousel({
 
-                            // Most important owl features
-                            // items : 1,
-                            singleItem: true,
+                                    // Most important owl features
+                                    // items : 1,
+                                    singleItem: true,
 
-                            //Autoplay
-                            autoPlay: 4000,
+                                    //Autoplay
+                                    autoPlay: 4000,
 
-                            // Navigation
-                            navigation : true,
+                                    // Navigation
+                                    navigation : true,
 
-                            // Navigation
-                            autoHeight : true,
+                                    // Navigation
+                                    autoHeight : true,
 
-                            //Basic Speeds
-                            slideSpeed : 400,
+                                    //Basic Speeds
+                                    slideSpeed : 400,
 
-                            //Pagination
-                            pagination : false
-                        });
+                                    //Pagination
+                                    pagination : false
+                                });
+                            })
+                            .progress( function( instance, image ) {
+                                console.log('progress...');
+                                // console.log($('.preloader'));
+                                $('.preloader').show();
+                            });
                     }, 5000);
                     
                     //=================================== Carousel testimonials  ===============================//  

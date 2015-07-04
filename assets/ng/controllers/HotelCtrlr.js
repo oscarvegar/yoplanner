@@ -3,7 +3,8 @@
  */
 'use strict';
 
-var HotelModule = angular.module('yoPlannerApp.hotel', ['ngRoute', 'ui.router', 'ngAnimate', 'ngStorage', 'uiGmapgoogle-maps', 'youtube-embed', 'cgNotify']);
+var HotelModule = angular.module('yoPlannerApp.hotel', ['ngRoute', 'ui.router', 'ngAnimate', 'ngStorage', 'uiGmapgoogle-maps',
+	'youtube-embed', 'cgNotify']);
 
 HotelModule.constant('MONGOLAB_CONFIG', {
 	baseUrl: '/databases/',
@@ -11,19 +12,30 @@ HotelModule.constant('MONGOLAB_CONFIG', {
 });
 
 //TODO: move those messages to a separate module
-HotelModule.constant('I18N.MESSAGES', {
-	'errors.route.changeError': 'Route change error',
-	'crud.user.save.success': "A user with id '{{id}}' was saved successfully.",
-	'crud.user.remove.success': "A user with id '{{id}}' was removed successfully.",
-	'crud.user.remove.error': "Something went wrong when removing user with id '{{id}}'.",
-	'crud.user.save.error': "Something went wrong when saving a user...",
-	'crud.project.save.success': "A project with id '{{id}}' was saved successfully.",
-	'crud.project.remove.success': "A project with id '{{id}}' was removed successfully.",
-	'crud.project.save.error': "Something went wrong when saving a project...",
-	'login.reason.notAuthorized': "You do not have the necessary access permissions.  Do you want to login as someone else?",
-	'login.reason.notAuthenticated': "You must be logged in to access this part of the application.",
-	'login.error.invalidCredentials': "Login failed.  Please check your credentials and try again.",
-	'login.error.serverError': "There was a problem with authenticating: {{exception}}."
+HotelModule.constant('CUSTOM.DESTINATIONS.REVIEW', {
+	EMPTY:'Resultados Búsqueda',	
+	ACA: 'Hoteles en Acapulco',
+	CL1: 'Hoteles en Los Cabos',
+	CUN: 'Hoteles en Cancun',
+	CVJ: 'Hoteles en Cuernavaca',
+	CZM: 'Hoteles en Cozumel',
+	GDL: 'Hoteles en Guadalajara',
+	HUX: 'Hoteles en Huatulco',
+	JGDSM: 'Hoteles en Ixtapa',
+	MEX: 'Hoteles en Ciudad de México',
+	MTY: 'Hoteles en Monterrey',
+	MZT: 'Hoteles en Mazatlán',
+	NV1: 'Hoteles en Nuevo Vallarta',
+	PA0: 'Hoteles en Pachuca',
+	PBC: 'Hoteles en Puebla',
+	PCM: 'Hoteles en Playa del Carmen',
+	PVR: 'Hoteles en Puerto Vallarta',
+	QRO: 'Hoteles en Queretaro',
+	RM0: 'Hoteles en Riviera Maya',
+	SD6: 'Hoteles en Los Cabos',
+	SJD: 'Hoteles en Los Cabos',
+	TLC: 'Hoteles en Toluca',
+	ZLO: 'Hoteles en Manzanillo',
 });
 
 HotelModule.run(function($rootScope, $state, $stateParams) {
@@ -94,7 +106,17 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 		.state('hotel', {
 			url: "/hotel/:searchId",
 			templateUrl: "ng/modules/hotel.list.tpl.html",
-			controller: "HotelController"
+			controller: "HotelController",
+			resolve:{
+				searchId: ['$stateParams', function($stateParams){
+					return $stateParams.searchId;
+				}]
+			}
+		})
+		.state('hotel.review', {
+			templateUrl: function ($stateParams){
+				return 'ng/modules/reviews/' + $stateParams.searchId + '.review.tpl.html';
+			}
 		})
 		.state('hotel_detail', {
 			url: "/hotel/:searchId/detail/:hotelId",
@@ -115,7 +137,9 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 	
 });
 
-HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams, $state, $stateParams, $localStorage, uiGmapGoogleMapApi, uiGmapIsReady, notify) {
+HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams,
+	$state, $stateParams, $localStorage, uiGmapGoogleMapApi, uiGmapIsReady, notify, HotelSrvc) {
+	
 	$log.info('HotelController');
 	$scope.Math = window.Math;
 	$scope.$storage = $localStorage;
@@ -125,10 +149,18 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		searchId = searchId ? searchId : ($rootScope.searchId ? $rootScope.searchId : $stateParams.searchId);
 		$http.get("/recinto/findByCiudadId/"+searchId).success(function (data){
 			$rootScope.resHoteles = data.hotels;
+
+			if($rootScope.resHoteles) {
+				for (var i = 0; i < $rootScope.resHoteles.length; i++) {
+					$rootScope.resHoteles[i]['starRatingRange'] = new Array($rootScope.resHoteles[i].starRating);
+				};
+			}
+
             $scope.currentPage=1;
 			$log.info($rootScope.resHoteles);
 			$scope.hotels = $rootScope.resHoteles;
 			$log.info($scope.hotels);
+			$scope.moreHotels = new Array();
 			// $state.go('hotel.list');
 			// $location.url('/hotel/list/' + $scope.searchId);
 		});
@@ -139,8 +171,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.showMostrarMas = true;
 		$http.get("/recinto/findByCiudadId/"+searchId+"?p="+$scope.currentPage).success(function (data){
 			$scope.showMostrarMas = false;
+
+			if(data.hotels) {
+				for (var i = 0; i < data.hotels.length; i++) {
+					data.hotels[i]['starRatingRange'] = new Array(data.hotels[i].starRating);
+				};
+			}
+
 			$log.info(data);
-			$scope.hotels = $scope.hotels.concat(data.hotels);
+			$scope.moreHotels = $scope.moreHotels.concat(data.hotels);
 			if(data.hotels && data.hotels.length > 0) {
 				$scope.currentPage++;
 			}
@@ -155,30 +194,6 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     	$log.info('HotelController.selectResult');
     	$rootScope.selectedHotel = hotel;
     	$log.info(hotel);
-/*
-	 	if($rootScope.selectedHotel.salones==null) {
-	        $http.get("/salonrecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
-	        	$log.info("SALONES > > > >",data)
-	        	$rootScope.selectedHotel.salones = data;
-
-		        if($rootScope.selectedHotel.infoExtra==null) {
-			        $http.get("/infoExtraRecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
-			        	$log.info("INFO EXTRA > > > >",data)
-			        	$rootScope.selectedHotel.infoExtra = data;
-			        	//document.getElementById("buscadorbox").scrollIntoView();
-
-			        	$state.go('hotel_detail', {searchId: hotel.cityId, hotelId: hotel.id});
-
-			        }).error(function(err){
-			        	$log.error(err);
-			        })
-			    }
-
-	        }).error(function(err){
-	        	$log.error(err);
-	        })
-	    }
-*/
     };
 
     $scope.findSelectedHotelDetail = function() {
@@ -221,6 +236,8 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 	        	}
 
 	 			$scope.currentHotel = $rootScope.selectedHotel;
+	 			$scope.starRange = new Array($scope.currentHotel.starRating);
+	 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
 
 			 	if($rootScope.selectedHotel.salones==null) {
 			        $http.get("/salonrecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
@@ -265,17 +282,22 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		};
 		$scope.map = {
 			center: {
-				latitude: initLatitude+0.015,	//	y's
-				longitude: initLongitude-0.05	//	x's
-				// latitude: initLatitude,	//	y's
-				// longitude: initLongitude	//	x's
+				// latitude: initLatitude+0.015,	//	y's
+				// longitude: initLongitude-0.05	//	x's
+				latitude: initLatitude,	//	y's
+				longitude: initLongitude	//	x's
 			},
 			options: {
 				disableDefaultUI: !0,
-				mapTypeControl: !1
+				mapTypeControl: !0,
+				panControl: !0,
+				scaleControl: !0,
+				scrollwheel: 0,
+				streetViewControl: !0,
+				zoomControl: !0
 			},
 			showMap: false,
-			zoom: 14,
+			zoom: 17,
 			markers: [
 				{
 					id: 1,
@@ -328,6 +350,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     	notify('Hotel agregado a Mi Selección');
 
         $rootScope.hotelesSeleccionados.push($scope.currentHotel);
+		$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
         $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
 
@@ -345,6 +368,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
     $rootScope.deleteSelection = function(hotel){
         $rootScope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
+	 	$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
         $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
 
@@ -358,6 +382,13 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$log.info($stateParams.searchId);
 		$log.info($rootScope.$selectedCity);
 		$log.info($stateParams.hotelId);
+
+		var valDest = HotelSrvc.validateDestination($stateParams.searchId);
+		if(valDest != null) {
+			$scope.imgBgAcronym = $stateParams.searchId;
+		} else {
+			$scope.imgBgAcronym = '02';
+		}
 
 		if($rootScope.$selectedCity) {
 			// $scope.$storage.selectedCity = $rootScope.$selectedCity;
@@ -406,66 +437,19 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         });
     });
 
+    $scope.$back = function() { 
+		// $window.history.back();
+		var valDest = HotelSrvc.validateDestination($stateParams.searchId);
+
+		if(valDest != null) {
+			$state.go('hotel.review', {searchId: $stateParams.searchId});
+		} else {
+			$state.go('hotel', {searchId: $stateParams.searchId});
+		}
+	};
+
 	$scope.$evalAsync(function() {
 		$log.info('HotelController.$evalAsync');
 		$scope.init();
 	});
 });
-/*
-HotelModule.directive('snglKrsl', function(){
-	// Runs during compile
-	return {
-		// name: '',
-		// priority: 1,
-		// terminal: true,
-		scope: {
-			pictures: '='
-		}, // {} = isolate, true = child, false/undefined = no change
-		// controller: function($scope, $element, $attrs, $transclude) {},
-		// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
-		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-		*
-		template: '                <div id="single-carousel">'
-				+ '	                <div class="owl-wrapper-outer autoHeight">'
-				+ '		                <div class="owl-wrapper">'
-				+ '			                <div class="owl-item" ng-repeat="pic in pictures">'
-				+ '			                    <div class="img-hover">'
-				+ '			                        <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>'
-				+ '			                        <img ng-src="{{pic}}" alt="" class="img-responsive">'
-				+ '			                    </div>'
-				+ '			            	</div>'
-				+ '		            	</div>'
-				+ '	            	</div>'
-				+ '                </div>',
-		*
-		templateUrl: '/ng/directives/sngl-krsl.html',
-		replace: true,
-		// transclude: true,
-		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
-		link: function($scope, iElm, iAttrs, controller) {
-			*
-			$scope.$watch(iAttrs.pictures, function(value) {
-				setTimeout(function() {
-					// only if we have images since .slidesjs() can't
-					// be called more than once
-					console.log("attrs.start is:");
-					console.dir(iAttrs.start);
-					if (value.length > 0) {
-			            //=================================== Carousel Services  ==============================//    
-			            $("#single-carousel, #single-carousel-sidebar").owlCarousel({
-			                items : 1,
-			                autoPlay: 4000,  
-			                navigation : true,
-			                autoHeight : true,
-			                slideSpeed : 400,
-			                singleItem: true,
-			                pagination : false
-			            });
-					}
-				}, 1);
-			});
-			*
-		}
-	}
-});
-*/

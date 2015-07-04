@@ -62,11 +62,53 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			url: "/",
 			templateUrl: "ng/modules/homepage.tpl.html",
 			controller: "AutocompleteController"
+		})
+		.state('acerca_de', {
+			url: "/acerca-de",
+			templateUrl: "ng/modules/acerca.de.tpl.html"
+		})
+		.state('nuestros_servicios', {
+			url: "/nuestros-servicios",
+			templateUrl: "ng/modules/nuestros.servicios.tpl.html"
+		})
+		.state('mrktng_hoteles', {
+			url: "/mrktng-hoteles",
+			templateUrl: "ng/modules/mrktng.hoteles.tpl.html"
+		})
+		.state('meetings', {
+			url: "/meetings",
+			templateUrl: "ng/modules/meetings.tpl.html"
+		})
+		.state('travel_agency', {
+			url: "/travel-agency",
+			templateUrl: "ng/modules/travel.agency.tpl.html"
+		})
+		.state('influencer', {
+			url: "/influencer",
+			templateUrl: "ng/modules/influencer.tpl.html"
+		})
+		.state('reserva', {
+			url: "/reserva/:option",
+			templateUrl: "ng/modules/embedded.site.tpl.html"
+		})
+		.state('cruises', {
+			url: "/cruises",
+			templateUrl: "ng/modules/cruises.tpl.html"
+		})
+		.state('contact', {
+			url: "/contact",
+			templateUrl: "ng/modules/contact.tpl.html"
+		})
+		.state('politicas_privacidad', {
+			url: "/politicas-privacidad",
+			templateUrl: "ng/modules/politicas.privacidad.tpl.html"
 		});
 	
 });
 
-yoPlannerApp.controller('AutocompleteController',function($scope,$http,$timeout,$rootScope, $location, $state, $localStorage){
+yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeout, $rootScope, $location, $state,
+	$localStorage, HotelSrvc){
+	
 	$scope.searchString;
 	$scope.doneTypingInterval = 500; 
 	$scope.typingTimer; 
@@ -81,13 +123,20 @@ yoPlannerApp.controller('AutocompleteController',function($scope,$http,$timeout,
         
 	};
 	$scope.doneTyping = function(typed){
-		$http.get("/search/cities/"+typed).success(function(data){
-            $scope.cities  =  [];
-            if(data.autocomplete == null)return;
-            for(var i=0;i<data.autocomplete.length;i++){
-                $scope.cities.push(data.autocomplete[i].id+" "+data.autocomplete[i].name);
-            }
-        });
+		$scope.showLoader = true;
+		var tmpTyped = encodeURIComponent(typed);
+		$http.get("/search/cities/"+tmpTyped)
+			.success(function(data){
+	            $scope.cities  =  [];
+	            if(data.autocomplete == null)return;
+	            for(var i=0;i<data.autocomplete.length;i++){
+	                $scope.cities.push(data.autocomplete[i].id+" "+data.autocomplete[i].name);
+	            }
+				$scope.showLoader = false;
+	        })
+	        .error(function(data, status, headers, config) {
+				$scope.showLoader = false;
+			});
 	}
 
 	$scope.searchCity = function(selected){
@@ -102,12 +151,204 @@ yoPlannerApp.controller('AutocompleteController',function($scope,$http,$timeout,
 		// $location.url('/hotel/list/' + $scope.searchId);
 		$rootScope.searchId = $scope.searchId;
 		$rootScope.$selectedCity = selected.replace($scope.searchId, '').trim();
-		$state.go('hotel', {searchId: $rootScope.searchId});
+
+		var valDest = HotelSrvc.validateDestination($rootScope.searchId);
+		if(valDest != null) {
+			$state.go('hotel.review', {searchId: $rootScope.searchId});
+		} else {
+			$state.go('hotel', {searchId: $rootScope.searchId});
+		}
 	}
 });
-/*
-yoPlannerApp.controller('HomePageController',function($scope,$http,$timeout,$rootScope, $location, $state) {
-	console.log('HomePageController');
-	// $state = 'index';
+
+function extractHotelData(dataResult) {
+	if(dataResult.hotels && dataResult.hotels.length > 0) {
+		return dataResult.hotels[dataResult.hotels.length - 1];
+	}
+	return null;
+}
+
+yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, $rootScope, $location, $state, $log, $q, HotelSrvc) {
+	$log.info('HomePageController');
+
+	$scope.initServicesItems = function() {
+		var CotizaGrupoObj = {icon: 'fa-group', text: 'Cotiza Grupo', stUrl: 'index'};
+		var ReservaHotelObj = {icon: 'fa-bed', text: 'Reserva Hotel', stUrl: 'reserva({option: "hotels"})'};
+		var ReservaAvionObj = {icon: 'fa-plane', text: 'Reserva Avión', stUrl: 'reserva({option: "flights"})'};
+		var BuscaCruceroObj = {icon: 'fa-ship', text: 'Busca Crucero', stUrl: 'cruises'};
+		var BuscaParqueObj = {icon: 'fa-magic', text: 'Busca Parque'};
+		var BuscaRestauranteObj = {icon: 'fa-spoon', text: 'Busca Restaurante'};
+		var DescubreBlogObj = {icon: 'fa-blog-34px', text: 'Descubre Blog', url: 'http://www.yoplanner.com.mx/blog/'};
+		var ContáctanosObj = {icon: 'fa-contact-us-34px', text: 'Contáctanos', stUrl: 'contact'};
+
+		$scope.servicesItems = new Array();
+		$scope.servicesItems = $scope.servicesItems.concat(CotizaGrupoObj, ReservaHotelObj, ReservaAvionObj, BuscaCruceroObj, BuscaParqueObj, BuscaRestauranteObj, DescubreBlogObj, ContáctanosObj);
+	};
+
+	$scope.initVacationsDestinatios = function() {
+		HotelSrvc.homepageHotels().then(function(data){
+			$log.info('data-result', data);
+			$log.info(data[0].data, data[1].data, data[2].data, data[3].data);
+
+			$scope.popDestImgInf = new Array();
+			$scope.popDestImgInf = $scope.popDestImgInf.concat(extractHotelData(data[0].data), extractHotelData(data[1].data));
+			for (var i = 0; i < $scope.popDestImgInf.length; i++) {
+				$scope.popDestImgInf[i]['starRatingRange'] = new Array($scope.popDestImgInf[i].starRating);
+			};
+			$log.info('popDestImgInf', $scope.popDestImgInf);
+
+			$scope.popDestInfImg = new Array();
+			$scope.popDestInfImg = $scope.popDestInfImg.concat(extractHotelData(data[2].data), extractHotelData(data[3].data));
+			for (var i = 0; i < $scope.popDestInfImg.length; i++) {
+				$scope.popDestInfImg[i]['starRatingRange'] = new Array($scope.popDestInfImg[i].starRating);
+			};
+			$log.info('popDestInfImg', $scope.popDestInfImg);
+		});
+	};
+
+	$scope.init = function() {
+		$scope.initServicesItems();
+		$scope.initVacationsDestinatios();
+	};
+
+	$scope.$evalAsync(function() {
+		$log.info('HomePageController.$evalAsync');
+		$scope.init();
+	});
 });
-*/
+
+yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $rootScope, $location, $state, $log, uiGmapIsReady) {
+	$log.info('ContactController');
+
+    $scope.initilizeGooMap = function(hotelTMP) {
+
+		// Map Initial Location
+		var initLatitude = hotelTMP.geoLocation.latitude;
+		var initLongitude = hotelTMP.geoLocation.longitude;
+		var initFullAddress = hotelTMP.address.fullAddress + (hotelTMP.address.postalCode ? ', C. P. ' + hotelTMP.address.postalCode : '');
+		
+		$scope.marker = {
+			id: 1,
+			latitude: initLatitude,
+			longitude: initLongitude,
+			icon: "/img/img-theme/pin.png",
+			options: {
+				animation: 1
+			}
+		};
+		$scope.map = {
+			center: {
+				// latitude: initLatitude+0.015,	//	y's
+				// longitude: initLongitude-0.05	//	x's
+				latitude: initLatitude,	//	y's
+				longitude: initLongitude	//	x's
+			},
+			options: {
+				disableDefaultUI: !0,
+				mapTypeControl: !0,
+				panControl: !0,
+				scaleControl: !0,
+				scrollwheel: 0,
+				streetViewControl: !0,
+				zoomControl: !0
+			},
+			showMap: true,
+			zoom: 17,
+			markers: [
+				{
+					id: 1,
+					icon: '/img/img-theme/pin.png',
+					latitude: initLatitude,
+					longitude: initLongitude,
+					showWindow: false,
+					options: {
+						animation: 1
+					},
+					info: {
+						coords: {
+							latitude: initLatitude,
+							longitude: initLongitude
+						},
+						options: {
+							boxClass: 'custom-info-window',
+							closeBoxDiv: '<div" class="pull-right" style="position: relative; cursor: pointer; margin: -20px -15px;">X</div>',
+							disableAutoPan: true
+						},
+						show: true,
+						hotel: {
+							name: hotelTMP.name,
+							fullAddress: initFullAddress,
+							phContact: hotelTMP.contact
+						}
+					}
+				}
+			]
+		};
+
+    };
+
+	$scope.init = function() {
+		$log.info('ContactController.init');
+
+		var YoPlannerData = {
+			name: 'Yo Planner, S.A. de C.V.',
+			contact: '(55) 6274 - 6291',
+			geoLocation: {
+				latitude: 19.4432395,
+				longitude: -99.2020841
+			},
+			address: {
+				fullAddress: 'Lago Andromaco 53 int. 1303 \
+								Col. Ampliación Granada \
+								Del. Miguel Hidalgo\
+								México, D. F.\
+								C. P. 11520 '
+			}
+		};
+		$scope.initilizeGooMap(YoPlannerData);
+	};
+
+    uiGmapIsReady.promise(1).then(function(instances) {
+		if($scope.map.getGMap) {
+			google.maps.event.trigger($scope.map.getGMap(), "resize");
+		}
+
+        instances.forEach(function(inst) {
+            var map = inst.map;
+            var uuid = map.uiGmap_id;
+            var mapInstanceNumber = inst.instance; // Starts at 1.
+        });
+    });
+
+	$scope.$evalAsync(function() {
+		$log.info('ContactController.$evalAsync');
+		$scope.init();
+	});
+});
+
+yoPlannerApp.controller('DespegarEmbeddedController', function($scope, $http, $timeout, $rootScope, $location, $stateParams, $log, $sce) {
+	$log.info('DespegarEmbeddedController');
+
+	$scope.init = function() {
+		$log.info('DespegarEmbeddedController.init');
+		$log.info($stateParams.option);
+
+		// $scope.despegarYoPlannerURL = $sce.trustAsResourceUrl('ng/modules/whitelabel.html?home=' + $stateParams.option);
+		$scope.despegarYoPlannerURL = 'ng/modules/whitelabel.html?home=' + $stateParams.option;
+		$log.info($scope.despegarYoPlannerURL);
+
+		var titleOptions = {
+			flights: 'Avión',
+			hotels: 'Hotel',
+			packages: 'Paquete'
+		}
+		$scope.titleOption = titleOptions[$stateParams.option];
+		$log.info($scope.titleOption);
+    };
+
+	$scope.$evalAsync(function() {
+		$log.info('DespegarEmbeddedController.$evalAsync');
+		$scope.init();
+	});
+});
+

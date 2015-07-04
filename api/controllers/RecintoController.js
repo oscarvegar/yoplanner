@@ -101,13 +101,15 @@ module.exports = {
                     }
                     //verifica si ya existe el id en la consulta
                     var items = ids.split(",");
-                    for(var s in items){
-                        if(items[s]==data.availability[d].hotel.id){
-                            resSize+=1;
-                            continue availability;
+                    if(data.availability[d].hotel) {
+                        for(var s in items){
+                            if(items[s]==data.availability[d].hotel.id){
+                                resSize+=1;
+                                continue availability;
+                            }
                         }
+                        ids += data.availability[d].hotel.id+",";
                     }
-                    ids += data.availability[d].hotel.id+",";
 
                 }
                 options = {

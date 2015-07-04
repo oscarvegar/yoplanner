@@ -26,7 +26,7 @@ angular.module('rfp-module', [])
 			arrows: false,
 			fitToView	: true,
             margin      : 80,
-			width		: '800px',
+			width		: '820px',
 			height		: '600px',
 			autoSize	: false,
 			closeClick	: false,
@@ -161,7 +161,7 @@ angular.module('rfp-module', [])
 
 
 
-    $(".date-input-rfp").datepicker({ dateFormat: 'yy-mm-dd' });
+    $(".date-input-rfp").datepicker({ dateFormat: 'yy-mm-dd', minDate: new Date() });
 
     $scope.divideTipoHabitaciones = function(tipo,arre){
     	var res = [];

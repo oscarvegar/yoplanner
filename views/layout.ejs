@@ -17,6 +17,7 @@
   <link href="css/autocomplete/autocomplete.css" rel="stylesheet" media="screen">
   <link href="css/notify/angular-notify.css" rel="stylesheet" media="screen">
   <link href="css/yp.css" rel="stylesheet" media="screen">
+  <link href="css/yp-backgrounds.css" rel="stylesheet" media="screen">
   <!-- Responsive CSS -->
   <link href="css/theme-responsive.css" rel="stylesheet" media="screen">
   <!-- Skins Theme -->
@@ -70,7 +71,7 @@
                     </li>
                     <!-- End website title - Logo class -->
 
-                    <li><a href="index.html">HOME</a>
+                    <li><a ui-sref="index">HOME</a>
                       <div class="drop-down two-column hover-fade"><!-- drop down with two columns -->
                         <ul><!-- column one -->
                           <li><a href="index.html">Home Version 1</a></li>
@@ -86,7 +87,7 @@
                       </div>
                     </li>
 
-                    <li> <a href="hotel-index.html">HOTELS</a>
+                    <li> <a href="hotel-index.html">HOTELES</a>
                       <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
                         <li><a href="hotel-index.html">Home Hotels</a></li>
                         <li><a href="hotel-list-view.html">List View</a></li>
@@ -95,15 +96,20 @@
                       </ul>
                     </li>
 
-                    <li> <a href="template-about-1.html">ABOUT US</a>
+                    <li> <a ui-sref="acerca_de">ACERCA DE</a>
                       <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
                         <li><a href="template-about-1.html">About Us 1</a> </li>
                         <li><a href="template-about-2.html">About us 2</a> </li>
                       </ul>
                     </li>
 
-                    <li> <a href="template-service-1.html">SERVICES</a>
+                    <li> <a href="template-service-1.html">SERVICIOS</a>
                       <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
+                        <li><a ui-sref="nuestros_servicios">Nuestros Servicios</a> </li>
+                        <li><a ui-sref="mrktng_hoteles">Publicidad Para Hoteles</a> </li>
+                        <li><a ui-sref="meetings">Meetings</a> </li>
+                        <li><a ui-sref="travel_agency">Agencia De Viajes</a> </li>
+                        <li><a ui-sref="influencer">Influencer</a> </li>
                         <li><a href="template-service-1.html">Services 1</a> </li>
                         <li><a href="template-service-2.html">Services 2</a> </li>
                       </ul>
@@ -117,16 +123,37 @@
                       </ul>
                     </li>
 
-                    <li> <a href="#">MI SELECCIÓN</a> 
-                      <div class="drop-down full-width hover-fade" ng-controller="HotelController"><!-- full width drop down with 4 columns + images -->
+                    <li>
+                      <a ui-sref="contact">CONTACTO</a>
+                    </li>
+
+                    <li class="social-bar"> <a href="#">FOLLOW US</a> 
+                      <ul class="drop-down hover-zoom">
+                        <li> <a href="#" target="_blank"><i class="fa fa-flickr"></i> </a> </li>
+                        <li> <a href="#" target="_blank"><i class="fa fa-instagram"></i> </a> </li>
+                        <li> <a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank"><i class="fa fa-youtube"></i> </a> </li>
+                        <li> <a href="//facebook.com/yoplanner" target="_blank"><i class="fa fa-facebook"></i> </a> </li>
+                        <li> <a href="https://plus.google.com/113624413123385492768?prsrc=3" target="_blank"><i class="fa fa-google-plus"></i> </a> </li>
+                        <li> <a href="#" target="_blank"><i class="fa fa-pinterest"></i> </a> </li>
+                        <li> <a href="//twitter.com/yoplanner" target="_blank"><i class="fa fa-twitter"></i> </a> </li>
+                      </ul>
+                    </li>
+
+                    <li class="mi-seleccion"> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
+                      <div class="drop-down full-width hover-expand" ng-controller="HotelController"><!-- full width drop down with 4 columns + images -->
                         <div class="col-md-9"></div>
                         <div class="col-md-3 content-btn">
-                          <a href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
+                          <a ng-if="hotelesSeleccionados.length > 0" href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
                         </div>
 
-                        <ul ng-repeat="hotel in hotelesSeleccionados"><!-- column $index -->
+                        <ul ng-if="hotelesSeleccionados.length == 0">
+                          <li><h2>No hay hoteles seleccionados</h2></li>
+                        </ul>
+
+                        <div>
+                        <ul ng-repeat="hotel in hotelesSeleccionados track by $index"><!-- column $index -->
                           <li>
-                            <h2><span>{{hotel.name}}</span></h2>
+                            <h2><span>{{(hotel.name.trim().substring(0,hotel.name.trim().indexOf(' ')))}}</span>{{(hotel.name.trim().substring(hotel.name.trim().indexOf(' ')))}}</h2>
                             <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1"> </a>
                             <p>{{(hotel.description.length > 100) ? hotel.description.substr(0,97) + '...' : hotel.description}}</p>
                             <div class="col-md-3 content-btn" ng-click="selectResult(hotel)">
@@ -137,73 +164,8 @@
                             </div>
                           </li>
                         </ul>
+                        </div>
                       </div>
-                    </li>
-
-                    <li> <a href="template-about-1.html">FEATURES</a> 
-                      <div class="drop-down full-width hover-fade"><!-- full width drop down with 4 columns -->
-                        <ul><!-- column One -->
-                          <li><h2>Templates</h2></li>
-                          <li><a href="template-about-1.html">About Us 1</a> </li>
-                          <li><a href="template-about-2.html">About us 2</a> </li>
-                          <li><a href="template-service-1.html">Services 1</a> </li>
-                          <li><a href="template-service-2.html">Services 2</a> </li>
-                          <li><a href="template-gallery-4.html">Gallery 4 Column</a> </li>
-                          <li><a href="template-gallery-3.html">Gallery 3 Columns</a> </li>
-                          <li><a href="template-gallery-2.html">Gallery 2 Columns</a> </li>
-                          <li><a href="template-blog-right.html">Blog Right Sidebar</a> </li>
-                          <li><a href="template-blog-left.html">Blog Left Sidebar</a> </li>
-                        </ul>
-
-                        <ul><!-- column Two -->
-                          <li><h2>Templates</h2></li>
-                          <li><a href="template-blog-full.html">Blog Full Width</a> </li>
-                          <li><a href="template-blog-read.html">Blog Read</a> </li>
-                          <li><a href="template-faq.html">Page Faq Questions</a> </li>
-                          <li><a href="page-full-widht.html">Page Full Widht</a> </li>
-                          <li><a href="page-left.html">Page Left Sidebar</a> </li>
-                          <li><a href="page-right.html">Page Right Sidebar</a> </li>
-                          <li><a href="page-404.html">Page 404</a> </li>
-                          <li><a href="page-site-map.html">Page Site Map</a> </li>
-                          <li><a href="princing-tables.html">Princing tables</a> </li>
-                        </ul>
-
-                        <ul><!-- column three -->
-                          <li><h2>Features</h2></li>
-                          <li><a href="feature-header-1.html">Header Version 1</a> </li>
-                          <li><a href="feature-header-2.html">Header Version 2</a> </li>
-                          <li><a href="feature-header-3.html">Header Version 3</a> </li>
-                          <li><a href="feature-header-4.html">Header Version 4</a> </li>
-                          <li><a href="feature-footer-1.html#footer">Footer Version 1</a> </li>
-                          <li><a href="feature-footer-2.html#footer">Footer Version 2</a> </li>
-                          <li><a href="feature-footer-3.html#footer">Footer Version 3</a> </li>
-                          <li><a href="feature-footer-4.html#footer">Footer Version 4</a> </li>
-                          <li><a href="feature-background-sections.html">Background sections</a> </li>
-                        </ul>
-
-                        <ul><!-- column four -->
-                          <li><h2>Elements</h2></li>
-                          <li><a href="feature-grid-system.html">Grid System</a> </li>
-                          <li><a href="feature-typograpy.html">Typograpy</a> </li>
-                          <li><a href="feature-icons.html">Icons</a> </li>
-                          <li class="icon-big-nav"><i class="fa fa-rocket"></i></li><!-- Icon big nav -->
-                        </ul>
-                      </div>
-                    </li>
-
-                    <li>
-                      <a href="contact.html">CONTACT</a>
-                    </li>
-
-                    <li class="social-bar"> <a href="#">FOLLOW US</a> 
-                      <ul class="drop-down hover-zoom">
-                        <li> <a href="#" target="_blank"><i class="fa fa-flickr"></i> </a> </li>
-                        <li> <a href="#" target="_blank"><i class="fa fa-instagram"></i> </a> </li>
-                        <li> <a href="#" target="_blank"><i class="fa fa-youtube"></i> </a> </li>
-                        <li> <a href="#" target="_blank"><i class="fa fa-facebook"></i> </a> </li>
-                        <li> <a href="#" target="_blank"><i class="fa fa-google-plus"></i> </a> </li>
-                        <li> <a href="#" target="_blank"><i class="fa fa-pinterest"></i> </a> </li>
-                      </ul>
                     </li>
 
                     <li class="login-form"> <i class="fa fa-user"></i><!-- login form -->
@@ -234,9 +196,10 @@
                     <li class="search-bar"> <i class="fa fa-search"></i><!-- search bar -->
                       <ul class="drop-down hover-expand">
                         <li>
-                          <div class="filter-header" ng-controller="AutocompleteController">
+                          <div class="filter-header" ng-controller="AutocompleteController" style="max-width: 95%;">
                             <form action="#">
-                              <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity"></autocomplete>
+                              <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="¿Qué destino quieres buscar?"></autocomplete>
+                              <img src="img/lblue.gif" style="width: 30px; height: 30px;" ng-show="showLoader || false" class="ng-hide">
                             </form>
                           </div>
                         </li>
@@ -290,8 +253,10 @@
                         <div class="col-md-3">
                           <h3>FOLLOW US</h3>
                           <ul class="social">
-                            <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="#">Facebook</a></li>
-                            <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="#">Twitter</a></li>
+                            <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="//facebook.com/yoplanner">Facebook</a></li>
+                            <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="//twitter.com/yoplanner">Twitter</a></li>
+                            <li class="youtube"><span><i class="fa fa-youtube"></i></span><a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank">YouTube</a> </li>
+                            <li class="google-plus"><span><i class="fa fa-google-plus"></i></span><a href="https://plus.google.com/113624413123385492768?prsrc=3" target="_blank">Google +</a> </li>
                             <li class="github"><span><i class="fa fa-github"></i></span><a href="#">Github</a></li>
                           </ul>
                         </div>
@@ -313,13 +278,13 @@
                           <h3>CONTACT US</h3>
                           <ul class="contact_footer">
                             <li>
-                              <i class="fa fa-envelope"></i> <a href="#">example@example.com</a>
+                              <i class="fa fa-envelope"></i> <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a>
                             </li>
                             <li>
-                              <i class="fa fa-headphones"></i> <a href="#">55-5698-4589</a>
+                              <i class="fa fa-headphones"></i> <a href="#">(55) 6274 - 6291</a>
                             </li>
                             <li class="location">
-                              <i class="fa fa-home"></i> <a href="#"> Av new stret - New York</a>
+                              <i class="fa fa-home"></i> <a href="#"> Lago Andromaco 53 int. 1303 <br/> Col. Ampliación Granada <br/> Del. Miguel Hidalgo <br/> C. P. 11520 <br/> México, D. F.</a>
                             </li>                                   
                           </ul>
                         </div>
@@ -375,12 +340,13 @@
                       <div class="col-md-7">
                         <!-- Nav Footer-->
                         <ul class="nav-footer">
-                          <li><a href="index.html">HOME</a> </li>
-                          <li><a href="hotel-index.html">HOTELS</a></li>
-                          <li><a href="flight-index.html">FLIGHTS</a></li> 
-                          <li><a href="car-index.html">CARS</a></li> 
-                          <li><a href="cruice-index.html">CRUICES</a></li>                
-                          <li><a href="contact.html">CONTACT</a></li>
+                          <li><a ui-sref="index">HOME</a> </li>
+                          <li><a ui-sref="reserva({option: 'hotels'})">HOTELES</a></li>
+                          <li><a ui-sref="reserva({option: 'flights'})">VUELOS</a></li>
+                          <li><a href="car-index.html">CARS</a></li>
+                          <li><a ui-sref="cruises">CRUCEROS</a></li>
+                          <li><a ui-sref="politicas_privacidad">POLÍTICAS DE PRIVACIDAD</a></li>
+                          <li><a ui-sref="contact">CONTACT</a></li>
                         </ul>
                         <!-- End Nav Footer-->
                       </div>
@@ -430,6 +396,8 @@
             <script src="js/timepicker/timepicker.js"></script>
             <!-- Vallenato -->
             <script src="js/accordion/vallenato.js"></script> 
+            <!-- ImagesLoaded -->
+            <script src="js/imagesloaded/imagesloaded.pkgd.min.js"></script>
             <!--MAIN FUNCTIONS-->
             <script type="text/javascript" src="js/main.js"></script>
 
@@ -454,6 +422,7 @@
         <script type="text/javascript" src="ng/controllers/RFPController.js"></script>
         <script type="text/javascript" src="ng/controllers/HotelCtrlr.js"></script>
         <script type="text/javascript" src="ng/directives/HotelDrctv.js"></script>
+        <script type="text/javascript" src="ng/services/HotelSrvc.js"></script>
 
          <!-- ======================= End Angular libs =========================== -->
 

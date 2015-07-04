@@ -2192,6 +2192,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .social .linkedin:hover span{
 	background: #3399CC;
 }
+.social .youtube:hover span{
+	background: #bb0000;
+}
+.social .google-plus:hover span{
+	background: #dd4b39;
+}
 .social .github:hover span{
 	background: #000;
 }
