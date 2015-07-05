@@ -52,22 +52,26 @@
                                 </div>
                                 <!-- End Item Gallery - No Results -->
                                 <!-- Item Gallery - Main First Results -->
-                                <div class="col-xs-12 col-sm-6 {{$first?'col-md-8':'col-md-4'}}" ng-repeat="hotel in hotels" ng-click="selectResult(hotel)">
-                                    <div class="img-hover">
-                                        <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="{{$first?'width: 748px;height: 231.422px;':'width: 360px;height: 231.422px;'}}">
-                                    </div>
+                                <div ng-repeat="hotel in hotels">
+                                <div class="row" ng-if="$index==2"/>
+                                    <div class="col-xs-12 col-sm-6 {{$first?'col-md-8':'col-md-4'}}"  ng-click="selectResult(hotel)">
+                                        
+                                        <div class="img-hover">
+                                            <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="{{$first?'width: 748px;height: 231.422px;':'width: 360px;height: 231.422px;'}}">
+                                        </div>
 
-                                    <div class="info-gallery">
-                                        <h3>
-                                            {{(!$first && hotel.name.length > 37) ? hotel.name.substr(0,33) + '...' : hotel.name}}<br>
-                                            <span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span>
-                                        </h3>
-                                        <hr class="separator">
-                                        <p>{{($first) ? ((hotel.description.length > 228) ? hotel.description.substr(0,225) + '...' : hotel.description) : ((hotel.description.length > 94) ? hotel.description.substr(0,91) + '...' : hotel.description)}}</p>
-                                        <ul class="starts">
-                                            <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
-                                        </ul>
-                                        <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
+                                        <div class="info-gallery">
+                                            <h3>
+                                                {{(!$first && hotel.name.length > 37) ? hotel.name.substr(0,33) + '...' : hotel.name}}<br>
+                                                <span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span>
+                                            </h3>
+                                            <hr class="separator">
+                                            <p>{{($first) ? ((hotel.description.length > 228) ? hotel.description.substr(0,225) + '...' : hotel.description) : ((hotel.description.length > 94) ? hotel.description.substr(0,91) + '...' : hotel.description)}}</p>
+                                            <ul class="starts">
+                                                <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
+                                            </ul>
+                                            <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- End Item Gallery - Main First Results -->
