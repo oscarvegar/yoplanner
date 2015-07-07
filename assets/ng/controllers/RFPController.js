@@ -151,6 +151,7 @@ angular.module('rfp-module', [])
             $scope.fechaFinalFor = null;
             window.localStorage.removeItem('rfp');
             window.localStorage.removeItem('hotelesSeleccionados');
+            window.localStorage.removeItem('ngStorage-hotelesSeleccionados');
 
             $.fancybox.next();
         }).error(function(data){

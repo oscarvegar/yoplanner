@@ -42,3 +42,58 @@ HotelModule.directive('snglKrsl', function(){
 		}
 	};
 });
+
+HotelModule.directive('onFinishRender', function ($timeout, $log) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            // if (scope.$last === true) {
+            if (scope.$last) {
+                $timeout(function () {
+                	$log.info("calling:"+attr.onFinishRender);
+                    // scope.$emit('ngRepeatFinished');
+                    // scope.$evalAsync(attr.onFinishRender);
+                    // scope.$eval(attr.onFinishRender);
+				    setTimeout( function() {
+				    	var index = 0;
+				        $('#single-carousel').imagesLoaded()
+				            .always( function() {
+				                console.log('always.(#single-carousel)');
+				                $('.preloader').fadeOut('slow');
+				                //=================================== Carousel Services  ==============================//    
+				                $("#single-carousel, #single-carousel-sidebar").owlCarousel({
+
+				                    // Most important owl features
+				                    // items : 1,
+				                    singleItem: true,
+
+				                    //Autoplay
+				                    autoPlay: 4000,
+
+				                    // Navigation
+				                    navigation : true,
+
+				                    // Navigation
+				                    autoHeight : true,
+
+				                    //Basic Speeds
+				                    slideSpeed : 400,
+
+				                    //Pagination
+				                    pagination : false
+				                });
+				            })
+				            .progress( function( instance, image ) {
+				                console.log('progress...');
+				                // console.log($('.preloader'));
+				                if(index == 0) {
+				                	$('.preloader').show();
+				                	index++;
+				                }
+				            });
+				        }, 1000);
+                });
+            }
+        }
+    }
+});

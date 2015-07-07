@@ -106,7 +106,6 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 		.state('hotel', {
 			url: "/hotel/:searchId",
 			templateUrl: "ng/modules/hotel.list.tpl.html",
-			controller: "HotelController",
 			resolve:{
 				searchId: ['$stateParams', function($stateParams){
 					return $stateParams.searchId;
@@ -120,8 +119,7 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 		})
 		.state('hotel_detail', {
 			url: "/hotel/:searchId/detail/:hotelId",
-			templateUrl: "ng/modules/hotel.detail.tpl.html",
-			controller: "HotelController"
+			templateUrl: "ng/modules/hotel.detail.tpl.html"
 		});
 
 	/////////////////////////////////
@@ -146,7 +144,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     $rootScope.hotelesSeleccionados = $scope.$storage.hotelesSeleccionados!=null?JSON.parse($scope.$storage.hotelesSeleccionados):[];
 
 	$scope.findAllHotelsByCity = function(searchId) {
-		searchId = searchId ? searchId : ($rootScope.searchId ? $rootScope.searchId : $stateParams.searchId);
+		searchId = searchId ? searchId : $stateParams.searchId;
 		$http.get("/recinto/findByCiudadId/"+searchId).success(function (data){
 			$rootScope.resHoteles = data.hotels;
 
@@ -383,13 +381,14 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$log.info($rootScope.$selectedCity);
 		$log.info($stateParams.hotelId);
 
-		var valDest = HotelSrvc.validateDestination($stateParams.searchId);
-		if(valDest != null) {
+		$scope.valDest = HotelSrvc.getDestReviewComp($stateParams.searchId);
+		/*
+		if(valDest.searchId != null) {
 			$scope.imgBgAcronym = $stateParams.searchId;
 		} else {
 			$scope.imgBgAcronym = '02';
 		}
-
+		 */
 		if($rootScope.$selectedCity) {
 			// $scope.$storage.selectedCity = $rootScope.$selectedCity;
 			/*
@@ -404,8 +403,39 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			$scope.$storage = $localStorage.$default({
 				selectedCity: $rootScope.$selectedCity
 			});
+
+			// $scope.$storage.arryCities = $localStorage.arryCities;
+			if(!$scope.$storage.arryCities) {
+				$scope.$storage.arryCities = new Array();
+			}
+
+			var existInStoragedArry = false;
+			for (var i = 0; i < $scope.$storage.arryCities.length; i++) {
+				if($scope.$storage.arryCities[i].searchId == $stateParams.searchId) {
+					$rootScope.$selectedCity = $scope.$storage.arryCities[i].selectedCity;
+					existInStoragedArry = true;
+					break;
+				}
+				/*
+				if($scope.$storage.arryCities[i].selectedCity == $rootScope.$selectedCity) {
+					existInStoragedArry = true;
+					break;
+				}
+				 */
+			};
+
+			if(!existInStoragedArry) {
+				$scope.$storage.arryCities.push({searchId: $stateParams.searchId, selectedCity: $rootScope.$selectedCity});
+			}
 		} else {
 			$rootScope.$selectedCity = $scope.$storage.selectedCity;
+
+			for (var i = 0; i < $scope.$storage.arryCities.length; i++) {
+				if($scope.$storage.arryCities[i].searchId == $stateParams.searchId) {
+					$rootScope.$selectedCity = $scope.$storage.arryCities[i].selectedCity;
+					break;
+				}
+			};
 		}
 
  		if($routeParams.hotelId || $rootScope.hotelId || $stateParams.hotelId) {
@@ -440,7 +470,6 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     $scope.$back = function() { 
 		// $window.history.back();
 		var valDest = HotelSrvc.validateDestination($stateParams.searchId);
-
 		if(valDest != null) {
 			$state.go('hotel.review', {searchId: $stateParams.searchId});
 		} else {

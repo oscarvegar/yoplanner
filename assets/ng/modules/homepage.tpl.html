@@ -137,7 +137,8 @@
                             <div class="info-boxed boxed-top">
                                 <h3>
                                     {{hotel.name}}<br>
-                                    <span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span>
+                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
+                                    <span>{{hotel.destName}}</span>
                                 </h3>
                                 <hr class="separator">
                                 <p>{{(hotel.description.length > 70) ? hotel.description.substr(0,67) + '...' : hotel.description}}</p>
@@ -154,7 +155,8 @@
                             <div class="info-boxed boxed-bottom">
                                 <h3>
                                     {{hotel.name}}<br>
-                                    <span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span>
+                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
+                                    <span>{{hotel.destName}}</span>
                                 </h3>
                                 <hr class="separator">
                                 <p>{{(hotel.description.length > 70) ? hotel.description.substr(0,67) + '...' : hotel.description}}</p>
@@ -534,7 +536,13 @@
                                 <div class="text-center">
                                     <h2>Our recents <span class="text-resalt">twitts</span>.</h2>
                                 </div>
-                                <div id="twitterr"></div>
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-6" style="height: 380px;overflow-x: hidden;overflow-y: scroll;">
+                                    <div twitter-timeline="618226890231275521" auto-resize="true" style="width:520px;" css-url="css/twitter-timeline/twitter-timeline.css" data-tweet-limit="5">Loading tweets...</div>
+                                </div>
+                                <div class="col-md-3">
+                                </div> 
                             </div>
                         </div>
                     </div>

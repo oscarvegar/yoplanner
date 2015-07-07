@@ -36,25 +36,17 @@
 
                 <!-- content info - Features-->
                 <div class="content_info skin_base no-overflow">
-                    <div class="container wow fadeInUp">
-                        <div class="row">
-                            <div class="col-md-9"></div>
-                            <div class="col-md-3">
-                                <div class="form-detailed">
-                                    <div class="header-detailed">
-                                        <button ng-click="$back()" class="btn btn-success fa fa-arrow-left col-md-12"> Regresar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+                        <h4><a href="javascript:void(0);" ng-click="$back();" style="text-decoration: underline;">&lt;&lt; Volver a su búsqueda</a></h4>
                     </div>
+                    <div class="col-md-8"></div>
                 </div>   
                 <!-- End content info - Features--> 
 
                 <!-- End content info - Grey Section-->
                 <div class="content_info">
                     <!-- Info Resalt-->
-                    <div class="content_resalt paddings-mini tabs-detailed">
+                    <div class="content_resalt paddings-mini tabs-detailed" style="padding: 25px 0px;">
                         <div class="container wow fadeInUp">
                             <div class="row">
                                 <div class="col-md-12">
@@ -70,7 +62,10 @@
                                             <a href="?#extraInfo" ng-click="renderMap(false)" data-toggle="tab"><i class="fa fa-map-marker"></i>Ubicación</a>
                                         </li>
                                         <li>
-                                            <a href="javascript:void(0);" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0"><i class="fa fa-cart-plus"></i>Agregar a Mi Selección</a>
+                                            <a href="javascript:void(0);" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0"><i class="fa fa-cart-plus"></i>Cotiza Grupo</a>
+                                        </li>
+                                        <li>
+                                            <a href="?#bookHotel" ng-click="renderMap(true);" data-toggle="tab"><i class="fa fa-cart-plus"></i>Reserva Hotel</a>
                                         </li>
                                         <!--
                                         <li>
@@ -129,7 +124,7 @@
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <h3>Información de las habitaciones y salones</h3>
-                                                    <table class="detalleHotel tablaDetalle">
+                                                    <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
                                                         <tr>
                                                             <td>Total de Habitaciones</td>
                                                             <td>{{currentHotel.infoExtra.totalHabitaciones}}</td>
@@ -170,7 +165,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <h3>Equipamiento y servicios de los salones </h3>
-                                                    <table class="detalleHotel tablaDetalle">
+                                                    <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
                                                         <thead>
                                                             <th><br>Salón</th>
                                                             <th><br>Tamaño</th>
@@ -242,11 +237,11 @@
 
                 <!-- content info - testimonials-->
                 <div class="content_info">
-                    <!-- Parallax Background -->
+                    <!-- Parallax Background ->
                     <div class="bg_parallax image_{{imgBgAcronym}}_parallax"></div>
-                    <!-- Parallax Background -->
+                    <!- Parallax Background -->
 
-                    <div class="opacy_bg_02">
+                    <div class="opacy_bg_02" style="background: rgba(1,1,1,1);">
                         <!-- Testimonial Propertie-->
                         <div class="container">
                             <div class="row">
@@ -319,41 +314,6 @@
             <script type="text/javascript">
                 $(document).ready(function() {
                     console.log('$(document).ready(function())');
-                    setTimeout( function() {
-                        $('#single-carousel').imagesLoaded()
-                            .always( function() {
-                                console.log('always.(#single-carousel)');
-                                $('.preloader').fadeOut('slow');
-                                //=================================== Carousel Services  ==============================//    
-                                $("#single-carousel, #single-carousel-sidebar").owlCarousel({
-
-                                    // Most important owl features
-                                    // items : 1,
-                                    singleItem: true,
-
-                                    //Autoplay
-                                    autoPlay: 4000,
-
-                                    // Navigation
-                                    navigation : true,
-
-                                    // Navigation
-                                    autoHeight : true,
-
-                                    //Basic Speeds
-                                    slideSpeed : 400,
-
-                                    //Pagination
-                                    pagination : false
-                                });
-                            })
-                            .progress( function( instance, image ) {
-                                console.log('progress...');
-                                // console.log($('.preloader'));
-                                $('.preloader').show();
-                            });
-                    }, 5000);
-                    
                     //=================================== Carousel testimonials  ===============================//  
                     $("#testimonials").owlCarousel({
                         items : 1,

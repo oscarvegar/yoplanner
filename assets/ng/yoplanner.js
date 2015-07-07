@@ -1,4 +1,4 @@
-var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate', 'ngStorage', 'yoPlannerApp.hotel']);
+var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate', 'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline']);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
@@ -55,13 +55,11 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 	$stateProvider
 		.state('index', {
 			url: "",
-			templateUrl: "ng/modules/homepage.tpl.html",
-			controller: "AutocompleteController"
+			templateUrl: "ng/modules/homepage.tpl.html"
 		})
 		.state('index2', {
 			url: "/",
-			templateUrl: "ng/modules/homepage.tpl.html",
-			controller: "AutocompleteController"
+			templateUrl: "ng/modules/homepage.tpl.html"
 		})
 		.state('acerca_de', {
 			url: "/acerca-de",
@@ -161,13 +159,6 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
 	}
 });
 
-function extractHotelData(dataResult) {
-	if(dataResult.hotels && dataResult.hotels.length > 0) {
-		return dataResult.hotels[dataResult.hotels.length - 1];
-	}
-	return null;
-}
-
 yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, $rootScope, $location, $state, $log, $q, HotelSrvc) {
 	$log.info('HomePageController');
 
@@ -178,11 +169,21 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 		var BuscaCruceroObj = {icon: 'fa-ship', text: 'Busca Crucero', stUrl: 'cruises'};
 		var BuscaParqueObj = {icon: 'fa-magic', text: 'Busca Parque'};
 		var BuscaRestauranteObj = {icon: 'fa-spoon', text: 'Busca Restaurante'};
-		var DescubreBlogObj = {icon: 'fa-blog-34px', text: 'Descubre Blog', url: 'http://www.yoplanner.com.mx/blog/'};
-		var ContáctanosObj = {icon: 'fa-contact-us-34px', text: 'Contáctanos', stUrl: 'contact'};
+		var DescubreBlogObj = {icon: 'fa-blog-blue-34px', text: 'Descubre Blog', url: 'http://www.yoplanner.com.mx/blog/'};
+		var ContáctanosObj = {icon: 'fa-contact-us-blue-34px', text: 'Contáctanos', stUrl: 'contact'};
 
 		$scope.servicesItems = new Array();
 		$scope.servicesItems = $scope.servicesItems.concat(CotizaGrupoObj, ReservaHotelObj, ReservaAvionObj, BuscaCruceroObj, BuscaParqueObj, BuscaRestauranteObj, DescubreBlogObj, ContáctanosObj);
+	};
+
+	$scope.extractHotelData = function (dataResult) {
+		if(dataResult.hotels && dataResult.hotels.length > 0) {
+			var tempHotel = dataResult.hotels[dataResult.hotels.length - 1];
+			tempHotel['destName'] = HotelSrvc.getHomepageHotelComp(tempHotel.id);
+			tempHotel['starRatingRange'] = new Array(tempHotel.starRating);
+			return tempHotel;
+		}
+		return null;
 	};
 
 	$scope.initVacationsDestinatios = function() {
@@ -191,17 +192,11 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 			$log.info(data[0].data, data[1].data, data[2].data, data[3].data);
 
 			$scope.popDestImgInf = new Array();
-			$scope.popDestImgInf = $scope.popDestImgInf.concat(extractHotelData(data[0].data), extractHotelData(data[1].data));
-			for (var i = 0; i < $scope.popDestImgInf.length; i++) {
-				$scope.popDestImgInf[i]['starRatingRange'] = new Array($scope.popDestImgInf[i].starRating);
-			};
+			$scope.popDestImgInf = $scope.popDestImgInf.concat($scope.extractHotelData(data[0].data), $scope.extractHotelData(data[1].data));
 			$log.info('popDestImgInf', $scope.popDestImgInf);
 
 			$scope.popDestInfImg = new Array();
-			$scope.popDestInfImg = $scope.popDestInfImg.concat(extractHotelData(data[2].data), extractHotelData(data[3].data));
-			for (var i = 0; i < $scope.popDestInfImg.length; i++) {
-				$scope.popDestInfImg[i]['starRatingRange'] = new Array($scope.popDestInfImg[i].starRating);
-			};
+			$scope.popDestInfImg = $scope.popDestInfImg.concat($scope.extractHotelData(data[2].data), $scope.extractHotelData(data[3].data));
 			$log.info('popDestInfImg', $scope.popDestInfImg);
 		});
 	};

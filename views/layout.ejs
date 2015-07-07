@@ -129,18 +129,15 @@
 
                     <li class="social-bar"> <a href="#">FOLLOW US</a> 
                       <ul class="drop-down hover-zoom">
-                        <li> <a href="#" target="_blank"><i class="fa fa-flickr"></i> </a> </li>
-                        <li> <a href="#" target="_blank"><i class="fa fa-instagram"></i> </a> </li>
-                        <li> <a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank"><i class="fa fa-youtube"></i> </a> </li>
-                        <li> <a href="//facebook.com/yoplanner" target="_blank"><i class="fa fa-facebook"></i> </a> </li>
-                        <li> <a href="https://plus.google.com/113624413123385492768?prsrc=3" target="_blank"><i class="fa fa-google-plus"></i> </a> </li>
-                        <li> <a href="#" target="_blank"><i class="fa fa-pinterest"></i> </a> </li>
-                        <li> <a href="//twitter.com/yoplanner" target="_blank"><i class="fa fa-twitter"></i> </a> </li>
+                        <li class="facebook"> <a href="//facebook.com/yoplanner" target="_blank"><i class="fa fa-facebook"></i> </a> </li>
+                        <li class="twitter"> <a href="//twitter.com/yoplanner" target="_blank"><i class="fa fa-twitter"></i> </a> </li>
+                        <li class="google-plus"> <a href="https://plus.google.com/113624413123385492768?prsrc=3" target="_blank"><i class="fa fa-google-plus"></i> </a> </li>
+                        <li class="youtube"> <a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank"><i class="fa fa-youtube"></i> </a> </li>
                       </ul>
                     </li>
 
                     <li class="mi-seleccion"> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
-                      <div class="drop-down full-width hover-expand" ng-controller="HotelController"><!-- full width drop down with 4 columns + images -->
+                      <div class="drop-down full-width hover-expand" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
                         <div class="col-md-9"></div>
                         <div class="col-md-3 content-btn">
                           <a ng-if="hotelesSeleccionados.length > 0" href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
@@ -150,7 +147,7 @@
                           <li><h2>No hay hoteles seleccionados</h2></li>
                         </ul>
 
-                        <div>
+                        <div class="row">
                         <ul ng-repeat="hotel in hotelesSeleccionados track by $index"><!-- column $index -->
                           <li>
                             <h2><span>{{(hotel.name.trim().substring(0,hotel.name.trim().indexOf(' ')))}}</span>{{(hotel.name.trim().substring(hotel.name.trim().indexOf(' ')))}}</h2>
@@ -255,9 +252,8 @@
                           <ul class="social">
                             <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="//facebook.com/yoplanner">Facebook</a></li>
                             <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="//twitter.com/yoplanner">Twitter</a></li>
-                            <li class="youtube"><span><i class="fa fa-youtube"></i></span><a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank">YouTube</a> </li>
                             <li class="google-plus"><span><i class="fa fa-google-plus"></i></span><a href="https://plus.google.com/113624413123385492768?prsrc=3" target="_blank">Google +</a> </li>
-                            <li class="github"><span><i class="fa fa-github"></i></span><a href="#">Github</a></li>
+                            <li class="youtube"><span><i class="fa fa-youtube"></i></span><a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank">YouTube</a> </li>
                           </ul>
                         </div>
                         <!-- End Social Us-->
@@ -416,6 +412,7 @@
         <script src="https://www.youtube.com/iframe_api"></script>
         <script type="text/javascript" src="js/angular-mod/angular-youtube-embed.js"></script>
         <script type="text/javascript" src="js/angular-mod/angular-notify.min.js"></script>
+        <script type="text/javascript" src="js/angular-mod/twitter-timeline.js"></script>
         <script type="text/javascript" src="ng/yoplanner.js"></script>
         <!-- Autocomplete -->
         <script src="js/autocomplete/autocomplete.js"></script> 
