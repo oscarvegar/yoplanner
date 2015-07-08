@@ -136,7 +136,7 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 });
 
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams,
-	$state, $stateParams, $localStorage, uiGmapGoogleMapApi, uiGmapIsReady, notify, HotelSrvc) {
+	$state, $stateParams, $localStorage, uiGmapGoogleMapApi, uiGmapIsReady, notify, HotelSrvc, $sce) {
 	
 	$log.info('HotelController');
 	$scope.Math = window.Math;
@@ -196,6 +196,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
     $scope.findSelectedHotelDetail = function() {
     	$log.info('HotelController.findSelectedHotelDetail');
+
     	$scope.videoID = '9GdVZfIBvxQ';
     	$scope.videoURL = 'https://www.youtube.com/watch?v=9GdVZfIBvxQ';
     	$scope.playerVars = {
@@ -255,6 +256,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			        });
 			    }
         	}
+
+	    	var TODAY = moment();
+	    	$scope.iFrameSrc = $sce.trustAsResourceUrl ('http://www.e-agencias.com.mx/ag32638/hotels/details/'+$stateParams.searchId+'/'+TODAY.add(2, 'days').format('YYYY-MM-DD')+'/'+TODAY.add(3, 'days').format('YYYY-MM-DD')+'/1/'+$stateParams.hotelId+'/');
 
         }).error(function(err){
         	$log.error(err);
