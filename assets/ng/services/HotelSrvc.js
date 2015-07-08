@@ -70,6 +70,13 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 
 			return hotelDeltinationName;
 		},
+		getHomepageHotelsReviewed: function() {
+			var CUSTOM_DESTINATIONS_REVIEW_tmp = {};
+			angular.copy(CUSTOM_DESTINATIONS_REVIEW, CUSTOM_DESTINATIONS_REVIEW_tmp);
+			delete CUSTOM_DESTINATIONS_REVIEW_tmp.EMPTY;
+			delete CUSTOM_DESTINATIONS_REVIEW_tmp.DEFAULT;
+			return CUSTOM_DESTINATIONS_REVIEW_tmp;
+		},
 		validateDestination: function(searchId) {
 			if(CUSTOM_DESTINATIONS_REVIEW[searchId]) {
 				return CUSTOM_DESTINATIONS_REVIEW[searchId];

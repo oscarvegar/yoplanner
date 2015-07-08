@@ -217,19 +217,28 @@
               <footer id="footer" class="footer-v1">
                 <div class="container">
                   <div class="row">
-                    <div class="col-md-12">
-
-                      <hr>
+                    <hr>
+                    <div class="col-md-12" ng-controller="HomePageController" style="background-color: #f5f5f5;">
+                      <!--
+                      <hr class="short">
+                      
                       <pre>
-                        <!-- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams -->
+                        <!- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams ->
                         $state = {{$state.current.name}}
                         $stateParams = {{$stateParams}}
                         $state full url = {{ $state.$current.url.source }}
-                        <!-- $state.$current is not a public api, we are using it to
-                        display the full url for learning purposes-->
+                        <!- $state.$current is not a public api, we are using it to
+                        display the full url for learning purposes->
                       </pre>
+                       -->
+                        <div ng-repeat="(key, value) in hotelsReviewed" class="col-md-3">
+                          <a href="javascript:void(0);" ng-click="redirectLink(value.searchId)" style="text-decoration: underline;">{{value.text}}</a>
+                        </div>
                     
                     </div>
+                  </div>
+                  <div class="row">
+                    <hr>
                   </div>
                   <div class="row">
                     <!-- Title Footer-->

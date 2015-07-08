@@ -428,7 +428,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				 */
 			};
 
-			if(!existInStoragedArry) {
+			if(!existInStoragedArry && $rootScope.$selectedCity.trim()) {
 				$scope.$storage.arryCities.push({searchId: $stateParams.searchId, selectedCity: $rootScope.$selectedCity});
 			}
 		} else {

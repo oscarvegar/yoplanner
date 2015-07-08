@@ -164,6 +164,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 	$log.info('HomePageController');
 
 	$scope.initServicesItems = function() {
+		$log.info('HomePageController.initServicesItems');
 		var CotizaGrupoObj = {icon: 'fa-group', text: 'Cotiza Grupo', stUrl: 'index'};
 		var ReservaHotelObj = {icon: 'fa-bed', text: 'Reserva Hotel', stUrl: 'reserva({option: "hotels"})'};
 		var ReservaAvionObj = {icon: 'fa-plane', text: 'Reserva Avión', stUrl: 'reserva({option: "flights"})'};
@@ -177,6 +178,32 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 		$scope.servicesItems = $scope.servicesItems.concat(CotizaGrupoObj, ReservaHotelObj, ReservaAvionObj, BuscaCruceroObj, BuscaParqueObj, BuscaRestauranteObj, DescubreBlogObj, ContáctanosObj);
 	};
 
+	$scope.initHotelsReviewed = function() {
+		$scope.hotelsReviewed = HotelSrvc.getHomepageHotelsReviewed();
+		$log.info('HomePageController.initHotelsReviewed', $scope.hotelsReviewed);
+	};
+
+	$scope.redirectLink = function(searchId){
+		console.info("SEL CITY", searchId);
+		/*
+		$http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
+			$rootScope.resHoteles = data.hotels;
+			console.info($rootScope.resHoteles);
+			// $state.go('hotel.list');
+		});
+		*/
+		// $location.url('/hotel/list/' + $scope.searchId);
+		$rootScope.searchId = searchId;
+		$rootScope.$selectedCity = ' ';
+
+		var valDest = HotelSrvc.validateDestination($rootScope.searchId);
+		if(valDest != null) {
+			$state.go('hotel.review', {searchId: $rootScope.searchId});
+		} else {
+			$state.go('hotel', {searchId: $rootScope.searchId});
+		}
+	}
+
 	$scope.extractHotelData = function (dataResult) {
 		if(dataResult && dataResult.hotels && dataResult.hotels.length > 0) {
 			var tempHotel = dataResult.hotels[dataResult.hotels.length - 1];
@@ -188,6 +215,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 	};
 
 	$scope.initVacationsDestinatios = function() {
+		$log.info('HomePageController.initVacationsDestinatios');
 		HotelSrvc.homepageHotels().then(function(data){
 			$log.info('data-result', data);
 			$log.info(data[0].data, data[1].data, data[2].data, data[3].data);
@@ -203,8 +231,10 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 	};
 
 	$scope.init = function() {
+		$log.info('HomePageController.init');
 		$scope.initServicesItems();
 		$scope.initVacationsDestinatios();
+		$scope.initHotelsReviewed();
 	};
 
 	$scope.$evalAsync(function() {
