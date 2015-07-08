@@ -430,12 +430,14 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		} else {
 			$rootScope.$selectedCity = $scope.$storage.selectedCity;
 
-			for (var i = 0; i < $scope.$storage.arryCities.length; i++) {
-				if($scope.$storage.arryCities[i].searchId == $stateParams.searchId) {
-					$rootScope.$selectedCity = $scope.$storage.arryCities[i].selectedCity;
-					break;
-				}
-			};
+			if($scope.$storage.arryCities) {
+				for (var i = 0; i < $scope.$storage.arryCities.length; i++) {
+					if($scope.$storage.arryCities[i].searchId == $stateParams.searchId) {
+						$rootScope.$selectedCity = $scope.$storage.arryCities[i].selectedCity;
+						break;
+					}
+				};
+			}
 		}
 
  		if($routeParams.hotelId || $rootScope.hotelId || $stateParams.hotelId) {

@@ -177,7 +177,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 	};
 
 	$scope.extractHotelData = function (dataResult) {
-		if(dataResult.hotels && dataResult.hotels.length > 0) {
+		if(dataResult && dataResult.hotels && dataResult.hotels.length > 0) {
 			var tempHotel = dataResult.hotels[dataResult.hotels.length - 1];
 			tempHotel['destName'] = HotelSrvc.getHomepageHotelComp(tempHotel.id);
 			tempHotel['starRatingRange'] = new Array(tempHotel.starRating);
