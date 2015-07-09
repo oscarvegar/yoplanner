@@ -5,7 +5,7 @@
 
 var HotelModule = angular.module('yoPlannerApp.hotel');
 
-HotelModule.directive('snglKrsl', function(){
+HotelModule.directive('snglKrsl', function($timeout, $log){
 	// Runs during compile
 	return {
 		// name: '',
@@ -23,12 +23,12 @@ HotelModule.directive('snglKrsl', function(){
 		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
-			console.log(iAttrs.pictures);
+			$log.info('directive.snglKrsl', iAttrs.pictures);
 		}
 	};
 });
 
-HotelModule.directive('tstmnlsKrsl', function(){
+HotelModule.directive('tstmnlsKrsl', function($timeout, $log) {
 	// Runs during compile
 	return {
 		// name: '',
@@ -46,12 +46,29 @@ HotelModule.directive('tstmnlsKrsl', function(){
 		// transclude: true,
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
-			console.log(iAttrs.reviews);
+			$log.info('directive.tstmnlsKrsl', iAttrs.reviews);
+			/*
+            $timeout(function () {
+            	$log.info("$timeout :: ");
+			    setTimeout( function() {
+                    //=================================== Carousel testimonials  ===============================//
+                    $("#testimonials").owlCarousel({
+                        items : 1,
+                        autoPlay: 3200,  
+                        navigation : false,
+                        autoHeight : true,
+                        slideSpeed : 400,
+                        singleItem: true,
+                        pagination : true
+                    });
+                }, 5000);
+            });
+             */
 		}
 	};
 });
 
-HotelModule.directive('onFinishRender', function ($timeout, $log) {
+HotelModule.directive('onFinishRender', function($timeout, $log) {
     return {
         restrict: 'A',
         link: function (scope, element, attr) {
@@ -68,6 +85,7 @@ HotelModule.directive('onFinishRender', function ($timeout, $log) {
 				            .always( function() {
 				                console.log('always.(#single-carousel)');
 				                $('.preloader').fadeOut('slow');
+			                	$('.status').fadeOut('slow');
 				                //=================================== Carousel Services  ==============================//    
 				                $("#single-carousel, #single-carousel-sidebar").owlCarousel({
 
@@ -90,16 +108,30 @@ HotelModule.directive('onFinishRender', function ($timeout, $log) {
 				                    //Pagination
 				                    pagination : false
 				                });
-				            })
-				            .progress( function( instance, image ) {
+				                
+				    			setTimeout( function() {
+				                    //=================================== Carousel testimonials  ===============================//
+				                    $("#testimonials").owlCarousel({
+				                        items : 1,
+				                        autoPlay: 3200,  
+				                        navigation : false,
+				                        autoHeight : true,
+				                        slideSpeed : 400,
+				                        singleItem: true,
+				                        pagination : true
+				                    });
+			        			}, 3000);
+								
+				            }).progress( function( instance, image ) {
 				                console.log('progress...');
 				                // console.log($('.preloader'));
 				                if(index == 0) {
 				                	$('.preloader').fadeIn('slow');
+				                	$('.status').fadeIn('slow');
 				                	index++;
 				                }
 				            });
-				        }, 1000);
+			        }, 1000);
                 });
             }
         }
