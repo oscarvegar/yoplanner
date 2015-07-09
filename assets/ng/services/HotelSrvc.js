@@ -14,10 +14,10 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 	// /hotel/MEX/detail/290774 - Presidente Intercontinental DF
 	// /hotel/MEX/detail/816287 - Presidente InterContinental Santa Fe DF
 	var CONTRACTING_HOTELS = {
-			hotelMLC: {hotelId: 363032, destName: 'Cabo San Lucas, Baja California Sur, México'},	// Marquis Los Cabos
-			hotelPPC: {hotelId: 352782, destName: 'Playa del Carmen, Quintana Roo, México'},	// Paradisus Playa del Carmen
-			hotelFPC: {hotelId: 681932, destName: 'Cancún, Quintana Roo, México'},	// Four points Cancun
-			hotelPIDF: {hotelId: 290774, destName: 'Ciudad de México, México D.F., México'}	// Presidente Intercontinental DF
+			hotelMLC: {hotelId: 363032, destName: 'Cabo San Lucas, Baja California Sur, México', fotoPrincipal: 'img/hoteles/363032/HMC_copia_popdest.jpg'},	// Marquis Los Cabos
+			hotelPPC: {hotelId: 352782, destName: 'Playa del Carmen, Quintana Roo, México', fotoPrincipal: 'img/hoteles/352782/Paradisus_La_Perla_Alberca_copia_popdest.jpg'},	// Paradisus Playa del Carmen
+			hotelFPC: {hotelId: 681932, destName: 'Cancún, Quintana Roo, México', fotoPrincipal: 'img/hoteles/681932/four_points_cancun_popdest.jpg'},	// Four points Cancun
+			hotelPIDF: {hotelId: 290774, destName: 'Ciudad de México, México D.F., México', fotoPrincipal: 'img/hoteles/290774/Presidente_InterContinental_Mexico_City_popdest.jpg'}	// Presidente Intercontinental DF
 	};
 
 	var CUSTOM_DESTINATIONS_REVIEW = {
@@ -41,8 +41,8 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 		PVR: {searchId: 'PVR', text: 'Hoteles en Puerto Vallarta', imgBgAcronym: 'PVR'},
 		QRO: {searchId: 'QRO', text: 'Hoteles en Queretaro', imgBgAcronym: 'QRO'},
 		RM0: {searchId: 'RM0', text: 'Hoteles en Riviera Maya', imgBgAcronym: 'RM0'},
-		SD6: {searchId: 'SD6', text: 'Hoteles en Los Cabos', imgBgAcronym: 'SD6'},
-		SJD: {searchId: 'SJD', text: 'Hoteles en Los Cabos', imgBgAcronym: 'SJD'},
+		SD6: {searchId: 'SD6', text: 'Hoteles en Cabo San Lucas', imgBgAcronym: 'SD6'},
+		SJD: {searchId: 'SJD', text: 'Hoteles en San José del Cabo', imgBgAcronym: 'SJD'},
 		TLC: {searchId: 'TLC', text: 'Hoteles en Toluca', imgBgAcronym: 'TLC'},
 		ZLO: {searchId: 'ZLO', text: 'Hoteles en Manzanillo', imgBgAcronym: 'ZLO'}
 	};
@@ -69,6 +69,17 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 			};
 
 			return hotelDeltinationName;
+		},
+		getHomepageHotelMainPhoto: function(hotelId) {
+			var hotelMainPhoto = '';
+			for (var i in CONTRACTING_HOTELS) {
+				if(CONTRACTING_HOTELS[i].hotelId == hotelId) {
+					hotelMainPhoto = CONTRACTING_HOTELS[i].fotoPrincipal;
+					break;
+				}
+			};
+
+			return hotelMainPhoto;
 		},
 		getHomepageHotelsReviewed: function() {
 			var CUSTOM_DESTINATIONS_REVIEW_tmp = {};

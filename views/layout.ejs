@@ -218,7 +218,7 @@
                 <div class="container">
                   <div class="row">
                     <hr>
-                    <div class="col-md-12" ng-controller="HomePageController" style="background-color: #f5f5f5;">
+                    <div class="col-md-12" ng-controller="HomePageController">
                       <!--
                       <hr class="short">
                       
@@ -232,7 +232,7 @@
                       </pre>
                        -->
                         <div ng-repeat="(key, value) in hotelsReviewed" class="col-md-3">
-                          <a href="javascript:void(0);" ng-click="redirectLink(value.searchId)" style="text-decoration: underline;">{{value.text}}</a>
+                          <a href="javascript:void(0);" ng-click="redirectLink(value.searchId)" style="text-decoration: underline;color: #ffffff">{{value.text}}</a>
                         </div>
                     
                     </div>

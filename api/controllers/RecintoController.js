@@ -38,7 +38,9 @@ module.exports = {
             options.path="/hotels/"+id+"/reviews?pagesize=5";
             HttpClientService.httpsGET(options,function(rews){
                 rews = JSON.parse(rews);
-                response.hotels[0].reviews = rews.reviews;
+                if(rews) {
+                    response.hotels[0].reviews = rews.reviews;
+                }
                 return res.json(response);
             })
             

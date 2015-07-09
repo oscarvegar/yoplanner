@@ -1,0 +1,20 @@
+
+                                       <ul id="testimonials">
+                                            <li ng-repeat="review in reviews">
+                                                <p>
+                                                    <i class="fa fa-quote-left"></i>
+                                                    <span style="font-weight: bold;">Aspectos positivos: </span>{{review.comments.good}}
+                                                    <br>
+                                                    <span style="font-weight: bold;">Aspectos negativos: </span>{{review.comments.bad ? review.comments.bad : '...'}}
+                                                    <i class="fa fa-quote-right"></i>
+                                                </p>
+                                                <!--
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/1.jpg" alt="">
+                                                </div>
+                                                 -->
+                                                <h4>{{review.user.name}}</h4>
+                                                <i ng-repeat="i in review.reviewAverageScoreRange track by $index" class="fa fa-star"></i>
+                                                <i ng-repeat="i in review.reviewAverageScoreHalfRange track by $index" class="fa fa-star-half-o"></i>
+                                            </li>
+                                       </ul>

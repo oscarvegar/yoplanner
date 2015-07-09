@@ -265,50 +265,10 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="info-testimonial">
-                                       <ul id="testimonials">
-                                            <li>
-                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
-
-                                                <div class="image-testimonials">
-                                                    <img src="img/testimonials/1.jpg" alt="">                        
-                                                </div>   
-                                                <h4>Jeniffer Martinez</h4>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-
-                                            <li>
-                                                <p><i class="fa fa-quote-left"></i>Spectacular, excellent personal, restaurants and very good drinks, highly recommended.<i class="fa fa-quote-right"></i></p>
-
-                                                <div class="image-testimonials">
-                                                    <img src="img/testimonials/2.jpg" alt="">                        
-                                                </div>   
-                                                <h4>Juan Rendon</h4>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </li>
-
-                                            <li>
-                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
-
-                                                <div class="image-testimonials">
-                                                    <img src="img/testimonials/3.jpg" alt="">                        
-                                                </div>   
-                                                <h4>Federick Gordon</h4>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </li>
-                                       </ul>
+                                    <div class="info-testimonial">  <!-- style="height:430px;overflow-y: scroll;" -->
+                                        <!-- Testimonials Carousel -->
+                                        <tstmnls-krsl reviews="currentHotel.reviews"></tstmnls-krsl>
+                                        <!-- End Testimonials Carousel -->
                                     </div>
                                 </div>
 
@@ -334,15 +294,17 @@
                 $(document).ready(function() {
                     console.log('$(document).ready(function())');
                     //=================================== Carousel testimonials  ===============================//  
-                    $("#testimonials").owlCarousel({
-                        items : 1,
-                        autoPlay: 3200,  
-                        navigation : false,
-                        autoHeight : true,
-                        slideSpeed : 400,
-                        singleItem: true,
-                        pagination : true
-                    });
+                    setTimeout( function() {
+                        $("#testimonials").owlCarousel({
+                            items : 1,
+                            autoPlay: 3200,  
+                            navigation : false,
+                            autoHeight : true,
+                            slideSpeed : 400,
+                            singleItem: true,
+                            pagination : true
+                        });
+                    }, 10000);
 
                     //=================================== Ligbox  ===========================================//   
                     $(".fancybox").fancybox({

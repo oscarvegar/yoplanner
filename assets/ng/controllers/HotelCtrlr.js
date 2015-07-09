@@ -32,8 +32,8 @@ HotelModule.constant('CUSTOM.DESTINATIONS.REVIEW', {
 	PVR: 'Hoteles en Puerto Vallarta',
 	QRO: 'Hoteles en Queretaro',
 	RM0: 'Hoteles en Riviera Maya',
-	SD6: 'Hoteles en Los Cabos',
-	SJD: 'Hoteles en Los Cabos',
+	SD6: 'Hoteles en Cabo San Lucas',
+	SJD: 'Hoteles en San José del Cabo',
 	TLC: 'Hoteles en Toluca',
 	ZLO: 'Hoteles en Manzanillo',
 });
@@ -91,8 +91,72 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 	$urlRouterProvider
 	// The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
 	// Here we are just setting up some convenience urls.
-		.when('/c?id', '/contacts/:id')
-		.when('/user/:id', '/contacts/:id')
+		.when('/acapulco', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'ACA'});
+		})
+		.when('/loscabos', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CL1'});
+		})
+		.when('/cancun', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CUN'});
+		})
+		.when('/cuernavaca', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CVJ'});
+		})
+		.when('/cozumel', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CZM'});
+		})
+		.when('/guadalajara', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'GDL'});
+		})
+		.when('/huatulco', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'HUX'});
+		})
+		.when('/ixtapa', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'JGDSM'});
+		})
+		.when('/ciudaddemexico', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'MEX'});
+		})
+		.when('/monterrey', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'MTY'});
+		})
+		.when('/mazatlan', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'MZT'});
+		})
+		.when('/nuevovallarta', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'NV1'});
+		})
+		.when('/pachuca', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PA0'});
+		})
+		.when('/puebla', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PBC'});
+		})
+		.when('/playadelcarmen', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PCM'});
+		})
+		.when('/puertovallarta', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PVR'});
+		})
+		.when('/queretaro', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'QRO'});
+		})
+		.when('/rivieramaya', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'RM0'});
+		})
+		.when('/cabosanlucas', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'SD6'});
+		})
+		.when('/sanjosedelcabo', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'SJD'});
+		})
+		.when('/toluca', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'TLC'});
+		})
+		.when('/manzanillo', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'ZLO'});
+		})
 
 	// If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
 	.otherwise('/');
@@ -237,6 +301,23 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 	 			$scope.currentHotel = $rootScope.selectedHotel;
 	 			$scope.starRange = new Array($scope.currentHotel.starRating);
 	 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
+
+	 			for (var i = 0; i < $scope.currentHotel.reviews.length; i++) {
+	 				var reviewAverageScore = ($scope.currentHotel.reviews[i].averageScore / 20);
+	 				var reiewAverageScoreMod = reviewAverageScore - $scope.Math.floor(reviewAverageScore);
+
+	 				if(reiewAverageScoreMod > 0 && reiewAverageScoreMod < 0.4) {
+	 					reviewAverageScore = $scope.Math.floor(reviewAverageScore);
+	 				} else if(reiewAverageScoreMod > 0.3 && reiewAverageScoreMod < 0.7) {
+	 					reviewAverageScore = $scope.Math.floor(reviewAverageScore) + 0.5;
+	 					$scope.currentHotel.reviews[i]['reviewAverageScoreHalfRange'] = new Array(1);
+	 				} else if(reiewAverageScoreMod > 0.6 && reiewAverageScoreMod < 1) {
+	 					reviewAverageScore = $scope.Math.ceil(reviewAverageScore);
+	 				}
+
+	 				$scope.currentHotel.reviews[i]['reviewAverageScore'] = reviewAverageScore;
+	 				$scope.currentHotel.reviews[i]['reviewAverageScoreRange'] = new Array($scope.Math.floor(reviewAverageScore));
+	 			};
 
 			 	if($rootScope.selectedHotel.salones==null) {
 			        $http.get("/salonrecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){

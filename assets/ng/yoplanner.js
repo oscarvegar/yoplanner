@@ -209,6 +209,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 			var tempHotel = dataResult.hotels[dataResult.hotels.length - 1];
 			tempHotel['destName'] = HotelSrvc.getHomepageHotelComp(tempHotel.id);
 			tempHotel['starRatingRange'] = new Array(tempHotel.starRating);
+			tempHotel['fotoPrincipal'] = HotelSrvc.getHomepageHotelMainPhoto(tempHotel.id);
 			return tempHotel;
 		}
 		return null;
