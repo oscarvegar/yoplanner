@@ -28,17 +28,21 @@ module.exports = {
         // Start the request
         HttpClientService.httpsGET(options,function(response){
             response = JSON.parse(response);
-
             if(response && response.hotels) {
                 for(var i in response.hotels){
                     for(var j in response.hotels[i].pictures){
-                        
                         response.hotels[i].pictures[j] = URL_PICTURES + response.hotels[i].pictures[j];
-                        
                     }
                 }
             }
-            return res.json(response);
+            options.path="/hotels/"+id+"/reviews?pagesize=5";
+            HttpClientService.httpsGET(options,function(rews){
+                rews = JSON.parse(rews);
+                response.hotels[0].reviews = rews.reviews;
+                console.log(JSON.stringify(response)); 
+                return res.json(response);
+            })
+            
         });
 
     },
