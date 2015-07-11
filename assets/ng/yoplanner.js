@@ -184,11 +184,11 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 	};
 
 	$scope.redirectLink = function(searchId){
-		console.info("SEL CITY", searchId);
+		$log.info("SEL CITY", searchId);
 		/*
 		$http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
 			$rootScope.resHoteles = data.hotels;
-			console.info($rootScope.resHoteles);
+			$log.info($rootScope.resHoteles);
 			// $state.go('hotel.list');
 		});
 		*/
@@ -231,10 +231,16 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 		});
 	};
 
+	$scope.initTestimonials = function() {
+		$scope.homepageTestimonials = HotelSrvc.getHomepageTestimonials();
+		$log.info('HomePageController.initTestimonials', $scope.homepageTestimonials);
+	};
+
 	$scope.init = function() {
 		$log.info('HomePageController.init');
 		$scope.initServicesItems();
 		$scope.initVacationsDestinatios();
+		$scope.initTestimonials();
 		$scope.initHotelsReviewed();
 	};
 

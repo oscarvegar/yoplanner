@@ -1,19 +1,21 @@
 
                                        <ul id="testimonials">
-                                            <li ng-repeat="review in reviews">
+                                            <li ng-repeat="review in reviews" on-finish-render-test>
                                                 <p>
                                                     <i class="fa fa-quote-left"></i>
-                                                    <span style="font-weight: bold;">Aspectos positivos: </span>{{review.comments.good}}
-                                                    <br>
-                                                    <span style="font-weight: bold;">Aspectos negativos: </span>{{review.comments.bad ? review.comments.bad : '...'}}
+                                                    <span ng-if="review.comments.good" style="font-weight: bold;">Aspectos positivos: </span>{{review.comments.good}}
+                                                    <br ng-if="review.comments.good">
+                                                    <span ng-if="review.comments.bad" style="font-weight: bold;">Aspectos negativos: </span>{{review.comments.bad}}
+                                                    <br ng-if="review.comments.bad">
+                                                    <span ng-if="review.comments.description" style="font-weight: bold;">Comentarios generales: </span>{{review.comments.description}}
                                                     <i class="fa fa-quote-right"></i>
                                                 </p>
-                                                <!--
-                                                <div class="image-testimonials">
-                                                    <img src="img/testimonials/1.jpg" alt="">
+                                                
+                                                <div class="image-testimonials" ng-if="review.user.profilePhoto">
+                                                    <img ng-src="{{review.user.profilePhoto}}" alt="">
                                                 </div>
-                                                 -->
-                                                <h4>{{review.user.name}}</h4>
+                                                
+                                                <h4>{{review.user.name}}</h4>{{review.user.job ? review.user.job : ''}}
                                                 <i ng-repeat="i in review.reviewAverageScoreRange track by $index" class="fa fa-star"></i>
                                                 <i ng-repeat="i in review.reviewAverageScoreHalfRange track by $index" class="fa fa-star-half-o"></i>
                                             </li>

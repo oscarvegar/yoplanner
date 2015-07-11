@@ -75,11 +75,37 @@ HotelModule.directive('onFinishRender', function($timeout, $log) {
             // if (scope.$last === true) {
             if (scope.$last) {
                 $timeout(function () {
-                	$log.info("calling :: "+attr.onFinishRender);
+                	$log.info("onFinishRender.calling :: "+attr.onFinishRender);
+                    var expressionHandler = scope.$eval(attr.onFinishRender);
                     // scope.$emit('ngRepeatFinished');
                     // scope.$evalAsync(attr.onFinishRender);
                     // scope.$eval(attr.onFinishRender);
 				    setTimeout( function() {
+
+		                //=================================== Carousel Services  ==============================//    
+		                $("#single-carousel, #single-carousel-sidebar").owlCarousel({
+
+		                    // Most important owl features
+		                    // items : 1,
+		                    singleItem: true,
+
+		                    //Autoplay
+		                    autoPlay: 4000,
+
+		                    // Navigation
+		                    navigation : true,
+
+		                    // Navigation
+		                    autoHeight : true,
+
+		                    //Basic Speeds
+		                    slideSpeed : 400,
+
+		                    //Pagination
+		                    pagination : false
+		                });
+
+		                /*
 				    	var index = 0;
 				        $('#single-carousel').imagesLoaded()
 				            .always( function() {
@@ -108,20 +134,6 @@ HotelModule.directive('onFinishRender', function($timeout, $log) {
 				                    //Pagination
 				                    pagination : false
 				                });
-				                
-				    			setTimeout( function() {
-				                    //=================================== Carousel testimonials  ===============================//
-				                    $("#testimonials").owlCarousel({
-				                        items : 1,
-				                        autoPlay: 3200,  
-				                        navigation : false,
-				                        autoHeight : true,
-				                        slideSpeed : 400,
-				                        singleItem: true,
-				                        pagination : true
-				                    });
-			        			}, 3000);
-								
 				            }).progress( function( instance, image ) {
 				                console.log('progress...');
 				                // console.log($('.preloader'));
@@ -131,9 +143,45 @@ HotelModule.directive('onFinishRender', function($timeout, $log) {
 				                	index++;
 				                }
 				            });
-			        }, 1000);
+	            		*/
+			        }, 3000);
                 });
             }
         }
-    }
+    };
+});
+
+HotelModule.directive('onFinishRenderTest', function($timeout, $log) {
+    return {
+        restrict: 'A',
+        scope: { method: '&onFinishRenderTest' },
+        link: function (scope, element, attr) {
+            // if (scope.$last === true) {
+            if (scope.$last || scope.$parent.$last) {
+                $timeout(function () {
+                	$log.info("onFinishRenderTest.calling :: "+attr.onFinishRenderTest);
+                    // scope.$emit('ngRepeatFinished');
+                    // scope.$evalAsync(attr.onFinishRender);
+                    // scope.$eval(attr.onFinishRender);
+                    
+                    // var expressionHandler = scope.method();
+                    // expressionHandler();
+                    scope.$eval(attr.onFinishRenderTest);
+				                
+	    			setTimeout( function() {
+	                    //=================================== Carousel testimonials  ===============================//
+	                    $("#testimonials").owlCarousel({
+	                        items : 1,
+	                        autoPlay: 3200,  
+	                        navigation : false,
+	                        autoHeight : true,
+	                        slideSpeed : 400,
+	                        singleItem: true,
+	                        pagination : true
+	                    });
+        			}, 3000);
+                });
+            }
+        }
+    };
 });

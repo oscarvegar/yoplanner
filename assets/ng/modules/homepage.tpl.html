@@ -55,7 +55,7 @@
               <!-- End Slide And Filter Section-->
 
             <!--Content Central -->
-            <section class="content-central">
+            <section class="content-central" ng-controller="HomePageController">
                 <!-- Shadow Semiboxed Layout -->
                 <div class="semiboxshadow text-center">
                     <img src="img/img-theme/shp.png" class="img-responsive" alt="">
@@ -64,7 +64,7 @@
 
                 <!-- End content info - Services Items-->
                 <div class="content_info">
-                    <div class="content_resalt" ng-controller="HomePageController">
+                    <div class="content_resalt">
                         <div class="container">
                             <div class="row">
                                 <!-- Info Resalt - Info Services -->
@@ -126,7 +126,7 @@
                     <!-- End Title-->
 
                     <!-- content-boxes-->
-                    <div class="content-boxes" ng-controller="HomePageController">
+                    <div class="content-boxes">
                         <!-- Item-boxe-->
                         <div class="item-boxed" ng-repeat="hotel in popDestImgInf">
                             <div class="image-boxed">
@@ -467,49 +467,9 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="info-testimonial">
-                                       <ul id="testimonials">
-                                            <li>
-                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
-
-                                                <div class="image-testimonials">
-                                                    <img src="img/testimonials/1.jpg" alt="">                        
-                                                </div>   
-                                                <h4>Jeniffer Martinez</h4>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </li>
-
-                                            <li>
-                                                <p><i class="fa fa-quote-left"></i>Spectacular, excellent personal, restaurants and very good drinks, highly recommended.<i class="fa fa-quote-right"></i></p>
-
-                                                <div class="image-testimonials">
-                                                    <img src="img/testimonials/2.jpg" alt="">                        
-                                                </div>   
-                                                <h4>Juan Rendon</h4>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </li>
-
-                                            <li>
-                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
-
-                                                <div class="image-testimonials">
-                                                    <img src="img/testimonials/3.jpg" alt="">                        
-                                                </div>   
-                                                <h4>Federick Gordon</h4>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </li>
-                                       </ul>
+                                        <!-- Testimonials Carousel -->
+                                        <tstmnls-krsl reviews="homepageTestimonials"></tstmnls-krsl>
+                                        <!-- End Testimonials Carousel -->
                                     </div>
                                 </div>
 
@@ -609,6 +569,9 @@
                         navigationStyle:"preview1"
                     });
                     // End Slider Function-->
+
+                    $("#layout").scrollTop = 0;
+
                 }); //ready
           </script>
           <!--End Slider Function-->

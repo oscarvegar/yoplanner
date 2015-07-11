@@ -55,10 +55,10 @@
                                         </div>
 
                                         <div class="info-gallery">
-                                            <h3>
-                                                {{(!$first && hotel.name.length > 37) ? hotel.name.substr(0,33) + '...' : hotel.name}}<br>
+                                            <h3 style="white-space: nowrap">
+                                                {{(!$first && hotel.name.length > 31) ? hotel.name.substr(0,28) + '...' : hotel.name}}<br>
                                                 <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                                <span>{{$selectedCity}}</span>
+                                                <span style="white-space: normal">{{$selectedCity}}</span>
                                             </h3>
                                             <hr class="separator">
                                             <p>{{($first) ? ((hotel.description.length > 228) ? hotel.description.substr(0,225) + '...' : hotel.description) : ((hotel.description.length > 94) ? hotel.description.substr(0,91) + '...' : hotel.description)}}</p>
@@ -79,10 +79,10 @@
                                     </div>
 
                                     <div class="info-gallery">
-                                        <h3>
+                                        <h3 style="white-space: nowrap">
                                             {{(hotel.name.length > 22) ? hotel.name.substr(0,19) + '...' : hotel.name}}<br>
                                             <!-- <span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span> -->
-                                            <span>{{$selectedCity}}</span>
+                                            <span style="white-space: normal">{{$selectedCity}}</span>
                                         </h3>
                                         <hr class="separator">
                                         <p>{{((hotel.description.length > 67) ? hotel.description.substr(0,64) + '...' : hotel.description)}}</p>
