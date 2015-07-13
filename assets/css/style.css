@@ -1778,6 +1778,9 @@ hr.separator:before {
 .image_07_parallax{
 	background: url("../img/slide/7.jpg");
 }
+.image_11_parallax{
+	background: url("../img/slide/11.jpg");
+}
 .bg_parallax{
   margin: 0 auto;
   padding: 0;

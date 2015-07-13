@@ -144,7 +144,7 @@ HotelModule.directive('onFinishRender', function($timeout, $log) {
 				                }
 				            });
 	            		*/
-			        }, 3000);
+			        }, 1500);
                 });
             }
         }
@@ -179,7 +179,7 @@ HotelModule.directive('onFinishRenderTest', function($timeout, $log) {
 	                        singleItem: true,
 	                        pagination : true
 	                    });
-        			}, 3000);
+        			}, 1500);
                 });
             }
         }
