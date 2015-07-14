@@ -484,7 +484,7 @@ ul.tea-list figure div, #tea-img figure div {
     right: 15px;
     width: 330px!important;
     margin: 0!important;
-    padding: 15px!important;
+    /* padding: 15px!important; */
   }
 }
 @media (min-width: 768px){
