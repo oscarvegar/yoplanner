@@ -460,3 +460,117 @@ ul.tea-list figure div, #tea-img figure div {
  /**
   *
   */
+
+/**
+ *
+ */
+.carbonad {
+  display: block;
+  background: #fdfdfd;
+  background-image: -moz-linear-gradient(top,#f8f8f8,#fdfdfd);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#f8f8f8),color-stop(1,#fdfdfd));
+  border: 1px solid #d5d5d5;
+  font-family: Lucida Grande,Arial,Helvetica,sans-serif;
+  font-size: 11px;
+  height: 118px;
+  line-height: 15px;
+  overflow: hidden;
+  width: 300px;
+}
+@media (min-width: 992px){
+  .carbonad {
+    /* position: absolute; */
+    top: 0;
+    right: 15px;
+    width: 330px!important;
+    margin: 0!important;
+    padding: 15px!important;
+  }
+}
+@media (min-width: 768px){
+  .carbonad {
+    margin-right: 0!important;
+    margin-left: 0!important;
+  }
+}
+@media (min-width: 480px) {
+  .carbonad {
+    width: 330px!important;
+    margin: 20px auto!important;
+    border-width: 1px!important;
+    border-radius: 4px;
+  }
+}
+.carbonad {
+  width: auto!important;
+  height: auto!important;
+  /* margin: 30px -30px -31px!important; */
+  padding: 20px!important;
+  border: solid rgba(255,255,255,.5)!important;
+  border-width: 1px 0!important;
+  overflow: hidden;
+  text-align: left;
+  font-size: 13px!important;
+  line-height: 16px!important;
+  background: transparent!important;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,.4);
+}
+
+div.carbonad-image {
+  width: 130px;
+  height: 15px;
+}
+
+.carbonad-img {
+  border: none;
+  display: inline;
+  float: left;
+  height: 130px;
+  margin: 9px;
+  width: 130px;
+}
+.carbonad-img {
+  margin: 0!important;
+}
+
+.carbonad-text {
+  display: inline;
+  float: left;
+  width: 142px;
+  padding-top: 13px;
+}
+.carbonad-text {
+  padding-top: 0!important;
+  color: rgba(255,255,255,.8);
+}
+.carbonad-text, .carbonad-tag {
+  display: block!important;
+  float: none!important;
+  width: auto!important;
+  height: auto!important;
+  margin-left: 145px!important;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif!important;
+}
+
+.carbonad-tag {
+  float: left;
+  margin-top: 9px;
+  text-align: center;
+  width: 142px;
+  color: #999;
+}
+.carbonad-tag {
+  text-align: left!important;
+  color: inherit!important;
+}
+.carbonad-text, .carbonad-tag {
+  display: block!important;
+  float: none!important;
+  width: auto!important;
+  height: auto!important;
+  margin-left: 145px!important;
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif!important;
+}
+/**
+ *
+ */
