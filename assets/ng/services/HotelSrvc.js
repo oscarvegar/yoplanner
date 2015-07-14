@@ -89,9 +89,26 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 			user: {
 				name: 'Sergio Álvarez',
 				job: 'Director de Ventas',
-				profilePhoto: '/img/testimonials/IMG_2849_tstmnl_314px.JPG'
+				profilePhoto: 'img/testimonials/IMG_2849_tstmnl_314px.JPG'
 			}
 		}
+	];
+
+	var LOCATION_BANNER_ADS = [
+		{
+			searchId: 'DEFAULT',
+			bannerTxt: 'Con Yo Planner obtén la mejor asesoría gratuita para la adquisición de hoteles, cruceros, grupos y convenciones. Blog de Viajes, RFP y reservaciones en línea.',
+			bannerAdImg: 'img/HotelesYoPlanner.jpg',
+			bannerUrl: '#'
+		}
+		/*
+		,{
+			searchId: 'CUN',
+			bannerTxt: '123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 1234657891',
+			bannerAdImg: 'img/hoteles/681932/four_points_cancun_popdest.jpg',
+			bannerUrl: '#/hotel/CUN/detail/681932'
+		}
+		*/
 	];
 
 	return {
@@ -164,5 +181,20 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 				// return CUSTOM_DESTINATIONS_REVIEW.EMPTY;
 			}
 		},
+		getLocationBannerAd: function(searchId) {
+			var tmpLocBanAd = {}
+			for (var i = 0; i < LOCATION_BANNER_ADS.length; i++) {
+				if(LOCATION_BANNER_ADS[i].searchId === 'DEFAULT') {
+					tmpLocBanAd = LOCATION_BANNER_ADS[i];
+					continue;
+				}
+
+				if(LOCATION_BANNER_ADS[i].searchId === searchId) {
+					tmpLocBanAd = LOCATION_BANNER_ADS[i];
+					break;
+				}
+			};
+			return tmpLocBanAd;
+		}
 	};
 });

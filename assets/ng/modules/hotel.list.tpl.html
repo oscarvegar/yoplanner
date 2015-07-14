@@ -53,12 +53,12 @@
                                         <!-- AddOns - Inside Gallery -->
                                         <div class="carbonad" ng-if="$index == 1">
                                             <div class="carbonad-image">
-                                                <a href="#" target="_blank">
-                                                    <img width="130" height="130" border="0" src="/img/HotelesYoPlanner.jpg" class="carbonad-image carbonad-img" style="max-width:130px;">
+                                                <a href="{{bannerAd.bannerUrl}}" target="_blank">
+                                                    <img width="130" height="130" border="0" ng-src="{{bannerAd.bannerAdImg}}" class="carbonad-image carbonad-img" style="max-width:130px;">
                                                 </a>
                                             </div>
                                             <div class="carbonad-text">
-                                                <a href="#">Con Yo Planner obtén la mejor asesoría gratuita para la adquisición de hoteles, cruceros, grupos y convenciones. Blog de Viajes, RFP y reservaciones en línea.</a>
+                                                <a href="{{bannerAd.bannerUrl}}">{{bannerAd.bannerTxt}}</a>
                                             </div>
                                             <div class="carbonad-tag">ads via <a href="#">Yo Planner</a></div>
                                         </div>

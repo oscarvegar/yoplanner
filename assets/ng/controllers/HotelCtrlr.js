@@ -223,6 +223,10 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			$scope.hotels = $rootScope.resHoteles;
 			$log.info($scope.hotels);
 			$scope.moreHotels = new Array();
+
+			$scope.bannerAd = HotelSrvc.getLocationBannerAd(searchId);
+			$log.info($scope.bannerAd);
+
 			// $state.go('hotel.list');
 			// $location.url('/hotel/list/' + $scope.searchId);
 		});
