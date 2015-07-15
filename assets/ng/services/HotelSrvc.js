@@ -84,12 +84,24 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 			searchId: null,
 			hotelId: null,
 			comments: {
-				description: 'Thompson Playa del Carmen un hotel Sexy y vanguardista para todos aquellos que realmente buscan un inolvidable estilo de vida!'
+				description: 'Thompson Playa del Carmen. Un hotel Sexy y vanguardista para todos aquellos que realmente buscan un inolvidable estilo de vida!'
 			},
 			user: {
 				name: 'Sergio Álvarez',
-				job: 'Director de Ventas',
+				job: 'DOS México & LATAM',
 				profilePhoto: 'img/testimonials/IMG_2849_tstmnl_314px.JPG'
+			}
+		},
+		{
+			searchId: null,
+			hotelId: null,
+			comments: {
+				description: 'Paradisus Playa del Carmen La Perla y La Esmeralda. Nosotros lo llamamos LUXExclusive, usted lo llamará auténtica libertad.'
+			},
+			user: {
+				name: 'Marco Páramo',
+				job: 'Director de Ventas',
+				profilePhoto: 'img/testimonials/Marco_Paramo_tstmnl_314px.jpg'
 			}
 		}
 	];
