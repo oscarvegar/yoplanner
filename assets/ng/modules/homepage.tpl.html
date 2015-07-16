@@ -134,47 +134,47 @@
                     <!-- content-boxes-->
                     <div class="content-boxes">
                         <!-- Item-boxe-->
-                        <div class="item-boxed" ng-repeat="hotel in popDestImgInf">
+                        <div class="item-boxed" ng-repeat="popDest in popDestImgInf">
                             <div class="image-boxed">
                                 <span class="overlay"></span>
-                                <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" style="width: 307.5px; height: 255px;">
-                                <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="more-boxe"></a>
+                                <img ng-src="{{popDest.imgSrc}}" alt="" style="width: 307.5px; height: 255px;">
+                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
                             </div>
                             <div class="info-boxed boxed-top">
                                 <h3>
-                                    {{hotel.name}}<br>
+                                    {{popDest.name}}<br>
                                     <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{hotel.destName}}</span>
+                                    <span>{{popDest.destName}}</span>
                                 </h3>
                                 <hr class="separator">
-                                <p>{{(hotel.description.length > 70) ? hotel.description.substr(0,67) + '...' : hotel.description}}</p>
+                                <p>{{(popDest.description.length > 70) ? popDest.description.substr(0,67) + '...' : popDest.description}}</p>
                                 <ul class="starts">
-                                    <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li ng-repeat="i in popDest.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
                                 </ul>
-                                <div class="content-btn"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
+                                <div class="content-btn"><a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="btn btn-primary">Ver Detalles</a></div>
                             </div>
                         </div>
                         <!-- End Item-boxe-->
 
                         <!-- Item-boxe-->
-                        <div class="item-boxed" ng-repeat="hotel in popDestInfImg">
+                        <div class="item-boxed" ng-repeat="popDest in popDestInfImg">
                             <div class="info-boxed boxed-bottom">
                                 <h3>
-                                    {{hotel.name}}<br>
+                                    {{popDest.name}}<br>
                                     <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{hotel.destName}}</span>
+                                    <span>{{popDest.destName}}</span>
                                 </h3>
                                 <hr class="separator">
-                                <p>{{(hotel.description.length > 70) ? hotel.description.substr(0,67) + '...' : hotel.description}}</p>
+                                <p>{{(popDest.description.length > 70) ? popDest.description.substr(0,67) + '...' : popDest.description}}</p>
                                 <ul class="starts">
-                                    <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li ng-repeat="i in popDest.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
                                 </ul>
-                                <div class="content-btn"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
+                                <div class="content-btn"><a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="btn btn-primary">Ver Detalles</a></div>
                             </div>
                             <div class="image-boxed image-bottom">
                                 <span class="overlay"></span>
-                                <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" style="width: 307.5px; height: 255px;">
-                                <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="more-boxe"></a>
+                                <img ng-src="{{popDest.imgSrc}}" alt="" style="width: 307.5px; height: 255px;">
+                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
                             </div>
                         </div>
                         <!-- End Item-boxe-->
@@ -284,107 +284,24 @@
                         <!-- content-->
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm-6 col-md-3">
+                                <div class="col-sm-6 col-md-3" ng-repeat="popHotel in popHotelsMex">
                                     <!-- promotion-box-->
                                     <div class="promotion-box">
                                         <div class="promotion-box-header">
-                                            <img src="img/sponsors/1.png" alt="img">
+                                            <img ng-src="{{(popHotel.fotoPrincipal!=null?popHotel.fotoPrincipal:popHotel.pictures[0])}}" alt="img" style="width: 222.5px; height: 222.5px;">
                                         </div>
 
-                                        <div class="promotion-box-center color-1">
-                                           <div class="prince">
-                                                30
-                                            </div>
-
-                                            <div class="percentage">
-                                                %<span>discount</span>.
-                                            </div>
-                                        </div>
-
-                                        <div class="promotion-box-info">
-                                            <p>Select a bonus 30% and access to all our discounts.</p>
-                                            <a href="#" class="btn btn-primary">View Details</a>
-                                        </div>
-                                    </div>
-                                    <!-- End promotion-box-->
-                                </div>
-
-                                <div class="col-sm-6 col-md-3">
-                                    <!-- promotion-box-->
-                                    <div class="promotion-box">
-                                        <!-- promotion-box-header-->
-                                        <div class="promotion-box-header">
-                                            <img src="img/sponsors/2.png" alt="img">
-                                        </div>
-                                        <!-- End promotion-box-header-->
-
-                                        <!-- promotion-box-center-->
-                                        <div class="promotion-box-center color-2">
-                                            <div class="prince">
-                                                70
-                                            </div>
-
-                                            <div class="percentage">
-                                                %<span>discount</span>.
-                                            </div>
-                                        </div>
-                                        <!-- End promotion-box-center-->
-
-                                        <!-- promotion-box-info-->
-                                        <div class="promotion-box-info">
-                                            <p>Select a bonus 70% and access to all our discounts.</p>
-                                            <a href="#" class="btn btn-primary">View Details</a>
-                                        </div>
-                                        <!-- End promotion-box-info-->
-                                    </div>
-                                    <!-- End promotion-box-->
-                                </div>
-
-                                <div class="col-sm-6 col-md-3">
-                                    <!-- promotion-box-->
-                                    <div class="promotion-box">
-                                        <div class="promotion-box-header">
-                                            <img src="img/sponsors/5.png" alt="img">
-                                        </div>
-
-                                        <div class="promotion-box-center color-3">
-                                            <div class="prince">
-                                                50
-                                            </div>
-
-                                            <div class="percentage">
-                                                %<span>discount</span>.
-                                            </div>
+                                        <div class="promotion-box-center {{'color-' + ($index + 1)}}">
+                                            <h3 style="font-size: 1rem;">
+                                                {{popHotel.name}}<br>
+                                                <!-- span>{{popHotel.type + ', ' + popHotel.cityId + ', ' + popHotel.countryId}}</span -->
+                                                <span style="font-size: 0.8rem;">{{popHotel.destName}}</span>
+                                            </h3>
                                         </div>
 
                                         <div class="promotion-box-info">
-                                            <p>Select a bonus 50% and access to all our discounts.</p>
-                                            <a href="#" class="btn btn-primary">View Details</a>
-                                        </div>
-                                    </div>
-                                    <!-- End promotion-box-->
-                                </div>
-
-                                <div class="col-sm-6 col-md-3">
-                                    <!-- promotion-box-->
-                                    <div class="promotion-box">
-                                        <div class="promotion-box-header">
-                                            <img src="img/sponsors/3.png" alt="img">
-                                        </div>
-
-                                        <div class="promotion-box-center color-4">
-                                            <div class="prince">
-                                                60
-                                            </div>
-
-                                            <div class="percentage">
-                                                %<span>discount</span>.
-                                            </div>
-                                        </div>
-
-                                        <div class="promotion-box-info">
-                                            <p>Select a bonus 60% and access to all our discounts.</p>
-                                            <a href="#" class="btn btn-primary">View Details</a>
+                                            <p>{{(popHotel.description.length > 68) ? popHotel.description.substr(0,65) + '...' : popHotel.description}}</p>
+                                            <a ui-sref="hotel_detail({searchId: popHotel.cityId, hotelId: popHotel.id})" class="btn btn-primary">Ver Detalles</a>
                                         </div>
                                     </div>
                                     <!-- End promotion-box-->
@@ -483,7 +400,7 @@
                                     <div class="testimonial-info">
                                         <h2>BLOG</h2>
                                         <P>Yo Planner tiene las mejores recomendaciones, los mejores tips y los secretos mejor guardados de todos los destinos turísticos, y mejor aún ¡los compartimos contigo!</P>
-                                        <a href="http://www.yoplanner.com.mx/blog/" target="_blank" class="btn btn-primary">Ver Detalles</a>
+                                        <a href="http://www.yoplanner.com.mx/blog/" target="_blank" class="btn btn-primary">Más Informacíon</a>
                                     </div>
                                 </div>
                             </div>
@@ -546,17 +463,6 @@
                         autoPlay: true,
                         items : 1,
                         navigation : true,
-                        autoHeight : true,
-                        slideSpeed : 400,
-                        singleItem: true,
-                        pagination : true
-                    });
-                    
-                    //=================================== Carousel testimonials  ===============================//  
-                    $("#testimonials").owlCarousel({
-                        items : 1,
-                        autoPlay: 3200,  
-                        navigation : false,
                         autoHeight : true,
                         slideSpeed : 400,
                         singleItem: true,

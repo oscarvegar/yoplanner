@@ -217,17 +217,31 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 
 	$scope.initVacationsDestinatios = function() {
 		$log.info('HomePageController.initVacationsDestinatios');
+
+		$scope.popDestImgInf = new Array();
+		$scope.popDestInfImg = new Array();
+		var homepageDestinations = HotelSrvc.homepageDestinations();
+
+		for (var i = 0; i < homepageDestinations.length; i++) {
+			if(i < 2) {
+				$scope.popDestImgInf = $scope.popDestImgInf.concat(homepageDestinations[i]);
+			} else {
+				$scope.popDestInfImg = $scope.popDestInfImg.concat(homepageDestinations[i]);
+			}
+		};
+		$log.info('popDestImgInf', $scope.popDestImgInf);
+		$log.info('popDestInfImg', $scope.popDestInfImg);
+	};
+
+	$scope.initPromotionBoxes = function() {
+		$log.info('HomePageController.initPromotionBoxes');
 		HotelSrvc.homepageHotels().then(function(data){
 			$log.info('data-result', data);
 			$log.info(data[0].data, data[1].data, data[2].data, data[3].data);
 
-			$scope.popDestImgInf = new Array();
-			$scope.popDestImgInf = $scope.popDestImgInf.concat($scope.extractHotelData(data[0].data), $scope.extractHotelData(data[1].data));
-			$log.info('popDestImgInf', $scope.popDestImgInf);
-
-			$scope.popDestInfImg = new Array();
-			$scope.popDestInfImg = $scope.popDestInfImg.concat($scope.extractHotelData(data[2].data), $scope.extractHotelData(data[3].data));
-			$log.info('popDestInfImg', $scope.popDestInfImg);
+			$scope.popHotelsMex = new Array();
+			$scope.popHotelsMex = $scope.popHotelsMex.concat($scope.extractHotelData(data[0].data), $scope.extractHotelData(data[1].data), $scope.extractHotelData(data[2].data), $scope.extractHotelData(data[3].data));
+			$log.info('popHotelsMex', $scope.popHotelsMex);
 		});
 	};
 
@@ -240,6 +254,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 		$log.info('HomePageController.init');
 		$scope.initServicesItems();
 		$scope.initVacationsDestinatios();
+		$scope.initPromotionBoxes();
 		$scope.initTestimonials();
 		$scope.initHotelsReviewed();
 	};

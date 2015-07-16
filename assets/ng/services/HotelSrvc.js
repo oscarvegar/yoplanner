@@ -26,6 +26,13 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 		{hotelId: 290774, destName: 'Ciudad de México, México D.F., México', fotoPrincipal: 'img/hoteles/290774/Presidente_InterContinental_Mexico_City_popdest.jpg'}	// Presidente Intercontinental DF
 	];
 
+	var POPULAR_DESTINATIONS_ARRY = [
+		{searchId: 'SD6', name: 'Cabo San Lucas', imgSrc: 'img/yp-backgrounds/SJD/Hoteles En Los Cabos.jpg', destName: 'Cabo San Lucas, Baja California Sur, México', description: 'Es una delegación del municipio de Los Cabos, Baja California Sur. Forma parte del corredor turistico de 33 km de belleza y paisajes únicos. Entre sus principales atracciones se encuentra el poder observar ballenas grises.', starRatingRange: new Array(5)},
+		{searchId: 'PCM', name: 'Playa del Carmen', imgSrc: 'img/yp-backgrounds/PCM/Hoteles En Playa Del Carmen.jpg', destName: 'Playa del Carmen, Quintana Roo, México', description: 'Es la cabecera del municipio de Solidaridad en Quintana Roo, es parte de la Riviera Maya. Se pueden practicar numerosos deportes acuáticos o visitar la Quinta Avenida, su calle más famosa. Se pueden realizar eventos empresariales en el Fairmont Mayakoba.', starRatingRange: new Array(5)},
+		{searchId: 'CUN', name: 'Cancun', imgSrc: 'img/yp-backgrounds/CUN/Hoteles en Cancun.jpg', destName: 'Cancún, Quintana Roo, México', description: 'Es la ciudad más poblada de Quintana Roo, y está certificada por la Organización Mundial de Turismo como una ciudad con desarrollo turístico de nivel internacional. Cuenta con hermosas playas, la Laguna Nichupté, el Museo Arqueológico y varios parques turísticos, el más famoso es Xcaret. Cuenta con el Canún Center Conventions and Exhibitions.', starRatingRange: new Array(5)},
+		{searchId: 'MEX', name: 'Ciudad de México', imgSrc: 'img/yp-backgrounds/MEX/Hoteles Ciudad de Mexico.jpg', destName: 'Ciudad de México, México D.F., México', description: 'La capital de México tiene mucho que ofrecer tanto para turismo como para eventos empresariales. Llamada la ciudad de los museos, el Distrito Federal es una capital cultural y de atractivo turístico; además de contar con muchos centros de congresos y convenciones.', starRatingRange: new Array(5)}
+	];
+
 	var CUSTOM_DESTINATIONS_REVIEW = {
 		EMPTY: null, // {searchId: '', text: ''},
 		DEFAULT: {searchId: '', text: 'Resultados Búsqueda', imgBgAcronym: '02'},
@@ -124,7 +131,10 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 	];
 
 	return {
-		homepageHotels: function() {
+		homepageDestinations: function() {
+			return POPULAR_DESTINATIONS_ARRY;
+		},
+		homepageHotelsOld: function() {
 			var popDestImgInf = new Array();	// Imagen-Informacion
 			var popDestInfImg = new Array();	// Informacion-Imagen
 
@@ -135,16 +145,25 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 
 			return $q.all(popDestImgInf.concat(popDestInfImg));
 		},
+		homepageHotels: function() {
+			var popHotelsMex = new Array();
+
+			for (var i = 0; i < CONTRACTING_HOTELS_ARRY.length; i++) {
+				popHotelsMex.push($http.get("/recinto/findById/"+CONTRACTING_HOTELS_ARRY[i].hotelId));
+			};
+
+			return $q.all(popHotelsMex);
+		},
 		getHomepageHotelComp: function(hotelId) {
-			var hotelDeltinationName = '';
+			var hotelDestinationName = '';
 			for (var i in CONTRACTING_HOTELS) {
 				if(CONTRACTING_HOTELS[i].hotelId == hotelId) {
-					hotelDeltinationName = CONTRACTING_HOTELS[i].destName;
+					hotelDestinationName = CONTRACTING_HOTELS[i].destName;
 					break;
 				}
 			};
 
-			return hotelDeltinationName;
+			return hotelDestinationName;
 		},
 		getHomepageHotelMainPhoto: function(hotelId) {
 			var hotelMainPhoto = '';
