@@ -42,15 +42,15 @@
                 <div class="filter-title">
                   <!-- TITLE HEADER-->
                   <div class="title-header">
-                    <h1>YOPLANNER LO HACE.</h1>
-                    <p class="lead">YoPlanner el mejor meeting planner de américa latína.</p>
+                    <h1>¡YO PLANNER LO HACE POR TI!</h1>
+                    <p class="lead" style="font-weight: bold; text-shadow: 2px 3px 3px rgba(0,0,0,1);">Ya sea que necesites cotizar un grupo para tu empresa o quieras un viaje personal, busca por destino los hoteles más populares en todo México. ¡Yo Planner lo consigue por ti!</p>
                   </div>
                   <!-- END TITLE HEADER-->
 
                   <!-- FILTER HEADER-->
                   <div class="filter-header" ng-controller="AutocompleteController" style="max-width: 40%;">
                     <form action="#">
-                      <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="¿Qué destino quieres buscar?"></autocomplete>
+                      <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Ingresa tu destino y cotiza"></autocomplete>
                       <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
                     </form>
                   </div>
@@ -76,13 +76,13 @@
                                 <!-- Info Resalt - Info Services -->
                                 <div class="col-md-4 ">
                                     <div class="services-lines-info">
-                                        <h2>Bienvenido a YoPlanner</h2>
-                                        <p class="lead">
-                                            Nosotros lo hacemos por ti.
+                                        <h2>Bienvenido a Yo Planner</h2>
+                                        <p class="lead" style="font-size: 1.5rem;">
+                                            Nosotros lo hacemos por ti
                                             <span class="line"></span>
                                         </p>
 
-                                        <p>Empresa mexicana especializada en la organización y planeación tanto de meetings y conferencias para empresas, como de viajes turísticos. </p>
+                                        <p style="font-size: 1rem;">Empresa mexicana especializada en la organización y planeación tanto de meetings y conferencias para empresas, como de viajes turísticos. </p>
                                     </div>
                                 </div>   
                                 <!-- End Info Resalt - Info Services --> 
@@ -123,7 +123,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="titles">
-                                <h2>Reseñas por destinos en <span>México</span></h2>
+                                <h2>Destinos populares en <span>México</span></h2>
                                 <i class="fa fa-bicycle"></i>
                                 <hr class="tall">
                             </div>                    
@@ -189,7 +189,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="titles">
-                                <h2>Servicios <span></span><span></span><span></span></h2>
+                                <h2>Nuestros <span>Servicios</span><span></span><span></span></h2>
                                 <i class="fa fa-plane"></i>
                                 <hr class="tall">
                             </div>                    
@@ -208,7 +208,7 @@
                                         <div class="title-feature">
                                             <i class="fa fa-sun-o left-icon"></i>
                                             <i class="fa fa-umbrella right-icon"></i>
-                                            Meeting Planner
+                                            <a ui-sref="meetings" style="color: #42A9D3 !important;">Meeting Planner</a>
                                         </div><span></span>
                                         <br>
                                         <span></span>
@@ -227,7 +227,7 @@
                                         <div class="title-feature">
                                             <i class="fa fa-thumbs-o-up left-icon"></i>
                                             <i class="fa fa-heart right-icon"></i>
-                                            Plataforma para cotizar grupos en línea
+                                            <a ui-sref="index" style="color: #42A9D3 !important;">Plataforma para cotizar grupos en línea</a>
                                         </div>
                                         <br>
                                         <span></span>
@@ -245,7 +245,7 @@
                                         <br>
                                         <div class="title-feature">
                                             <i class="fa fa-check right-icon"></i>
-                                            Asesor de viajes individuales
+                                            <a ui-sref="travel_agency" style="color: #42A9D3 !important;">Asesor de viajes individuales</a>
                                         </div>
                                         <br>
                                         <span></span>
@@ -261,31 +261,31 @@
                 </div>   
                 <!-- End content info - Features--> 
 
-                <!-- End Promotion Boxes - Parallax Section ->
+                <!-- End Promotion Boxes - Parallax Section -->
                 <div class="content_info">
-                    <!- Parallax Background ->
+                    <!-- Parallax Background -->
                     <div class="bg_parallax image_11_parallax"></div>
-                    <!- Parallax Background ->
+                    <!-- Parallax Background -->
 
-                    <!- Content Parallax->
+                    <!-- Content Parallax-->
                     <div class="opacy_bg_02 padding-bottom">
-                        <!- Title ->
+                        <!-- Title -->
                         <div class="container">
                             <div class="row">
                                 <div class="titles">
-                                    <h2>The <span>Promotions</span> Bonus</h2>
+                                    <h2>Hoteles populares en <span>México</span></h2>
                                     <i class="fa fa-money"></i>
                                     <hr class="tall">
                                 </div>                    
                             </div>
                         </div>
-                        <!- End Title->
+                        <!-- End Title-->
 
-                        <!- content->
+                        <!-- content-->
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-6 col-md-3">
-                                    <!- promotion-box->
+                                    <!-- promotion-box-->
                                     <div class="promotion-box">
                                         <div class="promotion-box-header">
                                             <img src="img/sponsors/1.png" alt="img">
@@ -306,19 +306,19 @@
                                             <a href="#" class="btn btn-primary">View Details</a>
                                         </div>
                                     </div>
-                                    <!- End promotion-box->
+                                    <!-- End promotion-box-->
                                 </div>
 
                                 <div class="col-sm-6 col-md-3">
-                                    <!- promotion-box->
+                                    <!-- promotion-box-->
                                     <div class="promotion-box">
-                                        <!- promotion-box-header->
+                                        <!-- promotion-box-header-->
                                         <div class="promotion-box-header">
                                             <img src="img/sponsors/2.png" alt="img">
                                         </div>
-                                        <!- End promotion-box-header->
+                                        <!-- End promotion-box-header-->
 
-                                        <!- promotion-box-center->
+                                        <!-- promotion-box-center-->
                                         <div class="promotion-box-center color-2">
                                             <div class="prince">
                                                 70
@@ -328,20 +328,20 @@
                                                 %<span>discount</span>.
                                             </div>
                                         </div>
-                                        <!- End promotion-box-center->
+                                        <!-- End promotion-box-center-->
 
-                                        <!- promotion-box-info->
+                                        <!-- promotion-box-info-->
                                         <div class="promotion-box-info">
                                             <p>Select a bonus 70% and access to all our discounts.</p>
                                             <a href="#" class="btn btn-primary">View Details</a>
                                         </div>
-                                        <!- End promotion-box-info->
+                                        <!-- End promotion-box-info-->
                                     </div>
-                                    <!- End promotion-box->
+                                    <!-- End promotion-box-->
                                 </div>
 
                                 <div class="col-sm-6 col-md-3">
-                                    <!- promotion-box->
+                                    <!-- promotion-box-->
                                     <div class="promotion-box">
                                         <div class="promotion-box-header">
                                             <img src="img/sponsors/5.png" alt="img">
@@ -362,11 +362,11 @@
                                             <a href="#" class="btn btn-primary">View Details</a>
                                         </div>
                                     </div>
-                                    <!- End promotion-box->
+                                    <!-- End promotion-box-->
                                 </div>
 
                                 <div class="col-sm-6 col-md-3">
-                                    <!- promotion-box->
+                                    <!-- promotion-box-->
                                     <div class="promotion-box">
                                         <div class="promotion-box-header">
                                             <img src="img/sponsors/3.png" alt="img">
@@ -387,19 +387,19 @@
                                             <a href="#" class="btn btn-primary">View Details</a>
                                         </div>
                                     </div>
-                                    <!- End promotion-box->
+                                    <!-- End promotion-box-->
                                 </div>
                             </div>
                         </div>
-                        <!- End content->
+                        <!-- End content-->
                     </div>  
-                    <!- End Content Parallax-> 
+                    <!-- End Content Parallax--> 
                 </div>   
-                <!- End Promotion Boxes - Parallax Section --> 
+                <!-- End Promotion Boxes - Parallax Section --> 
 
                 <!-- End content - Slide Features-->
                 <div class="content_info content_resalt">
-                    <ul id="slide-features">
+                    <ul id="slide-features-2">
                         <li>
                             <!-- content-->
                             <div class="container">
@@ -417,12 +417,12 @@
                                             <br>
                                             <p></p>
                                             <br>
-                                            <a href="#" class="btn btn-primary">Más información</a>
+                                            <a ui-sref="meetings" class="btn btn-primary">Más información</a>
                                         </div>
                                     </div> 
 
                                     <div class="col-md-7">
-                                        <img src="img/service.png" class="img-responsive" alt="">
+                                        <img src="img/services/Celebrity_Main_Dining_Room_plng_trp.jpg" class="img-responsive" alt="">
                                     </div>  
                                 </div>
                             </div>
@@ -434,8 +434,8 @@
                                 <div class="row padding-top">
                                     <div class="col-md-6">
                                         <div class="img-hover">
-                                            <div class="overlay"> <a href="img/gallery-2/2.jpg" class="fancybox"><i class="fa fa-plus-circle"></i></a></div>
-                                            <img src="img/gallery-2/2.jpg" alt="" class="img-responsive">
+                                            <div class="overlay"> <a href="img/services/Viajes_Empresariales_trd_wth_us.jpg" class="fancybox"></a></div>
+                                            <img src="img/services/Viajes_Empresariales_trd_wth_us.jpg" alt="" class="img-responsive">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -448,7 +448,7 @@
 
                                             <p>Encontramos el salón, centro de convenciones o auditorio, dentro y fuera de los hoteles, que se adapte a tus necesidades. Te ayudamos a conseguir hospedaje y transporte para todos los asistentes y a ambientar el lugar para conseguir que tu meeting sea exitoso.</p>
                                             <br>
-                                            <a href="#" class="btn btn-primary">Más información</a>
+                                            <a ui-sref="index" class="btn btn-primary">Más información</a>
                                         </div>
                                     </div>
                                </div> 
@@ -481,9 +481,9 @@
 
                                 <div class="col-md-8">
                                     <div class="testimonial-info">
-                                        <h2>TESTIMONIALS</h2>
+                                        <h2>BLOG</h2>
                                         <P>Yo Planner tiene las mejores recomendaciones, los mejores tips y los secretos mejor guardados de todos los destinos turísticos, y mejor aún ¡los compartimos contigo!</P>
-                                        <a href="#" class="btn btn-primary">Ver Detalles</a>
+                                        <a href="http://www.yoplanner.com.mx/blog/" target="_blank" class="btn btn-primary">Ver Detalles</a>
                                     </div>
                                 </div>
                             </div>
@@ -500,11 +500,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="text-center">
-                                    <h2>Our recents <span class="text-resalt">twitts</span>.</h2>
+                                    <h2>Nuestros <span class="text-resalt">twitts</span> recientes.</h2>
                                 </div>
                                 <div class="col-md-3"></div>
                                 <div class="col-md-6" style="height: 100px;overflow-x: hidden;overflow-y: scroll;">
-                                    <div twitter-timeline="618424051304796160" auto-resize="true" style="width:520px;" css-url="css/twitter-timeline/twitter-timeline.css" data-tweet-limit="5">Loading tweets...</div>
+                                    <div twitter-timeline="618424051304796160" auto-resize="true" style="width:520px;" css-url="css/twitter-timeline/twitter-timeline.css" data-tweet-limit="5">Cargando tweets...</div>
                                 </div>
                                 <div class="col-md-3"></div> 
                             </div>
@@ -542,8 +542,8 @@
                 $(document).ready(function() {
 
                     //=================================== Carousel features  ==================================//
-                    $("#slide-features").owlCarousel({
-                        autoPlay: false,
+                    $("#slide-features-2").owlCarousel({
+                        autoPlay: true,
                         items : 1,
                         navigation : true,
                         autoHeight : true,

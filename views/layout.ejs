@@ -66,68 +66,30 @@
                   <ul class="collapse"><!-- collapse class for collapse the drop down -->
                     <!-- website title - Logo class -->
                     <li class="title">
-                      <a href="/#"><img src="img/logo.png" style="margin-left:0px;position:absolute;height:60px;background-color: transparent;border:0;margin-top:0px;width:200px;box-shadow:0px 0px 0px 0px; "></a> 
+                      <a ui-sref="index"><img src="img/logo.png" style="margin-left:0px;position:absolute;height:60px;background-color: transparent;border:0;margin-top:0px;width:200px;box-shadow:0px 0px 0px 0px; "></a> 
 
                     </li>
                     <!-- End website title - Logo class -->
 
-                    <li><a ui-sref="index">HOME</a>
-                      <div class="drop-down two-column hover-fade"><!-- drop down with two columns -->
-                        <ul><!-- column one -->
-                          <li><a href="index.html">Home Version 1</a></li>
-                          <li><a href="index-v2.html">Home Version 2</a></li>
-                          <li><a href="index-v3.html">Home Version 3</a></li>
-                          <li><a href="index-v4.html">Home Version 4</a></li>
-                        </ul>
+                    <li><a ui-sref="index">INICIO</a></li>
 
-                        <ul><!-- column two -->
-                          <li><a href="hotel-index.html">Home Hotels</a> </li>
-                          <li> <a href="flight-index.html">Home Flights</a> </li>
-                        </ul>
-                      </div>
-                    </li>
+                    <li> <a ui-sref="acerca_de">¿QUIENES SOMOS?</a></li>
 
-                    <li> <a href="hotel-index.html">HOTELES</a>
+                    <li> <a href="javascript:void(0);">SERVICIOS</a>
                       <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
-                        <li><a href="hotel-index.html">Home Hotels</a></li>
-                        <li><a href="hotel-list-view.html">List View</a></li>
-                        <li><a href="hotel-grid-view.html">Grid View</a></li>
-                        <li><a href="hotel-detailed.html">Detailed</a></li>
-                      </ul>
-                    </li>
-
-                    <li> <a ui-sref="acerca_de">ACERCA DE</a>
-                      <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
-                        <li><a href="template-about-1.html">About Us 1</a> </li>
-                        <li><a href="template-about-2.html">About us 2</a> </li>
-                      </ul>
-                    </li>
-
-                    <li> <a href="template-service-1.html">SERVICIOS</a>
-                      <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
-                        <li><a ui-sref="nuestros_servicios">Nuestros Servicios</a> </li>
+                        <!-- li><a ui-sref="nuestros_servicios">Nuestros Servicios</a> </li -->
                         <li><a ui-sref="mrktng_hoteles">Publicidad Para Hoteles</a> </li>
                         <li><a ui-sref="meetings">Meetings</a> </li>
                         <li><a ui-sref="travel_agency">Agencia De Viajes</a> </li>
                         <!-- <li><a ui-sref="influencer">Influencer</a> </li> -->
-                        <li><a href="template-service-1.html">Services 1</a> </li>
-                        <li><a href="template-service-2.html">Services 2</a> </li>
                       </ul>
                     </li>
 
-                    <li> <a href="template-gallery-4.html">GALLERY</a>
-                      <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
-                        <li><a href="template-gallery-4.html">Gallery 4 Column</a> </li>
-                        <li><a href="template-gallery-3.html">Gallery 3 Columns</a> </li>
-                        <li><a href="template-gallery-2.html">Gallery 2 Columns</a> </li>
-                      </ul>
-                    </li>
+                    <li> <a href="http://www.yoplanner.com.mx/blog/" target="_blank">BLOG</a></li>
 
-                    <li>
-                      <a ui-sref="contact">CONTACTO</a>
-                    </li>
+                    <li><a ui-sref="contact">CONTACTO</a></li>
 
-                    <li class="social-bar"> <a href="#">FOLLOW US</a> 
+                    <li class="social-bar"> <a href="javascript:void(0);">SÍGUENOS</a> 
                       <ul class="drop-down hover-zoom">
                         <li class="facebook"> <a href="//facebook.com/yoplanner" target="_blank"><i class="fa fa-facebook"></i> </a> </li>
                         <li class="twitter"> <a href="//twitter.com/yoplanner" target="_blank"><i class="fa fa-twitter"></i> </a> </li>
@@ -195,7 +157,7 @@
                         <li>
                           <div class="filter-header" ng-controller="AutocompleteController" style="max-width: 95%;">
                             <form action="#">
-                              <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="¿Qué destino quieres buscar?"></autocomplete>
+                              <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Ingresa tu destino y cotiza"></autocomplete>
                               <img src="img/lblue.gif" style="width: 30px; height: 30px;" ng-show="showLoader || false" class="ng-hide">
                             </form>
                           </div>
@@ -244,12 +206,12 @@
                     <!-- Title Footer-->
                     <div class="col-md-5">
                       <div class="title-footer">
-                        <h2>Save on your plans!
-                          <br> <span>Select YoPlanner Theme And Receive</span>
-                          <br> our discounts by e-mail.</h2>
+                        <h2>Entérate primero y ahorra en tus planes de viaje.
+                          <br> <span></span>
+                          <br> </h2>
                       </div>
 
-                      <p>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</p>
+                      <p></p>
                     </div>
                     <!-- End Title Footer-->
 
@@ -257,7 +219,7 @@
                       <div class="row">                             
                         <!-- Social Us-->
                         <div class="col-md-3">
-                          <h3>FOLLOW US</h3>
+                          <h3>SÍGUENOS</h3>
                           <ul class="social">
                             <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="//facebook.com/yoplanner">Facebook</a></li>
                             <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="//twitter.com/yoplanner">Twitter</a></li>
@@ -269,18 +231,18 @@
 
                         <!-- Recent links-->
                         <div class="col-md-5">
-                          <h3>TRAVEL SPECIALISTS </h3>
+                          <h3>SERVICIOS </h3>
                           <ul>
-                            <li><i class="fa fa-check"></i> <a href="#">Golf Vacations</a></li>
-                            <li><i class="fa fa-check"></i> <a href="#">Disney Parks Vacations</a></li>
-                            <li><i class="fa fa-check"></i> <a href="#">Vacations As Advertised</a></li>                                    
+                            <li><i class="fa fa-check"></i> <a ui-sref="mrktng_hoteles">Publicidad Para Hoteles</a> </li>
+                            <li><i class="fa fa-check"></i> <a ui-sref="meetings">Meetings</a> </li>
+                            <li><i class="fa fa-check"></i> <a ui-sref="travel_agency">Agencia De Viajes</a> </li>
                           </ul>
                         </div>
                         <!-- End Recent links-->
 
                         <!-- Contact Us-->
                         <div class="col-md-4">
-                          <h3>CONTACT US</h3>
+                          <h3>CONTÁCTANOS</h3>
                           <ul class="contact_footer">
                             <li>
                               <i class="fa fa-envelope"></i> <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a>
@@ -308,7 +270,7 @@
                       <div class="row">
                         <!-- Newsletter-->
                         <div class="col-md-12">
-                          <h3>NEWSLETTER SIGN UP</h3>  
+                          <h3>¡Suscríbase a nuestro boletín!</h3>  
                           <form id="newsletterForm" action="php/mailchip/newsletter-subscribe.php">
                             <div class="row">
                               <div class="col-md-5">
@@ -352,10 +314,9 @@
                       <div class="col-md-7">
                         <!-- Nav Footer-->
                         <ul class="nav-footer">
-                          <li><a ui-sref="index">HOME</a> </li>
+                          <li><a ui-sref="index">INICIO</a> </li>
                           <li><a ui-sref="reserva({option: 'hotels'})">HOTELES</a></li>
                           <li><a ui-sref="reserva({option: 'flights'})">VUELOS</a></li>
-                          <li><a href="car-index.html">CARS</a></li>
                           <li><a ui-sref="cruises">CRUCEROS</a></li>
                           <li><a ui-sref="politicas_privacidad">POLÍTICAS DE PRIVACIDAD</a></li>
                           <li><a ui-sref="contact">CONTACTO</a></li>
