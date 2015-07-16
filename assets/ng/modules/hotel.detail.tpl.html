@@ -165,36 +165,40 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <h3>Equipamiento y servicios de los salones </h3>
-                                                    <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
-                                                        <thead>
-                                                            <th><br>Salón</th>
-                                                            <th><br>Tamaño</th>
-                                                            <th><br>Alto</th>
-                                                            <th><br>Ancho</th>
-                                                            <th><br>Herradura</th>
-                                                            <th><br>Banquete</th>
-                                                            <th><br>Coctel</th>
-                                                            <th><br>Escuela</th>
-                                                            <th><br>Auditorio</th>
-                                                            <th><br>1/2 Luna</th>
-                                                            <th><br>Imperial</th>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="saloon in currentHotel.salones">
-                                                                <td>{{saloon.nombre}}</td>
-                                                                <td>{{saloon.tamano}}</td>
-                                                                <td>{{saloon.alto}}</td>
-                                                                <td>{{saloon.ancho}}</td>
-                                                                <td>{{saloon.herradura}}</td>
-                                                                <td>{{saloon.banquete}}</td>
-                                                                <td>{{saloon.coctel}}</td>
-                                                                <td>{{saloon.escuela}}</td>
-                                                                <td>{{saloon.auditorio}}</td>
-                                                                <td>{{saloon.medialuna}}</td>
-                                                                <td>{{saloon.imperial}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                    <div style="width: 95%; height:auto; overflow-x:scroll;">
+                                                        <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
+                                                            <thead>
+                                                                <th><br>Salón</th>
+                                                                <th><br>Tamaño</th>
+                                                                <th><br>Alto</th>
+                                                                <th><br>Ancho</th>
+                                                                <th><br>Herradura</th>
+                                                                <th><br>Banquete</th>
+                                                                <th><br>Coctel</th>
+                                                                <th><br>Escuela</th>
+                                                                <th><br>Auditorio</th>
+                                                                <th><br>1/2 Luna</th>
+                                                                <th><br>Imperial</th>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="saloon in currentHotel.salones">
+                                                                    <div ng-if="saloon.nombre">
+                                                                        <td>{{saloon.nombre}}</td>
+                                                                        <td>{{saloon.tamano}}</td>
+                                                                        <td>{{saloon.alto}}</td>
+                                                                        <td>{{saloon.ancho}}</td>
+                                                                        <td>{{saloon.herradura}}</td>
+                                                                        <td>{{saloon.banquete}}</td>
+                                                                        <td>{{saloon.coctel}}</td>
+                                                                        <td>{{saloon.escuela}}</td>
+                                                                        <td>{{saloon.auditorio}}</td>
+                                                                        <td>{{saloon.medialuna}}</td>
+                                                                        <td>{{saloon.imperial}}</td>
+                                                                    </div>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
 
