@@ -1,325 +1,1082 @@
-<!doctype html>
-<html lang="es-MX"  ng-app="yoPlannerApp">
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        
-        <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="HandheldFriendly" content="True"><title>Hoteles, Cruceros, Grupos y Convenciones | YoPlanner.com</title>		
-        <meta name="description" content="Con Yo Planner obtén la mejor asesoría gratuita para la adquisición de hoteles, cruceros, grupos y convenciones. Blog de Viajes, RFP y reservaciones en línea.">
-        <link rel="apple-touch-icon" href="wp-content/themes/theteafactory/library/images/apple-icon-touch.png">
-        <link rel="icon" href="wp-content/themes/theteafactory/favicon.png"> 
-        <link rel="pingback" href="xmlrpc.php">
-        <link rel="alternate" type="application/rss+xml" title="The Tea Factory &raquo; Feed" href="feed/index.html" />
-        <link rel="alternate" type="application/rss+xml" title="The Tea Factory &raquo; Comments Feed" href="comments/feed/index.html" />
-        
-        <link rel='stylesheet' id='bones-stylesheet-css'  href='wp-content/themes/theteafactory/library/css/style.css' type='text/css' media='all' /> 
-        <link rel='canonical' href='index.html' /> 
-        <script type="text/javascript" src="use.typekit.net/cdn8fet.js">	{
-        </script> 
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <!-- Basic -->
+        <meta charset="utf-8">
+        <title>YoPlanner - Travel Agency, Responsive - Hotel Online Booking</title>
+        <meta name="keywords" content="HTML5 Template" />
+        <meta name="description" content="World Cup - Responsive HTML5 Template soccer and sports">
+        <meta name="author" content="iwthemes.com">  
 
-            ga('create', 'UA-37524502-5', 'yoplanner.com');
-            ga('send', 'pageview');
+        <!-- Mobile Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Theme CSS -->
+        <link href="css/style.css" rel="stylesheet" media="screen">
+        <!-- Responsive CSS -->
+        <link href="css/theme-responsive.css" rel="stylesheet" media="screen">
+        <!-- Skins Theme -->
+        <link href="#" rel="stylesheet" media="screen" class="skin">
 
-        </script>
+        <!-- Favicons -->
+        <link rel="shortcut icon" href="img/icons/favicon.ico">
+        <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="img/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="img/icons/apple-touch-icon-114x114.png">  
 
-        <script type="text/javascript">try{Typekit.load();}catch(e){}
-        </script> 
-        <style>
+        <!-- Head Libs -->
+        <script src="js/modernizr.js"></script>
 
-            .no-js .home.page.page-id-24.page-template-default #content #inner-content #main #content #inner-content #main div div table tr td div .flag {
-                text-align: center;
-            }
-            d {
-                text-align: center;
-            }
-        </style>
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/fancybox/jquery.fancybox.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/muslider_style.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/vallenato.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/slidebars.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/fm.selectator.jquery.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/pikaday.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/bouncebox.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/jquery.timepicker.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/yp.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/autocomplete.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/flexslider.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="css/estilos2.css" />
-        <link rel="stylesheet" type="text/css" media="screen"
-              href="modules/ext/angular-notify.min.css" />
-		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300,200,100' rel='stylesheet' type='text/css'>
-		
-		<script src="https://apis.google.com/js/platform.js" async defer>
-		<script>
-			window.___gcfg = {
-			lang: 'es-MX',
-			parsetags: 'explicit'
-			};
-		</script>
+        <!--[if IE]>
+            <link rel="stylesheet" href="css/ie/ie.css">
+        <![endif]-->
 
-	
-        <script type="text/javascript">
-            try {
-                Typekit.load();
-            } catch (e) {
-            }
-        </script>
-        <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
-        <script type="text/javascript" src="js/jquery.fancybox.js"></script>
-        <script type="text/javascript" src="js/jquery.muslider-2.0.min.js"></script>
-        <script type="text/javascript" src="js/yp.js"></script>
-        <script type="text/javascript" src="js/services.js"></script>
-        <script type="text/javascript" src="js/vallenato.js"></script>
-        <script type="text/javascript" src="js/slidebars.min.js"></script>
-        <script type="text/javascript" src="js/fm.selectator.jquery.js"></script>
-        <script type="text/javascript" src="js/moment.js"></script>
-        <script type="text/javascript" src="js/pikaday.js"></script>
-        <script type="text/javascript" src="js/pikaday.jquery.js"></script>
-        <script type="text/javascript" src="js/jquery.bouncebox.1.0.js"></script>
-        <script type="text/javascript" src="js/jquery.timepicker.min.js"></script>
-        <!--<script type="text/javascript" src="js/jquery.flexslider.min.js"></script>-->
-        <script type="text/javascript" src="js/jquery.flexslider.js"></script>
-        <script src="js/angular.min.js"></script>
-        <script src="js/angular-cookies.js"></script>
-        <script type="text/javascript" src="js/autocomplete.js"></script>
-        <script type="text/javascript" src="js/angular-flexslider.js"></script>
-        <script type="text/javascript" src="modules/ext/angular-notify.min.js"></script>
-        <script type="text/javascript" src="modules/index.js"></script>
-        <script type="text/javascript" src="modules/hoteles.js"></script>
-        <script type="text/javascript" src="modules/rfp.js"></script>
-        <script type="text/javascript" src="js/ngyp.js"></script>
-
-        <style>
-            .inicio-seccion  {
-                height: 503px;
-            }
-            .inicio-seccion .flex-viewport {
-                width: 100%;
-                height: 500px;
-            }
-            .inicio-seccion .flex-viewport img{
-                width: 100%;
-                height: 500px;
-            }
-
-
-        </style>
+        <!--[if lte IE 8]>
+            <script src="js/responsive/html5shiv.js"></script>
+            <script src="js/responsive/respond.js"></script>
+        <![endif]-->
     </head>
+    <body>
+        <!--Preloader-->
+        <div class="preloader">
+            <div class="status">&nbsp;</div>
+        </div>
+        <!--End Preloader-->
     
+     
 
-    <body  ng-controller="RecintosController" ng-cloak >
-     <!--div style="float:right;position:absolute;right:0;z-index:99999">
-               
+        <!-- layout-->
+        <div id="layout">
 
-   <div class="g-plusone" data-size="medium" data-annotation="inline" data-width="300"></div>
-</div-->
-	   <div style="width: 1200px;margin:0 auto;">
-		
-		<div class=" header-wrapper" style="z-index:1000">
-            <div ></div>
-			<div id="header">
-				<div class="">
+            <!-- Header-->
+            <header id="header" class="header-v1">
 
-               
+                <!-- Main Nav -->
+                <nav class="flat-mega-menu">     
 
-					<div class="logo-header" style="z-index:99999">
-						<a href="/" >
-							<img src="wp-content/uploads/2013/09/yp logo.png">
-						</a>
-					</div>
-					<div class="contenedor  header-menu" style="padding-left:350px;">
-						<ul class="clearfix">
-							<li style="width:190px;"><a href="javascript:void(0)">¿Quienes Somos?</a>
-                                <ul class="cruceros-drop">
-                                    <li><a href="empresa/index.html" >Empresa</a></li>
-                                    <li><a href="planners/index.html">Planners</a></li>
-                                    
+                    <!-- flat-mega-menu class -->
+                    <label for="mobile-button"> <i class="fa fa-bars"></i></label><!-- mobile click button to show menu -->
+                    <input id="mobile-button" type="checkbox">                          
+
+                    <ul class="collapse"><!-- collapse class for collapse the drop down -->
+                        <!-- website title - Logo class -->
+                        <li class="title">
+                            <a href="index.html"><img src="img/logo.png" style="margin-left:0px;position:absolute;height:60px;background-color: transparent;border:0;margin-top:0px;width:200px;box-shadow:0px 0px 0px 0px; "></a> 
+                            
+                        </li>
+                        <!-- End website title - Logo class -->
+
+                        <li><a href="index.html">HOME</a>
+                            <div class="drop-down two-column hover-fade"><!-- drop down with two columns -->
+                                <ul><!-- column one -->
+                                    <li><a href="index.html">Home Version 1</a></li>
+                                    <li><a href="index-v2.html">Home Version 2</a></li>
+                                    <li><a href="index-v3.html">Home Version 3</a></li>
+                                    <li><a href="index-v4.html">Home Version 4</a></li>
                                 </ul>
-                            </li>
-							<li><a href="">VIAJA</a>
-                                <ul class="cruceros-drop">
-                                    <li><a href="/reservaciones" >Reserva Individual</a></li>
-                                    <li style="z-index:9999"><a href="/cruceros/index.html#black">Cruceros</a>
-                                    </li>
+                                
+                                <ul><!-- column two -->
+                                    <li><a href="hotel-index.html">Home Hotels</a> </li>
+                                    <li> <a href="flight-index.html">Home Flights</a> </li>
                                 </ul>
-                            </li>
-							
-                            <li><a href="http://www.yoplanner.com.mx/blog/" target="_blank" style="margin-left:-50px;">Blog</a></li>
-                            <li><a href="/promociones/index.html" style="margin-left:-50px;">Promociones</a></li>
-                            <!--li><a href="contacto/index.html">Contacto</a></li-->
-                             <li style="width:200px;"><a href="#"><img src="/img/wcarrito.png" style="height:15px;witdh:15px;"/>Mi selección<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></a>
-                                <ul class="cruceros-drop" >
-                                    <li ng-show="hotelesSeleccionados.length==0">No hay hoteles seleccionados</li>
-                                    <li style="text-align:left" ng-repeat="selh in hotelesSeleccionados" ng-click="selectResult(selh)"  ><a href="javascript:void(0)">
-                                        &nbsp;&nbsp;<img class="hand"src="../img/delete.png" width="25px" height="25px" ng-click="deleteSelection(selh)"/>&nbsp;&nbsp;{{selh.name}}</a>
-                                        <!--br/><img src="http://media.staticontent.com/media/pictures/{{selh.pictures[0]}}" width="80px"
-                             height="60px" /-->
-
-
-                                    </li>
-                                    <li ng-show="hotelesSeleccionados.length>0" class="hand" onclick="showCotizar();" class="bolder" ><a href="javascript:void(0)"class="bolder"><h1>Cotizar Selección</h1></a></li>
-                                   
-                                </ul>
-                               
-                            </li>
-						</ul>
-					</div>
-				</div>
-			</div>	
-		</div>
-		<div style="position:relative">
-            <div ng-show="showIndex" style="position:absolute;z-index:2;text-align:center;margin-top:130px;">
-                <img src="/img/deja.png" style="width:60%"></div>
-    		<div class="inicio-seccion" ng-show="showIndex && !showInfo">
-    			<flex-slider slide="pic in mainPics" animation="slide" slideshow="true" control-nav="false" animation-loop="true"  slideshow-speed="4000" ng-click="sliderGoToHotel(this)">
-                    <li >
-                        <a href="javascript:void(0)"><img ng-src="{{pic}}"></a>
-                    </li>
-                </flex-slider>
-
-    		</div>
-       </div>
-       
-        <div ng-show="!showInfo" id="buscadorbox" class="full-width  clearfix bg-black"  ng-class="searchClass"style="position:relative;z-index:120;">
-            <div ng-show="showIndex && !showInfo" class="pasosContainer pasos" style="position:absolute;margin-top:25px;margin-left:173px;" >Cotiza tu grupo en 3 pasos</div>
-            <div class="contenedor clearfix ">
-
-                <div class="pasosContainer">
-                    <div class="pasos" ng-show="showIndex && !showInfo"><img src="/img/search.png"><div class="pasosText" style="margin-top:-30px;">&nbsp;&nbsp;&nbsp;Paso 1: Busca tu destino</div></div>
-              
-                    <div class="pasos" ng-show="hideResults"><img src="/img/seleccionar.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 2: Selecciona un hotel</div></div>
-                    <div ng-show="showDetail && hotels.length>0">
-                        <div>
-                        <a href="#" class="pasos regresar" ng-click="showResults()" ng-show="showDetail && hotels.length>0">
-                            <img src="/img/back.png" style="margin-left:-75px;"><div class="pasosText"></div>
-                        </a>
-                        </div>
-                        <div style="margin-top:-70px;margin-left:20px;">
-                        <a href="#" class="pasos" ng-click="agregarYRegresar()" ng-show="existeEnSeleccion(currentHotel)<0">
-                            <img src="/img/hotel.png"><div class="pasosText">&nbsp;&nbsp;&nbsp;Paso 3: Agrega a tu selección&nbsp;<img src="/img/plus.png"style="width:25px;height:25px;"/></div>
-                        </a>
-                        </div>
-                    </div>
-
-                    
-                    
-                </div>
-                
-		
-                <div id="buscador" class="col-55">
-                    <autocomplete   ng-model="searchString" data="movies" on-type="updateMovies" ></autocomplete>
-                    <button ng-click="search()" ng-show="!showLoader" >Buscar</button> <img src="img/lblue.gif"  style="width:30px;height:30px;" ng-show="showLoader || false">
-                   
-		
-
-                </div>
-            </div>
-        </div>
-       
-     <div ng-class="searchClass" style="position:relative">
-                <div class="banner" ng-show="showIndex && !showInfo">
-                    <div  class="widgetDespegar">
-                        <script id="despegar-root-js" type="text/javascript" src="//www.despegar.com.mx/comunidadafiliados/widgetGenerator/widgetCore.js" data-id="13754" data-context-path="//www.despegar.com.mx/comunidadafiliados">
-                        </script>
-                    </div>
-                    <a  href="?hid=352782" target="javascript:void(0)"><img style="margin-left:1%;width:33%;float:left;height:340px;" src="./img/banner/Banner1.jpg" /></a>
-
-                    <a  href="https://www.facebook.com/yoplanner" target="_blank"><img style="margin-left:3%;width:33%;float:left;height:340px;" src="./img/banner/Banner2.jpg" /></a>
-                </div>
-                <div style="clear:both"/>
-                <index ng-if="showIndex && !showInfo"></index>
-                <rfp></rfp>
-                <hoteles ng-show="true"></hoteles>
-        		
-    </div>
-        
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTt1xwb7Zss1Nx1ym0xlC1gbgBZ47LP4"></script>
-
-        <div style="clear:both"/>
-        <footer >
-<div ng-show="showFooter" id="footer" ng-class="footerClass">
-        <div class="contenedor footer-wrapper clearfix">
-            
-            <div class="mapa-sitio col-33">
-                <div class="col-inner">
-                    <p class="tit-b">Mapa de sitio</p>
-                    <ul>
-                        <li><a target="javascript:void(0)" href="empresa">Empresa</a></li>
-                        <li><a target="javascript:void(0)" href="reservaciones">Reserva</a></li>
-                        <li><a target="javascript:void(0)" href="http://www.yoplanner.com.mx/blog">Blog</a></li>
-                        <li><a target="javascript:void(0)" href="politicadeprivacidad">Políticas de Privacidad</a></li>
-                        <li><a target="javascript:void(0)" href="servicios">Servicios</a></li>
-                        <li><a target="javascript:void(0)" href="cruceros">Cruceros</a></li>
-                        <li><a target="javascript:void(0)" href="contacto">Contacto</a></li>
-                                <li><a target="javascript:void(0)" href="/unete">Bolsa de Trabajo</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-33">
-                <div class="col-inner contacto">
-                    <p class="tit-b">Contáctanos</p>
-                    <p class="cont-p">Teléfono: (55) 62 74 - 62 91</br>
-                        Correo: <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a></p>
-                </div>
-            </div>
-            <div class="col-33">
-                <div class="col-inner clearfix" >
-                    <!--div style="width: 100%;" class="clearfix">
-                        <p class="tit-b">Noticias y Promociones</p>
-                        <div id="buscador-ft">
-                            <input type="text">
-                            <button>Buscar</button>
-                        </div>
-                    </div-->
-                    <div style="margin-top:40px;">
-                        <p class="tit-b">Redes sociales</p>
-                        <div class="clearfix redes-ft">
-                            <ul class="social-ft">  
-                                <li><a target="javascript:void(0)" href="//twitter.com/yoplanner"><img src="/img/twitter.png"></a></li>
-                                <li><a target="javascript:void(0)" href="//facebook.com/yoplanner"><img src="/img/fb.png"></a></li>
-                                <li><!-- Coloca este código en el lugar donde quieras que se muestre la insignia. -->
-<a target="javascript:void(0)" href="https://plus.google.com/113624413123385492768?prsrc=3"
-   rel="publisher" target="_top" style="text-decoration:none;">
-<img src="/img/goplus.png" alt="Google+" />
-</a></li>
-                                <li><a target="javascript:void(0)" href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg"><img src="/img/yt.png"></a></li>
-                                <!-- <li><a href="#"><img src="/img/instagram.png"></a></li>
-                                <li><a href="#"><img src="/img/pinterest.png"></a></li> -->
+                            </div>
+                        </li>
+                        
+                        <li> <a href="hotel-index.html">HOTELS</a>
+                            <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
+                                <li><a href="hotel-index.html">Home Hotels</a></li>
+                                <li><a href="hotel-list-view.html">List View</a></li>
+                                <li><a href="hotel-grid-view.html">Grid View</a></li>
+                                <li><a href="hotel-detailed.html">Detailed</a></li>
                             </ul>
+                        </li>
+
+                        <li> <a href="template-about-1.html">ABOUT US</a>
+                            <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
+                                <li><a href="template-about-1.html">About Us 1</a> </li>
+                                <li><a href="template-about-2.html">About us 2</a> </li>
+                            </ul>
+                        </li>
+
+                        <li> <a href="template-service-1.html">SERVICES</a>
+                            <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
+                                <li><a href="template-service-1.html">Services 1</a> </li>
+                                <li><a href="template-service-2.html">Services 2</a> </li>
+                            </ul>
+                        </li>
+
+                        <li> <a href="template-gallery-4.html">GALLERY</a>
+                            <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
+                                <li><a href="template-gallery-4.html">Gallery 4 Column</a> </li>
+                                <li><a href="template-gallery-3.html">Gallery 3 Columns</a> </li>
+                                <li><a href="template-gallery-2.html">Gallery 2 Columns</a> </li>
+                            </ul>
+                        </li>
+
+                        <li> <a href="#">PACKAGES</a> 
+                            <div class="drop-down full-width hover-fade"><!-- full width drop down with 4 columns + images -->
+                                <ul><!-- column one -->
+                                    <li>
+                                        <h2><span>Punta</span> Cana</h2>
+                                        <a href="packages-index.html"><img src="img/gallery-2/1.jpg" alt="image 1"> </a> 
+                                        <p>Punta Cana is a cape located east of the Dominican Republic in the province of La Altagracia.</p>
+                                        <a href="packages-index.html" class="btn btn-primary">View Details</a>
+                                    </li>
+                                </ul>
+                                
+                                <ul><!-- column two -->
+                                    <li>
+                                        <h2><span>Santa</span> Marta</h2>
+                                        <a href="packages-index.html"><img src="img/gallery-2/2.jpg" alt="image 1"> </a> 
+                                        <p>Santa Marta, officially Tourism, Cultural and Historic District of Santa Marta is a Colombian city.</p>
+                                        <a href="packages-index.html" class="btn btn-primary">View Details</a>
+                                    </li>
+                                </ul>
+                                
+                                <ul><!-- column three -->
+                                    <li>
+                                        <h2><span>Isla</span> de San Andres</h2>
+                                        <a href="packages-index.html"><img src="img/gallery-2/3.jpg" alt="image 1"> </a> 
+                                        <p>San Andres Island is the largest of the islands forming part of the Archipelago of San Andrés.</p>
+                                        <a href="packages-index.html" class="btn btn-primary">View Details</a>
+                                    </li>
+                                </ul>
+                                
+                                <ul><!-- column four -->
+                                    <li>
+                                        <h2><span>Cartagena</span> de Indias</h2>
+                                        <a href="packages-index.html"><img src="img/gallery-2/4.jpg" alt="image 1"> </a> 
+                                        <p>Cartagena de Indias, officially Tourist and Cultural District of Cartagena de Indias Cartagena de Indias abbreviated.</p>
+                                        <a href="packages-index.html" class="btn btn-primary">View Details</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li> <a href="template-about-1.html">FEATURES</a> 
+                            <div class="drop-down full-width hover-fade"><!-- full width drop down with 4 columns -->
+                                <ul><!-- column One -->
+                                    <li><h2>Templates</h2></li>
+                                    <li><a href="template-about-1.html">About Us 1</a> </li>
+                                    <li><a href="template-about-2.html">About us 2</a> </li>
+                                    <li><a href="template-service-1.html">Services 1</a> </li>
+                                    <li><a href="template-service-2.html">Services 2</a> </li>
+                                    <li><a href="template-gallery-4.html">Gallery 4 Column</a> </li>
+                                    <li><a href="template-gallery-3.html">Gallery 3 Columns</a> </li>
+                                    <li><a href="template-gallery-2.html">Gallery 2 Columns</a> </li>
+                                    <li><a href="template-blog-right.html">Blog Right Sidebar</a> </li>
+                                    <li><a href="template-blog-left.html">Blog Left Sidebar</a> </li>
+                                </ul>
+                                
+                                <ul><!-- column Two -->
+                                    <li><h2>Templates</h2></li>
+                                    <li><a href="template-blog-full.html">Blog Full Width</a> </li>
+                                    <li><a href="template-blog-read.html">Blog Read</a> </li>
+                                    <li><a href="template-faq.html">Page Faq Questions</a> </li>
+                                    <li><a href="page-full-widht.html">Page Full Widht</a> </li>
+                                    <li><a href="page-left.html">Page Left Sidebar</a> </li>
+                                    <li><a href="page-right.html">Page Right Sidebar</a> </li>
+                                    <li><a href="page-404.html">Page 404</a> </li>
+                                    <li><a href="page-site-map.html">Page Site Map</a> </li>
+                                    <li><a href="princing-tables.html">Princing tables</a> </li>
+                                </ul>
+
+                                <ul><!-- column three -->
+                                    <li><h2>Features</h2></li>
+                                    <li><a href="feature-header-1.html">Header Version 1</a> </li>
+                                    <li><a href="feature-header-2.html">Header Version 2</a> </li>
+                                    <li><a href="feature-header-3.html">Header Version 3</a> </li>
+                                    <li><a href="feature-header-4.html">Header Version 4</a> </li>
+                                    <li><a href="feature-footer-1.html#footer">Footer Version 1</a> </li>
+                                    <li><a href="feature-footer-2.html#footer">Footer Version 2</a> </li>
+                                    <li><a href="feature-footer-3.html#footer">Footer Version 3</a> </li>
+                                    <li><a href="feature-footer-4.html#footer">Footer Version 4</a> </li>
+                                    <li><a href="feature-background-sections.html">Background sections</a> </li>
+                                </ul>
+
+                                <ul><!-- column four -->
+                                    <li><h2>Elements</h2></li>
+                                    <li><a href="feature-grid-system.html">Grid System</a> </li>
+                                    <li><a href="feature-typograpy.html">Typograpy</a> </li>
+                                    <li><a href="feature-icons.html">Icons</a> </li>
+                                    <li class="icon-big-nav"><i class="fa fa-rocket"></i></li><!-- Icon big nav -->
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="contact.html">CONTACT</a>
+                        </li>
+
+                        <li class="social-bar"> <a href="#">FOLLOW US</a> 
+                            <ul class="drop-down hover-zoom">
+                                <li> <a href="#" target="_blank"><i class="fa fa-flickr"></i> </a> </li>
+                                <li> <a href="#" target="_blank"><i class="fa fa-instagram"></i> </a> </li>
+                                <li> <a href="#" target="_blank"><i class="fa fa-youtube"></i> </a> </li>
+                                <li> <a href="#" target="_blank"><i class="fa fa-facebook"></i> </a> </li>
+                                <li> <a href="#" target="_blank"><i class="fa fa-google-plus"></i> </a> </li>
+                                <li> <a href="#" target="_blank"><i class="fa fa-pinterest"></i> </a> </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="login-form"> <i class="fa fa-user"></i><!-- login form -->
+                            <ul class="drop-down hover-expand">
+                                <li>
+                                    <form method="post" action="#">
+                                        <table>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <input type="email" required="required" name="email" placeholder="Your email address"> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"> 
+                                                    <input type="password" required="required" name="password" placeholder="Password"> 
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> <input type="submit" value="Login"> </td>
+                                                <td> <label> <input type="checkbox" name="check_box"> Keep me signed in </label> </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>  
+
+                        <li class="search-bar"> <i class="fa fa-search"></i><!-- search bar -->
+                            <ul class="drop-down hover-expand">
+                                <li>
+                                    <form method="post" action="#">
+                                        <table>
+                                            <tr>
+                                                <td> <input type="search" required="required" name="serach_bar" placeholder="Type Keyword Here"> </td>
+                                                <td> <input type="submit" value="Search"> </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>           
+                    </ul>
+                </nav>
+                <!-- Main Nav -->
+            </header>
+            <!-- End Header-->
+
+            <!-- Slide And Filter Section-->    
+            <section class="tp-banner-container">
+                <!-- SLIDE  -->
+                <div class="tp-banner" >
+                    <!-- SLIDES CONTENT-->
+                    <ul> 
+                        <!-- SLIDE  -->
+                        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+                            <!-- MAIN IMAGE -->
+                            <img src="img/hoteles/363032/main.jpg"  alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+                            <!-- LAYERS -->
+                        </li>
+
+                        <!-- SLIDE  -->
+                        <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+                            <!-- MAIN IMAGE -->
+                            <img src="img/slide/3.jpg"  alt="fullslide1" data-bgposition="top center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+                            <!-- LAYERS -->
+                        </li>
+
+                    
+                        <!-- SLIDE  -->
+                        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+                            <!-- MAIN IMAGE -->
+                            <img src="img/slide/4.jpg"  alt="fullslide1" data-bgposition="left center" data-kenburns="on" data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+                            <!-- LAYERS -->
+                        </li>
+                    </ul> 
+                    <!-- END SLIDES  --> 
+                    <div class="tp-bannertimer"></div>  
+                </div>
+                 <!-- SLIDE CONTENT-->
+
+                <!-- FILTER HEADER - TITLE HEADER-->
+                <div class="filter-title">
+                    <!-- TITLE HEADER-->
+                    <div class="title-header">
+                        <h1>YOPLANNER LO HACE.</h1>
+                        <p class="lead">YoPlanner el mejor meeting planner de américa latína.</p>
+                    </div>
+                    <!-- END TITLE HEADER-->
+
+                    <!-- FILTER HEADER-->
+                    <div class="filter-header">
+                        <form action="#">
+                            <input type="text" required="required" placeholder="¿Que destino quieres buscar?" class="input-large">
+                            
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+                    <!-- END FILTER HEADER-->
+                </div>
+                <!-- END FILTERHEADER - TITLE HEADER -->
+            </section>       
+            <!-- End Slide And Filter Section-->
+
+            <!--Content Central -->
+            <section class="content-central">
+                <!-- Shadow Semiboxed Layout -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+                </div>
+                <!-- End Shadow Semiboxed Layout -->
+
+                <!-- End content info - Services Items-->
+                <div class="content_info">
+                    <div class="content_resalt">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Info Resalt - Info Services -->
+                                <div class="col-md-4 ">
+                                    <div class="services-lines-info">
+                                        <h2>WELCOME TO YOPLANNER</h2>
+                                        <p class="lead">
+                                            Book cheap hotels and make payment facilities.
+                                            <span class="line"></span>
+                                        </p>
+
+                                        <p>Find a wide variety of airline tickets and cheap flights, hotels, tour packages, car rentals, cruises and more in YoPlanner.com.You can choose your favorite destination and start planning your long-awaited vacation. You can also check availability of flights. </p>
+                                    </div>
+                                </div>   
+                                <!-- End Info Resalt - Info Services --> 
+
+                                <!-- Services Items -->
+                                <div class="col-md-8">
+                                    <ul class="services-lines">
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-bicycle"></i>
+                                                <h5>Special Activities</h5>
+                                            </div>
+                                        </li>
+                                         <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-plane"></i>
+                                                <h5>Travel Arrangements</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-user"></i>
+                                                <h5>Private Guide</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-search-plus"></i>
+                                                <h5>Location Manager</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-map-marker"></i>
+                                                <h5>Handpicked Hotels</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-money"></i>
+                                                <h5>Best Price Guarantee</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-bank"></i>
+                                                <h5>Trust & Safety</h5>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-service-line">
+                                                <i class="fa fa-line-chart"></i>
+                                                <h5>Best Travel Agent</h5>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div> 
+                                <!-- End Services Items --> 
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <!-- End content info - Services Items --> 
+
+                <!-- End content info - Vacations Destinatios-->
+                <div class="content_info">
+                    <!-- Title -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="titles">
+                                <h2>The <span>Popular</span> Destinations </h2>
+                                <i class="fa fa-bicycle"></i>
+                                <hr class="tall">
+                            </div>                    
+                        </div>
+                    </div>
+                    <!-- End Title-->
+
+                    <!-- content-boxes-->
+                    <div class="content-boxes">
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="image-boxed">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/1.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                            <div class="info-boxed boxed-top">
+                                <h3>
+                                    Hot Baloon Special Journey<br>
+                                    <span>DPM, CBE, TAMILNADU</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The Royal National is in London near Covent Garden.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 45</div>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="image-boxed">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/2.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                            <div class="info-boxed boxed-top">
+                                <h3>
+                                    The Grand Canyons<br>
+                                    <span>PEELAMEDU, CBE, INDIA</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The Holiday Inn Bilbao is in a prime location next to the Basilica of Begoña.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 65</div>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="info-boxed boxed-bottom">
+                                <h3>
+                                    Weekdays in Thailand<br>
+                                    <span>PEELAMEDU, CBE, INDIA</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The spacious rooms have a bathroom with hairdryer, direct dial telephone.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 30</div>
+                            </div>
+                            <div class="image-boxed image-bottom">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/3.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+
+                        <!-- Item-boxe-->
+                        <div class="item-boxed">
+                            <div class="info-boxed boxed-bottom">
+                                <h3>
+                                    Peek Mountain View<br>
+                                    <span>LAS VEGAS, NEVADA</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>The Golden Bay, heated and opened in 2003, with a total of 380 rooms.</p>
+                                <ul class="starts">
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-star-half-empty"></i></a></li>
+                                </ul>
+                                <div class="content-btn"><a href="hotel-detailed.html" class="btn btn-primary">View Details</a></div>
+                                <div class="price"><span>$</span> 80</div>
+                            </div>
+                            <div class="image-boxed image-bottom">
+                                <span class="overlay"></span>
+                                <img src="img/gallery-1/4.jpg" alt="">
+                                <a href="hotel-detailed.html" class="more-boxe"><i class="fa fa-plus-circle"></i></a>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+                    </div>
+                    <!-- End content-boxes-->
+                </div>   
+                <!-- End content info - Vacations Destinatios--> 
+
+                <!-- End content info - Features-->
+                <div class="content_info">
+                    <!-- Title -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="titles">
+                                <h2><span>¿</span>Why <span>Book</span> in YoPlanner<span>?</span></h2>
+                                <i class="fa fa-plane"></i>
+                                <hr class="tall">
+                            </div>                    
+                        </div>
+                    </div>
+                    <!-- End Title-->
+
+                    <!-- content-->
+                    <div class="container">
+                        <div class="row padding-bottom">
+                            <div class="col-md-4">
+                                <div class="item-feature text-center">
+                                    <div class="head-feature">
+                                        <span>Up</span>
+                                        <br>
+                                        <div class="title-feature">
+                                            <i class="fa fa-sun-o left-icon"></i>
+                                            <i class="fa fa-umbrella right-icon"></i>
+                                            30
+                                        </div><span>%</span>
+                                        <br>
+                                        <span>discount</span>
+                                    </div>
+                                    <div class="info-feature">
+                                        <p>For over 4 years offering the best plans at the best price with exclusive discounts.</p> 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="item-feature text-center">
+                                    <div class="head-feature">
+                                        <span>over</span>
+                                        <br>
+                                        <div class="title-feature">
+                                            <i class="fa fa-thumbs-o-up left-icon"></i>
+                                            <i class="fa fa-heart right-icon"></i>
+                                            1 million
+                                        </div>
+                                        <br>
+                                        <span>Reviews</span>
+                                    </div>
+                                    <div class="info-feature">
+                                        <p>Browse and compare the views of users and safe acertarás.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="item-feature text-center">
+                                    <div class="head-feature">
+                                        <span>pays</span>
+                                        <br>
+                                        <div class="title-feature">
+                                            <i class="fa fa-check right-icon"></i>
+                                            the price 
+                                        </div>
+                                        <br>
+                                        <span>+ low</span>
+                                    </div>
+                                    <div class="info-feature">
+                                        <p>All days Escape at the best price in offers for our products.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End content-->
+                </div>   
+                <!-- End content info - Features--> 
+
+                <!-- End Promotion Boxes - Parallax Section -->
+                <div class="content_info">
+                    <!-- Parallax Background -->
+                    <div class="bg_parallax image_04_parallax"></div>
+                    <!-- Parallax Background -->
+
+                    <!-- Content Parallax-->
+                    <div class="opacy_bg_02 padding-bottom">
+                        <!-- Title -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="titles">
+                                    <h2>The <span>Promotions</span> Bonus</h2>
+                                    <i class="fa fa-money"></i>
+                                    <hr class="tall">
+                                </div>                    
+                            </div>
+                        </div>
+                        <!-- End Title-->
+
+                        <!-- content-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/1.png" alt="img">
+                                        </div>
+
+                                        <div class="promotion-box-center color-1">
+                                           <div class="prince">
+                                                30
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 30% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <!-- promotion-box-header-->
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/2.png" alt="img">
+                                        </div>
+                                        <!-- End promotion-box-header-->
+
+                                        <!-- promotion-box-center-->
+                                        <div class="promotion-box-center color-2">
+                                            <div class="prince">
+                                                70
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+                                        <!-- End promotion-box-center-->
+
+                                        <!-- promotion-box-info-->
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 70% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                        <!-- End promotion-box-info-->
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/5.png" alt="img">
+                                        </div>
+
+                                        <div class="promotion-box-center color-3">
+                                            <div class="prince">
+                                                50
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 50% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+
+                                <div class="col-sm-6 col-md-3">
+                                    <!-- promotion-box-->
+                                    <div class="promotion-box">
+                                        <div class="promotion-box-header">
+                                            <img src="img/sponsors/3.png" alt="img">
+                                        </div>
+
+                                        <div class="promotion-box-center color-4">
+                                            <div class="prince">
+                                                60
+                                            </div>
+
+                                            <div class="percentage">
+                                                %<span>discount</span>.
+                                            </div>
+                                        </div>
+
+                                        <div class="promotion-box-info">
+                                            <p>Select a bonus 60% and access to all our discounts.</p>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                    <!-- End promotion-box-->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End content-->
+                    </div>  
+                    <!-- End Content Parallax--> 
+                </div>   
+                <!-- End Promotion Boxes - Parallax Section --> 
+
+                <!-- End content - Slide Features-->
+                <div class="content_info content_resalt">
+                    <ul id="slide-features">
+                        <li>
+                            <!-- content-->
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Info Resalt - Info Services -->
+                                    <div class="col-md-5">
+                                        <div class="services-lines-info">
+                                            <h2>We Provide You An Ultimate Travel Experience</h2>
+                                            <p class="lead">
+                                                Book cheap hotels and make payment facilities.
+                                                <span class="line"></span>
+                                            </p>
+
+                                            <p>Find a wide variety of airline tickets and cheap flights, hotels, tour packages, car rentals, cruises and more in YoPlanner.com.You can choose your favorite destination and start planning your long-awaited vacation. You can also check availability of flights and hotels quickly and easily, in order to find the option that best suits your needs.</p>
+                                            <br>
+                                            <p>Book cheap hotels and make payment facilities, free cancellation when the hotel so provides, compare prices and find all the options for your vacation.</p>
+                                            <br>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-md-7">
+                                        <img src="img/service.png" class="img-responsive" alt="">
+                                    </div>  
+                                </div>
+                            </div>
+                            <!-- End content-->
+                        </li>
+                        <!-- Item Slide Features  -->
+                        <li>
+                            <div class="container">
+                                <div class="row padding-top">
+                                    <div class="col-md-6">
+                                        <div class="img-hover">
+                                            <div class="overlay"> <a href="img/gallery-2/2.jpg" class="fancybox"><i class="fa fa-plus-circle"></i></a></div>
+                                            <img src="img/gallery-2/2.jpg" alt="" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="services-lines-info">
+                                            <h2>Explore our latest tours </h2>
+                                            <p class="lead">
+                                                Select YoPlanner Theme And Receive our discounts by e-mail.
+                                                <span class="line"></span>
+                                            </p>
+
+                                            <p>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</p>
+                                            <br>
+                                            <a href="#" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                               </div> 
+                               <!-- End Row  -->
+                            </div> 
+                            <!-- End Container  -->
+                        </li>
+                        <!-- End Item Slide Features  -->
+                    </ul>
+                </div>   
+                <!-- End content - Slide Features--> 
+                
+                <!-- content info - testimonials-->
+                <div class="content_info">
+                    <!-- Parallax Background -->
+                    <div class="bg_parallax image_02_parallax"></div>
+                    <!-- Parallax Background -->
+
+                    <div class="opacy_bg_02">
+                        <!-- Testimonial Propertie-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="info-testimonial">
+                                       <ul id="testimonials">
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/1.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Jeniffer Martinez</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>Spectacular, excellent personal, restaurants and very good drinks, highly recommended.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/2.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Juan Rendon</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </li>
+
+                                            <li>
+                                                <p><i class="fa fa-quote-left"></i>The hotel is stunning, super recommended. And the treatment of its people in very good, are always attentive to the little things.<i class="fa fa-quote-right"></i></p>
+
+                                                <div class="image-testimonials">
+                                                    <img src="img/testimonials/3.jpg" alt="">                        
+                                                </div>   
+                                                <h4>Federick Gordon</h4>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-half-o"></i>
+                                            </li>
+                                       </ul>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="testimonial-info">
+                                        <h2>TESTIMONIALS</h2>
+                                        <P>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</P>
+                                        <a href="#" class="btn btn-primary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Testimonial Propertie-->
+                    </div>
+                </div>
+                <!-- End content info - testimonials-->
+
+                <!-- Twitter Section -->
+                <div class="section-twitter">
+                    <i class="fa fa-twitter icon-big"></i>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <h2>Our recents <span class="text-resalt">twitts</span>.</h2>
+                                </div>
+                                <div id="twitter"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <!-- End Twitter Section -->  
+            </section>
+            <!-- End Content Central -->
+      
+            <!-- footer-->
+            <footer id="footer" class="footer-v1">
+                <div class="container">
+                    <div class="row">
+                        <!-- Title Footer-->
+                        <div class="col-md-5">
+                            <div class="title-footer">
+                                <h2>Save on your plans!
+                                <br> <span>Select YoPlanner Theme And Receive</span>
+                                <br> our discounts by e-mail.</h2>
+                            </div>
+
+                            <p>You can choose your favorite destination and start planning your long-awaited vacation. We offer thousands of destinations and have a wide variety of hotels so that you can host and enjoy your stay without problems. Book now your trip YoPlanner.com.</p>
+                        </div>
+                        <!-- End Title Footer-->
+
+                        <div class="col-md-7">
+                            <div class="row">                             
+                                <!-- Social Us-->
+                                <div class="col-md-3">
+                                    <h3>FOLLOW US</h3>
+                                    <ul class="social">
+                                        <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="#">Facebook</a></li>
+                                        <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="#">Twitter</a></li>
+                                        <li class="github"><span><i class="fa fa-github"></i></span><a href="#">Github</a></li>
+                                    </ul>
+                                </div>
+                                <!-- End Social Us-->
+                                
+                                <!-- Recent links-->
+                                <div class="col-md-5">
+                                    <h3>TRAVEL SPECIALISTS </h3>
+                                    <ul>
+                                        <li><i class="fa fa-check"></i> <a href="#">Golf Vacations</a></li>
+                                        <li><i class="fa fa-check"></i> <a href="#">Disney Parks Vacations</a></li>
+                                        <li><i class="fa fa-check"></i> <a href="#">Vacations As Advertised</a></li>                                    
+                                    </ul>
+                                </div>
+                                <!-- End Recent links-->
+
+                                <!-- Contact Us-->
+                                <div class="col-md-4">
+                                   <h3>CONTACT US</h3>
+                                   <ul class="contact_footer">
+                                        <li>
+                                            <i class="fa fa-envelope"></i> <a href="#">example@example.com</a>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-headphones"></i> <a href="#">55-5698-4589</a>
+                                         </li>
+                                        <li class="location">
+                                            <i class="fa fa-home"></i> <a href="#"> Av new stret - New York</a>
+                                        </li>                                   
+                                    </ul>
+                                </div>
+                                <!-- Contact Us-->
+                            </div>  
+
+                            <div class="divisor"></div>
+                            
+                            <div class="row">
+                                <!-- Newsletter-->
+                                <div class="col-md-12">
+                                    <h3>NEWSLETTER SIGN UP</h3>  
+                                    <form id="newsletterForm" action="php/mailchip/newsletter-subscribe.php">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Your Name" name="name" type="text" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </span>
+                                                    <input class="form-control" placeholder="Your  Email" name="email" type="email" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="submit" name="subscribe">SIGN UP</button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>   
+                                    <div id="result-newsletter"></div>
+                                </div>
+                                <!-- end Newsletter-->
+                            </div>                      
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="ln-ft">
-            <p class="disc-ft">2015 Yo Planner, S.A. de C.V.</p>
+
+                <!-- footer Down-->
+                <div class="footer-down">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <p>&copy; 2015 YoPlanner . All Rights Reserved.  2010 - 2015</p>
+                            </div>
+                            <div class="col-md-7">
+                                <!-- Nav Footer-->
+                                <ul class="nav-footer">
+                                    <li><a href="index.html">HOME</a> </li>
+                                    <li><a href="hotel-index.html">HOTELS</a></li>
+                                    <li><a href="flight-index.html">FLIGHTS</a></li> 
+                                    <li><a href="car-index.html">CARS</a></li> 
+                                    <li><a href="cruice-index.html">CRUICES</a></li>                
+                                    <li><a href="contact.html">CONTACT</a></li>
+                                </ul>
+                                <!-- End Nav Footer-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer Down-->
+            </footer>      
+            <!-- End footer-->
         </div>
-    </div>
-    </footer>
-</div>
-<script type="text/javascript" src="https://apis.google.com/js/plusone.js">
-  {parsetags: 'explicit'}
-</script>
-	</body>
-	
-<!-- Mirrored from www.theteafactory.ca/ by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 15 Jan 2014 06:30:49 GMT -->
+        <!-- End layout-->
+
+        <!-- ======================= JQuery libs =========================== -->
+        <!-- jQuery local--> 
+        <script src="js/jquery.js"></script>  
+        <script src="js/jquery-ui.1.10.4.min.js"></script>                
+        <!--Nav-->
+        <script src="js/nav/jquery.sticky.js" type="text/javascript"></script>    
+        <!--Totop-->
+        <script type="text/javascript" src="js/totop/jquery.ui.totop.js" ></script>  
+         <!--Accorodion-->
+        <script type="text/javascript" src="js/accordion/accordion.js" ></script>  
+        <!--Slide Revolution-->
+        <script type="text/javascript" src="js/rs-plugin/js/jquery.themepunch.tools.min.js" ></script>      
+        <script type='text/javascript' src='js/rs-plugin/js/jquery.themepunch.revolution.min.js'></script>    
+        <!-- Maps -->
+        <script src="js/maps/gmap3.js"></script>            
+        <!--Ligbox--> 
+        <script type="text/javascript" src="js/fancybox/jquery.fancybox.js"></script> 
+        <!-- carousel.js-->
+        <script src="js/carousel/carousel.js"></script>
+        <!-- Filter -->
+        <script src="js/filters/jquery.isotope.js" type="text/javascript"></script>
+        <!-- Twitter Feed-->
+        <script src="js/twitter/jquery.tweet.js"></script> 
+        <!-- flickr Feed-->
+        <script src="js/flickr/jflickrfeed.min.js"></script>    
+        <!--Theme Options-->
+        <script type="text/javascript" src="js/theme-options/theme-options.js"></script>
+        <script type="text/javascript" src="js/theme-options/jquery.cookies.js"></script> 
+        <!-- Bootstrap.js-->
+        <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script> 
+        <script type="text/javascript" src="js/bootstrap/bootstrap-slider.js"></script> 
+        <!--MAIN FUNCTIONS-->
+        <script type="text/javascript" src="js/main.js"></script>
+        <!-- ======================= End JQuery libs =========================== -->
+
+        <!--Slider Function-->
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                jQuery('.tp-banner').show().revolution({
+                    dottedOverlay:"none",
+                    delay:5000,
+                    startwidth:1170,
+                    startheight:925,
+                    minHeight:500,
+                    navigationType:"none",
+                    navigationArrows:"solo",
+                    navigationStyle:"preview1"
+                });             
+            }); //ready
+        </script>
+        <!--End Slider Function-->
+    </body>
 </html>

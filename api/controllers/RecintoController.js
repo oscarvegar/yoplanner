@@ -28,20 +28,28 @@ module.exports = {
         // Start the request
         HttpClientService.httpsGET(options,function(response){
             response = JSON.parse(response);
-            for(var i in response.hotels){
-                for(var j in response.hotels[i].pictures){
-                    
+            if(response && response.hotels) {
+                for(var i in response.hotels){
+                    for(var j in response.hotels[i].pictures){
                         response.hotels[i].pictures[j] = URL_PICTURES + response.hotels[i].pictures[j];
-                    
+                    }
                 }
             }
-            return res.json(response);
+            options.path="/hotels/"+id+"/reviews?pagesize=5";
+            HttpClientService.httpsGET(options,function(rews){
+                rews = JSON.parse(rews);
+                if(rews && response) {
+                    response.hotels[0].reviews = rews.reviews;
+                }
+                return res.json(response);
+            })
+            
         });
 
     },
     findByCiudadId: function(req,res){
         var hotelesVendidos = {
-                MEX:[{hid:291348},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
+                MEX:[{hid:551409},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
                 CVJ:[{hid:264485,fotoPrincipal:URL_PICTURES+"ffea4faa-f894-4db2-8e4b-8bfe7786c3fc"}],
                 CUN:[{hid:214327},{hid:214570},{hid:563172},{hid:214692}],
                 RM0:[{hid:214327},{hid:214572},{hid:214570},{hid:563172},{hid:214692}], 
@@ -98,13 +106,15 @@ module.exports = {
                     }
                     //verifica si ya existe el id en la consulta
                     var items = ids.split(",");
-                    for(var s in items){
-                        if(items[s]==data.availability[d].hotel.id){
-                            resSize+=1;
-                            continue availability;
+                    if(data.availability[d].hotel) {
+                        for(var s in items){
+                            if(items[s]==data.availability[d].hotel.id){
+                                resSize+=1;
+                                continue availability;
+                            }
                         }
+                        ids += data.availability[d].hotel.id+",";
                     }
-                    ids += data.availability[d].hotel.id+",";
 
                 }
                 options = {

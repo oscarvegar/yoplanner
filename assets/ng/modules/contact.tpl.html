@@ -1,0 +1,235 @@
+
+            <!-- Section Title-->    
+            <div class="section-title-02">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h1>Contacto</h1>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="crumbs">
+                                <ul>
+                                    <li><a href="/#">Inicio</a></li>
+                                    <li>/</li>
+                                    <li>Contacto</li>                                       
+                                </ul>    
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>   
+            <!-- End Section Title-->
+
+            <!--Content Central -->
+            <div class="content-central">
+                <!-- Shadow Semiboxed -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+                </div>
+                <!-- End Shadow Semiboxed -->
+
+                <!-- Google Map -> 
+                <div id="map"></div>
+                <!- End Google Map --> 
+
+                <div class="col-md-12" ng-controller="ContactController">
+                    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options" control="map" ng-if="map.showMap">
+                        <ui-gmap-marker ng-repeat="m in map.markers" coords="m" icon="m.icon" idKey="m.id" options="m.options">
+                            <ui-gmap-window ng-cloak  coords="m.info.coords" isIconVisibleOnClick="false" options="m.info.options">
+                                <strong>{{m.info.hotel.name + ' / ' + m.info.hotel.phContact}}</strong>
+                            </ui-gmap-window>
+                        </ui-gmap-marker>
+                    </ui-gmap-google-map>
+                </div>
+
+                <!-- End content info - page Fill with -->
+                <div class="content_info">
+                    <div class="paddings-mini">
+                        <div class="container">
+                            <div class="row">
+                                <!-- Sidebars -->
+                                <div class="col-md-4">
+                                    <aside>
+                                        <h4>La Oficina</h4>
+                                        <address>
+                                          <strong>Yo Planner, S.A. de C.V.</strong><br>
+                                          <i class="fa fa-map-marker"></i><strong>Dirección: </strong> Lago Andromaco 53 int. 1303 <br/> Col. Ampliación Granada <br/> Del. Miguel Hidalgo <br/>
+                                          <i class="fa fa-plane"></i><strong>Ciudad: </strong> México, D. F.<br> C. P. 11520 <br/>
+                                          <i class="fa fa-phone"></i> <abbr title="Teléfono">P:</abbr> (55) 6274 - 6291
+                                        </address>
+
+                                        <address>
+                                          <strong>Yo Planner Emails</strong><br>
+                                          <i class="fa fa-envelope"></i><strong>Email:</strong><a href="mailto:contacto@yoplanner.com"> contacto@yoplanner.com</a>
+                                        </address>
+                                    </aside>
+
+                                    <hr class="tall">
+
+                                     <aside>
+                                        <h4>Recent flickr</h4>
+                                        <ul id="flickr" class="thumbs"></ul>
+                                    </aside>
+                                </div>
+                                <!-- End Sidebars -->
+
+                                <div class="col-md-8">
+                                    <h3>Formulario de Contacto</h3>
+                                    <p class="lead">
+                                       Encuentra una amplia variedad de boletos de avión y vuelos baratos, hoteles, paquetes turísticos, alquiler de coches, cruceros y más en YoPlanner.com. Elige tu destino favorito para planificar tus tan esperadas y próximas vacaciones. No olvides que puedes consultar la disponibilidad de vuelo y hoteles de manera rápida y sencilla hasta encontrar la opciones que mas se adapte a tus necesidades.
+                                       <br><br>
+                                       ¿Quieres que uno de nuestros Planners se ponga en contacto contigo? Recibe atención personalizada mandándonos un mensaje.
+                                    </p>
+
+                                    <form class="jotform-form" action="http://submit.jotform.co/submit/40271192909859/" method="post" name="form_40271192909859" id="40271192909859" accept-charset="utf-8" novalidate="true">
+                                      <input type="hidden" name="formID" value="40271192909859">
+                                      <div class="form-all">
+                                        <ul class="form-section">
+                                          <li class="form-line jf-required form-line-error" data-type="control_textbox" id="id_3">
+                                            <label class="form-label form-label-left form-label-auto" id="label_3" for="input_3">
+                                              Nombre
+                                              <span class="form-required">
+                                                *
+                                              </span>
+                                            </label>
+                                            <div id="cid_3" class="form-input jf-required">
+                                              <input type="text" class=" form-textbox validate[required] form-validation-error" data-type="input-textbox" id="input_3" name="q3_nombre3" size="50" value="">
+                                              <div class="form-error-message"><div class="form-error-arrow"><div class="form-error-arrow-inner"></div></div></div></div>
+                                          </li>
+                                          <li class="form-line jf-required" data-type="control_email" id="id_6">
+                                            <label class="form-label form-label-left form-label-auto" id="label_6" for="input_6">
+                                              Correo Electrónico
+                                              <span class="form-required">
+                                                *
+                                              </span>
+                                            </label>
+                                            <div id="cid_6" class="form-input jf-required">
+                                              <input type="email" class=" form-textbox validate[required, Email]" id="input_6" name="q6_correoElectronico" size="50" value="" placeholder="ejemplo@correo.com">
+                                            </div>
+                                          </li>
+                                          <li class="form-line" data-type="control_phone" id="id_7">
+                                            <label class="form-label form-label-left form-label-auto" id="label_7" for="input_7"> Número de teléfono </label>
+                                            <div id="cid_7" class="form-input jf-required">
+                                              <span class="form-sub-label-container">
+                                                <input class="form-textbox" type="tel" name="q7_numeroDe7[area]" id="input_7_area" size="3">
+                                                <span class="phone-separate">
+                                                  &nbsp;-
+                                                </span>
+                                                <label class="form-sub-label" for="input_7_area" id="sublabel_area"> Area Código </label>
+                                              </span>
+                                              <span class="form-sub-label-container">
+                                                <input class="form-textbox" type="tel" name="q7_numeroDe7[phone]" id="input_7_phone" size="8">
+                                                <label class="form-sub-label" for="input_7_phone" id="sublabel_phone" style="min-height: 13px;">&nbsp;</label>
+                                              </span>
+                                            </div>
+                                          </li>
+                                          <li class="form-line jf-required" data-type="control_textarea" id="id_5">
+                                            <label class="form-label form-label-left form-label-auto" id="label_5" for="input_5">
+                                              Mensaje
+                                              <span class="form-required">
+                                                *
+                                              </span>
+                                            </label>
+                                            <div id="cid_5" class="form-input jf-required">
+                                              <textarea id="input_5" class="form-textarea validate[required]" name="q5_mensaje5" cols="40" rows="6"></textarea>
+                                            </div>
+                                          </li>
+                                            
+                                          <li class="form-line" data-type="control_button" id="id_2">
+                                            <div id="cid_2" class="form-input-wide">
+                                              <div style="text-align:right" class="form-buttons-wrapper">
+                                                <button id="input_2" type="submit" class="btn form-submit-button form-submit-button-simple_blue">
+                                                Enviar
+                                                </button>
+                                              </div>
+                                            </div>
+                                          </li>
+                                          <li style="display:none">
+                                            Should be Empty:
+                                            <input type="text" name="website" value="">
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <input type="hidden" id="simple_spc" name="simple_spc" value="40271192909859-40271192909859">
+                                      <script type="text/javascript">
+                                        document.getElementById("si" + "mple" + "_spc").value = "40271192909859-40271192909859";
+                                      </script>
+                                    </form>
+
+                                    <div id="result"></div>  
+                                </div>
+                            </div>
+                            <hr class="tall">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>TRABAJA CON NOSOTROS / SE UN PLANNER</h3>
+                                    <p>Yo Planner siempre está buscando crecer, y para ello necesitamos crecer el corazón de la empresa: nuestro equipo de ventas.</p>
+                                    <p>Ofrecemos la oportunidad de crecimiento profesional en un ambiente de trabajo único y la posibilidad de trabajar en tu propio horario.</p>
+                                    <p>Si te interesa formar parte del /equipo Yo Planner/Yo Planner Team/, mándanos tu currículo.</p>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <!-- Single Carousel-->
+                                    <div id="single-carousel">
+                                        <div class="img-hover">
+                                            <div class="overlay"> <a href="img/HotelesYoPlanner.png" class="fancybox"></a></div>
+                                            <img src="img/HotelesYoPlanner.png" alt="" class="img-responsive" style="margin-left: auto; margin-right: auto; display: block;">
+                                        </div>
+                                    </div>
+                                    <!-- End Single Carousel-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                <!-- End content info - page Fill with  --> 
+
+                <!-- Twitter Section -->
+                <div class="section-twitter content_resalt border-top" style="padding: 0 0;">
+                    <i class="fa fa-twitter icon-big" style="top: 0; font-size: 9rem;"></i>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <h2>Our recents <span class="text-resalt">twitts</span>.</h2>
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6" style="height: 130px;overflow-x: hidden;overflow-y: scroll;">
+                                    <div twitter-timeline="618424051304796160" auto-resize="true" style="width:520px;" css-url="css/twitter-timeline/twitter-timeline.css" data-tweet-limit="5">Loading tweets...</div>
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div id="twitterr"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <!-- End Twitter Section -->  
+            </div>
+            <!-- End Content Central -->
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    //=================================== Carousel Services  ==============================//    
+                    $("#single-carousel, #single-carousel-sidebar").owlCarousel({
+
+                        // Most important owl features
+                        // items : 1,
+                        singleItem: true,
+
+                        //Autoplay
+                        autoPlay: 4000,
+
+                        // Navigation
+                        navigation : true,
+
+                        // Navigation
+                        autoHeight : true,
+
+                        //Basic Speeds
+                        slideSpeed : 400,
+
+                        //Pagination
+                        pagination : false
+                    });
+                }); //ready
+            </script>

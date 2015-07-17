@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>YoPlanner | Reservaciones</title>
+		<script type="text/javascript">
+			function parseSecond(val) {
+				console.log('parseSecond');
+			    var result = "Not found",
+			        tmp = [];
+			    var items = location.search.substr(1).split("&");
+			    for (var index = 0; index < items.length; index++) {
+			        tmp = items[index].split("=");
+			        if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+			    }
+			    return result;
+			}
+
+			console.log(parseSecond('home'));
+
+			function changeIFrameSrc() {
+				console.log('changeIFrameSrc');
+				document.getElementById('iFramYP').src = 'http://www.e-agencias.com.mx/ag32638/home/' + parseSecond('home');
+			}
+		</script>
+	</head>
+	<body onload="changeIFrameSrc()">
+		<table width="100%" border="0">
+			<tr>
+				<th width="15%" scope="col">&nbsp;</th>
+				<th width="70%" scope="col">
+					<iframe id="iFramYP" src="http://www.e-agencias.com.mx/ag32638" seamless="seamless" frameborder="0" scrolling="auto" style="height:55%;width:1000px;position: absolute; left: 140px; top: -70px;">
+				</th>
+				<th width="15%" scope="col">&nbsp;</th>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -13,10 +13,11 @@ module.exports = {
             var id = req.allParams().id;
             //if(id.length > 10)
                 //return res.json(500)
-                console.log("PATH >>>>>/autocomplete/cities/"+id);
+            var tmpId = encodeURIComponent(id);
+            console.log("PATH >>>>>/autocomplete/cities/"+tmpId);
             var options = {
                 hostname : "api.despegar.com",
-                path : "/autocomplete/cities/"+id,
+                path : "/autocomplete/cities/"+tmpId,
                 //options.method = "GET";
                 headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
             };

@@ -1,0 +1,327 @@
+
+            <!-- Section Title-->    
+            <div class="section-title-detailed" ng-controller="HotelController">
+                <!-- Single Carousel -->
+                <sngl-krsl pictures="currentHotel.pictures"></sngl-krsl>
+                <!-- End Single Carousel -->
+
+                <!-- Section Title-->
+                <div class="title-detailed">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <ul class="starts">
+                                    <li ng-repeat="i in starRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
+                                </ul>
+                                <h2>{{currentHotel.name}} 
+                                    <span>{{currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')}}</span>
+                                </h2>
+                            </div>
+
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Section Title-->
+            </div>   
+            <!-- End Section Title-->
+
+            <!--Content Central -->
+            <div class="content-central" ng-controller="HotelController">
+                <!-- Shadow Semiboxed -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+                </div>
+                <!-- End Shadow Semiboxed -->
+
+                <!-- content info - Features-->
+                <div class="content_info skin_base no-overflow">
+                    <div class="col-md-4">
+                        <h4><a href="javascript:void(0);" ng-click="$back();" style="text-decoration: underline;">&lt;&lt; Volver a su búsqueda</a></h4>
+                    </div>
+                    <div class="col-md-8"></div>
+                </div>   
+                <!-- End content info - Features--> 
+
+                <!-- End content info - Grey Section-->
+                <div class="content_info">
+                    <!-- Info Resalt-->
+                    <div class="content_resalt paddings-mini tabs-detailed" style="padding: 25px 0px;">
+                        <div class="container wow fadeInUp">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- Nav Tabs-->
+                                    <ul class="nav nav-tabs" id="myTab">
+                                        <li class="active">
+                                            <a href="?#hotel" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-home"></i> Descripción</a>
+                                        </li>
+                                        <li>
+                                            <a href="?#saloons" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-hotel"></i> Habitaciones y Salones</a>
+                                        </li>
+                                        <li>
+                                            <a href="?#extraInfo" ng-click="renderMap(false)" data-toggle="tab"><i class="fa fa-map-marker"></i>Ubicación</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0"><i class="fa fa-cart-plus"></i>Cotiza Grupo</a>
+                                        </li>
+                                        <li>
+                                            <a href="?#bookHotel" ng-click="renderMap(true);" data-toggle="tab"><i class="fa fa-cart-plus"></i>Reserva Hotel</a>
+                                        </li>
+                                        <!--
+                                        <li>
+                                            <button ng-click="agregarYRegresar()" ng-show="showAddButtonCurHot<0" class="btn btn-success col-md-12">Agregar a Mi Selección</button>
+                                        </li>
+                                         -->
+                                    </ul>
+                                    <!-- End Nav Tabs-->
+
+                                    <div class="tab-content">
+                                        <!-- Tab One - Hotel -->
+                                        <div class="tab-pane active" id="hotel">                                        
+                                            <h2>Información del hotel</h2>
+                                            <p>{{currentHotel.description}}</p>
+
+                                            <h3>Equipamiento y servicios del hotel</h3>
+                                            
+                                            <div class="row">
+                                                <!--
+                                                <p>{{Math.ceil(currentHotel.amenities.length / 3)}}</p>
+                                                <div ng-repeat="amenity in currentHotel.amenities">
+                                                    <p>{{$index}}</p>
+                                                    <p>{{(currentHotel.amenities.length / 3)}}</p>
+                                                    <p>{{Math.floor(currentHotel.amenities.length / 3)}}</p>
+                                                    <p>{{Math.ceil(currentHotel.amenities.length / 3)}}</p>
+                                                    <p>{{(((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) )}}</p>
+                                                    <p>{{($index%(((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ))}}</p>
+                                                    <p>{{(($index%(((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) )) == 0)}}</p>
+                                                </div>
+                                                 -->
+
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">
+                                                        <li ng-repeat="amenity in currentHotel.amenities" ng-if="$index < ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) )"><i class="fa fa-check"></i> {{amenity.description}}</li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">
+                                                        <li ng-repeat="amenity in currentHotel.amenities" ng-if="$index >= ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ) && $index < ( ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ) * 2 )"><i class="fa fa-check"></i> {{amenity.description}}</li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <ul class="list-styles">
+                                                        <li ng-repeat="amenity in currentHotel.amenities" ng-if="$index >= ( ( ((currentHotel.amenities.length / 3) - Math.floor(currentHotel.amenities.length / 3) >= 0.5) ? Math.ceil(currentHotel.amenities.length / 3) : Math.floor(currentHotel.amenities.length / 3) ) * 2 )"><i class="fa fa-check"></i> {{amenity.description}}</li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- end Tab One - Hotel -->
+
+                                        <!-- Tab Two - Salones -->
+                                        <div class="tab-pane" id="saloons">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <h3>Información de las habitaciones y salones</h3>
+                                                    <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
+                                                        <tr>
+                                                            <td>Total de Habitaciones</td>
+                                                            <td>{{currentHotel.infoExtra.totalHabitaciones}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total de Suites</td>
+                                                            <td>{{currentHotel.infoExtra.totalSuites}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Habitaciones Una Cama</td>
+                                                            <td>{{currentHotel.infoExtra.totalUnaCama}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Habitaciones Dos Camas</td>
+                                                            <td>{{currentHotel.infoExtra.TotalDosCamas}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total de Salones</td>
+                                                            <td>{{currentHotel.infoExtra.numeroSalones}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total Metros Cuadrados</td>
+                                                            <td>{{currentHotel.infoExtra.metrosTotales}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Salon Más Grande (Mts2)</td>
+                                                            <td>{{currentHotel.infoExtra.salonMasGrandeMetros}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Máxima Capacidad en Salón (Pax)</td>
+                                                            <td>{{currentHotel.infoExtra.salonMasGrandePersonas}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Plan</td>
+                                                            <td>Todo Incluido</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h3>Equipamiento y servicios de los salones </h3>
+                                                    <div style="width: 95%; height:auto; overflow-x:scroll;">
+                                                        <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
+                                                            <thead>
+                                                                <th><br>Salón</th>
+                                                                <th><br>Tamaño</th>
+                                                                <th><br>Alto</th>
+                                                                <th><br>Ancho</th>
+                                                                <th><br>Herradura</th>
+                                                                <th><br>Banquete</th>
+                                                                <th><br>Coctel</th>
+                                                                <th><br>Escuela</th>
+                                                                <th><br>Auditorio</th>
+                                                                <th><br>1/2 Luna</th>
+                                                                <th><br>Imperial</th>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="saloon in currentHotel.salones">
+                                                                    <td>{{saloon.nombre}}</td>
+                                                                    <td>{{saloon.tamano}}</td>
+                                                                    <td>{{saloon.alto}}</td>
+                                                                    <td>{{saloon.ancho}}</td>
+                                                                    <td>{{saloon.herradura}}</td>
+                                                                    <td>{{saloon.banquete}}</td>
+                                                                    <td>{{saloon.coctel}}</td>
+                                                                    <td>{{saloon.escuela}}</td>
+                                                                    <td>{{saloon.auditorio}}</td>
+                                                                    <td>{{saloon.medialuna}}</td>
+                                                                    <td>{{saloon.imperial}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                            </div>
+                                        </div>
+                                        <!-- end Tab Two - Salones -->
+
+                                        <!-- Tab Theree - Informacion Extra -->
+                                        <div class="tab-pane" id="extraInfo">
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options" control="map" ng-if="map.showMap">
+                                                        <ui-gmap-marker ng-repeat="m in map.markers" coords="m" icon="m.icon" idKey="m.id" options="m.options">
+                                                            <ui-gmap-window ng-cloak  coords="m.info.coords" isIconVisibleOnClick="false" options="m.info.options">
+                                                                <strong>{{m.info.hotel.name + ' / ' + m.info.hotel.fullAddress}}</strong>
+                                                            </ui-gmap-window>
+                                                        </ui-gmap-marker>
+                                                    </ui-gmap-google-map>
+                                                </div>
+                                            </div>
+
+                                            <!-- Google Map -> 
+                                            <div class="row">
+                                                <div id="map"></div>
+                                            </div>
+                                            <!- End Google Map -->
+
+                                        </div>
+                                        <!-- end Tab Theree - Informacion Extra -->
+
+                                        <!-- Tab Four - Book Hotel -->
+                                        <div class="tab-pane" id="bookHotel">
+
+                                            <div class="row">
+                                                <div class="col-md-12" style="padding-left: 0%;">
+
+                                                    <section class="entry-content clearfix" itemprop="articleBody">
+                                                        <iframe id="blockrandom" name="iframe" ng-src="{{iFrameSrc}}" width="100%" height="1100" scrolling="auto" align="top" frameborder="0" class="wrapper">Esta opción no funcionará correctamente. Lamentablemente su navegador no tiene soporte para Inline Frames</iframe>
+                                                    </section>
+                                                    <section class="entry-content clearfix" itemprop="articleBody">
+                                                        <p align="justify">&nbsp;</p>
+                                                    </section>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- end Tab Four - Book Hotel -->
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Info Resalt-->
+                </div>   
+                <!-- End content info - Grey Section--> 
+
+                <!-- content info - testimonials-->
+                <div class="content_info">
+                    <!-- Parallax Background ->
+                    <div class="bg_parallax image_{{imgBgAcronym}}_parallax"></div>
+                    <!- Parallax Background -->
+
+                    <div class="opacy_bg_02" style="background: rgba(1,1,1,1);">
+                        <!-- Testimonial Propertie-->
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="info-testimonial">  <!-- style="height:430px;overflow-y: scroll;" -->
+                                        <!-- Testimonials Carousel -->
+                                        <tstmnls-krsl reviews="currentHotel.reviews"></tstmnls-krsl>
+                                        <!-- End Testimonials Carousel -->
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="testimonial-info-2">
+                                        <!-- Use 'youtube-video' as an element or attribute. -->
+                                        <!--
+                                        <youtube-video video-id="videoID" player-vars="playerVars" player-width="'100%'" player-height="'400px'"></youtube-video>
+                                         -->
+                                        <youtube-video video-url="videoURL" player-vars="playerVars" player-width="'100%'" player-height="'400px'"></youtube-video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Testimonial Propertie-->
+                    </div>
+                </div>
+                <!-- End content info - testimonials-->
+            </div>
+            <!-- End Content Central -->
+
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    console.log('$(document).ready(function())');
+/*
+                    //=================================== Carousel testimonials  ===============================//  
+                    setTimeout( function() {
+                        $("#testimonials").owlCarousel({
+                            items : 1,
+                            autoPlay: 3200,  
+                            navigation : false,
+                            autoHeight : true,
+                            slideSpeed : 400,
+                            singleItem: true,
+                            pagination : true
+                        });
+                    }, 10000);
+*/
+                    //=================================== Ligbox  ===========================================//   
+                    $(".fancybox").fancybox({
+                        openEffect  : 'elastic',
+                        closeEffect : 'elastic',
+
+                        helpers : {
+                            title : {
+                                type : 'inside'
+                            }
+                        }
+                    });
+
+                    $("#layout").scrollTop = 0;
+                    
+                }); //ready
+            </script>

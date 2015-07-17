@@ -1,0 +1,151 @@
+ /**
+  * Images Backgrounds For Travel Destinations
+  */
+.image_PCM_parallax {
+  background: url("../img/yp-backgrounds/PCM/Hoteles En Playa Del Carmen.jpg");
+  background-size: 100% 450px;
+}
+.image_SJD_parallax,
+.image_CL1_parallax,
+.image_SD6_parallax {
+  background: url("../img/yp-backgrounds/SJD/Hoteles En Los Cabos.jpg");
+  background-size: 100% 450px;
+}
+.image_CUN_parallax {
+  background: url("../img/yp-backgrounds/CUN/Hoteles en Cancun.jpg");
+  background-size: 100% 450px;
+}
+.image_MZT_parallax {
+  background: url("../img/yp-backgrounds/MZT/Hoteles en Mazatlan.JPG");
+  background-size: 100% 450px;
+}
+.image_ACA_parallax {
+  background: url("../img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg");
+  background-size: 100% 450px;
+}
+.image_JGDSM_parallax {
+  background: url("../img/yp-backgrounds/JGDSM/Hoteles en Ixtapa.jpg");
+  background-size: 100% 450px;
+}
+.image_CZM_parallax {
+  background: url("../img/yp-backgrounds/CZM/Hoteles en Cozumel.jpg");
+  background-size: 100% 450px;
+}
+.image_MEX_parallax {
+  background: url("../img/yp-backgrounds/MEX/Hoteles Ciudad de Mexico.jpg");
+  background-size: 100% 450px;
+}
+.image_MTY_parallax {
+  background: url("../img/yp-backgrounds/MTY/Hoteles Monterrey.jpg");
+  background-size: 100% 450px;
+}
+.image_PVR_parallax {
+  background: url("../img/yp-backgrounds/PVR/Hoteles Puerto Vallarta.jpg");
+  background-size: 100% 450px;
+}
+.image_GDL_parallax {
+  background: url("../img/yp-backgrounds/GDL/Hoteles Guadalajara.jpg");
+  background-size: 100% 450px;
+}
+.image_NV1_parallax {
+  background: url("../img/yp-backgrounds/NV1/Hoteles Nuevo Vallarta.jpg");
+  background-size: 100% 450px;
+}
+.image_ZLO_parallax {
+  background: url("../img/yp-backgrounds/ZLO/Hoteles en Manzanillo.jpg");
+  background-size: 100% 450px;
+}
+.image_PA0_parallax {
+  background: url("../img/yp-backgrounds/PA0/Hoteles en Pachuca.jpg");
+  background-size: 100% 450px;
+}
+.image_TLC_parallax {
+  background: url("../img/yp-backgrounds/TLC/Hoteles en Toluca.jpg");
+  background-size: 100% 450px;
+}
+.image_CVJ_parallax {
+  background: url("../img/yp-backgrounds/CVJ/Hoteles en Cuernavaca.jpg");
+  background-size: 100% 450px;
+}
+.image_HUX_parallax {
+  background: url("../img/yp-backgrounds/HUX/Hoteles en Huatulco.jpg");
+  background-size: 100% 450px;
+}
+.image_PBC_parallax {
+  background: url("../img/yp-backgrounds/PBC/Hoteles en Puebla.jpg");
+  background-size: 100% 450px;
+}
+.image_QRO_parallax {
+  background: url("../img/yp-backgrounds/QRO/Hoteles en Queretaro.jpg");
+  background-size: 100% 450px;
+}
+.image_RM0_parallax {
+  background: url("../img/yp-backgrounds/RM0/Hoteles en Riviera Maya.jpg");
+  background-size: 100% 450px;
+}
+
+.content_info .image_PCM_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_SJD_parallax,
+.content_info .image_CL1_parallax,
+.content_info .image_SD6_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_CUN_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_MZT_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_ACA_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_JGDSM_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_CZM_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_MEX_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_MTY_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_PVR_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_GDL_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_NV1_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_ZLO_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_PA0_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_TLC_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_CVJ_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_HUX_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_PBC_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_QRO_parallax {
+  background-size: 1230px 435px;
+}
+.content_info .image_RM0_parallax {
+  background-size: 1230px 435px;
+}
+ /**
+  *
+  */
