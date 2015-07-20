@@ -1,0 +1,204 @@
+<html  ng-app="yoPlannerAppResume">
+	<head>
+		<script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-37524502-5', 'yoplanner.com');
+            ga('send', 'pageview');
+
+        </script>
+
+        <script src="../js/angular.min.js"></script>
+        <script src="resumen.js"></script>
+        <script type="text/javascript" src="../js/moment/moment.js"></script>
+        <style type="text/css">
+        	.table tr td{
+        		width: 10%;
+        		padding-top: 20px;
+        		padding-left:10px;
+        		border-bottom: thin dotted;
+        		font-size: 12px;
+        	}
+        	.label{
+        		font-weight: bold;
+        		font-size: 13px;
+        	}
+        	.logo{
+        		
+        		float: right;
+        		margin-right: -10%;
+        	}
+        	.head p{
+        		float: right;
+        	}
+        	h1, h3,h2{
+        		text-align: center;
+        		font-family:Impact, Charcoal, sans-serif;
+        		font-weight: lighter;
+        		color: gray;
+        	}
+        	.clear{
+        		clear: both;
+        	}
+        	.spacer{
+        		text-align: center;
+        		height: 200px;
+        	}
+        	.printIcon{
+        		width: 120px;
+        		height: 120px;
+        		cursor: pointer;
+				cursor: hand;
+        	}
+        	.hand{
+        		cursor: pointer, hand;
+        	}
+        </style>
+	</head>
+	<body ng-controller="ResumenController" style="width:80%;margin-left:10%;">
+		<div class="head">
+			<img src="../img/yp-logo.png" class="logo" style="width:200px;height:60px;">
+			<!--p><b>Yo Planner S.A. de C.V. </b><br>
+				<b>RFC: YPL111202TY5</b><br>
+                Lago Andrómaco 53 – 1303<br>
+                Col. Ampliación Granada<br>
+                México, D.F. 11520</p-->
+		<div>
+		<div class="clear"/>
+			<h2>SOLICITUD DE COTIZACIÓN</h2>
+		
+		<div >
+			<h3>DATOS DEL GRUPO</h3>
+				<table class="table">
+					<tr>
+						
+						<td class="label">NOMBRE</td>
+						<td colspan="2">{{rfp.nombre}}</td>
+						
+						<td class="label">FECHA DE ENTRADA</td>
+						<td colspan="2">{{formatDateNormal(rfp.fechaInicial)}}</td>
+						
+						<td class="label">FECHA DE SALIDA</td>
+						<td colspan="2">{{formatDateNormal(rfp.fechaFinal)}}</td>
+						
+					</tr>
+					<tr>
+						
+						<td class="label">ASISTENTES</td>
+						<td colspan=2>{{rfp.asistenciaEsperada}}</td>
+						
+						<td class="label">HAB. SENCILLAS</td>
+						<td colspan=2><a ng-repeat="hab in rfp.sencillas">{{formatDate(hab.fecha)}} - {{hab.habitaciones}}<br></a></td>
+						
+						<td class="label">HAB. DOBLES</td>
+						<td colspan=2><a ng-repeat="hab in rfp.dobles">{{formatDate(hab.fecha)}} - {{hab.habitaciones}}<br></a></td>
+						
+					</tr>
+					<tr>
+						
+						<td class="label">COMENTARIOS ADICIONALES</td>
+						<td colspan="8">{{rfp.comentarios}}</td>
+					</tr>
+				</table>
+			
+		</div>
+		<div>
+			<h3>EVENTOS</h3>
+				<div ng-repeat="salon in rfp.salones">
+				<table class="table" >
+					<tr>
+						
+						<td class="label">NOMBRE EVENTO</td>
+						<td colspan=5>{{salon.nombreEvento}}</td>
+						
+						<td class="label">PARTICIPANTES</td>
+						<td colspan=2>{{salon.asistentes}}</td>
+						
+					</tr>
+					<tr>
+
+						
+						<td class="label">FECHA</td>
+						<td colspan=2>{{formatDateNormal(salon.fecha)}}</td>
+						
+						<td class="label">HORA INICIO</td>
+						<td colspan=2>{{salon.horaInicio}}</td>
+						
+						<td class="label">HORA FIN</td>
+						<td colspan=2>{{salon.horaFin}}</td>
+						
+					</tr>
+					<tr>
+						
+						<td class="label">TIPO DE EVENTO</td>
+						<td colspan=2>{{salon.tipoEvento.description}}</td>
+						
+						<td class="label">MONTAJE</td>
+						<td colspan=5>{{salon.tipoSalon.description}}</td>
+						
+					</tr>
+
+					<tr>
+						
+						<td class="label">COMENTARIOS ADICIONALES</td>
+						<td colspan="8">{{salon.comentarios}}</td>
+					</tr>
+				</table>
+				<hr>
+				</div>
+		</div>
+		
+		<div>
+			<h3>SELECCIÓN DE HOTELES</h3>
+				<div   style="text-align:center;">
+				<b ng-repeat="recinto in rfp.recintos">{{recinto.name}}<br></b>
+				</div>			
+		</div>
+		<div>
+			<h3>DATOS DEL CLIENTE</h3>
+				<table class="table">
+					<tr>
+						
+						<td class="label">NOMBRE</td>
+						<td colspan=2>{{rfp.nombreCliente}}</td>
+						
+						<td class="label">E-MAIL</td>
+						<td colspan=2>{{rfp.email}}</td>
+						
+						<td class="label">TELEFONO</td>
+						<td colspan=2>{{rfp.telefonoContacto}}</td>
+						
+					</tr>
+					<tr>
+						
+						<td class="label">EMPRESA</td>
+						<td colspan=2>{{rfp.empresa}}</td>
+						
+						<td class="label">CARGO</td>
+						<td colspan=2>{{rfp.puesto}}</td>
+						
+						<td class="label">PAÍS</td>
+						<td colspan=2>{{rfp.paisText}}</td>
+						
+					</tr>
+					<tr>
+						
+						<td class="label">ESTADO</td>
+						<td colspan=2>{{rfp.estadoText}}</td>
+						
+						<td class="label">CIUDAD</td>
+						<td colspan=5>{{rfp.ciudadText}}</td>
+					</tr>
+				</table>
+				<!--div class="spacer" style="text-align:center">
+					<br>
+					<br>
+					<br>
+					<img src="../img/printer-icon.png" class="printIcon" onclick="this.parentNode.style.display='none';window.print();this.parentNode.style.display='inline'"><br>Imprimir
+				</div-->
+		</div>
+	</body>
+</html>
