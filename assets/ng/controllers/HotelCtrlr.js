@@ -91,71 +91,71 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 	$urlRouterProvider
 	// The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
 	// Here we are just setting up some convenience urls.
-		.when('/acapulco', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'ACA'});
+		.when('/hoteles_en_acapulco', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'ACA'}, {location: false});
 		})
-		.when('/loscabos', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'CL1'});
+		.when('/hoteles_en_los_cabos', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CL1'}, {location: false});
 		})
-		.when('/cancun', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'CUN'});
+		.when('/hoteles_en_cancun', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CUN'}, {location: false});
 		})
-		.when('/cuernavaca', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'CVJ'});
+		.when('/hoteles_en_cuernavaca', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CVJ'}, {location: false});
 		})
-		.when('/cozumel', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'CZM'});
+		.when('/hoteles_en_cozumel', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'CZM'}, {location: false});
 		})
-		.when('/guadalajara', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'GDL'});
+		.when('/hoteles_en_guadalajara', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'GDL'}, {location: false});
 		})
-		.when('/huatulco', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'HUX'});
+		.when('/hoteles_en_huatulco', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'HUX'}, {location: false});
 		})
-		.when('/ixtapa', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'JGDSM'});
+		.when('/hoteles_en_ixtapa', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'JGDSM'}, {location: false});
 		})
-		.when('/ciudaddemexico', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'MEX'});
+		.when('/hoteles_en_ciudad_de_mexico', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'MEX'}, {location: false});
 		})
-		.when('/monterrey', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'MTY'});
+		.when('/hoteles_en_monterrey', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'MTY'}, {location: false});
 		})
-		.when('/mazatlan', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'MZT'});
+		.when('/hoteles_en_mazatlan', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'MZT'}, {location: false});
 		})
-		.when('/nuevovallarta', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'NV1'});
+		.when('/hoteles_en_nuevo_vallarta', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'NV1'}, {location: false});
 		})
-		.when('/pachuca', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'PA0'});
+		.when('/hoteles_en_pachuca', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PA0'}, {location: false});
 		})
-		.when('/puebla', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'PBC'});
+		.when('/hoteles_en_puebla', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PBC'}, {location: false});
 		})
-		.when('/playadelcarmen', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'PCM'});
+		.when('/hoteles_en_playa_del_carmen', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PCM'}, {location: false});
 		})
-		.when('/puertovallarta', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'PVR'});
+		.when('/hoteles_en_puerto_vallarta', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'PVR'}, {location: false});
 		})
-		.when('/queretaro', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'QRO'});
+		.when('/hoteles_en_queretaro', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'QRO'}, {location: false});
 		})
-		.when('/rivieramaya', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'RM0'});
+		.when('/hoteles_en_riviera_maya', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'RM0'}, {location: false});
 		})
-		.when('/cabosanlucas', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'SD6'});
+		.when('/hoteles_en_cabo_san_lucas', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'SD6'}, {location: false});
 		})
-		.when('/sanjosedelcabo', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'SJD'});
+		.when('/hoteles_en_san_jose_del_cabo', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'SJD'}, {location: false});
 		})
-		.when('/toluca', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'TLC'});
+		.when('/hoteles_en_toluca', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'TLC'}, {location: false});
 		})
-		.when('/manzanillo', function ($match, $state, $stateParams) {
-			$state.go('hotel.review', {searchId: 'ZLO'});
+		.when('/hoteles_en_manzanillo', function ($match, $state, $stateParams) {
+			$state.go('hotel.review', {searchId: 'ZLO'}, {location: false});
 		})
 
 	// If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
@@ -266,7 +266,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     	$log.info('HotelController.findSelectedHotelDetail');
 
     	$scope.videoID = '9GdVZfIBvxQ';
-    	$scope.videoURL = 'https://www.youtube.com/watch?v=9GdVZfIBvxQ';
+    	$scope.videoURL = 'https://www.youtube.com/watch?v=JGmFl_gyaew';
     	$scope.playerVars = {
 		    controls: 1,
 		    autoplay: 0
@@ -278,6 +278,10 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         $http.get("/recinto/findById/"+hotelId).success(function(data){
         	$log.info("SELECTED HOTEL SEARCH > > > >", data);
     		$log.info("SELECTED HOTEL ROOT_SCOPE > > > >", $rootScope.selectedHotel);
+
+	    	if(hotelId == 353356) {
+	    		$scope.videoURL = 'https://www.youtube.com/watch?v=9GdVZfIBvxQ';	// Paradisus Playa del Carmen La Esmeralda
+	    	}
 
         	if(data) {
 	        	if(data.hotels.length > 0) {

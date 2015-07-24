@@ -63,7 +63,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			templateUrl: "ng/modules/homepage.tpl.html"
 		})
 		.state('acerca_de', {
-			url: "/acerca-de",
+			url: "/quienes_somos",
 			templateUrl: "ng/modules/acerca.de.tpl.html"
 		})
 		.state('nuestros_servicios', {
@@ -71,7 +71,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			templateUrl: "ng/modules/nuestros.servicios.tpl.html"
 		})
 		.state('mrktng_hoteles', {
-			url: "/mrktng-hoteles",
+			url: "/publicidad_para_hoteles",
 			templateUrl: "ng/modules/mrktng.hoteles.tpl.html"
 		})
 		.state('meetings', {
@@ -79,7 +79,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			templateUrl: "ng/modules/meetings.tpl.html"
 		})
 		.state('travel_agency', {
-			url: "/travel-agency",
+			url: "/agencia_de_viajes",
 			templateUrl: "ng/modules/travel.agency.tpl.html"
 		})
 		.state('influencer', {
@@ -91,15 +91,15 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			templateUrl: "ng/modules/embedded.site.tpl.html"
 		})
 		.state('cruises', {
-			url: "/cruises",
+			url: "/cruceros",
 			templateUrl: "ng/modules/cruises.tpl.html"
 		})
 		.state('contact', {
-			url: "/contact",
+			url: "/contacto",
 			templateUrl: "ng/modules/contact.tpl.html"
 		})
 		.state('politicas_privacidad', {
-			url: "/politicas-privacidad",
+			url: "/aviso_de_privacidad",
 			templateUrl: "ng/modules/politicas.privacidad.tpl.html"
 		});
 	
