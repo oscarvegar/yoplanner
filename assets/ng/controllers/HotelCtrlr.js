@@ -279,7 +279,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         	$log.info("SELECTED HOTEL SEARCH > > > >", data);
     		$log.info("SELECTED HOTEL ROOT_SCOPE > > > >", $rootScope.selectedHotel);
 
-	    	if(hotelId == 353356) {
+	    	if(hotelId == 352782 || hotelId == 353356) {
 	    		$scope.videoURL = 'https://www.youtube.com/watch?v=9GdVZfIBvxQ';	// Paradisus Playa del Carmen La Esmeralda
 	    	}
 
