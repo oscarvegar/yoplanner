@@ -11,7 +11,7 @@ module.exports = {
 			var imagen = content.substr(idxImgIni+9,content.search(".jpg")-idxImgIni-5);
 			console.log("IMAGEN >>>>>",imagen)
 
-			var description = response.body.labels[0];
+			var description = response.body.labels?response.body.labels[0]:"";
 			for(var i in response.body.labels){
 				if(i==0)continue;
 				description=description+","+response.body.labels[i];
