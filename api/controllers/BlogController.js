@@ -19,10 +19,12 @@ module.exports = {
 			metas={
 	            title : response.body.title,
 	            image : imagen,
-	            description : description
+	            description : description,
+	            postId : id
 	        }
 	        req.session.metas = metas;
-	        res.redirect('/#/blog/'+id);
+	        res.locals.response = res;
+	        res.view("homepage")
 		})
 		
 	}
