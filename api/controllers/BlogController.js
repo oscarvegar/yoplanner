@@ -3,7 +3,7 @@ module.exports = {
 	'getPost':function(req,res){
 		var id = req.allParams().id;
 		req.session.postId = id;
-		unirest.get("https://www.googleapis.com/blogger/v3/blogs/2308029918415221280/posts/"+req.session.postId+"?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y")
+		unirest.get("https://www.googleapis.com/blogger/v3/blogs/6838970422906123086/posts/"+req.session.postId+"?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y")
 		.end(function(response){
 			//console.log(response.body)
 			var content = response.body.content;

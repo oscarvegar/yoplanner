@@ -5,7 +5,7 @@ angular.module('yoplanner.blog',[])
 		$scope.current = $state.current;
 		console.log("STATE NAME >>>>>",$state.current.name)
 		if($state.current.name == 'blog'){
-			$http.get('https://www.googleapis.com/blogger/v3/blogs/2308029918415221280/posts?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y')
+			$http.get('https://www.googleapis.com/blogger/v3/blogs/6838970422906123086/posts?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y')
 			.success(function(data){
 				console.log("BLOG DATA >>>>> ",data.items);
 				$scope.posts = data.items;
@@ -37,7 +37,7 @@ angular.module('yoplanner.blog',[])
 		}else if($state.current.name == 'blogPost'){
 
 			$scope.posts = [];
-			$http.get('https://www.googleapis.com/blogger/v3/blogs/2308029918415221280/posts/'+$stateParams.id+'?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y')
+			$http.get('https://www.googleapis.com/blogger/v3/blogs/6838970422906123086/posts/'+$stateParams.id+'?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y')
 			.success(function(data){
 				var content = data.content;
 				var idxImgIni = content.search("<a href=");
