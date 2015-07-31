@@ -2,13 +2,14 @@
 <html lang="en" ng-app="yoPlannerApp">
 <head>
   <% if(typeof session.metas != 'undefined'){%>
-      <meta property="og:image" itemprop="image primaryImageOfPage" content="<%=session.metas.image%>" />
-      <meta name="og:title" id="mtt" property="og:title" itemprop="title name" content="<%=session.metas.title%>" />
-      <meta name="og:description" property="og:description" itemprop="description" content="<%=session.metas.description%>" />
+      <meta property="og:image" content="<%=session.metas.image%>" />
+      <meta property="og:title" content="<%=session.metas.title%>" />
+      <meta property="og:description" content="<%=session.metas.description%>" />
       <%  if(session.metas.postId){
-            var postId = session.metas.postId;
-            session.metas.postId = null;
-            response.redirect("/#/blog/"+postId)
+            var postId = session.metas.postId; 
+            session.metas.postId = null; %>
+            <script>window.location ="/#/blog"+<%=postId%></script>
+      <%
           }
       %>
   <%}%>

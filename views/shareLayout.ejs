@@ -1,0 +1,16 @@
+<html lang="en" ng-app="yoPlannerApp">
+<head>
+  <% if(typeof session.metas != 'undefined'){%>
+      <meta property="og:image" content="<%=session.metas.image%>" />
+      <meta property="og:title" content="<%=session.metas.title%>" />
+      <meta property="og:description" content="<%=session.metas.description%>" />
+      <%  if(session.metas.postId){
+            var postId = session.metas.postId; 
+            session.metas.postId = null; %>
+            <script>window.location ="/#/blog/"+<%=postId%></script>
+      <%
+          }
+      %>
+  <%}%>
+</head>
+</html>

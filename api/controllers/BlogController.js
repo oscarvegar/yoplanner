@@ -24,7 +24,7 @@ module.exports = {
 	        }
 	        req.session.metas = metas;
 	        res.locals.response = res;
-	        res.view("homepage")
+	        res.view("empty",{layout:"shareLayout"})
 		})
 		
 	}
