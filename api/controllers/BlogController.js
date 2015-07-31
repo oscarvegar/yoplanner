@@ -14,8 +14,8 @@ module.exports = {
 			if(idxImgExt<0)idxImgExt = content.search(".PNG");
 			if(idxImgExt<0)idxImgExt = content.search(".gif");
 			if(idxImgExt<0)idxImgExt = content.search(".GIF");
-			var imagen = content.substr(idxImgIni+9,content.search(".jpg")-idxImgIni-5);
-			//console.log("IMAGEN >>>>>",imagen)
+			var imagen = content.substr(idxImgIni+9,idxImgExt-idxImgIni-5);
+			console.log("IMAGEN >>>>>",imagen)
 
 			var description = response.body.labels?response.body.labels[0]:"";
 			for(var i in response.body.labels){
