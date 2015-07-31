@@ -8,6 +8,12 @@ module.exports = {
 			//console.log(response.body)
 			var content = response.body.content;
 			var idxImgIni = content.search("<a href=");
+			var idxImgExt = content.search(".jpg");
+			if(idxImgExt<0)idxImgExt = content.search(".JPG");
+			if(idxImgExt<0)idxImgExt = content.search(".png");
+			if(idxImgExt<0)idxImgExt = content.search(".PNG");
+			if(idxImgExt<0)idxImgExt = content.search(".gif");
+			if(idxImgExt<0)idxImgExt = content.search(".GIF");
 			var imagen = content.substr(idxImgIni+9,content.search(".jpg")-idxImgIni-5);
 			//console.log("IMAGEN >>>>>",imagen)
 
