@@ -74,7 +74,9 @@ module.exports.routes = {
   'GET /hoteles_en_cabo_san_lucas': '/#/hoteles_en_cabo_san_lucas',
   'GET /hoteles_en_san_jose_del_cabo': '/#/hoteles_en_san_jose_del_cabo',
   'GET /hoteles_en_toluca': '/#/hoteles_en_toluca',
-  'GET /hoteles_en_manzanillo': '/#/hoteles_en_manzanillo'
+  'GET /hoteles_en_manzanillo': '/#/hoteles_en_manzanillo',
+  'GET /blog': '/#/blog',
+  'GET /blog/:id': 'BlogController.getPost',
 
 
 };

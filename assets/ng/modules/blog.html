@@ -1,0 +1,193 @@
+ <!-- Section Title-->    
+            <div class="section-title-01">
+                <!-- Parallax Background -->
+                <div class="bg_parallax image_01_parallax"></div>
+                <!-- Parallax Background -->
+
+                <!-- Content Parallax-->
+                <div class="opacy_bg_02">
+                     <div class="container">
+                        <h1>Blog</h1>
+                        <div class="crumbs">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li>/</li>
+                                <li>Blog</li>                                       
+                            </ul>    
+                        </div>
+                    </div>  
+                </div>  
+                <!-- End Content Parallax--> 
+            </div>   
+            <!-- End Section Title-->
+
+            <!--Content Central -->
+            <section class="content-central" ng-controller="BlogCtrl">
+                <!-- Shadow Semiboxed -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+                </div>
+                <!-- End Shadow Semiboxed -->
+
+                <!-- content info - Blog-->
+                <div class="content_info">
+                    <div class="paddings-mini">
+                        <!-- content-->
+                        <div class="container">
+                            <div class="row">
+                                <!-- Post Items Full Content -->
+                                <div class="col-md-12">
+                                    <!-- Post Item Standart-->
+                                    <div class="post-item" ng-repeat="post in posts">
+                                        <div class="row">
+                                            <!-- Post Header-->
+                                            <div class="col-md-12">
+                                                <div class="post-header">
+                                                    <div class="post-format-icon post-format-standard">
+                                                        <i class="fa fa-camera"></i>
+                                                    </div>
+                                                    <div class="post-info-wrap">
+                                                        <h2 class="post-title"><a href="javascript:void;" title="Post Format: Standard" rel="bookmark">{{post.title}}</a></h2>
+                                                        <div class="post-meta">
+                                                            <ul>
+                                                                <li>
+                                                                    <i class="fa fa-user"></i>
+                                                                    <a href="#">{{post.author.displayName}}</a>
+                                                                </li>
+
+                                                                <li>
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                    <!--span></span-->
+                                                                    <span>{{post.published}}</span>
+                                                                </li>
+
+                                                                <!--li>
+                                                                    <i class="fa fa-eye"></i>
+                                                                    <span>234 Views</span>
+                                                                </li>
+
+                                                                <li>
+                                                                    <a href="#" title="Like">
+                                                                        <i class="fa fa-heart-o"></i>
+                                                                    </a>
+                                                                </li>
+
+                                                                <li>
+                                                                    <i class="fa fa-comments"></i>
+                                                                    <a href="#" title="Comment on Post Format: Standard">Leave a comment
+                                                                    </a>
+                                                                </li-->
+                                                            </ul>                      
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Post Header-->
+
+                                            <!-- Post Media-->
+                                            <div class="col-md-12" ng-if="current.name=='blog'">
+                                                <div class="img-hover">
+                                                    <div ng-bind-html="deliberatelyTrustDangerousSnippet(post.imagen)"></div>
+                                                    <div class="overlay"><a href="/#/blog/{{post.id}}"><i class="fa fa-link"></i></a></div>
+                                                </div>
+                                            </div>
+                                            <!-- Post Media-->
+
+                                            <!-- Post Content-->
+                                            <div class="col-md-12" ng-if="current.name=='blog'">
+                                                <div class="post-content" >
+                                                    <div ng-bind-html="deliberatelyTrustDangerousSnippet(post.limitText)" style="word-wrap: break-word;"></div>
+                                                    <br>
+                                                    <div class="read-more">
+                                                        <a href="/#/blog/{{post.id}}" class="btn btn-primary">Seguir Leyendo</a>
+                                                    </div>
+                                                </div>                                          
+                                            </div>
+                                            <!-- Post Content-->
+
+                                            <!-- Post Content-->
+                                            <div class="col-md-12" ng-if="current.name=='blogPost'">
+                                                <div class="post-content" >
+                                                    <div ng-bind-html="deliberatelyTrustDangerousSnippet(post.content)" style="word-wrap: break-word;"></div>
+                                                    <br>
+                                                    
+                                                </div>                                          
+                                            </div>
+                                            <!-- Post Content-->
+
+                                            <!-- Post Footer-->
+                                            <div class="col-md-12">
+                                                <div class="post-footer">
+                                                    <!-- Post Social-->
+                                                    <ul class="post-social tooltip-hover">
+                                                        <li>
+                                                            <a href="#" class="social-facebook" data-toggle="tooltip" title="" data-original-title="Share on Facebook">
+                                                                <i class="fa fa-facebook"></i>
+                                                                <i class="fa fa-facebook"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#" class="social-twitter" data-toggle="tooltip" title="" data-original-title="Share on Twitter">
+                                                                <i class="fa fa-twitter"></i>
+                                                                <i class="fa fa-twitter"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#" class="social-google-plus" data-toggle="tooltip" title="" data-original-title="Share on Google">
+                                                                <i class="fa fa-google-plus"></i>
+                                                                <i class="fa fa-google-plus"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#" class="social-pinterest" data-toggle="tooltip" title="" data-original-title="Share on pinterest">
+                                                                <i class="fa fa-pinterest"></i>
+                                                                <i class="fa fa-pinterest"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#" class="social-linkedin" data-toggle="tooltip" title="" data-original-title="Share on linkedin">
+                                                                <i class="fa fa-linkedin"></i>
+                                                                <i class="fa fa-linkedin"></i>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="#" class="social-email" data-toggle="tooltip" title="" data-original-title="Share on envelope">
+                                                                <i class="fa fa-envelope-o"></i>
+                                                                <i class="fa fa-envelope-o"></i>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <!-- Post Social-->
+                                                </div>
+                                            </div>
+                                            <!-- Post Footer-->
+                                       </div>
+                                    </div>
+                                    <!-- End Post Item Standart-->
+
+                                    
+
+                                    <ul class="pagination">
+                                        <li><a href="#">«</a></li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">»</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Post Items Full Content -->
+                            </div>
+                        </div>
+                        <!-- End content-->
+                    </div>
+                </div>   
+                <!-- End content info - Blog--> 
+            </section>
+            <!-- End Content Central -->

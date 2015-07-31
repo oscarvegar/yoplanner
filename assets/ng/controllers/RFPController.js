@@ -182,7 +182,7 @@ angular.module('rfp-module', [])
 .directive('rfp', function() {
 	return {
         restrict: 'E',
-        templateUrl: 'ng/modules/rfp.html'
+        templateUrl: '/ng/modules/rfp.html'
     };
 }).config(function(){
 	

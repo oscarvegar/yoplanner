@@ -1,5 +1,5 @@
 var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
-	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline']);
+	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline','yoplanner.blog']);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
@@ -56,51 +56,59 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 	$stateProvider
 		.state('index', {
 			url: "",
-			templateUrl: "ng/modules/homepage.tpl.html"
+			templateUrl: "/ng/modules/homepage.tpl.html"
 		})
 		.state('index2', {
 			url: "/",
-			templateUrl: "ng/modules/homepage.tpl.html"
+			templateUrl: "/ng/modules/homepage.tpl.html"
 		})
 		.state('acerca_de', {
 			url: "/quienes_somos",
-			templateUrl: "ng/modules/acerca.de.tpl.html"
+			templateUrl: "/ng/modules/acerca.de.tpl.html"
 		})
 		.state('nuestros_servicios', {
 			url: "/nuestros-servicios",
-			templateUrl: "ng/modules/nuestros.servicios.tpl.html"
+			templateUrl: "/ng/modules/nuestros.servicios.tpl.html"
 		})
 		.state('mrktng_hoteles', {
 			url: "/publicidad_para_hoteles",
-			templateUrl: "ng/modules/mrktng.hoteles.tpl.html"
+			templateUrl: "/ng/modules/mrktng.hoteles.tpl.html"
 		})
 		.state('meetings', {
 			url: "/meetings",
-			templateUrl: "ng/modules/meetings.tpl.html"
+			templateUrl: "/ng/modules/meetings.tpl.html"
 		})
 		.state('travel_agency', {
 			url: "/agencia_de_viajes",
-			templateUrl: "ng/modules/travel.agency.tpl.html"
+			templateUrl: "/ng/modules/travel.agency.tpl.html"
 		})
 		.state('influencer', {
 			url: "/influencer",
-			templateUrl: "ng/modules/influencer.tpl.html"
+			templateUrl: "/ng/modules/influencer.tpl.html"
 		})
 		.state('reserva', {
 			url: "/reserva/:option",
-			templateUrl: "ng/modules/embedded.site.tpl.html"
+			templateUrl: "/ng/modules/embedded.site.tpl.html"
 		})
 		.state('cruises', {
 			url: "/cruceros",
-			templateUrl: "ng/modules/cruises.tpl.html"
+			templateUrl: "/ng/modules/cruises.tpl.html"
 		})
 		.state('contact', {
 			url: "/contacto",
-			templateUrl: "ng/modules/contact.tpl.html"
+			templateUrl: "/ng/modules/contact.tpl.html"
 		})
 		.state('politicas_privacidad', {
 			url: "/aviso_de_privacidad",
-			templateUrl: "ng/modules/politicas.privacidad.tpl.html"
+			templateUrl: "/ng/modules/politicas.privacidad.tpl.html"
+		})
+		.state('blog', {
+			url: "/blog",
+			templateUrl: "/ng/modules/blog.html"
+		})
+		.state('blogPost', {
+			url: "/blog/:id",
+			templateUrl: "/ng/modules/blog.html"
 		});
 	
 });
