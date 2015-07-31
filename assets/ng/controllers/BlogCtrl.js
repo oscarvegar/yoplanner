@@ -21,6 +21,15 @@ angular.module('yoplanner.blog',[])
 					post.contentText = post.content.substr(post.content.search("<a name='more'>"))
 					post.imagen = post.content.substr(0,post.content.search("<a name='more'>"))
 					post.limitText = $filter('limitTo')(post.contentText, 450);
+					var content = post.content;
+					var idxImgIni = content.search("<a href=");
+					var idxImgExt = content.search(".jpg");
+					if(idxImgExt<0)idxImgExt = content.search(".JPG");
+					if(idxImgExt<0)idxImgExt = content.search(".png");
+					if(idxImgExt<0)idxImgExt = content.search(".PNG");
+					if(idxImgExt<0)idxImgExt = content.search(".gif");
+					if(idxImgExt<0)idxImgExt = content.search(".GIF");
+					post.imagensrc = content.substr(idxImgIni+9,idxImgExt-idxImgIni-5);
 				}
 			}).catch(function(err){
 				console.error(err)
@@ -30,6 +39,15 @@ angular.module('yoplanner.blog',[])
 			$scope.posts = [];
 			$http.get('https://www.googleapis.com/blogger/v3/blogs/2308029918415221280/posts/'+$stateParams.id+'?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y')
 			.success(function(data){
+				var content = data.content;
+				var idxImgIni = content.search("<a href=");
+				var idxImgExt = content.search(".jpg");
+				if(idxImgExt<0)idxImgExt = content.search(".JPG");
+				if(idxImgExt<0)idxImgExt = content.search(".png");
+				if(idxImgExt<0)idxImgExt = content.search(".PNG");
+				if(idxImgExt<0)idxImgExt = content.search(".gif");
+				if(idxImgExt<0)idxImgExt = content.search(".GIF");
+				data.imagensrc = content.substr(idxImgIni+9,idxImgExt-idxImgIni-5);
 				$scope.posts.push(data)
 				
 			}).catch(function(err){
