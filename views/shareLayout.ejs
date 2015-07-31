@@ -4,10 +4,12 @@
       <meta property="og:image" content="<%=session.metas.image%>" />
       <meta property="og:title" content="<%=session.metas.title%>" />
       <meta property="og:description" content="<%=session.metas.description%>" />
-      <%  if(session.metas.postId){
-            var postId = session.metas.postId; 
-            session.metas.postId = null; %>
-            <script>window.location ="/#/blog/"+<%=postId%></script>
+      	<%  if(session.metas.postId){
+            var postId = "/#/blog/"+session.metas.postId; 
+            session.metas.postId = null; 
+			console.log("METAS PORST ID :::: "+postId)
+		%>
+            <script>window.location = "<%=postId%>"</script>
       <%
           }
       %>
