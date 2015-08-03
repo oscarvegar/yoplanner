@@ -9,7 +9,7 @@ module.exports = {
 	findByRecintoId:function(req,res){
 		var id = req.allParams().id;
 		console.log("INFO EXTRA RECINTO ID >>>>>",id)
-		InfoExtraRecinto.find({recinto:parseInt(id)}).exec(function(err,data){
+		InfoExtraRecinto.find({recinto:""+id)}).exec(function(err,data){
 			console.log("INFO EXTRA RECINTO >>>>> ",data)
 			res.json(data);
 		});

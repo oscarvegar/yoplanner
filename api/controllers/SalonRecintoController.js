@@ -9,7 +9,7 @@ module.exports = {
 	findByRecintoId:function(req,res){
 		var params = req.allParams();
 		console.log(params.id)
-		SalonRecinto.find({recinto:params.id}).exec(function(err,data){
+		SalonRecinto.find({recinto:""+params.id}).exec(function(err,data){
 			console.log(err)
 			console.log(data)
 			if(err){return res.send(500,err)};
