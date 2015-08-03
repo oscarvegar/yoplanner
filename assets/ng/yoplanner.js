@@ -179,7 +179,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 		var BuscaCruceroObj = {icon: 'fa-ship', text: 'Busca Crucero', stUrl: 'cruises'};
 		var BuscaParqueObj = {icon: 'fa-magic', text: 'Busca Parque'};
 		var BuscaRestauranteObj = {icon: 'fa-spoon', text: 'Busca Restaurante'};
-		var DescubreBlogObj = {icon: 'fa-blog-blue-34px', text: 'Descubre Blog', url: 'http://www.yoplanner.com.mx/blog/'};
+		var DescubreBlogObj = {icon: 'fa-blog-blue-34px', text: 'Descubre Blog', url: 'http://www.yoplanner.com/blog/'};
 		var ContáctanosObj = {icon: 'fa-contact-us-blue-34px', text: 'Contáctanos', stUrl: 'contact'};
 
 		$scope.servicesItems = new Array();
