@@ -281,6 +281,8 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 	    	if(hotelId == 352782 || hotelId == 353356) {
 	    		$scope.videoURL = 'https://www.youtube.com/watch?v=9GdVZfIBvxQ';	// Paradisus Playa del Carmen La Esmeralda
+	    	}else if($rootScope.selectedHotel && $rootScope.selectedHotel.video){
+	    		$scope.videoURL = $rootScope.selectedHotel.video	;
 	    	}
 
         	if(data) {
@@ -293,6 +295,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		        		hotelTMP["amenities"] = $rootScope.selectedHotel.amenities;
 		        		hotelTMP["fotoPrincipal"] = $rootScope.selectedHotel.fotoPrincipal;
 		        		hotelTMP["reviewSummary"] = $rootScope.selectedHotel.reviewSummary;
+		        		hotelTMP.video = $rootScope.selectedHotel.video;
 	        		}
 
 	        		$rootScope.selectedHotel = hotelTMP;

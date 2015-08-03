@@ -9,6 +9,23 @@
 ///availability/cities/{id}/hotels
 var URL_PICTURES = "http://media.staticontent.com/media/pictures/";
 var URL_CUSTOM_PICTURES = "./img/hoteles/";
+
+ var hotelesVendidos = {
+                MEX:[{hid:551409},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
+                CVJ:[{hid:264485,fotoPrincipal:URL_PICTURES+"ffea4faa-f894-4db2-8e4b-8bfe7786c3fc"}],
+                CUN:[{hid:214327},{hid:214570},{hid:563172},{hid:214692}],
+                RM0:[{hid:214327},{hid:214572},{hid:214570},{hid:563172},{hid:214692}], 
+                //SD6:[{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
+                SD6:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
+                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
+                SJD:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
+                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
+                CL1:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
+                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
+                ZLO:[{hid:354456,fotoPrincipal:URL_CUSTOM_PICTURES+"354456/354456-main.jpg",video:"https://youtu.be/zb4e1MTv3V4",description:"El Hotel Grand Isla Navidad Resort está ubicado frente a la Laguna de Barra de Navidad y a 70 km del centro de Manzanillo. El Aeropuerto Internacional Playa de Oro se encuentra a 31 km de la propiedad. Dispone de conexión Wi-Fi gratuita en habitaciones, salones y áreas públicas y piscinas descubiertas. Todas las habitaciones están equipadas con aire acondicionado, TV LCD satelital, caja fuerte digital y baño privado con tina y amenidades de lujo. El establecimiento alberga 3 restaurantes que sirven desde desayuno buffet hasta platillos regionales, nacionales e internacionales. Además, ofrece servicio a la habitación las 24h. Los servicios incluyen spa y sala de masajes, gimnasio, estacionamiento gratuito y canchas de tenis y un campo de golf de clase mundial de 27 hoyos."}],
+                PCM:[{hid:352782 ,fotoPrincipal:URL_CUSTOM_PICTURES+"352782/ppcmain.jpg"},{hid:353356,fotoPrincipal:null}]};
+      
+
 module.exports = {
     findByRFP: function(req,res){
         params = req.allParams();
@@ -30,6 +47,13 @@ module.exports = {
             response = JSON.parse(response);
             if(response && response.hotels) {
                 for(var i in response.hotels){
+                    for(var k in hotelesVendidos[response.hotels[i].cityId]){
+                        var hot = hotelesVendidos[response.hotels[i].cityId][k];
+                        response.hotels[i].video = hot.video;
+                        response.hotels[i].description = hot.description?hot.description:response.hotels[i].description;
+                                    
+
+                    }
                     for(var j in response.hotels[i].pictures){
                         response.hotels[i].pictures[j] = URL_PICTURES + response.hotels[i].pictures[j];
                     }
@@ -48,20 +72,7 @@ module.exports = {
 
     },
     findByCiudadId: function(req,res){
-        var hotelesVendidos = {
-                MEX:[{hid:551409},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
-                CVJ:[{hid:264485,fotoPrincipal:URL_PICTURES+"ffea4faa-f894-4db2-8e4b-8bfe7786c3fc"}],
-                CUN:[{hid:214327},{hid:214570},{hid:563172},{hid:214692}],
-                RM0:[{hid:214327},{hid:214572},{hid:214570},{hid:563172},{hid:214692}], 
-                //SD6:[{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                SD6:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
-                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                SJD:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
-                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                CL1:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
-                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                PCM:[{hid:352782 ,fotoPrincipal:URL_CUSTOM_PICTURES+"352782/ppcmain.jpg"},{hid:353356,fotoPrincipal:null}]};
-        
+         
         var hotelesProspecto = {
                 MEX:[{hid:291554},{hid:642043},{hid:572877}],
                 PVR:[{hid:643681}], //puerto vallarta
@@ -154,6 +165,8 @@ module.exports = {
                                         hot.pictures = hotelesVendidos[id][i].customPictures;
                                         
                                     }
+                                    hot.description = hotelesVendidos[id][i].description?hotelesVendidos[id][i].description:hot.description;
+                                    hot.video = hotelesVendidos[id][i].video?hotelesVendidos[id][i].video:"";
                                     hoteles.hotels.splice(j,1);
                                     arrResHot.push(hot);
                                     break;
