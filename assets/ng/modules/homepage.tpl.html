@@ -379,9 +379,29 @@
                 <!-- End content - Slide Features--> 
                 
                 <!-- content info - testimonials-->
-                <div class="content_info">
+                <div class="content_info" ng-controller="BlogCtrl">
                     <!-- Parallax Background -->
-                    <div class="bg_parallax image_02_parallax"></div>
+                    <div style="
+  margin: 0 auto;
+  padding: 0;
+  position: absolute;
+  z-index: 0;
+  left:0;
+  right:0;
+  width: 100%;
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: repeat-y;
+  background-position: 0 50%;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+  background: url('{{latestPost.imagensrc?latestPost.imagensrc:'../img/slide/2.jpg'}}')"></div>
                     <!-- Parallax Background -->
 
                     <div class="opacy_bg_02">
@@ -398,9 +418,9 @@
 
                                 <div class="col-md-8">
                                     <div class="testimonial-info">
-                                        <h2>BLOG</h2>
-                                        <P>Yo Planner tiene las mejores recomendaciones, los mejores tips y los secretos mejor guardados de todos los destinos turísticos, y mejor aún ¡los compartimos contigo!</P>
-                                        <a ui-sref="blog" class="btn btn-primary">Más Informacíon</a>
+                                        <h2>{{latestPost.title}}</h2>
+                                        <P style="background=transparent">{{latestPost.resume}}</P>
+                                        <a href="/#/blog/{{latestPost.id}}" class="btn btn-primary">Más Informacíon</a>
                                     </div>
                                 </div>
                             </div>
