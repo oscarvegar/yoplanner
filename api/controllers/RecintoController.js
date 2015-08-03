@@ -51,7 +51,7 @@ module.exports = {
                         var hot = hotelesVendidos[response.hotels[i].cityId][k];
                         response.hotels[i].video = hot.video;
                         response.hotels[i].description = hot.description?hot.description:response.hotels[i].description;
-                                    
+                        response.hotels[i].fotoPrincipal = hot.fotoPrincipal?hot.fotoPrincipal:response.hotels[i].fotoPrincipal;    
 
                     }
                     for(var j in response.hotels[i].pictures){
