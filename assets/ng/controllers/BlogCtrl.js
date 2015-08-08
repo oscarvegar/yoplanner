@@ -1,5 +1,5 @@
 angular.module('yoplanner.blog',[])
-.controller('BlogCtrl',function($scope,$http,$sce,$filter,$stateParams,$state){
+.controller('BlogCtrl',function($scope,$http,$sce,$filter,$stateParams,$state,$timeout){
 	
 	$scope.init = function(){
 
@@ -20,7 +20,7 @@ angular.module('yoplanner.blog',[])
 				if(idxImgExt<0)idxImgExt = content.search(".GIF");
 				data.imagensrc = content.substr(idxImgIni+9,idxImgExt-idxImgIni-5);
 				$scope.posts.push(data)
-				
+				$timeout(FB.XFBML.parse,250);	
 			}).catch(function(err){
 				console.error(err)
 			})
@@ -77,4 +77,6 @@ angular.module('yoplanner.blog',[])
 
 
 	$scope.init();
+	
+	
 })

@@ -1,3 +1,4 @@
+
  <!-- Section Title-->    
             <div class="section-title-01">
                 <!-- Parallax Background -->
@@ -38,8 +39,8 @@
                                 <!-- Post Items Full Content -->
                                 <div class="col-md-12">
                                     <!-- Post Item Standart-->
-                                    <div class="post-item" ng-repeat="post in posts">
-                                        <div class="row">
+                                    <div class="{{$index==0?'col-md-12':'col-md-6'}}" ng-repeat="post in posts">
+                                        <div class="post-item {{$index==0?'col-md-12':'col-md-11'}}">
                                             <!-- Post Header-->
                                             <div class="col-md-12">
                                                 <div class="post-header">
@@ -85,10 +86,10 @@
                                             <!-- Post Header-->
 
                                             <!-- Post Media-->
-                                            <div class="col-md-12" ng-if="current.name=='blog'">
+                                            <div class="col-md-12" ng-if="current.name=='blog' && post.imagensrc">
                                                 <div class="img-hover">
-                                                    <div ng-bind-html="deliberatelyTrustDangerousSnippet(post.imagen)"></div>
-                                                    <div class="overlay"><a href="/#/blog/{{post.id}}"><i class="fa fa-link"></i></a></div>
+                                                    <img src="{{post.imagensrc}}" alt="" class="img-responsive">
+                                                    <div class="overlay"><a href="template-blog-read.html"><i class="fa fa-link"></i></a></div>
                                                 </div>
                                             </div>
                                             <!-- Post Media-->
@@ -166,9 +167,13 @@
                                                 </div>
                                             </div>
                                             <!-- Post Footer-->
+
                                        </div>
+                                      <div ng-if="current.name=='blogPost'" class="fb-comments" data-href="http://yoplanner.com/blog/{{post.id}}" data-width="100%" data-numposts="5"></div>
                                     </div>
+                                            
                                     <!-- End Post Item Standart
+
 
                                     
 
@@ -180,7 +185,7 @@
                                         <li><a href="#">4</a></li>
                                         <li><a href="#">5</a></li>
                                         <li><a href="#">»</a></li>
-                                    </ul-->>
+                                    </ul-->
                                 </div>
                                 <!-- Post Items Full Content -->
                             </div>
@@ -191,3 +196,4 @@
                 <!-- End content info - Blog--> 
             </section>
             <!-- End Content Central -->
+           

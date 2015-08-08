@@ -11,33 +11,8 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams) {
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
-	/*
-	$routeProvider
-		.when('/', {
-			templateUrl: 'ng/modules/homepage.tpl.html',
-			controller: 'HomePageController',
-			resolve: {
-				// I will cause a 1 second delay
-				delay: function($q, $timeout) {
-					var delay = $q.defer();
-					$timeout(delay.resolve, 1000);
-					return delay.promise;
-				}
-			}
-		})
-		.otherwise({
-			redirectTo: '/'
-		});
 	
-	$locationProvider.html5Mode({
-		enabled: true,
-		requireBase: false
-	});
-	*/
-	/////////////////////////////
-	// Redirects and Otherwise //
-	/////////////////////////////
-
+	
 	// Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
 	$urlRouterProvider
 	// The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
