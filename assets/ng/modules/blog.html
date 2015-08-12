@@ -97,7 +97,7 @@
                                             <!-- Post Content-->
                                             <div class="col-md-12" ng-if="current.name=='blog'">
                                                 <div class="post-content" >
-                                                    <div ng-bind-html="deliberatelyTrustDangerousSnippet(post.limitText)" style="word-wrap: break-word;"></div>
+                                                    <div  style="word-wrap: break-word;">{{post.resume}}</div>
                                                     <br>
                                                     <div class="read-more">
                                                         <a href="/#/blog/{{post.id}}" class="btn btn-primary">Seguir Leyendo</a>
