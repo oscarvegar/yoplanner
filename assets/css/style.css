@@ -1760,6 +1760,10 @@ hr.separator:before {
 .image_01_parallax{
 	background: url("../img/slide/1.jpg");
 }
+.image_blog_parallax{
+	background: url("../img/fondo-yp.jpg") no-repeat center center fixed;
+	
+}
 .image_02_parallax{
 	background: url("../img/slide/2.jpg");
 }

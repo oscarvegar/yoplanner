@@ -2,18 +2,18 @@
  <!-- Section Title-->    
             <div class="section-title-01">
                 <!-- Parallax Background -->
-                <div class="bg_parallax image_01_parallax"></div>
+                <div class="bg_parallax image_blog_parallax"></div>
                 <!-- Parallax Background -->
 
                 <!-- Content Parallax-->
                 <div class="opacy_bg_02">
                      <div class="container">
-                        <h1>Blog</h1>
+                        <h1>El Blog de Yo Planner</h1>
                         <div class="crumbs">
                             <ul>
                                 <li><a href="/">Home</a></li>
                                 <li>/</li>
-                                <li><a sref="blog">Blog</a></li>                                       
+                                <li><a href="/blog">Blog</a></li></li>                                       
                             </ul>    
                         </div>
                     </div>  
@@ -39,7 +39,7 @@
                                 <!-- Post Items Full Content -->
                                 <div class="col-md-12">
                                     <!-- Post Item Standart-->
-                                    <div class="{{$index==0?'col-md-12':'col-md-6'}}" ng-repeat="post in posts">
+                                    <div class="{{$index==0?'col-md-offset-1 col-md-10':'col-md-6'}}" ng-repeat="post in posts">
                                         <div class="post-item {{$index==0?'col-md-12':'col-md-11'}}">
                                             <!-- Post Header-->
                                             <div class="col-md-12">
@@ -89,7 +89,7 @@
                                             <div class="col-md-12" ng-if="current.name=='blog' && post.imagensrc">
                                                 <div class="img-hover">
                                                     <img src="{{post.imagensrc}}" alt="" class="img-responsive">
-                                                    <div class="overlay"><a href="template-blog-read.html"><i class="fa fa-link"></i></a></div>
+                                                    <div class="overlay"><a href="/#/blog/{{post.id}}"><i class="fa fa-link"></i></a></div>
                                                 </div>
                                             </div>
                                             <!-- Post Media-->
