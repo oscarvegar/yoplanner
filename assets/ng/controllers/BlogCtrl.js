@@ -52,12 +52,12 @@ angular.module('yoplanner.blog',[])
 					if(idxImgExt<0)idxImgExt = content.search(".GIF");
 					post.imagensrc = content.substr(idxImgIni+9,idxImgExt-idxImgIni-5);
 					if(!post.labels)post.labels=[];
-					post.resmume="";
+					post.resume="";
 					for(var i in post.labels){
 						if(i==0)
-							post.resmume=""+post.labels[i];
+							post.resume=""+post.labels[i];
 						else
-							post.resmume=post.resmume+", "+post.labels[i];
+							post.resume=post.resume+", "+post.labels[i];
 					}
 				}
 				$scope.latestPost = $scope.posts[0];
