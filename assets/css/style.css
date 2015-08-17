@@ -831,7 +831,7 @@ hr.tall{
 }
 .filter-header.flights-filter{
 	height: auto !important;
-	overflow: auto;
+	overflow: visible;
 }
 .filter-header.flights-filter .input-large{
 	width: 50%;
