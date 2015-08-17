@@ -3674,3 +3674,8 @@ address strong{
 	font-size: 300;
 	font-size: 0.8rem;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
