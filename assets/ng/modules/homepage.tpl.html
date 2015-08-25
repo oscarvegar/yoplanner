@@ -68,6 +68,69 @@
                 </div>
                 <!-- End Shadow Semiboxed Layout -->
 
+                <!-- End content info - Vacations Destinatios-->
+                <div class="content_info">
+                    <!-- Title -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="titles">
+                                <h2>Nuestros últimos <span>posts</span></h2>
+                                <i class="fa fa-bicycle"></i>
+                                <hr class="tall">
+                            </div>                    
+                        </div>
+                    </div>
+                    <!-- End Title-->
+
+                    <!-- content-boxes-->
+                    <div class="content-boxes" ng-controller="BlogCtrl">
+                        <!-- Item-boxe-->
+                        <div class="item-boxed" ng-repeat="post in posts" ng-if="$index<4 && $index%2==0">
+                            <div class="image-boxed">
+                                <span class="overlay"></span>
+                                <img ng-src="{{post.imagensrc}}" alt="" style="width: 307.5px; height: 255px;">
+                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
+                            </div>
+                            <div class="info-boxed boxed-top">
+                                <h3>
+                                    {{post.title}}<br>
+                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
+                                    <span>{{post.author.displayName}} {{post.published}}</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>{{(post.resume.length > 70) ? post.resume.substr(0,67) + '...' : post.resume}}</p>
+                               
+                                <div class="content-btn"><a href="/blog/{{post.id}}"  class="btn btn-primary">Ver Detalles</a></div>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+                        <!-- Item-boxe-->
+                        <div class="item-boxed" ng-repeat="post in posts" ng-if="$index<4 && $index%2!=0">
+                            <div class="info-boxed boxed-bottom">
+                                <h3>
+                                    {{post.title}}<br>
+                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
+                                    <span>{{post.author.displayName}} {{post.published}}</span>
+                                </h3>
+                                <hr class="separator">
+                                <p>{{(post.resume.length > 70) ? post.resume.substr(0,67) + '...' : post.resume}}</p>
+                                
+                                <div class="content-btn"><a href="/blog/{{post.id}}"  class="btn btn-primary">Ver Detalles</a></div>
+                            </div>
+                            <div class="image-boxed image-bottom">
+                                <span class="overlay"></span>
+                                <img ng-src="{{post.imagensrc}}" alt="" style="width: 307.5px; height: 255px;">
+                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
+                            </div>
+                        </div>
+                        <!-- End Item-boxe-->
+                        
+                    </div>
+                    <!-- End content-boxes-->
+                </div>   
+                <!-- End content info - Vacations Destinatios--> 
+                <br>
+
                 <!-- End content info - Services Items-->
                 <div class="content_info">
                     <div class="content_resalt">
@@ -117,71 +180,7 @@
                 </div>   
                 <!-- End content info - Services Items --> 
 
-                <!-- End content info - Vacations Destinatios-->
-                <div class="content_info">
-                    <!-- Title -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="titles">
-                                <h2>Destinos populares en <span>México</span></h2>
-                                <i class="fa fa-bicycle"></i>
-                                <hr class="tall">
-                            </div>                    
-                        </div>
-                    </div>
-                    <!-- End Title-->
-
-                    <!-- content-boxes-->
-                    <div class="content-boxes">
-                        <!-- Item-boxe-->
-                        <div class="item-boxed" ng-repeat="popDest in popDestImgInf">
-                            <div class="image-boxed">
-                                <span class="overlay"></span>
-                                <img ng-src="{{popDest.imgSrc}}" alt="" style="width: 307.5px; height: 255px;">
-                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
-                            </div>
-                            <div class="info-boxed boxed-top">
-                                <h3>
-                                    {{popDest.name}}<br>
-                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{popDest.destName}}</span>
-                                </h3>
-                                <hr class="separator">
-                                <p>{{(popDest.description.length > 70) ? popDest.description.substr(0,67) + '...' : popDest.description}}</p>
-                                <ul class="starts">
-                                    <li ng-repeat="i in popDest.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                                <div class="content-btn"><a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="btn btn-primary">Ver Detalles</a></div>
-                            </div>
-                        </div>
-                        <!-- End Item-boxe-->
-
-                        <!-- Item-boxe-->
-                        <div class="item-boxed" ng-repeat="popDest in popDestInfImg">
-                            <div class="info-boxed boxed-bottom">
-                                <h3>
-                                    {{popDest.name}}<br>
-                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{popDest.destName}}</span>
-                                </h3>
-                                <hr class="separator">
-                                <p>{{(popDest.description.length > 70) ? popDest.description.substr(0,67) + '...' : popDest.description}}</p>
-                                <ul class="starts">
-                                    <li ng-repeat="i in popDest.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
-                                </ul>
-                                <div class="content-btn"><a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="btn btn-primary">Ver Detalles</a></div>
-                            </div>
-                            <div class="image-boxed image-bottom">
-                                <span class="overlay"></span>
-                                <img ng-src="{{popDest.imgSrc}}" alt="" style="width: 307.5px; height: 255px;">
-                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
-                            </div>
-                        </div>
-                        <!-- End Item-boxe-->
-                    </div>
-                    <!-- End content-boxes-->
-                </div>   
-                <!-- End content info - Vacations Destinatios--> 
+                
 
                 <!-- End content info - Features-->
                 <div class="content_info">
@@ -402,7 +401,7 @@
   -ms-transition: none;
   -o-transition: none;
   transition: none;
-  background: url('{{latestPost.imagensrc?latestPost.imagensrc:'../img/slide/2.jpg'}}')"></div>
+  background: url('http://4.bp.blogspot.com/-rkKGRf64_TI/Vc-0or2TrMI/AAAAAAAAANs/9Yy73Y6hAog/s1600/fotogaleria_1353095261-snorkel.jpg')"></div>
                     <!-- Parallax Background -->
 
                     <div class="opacy_bg_02">
@@ -419,9 +418,9 @@
 
                                 <div class="col-md-8">
                                     <div class="testimonial-info">
-                                        <h2>{{latestPost.title}}</h2>
-                                        <P style="background=transparent">{{latestPost.resume}}</P>
-                                        <a href="/#/blog/{{latestPost.id}}" class="btn btn-primary">Más Informacíon</a>
+                                        <h2>Cancun</h2>
+                                        <P style="background=transparent">Es la ciudad más poblada de Quintana Roo, y está certificada por la Organización Mundial de Turismo como una ciudad con desarrollo turístico de nivel internacional. Cuenta con hermosas playas, la Laguna Nichupté, el Museo Arqueológico y varios parques turísticos, el más famoso es Xcaret. Cuenta con el Canún Center Conventions and Exhibitions</P>
+                                        <a href="javascript:void;" ng-click="redirectLink('CUN')" class="btn btn-primary">Más Informacíon</a>
                                     </div>
                                 </div>
                             </div>
