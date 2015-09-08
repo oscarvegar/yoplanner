@@ -351,7 +351,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 	    	var TODAY = moment();
 	    	$scope.iFrameSrc = $sce.trustAsResourceUrl ('http://www.e-agencias.com.mx/ag32638/hotels/details/'+$stateParams.searchId+'/'+TODAY.add(2, 'days').format('YYYY-MM-DD')+'/'+TODAY.add(3, 'days').format('YYYY-MM-DD')+'/1/'+$stateParams.hotelId+'/');
-
+	    	$timeout(FB.XFBML.parse,100);
         }).error(function(err){
         	$log.error(err);
         });
