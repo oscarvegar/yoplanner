@@ -95,12 +95,12 @@
                                 <h3>
                                     {{post.title}}<br>
                                     <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{post.author.displayName}} {{post.published}}</span>
+                                    <span>{{post.author.displayName}} {{post.published | date : 'yyyy-MM-dd'}}</span>
                                 </h3>
                                 <hr class="separator">
                                 <p>{{(post.resume.length > 70) ? post.resume.substr(0,67) + '...' : post.resume}}</p>
                                
-                                <div class="content-btn"><a href="/blog/{{post.id}}"  class="btn btn-primary">Ver Detalles</a></div>
+                                <div class="content-btn"><a href="/blog/{{post.url}}"  class="btn btn-primary">Ver Detalles</a></div>
                             </div>
                         </div>
                         <!-- End Item-boxe-->
@@ -110,12 +110,12 @@
                                 <h3>
                                     {{post.title}}<br>
                                     <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{post.author.displayName}} {{post.published}}</span>
+                                    <span>{{post.author.displayName}} {{post.published | date : 'yyyy-MM-dd'}}</span>
                                 </h3>
                                 <hr class="separator">
                                 <p>{{(post.resume.length > 70) ? post.resume.substr(0,67) + '...' : post.resume}}</p>
                                 
-                                <div class="content-btn"><a href="/blog/{{post.id}}"  class="btn btn-primary">Ver Detalles</a></div>
+                                <div class="content-btn"><a href="/blog/{{post.url}}"  class="btn btn-primary">Ver Detalles</a></div>
                             </div>
                             <div class="image-boxed image-bottom">
                                 <span class="overlay"></span>

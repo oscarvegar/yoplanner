@@ -82,7 +82,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			templateUrl: "/ng/modules/blog.html"
 		})
 		.state('blogPost', {
-			url: "/blog/:id",
+			url: "/blog/:year/:month/:id",
 			templateUrl: "/ng/modules/blog.html"
 		});
 	
@@ -260,8 +260,8 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 		
 		$scope.marker = {
 			id: 1,
-			latitude: initLatitude,
-			longitude: initLongitude,
+			latitude: 19.4326018,
+			longitude: -99.1332049,
 			icon: "/img/img-theme/pin.png",
 			options: {
 				animation: 1
@@ -271,8 +271,8 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 			center: {
 				// latitude: initLatitude+0.015,	//	y's
 				// longitude: initLongitude-0.05	//	x's
-				latitude: initLatitude,	//	y's
-				longitude: initLongitude	//	x's
+				latitude: 19.4326018,	//	y's
+				longitude: -99.1332049	//	x's 
 			},
 			options: {
 				disableDefaultUI: !0,
@@ -284,13 +284,13 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 				zoomControl: !0
 			},
 			showMap: true,
-			zoom: 17,
+			zoom: 12,
 			markers: [
 				{
 					id: 1,
 					icon: '/img/img-theme/pin.png',
-					latitude: initLatitude,
-					longitude: initLongitude,
+					latitude: 19.4326018,
+					longitude: -99.1332049,
 					showWindow: false,
 					options: {
 						animation: 1

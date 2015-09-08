@@ -2,8 +2,11 @@ var unirest = require('unirest');
 module.exports = {
 	'getPost':function(req,res){
 		var id = req.allParams().id;
+		var year = req.allParams().year;
+		var month = req.allParams().month;
 		req.session.postId = id;
-		unirest.get("https://www.googleapis.com/blogger/v3/blogs/6838970422906123086/posts/"+req.session.postId+"?key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y")
+		console.info("URL SOLICITADA API BLOG ::: ","https://www.googleapis.com/blogger/v3/blogs/6838970422906123086/posts/bypath?path=/"+year+"/"+month+"/"+id+"&key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y")
+		unirest.get("https://www.googleapis.com/blogger/v3/blogs/6838970422906123086/posts/bypath?path=/"+year+"/"+month+"/"+id+"&key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y")
 		.end(function(response){
 			//console.log(response.body)
 			var content = response.body.content;
@@ -26,7 +29,7 @@ module.exports = {
 	            title : response.body.title,
 	            image : imagen,
 	            description : description,
-	            postId : id
+	            postId : year+"/"+month+"/"+id
 	        }
 	        req.session.metas = metas;
 	        res.locals.response = res;

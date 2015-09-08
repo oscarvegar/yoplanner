@@ -76,7 +76,7 @@ module.exports.routes = {
   'GET /hoteles_en_toluca': '/#/hoteles_en_toluca',
   'GET /hoteles_en_manzanillo': '/#/hoteles_en_manzanillo',
   'GET /blog': '/#/blog',
-  'GET /blog/:id': 'BlogController.getPost',
+  'GET /blog/:year/:month/:id': 'BlogController.getPost',
 
 
 };

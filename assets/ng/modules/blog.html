@@ -100,7 +100,7 @@
                                                     <div ng-show="{{$index==0}}" ng-bind-html="deliberatelyTrustDangerousSnippet(post.limitText)" style="word-wrap: break-word;"></div>
                                                     <br>
                                                     <div class="read-more">
-                                                        <a href="/#/blog/{{post.id}}" class="btn btn-primary">Seguir Leyendo</a>
+                                                        <a href="/#/blog/{{post.url}}" class="btn btn-primary">Seguir Leyendo</a>
                                                     </div>
                                                 </div>                                          
                                             </div>
@@ -122,35 +122,35 @@
                                                     <!-- Post Social-->
                                                     <ul class="post-social tooltip-hover">
                                                         <li>
-                                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://yoplanner.com/blog/{{post.id}}" class="social-facebook" data-toggle="tooltip" title="" data-original-title="Share on Facebook" target="_blank">
+                                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://yoplanner.com/blog/{{post.url}}" class="social-facebook" data-toggle="tooltip" title="" data-original-title="Share on Facebook" target="_blank">
                                                                 <i class="fa fa-facebook"></i>
                                                                 <i class="fa fa-facebook"></i>
                                                             </a>
                                                         </li>
 
                                                         <li>
-                                                            <a href="http://twitter.com/share?text={{post.title}}&url=http://yoplanner.com/blog/{{post.id}}" target="_blank" class="social-twitter" data-toggle="tooltip" title="" data-original-title="Share on Twitter">
+                                                            <a href="http://twitter.com/share?text={{post.title}}&url=http://yoplanner.com/blog/{{post.url}}" target="_blank" class="social-twitter" data-toggle="tooltip" title="" data-original-title="Share on Twitter">
                                                                 <i class="fa fa-twitter"></i>
                                                                 <i class="fa fa-twitter"></i>
                                                             </a>
                                                         </li>
 
                                                         <li>
-                                                            <a href="https://plus.google.com/share?url=http://yoplanner.com/blog/{{post.id}}" target="_blank" class="social-google-plus" data-toggle="tooltip" title="" data-original-title="Share on Google">
+                                                            <a href="https://plus.google.com/share?url=http://yoplanner.com/blog/{{post.url}}" target="_blank" class="social-google-plus" data-toggle="tooltip" title="" data-original-title="Share on Google">
                                                                 <i class="fa fa-google-plus"></i>
                                                                 <i class="fa fa-google-plus"></i>
                                                             </a>
                                                         </li>
 
                                                         <li>
-                                                            <a href="http://pinterest.com/pin/create/link/?url=http://yoplanner.com/blog/{{post.id}}&description={{post.title}}&media={{post.imagensrc}}" target="_blank" class="social-pinterest" data-toggle="tooltip" title="" data-original-title="Share on pinterest">
+                                                            <a href="http://pinterest.com/pin/create/link/?url=http://yoplanner.com/blog/{{post.url}}&description={{post.title}}&media={{post.imagensrc}}" target="_blank" class="social-pinterest" data-toggle="tooltip" title="" data-original-title="Share on pinterest">
                                                                 <i class="fa fa-pinterest"></i>
                                                                 <i class="fa fa-pinterest"></i>
                                                             </a>
                                                         </li>
 
                                                         <li>
-                                                            <a href="https://www.linkedin.com/shareArticle?url=http://yoplanner.com/blog/{{post.id}}&mini=true&title={{post.title}}&summary={{post.resume}}" target="_blank" class="social-linkedin" data-toggle="tooltip" title="" data-original-title="Share on linkedin">
+                                                            <a href="https://www.linkedin.com/shareArticle?url=http://yoplanner.com/blog/{{post.url}}&mini=true&title={{post.title}}&summary={{post.resume}}" target="_blank" class="social-linkedin" data-toggle="tooltip" title="" data-original-title="Share on linkedin">
                                                                 <i class="fa fa-linkedin"></i>
                                                                 <i class="fa fa-linkedin"></i>
                                                             </a>
@@ -168,7 +168,7 @@
                                             </div>
                                             <!-- Post Footer-->
                                        </div>
-                                      <div ng-if="current.name=='blogPost'" class="fb-comments" data-href="http://yoplanner.com/blog/{{post.id}}" data-width="100%" data-numposts="5"></div>
+                                      <div ng-if="current.name=='blogPost'" class="fb-comments" data-href="http://yoplanner.com/blog/{{post.url}}" data-width="100%" data-numposts="5"></div>
                                     </div>
                                             
                                     <!-- End Post Item Standart
