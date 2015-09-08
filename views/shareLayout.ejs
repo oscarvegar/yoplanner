@@ -1,6 +1,8 @@
 <html lang="en" ng-app="yoPlannerApp">
 <head>
+
   <% if(typeof session.metas != 'undefined'){%>
+      <title><%=session.metas.title%></title>
       <meta property="og:image" content="<%=session.metas.image%>" />
       <meta property="og:title" content="<%=session.metas.title%>" />
       <meta property="og:description" content="<%=session.metas.description%>" />
