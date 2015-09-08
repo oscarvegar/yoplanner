@@ -13,6 +13,8 @@ angular.module('yoplanner.blog',[])
 				$http.get('https://www.googleapis.com/blogger/v3/blogs/6838970422906123086/posts/bypath?path=/'+$stateParams.year+"/"+$stateParams.month+"/"+$stateParams.id+'&key=AIzaSyBAg_S0Hde7VaxSVp_mmEB0gOdzCCO756Y')
 				.success(function(data){
 					var content = data.content;
+					
+					data.url = data.url.replace("http://yoplanner.blogspot.com/","");
 					var idxImgIni = content.search("<a href=");
 					var idxImgExt = content.search(".jpg");
 					if(idxImgExt<0)idxImgExt = content.search(".JPG");
