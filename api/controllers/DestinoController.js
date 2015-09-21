@@ -153,4 +153,3 @@ module.exports = {
 		res.redirect("/#"+path);
 	} 
 };
-

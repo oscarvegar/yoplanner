@@ -56,6 +56,12 @@ module.exports.routes = {
   'GET /reservaciones_de_avion': '/#/reserva/flights',
   'GET /blog': '/#/blog',
   'GET /blog/:year/:month/:id': 'BlogController.getPost',
+  '/sitemap.xml':{
+    view: 'sitemap',
+    locals: {
+      layout: 'empty'
+    }
+  },
   '/:id':'DestinoController.find'
 
 
