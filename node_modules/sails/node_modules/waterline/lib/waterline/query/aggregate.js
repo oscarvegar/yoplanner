@@ -43,23 +43,16 @@ module.exports = {
     if(!Array.isArray(valuesList)) return usageError('Invalid valuesList specified (should be an array!)', usage, cb);
     if(typeof cb !== 'function') return usageError('Invalid callback specified!', usage, cb);
 
-    var errStr = _validateValues(valuesList);
+    var errStr = _validateValues(_.cloneDeep(valuesList));
     if(errStr) return usageError(errStr, usage, cb);
-
-    var records = [];
-
-    function create(value, next) {
-      self.create(value, function(err, record) {
-        if(err) return next(err);
-        records.push(record);
-        next();
-      });
-    }
-
-    async.each(valuesList, create, function(err) {
-      if(err) return cb(err);
-      cb(null, records);
+    
+    // Handle undefined values
+    var filteredValues = _.filter(valuesList, function(value) {
+      return value !== undefined;
     });
+    
+    // Create will take care of cloning values so original isn't mutated
+    async.map(filteredValues, self.create.bind(self), cb);
   },
 
   /**
@@ -102,7 +95,12 @@ module.exports = {
 
     // Validate each record in the array and if all are valid
     // pass the array to the adapter's findOrCreateEach method
-    async.each(valuesList, function(item, next) { _validate.call(self, item, next); }, function(err) {
+    var validateItem = function(item, next) {
+      _validate.call(self, item, next);
+    }
+
+
+    async.each(valuesList, validateItem, function(err) {
       if(err) return cb(err);
 
       // Transform Values
