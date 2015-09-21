@@ -150,7 +150,7 @@ module.exports = {
 		var path=req.param('id');
 		req.session.metas = _DESTINOS[path];
 		console.log("path",path)
-		res.redirect("/#"+path);
+		res.redirect("/#/"+path);
 	} 
 };
 
