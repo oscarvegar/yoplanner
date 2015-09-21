@@ -44,39 +44,19 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'GET /agencia_de_viajes': '/#/agencia_de_viajes',
+  'GET /agencia-de-viajes': 'MainController.redirect',
+  'GET /quienes-somos' : 'MainController.redirect',
   'GET /aviso_de_privacidad': '/#/aviso_de_privacidad',
   'GET /contacto': '/#/contacto',
   'GET /cruceros': '/#/cruceros',
-  'GET /meetings': '/#/meetings',
+  'GET /meetings': 'MainController.redirect',
   'GET /publicidad_para_hoteles': '/#/publicidad_para_hoteles',
   'GET /quienes_somos': '/#/quienes_somos',
   'GET /reservaciones_de_hotel': '/#/reserva/hotels',
   'GET /reservaciones_de_avion': '/#/reserva/flights',
-  'GET /hoteles_en_acapulco': '/#/hoteles_en_acapulco',
-  'GET /hoteles_en_los_cabos': '/#/hoteles_en_los_cabos',
-  'GET /hoteles_en_cancun': '/#/hoteles_en_cancun',
-  'GET /hoteles_en_cuernavaca': '/#/hoteles_en_cuernavaca',
-  'GET /hoteles_en_cozumel': '/#/hoteles_en_cozumel',
-  'GET /hoteles_en_guadalajara': '/#/hoteles_en_guadalajara',
-  'GET /hoteles_en_huatulco': '/#/hoteles_en_huatulco',
-  'GET /hoteles_en_ixtapa': '/#/hoteles_en_ixtapa',
-  'GET /hoteles_en_ciudad_de_mexico': '/#/hoteles_en_ciudad_de_mexico',
-  'GET /hoteles_en_monterrey': '/#/hoteles_en_monterrey',
-  'GET /hoteles_en_mazatlan': '/#/hoteles_en_mazatlan',
-  'GET /hoteles_en_nuevo_vallarta': '/#/hoteles_en_nuevo_vallarta',
-  'GET /hoteles_en_pachuca': '/#/hoteles_en_pachuca',
-  'GET /hoteles_en_puebla': '/#/hoteles_en_puebla',
-  'GET /hoteles_en_playa_del_carmen': '/#/hoteles_en_playa_del_carmen',
-  'GET /hoteles_en_puerto_vallarta': '/#/hoteles_en_puerto_vallarta',
-  'GET /hoteles_en_queretaro': '/#/hoteles_en_queretaro',
-  'GET /hoteles_en_riviera_maya': '/#/hoteles_en_riviera_maya',
-  'GET /hoteles_en_cabo_san_lucas': '/#/hoteles_en_cabo_san_lucas',
-  'GET /hoteles_en_san_jose_del_cabo': '/#/hoteles_en_san_jose_del_cabo',
-  'GET /hoteles_en_toluca': '/#/hoteles_en_toluca',
-  'GET /hoteles_en_manzanillo': '/#/hoteles_en_manzanillo',
   'GET /blog': '/#/blog',
   'GET /blog/:year/:month/:id': 'BlogController.getPost',
+  '/:id':'DestinoController.find'
 
 
 };

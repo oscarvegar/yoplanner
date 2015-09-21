@@ -1,13 +1,14 @@
 var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
 	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline','yoplanner.blog']);
 
-yoPlannerApp.run(function($rootScope, $state, $stateParams) {
+yoPlannerApp.run(function($rootScope, $state, $stateParams,$location) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
 	// so that you can access them from any scope within your applications.For example,
 	// <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
 	// to active whenever 'contacts.list' or one of its decendents is active.
 	$rootScope.$state = $state;
 	$rootScope.$stateParams = $stateParams;
+
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
@@ -38,7 +39,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			templateUrl: "/ng/modules/homepage.tpl.html"
 		})
 		.state('acerca_de', {
-			url: "/quienes_somos",
+			url: "/quienes-somos",
 			templateUrl: "/ng/modules/acerca.de.tpl.html"
 		})
 		.state('nuestros_servicios', {
@@ -54,7 +55,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			templateUrl: "/ng/modules/meetings.tpl.html"
 		})
 		.state('travel_agency', {
-			url: "/agencia_de_viajes",
+			url: "/agencia-de-viajes",
 			templateUrl: "/ng/modules/travel.agency.tpl.html"
 		})
 		.state('influencer', {

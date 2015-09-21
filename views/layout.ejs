@@ -12,15 +12,26 @@
       <%
           }
       %>
+  
+  
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <% if(typeof session.metas.title != 'undefined'){ %>
+    <title>Yo Planner - <%= session.metas.title %></title>
+    <% } else { %>
+    <title>Yo Planner - Agencia de Viajes – Hoteles, Vuelos y Cruceros - Organización y Planeación de Viajes y Grupos</title>
+    <% } %>
+    <% if(typeof session.metas.description != 'undefined'){ %>
+    <meta name="description" content="<%=session.metas.description%>">
+    <% } else { %>
+    <meta name="description" content="Yo Planner es tu agencia de viajes en México y el extranjero para cuando quieras organizar Meetings para tu empresa, cotizar grupos en línea o asesorías para viajes individuales. ¡Ingresa y Cotiza los mejores hoteles en todos los destinos de México y el extranjero! ¡Reserva en nuestra plaforma y obtén todo para tu viaje!">
+    <% } %>
+    <% if(typeof session.metas.keywords != 'undefined'){ %>
+      <meta name="keywords" content="<%=session.metas.keywords%>">
+    <% } else { %>
+      <meta name="keywords" content="agencias de viajes,agencia de viajes,agencia de viajes df,Agencias de iajes en df,YoPlanner,Yo Planner,Yoplaner,Yo Planer,Agentes de viajes,Agentes de viaje y turismo,oteles economicos,Hoteles en Mexico,Cotizador de hoteles,Hoteles baratos,Hoteles de playas,Hoteles en uidad,Hoteles gran turismo,Hoteles Resort,Hoteles 5 estrellas,Hoteles cinco estrellas,Hoteles precios,otizador de Hoteles en linea,Hoteles online,Cotizar hotel,hoteles en acapulco,hoteles en acapulco,entas de viajes,hoteles en cancun,operadoras de viajes,hoteles en cancun,agente de viaje,hoteles en eracruz,empresas de viaje,hoteles,agensias de viajes,hoteles en veracruz,agecia de viajes,hoteles en uerto vallarta,operadora de viajes,hoteles en puerto vallarta,operadores de viajes,hoteles en puerto allarta,paginas de viajes,hoteles en guanajuato,compañia de viajes,hoteles en monterrey,agenci de iajes,hoteles en guadalajara,gencias de viajes,vallarta plus,servicios de viaje,hoteles en guadalajara,vallarta plus,hoteles en guadalajara,hoteles en playa del carmen,hoteles en laya del carmen,hoteles en huatulco,hoteles en ixtapa,hoteles en huatulco,hoteles en ixtapa,hoteles en ixtapa,nuevo vallarta,hoteles en nuevo vallarta,hoteles en nuevo vallarta">
+    <% } %>
   <%}%>
-  
-  <!-- Basic -->
-  <meta charset="utf-8">
-  <title>Yo Planner - Agencia de Viajes – Hoteles, Vuelos y Cruceros - Organización y Planeación de Viajes y Grupos</title>
-  <meta name="keywords" content="HTML5 Template" />
-  <meta name="description" content="Yo Planner Somos Agencia de viajes con un equipo de Planners Travel. Ya sea que necesites cotizar un grupo para tu empresa o quieras un viaje personal, busca por destino los hoteles, boletos de avión y cruceros más populares y baratos en todo México.">
-  
-
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Theme CSS -->
@@ -94,19 +105,19 @@
 
                     <li><a ui-sref="index">INICIO</a></li>
 
-                    <li> <a ui-sref="acerca_de">¿QUIÉNES SOMOS?</a></li>
+                    <li> <a href="/quienes-somos">¿QUIÉNES SOMOS?</a></li>
 
                     <li> <a href="javascript:void(0);">SERVICIOS</a>
                       <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
                         <!-- li><a ui-sref="nuestros_servicios">Nuestros Servicios</a> </li -->
-                        <li><a ui-sref="meetings">Meetings</a> </li>
-                        <li><a ui-sref="travel_agency">Agencia De Viajes</a> </li>
+                        <li><a href="/meetings">Meetings</a> </li>
+                        <li><a href="/agencia-de-viajes">Agencia De Viajes</a> </li>
                         <li><a ui-sref="mrktng_hoteles">Publicidad Para Hoteles</a> </li>
                         <!-- <li><a ui-sref="influencer">Influencer</a> </li> -->
                       </ul>
                     </li>
 
-                    <li> <a ui-sref="blog" >BLOG</a></li>
+                    <li> <a href="/blog" >BLOG</a></li>
 
                     <li><a ui-sref="contact">CONTACTO</a></li>
 
@@ -202,20 +213,98 @@
                   <div class="row">
                     <hr>
                     <div class="col-md-12" ng-controller="HomePageController">
-                      <!--
-                      <hr class="short">
-                      
-                      <pre>
-                        <!- Here's some values to keep an eye on in the sample in order to understand $state and $stateParams ->
-                        $state = {{$state.current.name}}
-                        $stateParams = {{$stateParams}}
-                        $state full url = {{ $state.$current.url.source }}
-                        <!- $state.$current is not a public api, we are using it to
-                        display the full url for learning purposes->
-                      </pre>
-                       -->
-                        <div ng-repeat="(key, value) in hotelsReviewed" class="col-md-3">
-                          <a href="javascript:void(0);" ng-click="redirectLink(value.searchId)" style="text-decoration: underline;color: #ffffff">{{value.text}}</a>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-acapulco" style="text-decoration: underline;color: #ffffff" title="Hoteles en Acapulco">Hoteles en Acapulco</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-los-cabos" style="text-decoration: underline;color: #ffffff" title="Hoteles en Los Cabos">Hoteles en Los Cabos</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-cancun" style="text-decoration: underline;color: #ffffff" title="Hoteles en Cancun">Hoteles en Cancún</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-cuernavaca" style="text-decoration: underline;color: #ffffff" title="Hoteles en Cuernavaca">Hoteles en Cuernavaca</a>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-cozumel" style="text-decoration: underline;color: #ffffff" title="Hoteles en Cozumel">Hoteles en Cozumel</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-guadalajara" style="text-decoration: underline;color: #ffffff" title="Hoteles en Guadalajara">Hoteles en Guadalajara</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-huatulco" style="text-decoration: underline;color: #ffffff" title="Hoteles en Huatulco">Hoteles en Huatulco</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-ixtapa" style="text-decoration: underline;color: #ffffff" title="Hoteles en Ixtapa">Hoteles en Ixtapa</a>
+                        </div>
+
+
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-ciudad-de-mexico" style="text-decoration: underline;color: #ffffff" title="Hoteles en Ciudad de México">Hoteles en Ciudad de México</a>
+                        </div>
+
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-monterrey" style="text-decoration: underline;color: #ffffff" title="Hoteles en Monterrey">Hoteles en Monterrey</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-mazatlan" style="text-decoration: underline;color: #ffffff" title="Hoteles en Mazatlán">Hoteles en Mazatlán</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-nuevo-vallarta" style="text-decoration: underline;color: #ffffff" title="Hoteles en Nuevo Vallarta">Hoteles en Nuevo Vallarta</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-pachuca" style="text-decoration: underline;color: #ffffff" title="Hoteles en Pachuca">Hoteles en Pachuca</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-puebla" style="text-decoration: underline;color: #ffffff" title="Hoteles en Puebla">Hoteles en Puebla</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-playa-del-carmen" style="text-decoration: underline;color: #ffffff" title="Hoteles en Playa del Carmen">Hoteles en Playa del Carmen</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-puerto-vallarta" style="text-decoration: underline;color: #ffffff" title="Hoteles en Puerto Vallarta">Hoteles en Puerto Vallarta</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-queretaro" style="text-decoration: underline;color: #ffffff" title="Hoteles en Queretaro">Hoteles en Queretaro</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-riviera-maya" style="text-decoration: underline;color: #ffffff" title="Hoteles en Riviera Maya">Hoteles en Riviera Maya</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-cabo-san-lucas" style="text-decoration: underline;color: #ffffff" title="Hoteles en Cabo San Lucas">Hoteles en Cabo San Lucas</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-san-jose-del-cabo" style="text-decoration: underline;color: #ffffff" title="Hoteles en San Jose del Cabo">Hoteles en San Jose del Cabo</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-toluca" style="text-decoration: underline;color: #ffffff" title="Hoteles en Toluca">Hoteles en Toluca</a>
+                        </div>
+
+                        <div class="col-md-3">
+                          <a href="/hoteles-en-manzanillo" style="text-decoration: underline;color: #ffffff" title="Hoteles en Manzanillo">Hoteles en Manzanillo</a>
                         </div>
                     
                     </div>
@@ -274,10 +363,6 @@
                             <li class="location">
                               <i class="fa fa-home"></i>
                               <a href="#">
-                                  Lago Andromaco 53 int. 1303 /
-                                  Col. Ampliación Granada /
-                                  Del. Miguel Hidalgo /
-                                  C. P. 11520 /
                                   México, D. F.
                               </a>
                             </li>                                   
