@@ -542,7 +542,8 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		} else if($routeParams.searchId || $rootScope.searchId || $stateParams.searchId) {
 			console.log("DESTINO A 1 :::: ",$routeParams.searchId)
 			console.log("DESTINO A 2 :::: ",$rootScope.searchId)
-			console.log("DESTINO A 3 :::: ",$stateParams.searchId)
+			console.log("DESTINO A BUSCAR :::: ",$stateParams.searchId)
+			$scope.hotels=null
 			$http.get("/recinto/findByCiudadId/"+$stateParams.searchId).success(function (data){
 				$rootScope.resHoteles = data.hotels;
 
@@ -558,7 +559,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				$log.info($scope.hotels);
 				$scope.moreHotels = new Array();
 
-				$scope.bannerAd = HotelSrvc.getLocationBannerAd($stateParams.searchId);
+				$scope.bannerAd = HotelSrvc.getLocationBannerAd($routeParams.searchId);
 				$log.info($scope.bannerAd);
 			})
 		}
