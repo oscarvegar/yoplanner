@@ -29,7 +29,7 @@ module.exports = {
 		req.session.metas={
 			image:"http://yoplanner.com/img/logo.png",
 			title:"Yo Planner - Agencia de Viajes – Hoteles, Vuelos y Cruceros - Organización y Planeación de Viajes y Grupos",
-			description:""
+			description:"Yo Planner es tu agencia de viajes en México y el extranjero para cuando quieras organizar Meetings para tu empresa, cotizar grupos en línea o asesorías para viajes individuales. ¡Ingresa y Cotiza los mejores hoteles en todos los destinos de México y el extranjero! ¡Reserva en nuestra plaforma y obtén todo para tu viaje!"
 		}
 		res.view('homepage')
 	},
