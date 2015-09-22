@@ -537,12 +537,30 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
  		if($routeParams.hotelId || $rootScope.hotelId || $stateParams.hotelId) {
- 			// $log.info('$rootScope.selectedHotel');
- 			// $log.info($rootScope.selectedHotel);
- 			// $scope.currentHotel = $rootScope.selectedHotel;
+ 			
  			$scope.findSelectedHotelDetail();
 		} else if($routeParams.searchId || $rootScope.searchId || $stateParams.searchId) {
-			$scope.findAllHotelsByCity($routeParams.searchId);
+			console.log("DESTINO A 1 :::: ",$routeParams.searchId)
+			console.log("DESTINO A 2 :::: ",$rootScope.searchId)
+			console.log("DESTINO A 3 :::: ",$stateParams.searchId)
+			$http.get("/recinto/findByCiudadId/"+$stateParams.searchId).success(function (data){
+				$rootScope.resHoteles = data.hotels;
+
+				if($rootScope.resHoteles) {
+					for (var i = 0; i < $rootScope.resHoteles.length; i++) {
+						$rootScope.resHoteles[i]['starRatingRange'] = new Array($rootScope.resHoteles[i].starRating);
+					};
+				}
+
+	            $scope.currentPage=1;
+				$log.info($rootScope.resHoteles);
+				$scope.hotels = $rootScope.resHoteles;
+				$log.info($scope.hotels);
+				$scope.moreHotels = new Array();
+
+				$scope.bannerAd = HotelSrvc.getLocationBannerAd($stateParams.searchId);
+				$log.info($scope.bannerAd);
+			})
 		}
 	};
 
