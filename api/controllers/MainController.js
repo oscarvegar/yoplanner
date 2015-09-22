@@ -35,9 +35,9 @@ module.exports = {
 			console.log("PATH")
 			res.view('homepage')
 		}else{
-			req.session.metas = _SECCIONES[path];
-		console.log(req.session.metas)
-			res.redirect("/#"+path)
+			res.locals.metas=_SECCIONES[path];
+			res.locals.path=path;
+			res.view("empty",{layout:"infoLayout"})
 		}
 	}
 	

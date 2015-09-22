@@ -1,0 +1,14 @@
+<html lang="en" ng-app="yoPlannerApp">
+<head>
+
+  <% if(typeof metas != 'undefined'){%>
+      <title><%=metas.title%></title>
+      <meta property="og:image" content="<%=metas.image%>" />
+      <meta property="og:title" content="<%=metas.title%>" />
+      <meta property="og:description" content="<%=metas.description%>" />
+      	
+            <script>window.location = "/#<%=path%>"</script>
+      
+  <%}%>
+</head>
+</html>

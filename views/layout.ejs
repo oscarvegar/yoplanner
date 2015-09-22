@@ -31,7 +31,26 @@
     <% if(typeof session.metas.keywords != 'undefined'){ %>
       <meta name="keywords" content="<%=session.metas.keywords%>">
     <% } %>
-  <%} else{%>
+  <% } else if(typeof title != 'undefined'){%>
+      <% if(typeof image != 'undefined') { %>
+        <meta property="og:image" content="<%=session.metas.image%>" >
+      <% } else { %>
+        <meta property="og:image" content="http://yoplanner.com/img/HotelesYoPlanner.png" >
+      <% } %>
+      <meta property="og:title" content="<%=title%>" >
+     
+      <meta property="og:description" content="<%=description%>" >
+     
+    <% if(typeof title != 'undefined'){ %>
+      <title>Yo Planner - <%= title %></title>
+    <% } %>
+    <% if(typeof description != 'undefined'){ %>
+      <meta name="description" content="<%=description%>">
+    <% } %>
+    <% if(typeof keywords != 'undefined'){ %>
+      <meta name="keywords" content="<%=keywords%>">
+    <% } %>
+  <%} else  {%>
     <meta property="og:image" content="http://yoplanner.com/img/logo.png" >
       <meta property="og:title" content="Yo Planner - Agencia de Viajes – Hoteles, Vuelos y Cruceros - Organización y Planeación de Viajes y Grupos" >
       <meta property="og:description" content="Yo Planner es tu agencia de viajes en México y el extranjero para cuando quieras organizar Meetings para tu empresa, cotizar grupos en línea o asesorías para viajes individuales. ¡Ingresa y Cotiza los mejores hoteles en todos los destinos de México y el extranjero! ¡Reserva en nuestra plaforma y obtén todo para tu viaje!" />
@@ -106,12 +125,12 @@
                   <ul class="collapse" onclick="document.getElementById('mobile-button').click()"><!-- collapse class for collapse the drop down -->
                     <!-- website title - Logo class -->
                     <li class="title">
-                      <a ui-sref="index"><img src="/img/logo.png" style="margin-left:0px;position:absolute;height:60px;background-color: transparent;border:0;margin-top:0px;width:200px;box-shadow:0px 0px 0px 0px; "></a> 
+                      <a href="/"><img src="/img/logo.png" style="margin-left:0px;position:absolute;height:60px;background-color: transparent;border:0;margin-top:0px;width:200px;box-shadow:0px 0px 0px 0px; "></a> 
 
                     </li>
                     <!-- End website title - Logo class -->
 
-                    <li><a ui-sref="index">INICIO </a></li>
+                    <li><a href="/">INICIO </a></li>
 
                     <li> <a href="/quienes-somos">¿QUIÉNES SOMOS?</a></li>
 
