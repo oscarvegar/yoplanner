@@ -37,6 +37,7 @@ module.exports = {
 		}else{
 			res.locals.metas=_SECCIONES[path];
 			res.locals.path=path;
+			req.session.metas = _SECCIONES[path]; 
 			res.view("empty",{layout:"infoLayout"})
 		}
 	}
