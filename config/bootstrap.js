@@ -96,7 +96,7 @@ module.exports.bootstrap = function(cb) {
 			Config.create({key:"defaultGPost",value:"https://plus.google.com/113624413123385492768/posts/gXtfiJkXv1a"}).exec(console.log);
 	});
 
-	SalonRecinto.find().exec(function(err,data){
+	/*SalonRecinto.find().exec(function(err,data){
 		for(var i in data){
 			var registro = data[i];
 			registro.recinto = ""+registro.recinto;
@@ -110,7 +110,7 @@ module.exports.bootstrap = function(cb) {
 			registro.recinto = ""+registro.recinto;
 			registro.save(console.log);
 		}
-	})
+	})*/
 
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)

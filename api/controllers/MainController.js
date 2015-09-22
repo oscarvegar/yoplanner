@@ -40,6 +40,9 @@ module.exports = {
 			req.session.metas = _SECCIONES[path]; 
 			res.view("empty",{layout:"infoLayout"})
 		}
+	},
+	test:function(req,res){
+		res.view("empty",{layout:"testLayout"})
 	}
 	
 };
