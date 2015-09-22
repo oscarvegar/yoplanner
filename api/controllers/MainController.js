@@ -27,7 +27,7 @@ module.exports = {
 
 	root:function(req,res){
 		req.session.metas={
-			image="http://yoplanner.com/img/logo.png",
+			image:"http://yoplanner.com/img/logo.png",
 			title:"Yo Planner - Agencia de Viajes – Hoteles, Vuelos y Cruceros - Organización y Planeación de Viajes y Grupos",
 			description:""
 		}
