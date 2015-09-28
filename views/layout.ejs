@@ -4,7 +4,16 @@
 
   <!-- Basic -->
   <meta charset="utf-8">
-  <% if(typeof session.metas != 'undefined'){%>
+  <% if(typeof session.metas != 'undefined') { %>
+      <% if(typeof session.metas.title != 'undefined'){ %>
+        <title>Yo Planner - <%= session.metas.title %></title>
+      <% } %>
+      <% if(typeof session.metas.description != 'undefined'){ %>
+        <meta name="description" content="<%=session.metas.description%>">
+      <% } %>
+      <% if(typeof session.metas.keywords != 'undefined'){ %>
+        <meta name="keywords" content="<%=session.metas.keywords%>">
+      <% } %>
       <% if(session.metas.image != undefined) { %>
         <meta property="og:image" content="<%=session.metas.image%>" >
       <% } else { %>
@@ -20,17 +29,7 @@
       <%
           }
       %>
-  
-  
-    <% if(typeof session.metas.title != 'undefined'){ %>
-      <title>Yo Planner - <%= session.metas.title %></title>
-    <% } %>
-    <% if(typeof session.metas.description != 'undefined'){ %>
-      <meta name="description" content="<%=session.metas.description%>">
-    <% } %>
-    <% if(typeof session.metas.keywords != 'undefined'){ %>
-      <meta name="keywords" content="<%=session.metas.keywords%>">
-    <% } %>
+
   <% } else if(typeof title != 'undefined'){%>
       <% if(typeof image != 'undefined') { %>
         <meta property="og:image" content="<%=session.metas.image%>" >
@@ -109,7 +108,7 @@
             </div>
             <!--End Preloader-->
 
-
+adio 
 
             <!-- layout-->
             <div id="layout" class="layout-wide">
