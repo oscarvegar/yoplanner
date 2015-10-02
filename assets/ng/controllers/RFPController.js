@@ -144,6 +144,8 @@ angular.module('rfp-module', [])
 
             $scope.hotelesSeleccionados = null;
             $scope.hotelesSeleccionados = [];
+            $rootScope.hotelesSeleccionados = null;
+            $rootScope.hotelesSeleccionados = [];
 
             $scope.configuracionHabitacionesDobles = [];
             $scope.configuracionHabitacionesSencillas = [];
