@@ -24,18 +24,6 @@ module.exports = {
         }
 
     },
-    beforeCreate : function(rfp,next){
-        for(var i in rfp.recintos){
-            var recinto = rfp.recintos[i];
-            Recinto.findOrCreate({"id":recinto.id},recinto).exec(function(err,data){
-                console.log(">>>>> created recinto");
-                console.log(err);
-                console.log(data);
-            }); 
-        }
-        next();
-        
-    },
     afterCreate : function(rfp,next){
         var options = {};
         options.to = rfp.email,

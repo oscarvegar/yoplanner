@@ -137,7 +137,7 @@ angular.module('rfp-module', [])
 
 
         console.log(angular.toJson( $scope.rfp));
-        $http.post('/RFP',$scope.rfp).success(function(data){
+        $http.post('/RFP/crear',$scope.rfp).success(function(data){
             $scope.folioFinal = ""+data.id;
             $scope.rfp = null;
             $scope.rfp = {};

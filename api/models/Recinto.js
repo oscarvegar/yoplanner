@@ -7,16 +7,13 @@
 
 module.exports = {
 
-    autoPK: false,
+    //autoPK: false,
     attributes: {
-        id:{
-            type:"string",
-            primaryKey: true
-        },
+        
         rfps: {
             collection: 'rfp',
             via: 'recintos',
-            dominant:true
+            //dominant:true
         },
         salones: {
             collection: 'salonRecinto'
