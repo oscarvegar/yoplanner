@@ -13,8 +13,8 @@ var URL_CUSTOM_PICTURES = "./img/hoteles/";
  var hotelesVendidos = {
                 MEX:[{hid:551409},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
                 CVJ:[{hid:264485,fotoPrincipal:URL_PICTURES+"ffea4faa-f894-4db2-8e4b-8bfe7786c3fc"}],
-                CUN:[{hid:214327},{hid:214570},{hid:563172},{hid:214692}],
-                RM0:[{hid:214327},{hid:214572},{hid:214570},{hid:563172},{hid:214692}], 
+                CUN:[{hid:266041},{hid:681932},{hid:563172},{hid:214692}],
+                RM0:[{hid:266041},{hid:681932},{hid:214570},{hid:563172},{hid:214692}], 
                 //SD6:[{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
                 SD6:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
                 ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
