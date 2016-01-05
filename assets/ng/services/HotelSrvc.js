@@ -20,7 +20,7 @@ HotelModule.factory('HotelSrvc', function($http, $q) {
 		hotelPIDF: {hotelId: 290774, destName: 'Ciudad de México, México D.F., México', fotoPrincipal: 'img/hoteles/290774/Presidente_InterContinental_Mexico_City_popdest.jpg'}	// Presidente Intercontinental DF
 	};
 	var CONTRACTING_HOTELS_ARRY = [
-		{hotelId: 363032, destName: 'Cabo San Lucas, Baja California Sur, México', fotoPrincipal: 'img/hoteles/363032/HMC_copia_popdest.jpg'},	// Marquis Los Cabos
+		{hotelId: 276089, destName: 'Cabo San Lucas, Baja California Sur, México', fotoPrincipal: 'img/hoteles/363032/HMC_copia_popdest.jpg'},	// Marquis Los Cabos
 		{hotelId: 352782, destName: 'Playa del Carmen, Quintana Roo, México', fotoPrincipal: 'img/hoteles/352782/Paradisus_La_Perla_Alberca_copia_popdest.jpg'},	// Paradisus Playa del Carmen
 		{hotelId: 681932, destName: 'Cancún, Quintana Roo, México', fotoPrincipal: 'img/hoteles/681932/four_points_cancun_popdest.jpg'},	// Four points Cancun
 		{hotelId: 290774, destName: 'Ciudad de México, México D.F., México', fotoPrincipal: 'img/hoteles/290774/Presidente_InterContinental_Mexico_City_popdest.jpg'}	// Presidente Intercontinental DF
