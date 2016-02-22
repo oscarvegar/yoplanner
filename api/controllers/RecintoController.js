@@ -11,7 +11,7 @@ var URL_PICTURES = "http://media.staticontent.com/media/pictures/";
 var URL_CUSTOM_PICTURES = "./img/hoteles/";
 
  var hotelesVendidos = {
-                MEX:[{hid:551409},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
+                MEX:[{hid:526622},{hid:290736,fotoPrincipal:URL_PICTURES+"76d2fcbd-2e64-4526-9fc9-87ffe4caf25c"}],
                 CVJ:[{hid:264485,fotoPrincipal:URL_PICTURES+"ffea4faa-f894-4db2-8e4b-8bfe7786c3fc"}],
                 CUN:[{hid:266041},{hid:681932},{hid:563172},{hid:214692}],
                 RM0:[{hid:266041},{hid:681932},{hid:214570},{hid:563172},{hid:214692}], 
