@@ -42,8 +42,8 @@
                 <div class="filter-title">
                   <!-- TITLE HEADER-->
                   <div class="title-header">
-                    <h1>¡YO PLANNER LO HACE POR TI!</h1>
-                    <p class="lead" style="font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">Ya sea que necesites cotizar un grupo para tu empresa o quieras un viaje personal, busca por destino los hoteles más populares en todo México.</p>
+                    <h1>COTIZADOR YO PLANNER</h1>
+                    <p class="lead" style="font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">Elabora tu RFP buscando destinos y seleccionando hoteles.</p>
                   </div>
                   <!-- END TITLE HEADER-->
 
@@ -68,247 +68,12 @@
                 </div>
                 <!-- End Shadow Semiboxed Layout -->
 
-                <!-- End content info - Vacations Destinatios-->
-                <div class="content_info">
-                    <!-- Title -->
-                    <!--div class="container">
-                        <div class="row">
-                            <div class="titles">
-                                <h2>Nuestros últimos <span>posts</span></h2>
-                                <i class="fa fa-bicycle"></i>
-                                <hr class="tall">
-                            </div>                    
-                        </div>
-                    </div-->
-                    <!-- End Title-->
-
-                    <!-- content-boxes-->
-                    <div class="content-boxes" ng-controller="BlogCtrl">
-                        <!-- Item-boxe-->
-                        <div class="item-boxed" ng-repeat="post in posts" ng-if="$index<4 && $index%2==0">
-                            <div class="image-boxed">
-                                <span class="overlay"></span>
-                                <img ng-src="{{post.imagensrc}}" alt="" style="width:400px; height: 255px;">
-                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
-                            </div>
-                            <div class="info-boxed boxed-top">
-                                <h3>
-                                    {{post.title}}<br>
-                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{post.author.displayName}} {{post.published | date : 'yyyy-MM-dd'}}</span>
-                                </h3>
-                                <hr class="separator">
-                                <p>{{(post.resume.length > 70) ? post.resume.substr(0,67) + '...' : post.resume}}</p>
-                               
-                                <div class="content-btn"><a href="/blog/{{post.url}}"  class="btn btn-primary">Ver Detalles</a></div>
-                            </div>
-                        </div>
-                        <!-- End Item-boxe-->
-                        <!-- Item-boxe-->
-                        <div class="item-boxed" ng-repeat="post in posts" ng-if="$index<4 && $index%2!=0">
-                            <div class="info-boxed boxed-bottom">
-                                <h3>
-                                    {{post.title}}<br>
-                                    <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
-                                    <span>{{post.author.displayName}} {{post.published | date : 'yyyy-MM-dd'}}</span>
-                                </h3>
-                                <hr class="separator">
-                                <p>{{(post.resume.length > 70) ? post.resume.substr(0,67) + '...' : post.resume}}</p>
-                                
-                                <div class="content-btn"><a href="/blog/{{post.url}}"  class="btn btn-primary">Ver Detalles</a></div>
-                            </div>
-                            <div class="image-boxed image-bottom">
-                                <span class="overlay"></span>
-                                <img ng-src="{{post.imagensrc}}" alt="" style="width: 400px; height: 255px;">
-                                <a href="javascript:void(0);" ng-click="redirectLink(popDest.searchId)" class="more-boxe"></a>
-                            </div>
-                        </div>
-                        <!-- End Item-boxe-->
-                        
-                    </div>
-                    <!-- End content-boxes-->
-                </div>   
-                <!-- End content info - Vacations Destinatios--> 
+                
               
 
-                <!-- End content info - Services Items-->
-                <div class="content_info">
-                    <div class="content_resalt">
-                        <div class="container">
-                            <div class="row">
-                                <!-- Info Resalt - Info Services -->
-                                <div class="col-md-4 ">
-                                    <div class="services-lines-info">
-                                        <h2>Bienvenido a Yo Planner</h2>
-                                        <p class="lead" style="font-size: 1.5rem;">
-                                            Nosotros lo hacemos por ti
-                                            <span class="line"></span>
-                                        </p>
+             
 
-                                        <p style="font-size: 1rem;">Empresa mexicana especializada en la organización y planeación tanto de meetings y conferencias para empresas, como de viajes turísticos. </p>
-                                    </div>
-                                </div>   
-                                <!-- End Info Resalt - Info Services --> 
-
-                                <!-- Services Items -->
-                                <div class="col-md-8">
-                                    <ul class="services-lines">
-                                        <li ng-repeat="serviceItem in servicesItems">
-                                            <div class="item-service-line" ng-if="serviceItem.stUrl != null && serviceItem.stUrl.trim().length > 0">
-                                                <a ui-sref="{{serviceItem.stUrl}}">
-                                                    <i class="fa {{serviceItem.icon}}"></i>
-                                                    <h5>{{serviceItem.text}}</h5>
-                                                </a>
-                                            </div>
-                                            <div class="item-service-line" ng-if="serviceItem.url != null && serviceItem.url.trim().length > 0">
-                                                <a href="{{serviceItem.url}}" target="_blank">
-                                                    <i class="fa {{serviceItem.icon}}"></i>
-                                                    <h5>{{serviceItem.text}}</h5>
-                                                </a>
-                                            </div>
-                                            <div class="item-service-line" ng-if="(serviceItem.stUrl == null || serviceItem.stUrl.trim().length <= 0) && (serviceItem.url == null || serviceItem.url.trim().length <= 0)">
-                                                <i class="fa {{serviceItem.icon}}"></i>
-                                                <h5>{{serviceItem.text}}</h5>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div> 
-                                <!-- End Services Items --> 
-                            </div>
-                        </div>
-                    </div>
-                </div>   
-                <!-- End content info - Services Items --> 
-
-                
-
-                <!-- End content info - Features
-                <div class="content_info">
-                    
-                    <div class="container">
-                        <div class="row">
-                            <div class="titles">
-                                <h2>Nuestros <span>Servicios</span><span></span><span></span></h2>
-                                <i class="fa fa-plane"></i>
-                                <hr class="tall">
-                            </div>                    
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row padding-bottom">
-                            <div class="col-md-4">
-                                <div class="item-feature text-center">
-                                    <div class="head-feature">
-                                        <span></span>
-                                        <br>
-                                        <div class="title-feature">
-                                            <i class="fa fa-sun-o left-icon"></i>
-                                            <i class="fa fa-umbrella right-icon"></i>
-                                            <a ui-sref="meetings" style="color: #42A9D3 !important;">Meeting Planner</a>
-                                        </div><span></span>
-                                        <br>
-                                        <span></span>
-                                    </div>
-                                    <div class="info-feature">
-                                        <p>Si buscas organizar un evento corporativo en algún destino turístico, te podemos ayudar.</p> 
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 text-center">
-                                <div class="item-feature text-center">
-                                    <div class="head-feature">
-                                        <span></span>
-                                        <br>
-                                        <div class="title-feature">
-                                            <i class="fa fa-thumbs-o-up left-icon"></i>
-                                            <i class="fa fa-heart right-icon"></i>
-                                            <a ui-sref="index" style="color: #42A9D3 !important;">Plataforma para cotizar grupos en línea</a>
-                                        </div>
-                                        <br>
-                                        <span></span>
-                                    </div>
-                                    <div class="info-feature">
-                                        <p>Contamos con una de las plataformas en línea más eficientes para hacer cotizaciones de grupos.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 text-center">
-                                <div class="item-feature text-center">
-                                    <div class="head-feature">
-                                        <span></span>
-                                        <br>
-                                        <div class="title-feature">
-                                            <i class="fa fa-check right-icon"></i>
-                                            <a ui-sref="travel_agency" style="color: #42A9D3 !important;">Asesor de viajes individuales</a>
-                                        </div>
-                                        <br>
-                                        <span></span>
-                                    </div>
-                                    <div class="info-feature">
-                                        <p>Puedes contactar con uno de nuestros planners para que te asesore en el viaje que estás planeando.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>   
-                <!-- End content info - Features--> 
-
-                <!-- End Promotion Boxes - Parallax Section -->
-                <div class="content_info">
-                    <!-- Parallax Background -->
-                    <div class="bg_parallax image_11_parallax"></div>
-                    <!-- Parallax Background -->
-
-                    <!-- Content Parallax-->
-                    <div class="opacy_bg_02 padding-bottom">
-                        <!-- Title -->
-                        <div class="">
-                            <div class="row">
-                                <div class="titles">
-                                    <h2>Hoteles populares en <span>México</span></h2>
-                                    <i class="fa fa-money"></i>
-                                    <hr class="tall">
-                                </div>                    
-                            </div>
-                        </div>
-                        <!-- End Title-->
-
-                        <!-- content-->
-                        <div class="">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-3" ng-repeat="popHotel in popHotelsMex">
-                                    <!-- promotion-box-->
-                                    <div class="promotion-box">
-                                        <div class="promotion-box-header">
-                                            <img ng-src="{{(popHotel.fotoPrincipal!=null?popHotel.fotoPrincipal:popHotel.pictures[0])}}" alt="img" style="width: 222.5px; height: 222.5px;">
-                                        </div>
-
-                                        <div class="promotion-box-center {{'color-' + ($index + 1)}}">
-                                            <h3 style="font-size: 1rem;">
-                                                {{popHotel.name}}<br>
-                                                <!-- span>{{popHotel.type + ', ' + popHotel.cityId + ', ' + popHotel.countryId}}</span -->
-                                                <span style="font-size: 0.8rem;">{{popHotel.destName}}</span>
-                                            </h3>
-                                        </div>
-
-                                        <div class="promotion-box-info">
-                                            <p>{{(popHotel.description.length > 68) ? popHotel.description.substr(0,65) + '...' : popHotel.description}}</p>
-                                            <a ui-sref="hotel_detail({searchId: popHotel.cityId, hotelId: popHotel.id})" class="btn btn-primary">Ver Detalles</a>
-                                        </div>
-                                    </div>
-                                    <!-- End promotion-box-->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End content-->
-                    </div>  
-                    <!-- End Content Parallax--> 
-                </div>   
-                <!-- End Promotion Boxes - Parallax Section --> 
+               
 
                 <!-- End content - Slide Features-->
                 <div class="content_info content_resalt">
@@ -328,9 +93,6 @@
 
                                             <p>Convenciones, congresos, conferencias, meetings, capacitaciones, reuniones de trabajo, foros, viajes de incentivo, lo que sea que necesites.</p>
                                             <br>
-                                            <p></p>
-                                            <br>
-                                            <a ui-sref="meetings" class="btn btn-primary">Más información</a>
                                         </div>
                                     </div> 
 
@@ -374,79 +136,9 @@
                 </div>   
                 <!-- End content - Slide Features--> 
                 
-                <!-- content info - testimonials-->
-                <div class="content_info" ng-controller="BlogCtrl">
-                    <!-- Parallax Background -->
-                   <div class="bg_parallax image_02_parallax"></div>
-                    <!-- Parallax Background -->
+                
 
-                    <div class="opacy_bg_02">
-                        <!-- Testimonial Propertie-->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="info-testimonial">
-                                        <!-- Testimonials Carousel -->
-                                        <tstmnls-krsl reviews="homepageTestimonials"></tstmnls-krsl>
-                                        <!-- End Testimonials Carousel -->
-                                    </div>
-                                </div>
-
-                                <div class="col-md-8">
-                                    <div class="testimonial-info">
-                                        <h2>Cancun</h2>
-                                        <P style="background=transparent">Es la ciudad más poblada de Quintana Roo, y está certificada por la Organización Mundial de Turismo como una ciudad con desarrollo turístico de nivel internacional. Cuenta con hermosas playas, la Laguna Nichupté, el Museo Arqueológico y varios parques turísticos, el más famoso es Xcaret. Cuenta con el Canún Center Conventions and Exhibitions</P>
-                                        <a href="javascript:void;" ng-click="redirectLink('CUN')" class="btn btn-primary">Más Informacíon</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Testimonial Propertie-->
-                    </div>
-                </div>
-                <!-- End content info - testimonials-->
-
-                <!-- Twitter Section -->
-                <div class="section-twitter" style="padding: 0 0;">
-                    <i class="fa fa-twitter icon-big" style="top: 0; font-size: 9rem;"></i>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="text-center">
-                                    <h2>Nuestros <span class="text-resalt">twitts</span> recientes.</h2>
-                                </div>
-                                <div class="col-md-3"></div>
-                                <div class="col-md-6" style="height: 300px;overflow-x: hidden;overflow-y: scroll;">
-                                    <div twitter-timeline="618424051304796160" auto-resize="true" style="width:520px;" css-url="css/twitter-timeline/twitter-timeline.css" data-tweet-limit="5">Cargando tweets...</div>
-                                </div>
-                                <div class="col-md-3"></div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <!-- End Twitter Section -->  
-
-                <!-- G+ Section ->
-                <div class="section-twitter">
-                    <i class="fa fa-twitter icon-big"></i>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="text-center">
-                                    <h2>Our recents <span class="text-resalt">twitts</span>.</h2>
-                                </div>
-                                <div class="col-md-3">
-                                </div>
-                                <div class="col-md-6" style="height: 380px;overflow-x: hidden;overflow-y: scroll;">
-                                    <div class="gplus">Loading timeline...</div>
-                                </div>
-                                <div class="col-md-3">
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>  
-                <!- End G+ Section -->  
+               
             </section>
             <!-- End Content Central -->
 
