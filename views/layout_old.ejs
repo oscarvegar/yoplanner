@@ -132,7 +132,30 @@
 
                     <li><a href="/">INICIO </a></li>
 
-                    
+                    <li> <a href="/quienes-somos">¿QUIÉNES SOMOS?</a></li>
+
+                    <li> <a href="javascript:void(0);">SERVICIOS</a>
+                      <ul class="drop-down one-column hover-fade"><!-- first level drop down -->
+                        <!-- li><a ui-sref="nuestros_servicios">Nuestros Servicios</a> </li -->
+                        <li><a href="/meetings">Meetings</a> </li>
+                        <li><a href="/agencia-de-viajes">Agencia De Viajes</a> </li>
+                        <li><a ui-sref="mrktng_hoteles">Publicidad Para Hoteles</a> </li>
+                        <!-- <li><a ui-sref="influencer">Influencer</a> </li> -->
+                      </ul>
+                    </li>
+
+                    <li> <a href="/blog" >BLOG</a></li>
+
+                    <li><a ui-sref="contact">CONTACTO</a></li>
+
+                    <li class="social-bar"> <a href="javascript:void(0);">SÍGUENOS</a> 
+                      <ul class="drop-down hover-zoom">
+                        <li class="facebook"> <a href="//facebook.com/yoplanner" target="_blank"><i class="fa fa-facebook"></i> </a> </li>
+                        <li class="twitter"> <a href="//twitter.com/yoplanner" target="_blank"><i class="fa fa-twitter"></i> </a> </li>
+                        <li class="google-plus"> <a href="https://plus.google.com/113624413123385492768?prsrc=3" target="_blank"><i class="fa fa-google-plus"></i> </a> </li>
+                        <li class="youtube"> <a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank"><i class="fa fa-youtube"></i> </a> </li>
+                      </ul>
+                    </li>
 
                     <li class="mi-seleccion"> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
                       <div class="drop-down full-width hover-expand" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
@@ -210,7 +233,8 @@
 
               <!-- ****** MODAL DE RFP ***** -->
                  <rfp></rfp>
-                  <!-- footer-->
+
+              <!-- footer-->
               <footer id="footer" class="footer-v1">
                 <div class="container">
                   <div class="row">
@@ -353,12 +377,62 @@
                         </div>
                         <!-- End Recent links-->
 
-                       
+                        <!-- Contact Us-->
+                        <div class="col-md-4">
+                          <h3>CONTÁCTANOS</h3>
+                          <ul class="contact_footer">
+                            <li>
+                              <i class="fa fa-envelope"></i> <a href="mailto:contacto@yoplanner.com">contacto@yoplanner.com</a>
+                            </li>
+                            <li>
+                              <i class="fa fa-headphones"></i> <a href="#">(55) 6274 - 6291</a>
+                            </li>
+                            <li class="location">
+                              <i class="fa fa-home"></i>
+                              <a href="#">
+                                  México, D. F.
+                              </a>
+                            </li>                                   
+                          </ul>
+                        </div>
+                        <!-- Contact Us-->
                       </div>  
 
                       <div class="divisor"></div>
 
-                                          
+                      <div class="row">
+                        <!-- Newsletter-->
+                        <div class="col-md-12">
+                          <h3>¡Suscríbase a nuestro boletín!</h3>  
+                          <form id="newsletterForm" action="php/mailchip/newsletter-subscribe.php">
+                            <div class="row">
+                              <div class="col-md-5">
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                  </span>
+                                  <input class="form-control" placeholder="Your Name" name="name" type="text" required="required">
+                                </div>
+                              </div>
+                              <div class="col-md-5">
+                                <div class="input-group">
+                                  <span class="input-group-addon">
+                                    <i class="fa fa-envelope"></i>
+                                  </span>
+                                  <input class="form-control" placeholder="Your  Email" name="email" type="email" required="required">
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <span class="input-group-btn">
+                                  <button class="btn btn-primary" type="submit" name="subscribe">SIGN UP</button>
+                                </span>
+                              </div>
+                            </div>
+                          </form>   
+                          <div id="result-newsletter"></div>
+                        </div>
+                        <!-- end Newsletter-->
+                      </div>                      
                     </div>
                   </div>
                 </div>
@@ -368,13 +442,17 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-md-5">
-                        <p>&copy; 2015 YoPlanner . All Rights Reserved.  2010 - 2016</p>
+                        <p>&copy; 2015 YoPlanner . All Rights Reserved.  2010 - 2015</p>
                       </div>
                       <div class="col-md-7">
                         <!-- Nav Footer-->
                         <ul class="nav-footer">
                           <li><a ui-sref="index">INICIO</a> </li>
+                          <li><a ui-sref="reserva({option: 'hotels'})">HOTELES</a></li>
+                          <li><a ui-sref="reserva({option: 'flights'})">VUELOS</a></li>
+                          <li><a ui-sref="cruises">CRUCEROS</a></li>
                           <li><a ui-sref="politicas_privacidad">POLÍTICAS DE PRIVACIDAD</a></li>
+                          <li><a ui-sref="contact">CONTACTO</a></li>
                         </ul>
                         <!-- End Nav Footer-->
                       </div>
@@ -384,7 +462,6 @@
                 <!-- footer Down-->
               </footer>      
               <!-- End footer-->
-            
             </div>
             <!-- End layout-->
 
