@@ -27,7 +27,9 @@ var URL_CUSTOM_PICTURES = "./img/hoteles/";
                 SJD:[{hid:276089,fotoPrincipal: 'http://media.staticontent.com/media/pictures/5957a8d2-5169-45ca-b31e-61fff5a11e42'},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
                 CL1:[{hid:276089,fotoPrincipal: 'http://media.staticontent.com/media/pictures/5957a8d2-5169-45ca-b31e-61fff5a11e42'},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],                
                 ZLO:[{hid:354456,fotoPrincipal:URL_CUSTOM_PICTURES+"354456/354456-main.jpg",video:"https://youtu.be/zb4e1MTv3V4",description:"El Hotel Grand Isla Navidad Resort está ubicado frente a la Laguna de Barra de Navidad y a 70 km del centro de Manzanillo. El Aeropuerto Internacional Playa de Oro se encuentra a 31 km de la propiedad. Dispone de conexión Wi-Fi gratuita en habitaciones, salones y áreas públicas y piscinas descubiertas. Todas las habitaciones están equipadas con aire acondicionado, TV LCD satelital, caja fuerte digital y baño privado con tina y amenidades de lujo. El establecimiento alberga 3 restaurantes que sirven desde desayuno buffet hasta platillos regionales, nacionales e internacionales. Además, ofrece servicio a la habitación las 24h. Los servicios incluyen spa y sala de masajes, gimnasio, estacionamiento gratuito y canchas de tenis y un campo de golf de clase mundial de 27 hoyos."}],
-                PCM:[{hid:352782 ,fotoPrincipal:URL_CUSTOM_PICTURES+"352782/ppcmain.jpg"},{hid:353356,fotoPrincipal:null}]};
+                PCM:[{hid:352782 ,fotoPrincipal:URL_CUSTOM_PICTURES+"352782/ppcmain.jpg"},{hid:353356,fotoPrincipal:null}],
+                MTY:[{hid:866114},{hid:865632}]
+            };
       
 
 module.exports = {
