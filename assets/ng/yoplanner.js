@@ -38,7 +38,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			url: "/",
 			templateUrl: "/ng/modules/homepage.tpl.html"
 		})
-		.state('acerca_de', {
+		/*.state('acerca_de', {
 			url: "/quienes-somos",
 			templateUrl: "/ng/modules/acerca.de.tpl.html"
 		})
@@ -85,7 +85,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 		.state('blogPost', {
 			url: "/blog/:year/:month/:id",
 			templateUrl: "/ng/modules/blog.html"
-		});
+		})*/;
 	
 });
 
