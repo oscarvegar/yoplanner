@@ -34,10 +34,9 @@ module.exports = {
         <br><br> \
         Para ver tu propuesta o imprimir da click en el siguiente enlace: \
         <br><br>\
-        http://htmltopdfapi.com/querybuilder/api.php?url=http://cotizador.yoplanner.com/modules/resumen.html?rfp="+rfp.id+
+        http://htmltopdfapi.com/querybuilder/api.php?url=http://rfp.yoplanner.com/modules/resumen.html?rfp="+rfp.id+
         "<br><br>Saludos,<br><img src='http://yoplanner.com/img/firma.png'></html>";
         EmailService.sendEmail(options);
         next();
     }
 };
-
