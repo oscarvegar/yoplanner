@@ -48,44 +48,7 @@ HotelModule.run(function($rootScope, $state, $stateParams) {
 });
 
 HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider) {
-	/*
-	$routeProvider
-		.when('/hotel/:hotelId', {
-			templateUrl: '/ng/modules/hotel.detail.tpl.html',
-			controller: 'HotelController',
-			resolve: {
-				// I will cause a 1 second delay
-				delay: function($q, $timeout) {
-					var delay = $q.defer();
-					$timeout(delay.resolve, 1000);
-					return delay.promise;
-				}
-			}
-		})
-		.when('/hotel/list/:searchId', {
-			templateUrl: '/ng/modules/hotel.list.tpl.html',
-			controller: 'HotelController',
-			resolve: {
-				// I will cause a 1 second delay
-				delay: function($q, $timeout) {
-					var delay = $q.defer();
-					$timeout(delay.resolve, 1000);
-					return delay.promise;
-				}
-			}
-		})
-		.otherwise({
-			redirectTo: '/'
-		});
-	
-	$locationProvider.html5Mode({
-		enabled: true,
-		requireBase: false
-	});
-	*/
-	/////////////////////////////
-	// Redirects and Otherwise //
-	/////////////////////////////
+
 
 	// Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
 	$urlRouterProvider
@@ -208,10 +171,11 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     $rootScope.hotelesSeleccionados = $scope.$storage.hotelesSeleccionados!=null?JSON.parse($scope.$storage.hotelesSeleccionados):[];
 
 	$scope.findAllHotelsByCity = function(searchId) {
+		console.log("********************* $findAllHotelsByCity")
 		searchId = searchId ? searchId : $stateParams.searchId;
 		$http.get("/recinto/findByCiudadId/"+searchId).success(function (data){
-			$rootScope.resHoteles = data.hotels;
-
+			$rootScope.resHoteles = data;
+			console.log("********************* $rootScope.resHoteles",$rootScope.resHoteles)
 			if($rootScope.resHoteles) {
 				for (var i = 0; i < $rootScope.resHoteles.length; i++) {
 					$rootScope.resHoteles[i]['starRatingRange'] = new Array($rootScope.resHoteles[i].starRating);
@@ -238,15 +202,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$http.get("/recinto/findByCiudadId/"+searchId+"?p="+$scope.currentPage).success(function (data){
 			$scope.showMostrarMas = false;
 
-			if(data.hotels) {
-				for (var i = 0; i < data.hotels.length; i++) {
-					data.hotels[i]['starRatingRange'] = new Array(data.hotels[i].starRating);
+			if(data) {
+				for (var i = 0; i < data.length; i++) {
+					data[i]['starRatingRange'] = new Array(data[i].starRating);
 				};
 			}
 
 			$log.info(data);
-			$scope.moreHotels = $scope.moreHotels.concat(data.hotels);
-			if(data.hotels && data.hotels.length > 0) {
+			$scope.moreHotels = $scope.moreHotels.concat(data);
+			if(data && data.length > 0) {
 				$scope.currentPage++;
 			}
 		}).error(function (err){
@@ -263,6 +227,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     };
 
     $scope.findSelectedHotelDetail = function() {
+    	$scope.showloading = true;
     	$log.info('HotelController.findSelectedHotelDetail');
 
     	$scope.videoID = '9GdVZfIBvxQ';
@@ -278,28 +243,29 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         $http.get("/recinto/findById/"+hotelId).success(function(data){
         	$log.info("SELECTED HOTEL SEARCH > > > >", data);
     		$log.info("SELECTED HOTEL ROOT_SCOPE > > > >", $rootScope.selectedHotel);
+    		$log.info("SELECTED HOTEL ROOT_SCOPE stringify > > > >", JSON.stringify($rootScope.selectedHotel));
 
-	    	if(hotelId == 352782 || hotelId == 353356) {
-	    		$scope.videoURL = 'https://www.youtube.com/watch?v=9GdVZfIBvxQ';	// Paradisus Playa del Carmen La Esmeralda
+	    	if(data.youtube) {
+	    		$scope.videoURL = data.youtube;	// Paradisus Playa del Carmen La Esmeralda
 	    	}else if($rootScope.selectedHotel && $rootScope.selectedHotel.video){
 	    		$scope.videoURL = $rootScope.selectedHotel.video	;
 	    	}
 
         	if(data) {
-	        	if(data.hotels.length > 0) {
-	        		var hotelTMP = data.hotels[data.hotels.length-1];
+	        	
+	        		var hotelTMP = data;
 
 	        		$scope.initilizeGooMap(hotelTMP);
 
 	        		if($rootScope.selectedHotel) {
 		        		hotelTMP["amenities"] = $rootScope.selectedHotel.amenities;
 		        		hotelTMP["fotoPrincipal"] = $rootScope.selectedHotel.fotoPrincipal;
-		        		hotelTMP["reviewSummary"] = $rootScope.selectedHotel.reviewSummary;
+		        		//hotelTMP["reviewSummary"] = $rootScope.selectedHotel.reviewSummary;
 		        		hotelTMP.video = $rootScope.selectedHotel.video;
 	        		}
 
 	        		$rootScope.selectedHotel = hotelTMP;
-	        	}
+	        	
 	        	
 	        	if(data.salones && data.salones.length > 0) {
 	        		$rootScope.selectedHotel.salones = data.salones[data.salones.length-1];
@@ -313,7 +279,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 	 			$scope.starRange = new Array($scope.currentHotel.starRating);
 	 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
 
-	 			for (var i = 0; i < $scope.currentHotel.reviews.length; i++) {
+	 			/*for (var i = 0; i < $scope.currentHotel.reviews.length; i++) {
 	 				var reviewAverageScore = ($scope.currentHotel.reviews[i].averageScore / 20);
 	 				var reiewAverageScoreMod = reviewAverageScore - $scope.Math.floor(reviewAverageScore);
 
@@ -328,7 +294,33 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 	 				$scope.currentHotel.reviews[i]['reviewAverageScore'] = reviewAverageScore;
 	 				$scope.currentHotel.reviews[i]['reviewAverageScoreRange'] = new Array($scope.Math.floor(reviewAverageScore));
-	 			};
+	 			};*/
+	 			$timeout(function(){
+		 			$("#single-carousel").owlCarousel({
+
+                        // Most important owl features
+                        // items : 1,
+                        singleItem: true,
+
+                        //Autoplay
+                        autoPlay: 4000,
+
+                        // Navigation
+                        navigation : true,
+
+                        // Navigation
+                        autoHeight : true,
+
+                        //Basic Speeds
+                        slideSpeed : 400,
+
+                        //Pagination
+                        pagination : false
+                    });
+	 				$scope.showloading = false;
+		 		},1000);
+	 			
+
 
 			 	if($rootScope.selectedHotel.salones==null) {
 			        $http.get("/salonrecinto/findByRecintoId/"+$rootScope.selectedHotel.id).success(function(data){
@@ -350,7 +342,6 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         	}
 
 	    	var TODAY = moment();
-	    	$scope.iFrameSrc = $sce.trustAsResourceUrl ('http://www.e-agencias.com.mx/ag32638/hotels/details/'+$stateParams.searchId+'/'+TODAY.add(2, 'days').format('YYYY-MM-DD')+'/'+TODAY.add(3, 'days').format('YYYY-MM-DD')+'/1/'+$stateParams.hotelId+'/');
 	    	$timeout(FB.XFBML.parse,100);
         }).error(function(err){
         	$log.error(err);
@@ -467,6 +458,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     };
 
 	$scope.init = function() {
+
 		$log.info('HotelController.init');
 		$scope.map = {showMap: false};
 		$log.info($routeParams.searchId);
@@ -545,7 +537,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			console.log("DESTINO A BUSCAR :::: ",$stateParams.searchId)
 			$scope.hotels=null
 			$http.get("/recinto/findByCiudadId/"+$stateParams.searchId).success(function (data){
-				$rootScope.resHoteles = data.hotels;
+				$rootScope.resHoteles = data;
 
 				if($rootScope.resHoteles) {
 					for (var i = 0; i < $rootScope.resHoteles.length; i++) {

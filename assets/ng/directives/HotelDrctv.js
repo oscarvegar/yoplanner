@@ -47,23 +47,7 @@ HotelModule.directive('tstmnlsKrsl', function($timeout, $log) {
 		// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 		link: function($scope, iElm, iAttrs, controller) {
 			$log.info('directive.tstmnlsKrsl', iAttrs.reviews);
-			/*
-            $timeout(function () {
-            	$log.info("$timeout :: ");
-			    setTimeout( function() {
-                    //=================================== Carousel testimonials  ===============================//
-                    $("#testimonials").owlCarousel({
-                        items : 1,
-                        autoPlay: 3200,  
-                        navigation : false,
-                        autoHeight : true,
-                        slideSpeed : 400,
-                        singleItem: true,
-                        pagination : true
-                    });
-                }, 5000);
-            });
-             */
+			
 		}
 	};
 });
@@ -105,45 +89,6 @@ HotelModule.directive('onFinishRender', function($timeout, $log) {
 		                    pagination : false
 		                });
 
-		                /*
-				    	var index = 0;
-				        $('#single-carousel').imagesLoaded()
-				            .always( function() {
-				                console.log('always.(#single-carousel)');
-				                $('.preloader').fadeOut('slow');
-			                	$('.status').fadeOut('slow');
-				                //=================================== Carousel Services  ==============================//    
-				                $("#single-carousel, #single-carousel-sidebar").owlCarousel({
-
-				                    // Most important owl features
-				                    // items : 1,
-				                    singleItem: true,
-
-				                    //Autoplay
-				                    autoPlay: 4000,
-
-				                    // Navigation
-				                    navigation : true,
-
-				                    // Navigation
-				                    autoHeight : true,
-
-				                    //Basic Speeds
-				                    slideSpeed : 400,
-
-				                    //Pagination
-				                    pagination : false
-				                });
-				            }).progress( function( instance, image ) {
-				                console.log('progress...');
-				                // console.log($('.preloader'));
-				                if(index == 0) {
-				                	$('.preloader').fadeIn('slow');
-				                	$('.status').fadeIn('slow');
-				                	index++;
-				                }
-				            });
-	            		*/
 			        }, 1500);
                 });
             }
@@ -160,12 +105,8 @@ HotelModule.directive('onFinishRenderTest', function($timeout, $log) {
             if (scope.$last || scope.$parent.$last) {
                 $timeout(function () {
                 	$log.info("onFinishRenderTest.calling :: "+attr.onFinishRenderTest);
-                    // scope.$emit('ngRepeatFinished');
-                    // scope.$evalAsync(attr.onFinishRender);
-                    // scope.$eval(attr.onFinishRender);
+                   
                     
-                    // var expressionHandler = scope.method();
-                    // expressionHandler();
                     scope.$eval(attr.onFinishRenderTest);
 				                
 	    			setTimeout( function() {

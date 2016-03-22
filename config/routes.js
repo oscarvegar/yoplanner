@@ -33,7 +33,18 @@ module.exports.routes = {
   ***************************************************************************/
   'post /deploy': 'DeployController.webhook',
   '/':'MainController.root',
-  
+  'post /login': {
+    controller: 'AuthController',
+    action: 'process'  
+  },
+  '/logout': {
+    controller: 'AuthController',
+    action: 'logout'
+  },  
+  '/hs':{
+    controller: 'AuthController',
+    action: 'hasSession'
+  },
 
   /***************************************************************************
   *                                                                          *

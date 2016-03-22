@@ -43,7 +43,14 @@ module.exports = {
     findById: function(req,res){
         var params = req.allParams();
         var id = params.id;
-        var options = {
+        console.log("id",id)
+        Recinto.findOne(id).populate("amenities").then(function(hotel){
+            
+            res.json(hotel);
+        })
+
+
+        /*var options = {
             hostname : "api.despegar.com",
             path : "/hotels/"+id,
             headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
@@ -75,143 +82,34 @@ module.exports = {
                 return res.json(response);
             })
             
-        });
+        });*/
 
     },
     findByCiudadId: function(req,res){
-         
-        var hotelesProspecto = {
-                MEX:[{hid:291554},{hid:642043},{hid:572877}],
-                PVR:[{hid:643681}], //puerto vallarta
-                CUN:[{hid:681932,customPost:"https://plus.google.com/113624413123385492768/posts/bdoPUUzwCmw",fotoPrincipal:URL_CUSTOM_PICTURES+"681932/Four Points Cancun.jpg",customPictures:["681932/Four Points Cancun.jpg","681932/Four Points Cancun 2.jpg"]}]};
-        var resSize = 11;
-        var id = req.allParams().id;
-        sails.log.info("ID",id)
-        var options = {
-            hostname : "api.despegar.com",
-            path : "/availability/cities/"+id+"/hotels?sort=stars&order=desc&includehotel=true&stars=3-4-5&type=RSR-HOT&pagesize=100",
-            headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
-        };
-        // Start the request
-        HttpClientService.httpsGET(options,function(response){
-            if(response==null)return res.json(500);
-                var data = JSON.parse(response);
-                var ids = "";
-                var p = 0;
-                var restaVendidos = 0;
-                if(req.param('p')){
-                    p = req.param('p');
-                    if(parseInt(p)==1){
-                        for(var i in hotelesProspecto[id]){
-                            ids += hotelesProspecto[id][i].hid+",";
-                        }
-                    }
-                    resSize = 12;
-                }else if(hotelesVendidos[id]){
-                    if(hotelesVendidos[id].length>0){
-                        restaVendidos = hotelesVendidos[id].length;
-                        for(var i in hotelesVendidos[id]){
-                            ids += hotelesVendidos[id][i].hid+",";
-                        }
-                    }
-                }
-                availability:
-                for(var d in data.availability){
-                    if(d>=(resSize - restaVendidos +(p*resSize)))
-                        break;
-                    else if(d<(resSize*p)){
-                        continue;
-                    }
-                    //verifica si ya existe el id en la consulta
-                    var items = ids.split(",");
-                    if(data.availability[d].hotel) {
-                        for(var s in items){
-                            if(items[s]==data.availability[d].hotel.id){
-                                resSize+=1;
-                                continue availability;
-                            }
-                        }
-                        ids += data.availability[d].hotel.id+",";
-                    }
-
-                }
-                options = {
-                    hostname : "api.despegar.com",
-                    path : "/hotels/"+ids+"?includeamenities=true&includesummary=true",
-                    headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
-                };
-                if(ids.length==0)return res.json({hotels:[]});
-                HttpClientService.httpsGET(options,function(resp){
-                    if(resp==null)return res.json(500);
-                    var hoteles = JSON.parse(resp);
-                    for(var i in hoteles.hotels){
-                        for(var j in hoteles.hotels[i].pictures){
-                            hoteles.hotels[i].pictures[j] = URL_PICTURES + hoteles.hotels[i].pictures[j];
-                        }
-                    }
-                    var arrResHot = [];
-                    //logica para hoteles vendidos
-                    if(hotelesVendidos[id]){
-                        for(var i=0;i<hotelesVendidos[id].length;i++){
-                            
-                            for(var j in hoteles.hotels){
-                                if(hoteles.hotels[j].id==hotelesVendidos[id][i].hid){
-                                    var hot = hoteles.hotels[j];
-                                    if(hotelesVendidos[id][i].fotoPrincipal!=null){
-                                        hot.fotoPrincipal = hotelesVendidos[id][i].fotoPrincipal;
-                                    }
-                                    if(hotelesVendidos[id][i].customPost!=null){
-                                        hot.customPost = hotelesVendidos[id][i].customPost;
-                                        
-                                    }
-                                    if(hotelesVendidos[id][i].customPictures!=null){
-                                        for(var k in hotelesVendidos[id][i].customPictures){
-                                            hotelesVendidos[id][i].customPictures[k] = URL_CUSTOM_PICTURES + hotelesVendidos[id][i].customPictures[k];
-                                        }
-                                        //hot.pictures = hotelesVendidos[id][i].customPictures.concat(hot.pictures);
-                                        hot.pictures = hotelesVendidos[id][i].customPictures;
-                                        
-                                    }
-                                    hot.description = hotelesVendidos[id][i].description?hotelesVendidos[id][i].description:hot.description;
-                                    hot.video = hotelesVendidos[id][i].video?hotelesVendidos[id][i].video:"";
-                                    hoteles.hotels.splice(j,1);
-                                    arrResHot.push(hot);
-                                    break;
-                                }
-                            }
-                        }
-                        hoteles.hotels = arrResHot.concat(hoteles.hotels);
-                    }
-                    if(p==1 && hotelesProspecto[id]){
-                        for(var i=0;i<hotelesProspecto[id].length;i++){
-                            for(var j in hoteles.hotels){
-                                if(hoteles.hotels[j].id==hotelesProspecto[id][i].hid){
-                                    var hot = hoteles.hotels[j];
-                                    if(hotelesProspecto[id][i].fotoPrincipal!=null){
-                                        hot.fotoPrincipal = hotelesProspecto[id][i].fotoPrincipal;
-                                        
-                                    }
-                                    if(hotelesProspecto[id][i].customPost!=null){
-                                        hot.customPost = hotelesProspecto[id][i].customPost;
-                                        
-                                    }
-                                    if(hotelesProspecto[id][i].customPictures!=null){
-                                        for(var k in hotelesProspecto[id][i].customPictures){
-                                            hotelesProspecto[id][i].customPictures[k] = URL_CUSTOM_PICTURES + hotelesProspecto[id][i].customPictures[k];
-                                        }
-                                        hot.pictures = hotelesProspecto[id][i].customPictures.concat(hot.pictures);
-                                        
-                                    }
-                                    break;
-                                }
-                            }
-                        }
-                        hoteles.hotels.splice((hoteles.hotels.length-hotelesProspecto[id].length-1),hotelesProspecto[id].length);
-                       
-                    }
-                    res.json(hoteles);
-                });
-           
+        var idciudad = req.param('id');
+        var page = req.param('p')
+        var pagesize = 12;
+        if(!page)page = 1;
+        else page++;
+        if(page ==1){
+            pagesize = 11;
+        }
+        console.log("id ciudad",idciudad)
+        console.log("page",page)
+        console.log("pagesize",pagesize)
+        Recinto.findOne({cityId:idciudad}).then(function(data){
+            if(!data){
+                CityService.importCity(idciudad).then(function(data){
+                    return res.json(data);
+                }).catch(function(err){
+                    console.log(err);
+                    res.error(err);
+                })
+            }else{
+                Recinto.find({cityId:idciudad}).paginate({page: page, limit: pagesize}).then(function(data){
+                    return res.json(data);
+                })
+            }
         });
     }
 };

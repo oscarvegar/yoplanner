@@ -110,7 +110,7 @@
 
 
             <!-- layout-->
-            <div id="" class="layout-wide">
+            <div id="layout" class="layout-wide">
 
               <!-- Header-->
               <header id="header" class="header-v1">
@@ -135,10 +135,9 @@
                     <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-sign-out " ng-click="logout()">CERRAR SESIÓN</i></li>
                     <li class="mi-seleccion" ng-if="_hasSession"> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
                       <div class="drop-down full-width hover-expand" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
-                        <div class="row">
-                          <div class="col-md-3 content-btn">
-                            <a ng-if="hotelesSeleccionados.length > 0" href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
-                          </div>
+                        <div class="col-md-9"></div>
+                        <div class="col-md-3 content-btn">
+                          <a ng-if="hotelesSeleccionados.length > 0" href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
                         </div>
 
                         <ul ng-if="hotelesSeleccionados.length == 0">
@@ -146,10 +145,10 @@
                         </ul>
 
                         <div class="row">
-                        <ul ng-repeat="hotel in hotelesSeleccionados track by $index" class="col col-md-3"><!-- column $index -->
-                          <li height="200px">
-                            <h2>{{(hotel.name.trim().substring(hotel.name.trim().indexOf(' ')))}}</h2>
-                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1" style="widrh:250px;height:150px;"> </a>
+                        <ul ng-repeat="hotel in hotelesSeleccionados track by $index"><!-- column $index -->
+                          <li>
+                            <h2><span>{{(hotel.name.trim().substring(0,hotel.name.trim().indexOf(' ')))}}</span>{{(hotel.name.trim().substring(hotel.name.trim().indexOf(' ')))}}</h2>
+                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1"> </a>
                             <p>{{(hotel.description.length > 100) ? hotel.description.substr(0,97) + '...' : hotel.description}}</p>
                             <div class="col-md-3 content-btn" ng-click="selectResult(hotel)">
                               <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalle</a>
@@ -162,6 +161,9 @@
                         </div>
                       </div>
                     </li>
+
+
+                    
 
                     <li class="search-bar"> <i class="fa fa-search"></i><!-- search bar -->
                       <ul class="drop-down hover-expand">
@@ -176,7 +178,7 @@
                       </ul>
                     </li>   
                     <!-- login form -->
-                    <li class="login-form" ng-controller="LoginCtrl" ng-if="!_hasSession"> <i class="fa fa-user">   LOGIN</i>
+                    <li class="login-form" ng-controller="LoginCtrl" ng-if="!_hasSession"> <i class="fa fa-user">LOGIN</i>
                       <ul class="drop-down hover-expand">
                         <li>
                           <form method="post" ng-submit="login()">
@@ -211,10 +213,62 @@
 
               <!-- ****** MODAL DE RFP ***** -->
                  <rfp></rfp>
-                            <!-- footer-->
+                  <!-- footer-->
+              <footer id="footer" class="footer-v1">
+                <div class="container">
+                  <div class="row">
+                   
+                  </div>
+                  <div class="row">
+                    <hr>
+                  </div>
+                  <div class="row">
+                    <!-- Title Footer-->
+                    <div class="col-md-5">
+                      <div class="title-footer">
+                        <h2>Entérate primero y ahorra en tus planes de viaje.
+                          <br> <span></span>
+                          <br> </h2>
+                      </div>
 
-              <footer id="footer" class="footer-v1" style="margin-top:20px">
-                
+                      <p></p>
+                    </div>
+                    <!-- End Title Footer-->
+
+                    <div class="col-md-7">
+                      <div class="row">                             
+                        <!-- Social Us-->
+                        <div class="col-md-3">
+                          <h3>SÍGUENOS</h3>
+                          <ul class="social">
+                            <li class="facebook"><span><i class="fa fa-facebook"></i></span><a href="//facebook.com/yoplanner">Facebook</a></li>
+                            <li class="twitter"><span><i class="fa fa-twitter"></i></span><a href="//twitter.com/yoplanner">Twitter</a></li>
+                            <li class="google-plus"><span><i class="fa fa-google-plus"></i></span><a href="https://plus.google.com/113624413123385492768?prsrc=3" target="_blank">Google +</a> </li>
+                            <li class="youtube"><span><i class="fa fa-youtube"></i></span><a href="https://www.youtube.com/channel/UCqCEySy6lNMhn6KlPAtcddg" target="_blank">YouTube</a> </li>
+                          </ul>
+                        </div>
+                        <!-- End Social Us-->
+
+                        <!-- Recent links-->
+                        <div class="col-md-5">
+                          <h3>SERVICIOS </h3>
+                          <ul>
+                            <li><i class="fa fa-check"></i> <a ui-sref="meetings">Meetings</a> </li>
+                            <li><i class="fa fa-check"></i> <a ui-sref="travel_agency">Agencia De Viajes</a> </li>
+                            <li><i class="fa fa-check"></i> <a ui-sref="mrktng_hoteles">Publicidad Para Hoteles</a> </li>
+                          </ul>
+                        </div>
+                        <!-- End Recent links-->
+
+                       
+                      </div>  
+
+                      <div class="divisor"></div>
+
+                                          
+                    </div>
+                  </div>
+                </div>
 
                 <!-- footer Down-->
                 <div class="footer-down">
@@ -237,8 +291,9 @@
                 <!-- footer Down-->
               </footer>      
               <!-- End footer-->
+            
             </div>
-           
+            <!-- End layout-->
 
             <!-- ======================= JQuery libs =========================== -->
             <!-- jQuery local--> 

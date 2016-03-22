@@ -9,14 +9,23 @@ module.exports = {
 
     //autoPK: false,
     attributes: {
+
+        id: {
+            type: 'integer',
+            primaryKey: true,
+            required: true
+        },
+        amenities:{
+            collection:'Amenity'
+        },
+        salones:{
+            collection:"SalonRecinto"
+        },
         
         rfps: {
             collection: 'rfp',
             via: 'recintos',
             //dominant:true
-        },
-        salones: {
-            collection: 'salonRecinto'
         },
         infoExtra: {
             model: 'infoExtraRecinto'

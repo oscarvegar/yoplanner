@@ -55,8 +55,8 @@ module.exports.cors = {
   *                                                                          *
   ***************************************************************************/
 
-  // credentials: true,
-
+  credentials: true,
+  
   /***************************************************************************
   *                                                                          *
   * Which methods should be allowed for CORS requests? This is only used in  *
