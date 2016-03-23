@@ -92,7 +92,8 @@ module.exports = {
         if(!page)page = 1;
         else page++;
         if(page ==1){
-            pagesize = 11;
+            //pagesize = 11;
+            
         }
         console.log("id ciudad",idciudad)
         console.log("page",page)
