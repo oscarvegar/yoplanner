@@ -15,14 +15,7 @@ var URL_CUSTOM_PICTURES = "./img/hoteles/";
                 CVJ:[{hid:264485,fotoPrincipal:URL_PICTURES+"ffea4faa-f894-4db2-8e4b-8bfe7786c3fc"}],
                 CUN:[{hid:266041},{hid:681932},{hid:563172},{hid:214692}],
                 RM0:[{hid:266041},{hid:681932},{hid:214570},{hid:563172},{hid:214692}], 
-                //SD6:[{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                /*SD6:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
-                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                SJD:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
-                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                CL1:[{hid:363032 ,fotoPrincipal:URL_CUSTOM_PICTURES+"363032/main.jpg"
-                ,customPictures:["363032/1.jpg","363032/2.jpg","363032/3.jpg","363032/4.jpg","363032/5.jpg","363032/6.jpg","363032/7.jpg","363032/8.jpg","363032/9.jpg","363032/10.jpg","363032/11.jpg","363032/12.jpg","363032/13.jpg","363032/14.jpg","363032/15.jpg","363032/16.jpg","363032/17.jpg","363032/18.jpg","363032/19.jpg","363032/20.jpg","363032/21.jpg","363032/22.jpg","363032/23.jpg"]},{hid:276089},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
-                */
+            
                 SD6:[{hid:276089,fotoPrincipal: 'http://media.staticontent.com/media/pictures/5957a8d2-5169-45ca-b31e-61fff5a11e42'},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
                 SJD:[{hid:276089,fotoPrincipal: 'http://media.staticontent.com/media/pictures/5957a8d2-5169-45ca-b31e-61fff5a11e42'},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],
                 CL1:[{hid:276089,fotoPrincipal: 'http://media.staticontent.com/media/pictures/5957a8d2-5169-45ca-b31e-61fff5a11e42'},{hid:485792,customPost:"https://plus.google.com/113624413123385492768/posts/dG3ebJ4zR5D"}],                
@@ -30,7 +23,8 @@ var URL_CUSTOM_PICTURES = "./img/hoteles/";
                 PCM:[{hid:352782 ,fotoPrincipal:URL_CUSTOM_PICTURES+"352782/ppcmain.jpg"},{hid:353356,fotoPrincipal:null}],
                 MTY:[{hid:866114},{hid:865632}]
             };
-      
+
+var AGRUPADORES_CIUDAD = [["SD6","SJD","CL1"],["CUN","RM0"]];      
 
 module.exports = {
     findByRFP: function(req,res){
@@ -50,40 +44,6 @@ module.exports = {
         })
 
 
-        /*var options = {
-            hostname : "api.despegar.com",
-            path : "/hotels/"+id,
-            headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
-        };
-        // Start the request
-        HttpClientService.httpsGET(options,function(response){
-            response = JSON.parse(response);
-            if(response && response.hotels) {
-                for(var i in response.hotels){
-                    for(var k in hotelesVendidos[response.hotels[i].cityId]){
-                        var hot = hotelesVendidos[response.hotels[i].cityId][k];
-                        response.hotels[i].video = hot.video;
-                        response.hotels[i].description = hot.description?hot.description:response.hotels[i].description;
-                        response.hotels[i].fotoPrincipal = hot.fotoPrincipal?hot.fotoPrincipal:response.hotels[i].fotoPrincipal;    
-
-                    }
-                    for(var j in response.hotels[i].pictures){
-                        response.hotels[i].pictures[j] = URL_PICTURES + response.hotels[i].pictures[j];
-                    }
-                }
-            }
-            options.path="/hotels/"+id+"/reviews?pagesize=5";
-            HttpClientService.httpsGET(options,function(rews){
-                rews = JSON.parse(rews);
-                if(rews && response && response.hotels[0]) {
-                    response.hotels[0].reviews = rews.reviews;
-                }
-                console.log("paramsid",id,response)
-                return res.json(response);
-            })
-            
-        });*/
-
     },
     findByCiudadId: function(req,res){
         var idciudad = req.param('id');
@@ -98,7 +58,14 @@ module.exports = {
         console.log("id ciudad",idciudad)
         console.log("page",page)
         console.log("pagesize",pagesize)
-        Recinto.findOne({cityId:idciudad}).then(function(data){
+        var condition = idciudad;
+        for(var i in AGRUPADORES_CIUDAD){
+            if(AGRUPADORES_CIUDAD[i].indexOf(idciudad)>=0){
+                condition = AGRUPADORES_CIUDAD[i];
+                break;
+            }
+        }
+        Recinto.findOne().where({cityId:condition}).then(function(data){
             if(!data){
                 CityService.importCity(idciudad).then(function(data){
                     return res.json(data);
@@ -107,11 +74,16 @@ module.exports = {
                     res.error(err);
                 })
             }else{
-                Recinto.find({cityId:idciudad}).paginate({page: page, limit: pagesize}).then(function(data){
+                Recinto.find().where({cityId:condition}).paginate({page: page, limit: pagesize}).sort("place DESC").then(function(data){
+                    console.log("data res",data)
                     return res.json(data);
                 })
             }
         });
+    },
+
+    images:function(req,res){
+        res.redirect(sails.config.constants.CUSTOM_PICTURES+req.param('id'));
     }
 };
 

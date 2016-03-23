@@ -149,15 +149,9 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
 
 	$scope.searchCity = function(selected){
 		console.info("SEL CITY",$scope.searchId);
-		/*
-		$http.get("/recinto/findByCiudadId/"+$scope.searchId).success(function (data){
-			$rootScope.resHoteles = data.hotels;
-			console.info($rootScope.resHoteles);
-			// $state.go('hotel.list');
-		});
-		*/
-		// $location.url('/hotel/list/' + $scope.searchId);
+
 		$rootScope.searchId = $scope.searchId;
+		
 		$rootScope.$selectedCity = selected.replace($scope.searchId, '').trim();
 
 		var valDest = HotelSrvc.validateDestination($rootScope.searchId);

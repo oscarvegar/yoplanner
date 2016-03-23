@@ -41,9 +41,10 @@ var _this = module.exports = {
 					i--;
 				}
 			}
+			
 
 			console.log("cities",cities)
-			if(cities.length == 0)return deferred.resolve("ok");
+			if(cities.length == 0)return deferred.resolve([]);
 			for(var k in cities){
 
 				var options = {

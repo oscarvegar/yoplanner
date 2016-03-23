@@ -67,6 +67,7 @@ module.exports.routes = {
   'GET /reservaciones_de_avion': '/#/reserva/flights',
   'GET /blog': '/#/blog',
   'GET /blog/:year/:month/:id': 'BlogController.getPost',
+  'GET /api/recinto/images/:id': 'RecintoController.images',
   '/destinos/:id':'DestinoController.find'
   //'GET /test':'MainController.test'
 

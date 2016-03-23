@@ -165,7 +165,7 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams,
 	$state, $stateParams, $localStorage, uiGmapGoogleMapApi, uiGmapIsReady, notify, HotelSrvc, $sce) {
 	
-	$log.info('HotelController');
+	console.log('HotelController');
 	$scope.Math = window.Math;
 	$scope.$storage = $localStorage;
     $rootScope.hotelesSeleccionados = $scope.$storage.hotelesSeleccionados!=null?JSON.parse($scope.$storage.hotelesSeleccionados):[];
@@ -350,7 +350,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
     };
 
     $scope.initilizeGooMap = function(hotelTMP) {
-
+    	if(!hotelTMP.geoLocation)return;
 		// Map Initial Location
 		var initLatitude = hotelTMP.geoLocation.latitude;
 		var initLongitude = hotelTMP.geoLocation.longitude;
@@ -461,38 +461,27 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		$log.info('HotelController.init');
 		$scope.map = {showMap: false};
-		$log.info($routeParams.searchId);
-		$log.info($routeParams.hotelId);
+		$log.info("$routeParams.searchId",$routeParams.searchId);
+		$log.info("$routeParams.hotelId",$routeParams.hotelId);
 		// $scope.params.kuponId
-		$log.info($rootScope.searchId);
-		$log.info($stateParams.searchId);
-		$log.info($rootScope.$selectedCity);
-		$log.info($stateParams.hotelId);
+		$log.info("$rootScope.searchId",$rootScope.searchId);
+		$log.info("$stateParams.searchId",$stateParams.searchId);
+		console.log("$stateParams.searchId",$stateParams.searchId);
+		$log.info("$rootScope.$selectedCity",$rootScope.$selectedCity);
+		$log.info("$stateParams.hotelId",$stateParams.hotelId);
+
 
 		$scope.valDest = HotelSrvc.getDestReviewComp($stateParams.searchId);
-		/*
-		if(valDest.searchId != null) {
-			$scope.imgBgAcronym = $stateParams.searchId;
-		} else {
-			$scope.imgBgAcronym = '02';
-		}
-		 */
+
 		if($rootScope.$selectedCity) {
-			// $scope.$storage.selectedCity = $rootScope.$selectedCity;
-			/*
-			if($scope.$storage) {
-				$scope.$storage.selectedCity = $rootScope.$selectedCity;
-			} else {
-				$scope.$storage = $localStorage.$default({
-					selectedCity: $rootScope.$selectedCity
-				});
-			}
-			*/
+
+			console.log("$rootScope.$selectedCity",$rootScope.$selectedCity);
+
+			console.log("$scope.$storage.arryCities *",$scope.$storage.arryCities)
 			$scope.$storage = $localStorage.$default({
 				selectedCity: $rootScope.$selectedCity
 			});
 
-			// $scope.$storage.arryCities = $localStorage.arryCities;
 			if(!$scope.$storage.arryCities) {
 				$scope.$storage.arryCities = new Array();
 			}
@@ -504,20 +493,18 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					existInStoragedArry = true;
 					break;
 				}
-				/*
-				if($scope.$storage.arryCities[i].selectedCity == $rootScope.$selectedCity) {
-					existInStoragedArry = true;
-					break;
-				}
-				 */
 			};
+			console.log("$scope.$storage.arryCities * * *",$scope.$storage.arryCities)
 
 			if(!existInStoragedArry && $rootScope.$selectedCity.trim()) {
 				$scope.$storage.arryCities.push({searchId: $stateParams.searchId, selectedCity: $rootScope.$selectedCity});
 			}
 		} else {
-			$rootScope.$selectedCity = $scope.$storage.selectedCity;
 
+			console.log("$rootScope.$selectedCity",$rootScope.$selectedCity);
+			//$rootScope.$selectedCity = $scope.$storage.selectedCity;
+			console.log("$scope.$storage.arryCities",$scope.$storage.arryCities)
+			$rootScope.$selectedCity = "";
 			if($scope.$storage.arryCities) {
 				for (var i = 0; i < $scope.$storage.arryCities.length; i++) {
 					if($scope.$storage.arryCities[i].searchId == $stateParams.searchId) {
