@@ -4,7 +4,7 @@
 'use strict';
 
 var HotelModule = angular.module('yoPlannerApp.hotel', ['ngRoute', 'ui.router', 'ngAnimate', 'ngStorage', 'uiGmapgoogle-maps',
-	'youtube-embed', 'cgNotify']);
+	'youtube-embed', 'cgNotify','twitter.timeline']);
 
 HotelModule.constant('MONGOLAB_CONFIG', {
 	baseUrl: '/databases/',
@@ -278,23 +278,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 	 			$scope.currentHotel = $rootScope.selectedHotel;
 	 			$scope.starRange = new Array($scope.currentHotel.starRating);
 	 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
-
-	 			/*for (var i = 0; i < $scope.currentHotel.reviews.length; i++) {
-	 				var reviewAverageScore = ($scope.currentHotel.reviews[i].averageScore / 20);
-	 				var reiewAverageScoreMod = reviewAverageScore - $scope.Math.floor(reviewAverageScore);
-
-	 				if(reiewAverageScoreMod > 0 && reiewAverageScoreMod < 0.4) {
-	 					reviewAverageScore = $scope.Math.floor(reviewAverageScore);
-	 				} else if(reiewAverageScoreMod > 0.3 && reiewAverageScoreMod < 0.7) {
-	 					reviewAverageScore = $scope.Math.floor(reviewAverageScore) + 0.5;
-	 					$scope.currentHotel.reviews[i]['reviewAverageScoreHalfRange'] = new Array(1);
-	 				} else if(reiewAverageScoreMod > 0.6 && reiewAverageScoreMod < 1) {
-	 					reviewAverageScore = $scope.Math.ceil(reviewAverageScore);
-	 				}
-
-	 				$scope.currentHotel.reviews[i]['reviewAverageScore'] = reviewAverageScore;
-	 				$scope.currentHotel.reviews[i]['reviewAverageScoreRange'] = new Array($scope.Math.floor(reviewAverageScore));
-	 			};*/
+	 			
 	 			$timeout(function(){
 		 			$("#single-carousel").owlCarousel({
 
@@ -340,13 +324,24 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			        });
 			    }
         	}
-
 	    	var TODAY = moment();
-	    	$timeout(FB.XFBML.parse,100);
+	    	$scope.facebook = $rootScope.selectedHotel.facebook?$rootScope.selectedHotel.facebook:"https://www.facebook.com/yoplanner";
+	    	$scope.tweeter = $rootScope.selectedHotel.twitter?$rootScope.selectedHotel.twitter:"715213025549152256";
+	    	$scope.gplus= $rootScope.selectedHotel.gplus?$rootScope.selectedHotel.gplus:'113624413123385492768';
+	    	//INIT Rs
+
+
+	    	$timeout(function(){
+	    		 $('.gplusfeed').kycoGooglePlusFeed2({
+	                id: $scope.gplus,
+	                feedPosts: 5,
+	            });	  
+	            FB.XFBML.parse();
+	              				 	
+	    	},1000)	    	                   
         }).error(function(err){
         	$log.error(err);
         });
-
     };
 
     $scope.initilizeGooMap = function(hotelTMP) {

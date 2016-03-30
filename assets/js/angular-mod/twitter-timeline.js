@@ -2,25 +2,26 @@
 *  AngularJS Directive for Twitter's Embedded Timeline with support for custom CSS.
 *  https://github.com/userapp-io/twitter-timeline-angularjs
 */
-
 angular.module('twitter.timeline', [])
 	.directive('twitterTimeline', [function() {
 		return {
 			restrict: 'A',
 			scope: {
 				cssUrl: "@",
-				autoResize: "="
+				autoResize: "=",
+				twitterid:"="
 			},
+
 			link: function (scope, element, attrs) {
 				$('body').removeAttr('data-twttr-rendered');
-
+				console.log("tweeter tweeter tweeter tweeter tweeter tweeter tweeter tweeter",scope.twitterid);
 				element
 					.attr('id', 'twitter-feed')
 					.attr("width", "100%" || attrs.width)
 					.attr('data-chrome', 'noheader transparent')
-					.attr('data-widget-id', attrs.twitterTimeline)
-					.addClass('twitter-timeline');
+					.attr('data-widget-id', scope.twitterid)
 
+					.addClass('twitter-timeline');
 				function render() {
 					var body = $('.twitter-timeline').contents().find('body');
 
