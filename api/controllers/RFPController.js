@@ -10,11 +10,6 @@ module.exports = {
 		var rfp = req.allParams();
 		var recintos = rfp.recintos;
 		var Qrecintos = [];
-		for(var i in recintos){
-			recintos[i].despegarId = ""+recintos[i].id;
-			delete recintos[i].id;
-			Qrecintos.push(Recinto.findOrCreate({"despegarId":""+recintos[i].despegarId},recintos[i]))
-		}
 		Q.all(Qrecintos).then(function(recintos){
 			console.log("RECINTOS >",recintos)
 			delete rfp.recintos;
@@ -36,4 +31,3 @@ module.exports = {
 		
 	}
 };
-
