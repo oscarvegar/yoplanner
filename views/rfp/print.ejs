@@ -77,7 +77,7 @@
 							<% rfp.configuracionHabitaciones.forEach(function(hab){ 
 								if(hab.tipoHabitacion == 1){
 								%>
-								<a><%=moment(hab.fecha).format('DD/MM/YYYY')%> - <%=hab.habitaciones%><br></a>
+								<a><%=moment(hab.fecha).format('DD/MM')%> - <%=hab.habitaciones%><br></a>
 							<% }}) %>
 						</td>						
 						<td class="label">HAB. DOBLES</td>
@@ -85,7 +85,7 @@
 							<% rfp.configuracionHabitaciones.forEach(function(hab){ 
 								if(hab.tipoHabitacion == 2){
 								%>
-								<a><%=moment(hab.fecha).format('DD/MM/YYYY')%> - <%=hab.habitaciones%><br></a>
+								<a><%=moment(hab.fecha).format('DD/MM')%> - <%=hab.habitaciones%><br></a>
 							<% }}) %>
 						</td>						
 					</tr>
@@ -95,6 +95,9 @@
 					</tr>
 				</table>			
 		</div>
+
+
+
 						<div>
 			<h3>EVENTOS</h3>
 				<% if(rfp.salones && rfp.salones.length>0) 
