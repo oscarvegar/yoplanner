@@ -29,8 +29,11 @@ module.exports.policies = {
   '*': true,
 
   RFPController:{
-    '*':'sessionAuth'  
+    '*':'sessionAuth',
+    findById:true,
+    print:true,  
   }
+
   /***************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *
