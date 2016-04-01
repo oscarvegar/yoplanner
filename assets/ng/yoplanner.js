@@ -102,7 +102,7 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
 	$scope.searchCity = function(selected){
 		console.info("SEL CITY",$scope.searchId);
 
-		$rootScope.searchId = $scope.searchId;
+		$rootScope.searchId = $scope.searchId; 
 		
 		//$rootScope.$selectedCity = selected.replace($scope.searchId, '').trim();
 
