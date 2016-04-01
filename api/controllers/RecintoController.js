@@ -74,7 +74,7 @@ module.exports = {
                     res.error(err);
                 })
             }else{
-                Recinto.find().where({cityId:condition}).paginate({page: page, limit: pagesize}).sort("place DESC").then(function(data){
+                Recinto.find().where({cityId:condition}).paginate({page: page, limit: pagesize}).sort("place DESC").sort("starRating DESC").then(function(data){
                     console.log("data res",data)
                     return res.json(data);
                 })
