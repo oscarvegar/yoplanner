@@ -63,54 +63,6 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			url: "/",
 			templateUrl: "/ng/modules/homepage.tpl.html"
 		})
-		/*.state('acerca_de', {
-			url: "/quienes-somos",
-			templateUrl: "/ng/modules/acerca.de.tpl.html"
-		})
-		.state('nuestros_servicios', {
-			url: "/nuestros-servicios",
-			templateUrl: "/ng/modules/nuestros.servicios.tpl.html"
-		})
-		.state('mrktng_hoteles', {
-			url: "/publicidad_para_hoteles",
-			templateUrl: "/ng/modules/mrktng.hoteles.tpl.html"
-		})
-		.state('meetings', {
-			url: "/meetings",
-			templateUrl: "/ng/modules/meetings.tpl.html"
-		})
-		.state('travel_agency', {
-			url: "/agencia-de-viajes",
-			templateUrl: "/ng/modules/travel.agency.tpl.html"
-		})
-		.state('influencer', {
-			url: "/influencer",
-			templateUrl: "/ng/modules/influencer.tpl.html"
-		})
-		.state('reserva', {
-			url: "/reserva/:option",
-			templateUrl: "/ng/modules/embedded.site.tpl.html"
-		})
-		.state('cruises', {
-			url: "/cruceros",
-			templateUrl: "/ng/modules/cruises.tpl.html"
-		})
-		.state('contact', {
-			url: "/contacto",
-			templateUrl: "/ng/modules/contact.tpl.html"
-		})
-		.state('politicas_privacidad', {
-			url: "/aviso_de_privacidad",
-			templateUrl: "/ng/modules/politicas.privacidad.tpl.html"
-		})
-		.state('blog', {
-			url: "/blog",
-			templateUrl: "/ng/modules/blog.html"
-		})
-		.state('blogPost', {
-			url: "/blog/:year/:month/:id",
-			templateUrl: "/ng/modules/blog.html"
-		})*/;
 	
 });
 
@@ -152,7 +104,7 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
 
 		$rootScope.searchId = $scope.searchId;
 		
-		$rootScope.$selectedCity = selected.replace($scope.searchId, '').trim();
+		//$rootScope.$selectedCity = selected.replace($scope.searchId, '').trim();
 
 		var valDest = HotelSrvc.validateDestination($rootScope.searchId);
 		if(valDest != null) {
@@ -197,7 +149,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 		*/
 		// $location.url('/hotel/list/' + $scope.searchId);
 		$rootScope.searchId = searchId;
-		$rootScope.$selectedCity = ' ';
+		//$rootScope.$selectedCity = ' ';
 
 		var valDest = HotelSrvc.validateDestination($rootScope.searchId);
 		if(valDest != null) {
