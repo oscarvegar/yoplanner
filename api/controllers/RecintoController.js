@@ -24,7 +24,7 @@ var URL_CUSTOM_PICTURES = "./img/hoteles/";
                 MTY:[{hid:866114},{hid:865632}]
             };
 
-var AGRUPADORES_CIUDAD = [["SD6","SJD","CL1"],["CUN","RM0"]];      
+var AGRUPADORES_CIUDAD = [["SD6","SJD","CL1"]];      
 
 module.exports = {
     findByRFP: function(req,res){
