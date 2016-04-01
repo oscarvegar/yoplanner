@@ -242,6 +242,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
         $http.get("/recinto/findById/"+hotelId).success(function(data){
         	$log.info("SELECTED HOTEL SEARCH > > > >", data);
+        	$rootScope.selectedHotel = data;
     		$log.info("SELECTED HOTEL ROOT_SCOPE > > > >", $rootScope.selectedHotel);
     		$log.info("SELECTED HOTEL ROOT_SCOPE stringify > > > >", JSON.stringify($rootScope.selectedHotel));
 
