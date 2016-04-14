@@ -71,13 +71,13 @@
                             </div>
 
                             <div class="info-gallery">
-                                <h3 style="white-space: nowrap;overflow: hidden;">
+                                <h3 style="height:100px">
                                     {{(hotel.name.length > 31) ? hotel.name.substr(0,28) + '...':hotel.name}}<br>
                                     <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
                                     <span style="white-space: normal">{{$selectedCity}}</span>
                                 </h3>
                                 <hr class="separator">
-                                <p>{{(hotel.description.length > 228) ? hotel.description.substr(0,91) + '...' : hotel.description}}</p>
+                                <p style="height:100px;text-align: justify;text-justify: inter-word;">{{(hotel.description.length > 91) ? hotel.description.substr(0,91) + '...' : hotel.description}}</p>
 
                                 <ul class="starts">
                                     <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
@@ -98,13 +98,13 @@
                     </div>
 
                     <div class="info-gallery">
-                        <h3 style="white-space: nowrap;overflow: hidden;">
+                        <h3 style="height:100px;font-size: .85rem">
                             {{(hotel.name.length > 22) ? hotel.name.substr(0,19) + '...' : hotel.name}}<br>
                             <!-- <span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span> -->
-                            <span style="white-space: normal">{{$selectedCity}}</span>
+                            <span style="white-space: normal;font-size: .7rem">{{$selectedCity}}</span>
                         </h3>
                         <hr class="separator">
-                        <p>{{((hotel.description.length > 30) ? hotel.description.substr(0,50) + '...' : hotel.description)}}</p>
+                        <p style="height:80px;font-size: .7rem;">{{((hotel.description.length > 60) ? hotel.description.substr(0,60) + '...' : hotel.description)}}</p>
                         <ul class="starts">
                             <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
                         </ul>
