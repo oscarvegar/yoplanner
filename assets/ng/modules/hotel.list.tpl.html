@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="info-gallery">
-                                <h3 style="white-space: nowrap">
+                                <h3 style="white-space: nowrap;overflow: hidden;">
                                     {{(hotel.name.length > 31) ? hotel.name.substr(0,28) + '...':hotel.name}}<br>
                                     <!-- span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span -->
                                     <span style="white-space: normal">{{$selectedCity}}</span>
@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="info-gallery">
-                        <h3 style="white-space: nowrap">
+                        <h3 style="white-space: nowrap;overflow: hidden;">
                             {{(hotel.name.length > 22) ? hotel.name.substr(0,19) + '...' : hotel.name}}<br>
                             <!-- <span>{{hotel.type + ', ' + hotel.cityId + ', ' + hotel.countryId}}</span> -->
                             <span style="white-space: normal">{{$selectedCity}}</span>
