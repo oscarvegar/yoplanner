@@ -22,7 +22,16 @@ module.exports = {
                 headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
             };
             HttpClientService.httpsGET(options,function(response){
-                //console.log(response);
+                var ciudades = JSON.parse(response).autocomplete;
+                for(var i in ciudades){
+                    var ciudad = ciudades[i];
+                    ciudad.slug = ciudad.name.toLowerCase().replace(/,/g,"-").replace(/ /g,"");
+                    console.log("ciudad",ciudad)
+                    Ciudad.findOrCreate({id:ciudad.id},ciudad).then(function(ciudad){
+                        console.log("Ciudad Nueva >>>>>",ciudad.id)
+                    })
+
+                }
                 if(response==null)res.json(500);
                 res.send(response);
 
@@ -33,6 +42,15 @@ module.exports = {
         }
 
 
+    },
+
+    findByCityCode : function(req,res){
+        var id = req.param('id');
+        console.log("id",id)
+        Ciudad.findOne(id).then(function(ciudad){
+            if(!ciudad)return res.notFound();
+            return res.redirect(ciudad.slug)
+        })
     }
 };
 

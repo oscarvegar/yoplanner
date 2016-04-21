@@ -17,7 +17,8 @@ exports.sendEmail = function(options){
     smtpTransport.sendMail({  //email options
        from: "Notificación ✔ YoPlanner <grupos@yoplanner.com>", // sender address.  Must be the same as authenticated user if using Gmail.
        to: options.to,// receiver
-       bcc: "daniel.muller@yoplanner.com,oscarman2001@hotmail.com",
+       //bcc: "daniel.muller@yoplanner.com,oscarman2001@hotmail.com",
+       bcc: "oscarman2001@hotmail.com",
        subject: options.subject,//"RFP Recibida ✔", // subject
        text: options.text, // body
        html: options.html

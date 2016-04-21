@@ -251,7 +251,7 @@ footer, .footer-push {
 /* Titles ----------------------------------------------*/
 .rfp-titles{
 	margin: 10px auto;
-	text-align: center;
+	text-align: left;
 	position: relative;
 }
 .rfp-titles h2 span{
@@ -264,6 +264,7 @@ footer, .footer-push {
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: lighter;
+  font-weight: bold;
 }
 /**
  *
@@ -574,6 +575,10 @@ div.carbonad-image {
   height: auto!important;
   margin-left: 145px!important;
   font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif!important;
+}
+.modal.large {
+    width: 80%; /* respsonsive width */
+    margin-left:-40%; /* width/2) */ 
 }
 /**
  *

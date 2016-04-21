@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="yoPlannerApp">
 <head>
+     <base href="/">
 
     <!-- Basic -->
     <meta charset="utf-8">
-    <% if(typeof session.metas != 'undefined') { %>
-    <% if(typeof session.metas.title != 'undefined'){ %>
-    <title>Yo Planner - <%= session.metas.title %></title>
-    <% } %>
-    <% if(typeof session.metas.description != 'undefined'){ %>
-    <meta name="description" content="<%=session.metas.description%>">
-    <% } %>
-    <% if(typeof session.metas.keywords != 'undefined'){ %>
-    <meta name="keywords" content="<%=session.metas.keywords%>">
-    <% } %>
-    <% if(session.metas.image != undefined) { %>
-    <meta property="og:image" content="<%=session.metas.image%>" >
-    <% } else { %>
-    <meta property="og:image" content="http://yoplanner.com/img/HotelesYoPlanner.png" >
-    <% } %>
-    <meta property="og:title" content="<%=session.metas.title%>" >
+    <% if(typeof metas != 'undefined') { %>
+        <% if(typeof metas.title != 'undefined'){ %>
+            <title>Yo Planner - <%= metas.title %></title>
+            <meta property="og:title" content="<%=metas.title%>" >   
+        <% } %>
+        <% if(typeof metas.description != 'undefined'){ %>
+            <meta name="description" content="<%=metas.description%>">
+            <meta property="og:description" content="<%=metas.description%>" >
+        <% } %>
+        <% if(typeof metas.keywords != 'undefined'){ %>
+            <meta name="keywords" content="<%=metas.keywords%>">
+        <% } %>
+        <% if(metas.image != undefined) { %>
+            <meta property="og:image" content="<%=metas.image%>" >
+        <% } else { %>
+            <meta property="og:image" content="http://yoplanner.com/img/HotelesYoPlanner.png" >
+        <% } %>     
 
-    <meta property="og:description" content="<%=session.metas.description%>" >
-    <%  if(session.metas.postId){
-        var postId = session.metas.postId; 
-        session.metas.postId = null; %>
-        <script>window.location ="/#/blog"+<%=postId%></script>
-        <%
-    }
-    %>
 
-    <% } else if(typeof title != 'undefined'){%>
-    <% if(typeof image != 'undefined') { %>
-    <meta property="og:image" content="<%=session.metas.image%>" >
-    <% } else { %>
-    <meta property="og:image" content="http://yoplanner.com/img/HotelesYoPlanner.png" >
-    <% } %>
-    <meta property="og:title" content="<%=title%>" >
+    <% } else  {%>
 
-    <meta property="og:description" content="<%=description%>" >
-
-    <% if(typeof title != 'undefined'){ %>
-    <title>Yo Planner - <%= title %></title>
-    <% } %>
-    <% if(typeof description != 'undefined'){ %>
-    <meta name="description" content="<%=description%>">
-    <% } %>
-    <% if(typeof keywords != 'undefined'){ %>
-    <meta name="keywords" content="<%=keywords%>">
-    <% } %>
-    <%} else  {%>
-
-    <title>Yo Planner: Cotiza en línea Hoteles para Grupos y Eventos</title>
-    <meta name="description" content="Yo Planner RFP: Cotiza en línea grupos, convenciones y eventos. Encuentra los mejores destinos, hoteles y proveedores para la organización de tu evento.">
-    <meta name="keywords" content="Hoteles, Destinos, Cruceros, Grupos, Convenciones, Organización de Eventos, Bodas, Eventos Sociales, Viajes Individuales, Reservaciones, Cotizaciones de Eventos, Asesoría en Eventos, Negociación de Eventos, Como planear un eventos, como contratar un hotel, Cotiza en Linea Hoteles, RFP">
-    <meta property="og:image" content="http://yoplanner.com/img/HotelesYoPlanner.png" >
-    <meta property="og:url" content="http://yoplanner.com">
-    <meta property="og:title" content="Yo Planner: Cotiza en línea Hoteles para Grupos y Eventos" >
-    <meta property="og:description" content="Yo Planner RFP: Cotiza en línea grupos, convenciones y eventos. Encuentra los mejores destinos, hoteles y proveedores para la organización de tu evento." />
+        <title>Yo Planner: Cotiza en línea Hoteles para Grupos y Eventos</title>
+        <meta name="description" content="Yo Planner RFP: Cotiza en línea grupos, convenciones y eventos. Encuentra los mejores destinos, hoteles y proveedores para la organización de tu evento.">
+        <meta name="keywords" content="Hoteles, Destinos, Cruceros, Grupos, Convenciones, Organización de Eventos, Bodas, Eventos Sociales, Viajes Individuales, Reservaciones, Cotizaciones de Eventos, Asesoría en Eventos, Negociación de Eventos, Como planear un eventos, como contratar un hotel, Cotiza en Linea Hoteles, RFP">
+        <meta property="og:image" content="http://yoplanner.com/img/HotelesYoPlanner.png" >
+        <meta property="og:title" content="Yo Planner: Cotiza en línea Hoteles para Grupos y Eventos" >
+        <meta property="og:description" content="Yo Planner RFP: Cotiza en línea grupos, convenciones y eventos. Encuentra los mejores destinos, hoteles y proveedores para la organización de tu evento." />
     <%}%>
-    <% delete req.session.metas %>
+    
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Theme CSS -->
@@ -113,7 +87,7 @@
         <header id="header" class="header-v1">
 
             <!-- Main Nav -->
-            <nav class="flat-mega-menu">     
+            <nav class="flat-mega-menu" style="z-index:88888">     
 
                 <!-- flat-mega-menu class -->
                 <label for="mobile-button"> <i class="fa fa-bars"></i></label><!-- mobile click button to show menu -->
@@ -130,9 +104,10 @@
 
                     <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-sign-out " ng-click="logout()">CERRAR SESIÓN</i></li>
                     <li class="mi-seleccion" ng-if="_hasSession"> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
-                        <div class="drop-down full-width hover-expand" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
+                        <div class="drop-down full-width hover-expand row" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
                             <div class="row">
-                                <div class="col-md-3 content-btn">
+                                <div class="col col-md-3 content-btn" style="margin-left:20px;">
+
                                     <a ng-if="hotelesSeleccionados.length > 0" href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
                                 </div>
                             </div>
@@ -142,19 +117,25 @@
                             </ul>
 
                             <div class="row">
-                                <ul ng-repeat="hotel in hotelesSeleccionados track by $index" class="col col-md-3"><!-- column $index -->
-                                    <li height="200px">
-                                        <h2>{{(hotel.name.trim().substring(hotel.name.trim().indexOf(' ')))}}</h2>
-                                        <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1" style="widrh:250px;height:150px;"> </a>
-                                        <p>{{(hotel.description.length > 100) ? hotel.description.substr(0,97) + '...' : hotel.description}}</p>
-                                        <div class="col-md-3 content-btn" ng-click="selectResult(hotel)">
-                                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalle</a>
-                                        </div>
-                                        <div class="col-md-9">
-                                            <a href="javascript:void(0);" ng-click="deleteSelection(hotel)" class="btn btn-danger" style="background: #d9534f !important;">Quitar de Mi Selección</a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <div class="col col-md-12">
+                                    <ul ng-repeat="hotel in hotelesSeleccionados track by $index" class="col col-md-3"><!-- column $index -->
+                                        <li height="200px">
+                                            <h2 style="font-size: 1.4em;;line-height:1.4em;height: 2.8em;overflow: hidden;">{{hotel.name}}</h2>
+                                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1" style="widrh:250px;height:150px;"> </a>
+                                            <p style="font-size:1em; line-height:1em;height: 4em;overflow: hidden;text-align:justify;text-justify: inter-word;">{{hotel.description}}</p>
+                                            <div class="row"> 
+                                                <div class="col col-md-3 content-btn" ng-click="selectResult(hotel)">
+                                                <br>
+                                                    <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalle</a>
+                                                </div>
+                                                <div class="col col-md-9">
+                                                <br>
+                                                    <a href="javascript:void(0);" ng-click="deleteSelection(hotel)" class="btn btn-danger" style="background: #d9534f !important;">Quitar de Mi Selección</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -208,6 +189,11 @@
         <!-- ****** MODAL DE RFP ***** -->
         <rfp></rfp>
         <!-- footer-->
+
+
+        <!-- Modal -->
+
+
         <footer id="footer" class="footer-v1" style="margin-top:20px">
             <!-- footer Down-->
             <div class="footer-down">
@@ -267,6 +253,9 @@
     <script type="text/javascript" src="/js/main.js"></script>
     <!--GOOGLE FEED-->
     <script type="text/javascript" src="/js/jquery.kyco.googleplusfeed2.min.js"></script>
+
+    <link href="/js/swal/sweetalert.css" rel="stylesheet" media="screen">
+    <script src="/js/swal/sweetalert.min.js"></script> 
     <!-- ======================= End JQuery libs =========================== -->
 
     <!-- ======================= Angular libs =========================== -->

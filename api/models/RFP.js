@@ -21,6 +21,9 @@ module.exports = {
         recintos:{
             collection: 'recinto',
             via: 'rfps'
+        },
+        createdBy:{
+            model:'user'
         }
 
     },

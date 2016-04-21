@@ -14,13 +14,12 @@ module.exports = {
 		var recintos = rfp.recintos;
 		var Qrecintos = [];
 		
-		console.log("RECINTOS >",recintos)
 		delete rfp.recintos;
 		rfp.recintos = [];
 		for(var i in recintos){
 			rfp.recintos.push(recintos[i].id);
 		}
-		console.info("CREATE_RFP",rfp)
+		rfp.createdBy = req.user.id;
 		RFP.create(rfp).then(function(rfp){
 			return res.json(rfp);
 		}).catch(function(err){
@@ -68,4 +67,8 @@ module.exports = {
 			res.json(500,err)		
 		})
 	},
+	test:function(req,res){
+		console.log("user",req.user)
+		res.json("ok")
+	}
 };

@@ -1,0 +1,119 @@
+
+<div ng-controller="HotelController">
+<input type="hidden"  ng-init="searchId = '<%=ciudad.id%>'">
+<input type="hidden"  ng-init="ciudadName = '<%=ciudad.name%>'">
+    <!-- Section Title-->    
+    <div class="section-title-01">
+        <!-- Parallax Background -->
+        <div class="bg_parallax image_{{valDest.imgBgAcronym}}_parallax"></div>
+        <!-- Parallax Background -->
+
+        <!-- Content Parallax-->
+        <div class="opacy_bg_02">
+            <div class="container">
+                <h1>Hoteles en <%=ciudad.name%></h1>
+                <div class="crumbs">
+                    <!-- ChildView - Destination Review -->
+                    <div ui-view></div>
+                    <!-- End ChildView - Destination Review --> 
+                </div>
+            </div>  
+        </div>  
+        <!-- End Content Parallax--> 
+    </div>   
+
+
+
+
+    <!-- End Section Title-->
+
+    <!--Content Central -->
+    <section class="content-central" style="{{valDest.searchId == valDest.imgBgAcronym ? 'margin-top:-120px;' : ''}}">
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-sm-1 col-lg-8 col-lg-offset-2">
+                
+               
+            	<% hoteles.forEach(function(hotel){ %>
+
+
+
+                    <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(<%=hotel.id%>)">
+
+                      
+                        
+                        <div class="img-hover">
+                            <img ng-src="<%=(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])%>" alt="" class="img-responsive" style="width: 100%;height: 225px">
+
+                        </div>
+
+                        <div class="info-gallery">
+                            <h3 style="font-size: .1.1em;;line-height:1.3em;height: 2.6em;overflow: hidden;">
+                                <div>
+                                <%=hotel.name%>
+                                </div>
+                                
+                            </h3>
+                            <h3><span style="white-space: normal"><%=ciudad.name%></span></h3>
+                            <hr class="separator">
+                            <p style="height:80px;text-align: justify;text-justify: inter-word;font-size:1em; line-height:1.2em;height: 4.8em;overflow: hidden;"><%=hotel.description%></p>
+
+                            <ul class="starts">
+                            	<% for(var i=0;i<hotel.starRating;i++) { %>
+                                	<li><a href="#"><i class="fa fa-star"></i></a></li>
+                            	<% } %>
+                            </ul>
+                            <div class="content-btn">
+                                <a  href="<%=hotel.urlslug?hotel.urlslug:hotel.id%>"class="btn btn-primary">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+
+                <% }) %>
+                		
+                <!-- End Item Gallery - Main First Results -->
+
+                <!-- Item Gallery - More Results -->
+                <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="hotel in moreHotels" ng-click="selectResult(hotel)">
+                    <div class="img-hover">
+                        <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="width: 100%;height: 150px;">
+                    </div>
+
+                    <div class="info-gallery">
+                        <h3 style="height:40px;font-size: .9em;;line-height:1.2em;height: 2.6em;overflow: hidden;">
+                            <div>{{hotel.name}}</div>
+                        </h3>
+                        <h3><span style="white-space: normal;font-size: .7rem">{{ciudadName}}</span></h3>
+                        <hr class="separator">
+                            <p style="height:80px;font-size:.8em; line-height:1em;height: 4em;overflow: hidden;text-align:justify;text-justify: inter-word;">{{hotel.description}}</p>
+                        <ul class="starts">
+                            <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
+                        </ul>
+                        <a  href="{{hotel.urlslug?hotel.urlslug:hotel.id}}"class="btn btn-primary">Ver Detalles</a>
+                    </div>
+                </div>
+                <!-- End Item Gallery - More Results -->
+
+
+                
+
+
+            </div>
+            
+        </div>
+
+
+        
+
+
+        <div class="row" ng-if="showMostrarMas" >
+            
+            <div class="col-md-4 col-md-offset-4">
+                <button ng-click="masResultados()"  class="btn btn-primary col-md-12" style="width:100%;">Más Resultados</button>
+                <img src="img/lblue.gif" style="width:30px;height:30px;margin: 0px auto 0px 48%;" class="ng-hide">
+            </div>
+        </div>
+        <br><br><br>
+    </section>
+<!-- End Content Central -->
+</div>

@@ -70,7 +70,14 @@ angular.module('rfp-module', [])
         $scope.rfp.configuracionHabitaciones = $scope.configuracionHabitacionesSencillas.concat($scope.configuracionHabitacionesDobles);
         window.localStorage.setItem('rfp',JSON.stringify($scope.rfp));
         bindAccordion();
-        $.fancybox.next();
+        if($scope.rfp.needSal)
+            $.fancybox.next();
+        else{
+             $.fancybox.next();
+             $.fancybox.next();
+        }
+           
+        
     };
 
     $scope.agregarEventoSalon = function(){
@@ -173,6 +180,10 @@ angular.module('rfp-module', [])
     			res.push(arre[i]);
     	}
     	return res;
+    }
+
+    $scope.regresarDatos = function(){
+        if($scope.rfp.needSal)$.fancybox.prev();else{$.fancybox.prev();$.fancybox.prev();}
     }
 
 

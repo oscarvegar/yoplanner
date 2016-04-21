@@ -1,87 +1,108 @@
 
        
-    <div id="mainContent" ng-controller="RFPController">
+    <div id="mainContent" ng-controller="RFPController" >
 
         <div id="resumen" class="cabin">
             
-            <div id="rfp_view" style="display: none;text-align:left">
+            <div id="rfp_view" style="display: none;text-align:left;z-index:99999">
                 <div >
                     <form ng-submit="validarDatosEvento()" class="cabin">
                         <div class="rfp-titles">
-                            <h2 ><span>Datos del Grupo</span></h2>
+                            <h2 ><span>Datos del Grupo</span></h2> 
                         </div>
-                        <table style="margin-left:auto;margin-right:auto;margin-top:-20px;">
-                            <tr>
-                                <td><label class="rfp-label">Nombre:</label></td>
-                                <td><input id="rfp_nombre" type="text" placeholder="Nombre de tu evento" class="form-control" ng-model="rfp.nombre"></td>
-                            </tr>
-                            <tr>
-                                <td><label class="rfp-label">Fecha de Entrada:</label></td>
-                                <td>
-                                    <input id="rfp_fechaInicial"  type="text" required class="date-input-rfp form-control" placeholder="Selecciona..." ng-model="fechaInicialFor"  ng-change="muestraCuadritos();">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="rfp-label">Fecha de Salida:</label></td>
-                                <td>
-                                    <input id="rfp_fechaFinal"  type="text" required class="date-input-rfp form-control" placeholder="Selecciona..." ng-model="fechaFinalFor"  ng-change="muestraCuadritos();">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><label class="rfp-label">Asistentes:</label></td>
-                                <td>
-                                    <input id="rfp.asistenciaEsperada" type="text" required placeholder="Participantes" class="form-control" ng-model="rfp.asistenciaEsperada">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="vertical-align:middle" ng-show="configuracionHabitacionesSencillas.length>0"><label class="rfp-label">Habitaciones Sencillas:</label></td>
-                                <td>
-                                    <div ng-repeat="day in configuracionHabitacionesSencillas" style="float:left">
-                                        {{day.fecha | date:'dd/MM'}}<br/>
-                                        <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="vertical-align:middle" ng-show="configuracionHabitacionesDobles.length>0"><label class="rfp-label">Habitaciones Dobles:</label></td>
-                                <td>
-                                    <div ng-repeat="day in configuracionHabitacionesDobles" style="float:left">
-                                        {{day.fecha | date:'dd/MM'}}<br>
-                                        <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="center"><br /><label class="rfp-label">Comentarios Adicionales:</label></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <textarea id="rfp.comentarios" cols="50" style="height:70px;" placeholder="Preguntas, dudas, solicitudes especiales..." ng-model="rfp.comentarios" ></textarea>
-                                </td>
-                            </tr>
-                        </table>
-                        <div>
-                            <button type="submit"  class="btn btn-primary"  style="float:right;margin-right:25px;">Siguiente</button>
+                        <hr>
+                        <div class="row">
+                            <div class="col col-md-3">
+                                <label class="rfp-label">Nombre</label><br>
+                                <input id="rfp_nombre" type="text" placeholder="Nombre de tu evento" class="form-control" ng-model="rfp.nombre">
+                            </div>
+                            <div class="col col-md-3">
+                                <label class="rfp-label">Fecha de Entrada</label><br>
+                                <input id="rfp_fechaInicial"  type="text" required class="date-input-rfp form-control" placeholder="Selecciona..." ng-model="fechaInicialFor"  ng-change="muestraCuadritos();">
+                            </div>
+                            <div class="col col-md-3">
+                                <label class="rfp-label">Fecha de Salida</label><br>
+                                <input id="rfp_fechaFinal"  type="text" required class="date-input-rfp form-control" placeholder="Selecciona..." ng-model="fechaFinalFor"  ng-change="muestraCuadritos();">
+                            </div>
+                            <div class="col col-md-3">
+                                <label class="rfp-label">Asistentes</label><br>
+                                 <input id="rfp.asistenciaEsperada" type="text" required placeholder="Participantes" class="form-control" ng-model="rfp.asistenciaEsperada">
+                            </div>
+
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col  col-md-3">
+                                <input type="checkbox" ng-model="rfp.needRooms"><label class="rfp-label">Habitaciones</label>
+                            </div>
+                            <div class="col col-md-3">
+                                <input type="checkbox" ng-model="rfp.needSal"><label class="rfp-label">Salones</label>
+                                
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="rfp.needRooms">
+                            <div class="col col-md-12">
+                                <label class="rfp-label">Habitaciones Sencillas</label>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="rfp.needRooms">
+                            <div ng-repeat="day in configuracionHabitacionesSencillas" class="col col-md-2">
+                                {{day.fecha | date:'dd/MM'}}<br/>
+                                <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
+                            </div>
+                            
+                        </div>
+
+                        <div class="row" ng-show="rfp.needRooms">
+                            <div class="col col-md-12">
+                                <label class="rfp-label">Habitaciones Dobles</label>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="rfp.needRooms">
+                            <div ng-repeat="day in configuracionHabitacionesDobles" class="col col-md-2">
+                                {{day.fecha | date:'dd/MM'}}<br/>
+                                <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-12">
+                                <label class="rfp-label">Comentarios Adicionales:</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-md-10 col-md-offset-1">
+                                <textarea id="rfp.comentarios" cols="50" style="height:70px; width:100%" placeholder="Preguntas, dudas, solicitudes especiales..." ng-model="rfp.comentarios" ></textarea>
+                             </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <button type="submit"  class="btn btn-primary"  style="float:right;margin-right:25px;">Siguiente <i class="fa fa-arrow-circle-right"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
 
             <div id="salones_view" style="display: none;text-align:center;height:100%;" >
-                <div>
-                    <div class="col-md-4"></div>
-                    <div class="rfp-titles col-md-4"><h2 ><span>Eventos Programados</span></h2> </div>
-                    <div class="col-md-4" style="margin-top:35px;">
-                        <button class="btn btn-primary" href="javascript:;" ng-click="agregarEventoSalon();">Agregar Evento</button>
+                <div class="row">
+                    <div class="col rfp-titles col-md-8"><h2 ><span>Eventos Programados</span></h2> </div>
+                    <div class="col col-md-4 text-right" style="margin-top:20px;">
+                        <button class="btn btn-primary" href="javascript:;" ng-click="agregarEventoSalon();"><i class="fa fa-plus-circle"></i> Agregar</button>
                     </div>
                 </div> 
+                <hr>
 
                 <div class="clear col-md-12">
-                    <div id="accordion-container" ng-show="rfp.salones.length>0" class="col-md-12">
+                    <div id="accordion-container" ng-show="rfp.salones.length>0" class="col-md-12" >
                         <div id="newSalon" style="width: 750px;" ng-repeat="currentSalon in rfp.salones">
-                            <a href="javascript:void(0)" ng-click="eliminarSalon(currentSalon)" style="float: right;">Eliminar&nbsp;&nbsp;&nbsp;</a>
-                            <a href="javascript:void(0)" ng-click="clonarSalon(currentSalon)" style="float: right;">Clonar&nbsp;&nbsp;&nbsp;</a>
-                            <h2 class="accordion-header">Nuevo Evento</h2>
+                            <a href="javascript:void(0)" ng-click="eliminarSalon(currentSalon)" style="float: right;color:white">Eliminar&nbsp;&nbsp;&nbsp;</a>
+                            <a href="javascript:void(0)" ng-click="clonarSalon(currentSalon)" style="float: right;color:white">Clonar&nbsp;&nbsp;&nbsp;</a>
+                            <h2 class="accordion-header" style="background-color: #42A9D3;color: white;font-weight: bold;">Nuevo Evento</h2>
                             
                             <div class="accordion-content">
                                 <section id="rfp_salones">
@@ -173,14 +194,15 @@
                         </div>
                     </div>
                 </div>
-
-                <div>
-                    <div class="col-md-4">
-                        <button onclick=" $.fancybox.prev();" class="btn btn-primary">Regresar</button>
+                <div class="row">
+                <br>
+                <br>
+                    <div class="col col-md-4 text-left">
+                        <button type="button" onclick=" $.fancybox.prev();" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Regresar</button>
                     </div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <button  class="btn btn-primary" style="float:right;margin-right:25px;" ng-click="validarDatosSalones();">Siguiente</button>
+                    <div class="col col-md-4"></div>
+                    <div class="col col-md-4 text-right">
+                        <button  class="btn btn-primary"  ng-click="validarDatosSalones();">Siguiente <i class="fa fa-arrow-circle-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -207,52 +229,69 @@
                 <div class="rfp-titles">
                     <h2><span>Datos del Cliente</span></h2>
                 </div>
-                <form ng-submit="rfp_create()" style="margin-top:-20px;">
-                    <table style="margin: 0px auto">
-                        <tr>
-                            <td><label class="rfp-label">Nombre Completo <span class="rfp-red">*</span>:</label></td>
-                            <td><input type="text" placeholder="Nombre con apellidos" required
-                                class="form-control" ng-model="rfp.nombreCliente"></td>
-                        </tr>
-                        <tr>
-                            <td><label class="rfp-label">Email <span class="rfp-red">*</span>:</label></td>
-                            <td><input type="email" ng-model="rfp.email" required
-                                class="form-control" placeholder="alguien@example.com"></td>
-                        </tr>
-                        <tr>
-                            <td><label class="rfp-label">Telefono <span class="rfp-red">*</span>:</label></td>
-                            <td><input type="text" required ng-model="rfp.telefonoContacto" 
-                                class="form-control" placeholder="Ej. 04455565811"></td>
-                        </tr>
-                        <tr>
-                            <td><label class="rfp-label">Empresa <span class="rfp-red">*</span>:</label></td>
-                            <td><input type="text" ng-model="rfp.empresa" required 
-                                class="form-control" placeholder="Empresa donde laboras"></td>
-                        </tr>
-                        <tr>
-                            <td><label class="rfp-label">Cargo:</label></td>
-                            <td><input type="text" ng-model="rfp.puesto"
-                                class="form-control" placeholder="Cargo actual"></td>
-                        </tr>
-                        <tr>
-                            <td><label class="rfp-label">País:</label></td>
-                            <td><input type="text" placeholder="Ej. Mexico"
-                                class="form-control" ng-model="rfp.paisText" /></td>
-                        </tr>
-                        <tr>
-                            <td><label class="rfp-label">Estado:</label></td>
-                            <td><input class="form-control" type="text" ng-model="rfp.estadoText"
-                                placeholder="Ej. Distrito Federal"/></td>
-                        </tr>
-                        <tr>
-                            <td><label class="rfp-label">Ciudad:</label></td>
-                            <td><input class="form-control" type="text" ng-model="rfp.ciudadText"
-                                placeholder="Ej. Miguel Hidalgo"/></td>
-                        </tr>
-                    </table>
-                    <br /> <br /> <br />
-                    <button onclick=" $.fancybox.prev();" class="btn btn-primary" style="float:left;margin-left:25px;">Regresar</button>
-                    <button class="btn btn-primary" type="submit" style="float:right;margin-right:25px;">Solicitar Cotización</button>
+                <hr>
+                <form ng-submit="rfp_create()">
+                    <br>
+                    <div class="row">
+                        <div class="col col-md-3">
+                            <label class="rfp-label">Nombre Completo <span class="rfp-red">*</span></label><br>
+                            <input type="text" placeholder="Nombre con apellidos" required
+                                    class="form-control" ng-model="rfp.nombreCliente">
+                        </div>
+                        <div class="col col-md-3">
+                            <label class="rfp-label">Email <span class="rfp-red">*</span></label><br>
+                            <input type="email" ng-model="rfp.email" required
+                                    class="form-control" placeholder="alguien@example.com">
+                        </div>
+                        <div class="col col-md-3">
+                            <label class="rfp-label">Telefono <span class="rfp-red">*</span></label><br>
+                            <input type="text" required ng-model="rfp.telefonoContacto" 
+                                    class="form-control" placeholder="Ej. 04455565811">
+                        </div>
+                        <div class="col col-md-3">
+                            <label class="rfp-label">Empresa <span class="rfp-red">*</span></label><br>
+                            <input type="text" ng-model="rfp.empresa" required 
+                                    class="form-control" placeholder="Empresa donde laboras">
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col col-md-3">
+                            <label class="rfp-label">Cargo</label><br>
+                            <input type="text" ng-model="rfp.puesto"
+                                    class="form-control" placeholder="Cargo actual">
+                        </div>
+                        <div class="col col-md-3">
+                             <label class="rfp-label">País</label><br>
+                             <input type="text" placeholder="Ej. Mexico"
+                                    class="form-control" ng-model="rfp.paisText" >
+                        </div>
+                        <div class="col col-md-3">
+                            <label class="rfp-label">Estado:</label><br>
+                            <input class="form-control" type="text" ng-model="rfp.estadoText"
+                                    placeholder="Ej. Distrito Federal"/>
+                        </div>
+                        <div class="col col-md-3">
+                            <label class="rfp-label">Ciudad:</label><br>
+                            <input class="form-control" type="text" ng-model="rfp.ciudadText"
+                                    placeholder="Ej. Miguel Hidalgo"/>
+                        </div>
+
+                    </div>
+                 
+                    <div class="row">
+                    <br><br>
+                        <div class="col col-md-4 text-left">
+                            <button type="button"  ng-click="regresarDatos()" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Regresar</button>
+                        </div>
+                        <div class="col col-md-8 text-right">
+                            <button class="btn btn-primary" type="submit" > <i class="fa fa-floppy-o"></i>   Solicitar Cotización </button>
+                        </div>
+                        
+                        
+                    </div>
+                    
                 </form>
             </div>
 

@@ -32,44 +32,21 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'post /deploy': 'DeployController.webhook',
-  '/':'MainController.root',
   'post /login': {
     controller: 'AuthController',
     action: 'process'  
   },
-  '/logout': {
+  'get /logout': {
     controller: 'AuthController',
     action: 'logout'
   },  
-  '/hs':{
+  'get /hs':{
     controller: 'AuthController',
     action: 'hasSession'
   },
-
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  *  If a request to a URL doesn't match any of the custom routes above, it  *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
-  'GET /agencia-de-viajes': 'MainController.redirect',
-  'GET /quienes-somos' : 'MainController.redirect',
-  'GET /aviso_de_privacidad': '/#/aviso_de_privacidad',
-  'GET /contacto': '/#/contacto',
-  'GET /cruceros': '/#/cruceros',
-  'GET /meetings': 'MainController.redirect',
-  'GET /publicidad_para_hoteles': '/#/publicidad_para_hoteles',
-  'GET /quienes_somos': '/#/quienes_somos',
-  'GET /reservaciones_de_hotel': '/#/reserva/hotels',
-  'GET /reservaciones_de_avion': '/#/reserva/flights',
-  'GET /blog': '/#/blog',
-  'GET /blog/:year/:month/:id': 'BlogController.getPost',
   'GET /api/recinto/images/:id': 'RecintoController.images',
-  '/destinos/:id':'DestinoController.find'
-  //'GET /test':'MainController.test'
-
+  'get /:id':'MainController.root',
+  'get /':'MainController.root',
+  
 
 };

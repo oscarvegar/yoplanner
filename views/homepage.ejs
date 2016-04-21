@@ -1,2 +1,173 @@
-            <div ui-view></div>
-            <ng-view></ng-view>
+ <!-- Section Title-->    
+ <br><br>
+    <div class="content-central">
+       <!-- Slide And Filter Section-->    
+              <section class="tp-banner-container">
+                <!-- SLIDE  -->
+                <div class="tp-banner" >
+                  <!-- SLIDES CONTENT-->
+                  <ul> 
+                    <!-- SLIDE  -->
+                    <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+                      <!-- MAIN IMAGE -->
+                      <img src="img/slide/00.jpg"  alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+                      <!-- LAYERS -->
+                    </li>
+                    <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+                      <!-- MAIN IMAGE -->
+                      <img src="img/slide/001.jpg"  alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+                      <!-- LAYERS -->
+                    </li>
+                    <!-- SLIDE  -->
+                    <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+                      <!-- MAIN IMAGE -->
+                      <img src="img/slide/03.jpg"  alt="fullslide1" data-bgposition="top center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+                      <!-- LAYERS -->
+                    </li>
+                    
+                   
+                    
+                    <!-- SLIDE  -->
+                    <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+                      <!-- MAIN IMAGE -->
+                      <img src="img/slide/11.jpg"  alt="fullslide1" data-bgposition="left center" data-kenburns="on" data-duration="6000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+                      <!-- LAYERS -->
+                    </li>
+                  </ul> 
+                  <!-- END SLIDES  --> 
+                  <div class="tp-bannertimer"></div>  
+                </div>
+                <!-- SLIDE CONTENT-->
+
+                <!-- FILTER HEADER - TITLE HEADER-->
+                <div class="filter-title">
+                  <!-- TITLE HEADER-->
+                  <div class="title-header">
+                    <h1>Cotiza Grupos En Línea</h1>
+                    <p class="lead" style="font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">Elabora tu RFP buscando destinos y seleccionando hoteles.</p>
+                  </div>
+                  <!-- END TITLE HEADER-->
+
+                  <!-- FILTER HEADER-->
+                  <div class="filter-header col-sm-10 col-md-6 col-centered" ng-controller="AutocompleteController" style="overflow:visible;">
+                    <form action="#">
+                      <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Ingresa tu destino y cotiza"></autocomplete>
+                      <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
+                    </form>
+                  </div>
+                  <!-- END FILTER HEADER-->
+                </div>
+                <!-- END FILTERHEADER - TITLE HEADER -->
+              </section>       
+              <!-- End Slide And Filter Section-->
+
+            <!--Content Central -->
+            <section class="content-central" ng-controller="HomePageController">
+                <!-- Shadow Semiboxed Layout -->
+                <div class="semiboxshadow text-center">
+                    <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+                </div>
+                <!-- End Shadow Semiboxed Layout -->
+
+                
+              
+
+             
+
+               
+
+                <!-- End content - Slide Features-->
+                <div class="content_info content_resalt">
+                      <!-- content-->
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Info Resalt - Info Services -->
+                                    <div class="col-md-5">
+                                        <div class="services-lines-info">
+                                            <!-- h2>We Provide You An Ultimate Travel Experience</h2 -->
+                                            <h1>¿Buscas planear un viaje empresarial?</h1>
+                                            <p class="lead">
+                                                <span class="line"></span>
+                                            </p>
+
+                                            <p>Convenciones, congresos, conferencias, meetings, capacitaciones, reuniones de trabajo, foros, viajes de incentivo, lo que sea que necesites.</p>
+                                            <br>
+                                        </div>
+                                    </div> 
+
+                                    <div class="col-md-7">
+                                        <img src="img/services/Celebrity_Main_Dining_Room_plng_trp.jpg" class="img-responsive" alt="">
+                                    </div>  
+                                </div>
+                            </div>
+                            <!-- End content-->
+                            <div class="">
+                                <div class="row padding-top">
+                                    <div class="col-md-6">
+                                        <div class="img-hover">
+                                            <div class="overlay"> <a href="img/services/Viajes_Empresariales_trd_wth_us.jpg" class="fancybox"></a></div>
+                                            <img src="img/services/Viajes_Empresariales_trd_wth_us.jpg" alt="" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="services-lines-info">
+                                            <!-- h2>Explore our latest tours </h2 -->
+                                            <h1>¡Cotiza con nosotros!</h1>
+                                            <p class="lead">
+                                                <span class="line"></span>
+                                            </p>
+
+                                            <p>Encontramos el salón, centro de convenciones o auditorio, dentro y fuera de los hoteles, que se adapte a tus necesidades. Te ayudamos a conseguir hospedaje y transporte para todos los asistentes y a ambientar el lugar para conseguir que tu meeting sea exitoso.</p>
+                                            <br>
+                                            <a href="http://www.yoplanner.com" target="_blank" class="btn btn-primary">Más información</a>
+                                        </div>
+                                    </div>
+                               </div> 
+                               <!-- End Row  -->
+                            </div> 
+                            <!-- End Container  -->
+                </div>   
+                <!-- End content - Slide Features--> 
+                
+                
+
+               
+            </section>
+            <!-- End Content Central -->
+              
+    </div>   
+
+
+            <!--Slider Function-->
+            <script type="text/javascript">
+                $(document).ready(function() {
+
+                    //=================================== Carousel features  ==================================//
+                    $("#slide-features-2").owlCarousel({
+                        autoPlay: true,
+                        items : 1,
+                        navigation : true,
+                        autoHeight : true,
+                        slideSpeed : 400,
+                        singleItem: true,
+                        pagination : true
+                    });
+
+                    // Slider Function-->
+                    $('.tp-banner').show().revolution({
+                        dottedOverlay:"none",
+                        delay:5000,
+                        startwidth:1170,
+                        startheight:925,
+                        minHeight:500,
+                        navigationType:"none",
+                        navigationArrows:"solo",
+                        navigationStyle:"preview1"
+                    });
+                    // End Slider Function-->
+
+                    $('html, body').animate({scrollTop:0}, 500, 'linear');
+
+                }); //ready
+          </script>
+          <!--End Slider Function-->
