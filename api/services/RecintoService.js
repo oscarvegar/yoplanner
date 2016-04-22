@@ -43,7 +43,7 @@ module.exports = {
         var deferred = Q.defer();
         Recinto.findOne({urlslug:url}).populate("amenities").then(function(recinto){
             if(!recinto)return deferred.resolve(null)
-            SalonRecinto.find({recinto:recinto.id}).then(function(salonesRecinto){
+            SalonRecinto.find({recinto:recinto.id,active:true}).then(function(salonesRecinto){
                 recinto.salones = salonesRecinto;
                 return deferred.resolve(recinto)
             })
@@ -54,7 +54,7 @@ module.exports = {
     findById : function(id){
         var deferred = Q.defer();
         Recinto.findOne(id).populate("amenities").then(function(recinto){
-            SalonRecinto.find({recinto:recinto.id}).then(function(salonesRecinto){
+            SalonRecinto.find({recinto:recinto.id,active:true}).then(function(salonesRecinto){
                 recinto.salones = salonesRecinto;
                 return deferred.resolve(recinto)
             })
