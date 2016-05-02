@@ -56,25 +56,32 @@ passport.use(new LocalStrategy(
       findByUsername(username, function (err, user) {
         if (err)
           return done(null, err);
-        if (!user) {
-          return done(null, false, {
-            message: 'Unknown user ' + username
+        if (!user || user == null || typeof user === 'undefined') {
+          User.findOne({sessuid:username}).then(function(returnUser){
+            
+            if(returnUser){
+              console.log("user login",returnUser)
+              return done(null, returnUser, {
+                message: 'Logged In Successfully'
+              });
+            }else{
+              return done(null, false, {
+                message: 'Unknown user ' + username
+              });
+            }
+          })
+        }else{
+          bcrypt.compare(password, user.password, function (err, res) {
+            if (!res)
+              return done(null, false, {
+                message: 'Invalid Password'
+              });
+            var returnUser = user;
+            return done(null, returnUser, {
+              message: 'Logged In Successfully'
+            });
           });
         }
-        bcrypt.compare(password, user.password, function (err, res) {
-          if (!res)
-            return done(null, false, {
-              message: 'Invalid Password'
-            });
-          var returnUser = {
-            username: user.username,
-            createdAt: user.createdAt,
-            id: user.id
-          };
-          return done(null, returnUser, {
-            message: 'Logged In Successfully'
-          });
-        });
       })
     });
   }

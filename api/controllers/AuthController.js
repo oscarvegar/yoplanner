@@ -6,6 +6,7 @@
  */
 
 var passport = require('passport');
+var uuid = require('uuid');
 module.exports = {
  
   login: function (req, res) {
@@ -37,10 +38,13 @@ module.exports = {
       	req.logIn(user, function(err) {
         if (err) return res.send(err);
         req.session.authenticated = true;
-
-        return res.send({
-          message: 'login successful'
-        });
+        console.log("logged user",user)
+        var sessuid = uuid.v4();
+        User.update(user,{sessuid:sessuid}).then(function(data){})
+          return res.send({
+            message: 'login successful'
+          });
+        
       });
     })(req, res);
   },
@@ -52,7 +56,7 @@ module.exports = {
   hasSession: function(req,res){
   	console.log("req.session.authenticated",req.user)
   	if(req.user){
-  		return res.json(1)
+  		return res.json(req.user.sessuid)
   	}else{
   		return res.json(401,{})
 

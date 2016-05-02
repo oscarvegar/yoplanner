@@ -38,7 +38,7 @@ module.exports = {
         Para ver tu propuesta o imprimir da click en el siguiente enlace: \
         <br><br>\
         http://htmltopdfapi.com/querybuilder/api.php?url=http://rfp.yoplanner.com/rfp/print/"+rfp.id+
-        "<br><br>Saludos,<br><img src='http://yoplanner.com/img/firma.png'></html>";
+        "<br><br>Saludos,<br><img src='http://rfp.yoplanner.com/img/firma.png'></html>";
         EmailService.sendEmail(options);
         next();
     }

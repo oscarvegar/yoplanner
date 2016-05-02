@@ -30,7 +30,8 @@
     "sails-disk": "~0.10.0",
     "sails-hook-autoreload": "^0.13.1",
     "sails-mongo": "^0.10.9",
-    "unirest": "^0.4.2"
+    "unirest": "^0.4.2",
+    "uuid": "^2.0.2"
   },
   "scripts": {
     "start": "node app.js",
