@@ -56,7 +56,10 @@ module.exports = {
   hasSession: function(req,res){
   	console.log("req.session.authenticated",req.user)
   	if(req.user){
-  		return res.json(req.user.sessuid)
+      User.findOne(req.user.id).then(function(usres){
+        return res.json(usres.sessuid)
+      })
+  		
   	}else{
   		return res.json(401,{})
 
