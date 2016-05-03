@@ -63,12 +63,7 @@
     <script src="/js/modernizr.js"></script>
      <!-- ======================= GA =========================== -->
     <script>
-        $(document).ready(function($) {
-            setTimeout( function() {
-                $(".status").fadeOut();
-                $(".preloader").delay(1000).fadeOut("slow");
-            }, 2000);
-        });
+       
 
         (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -309,6 +304,13 @@
     <!-- ======================= End Angular libs =========================== -->
 
    
-
+    <script>
+         $(document).ready(function($) {
+            setTimeout( function() {
+                $(".status").fadeOut();
+                $(".preloader").delay(1000).fadeOut("slow");
+            }, 2000);
+        });
+     </script>
 </body>
 </html>
