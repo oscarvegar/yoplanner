@@ -24,10 +24,12 @@
                 <div class="row">
                     <div class="col-md-9">
                         <ul class="starts">
-                            <li ng-repeat="i in starRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
+                            <% for(var i=0 ;i<currentHotel.starRating;i++) { %>
+                                <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <% } %>
                         </ul>
                         <h2><%=currentHotel.name%> 
-                            <span><%=currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>{{hotelid}}
+                            <span><%=currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
                         </h2>
                     </div>
 

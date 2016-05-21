@@ -69,6 +69,18 @@ module.exports = {
 							image:ciudad.image
 						}
 					})
+				}).catch(function(err){
+					res.view('hoteles/hoteles-list',
+					{
+						hoteles:[],
+						ciudad:ciudad,
+						metas:{
+							title:'Hoteles en '+ciudad.name,
+							description:'Organiza eventos en '+ciudad.name,
+							keywords:'Hoteles en '+ciudad.name+',Eventos en '+ciudad.name+',Convenciones en '+ciudad.name,
+							image:ciudad.image
+						}
+					})
 				})
 			}
 		})

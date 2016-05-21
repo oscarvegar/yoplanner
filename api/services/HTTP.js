@@ -22,10 +22,16 @@ module.exports = {
 			.headers(obj.headers)
 			.send()
 			.end(function(response){
+				console.log("response",response.body)
 				if(response.status == 200)
 					deferred.resolve(response.body);
-				else
-					deferred.reject("ex");
+				else{
+					console.log("error yengo a HTTP");
+					deferred.reject(new Error("error en despegar api"));
+				}
+			}).catch(function(err){
+				console.log("error yengo a HTTP");
+				deferred.reject("ex");
 			})
 		}catch(ex){
 			deferred.reject(new Error("No se pudo alcanzar el host"));

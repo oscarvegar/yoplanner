@@ -43,15 +43,20 @@ var _this = module.exports = {
 			}
 			
 
-			console.log("cities",cities)
-			if(cities.length == 0)return deferred.resolve([]);
-			for(var k in cities){
+			console.log("cities",cities);
+			console.log("cities.length ",cities.length );
+			console.log("cities.length === 0 ",cities.length === 0 );
 
+			if(cities.length === 0)return deferred.resolve([]);
+			for(var k in cities){
+				console.log("for de cities",cities[k])
 				var options = {
 					url: "http://api.despegar.com/availability/cities/"+cities[k]+"/hotels?sort=stars&order=desc&includehotel=true&stars=3-4-5&type=RSR-HOT&pagesize=500",
 					headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
 				};
+				console.log("antes de ir al httpget")
 				HTTP.get(options).then(function(response){
+					console.log("regresa de petición a despegar :::",response);
 					if(!response.availability || response.availability.length==0)
 						return deferred.resolve("ok");
 					var ids = "";
@@ -68,7 +73,7 @@ var _this = module.exports = {
 						var amensids = [];
 						for(var i in response.hotels){
 
-							for(var j in response.hotels[i].pictures){
+							for(var j in resposne.hotels[i].pictures){
 								response.hotels[i].pictures[j] = sails.config.constants.URL_PICTURES+response.hotels[i].pictures[j];
 							}
 							response.hotels[i].fotoPrincipal = response.hotels[i].pictures[0];
@@ -84,21 +89,43 @@ var _this = module.exports = {
 
 						Q.all(amens).then(function(amen){
 							var htoinsert = [];
+							var rapidinsert =[];
+							for(var z=0 ; z<12 ; z++){
+								rapidinsert.push(Recinto.create(response.hotels[z]));
+							}
+							Q.all(rapidinsert).then(function(nhoteles){
+								sails.log.debug("hoteles nuevos",nhoteles)
+								return deferred.resolve(nhoteles);
+							}).catch(function(err){
+								sails.log.error("valió pastor",err)
+								return deferred.reject(err)
+							})
+							z = 0;
 							for(var p in response.hotels){
+								if(z<12){
+									z++;
+									continue;
+								}
 								htoinsert.push(Recinto.create(response.hotels[p]));
 							}
+
 							Q.all(htoinsert).then(function(hoteles){
-								return deferred.resolve(hoteles);
+								sails.log.debug("HOTELES CREADOS")
 							}).catch(function(err){
 								console.error(err)
 								return deferred.reject(err);
 							})
 							
-						});
+						})
 					}).catch(function(err){
 						console.log("Error al consultar API de despegar",err);
 						return deferred.reject(err);
 					});
+				}).catch(function(err){
+					//console.debug("error al ir al http://api.despegar.com/availability/cities/"+cities[k])
+					
+					console.log("error al ir al http://api.despegar.com/availability/cities/")
+					deferred.reject(err)
 				})
 			}
 		})

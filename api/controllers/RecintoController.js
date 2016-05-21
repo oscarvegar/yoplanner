@@ -55,10 +55,11 @@ module.exports = {
         Recinto.findOne().where({cityId:condition}).then(function(data){
             if(!data){
                 CityService.importCity(idciudad).then(function(data){
+                    console.log("aqui regresa del import",data)
                     return res.json(data);
                 }).catch(function(err){
                     console.log(err);
-                    res.error(err);
+                    res.json([]);
                 })
             }else{
                 Recinto.find().where({cityId:condition}).paginate({page: page, limit: pagesize}).sort("place DESC").sort("starRating DESC").then(function(data){
