@@ -18,22 +18,7 @@ $(document).ready(function($) {
 
 	'use strict';
 
-	//=================================== Twitter Feed  ===============================//
-  $("#twitter").tweet({
-      modpath: 'js/twitter/index.php',
-      username: "envato", // Change for Your Username
-      count: 5,
-      loading_text: "Loading tweets..."
-  });
-
-  //=================================== Flikr Feed  ========================================//
-  $('#flickr').jflickrfeed({
-    limit: 8, //Number of images to be displayed
-    qstrings: {
-      id: '36587311@N08'//Change this to any Flickr Set ID as you prefer in http://idgettr.com/
-    },
-    itemTemplate: '<li><a href="{{image_b}}" class="fancybox"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
-  });
+	
 
   //=================================== Sticky nav ===================================//
 
@@ -113,106 +98,12 @@ $(document).ready(function($) {
        pagination: true
    });
 
-   //=================================== Carousel testimonials  ===============================//  
-  $("#testimonials").owlCarousel({
-      items : 1,
-      autoPlay: 3200,  
-      navigation : false,
-      autoHeight : true,
-      slideSpeed : 400,
-      singleItem: true,
-      pagination : true
-  });
 
-	//=================================== Carousel Twitter  ===============================//	 
-	$(".tweet_list").owlCarousel({
-		  items : 1,
-		  autoPlay: 3200,  
-    	navigation : false,
-    	autoHeight : true,
-    	slideSpeed : 400,
-    	singleItem: true,
-    	pagination : true
-	});
-
-	//=================================== Subtmit Form  ===================================//
-	$('#form-contact').submit(function(event) {  
-	     event.preventDefault();  
-	     var url = $(this).attr('action');  
-	     var datos = $(this).serialize();  
-	     	$.get(url, datos, function(resultado) {  
-	     	$('#result').html(resultado);  
-		});  
- 	});
-
-  //=================================== Form Newslleter  =================================//
-  $('#newsletterForm').submit(function(event) {  
-       event.preventDefault();  
-       var url = $(this).attr('action');  
-       var datos = $(this).serialize();  
-        $.get(url, datos, function(resultado) {  
-        $('#result-newsletter').html(resultado);  
-    });  
-  });  
-
-  //=================================== Ligbox  ===========================================//	
-  $(".fancybox").fancybox({
-      openEffect  : 'elastic',
-      closeEffect : 'elastic',
-
-      helpers : {
-        title : {
-          type : 'inside'
-        }
-      }
-  });
-
-	//=============================  tooltip demo ===========================================//
-  $('.tooltip-hover').tooltip({
-      selector: "[data-toggle=tooltip]",
-      container: "body"
-   });
-
-  // slider-range
-  $("#slider-range").slider({});
-
-	//=================================== Totop  ============================================//
-  $().UItoTop({
-		scrollSpeed:500,
-		easingType:'linear'
-	});	
-
-  //=================================== Portfolio Filters  ==============================//
-  $(window).load(function(){
-      var $container = $('.portfolioContainer');
-      $container.isotope({
-      filter: '*',
-          animationOptions: {
-          duration: 750,
-          easing: 'linear',
-          queue: false
-  	}
-  });
-  $('.portfolioFilter a').click(function(){
-      $('.portfolioFilter .current').removeClass('current');
-      $(this).addClass('current');
-       var selector = $(this).attr('data-filter');
-       $container.isotope({
-        filter: selector,
-              animationOptions: {
-              duration: 750,
-              easing: 'linear',
-              queue: false
-            }
-        });
-       return false;
-      }); 
-   });
 
   // Slider Function-->
   $('.tp-banner').show().revolution({
     dottedOverlay:"none",
-    delay:5000,
+    delay:3000,
     startwidth:1170,
     startheight:925,
     minHeight:500,
