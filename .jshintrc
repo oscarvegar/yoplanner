@@ -1,0 +1,16 @@
+{
+  "undef": true,
+  "unused": true,
+  "browserify": true,
+  "predef": ["moment", "swal", "Dropzone", "angular","google","io","User","sails","UserService","RFPService","EstimadoHab","EstimadoSal","EstimadoConcepto","RFP","Salon"],
+  "quotmark":false,
+  "globals": {
+    "module": false,
+    "console": false
+  },
+  "asi":true,
+  "node":true,
+  "jquery":true,
+  "eqeqeq":true,
+  "shadow":true
+}

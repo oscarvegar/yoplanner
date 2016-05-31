@@ -1,3 +1,4 @@
+'use strict';
 /**
  * RFPController
  *
@@ -20,6 +21,7 @@ module.exports = {
 			rfp.recintos.push(recintos[i].id);
 		}
 		rfp.createdBy = req.user.id;
+		rfp.account = req.user.account;
 		RFP.create(rfp).then(function(rfp){
 			return res.json(rfp);
 		}).catch(function(err){
