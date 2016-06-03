@@ -1,3 +1,4 @@
+'use strict';
 /**
 * RFP.js
 *
@@ -26,6 +27,11 @@ module.exports = {
             model:'user'
         }
 
+    },
+    beforeCreate : function(rfp,next){
+        rfp.count = 1;
+        rfp.status = {id:1,description:"PROSPECTO",color:"bg-green-400"};
+        next();
     },
     afterCreate : function(rfp,next){
         var options = {};
