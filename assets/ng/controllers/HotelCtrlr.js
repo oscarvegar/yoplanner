@@ -468,11 +468,42 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
     $rootScope.deleteSelection = function(hotel){
 			//Añadido logica para ocultar boton de Add en la lista de hoteles
-			$scope.hotels[$scope.existeEnSeleccion(hotel)].inList = false;
+			if ($scope.hotels) {
+				$scope.hotels[$scope.existeEnSeleccion(hotel)].inList = false;
+			}
       $rootScope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
  			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
       $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
+
+		//Comentarios en detalle hotel
+		// TODO: Implementar paginación
+		$scope.loadComentarios = function () {
+			$http.post('/comentariohotel/getByHotel/' + $state.params.hotelId).success(function(data) {
+				console.log(data);
+				$scope.comentarios = data.comentarios;
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.postComentario = function () {
+			if(!$scope.postcomentario.text)
+				return;
+
+			$http.post('/comentariohotel', {text: $scope.postcomentario.text, hotel: $state.params.hotelId}).success(function(data) {
+				$scope.postcomentario = null;
+				notify('Comentario enviado correctamente.');
+				$scope.comentarios.push(data);
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.fechaComentario = function (comentario) {
+			var fecha = new Date(comentario.createdAt);
+			return fecha;
+		}
 
 	$scope.init = function() {
 		$log.info('HotelController.init');

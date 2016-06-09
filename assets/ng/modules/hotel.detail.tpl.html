@@ -1,5 +1,5 @@
 
-            <!-- Section Title-->    
+            <!-- Section Title-->
             <div class="section-title-detailed" ng-controller="HotelController">
                 <!-- Single Carousel -->
                 <sngl-krsl pictures="currentHotel.pictures"></sngl-krsl>
@@ -13,7 +13,7 @@
                                 <ul class="starts">
                                     <li ng-repeat="i in starRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
                                 </ul>
-                                <h2>{{currentHotel.name}} 
+                                <h2>{{currentHotel.name}}
                                     <span>{{currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')}}</span>
                                 </h2>
                             </div>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <!-- End Section Title-->
-            </div>   
+            </div>
             <!-- End Section Title-->
 
             <!--Content Central -->
@@ -40,8 +40,8 @@
                         <h4><a href="javascript:void(0);" ng-click="$back();" style="text-decoration: underline;">&lt;&lt; Volver a su búsqueda</a></h4>
                     </div>
                     <div class="col-md-8"></div>
-                </div>   
-                <!-- End content info - Features--> 
+                </div>
+                <!-- End content info - Features-->
 
                 <!-- End content info - Grey Section-->
                 <div class="content_info">
@@ -77,12 +77,12 @@
 
                                     <div class="tab-content">
                                         <!-- Tab One - Hotel -->
-                                        <div class="tab-pane active" id="hotel">                                        
+                                        <div class="tab-pane active" id="hotel">
                                             <h2>Información del hotel</h2>
                                             <p>{{currentHotel.description}}</p>
 
                                             <h3>Equipamiento y servicios del hotel</h3>
-                                            
+
                                             <div class="row">
                                                 <!--
                                                 <p>{{Math.ceil(currentHotel.amenities.length / 3)}}</p>
@@ -220,7 +220,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Google Map -> 
+                                            <!-- Google Map ->
                                             <div class="row">
                                                 <div id="map"></div>
                                             </div>
@@ -247,14 +247,14 @@
 
                                         </div>
                                         <!-- end Tab Four - Book Hotel -->
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End Info Resalt-->
-                </div>   
-                <!-- End content info - Grey Section--> 
+                </div>
+                <!-- End content info - Grey Section-->
 
                 <!-- content info - testimonials-->
                 <div class="content_info">
@@ -262,29 +262,40 @@
                     <div class="bg_parallax image_{{imgBgAcronym}}_parallax"></div>
                     <!- Parallax Background -->
 
-                    <div class="opacy_bg_02" style="background: #fff">
+                    <div style="background: #fff">
                         <!-- Testimonial Propertie-->
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="" style="background-color:white;">  <!-- style="height:430px;overflow-y: scroll;" -->
-                                        <!-- Testimonials Carousel -->
-                                        <br>
-                                        <div  class="fb-comments" data-href="http://yoplanner.com/#/hotel/MZT/detail/{{currentHotel.id}}" data-width="100%" data-numposts="2"></div>
-                                        <!-- End Testimonials Carousel -->
-                                    </div>
+                          <div class="row">
+                            <!-- Mostrar comentarios -->
+                            <div class="col-md-12" style="margin-bottom: 0.5em">
+                              <h3 style="color: black;">Comentarios</h3>
+                              <div class="comentarios-container" ng-init="loadComentarios()">
+                                <div class="comentario" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true | limitTo: 3">
+                                  <h4 style="color: white;" am-time-ago="comentario.createdAt"></h4>
+                                  <p style="color: #c5c5c5;">{{comentario.text}}</p>
                                 </div>
-
-                                <div class="col-md-8" style="background: #000">
-                                    <div class="testimonial-info-2">
-                                        <!-- Use 'youtube-video' as an element or attribute. -->
-                                        <!--
-                                        <youtube-video video-id="videoID" player-vars="playerVars" player-width="'100%'" player-height="'400px'"></youtube-video>
-                                         -->
-                                        <youtube-video video-url="videoURL" player-vars="playerVars" player-width="'100%'" player-height="'400px'"></youtube-video>
-                                    </div>
-                                </div>
+                              </div>
                             </div>
+                            <!-- Postear un comentario -->
+                            <div class="col-md-12">
+                              <div class="form-group" style="text-align: center;">
+                                <form ng-submit="postComentario()">
+                                  <div class="row">
+                                    <textarea ng-model="postcomentario.text" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea col-md-6 col-md-offset-3"></textarea>
+                                    <div class="col-md-4 col-md-offset-4">
+                                      <input type="submit" value="Enviar Comentario" class="boton-sendcomentario" style="margin-top: 0.5em;">
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+
+                              <div class="col-md-12" style="background: #000" style="margin-bottom: 0.5em">
+                                  <div class="testimonial-info-2">
+                                      <youtube-video video-url="videoURL" player-vars="playerVars" player-width="'100%'" player-height="'400px'"></youtube-video>
+                                  </div>
+                              </div>
+                          </div>
                         </div>
                         <!-- End Testimonial Propertie-->
                     </div>
@@ -297,11 +308,11 @@
                 $(document).ready(function() {
                     console.log('$(document).ready(function())');
 /*
-                    //=================================== Carousel testimonials  ===============================//  
+                    //=================================== Carousel testimonials  ===============================//
                     setTimeout( function() {
                         $("#testimonials").owlCarousel({
                             items : 1,
-                            autoPlay: 3200,  
+                            autoPlay: 3200,
                             navigation : false,
                             autoHeight : true,
                             slideSpeed : 400,
@@ -310,7 +321,7 @@
                         });
                     }, 10000);
 */
-                    //=================================== Ligbox  ===========================================//   
+                    //=================================== Ligbox  ===========================================//
                     $(".fancybox").fancybox({
                         openEffect  : 'elastic',
                         closeEffect : 'elastic',
@@ -323,6 +334,6 @@
                     });
 
                     $('html, body').animate({scrollTop:0}, 500, 'linear');
-                    
+
                 }); //ready
             </script>

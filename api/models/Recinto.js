@@ -9,7 +9,7 @@ module.exports = {
 
     //autoPK: false,
     attributes: {
-        
+
         rfps: {
             collection: 'rfp',
             via: 'recintos',
@@ -21,7 +21,10 @@ module.exports = {
         infoExtra: {
             model: 'infoExtraRecinto'
             //via: 'recinto',
+        },
+        comentarios: {
+          collection: 'comentariohotel',
+          via: 'hotel'
         }
     }
 };
-

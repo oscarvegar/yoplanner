@@ -1,5 +1,5 @@
 var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
-	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline','yoplanner.blog']);
+	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline','yoplanner.blog', 'angularMoment']);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams,$location) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
@@ -12,8 +12,8 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location) {
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
-	
-	
+
+
 	// Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
 	$urlRouterProvider
 	// The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
@@ -86,15 +86,15 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 			url: "/blog/:year/:month/:id",
 			templateUrl: "/ng/modules/blog.html"
 		})*/;
-	
+
 });
 
 yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeout, $rootScope, $location, $state,
 	$localStorage, HotelSrvc){
-	
+
 	$scope.searchString;
-	$scope.doneTypingInterval = 500; 
-	$scope.typingTimer; 
+	$scope.doneTypingInterval = 500;
+	$scope.typingTimer;
     $scope.findCities = function(typed){
         if(typed.length==0){
         	$scope.cities  =  [];
@@ -103,7 +103,7 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
         if(typed.length<4)return;
         clearTimeout($scope.typingTimer);
         $scope.typingTimer = setTimeout(function(){$scope.doneTyping(typed)}, $scope.doneTypingInterval);
-        
+
 	};
 	$scope.doneTyping = function(typed){
 		$scope.showLoader = true;
@@ -258,7 +258,7 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 		var initLatitude = hotelTMP.geoLocation.latitude;
 		var initLongitude = hotelTMP.geoLocation.longitude;
 		var initFullAddress = hotelTMP.address.fullAddress + (hotelTMP.address.postalCode ? ', C. P. ' + hotelTMP.address.postalCode : '');
-		
+
 		$scope.marker = {
 			id: 1,
 			latitude: 19.4326018,
@@ -273,7 +273,7 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 				// latitude: initLatitude+0.015,	//	y's
 				// longitude: initLongitude-0.05	//	x's
 				latitude: 19.4326018,	//	y's
-				longitude: -99.1332049	//	x's 
+				longitude: -99.1332049	//	x's
 			},
 			options: {
 				disableDefaultUI: !0,
@@ -383,4 +383,3 @@ yoPlannerApp.controller('DespegarEmbeddedController', function($scope, $http, $t
 		$scope.init();
 	});
 });
-
