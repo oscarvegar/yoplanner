@@ -1,6 +1,6 @@
 
         <div ng-controller="HotelController">
-            <!-- Section Title-->    
+            <!-- Section Title-->
             <div class="section-title-01">
                 <!-- Parallax Background -->
                 <div class="bg_parallax image_{{valDest.imgBgAcronym}}_parallax"></div>
@@ -13,12 +13,12 @@
                         <div class="crumbs">
                             <!-- ChildView - Destination Review -->
                             <div ui-view></div>
-                            <!-- End ChildView - Destination Review --> 
+                            <!-- End ChildView - Destination Review -->
                         </div>
-                    </div>  
-                </div>  
-                <!-- End Content Parallax--> 
-            </div>   
+                    </div>
+                </div>
+                <!-- End Content Parallax-->
+            </div>
             <!-- End Section Title-->
 
             <!--Content Central -->
@@ -71,7 +71,7 @@
                                                 <div class="carbonad-tag">ads via <a href="#">Yo Planner</a></div>
                                             </div>
                                             <!-- End AddOns - Inside Gallery -->
-                                            
+
                                             <div class="img-hover">
                                                 <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="{{$first?'width: 748px;height: auto;':'width: 360px;height: 231.422px;'}}">
                                             </div>
@@ -89,6 +89,9 @@
                                                 </ul>
                                                 <div class="content-btn" ng-click="selectResult(hotel)">
                                                     <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a>
+                                                </div>
+                                                <div class="content-btn" ng-click="addSeleccion(hotel)" style="margin-top: 0.5em" ng-show="!hotel.inList">
+                                                    <a class="btn btn-primary">Agregar a Mi Selección</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,11 +119,11 @@
                                     </div>
                                 </div>
                                 <!-- End Item Gallery - More Results -->
-                            </div>   
-                            <!-- End Items Gallery filters-->       
+                            </div>
+                            <!-- End Items Gallery filters-->
                         </div>
                     </div>
-                </div>   
+                </div>
                 <!-- End content info - Vacations Destinatios-->
 
 
@@ -138,7 +141,7 @@
 
             <script type="text/javascript">
 
-                //=================================== Ligbox  ===========================================//   
+                //=================================== Ligbox  ===========================================//
                 $(document).ready(function() {
                     $(".fancybox").fancybox({
                         openEffect  : 'elastic',

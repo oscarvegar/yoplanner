@@ -13,7 +13,7 @@ HotelModule.constant('MONGOLAB_CONFIG', {
 
 //TODO: move those messages to a separate module
 HotelModule.constant('CUSTOM.DESTINATIONS.REVIEW', {
-	EMPTY:'Resultados Búsqueda',	
+	EMPTY:'Resultados Búsqueda',
 	ACA: 'Hoteles en Acapulco',
 	CL1: 'Hoteles en Los Cabos',
 	CUN: 'Hoteles en Cancun',
@@ -77,7 +77,7 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 		.otherwise({
 			redirectTo: '/'
 		});
-	
+
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
@@ -196,12 +196,12 @@ HotelModule.config(function($routeProvider, $locationProvider, $stateProvider, $
 		v: '3.17',
 		libraries: 'weather,geometry,visualization'
 	});
-	
+
 });
 
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $route, $routeParams,
 	$state, $stateParams, $localStorage, uiGmapGoogleMapApi, uiGmapIsReady, notify, HotelSrvc, $sce) {
-	
+
 	$log.info('HotelController');
 	$scope.Math = window.Math;
 	$scope.$storage = $localStorage;
@@ -253,7 +253,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			$log.error(err);
 			$scope.showLoader = false;
 		});
-        
+
     };
 
     $scope.selectResult = function(hotel) {
@@ -300,7 +300,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 	        		$rootScope.selectedHotel = hotelTMP;
 	        	}
-	        	
+
 	        	if(data.salones && data.salones.length > 0) {
 	        		$rootScope.selectedHotel.salones = data.salones[data.salones.length-1];
 	        	}
@@ -364,7 +364,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		var initLatitude = hotelTMP.geoLocation.latitude;
 		var initLongitude = hotelTMP.geoLocation.longitude;
 		var initFullAddress = hotelTMP.address.fullAddress + (hotelTMP.address.postalCode ? ', C. P. ' + hotelTMP.address.postalCode : '');
-		
+
 		$scope.marker = {
 			id: 1,
 			latitude: initLatitude,
@@ -430,27 +430,33 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		if(!showMap) {
 			$scope.map.showMap = !showMap;
 		}
-		
+
 		setTimeout(function () {
 			if($scope.map.getGMap) {
 				google.maps.event.trigger($scope.map.getGMap(), "resize");
 			}
 		}, 1000);
-		
+
 	}
 
     $scope.agregarYRegresar = function() {
-    	$log.info('Hotel agregado a Mi Selección');
     	notify('Hotel agregado a Mi Selección');
-
-        $rootScope.hotelesSeleccionados.push($scope.currentHotel);
-		$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
-        $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+      $rootScope.hotelesSeleccionados.push($scope.currentHotel);
+			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
+      $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
 
+		//Agregar desde la lista de hoteles
+		$scope.addSeleccion = function (hotel) {
+			$rootScope.hotelesSeleccionados.push(hotel);
+			$scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+			$scope.hotels[$scope.hotels.indexOf(hotel)].inList = true;
+			notify('Hotel ' + hotel.name + ' agregado a Mi Selección');
+		};
+
     $rootScope.existeEnSeleccion = function(hotel){
-    	$log.info("HOTEL>>>>>>>>>>>>>>>>",hotel);
-    	$log.info("SELS>>>>>>>>>>>>>>>>",$rootScope.hotelesSeleccionados);
+    	//$log.info("HOTEL>>>>>>>>>>>>>>>>",hotel);
+    	//$log.info("SELS>>>>>>>>>>>>>>>>",$rootScope.hotelesSeleccionados);
     	if(hotel==null)return -1;
         for(var i=0;i<$rootScope.hotelesSeleccionados.length;i++){
             if(hotel.id == $rootScope.hotelesSeleccionados[i].id){
@@ -458,12 +464,14 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
             };
         };
         return -1;
-    }; 
+    };
 
     $rootScope.deleteSelection = function(hotel){
-        $rootScope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
-	 	$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
-        $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+			//Añadido logica para ocultar boton de Add en la lista de hoteles
+			$scope.hotels[$scope.existeEnSeleccion(hotel)].inList = false;
+      $rootScope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
+ 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
+      $scope.$storage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
 
 	$scope.init = function() {
@@ -537,7 +545,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
  		if($routeParams.hotelId || $rootScope.hotelId || $stateParams.hotelId) {
- 			
+
  			$scope.findSelectedHotelDetail();
 		} else if($routeParams.searchId || $rootScope.searchId || $stateParams.searchId) {
 			console.log("DESTINO A 1 :::: ",$routeParams.searchId)
@@ -554,9 +562,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				}
 
 	            $scope.currentPage=1;
-				$log.info($rootScope.resHoteles);
+				//$log.info($rootScope.resHoteles);
 				$scope.hotels = $rootScope.resHoteles;
-				$log.info($scope.hotels);
+				//$log.info($scope.hotels);
 				$scope.moreHotels = new Array();
 
 				$scope.bannerAd = HotelSrvc.getLocationBannerAd($routeParams.searchId);
@@ -584,7 +592,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
         });
     });
 
-    $scope.$back = function() { 
+    $scope.$back = function() {
 		// $window.history.back();
 		var valDest = HotelSrvc.validateDestination($stateParams.searchId);
 		if(valDest != null) {
