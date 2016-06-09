@@ -32,7 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'post /deploy': 'DeployController.webhook',
-  '/':'MainController.root'
+  '/':'MainController.root',
   
 
   /***************************************************************************
@@ -44,5 +44,20 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+  'GET /agencia-de-viajes': 'MainController.redirect',
+  'GET /quienes-somos' : 'MainController.redirect',
+  'GET /aviso_de_privacidad': '/#/aviso_de_privacidad',
+  'GET /contacto': '/#/contacto',
+  'GET /cruceros': '/#/cruceros',
+  'GET /meetings': 'MainController.redirect',
+  'GET /publicidad_para_hoteles': '/#/publicidad_para_hoteles',
+  'GET /quienes_somos': '/#/quienes_somos',
+  'GET /reservaciones_de_hotel': '/#/reserva/hotels',
+  'GET /reservaciones_de_avion': '/#/reserva/flights',
+  'GET /blog': '/#/blog',
+  'GET /blog/:year/:month/:id': 'BlogController.getPost',
+  '/destinos/:id':'DestinoController.find'
+  //'GET /test':'MainController.test'
+
 
 };

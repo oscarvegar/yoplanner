@@ -137,13 +137,15 @@ angular.module('rfp-module', [])
 
 
         console.log(angular.toJson( $scope.rfp));
-        $http.post('/RFP',$scope.rfp).success(function(data){
+        $http.post('/RFP/crear',$scope.rfp).success(function(data){
             $scope.folioFinal = ""+data.id;
             $scope.rfp = null;
             $scope.rfp = {};
 
             $scope.hotelesSeleccionados = null;
             $scope.hotelesSeleccionados = [];
+            $rootScope.hotelesSeleccionados = null;
+            $rootScope.hotelesSeleccionados = [];
 
             $scope.configuracionHabitacionesDobles = [];
             $scope.configuracionHabitacionesSencillas = [];
@@ -182,7 +184,7 @@ angular.module('rfp-module', [])
 .directive('rfp', function() {
 	return {
         restrict: 'E',
-        templateUrl: 'ng/modules/rfp.html'
+        templateUrl: '/ng/modules/rfp.html'
     };
 }).config(function(){
 	

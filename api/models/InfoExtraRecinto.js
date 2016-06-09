@@ -10,7 +10,8 @@ module.exports = {
   attributes: {
   	recinto:{
   		model:'recinto'
-  	}
+  	},
+  	despegarId:'string'
   }
 };
 

@@ -831,7 +831,6 @@ hr.tall{
 }
 .filter-header.flights-filter{
 	height: auto !important;
-	overflow: auto;
 }
 .filter-header.flights-filter .input-large{
 	width: 50%;
@@ -1760,8 +1759,12 @@ hr.separator:before {
 .image_01_parallax{
 	background: url("../img/slide/1.jpg");
 }
+.image_blog_parallax{
+	background: url("../img/fondo-yp.jpg") no-repeat center center fixed;
+	
+}
 .image_02_parallax{
-	background: url("../img/slide/2.jpg");
+	background: url('http://4.bp.blogspot.com/-rkKGRf64_TI/Vc-0or2TrMI/AAAAAAAAANs/9Yy73Y6hAog/s1600/fotogaleria_1353095261-snorkel.jpg');
 }
 .image_03_parallax{
 	background: url("../img/slide/3.jpg");
@@ -3669,4 +3672,9 @@ address strong{
 .widget .checkbox label{
 	font-size: 300;
 	font-size: 0.8rem;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
 }

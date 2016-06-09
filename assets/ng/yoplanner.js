@@ -1,43 +1,19 @@
 var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
-	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline']);
+	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline','yoplanner.blog']);
 
-yoPlannerApp.run(function($rootScope, $state, $stateParams) {
+yoPlannerApp.run(function($rootScope, $state, $stateParams,$location) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
 	// so that you can access them from any scope within your applications.For example,
 	// <li ng-class="{ active: $state.includes('contacts.list') }"> will set the <li>
 	// to active whenever 'contacts.list' or one of its decendents is active.
 	$rootScope.$state = $state;
 	$rootScope.$stateParams = $stateParams;
+
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
-	/*
-	$routeProvider
-		.when('/', {
-			templateUrl: 'ng/modules/homepage.tpl.html',
-			controller: 'HomePageController',
-			resolve: {
-				// I will cause a 1 second delay
-				delay: function($q, $timeout) {
-					var delay = $q.defer();
-					$timeout(delay.resolve, 1000);
-					return delay.promise;
-				}
-			}
-		})
-		.otherwise({
-			redirectTo: '/'
-		});
 	
-	$locationProvider.html5Mode({
-		enabled: true,
-		requireBase: false
-	});
-	*/
-	/////////////////////////////
-	// Redirects and Otherwise //
-	/////////////////////////////
-
+	
 	// Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
 	$urlRouterProvider
 	// The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
@@ -56,52 +32,60 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 	$stateProvider
 		.state('index', {
 			url: "",
-			templateUrl: "ng/modules/homepage.tpl.html"
+			templateUrl: "/ng/modules/homepage.tpl.html"
 		})
 		.state('index2', {
 			url: "/",
-			templateUrl: "ng/modules/homepage.tpl.html"
+			templateUrl: "/ng/modules/homepage.tpl.html"
 		})
-		.state('acerca_de', {
-			url: "/acerca-de",
-			templateUrl: "ng/modules/acerca.de.tpl.html"
+		/*.state('acerca_de', {
+			url: "/quienes-somos",
+			templateUrl: "/ng/modules/acerca.de.tpl.html"
 		})
 		.state('nuestros_servicios', {
 			url: "/nuestros-servicios",
-			templateUrl: "ng/modules/nuestros.servicios.tpl.html"
+			templateUrl: "/ng/modules/nuestros.servicios.tpl.html"
 		})
 		.state('mrktng_hoteles', {
-			url: "/mrktng-hoteles",
-			templateUrl: "ng/modules/mrktng.hoteles.tpl.html"
+			url: "/publicidad_para_hoteles",
+			templateUrl: "/ng/modules/mrktng.hoteles.tpl.html"
 		})
 		.state('meetings', {
 			url: "/meetings",
-			templateUrl: "ng/modules/meetings.tpl.html"
+			templateUrl: "/ng/modules/meetings.tpl.html"
 		})
 		.state('travel_agency', {
-			url: "/travel-agency",
-			templateUrl: "ng/modules/travel.agency.tpl.html"
+			url: "/agencia-de-viajes",
+			templateUrl: "/ng/modules/travel.agency.tpl.html"
 		})
 		.state('influencer', {
 			url: "/influencer",
-			templateUrl: "ng/modules/influencer.tpl.html"
+			templateUrl: "/ng/modules/influencer.tpl.html"
 		})
 		.state('reserva', {
 			url: "/reserva/:option",
-			templateUrl: "ng/modules/embedded.site.tpl.html"
+			templateUrl: "/ng/modules/embedded.site.tpl.html"
 		})
 		.state('cruises', {
-			url: "/cruises",
-			templateUrl: "ng/modules/cruises.tpl.html"
+			url: "/cruceros",
+			templateUrl: "/ng/modules/cruises.tpl.html"
 		})
 		.state('contact', {
-			url: "/contact",
-			templateUrl: "ng/modules/contact.tpl.html"
+			url: "/contacto",
+			templateUrl: "/ng/modules/contact.tpl.html"
 		})
 		.state('politicas_privacidad', {
-			url: "/politicas-privacidad",
-			templateUrl: "ng/modules/politicas.privacidad.tpl.html"
-		});
+			url: "/aviso_de_privacidad",
+			templateUrl: "/ng/modules/politicas.privacidad.tpl.html"
+		})
+		.state('blog', {
+			url: "/blog",
+			templateUrl: "/ng/modules/blog.html"
+		})
+		.state('blogPost', {
+			url: "/blog/:year/:month/:id",
+			templateUrl: "/ng/modules/blog.html"
+		})*/;
 	
 });
 
@@ -171,7 +155,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 		var BuscaCruceroObj = {icon: 'fa-ship', text: 'Busca Crucero', stUrl: 'cruises'};
 		var BuscaParqueObj = {icon: 'fa-magic', text: 'Busca Parque'};
 		var BuscaRestauranteObj = {icon: 'fa-spoon', text: 'Busca Restaurante'};
-		var DescubreBlogObj = {icon: 'fa-blog-blue-34px', text: 'Descubre Blog', url: 'http://www.yoplanner.com.mx/blog/'};
+		var DescubreBlogObj = {icon: 'fa-blog-blue-34px', text: 'Descubre Blog', url: 'http://www.yoplanner.com/blog/'};
 		var ContáctanosObj = {icon: 'fa-contact-us-blue-34px', text: 'Contáctanos', stUrl: 'contact'};
 
 		$scope.servicesItems = new Array();
@@ -277,8 +261,8 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 		
 		$scope.marker = {
 			id: 1,
-			latitude: initLatitude,
-			longitude: initLongitude,
+			latitude: 19.4326018,
+			longitude: -99.1332049,
 			icon: "/img/img-theme/pin.png",
 			options: {
 				animation: 1
@@ -288,8 +272,8 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 			center: {
 				// latitude: initLatitude+0.015,	//	y's
 				// longitude: initLongitude-0.05	//	x's
-				latitude: initLatitude,	//	y's
-				longitude: initLongitude	//	x's
+				latitude: 19.4326018,	//	y's
+				longitude: -99.1332049	//	x's 
 			},
 			options: {
 				disableDefaultUI: !0,
@@ -301,13 +285,13 @@ yoPlannerApp.controller('ContactController', function($scope, $http, $timeout, $
 				zoomControl: !0
 			},
 			showMap: true,
-			zoom: 17,
+			zoom: 12,
 			markers: [
 				{
 					id: 1,
 					icon: '/img/img-theme/pin.png',
-					latitude: initLatitude,
-					longitude: initLongitude,
+					latitude: 19.4326018,
+					longitude: -99.1332049,
 					showWindow: false,
 					options: {
 						animation: 1
