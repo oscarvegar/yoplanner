@@ -1,7 +1,6 @@
-
-                <div id="single-carousel">
-                    <div class="img-hover" ng-repeat="pic in pictures" on-finish-render>
-                        <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>
-                        <img ng-src="{{pic}}" alt="" class="img-responsive" style="width: 100%; height: 618px;">
-                    </div>
-                </div>
+<div id="single-carousel">
+    <div class="img-hover" ng-repeat="pic in pictures | limitTo:3" on-finish-render>
+        <div class="overlay"> <a ng-href="{{pic}}" class="fancybox" rel="gallery"></a></div>
+        <img ng-src="{{pic}}" alt="" class="img-responsive" style="width: 100%; height: 618px;">
+    </div>
+</div>

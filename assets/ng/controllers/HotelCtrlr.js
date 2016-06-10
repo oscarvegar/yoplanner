@@ -8,11 +8,11 @@ var HotelModule = angular.module('yoPlannerApp.hotel', ['ngAnimate', 'ngStorage'
 
 HotelModule.config(function(uiGmapGoogleMapApiProvider) {
 
-	
-	
+
+
 });
 
-HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,$localStorage,notify){ 
+HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,$localStorage,notify){
 	$scope.searchId;
 	$scope.masResultados = function(){
 		console.debug("masResultados",$scope.searchId)
@@ -33,20 +33,31 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			$log.error(err);
 			$scope.showLoader = false;
 		});
-        
+
     };
-
-    
-
 
     $scope.agregarYRegresar = function() {
-    	$log.info('Hotel agregado a Mi Selección');
+			console.log('wea');
     	notify('Hotel agregado a Mi Selección');
-
-        $rootScope.hotelesSeleccionados.push($scope.currentHotel);
-		$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
-        $localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+      $rootScope.hotelesSeleccionados.push($scope.currentHotel);
+			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
+      $localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
+
+		$scope.addSeleccion = function (id) {
+			for (var i in $rootScope.hotelesSeleccionados) {
+				if ($rootScope.hotelesSeleccionados[i].id == id) {
+					notify('Este hotel ya está en Mi Selección');
+					return;
+				}
+			}
+
+			$http.get("/recinto/findById/"+id).then(function (hotel) {
+				$rootScope.hotelesSeleccionados.push(hotel.data);
+				$localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+				notify('Hotel ' + hotel.data.name + ' agregado a Mi Selección');
+			});
+		};
 
     $rootScope.existeEnSeleccion = function(hotel){
     	$log.info("HOTEL>>>>>>>>>>>>>>>>",hotel);
@@ -58,13 +69,43 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
             };
         };
         return -1;
-    }; 
+    };
 
     $rootScope.deleteSelection = function(hotel){
-        $rootScope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
-	 	$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
-        $localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+      $rootScope.hotelesSeleccionados.splice($scope.existeEnSeleccion(hotel),1);
+	 		$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
+      $localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
     };
+
+		//Comentarios en detalle hotel
+		// TODO: Implementar paginación
+		$scope.loadComentarios = function () {
+			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid}).success(function(data) {
+				console.log(data);
+				$scope.comentarios = data.comentarios;
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.postComentario = function () {
+			if(!$scope.postcomentario.text)
+				return;
+
+			$http.post('/comentariohotel/postComentario', {text: $scope.postcomentario.text, hotel: $scope.hotelid}).success(function(data) {
+				$scope.postcomentario = null;
+				console.log(data);
+				notify('Comentario enviado correctamente.');
+				$scope.comentarios.push(data.comentario);
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.fechaComentario = function (comentario) {
+			var fecha = new Date(comentario.createdAt);
+			return fecha;
+		}
 
 	$scope.init = function() {
 		$scope.moreHotels = [];
@@ -81,7 +122,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 	};
 
-   
+
 	$scope.$evalAsync(function() {
 		$log.info('HotelController.$evalAsync');
 		$scope.init();

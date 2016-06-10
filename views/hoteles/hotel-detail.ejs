@@ -1,13 +1,16 @@
 <div  ng-controller="HotelController">
 	<input type="hidden"  ng-init="hotelid = <%=hotel.id%>">
-    <!-- Section Title-->    
+    <!-- Section Title-->
     <div class="section-title-detailed" class="ng-cloak">
 
         <!-- Single Carousel -->
         <div id="single-carousel">
-        	
+
         	<% 	var currentHotel = hotel;
-        		for(var i in hotel.pictures){ 
+        		for(var i in hotel.pictures){
+							if (i >= 3) {
+								break;
+							}
         		var pic = hotel.pictures[i];
     		%>
             <div class="img-hover"  >
@@ -28,7 +31,7 @@
                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
                             <% } %>
                         </ul>
-                        <h2><%=currentHotel.name%> 
+                        <h2><%=currentHotel.name%>
                             <span><%=currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
                         </h2>
                     </div>
@@ -38,7 +41,7 @@
             </div>
         </div>
         <!-- End Section Title-->
-    </div>   
+    </div>
     <!-- End Section Title-->
 
     <!--Content Central -->
@@ -55,7 +58,7 @@
                 <h4><a href="#" onclick=" window.history.back();" style="text-decoration: underline;">&lt;&lt; Volver a su búsqueda</a></h4>
             </div>
             <div class="col-md-8"></div>
-        </div>   
+        </div>
 
         <!-- End content info - Grey Section-->
         <div class="content_info">
@@ -92,7 +95,7 @@
 
 <div class="tab-content">
     <!-- Tab One - Hotel -->
-    <div class="tab-pane active" id="hotel">                                        
+    <div class="tab-pane active" id="hotel">
         <h2>Información del hotel</h2>
         <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
 
@@ -112,23 +115,45 @@
         <% })%>
 
         </div>
+				<!-- Tabla de comentarios -->
          <div class="row">
-            <div class="col-md-4">
-                <div class="" style="background-color:white;">  <!-- style="height:430px;overflow-y: scroll;" -->
-                    <!-- Testimonials Carousel -->
-                    <br>
-                    <div  class="fb-comments" data-href="http://yoplanner.com/<%=hotel.urlslug%>" data-width="100%" data-numposts="2"></div>
-                    <!-- End Testimonials Carousel -->
+            <div class="col-md-12">
+							<h3 style="color: black;">Comentarios</h3>
+              <div class="comentarios-container" ng-init="loadComentarios()">
+                <div class="comentario row" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true | limitTo: 3">
+									<div class="col-md-2 header-comentario">
+										<img ng-src="{{comentario.user.avatar}}" class="avatar-comentario" />
+									</div>
+									<div class="col-md-10">
+										<span style="color: white;">{{comentario.user.username}}</span> - <span am-time-ago="comentario.createdAt"></span>
+									</div>
+									<div class="col-md-10">
+										<p style="color: #c5c5c5;">{{comentario.text}}</p>
+									</div>
                 </div>
-            </div>
+              </div>
+            </div>						
+						<!-- Mostar un comentario -->
+						<div class="col-md-12" ng-show="_hasSession">
+			        <div class="form-group" style="text-align: center;">
+			          <form ng-submit="postComentario()">
+			            <div class="row">
+			              <textarea ng-model="postcomentario.text" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea col-md-6 col-md-offset-3"></textarea>
+			              <div class="col-md-6 col-md-offset-3">
+			                <input type="submit" value="Enviar Comentario" class="boton-sendcomentario" style="margin-top: 0.5em;">
+			              </div>
+			            </div>
+			          </form>
+			        </div>
+			      </div>
 
-            <div class="col-md-8" style="background: #000">
+						<div class="col-md-12">
+							<h3 style="color: black;">Inicia sesión para enviar un comentario.</h3>
+						</div>
+
+            <div class="col-md-12" style="background: #000">
                 <div class="testimonial-info-2">
-                    <!-- Use 'youtube-video' as an element or attribute. -->
-
-                    
                     <iframe width="100%" height="400px" src="<%=hotel.youtube?hotel.youtube.replace("watch?v=","/v/") : 'https://www.youtube.com/v/JGmFl_gyaew'%>" frameborder="0" allowfullscreen></iframe>
-
                 </div>
             </div>
         </div>
@@ -143,7 +168,7 @@
 					  href="https://twitter.com/TwitterDev"
 					  width="100%"
 					  height="500">
-					</a>      
+					</a>
                 </div>
             </div>
 
@@ -152,15 +177,15 @@
                 <div style="height:500px;overflow-y: scroll;">
                 <div class="gplusfeed"></div>
                 </div>
-               	
+
             </div>
             <%var facebook = hotel.facebook?hotel.facebook : "https://www.facebook.com/yoplanner" %>
             <div class="col-md-4">
                 <h3>Facebook</h3>
                 <div class="fb-page" data-href="<%=facebook%>" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="<%=facebook%>">
                 <a href="<%=facebook%>"> </a></blockquote></div></div>
-            </div>            
-        </div>      
+            </div>
+        </div>
     </div>
     <!-- end Tab One - Hotel -->
     <!-- Tab Two - Salones -->
@@ -208,7 +233,7 @@
                     </tr>
                 </table>
             </div>
-            
+
             <div class="col-md-9">
                 <h3>Equipamiento y servicios de los salones </h3>
                 <div style="width: 95%; height:auto; overflow-x:scroll;">
@@ -268,7 +293,7 @@
 		</div>
 
 
-<!-- Google Map -> 
+<!-- Google Map ->
 <div class="row">
 <div id="map"></div>
 </div>
@@ -279,14 +304,14 @@
 
 
 <!-- end Tab Four - Book Hotel -->
-</div>  
+</div>
 </div>
 </div>
 </div>
 </div>
 <!-- End Info Resalt-->
-</div>   
-<!-- End content info - Grey Section--> 
+</div>
+<!-- End content info - Grey Section-->
 
 <!-- content info - testimonials-->
 <div class="content_info">
@@ -309,7 +334,7 @@
 		$('.gplusfeed').kycoGooglePlusFeed2({
         id: '<%= hotel.gplus?hotel.gplus : "113624413123385492768" %>',
         feedPosts: 5,
-    });	
+    });
 
 		window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
@@ -319,12 +344,12 @@
   js.id = id;
   js.src = "https://platform.twitter.com/widgets.js";
   fjs.parentNode.insertBefore(js, fjs);
- 
+
   t._e = [];
   t.ready = function(f) {
     t._e.push(f);
   };
- 
+
   return t;
 }(document, "script", "twitter-wjs"));
 

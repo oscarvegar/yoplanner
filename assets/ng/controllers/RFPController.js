@@ -13,7 +13,7 @@ angular.module('rfp-module', [])
 	}
 
 
-   
+
 	$rootScope.mostrarRFP = function(){
 		$.fancybox([
  	        	{href : '#rfp_view', title : 'Datos Generales'},
@@ -64,7 +64,7 @@ angular.module('rfp-module', [])
             alert("Las fechas son obligatorias.");
             return;
         }if($scope.rfp.fechaFinal.getTime() < $scope.rfp.fechaInicial.getTime()){
-            alert("La fecha final no puede ser menor a la fecha inicial."); 
+            alert("La fecha final no puede ser menor a la fecha inicial.");
             return;
         }
         $scope.rfp.configuracionHabitaciones = $scope.configuracionHabitacionesSencillas.concat($scope.configuracionHabitacionesDobles);
@@ -76,8 +76,8 @@ angular.module('rfp-module', [])
              $.fancybox.next();
              $.fancybox.next();
         }
-           
-        
+
+
     };
 
     $scope.agregarEventoSalon = function(){
@@ -105,17 +105,17 @@ angular.module('rfp-module', [])
     	}
     }
 
-   
+
     $scope.refrescarSalones = function(idx){
-    		$('.datepickerEvt'+idx).datepicker({ dateFormat: 'yy-mm-dd' }); 
+    		$('.datepickerEvt'+idx).datepicker({ dateFormat: 'yy-mm-dd' });
     		$('.rfp_salon_horaInicio'+idx).timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
     		$('.rfp_salon_horaFin'+idx).timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
-		    
+
     		bindAccordion()
     }
 
      $scope.validarDatosSalones = function(){
-        
+
         for(var i in $scope.rfp.salones){
         	$scope.rfp.salones[i].fecha = parseDate($scope.rfp.salones[i].fechaStr);
         }
@@ -129,7 +129,7 @@ angular.module('rfp-module', [])
             return;
         }
 
-       
+
         $scope.rfp.recintos = [];
         for(var i = 0; i<$scope.hotelesSeleccionados.length;i++){
             $scope.rfp.recintos.push(
@@ -139,7 +139,7 @@ angular.module('rfp-module', [])
                  address:$scope.hotelesSeleccionados[i].address.fullAddress,
                  postalCode:$scope.hotelesSeleccionados[i].address.postalCode,
                  countryId:$scope.hotelesSeleccionados[i].countryId,
-                 cityId:$scope.hotelesSeleccionados[i].cityId }); 
+                 cityId:$scope.hotelesSeleccionados[i].cityId });
         };
 
 
@@ -187,10 +187,10 @@ angular.module('rfp-module', [])
     }
 
 
-  
+
 
 	$scope.init();
-    
+
 })
 .directive('rfp', function() {
 	return {
@@ -198,5 +198,5 @@ angular.module('rfp-module', [])
         templateUrl: '/ng/modules/rfp.html'
     };
 }).config(function(){
-	
+
 });

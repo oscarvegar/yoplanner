@@ -1,6 +1,6 @@
 
 <div ng-controller="HotelController">
-    <!-- Section Title-->    
+    <!-- Section Title-->
     <div class="section-title-01">
         <!-- Parallax Background -->
         <div class="bg_parallax image_{{valDest.imgBgAcronym}}_parallax"></div>
@@ -13,12 +13,12 @@
                 <div class="crumbs">
                     <!-- ChildView - Destination Review -->
                     <div ui-view></div>
-                    <!-- End ChildView - Destination Review --> 
+                    <!-- End ChildView - Destination Review -->
                 </div>
-            </div>  
-        </div>  
-        <!-- End Content Parallax--> 
-    </div>   
+            </div>
+        </div>
+        <!-- End Content Parallax-->
+    </div>
 
 
 
@@ -50,7 +50,7 @@
 
                         <div class="col-xs-12 col-sm-6 {{$first?'col-md-4':'col-md-4'}}"  ng-click="selectResult(hotel)">
 
-                            <!-- AddOns - Inside Gallery 
+                            <!-- AddOns - Inside Gallery
 
                             <div class="carbonad" ng-if="$index == 1">
                                 <div class="carbonad-image">
@@ -63,8 +63,8 @@
                                 </div>
                                 <div class="carbonad-tag">ads via <a href="#">Yo Planner</a></div>
                             </div>
-                            <!-- End AddOns - Inside Gallery -->
-                            
+                             End AddOns - Inside Gallery -->
+
                             <div class="img-hover">
                                 <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="{{$first?'width: 100%;height: 225px;':'width: 100%;height: 225px;'}}">
 
@@ -84,6 +84,9 @@
                                 </ul>
                                 <div class="content-btn" ng-click="selectResult(hotel)">
                                     <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a>
+                                </div>
+                                <div class="content-btn" ng-click="addSeleccion(hotel)" style="margin-top: 0.5em" ng-show="!hotel.inList">
+                                  <a class="btn btn-primary">Agregar a Mi Selección</a>
                                 </div>
                             </div>
                         </div>
@@ -109,24 +112,27 @@
                             <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
                         </ul>
                         <div class="content-btn" ng-click="selectResult(hotel)"><a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalles</a></div>
+                        <div class="content-btn" ng-click="addSeleccion(hotel)" style="margin-top: 0.5em" ng-show="!hotel.inList">
+                          <a class="btn btn-primary">Agregar a Mi Selección</a>
+                        </div>
                     </div>
                 </div>
                 <!-- End Item Gallery - More Results -->
 
 
-                
+
 
 
             </div>
-            
+
         </div>
 
 
-        
+
 
 
         <div class="row" ng-if="hotels.length && hotels.length>0">
-            
+
             <div class="col-md-4 col-md-offset-4">
                 <button ng-click="masResultados()" ng-hide="showMostrarMas" class="btn btn-primary col-md-12" style="width:100%;">Más Resultados</button>
                 <img src="img/lblue.gif" style="width:30px;height:30px;margin: 0px auto 0px 48%;" ng-show="showMostrarMas || false" class="ng-hide">

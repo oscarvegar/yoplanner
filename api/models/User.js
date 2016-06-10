@@ -5,9 +5,9 @@
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
-var bcrypt = require('bcryptjs'); 
+var bcrypt = require('bcryptjs');
 module.exports = {
- 
+
   attributes: {
     username: {
       type: 'string',
@@ -18,13 +18,17 @@ module.exports = {
       type: 'string',
       required: true
     },
+    comentarios: {
+      collection: 'comentariohotel',
+      via: 'user'
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
       return obj;
     }
   },
- 
+
   beforeCreate: function(user, cb) {
     bcrypt.genSalt(10, function(err, salt) {
       bcrypt.hash(user.password, salt, function(err, hash) {
@@ -38,5 +42,5 @@ module.exports = {
       });
     });
   }
- 
+
 };

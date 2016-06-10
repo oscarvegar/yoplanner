@@ -2,7 +2,7 @@
 <div ng-controller="HotelController">
 <input type="hidden"  ng-init="searchId = '<%=ciudad.id%>'">
 <input type="hidden"  ng-init="ciudadName = '<%=ciudad.name%>'">
-    <!-- Section Title-->    
+    <!-- Section Title-->
     <div class="section-title-01">
         <!-- Parallax Background -->
         <div class="bg_parallax image_{{valDest.imgBgAcronym}}_parallax"></div>
@@ -15,12 +15,12 @@
                 <div class="crumbs">
                     <!-- ChildView - Destination Review -->
                     <div ui-view></div>
-                    <!-- End ChildView - Destination Review --> 
+                    <!-- End ChildView - Destination Review -->
                 </div>
-            </div>  
-        </div>  
-        <!-- End Content Parallax--> 
-    </div>   
+            </div>
+        </div>
+        <!-- End Content Parallax-->
+    </div>
 
 
 
@@ -32,16 +32,16 @@
         <br><br><br>
         <div class="row">
             <div class="col-md-10 col-md-offset-1 col-sm-1 col-lg-8 col-lg-offset-2">
-                
-               
+
+
             	<% hoteles.forEach(function(hotel){ %>
 
 
 
                     <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(<%=hotel.id%>)">
 
-                      
-                        
+
+
                         <div class="img-hover">
                             <img ng-src="<%=(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])%>" alt="" class="img-responsive" style="width: 100%;height: 225px">
 
@@ -52,7 +52,7 @@
                                 <div>
                                 <%=hotel.name%>
                                 </div>
-                                
+
                             </h3>
                             <h3><span style="white-space: normal"><%=ciudad.name%></span></h3>
                             <hr class="separator">
@@ -66,11 +66,14 @@
                             <div class="content-btn">
                                 <a  href="<%=hotel.urlslug?hotel.urlslug:hotel.id%>"class="btn btn-primary">Ver Detalles</a>
                             </div>
+                            <div class="content-btn" ng-click="addSeleccion(<%=hotel.id%>)" style="margin-top: 0.5em" ng-show="!hotel.inList">
+                              <a class="btn btn-primary">Agregar a Mi Selección</a>
+                            </div>
                         </div>
                     </div>
 
                 <% }) %>
-                		
+
                 <!-- End Item Gallery - Main First Results -->
 
                 <!-- Item Gallery - More Results -->
@@ -90,24 +93,27 @@
                             <li ng-repeat="i in hotel.starRatingRange track by $index"><a href="#"><i class="fa fa-star"></i></a></li>
                         </ul>
                         <a  href="{{hotel.urlslug?hotel.urlslug:hotel.id}}"class="btn btn-primary">Ver Detalles</a>
+                        <div class="content-btn" ng-click="addSeleccion(hotel.id)" style="margin-top: 0.5em" ng-show="!hotel.inList">
+                          <a class="btn btn-primary">Agregar a Mi Selección</a>
+                        </div>
                     </div>
                 </div>
                 <!-- End Item Gallery - More Results -->
 
 
-                
+
 
 
             </div>
-            
+
         </div>
 
 
-        
+
 
 
         <div class="row" ng-if="showMostrarMas" >
-            
+
             <div class="col-md-4 col-md-offset-4">
                 <button ng-click="masResultados()"  class="btn btn-primary col-md-12" style="width:100%;">Más Resultados</button>
                 <img src="img/lblue.gif" style="width:30px;height:30px;margin: 0px auto 0px 48%;" class="ng-hide">

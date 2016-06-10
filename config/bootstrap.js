@@ -10,6 +10,7 @@
  */
 
 module.exports.bootstrap = function(cb) {
+
 	TipoEvento.find({_id:"1"}).exec(function(err,data){
 		if(data.length == 0)
 			TipoEvento.create({id:1,description:"Desayuno"}).exec(console.log);
@@ -90,7 +91,7 @@ module.exports.bootstrap = function(cb) {
 		if(data.length == 0)
 			Montaje.create({id:9,description:"Otro"}).exec(console.log);
 	});
-	
+
 	Config.find({key:"defaultGPost"}).exec(function(err,data){
 		if(data.length == 0)
 			Config.create({key:"defaultGPost",value:"https://plus.google.com/113624413123385492768/posts/gXtfiJkXv1a"}).exec(console.log);
@@ -119,9 +120,9 @@ module.exports.bootstrap = function(cb) {
 		}
 	})*/
 
-	
 
- 
+
+
 
   cb();
 };

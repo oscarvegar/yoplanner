@@ -1,5 +1,5 @@
 var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
-	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline']);
+	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline', 'angularMoment']);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
@@ -40,7 +40,7 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 			$rootScope._hasSession = false
 
 		}).catch(function(err){
-			console.log("err",err)		
+			console.log("err",err)
 		})
 	}
 
@@ -48,18 +48,18 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider) {
-	
+
 	$httpProvider.defaults.withCredentials = true;
-	
-	
+
+
 });
 
 yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeout, $rootScope, $location, $state,
 	$localStorage, HotelSrvc){
-	
+
 	$scope.searchString;
-	$scope.doneTypingInterval = 500; 
-	$scope.typingTimer; 
+	$scope.doneTypingInterval = 500;
+	$scope.typingTimer;
     $scope.findCities = function(typed){
         if(typed.length==0){
         	$scope.cities  =  [];
@@ -68,7 +68,7 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
         if(typed.length<4)return;
         clearTimeout($scope.typingTimer);
         $scope.typingTimer = setTimeout(function(){$scope.doneTyping(typed)}, $scope.doneTypingInterval);
-        
+
 	};
 	$scope.doneTyping = function(typed){
 		$scope.showLoader = true;
@@ -98,10 +98,10 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
 yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, $rootScope, $location, $state, $log, $q, HotelSrvc) {
 	$log.info('HomePageController');
 
-	
+
 	$scope.init = function() {
 		$log.info('HomePageController.init');
-		
+
 	};
 
 	$scope.$evalAsync(function() {
@@ -113,7 +113,7 @@ yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, 
 
 yoPlannerApp.controller('LoginCtrl',function($scope,$http,$rootScope){
 	$scope.init=function(){
-	
+
 	}
 
 	$scope.login = function(){
@@ -121,7 +121,7 @@ yoPlannerApp.controller('LoginCtrl',function($scope,$http,$rootScope){
 			$rootScope._hasSession = true;
 		}).catch(function(ex){
 			console.error(ex);
-			swal("¡Error!","Usuario y/o contraseña incorrectos","error")		
+			swal("¡Error!","Usuario y/o contraseña incorrectos","error")
 		})
 
 	}
