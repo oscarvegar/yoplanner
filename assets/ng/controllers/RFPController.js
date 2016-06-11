@@ -33,10 +33,13 @@ angular.module('rfp-module', [])
 			openEffect	: 'none',
 			closeEffect	: 'none'
 			});
+
 	}
 
-
     $scope.muestraCuadritos = function(){
+			//Cambiar fecha minima a la inicia
+			$('#rfp_fechaFinal').datepicker('option', 'minDate', $scope.fechaInicialFor);
+
     	console.log("muestra cuadritos")
     	if($scope.fechaInicialFor && !$scope.fechaFinalFor){
 			$scope.fechaFinalFor = $scope.fechaInicialFor;
@@ -108,8 +111,9 @@ angular.module('rfp-module', [])
 
     $scope.refrescarSalones = function(idx){
     		$('.datepickerEvt'+idx).datepicker({ dateFormat: 'yy-mm-dd' });
-    		$('.rfp_salon_horaInicio'+idx).timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
-    		$('.rfp_salon_horaFin'+idx).timepicker({ 'scrollDefault': 'now',"step":30,'timeFormat': 'H:i' });
+				//Limitar fechas de los eventos
+				$('.datepickerEvt'+idx).datepicker('option', 'minDate', $scope.fechaInicialFor);
+				$('.datepickerEvt'+idx).datepicker('option', 'maxDate', $scope.fechaFinalFor);
 
     		bindAccordion()
     }

@@ -1,14 +1,14 @@
 
-       
+
     <div id="mainContent" ng-controller="RFPController" >
 
         <div id="resumen" class="cabin">
-            
+
             <div id="rfp_view" style="display: none;text-align:left;z-index:99999">
                 <div >
                     <form ng-submit="validarDatosEvento()" class="cabin">
                         <div class="rfp-titles">
-                            <h2 ><span>Datos del Grupo</span></h2> 
+                            <h2 ><span>Datos del Grupo</span></h2>
                         </div>
                         <hr>
                         <div class="row">
@@ -37,7 +37,7 @@
                             </div>
                             <div class="col col-md-3">
                                 <input type="checkbox" ng-model="rfp.needSal"><label class="rfp-label">Salones</label>
-                                
+
                             </div>
                         </div>
 
@@ -52,7 +52,7 @@
                                 {{day.fecha | date:'dd/MM'}}<br/>
                                 <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
                             </div>
-                            
+
                         </div>
 
                         <div class="row" ng-show="rfp.needRooms">
@@ -66,7 +66,7 @@
                                 {{day.fecha | date:'dd/MM'}}<br/>
                                 <input type="text" class="form-control" ng-model="day.habitaciones" size="5">
                             </div>
-                            
+
                         </div>
                         <div class="row">
                             <div class="col col-md-12">
@@ -94,7 +94,7 @@
                     <div class="col col-md-4 text-right" style="margin-top:20px;">
                         <button class="btn btn-primary" href="javascript:;" ng-click="agregarEventoSalon();"><i class="fa fa-plus-circle"></i> Agregar</button>
                     </div>
-                </div> 
+                </div>
                 <hr>
 
                 <div class="clear col-md-12">
@@ -103,23 +103,32 @@
                             <a href="javascript:void(0)" ng-click="eliminarSalon(currentSalon)" style="float: right;color:white">Eliminar&nbsp;&nbsp;&nbsp;</a>
                             <a href="javascript:void(0)" ng-click="clonarSalon(currentSalon)" style="float: right;color:white">Clonar&nbsp;&nbsp;&nbsp;</a>
                             <h2 class="accordion-header" style="background-color: #42A9D3;color: white;font-weight: bold;">Nuevo Evento</h2>
-                            
+
                             <div class="accordion-content">
                                 <section id="rfp_salones">
                                     <br>
                                     <div class="row">
-                                        <div style="float:left;margin-left:20px;"><label>Nombre del Evento</label><br><input type="text" class="form-control"
+                                        <div class="col-md-3"><label>Nombre del Evento</label><br><input type="text" class="form-control"
                                                    ng-model="currentSalon.nombreEvento"
                                                    onkeyup="$(this).closest('.accordion-content').prev().html(this.value);">
                                         </div>
-                                        <div style="float:left;padding-left:10px;">
+                                        <div  class="col-md-2">
                                             <label>No.Participantes</label><br>
                                             <input type="text" class="form-control"
                                                     ng-model="currentSalon.asistentes" size="5">
                                         </div>
-                                        <div style="float:left;padding-left:10px;">
-                                            <label >Fecha</label><br>
-                                            <input id="rfp_salon_fecha{{$index}}" type="text" 
+                                        <div class="col-md-2">
+                                            <label >Hora de Inicio</label>
+                                            <ng-timepicker ng-model="currentSalon.horaInicio" ng-change="validarHoras()"></ng-timepicker>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label >Hora de Fin</label>
+                                            <ng-timepicker ng-model="currentSalon.horaFin" ng-change="validarHoras()"></ng-timepicker>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label>Fecha</label>
+                                            <input id="rfp_salon_fecha{{$index}}" type="text"
                                                    type="text" class="datepickerEvt{{$index}} form-control"
                                                    ng-model="currentSalon.fechaStr" size="10">
                                         </div>
@@ -130,22 +139,13 @@
         </span>
         </div>
         </td> -->
-                                        <div style="float:left;padding-left:10px;">
-                                            <label >Hora de Inicio</label><br>
-                                            <input type="text" class="rfp_salon_horaInicio{{$index}} form-control" size="6" ng-model="currentSalon.horaInicio" />
-                                        </div>
-
-                                        <div style="float:left;padding-left:10px;">
-                                            <label >Hora de Fin</label><br>
-                                            <input type="text" class="rfp_salon_horaFin{{$index}} form-control" size="6" ng-model="currentSalon.horaFin" />
-                                        </div>
                                     </div>
                                     <br>
                                     <div class="row">
                                         <div style="float:left;margin-left:20px;">
                                             <label>Tipo de Evento</label><br>
-                                            <select id="selectConfigTipo{{$index}}" name="selectConfigTipo" 
-                                                class="selectConfigTipo{{$index}} form-control" style="width: 200px; font-weight: bolder;" 
+                                            <select id="selectConfigTipo{{$index}}" name="selectConfigTipo"
+                                                class="selectConfigTipo{{$index}} form-control" style="width: 200px; font-weight: bolder;"
                                                 ng-model="currentSalon.tipoEvento">
                                                 <option value="1">Desayuno</option>
                                                 <option value="2">Comida</option>
@@ -160,8 +160,8 @@
                                         </div>
                                         <div style="float:left;padding-left:10px;">
                                             <label>Montaje del Evento</label><br>
-                                            <select id="selectConfigSalon{{$index}}" name="selectConfigSalon" 
-                                                class="selectConfigSalon{{$index}} form-control" style="width: 200px; font-weight: bolder;" 
+                                            <select id="selectConfigSalon{{$index}}" name="selectConfigSalon"
+                                                class="selectConfigSalon{{$index}} form-control" style="width: 200px; font-weight: bolder;"
                                                 ng-model="currentSalon.tipoSalon">
                                                 <option value="1"
                                                         data-left="<img style='width:25px;height:25px;margin-top:0px;' src='../img/icon/auditorio.png'>">&nbsp;&nbsp;&nbsp;Auditorios</option>
@@ -218,8 +218,8 @@
                     </tr>
 
                 </table>
-                <br /> <br /> 
-               
+                <br /> <br />
+
                 <button style="float:left;margin-left:25px;" onclick=" $.fancybox.prev();">Regresar</button>
                 <button  style="float:right;margin-right:25px;" onclick=" $.fancybox.next();">Siguiente</button>
 
@@ -245,12 +245,12 @@
                         </div>
                         <div class="col col-md-3">
                             <label class="rfp-label">Telefono <span class="rfp-red">*</span></label><br>
-                            <input type="text" required ng-model="rfp.telefonoContacto" 
+                            <input type="text" required ng-model="rfp.telefonoContacto"
                                     class="form-control" placeholder="Ej. 04455565811">
                         </div>
                         <div class="col col-md-3">
                             <label class="rfp-label">Empresa <span class="rfp-red">*</span></label><br>
-                            <input type="text" ng-model="rfp.empresa" required 
+                            <input type="text" ng-model="rfp.empresa" required
                                     class="form-control" placeholder="Empresa donde laboras">
                         </div>
 
@@ -279,7 +279,7 @@
                         </div>
 
                     </div>
-                 
+
                     <div class="row">
                     <br><br>
                         <div class="col col-md-4 text-left">
@@ -288,10 +288,10 @@
                         <div class="col col-md-8 text-right">
                             <button class="btn btn-primary" type="submit" > <i class="fa fa-floppy-o"></i>   Solicitar Cotización </button>
                         </div>
-                        
-                        
+
+
                     </div>
-                    
+
                 </form>
             </div>
 
@@ -315,9 +315,9 @@
 
     <div id="templates" style="position: absolute; visibility: hidden;">
 
-        
-   
-       
+
+
+
         <!-- <div id="tmpSlcServicios">
     <select id="selectServicios" name="selectServicios" class="selectServicios" multiple style="width: 400px;" onchange="currentSalon.servicios  = armaServicios($(this).val());">
     <option value="1" data-left="<img style='width:25px;height:25px;margin-top:-15px;' src='../img/icon/otro.png'>" >&nbsp;&nbsp;&nbsp;Alimentos y Bebidas</option>

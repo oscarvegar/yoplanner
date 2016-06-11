@@ -1,5 +1,5 @@
 var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
-	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline', 'angularMoment']);
+	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline', 'angularMoment', 'jkuri.timepicker']);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
