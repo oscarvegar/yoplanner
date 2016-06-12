@@ -36,6 +36,13 @@ angular.module('rfp-module', [])
 
 	}
 
+	//Cargar customers
+	$scope.loadCustomers = function () {
+		$http.get('/customer/getbyuser').success(function(data) {
+			$scope.myCustomers = data;
+		});
+	};
+
     $scope.muestraCuadritos = function(){
 			//Cambiar fecha minima a la inicia
 			$('#rfp_fechaFinal').datepicker('option', 'minDate', $scope.fechaInicialFor);
@@ -127,12 +134,55 @@ angular.module('rfp-module', [])
         $.fancybox.next();
     };
 
+		$scope.changeNombre = function (str) {
+			$scope.rfp.nombreCliente = str;
+		}
+
+		$scope.$watch('selectedCustomer', function () {
+			if (!$scope.selectedCustomer) {
+				return;
+			}
+			console.log('wea', $scope.selectedCustomer);
+			$scope.rfp.nombreCliente = $scope.selectedCustomer.originalObject.nombreCliente;
+			$scope.rfp.email = $scope.selectedCustomer.originalObject.email;
+			$scope.rfp.telefonoContacto = $scope.selectedCustomer.originalObject.telefonoContacto;
+			$scope.rfp.empresa = $scope.selectedCustomer.originalObject.empresa;
+			$scope.rfp.puesto = $scope.selectedCustomer.originalObject.puesto;
+			$scope.rfp.paisText = $scope.selectedCustomer.originalObject.paisText;
+			$scope.rfp.estadoText = $scope.selectedCustomer.originalObject.estadoText;
+			$scope.rfp.ciudadText = $scope.selectedCustomer.originalObject.ciudadText;
+		});
+
     $scope.rfp_create = function(){
         if($scope.hotelesSeleccionados.length<1){
             alert("No has seleccionado ningún Hotel","error");
             return;
         }
 
+				//Crear customer si no existe
+				var customerInList = false;
+				$scope.myCustomers.forEach(function (customer) {
+					if (customer.name == $scope.rfp.nombreCliente) {
+						customerInList = true;
+					}
+				});
+
+				if (!customerInList) {
+					$http.post('/customer/addcustomer', {
+						nombreCliente: $scope.rfp.nombreCliente,
+						email: $scope.rfp.email,
+						telefonoContacto: $scope.rfp.telefonoContacto,
+						empresa: $scope.rfp.empresa,
+						puesto: $scope.rfp.puesto,
+						paisText: $scope.rfp.paisText,
+						estadoText: $scope.rfp.estadoText,
+						ciudadText: $scope.rfp.ciudadText
+					}).success(function(data) {
+						console.log('Customer Creado', data);
+					}).error(function (err) {
+						console.log(err);
+					});
+				}
 
         $scope.rfp.recintos = [];
         for(var i = 0; i<$scope.hotelesSeleccionados.length;i++){
@@ -147,7 +197,7 @@ angular.module('rfp-module', [])
         };
 
 
-        console.log(angular.toJson( $scope.rfp));
+        //console.log(angular.toJson( $scope.rfp));
         $http.post('/RFP/crear',$scope.rfp).success(function(data){
             $scope.folioFinal = ""+data.id;
             $scope.rfp = null;

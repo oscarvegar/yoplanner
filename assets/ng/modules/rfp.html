@@ -225,7 +225,7 @@
 
             </div-->
 
-            <div id="datos_contacto" style="display: none; text-align: left;">
+            <div id="datos_contacto" style="display: none; text-align: left;" ng-init="loadCustomers()">
                 <div class="rfp-titles">
                     <h2><span>Datos del Cliente</span></h2>
                 </div>
@@ -234,9 +234,21 @@
                     <br>
                     <div class="row">
                         <div class="col col-md-3">
-                            <label class="rfp-label">Nombre Completo <span class="rfp-red">*</span></label><br>
-                            <input type="text" placeholder="Nombre con apellidos" required
-                                    class="form-control" ng-model="rfp.nombreCliente">
+                            <label class="rfp-label">Nombre Completo<span class="rfp-red">*</span></label><br>
+                            <angucomplete-alt id="ex1"
+                              placeholder="Nombre con apellidos"
+                              pause="100"
+                              selected-object="selectedCustomer"
+                              local-data="myCustomers"
+                              search-fields="nombreCliente"
+                              title-field="nombreCliente"
+                              minlength="2"
+                              input-class="form-control"
+                              input-changed="changeNombre" />
+                              <!--
+                              <input type="text" placeholder="Nombre con apellidos" required
+                              class="form-control" ng-model="rfp.nombreCliente">
+                             -->
                         </div>
                         <div class="col col-md-3">
                             <label class="rfp-label">Email <span class="rfp-red">*</span></label><br>

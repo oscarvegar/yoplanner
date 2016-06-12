@@ -22,6 +22,11 @@ module.exports = {
       collection: 'comentariohotel',
       via: 'user'
     },
+    customers: {
+      collection: 'customer',
+      via: 'user'
+    },
+    
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
