@@ -15,7 +15,7 @@
         		font-size: 13px;
         	}
         	.logo{
-        		
+
         		float: right;
         		margin-right: -10%;
         	}
@@ -56,88 +56,88 @@
 		<div >
 			<h3>DATOS DEL GRUPO</h3>
 				<table class="table">
-					<tr>						
+					<tr>
 						<td class="label">NOMBRE</td>
 						<td colspan="2"><%= rfp.nombre %></td>
-						
+
 						<td class="label">FECHA DE ENTRADA</td>
 						<td colspan="2"><%=moment(rfp.fechaInicial).format('DD/MM/YYYY')%></td>
-						
+
 						<td class="label">FECHA DE SALIDA</td>
 						<td colspan="2"><%=moment(rfp.fechaFinal).format('DD/MM/YYYY')%></td>
-						
+
 					</tr>
 
-					<tr>						
+					<tr>
 						<td class="label">ASISTENTES</td>
 						<td colspan=2><%=rfp.asistenciaEsperada%></td>
-						
+
 						<td class="label">HAB. SENCILLAS</td>
 						<td colspan=2>
-							<% rfp.configuracionHabitaciones.forEach(function(hab){ 
+							<% rfp.configuracionHabitaciones.forEach(function(hab){
 								if(hab.tipoHabitacion == 1){
 								%>
 								<a><%=moment(hab.fecha).format('DD/MM')%> - <%=hab.habitaciones%><br></a>
 							<% }}) %>
-						</td>						
+						</td>
 						<td class="label">HAB. DOBLES</td>
 						<td colspan=2>
-							<% rfp.configuracionHabitaciones.forEach(function(hab){ 
+							<% rfp.configuracionHabitaciones.forEach(function(hab){
 								if(hab.tipoHabitacion == 2){
 								%>
 								<a><%=moment(hab.fecha).format('DD/MM')%> - <%=hab.habitaciones%><br></a>
 							<% }}) %>
-						</td>						
+						</td>
 					</tr>
-					<tr>						
+					<tr>
 						<td class="label">COMENTARIOS ADICIONALES</td>
 						<td colspan="8"><%=rfp.comentarios%></td>
 					</tr>
-				</table>			
+				</table>
 		</div>
 
 
 
 						<div>
 			<h3>EVENTOS</h3>
-				<% if(rfp.salones && rfp.salones.length>0) 
+				<% if(rfp.salones && rfp.salones.length>0)
 					rfp.salones.forEach(function(salon){
 
-				%>				
+				%>
 				<div>
 				<table class="table" >
 					<tr>
-						
+
 						<td class="label">NOMBRE EVENTO</td>
 						<td colspan=5><%=salon.nombreEvento%></td>
-						
+
 						<td class="label">PARTICIPANTES</td>
 						<td colspan=2><%=salon.asistentes%></td>
-						
+
 					</tr>
 					<tr>
-						
+
 						<td class="label">FECHA</td>
 						<td colspan=2><%=moment(salon.fecha).format('DD/MM/YYYY')%></td>
-						
+
 						<td class="label">HORA INICIO</td>
 						<td colspan=2><%=salon.horaInicio%></td>
-						
+
 						<td class="label">HORA FIN</td>
 						<td colspan=2><%=salon.horaFin%></td>
-						
+
 					</tr>
 
 					<tr>
 						<td class="label">TIPO DE EVENTO</td>
 						<td colspan=2><%= salon.tipoEvento.description%></td>
-											
+
 						<td class="label">MONTAJE</td>
 						<td colspan=5><%=salon.tipoSalon.description%></td>
-						
+
 					</tr>
 					<tr>
-						
+
 						<td class="label">COMENTARIOS ADICIONALES</td>
 						<td colspan="8"><%=salon.comentarios%></td>
 					</tr>
@@ -145,47 +145,47 @@
 				<hr>
 				</div>
 				<%}); %>
-		</div>		
+		</div>
 		<div>
 			<h3>SELECCIÓN DE HOTELES</h3>
 				<div   style="text-align:center;">
 				<% rfp.recintos.forEach(function(recinto){ %>
 					<b><%=recinto.name%><br></b>
 				<% })%>
-				</div>			
+				</div>
 		</div>
 		<div>
 			<h3>DATOS DEL CLIENTE</h3>
 				<table class="table">
 					<tr>
-						
+
 						<td class="label">NOMBRE</td>
 						<td colspan=2><%=rfp.nombreCliente%></td>
-						
+
 						<td class="label">E-MAIL</td>
 						<td colspan=2><%=rfp.email%></td>
-						
+
 						<td class="label">TELEFONO</td>
 						<td colspan=2><%=rfp.telefonoContacto%></td>
-						
+
 					</tr>
 					<tr>
-						
+
 						<td class="label">EMPRESA</td>
 						<td colspan=2><%=rfp.empresa%></td>
-						
+
 						<td class="label">CARGO</td>
 						<td colspan=2><%=rfp.puesto%></td>
-						
+
 						<td class="label">PAÍS</td>
 						<td colspan=2><%=rfp.paisText%></td>
-						
+
 					</tr>
 					<tr>
-						
+
 						<td class="label">ESTADO</td>
 						<td colspan=2><%=rfp.estadoText%></td>
-						
+
 						<td class="label">CIUDAD</td>
 						<td colspan=5><%=rfp.ciudadText%></td>
 					</tr>

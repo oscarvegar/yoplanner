@@ -34,18 +34,13 @@ module.exports = {
         next();
     },
     afterCreate : function(rfp,next){
+      console.log('After-create');
+      /*
         var options = {};
         options.to = rfp.email,
         options.subject = "RFP Recibida ✔";
-        options.html = "<html><br>Buen Día! \
-        <br><br> \
-        Muchas gracias por utilizar <b>Yo Planner</b>, hemos recibido tu solicitud y pronto nos estaremos poniendo en contacto contigo. \
-        <br><br> \
-        Para ver tu propuesta o imprimir da click en el siguiente enlace: \
-        <br><br>\
-        http://htmltopdfapi.com/querybuilder/api.php?url=http://rfp.yoplanner.com/rfp/print/"+rfp.id+
-        "<br><br>Saludos,<br><img src='http://rfp.yoplanner.com/img/firma.png'></html>";
-        EmailService.sendEmail(options);
+        EmailService.sendCustomer(options, rfp);
+        */
         next();
     }
 };

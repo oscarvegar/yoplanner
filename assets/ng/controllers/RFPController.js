@@ -142,7 +142,6 @@ angular.module('rfp-module', [])
 			if (!$scope.selectedCustomer) {
 				return;
 			}
-			console.log('wea', $scope.selectedCustomer);
 			$scope.rfp.nombreCliente = $scope.selectedCustomer.originalObject.nombreCliente;
 			$scope.rfp.email = $scope.selectedCustomer.originalObject.email;
 			$scope.rfp.telefonoContacto = $scope.selectedCustomer.originalObject.telefonoContacto;
@@ -158,6 +157,17 @@ angular.module('rfp-module', [])
             alert("No has seleccionado ningún Hotel","error");
             return;
         }
+
+				//Enviar correo
+				$http.post('/rfp/sendCustomerMail', {
+					rfp: $scope.rfp,
+					options: {
+						to: $scope.rfp.email,
+						subject: 'RFP Recibida ✔'
+					}
+				}).success(function(data) {
+					console.log(data);
+				});
 
 				//Crear customer si no existe
 				var customerInList = false;
