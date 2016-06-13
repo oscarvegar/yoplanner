@@ -245,10 +245,6 @@
                               minlength="2"
                               input-class="form-control"
                               input-changed="changeNombre" />
-                              <!--
-                              <input type="text" placeholder="Nombre con apellidos" required
-                              class="form-control" ng-model="rfp.nombreCliente">
-                             -->
                         </div>
                         <div class="col col-md-3">
                             <label class="rfp-label">Email <span class="rfp-red">*</span></label><br>
@@ -289,7 +285,13 @@
                             <input class="form-control" type="text" ng-model="rfp.ciudadText"
                                     placeholder="Ej. Miguel Hidalgo"/>
                         </div>
-
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-11" ng-repeat="hotel in hotelesSeleccionados" style="margin-top: 0.5em">
+                        <label class="rfp-label">Email: {{hotel.name}}</label><br>
+                        <input class="form-control" type="email" ng-model="rfp.emailhoteles[hotel.id]" placeholder="{{hotel.name}}"/>
+                      </div>
                     </div>
 
                     <div class="row">

@@ -78,5 +78,10 @@ module.exports = {
   sendCustomerMail: function (req, res) {
     EmailService.sendCustomer(req.param('options'), req.param('rfp'));
     console.log('Enviando correo a customer...');
+  },
+
+	sendHotelMail: function (req, res) {
+    EmailService.sendHotel(req.param('options'), req.param('rfp'), req.user);
+    console.log('Enviando correo a hotel...');
   }
 };

@@ -150,6 +150,7 @@ angular.module('rfp-module', [])
 			$scope.rfp.paisText = $scope.selectedCustomer.originalObject.paisText;
 			$scope.rfp.estadoText = $scope.selectedCustomer.originalObject.estadoText;
 			$scope.rfp.ciudadText = $scope.selectedCustomer.originalObject.ciudadText;
+			$scope.rfp.customer = $scope.selectedCustomer.originalObject.id;
 		});
 
     $scope.rfp_create = function(){
@@ -169,14 +170,28 @@ angular.module('rfp-module', [])
 					console.log(data);
 				});
 
+				//Enviar correo a Hoteles
+				for (var email in $scope.rfp.emailhoteles) {
+					if ($scope.rfp.emailhoteles.hasOwnProperty(email)) {
+						console.log('Enviado correo: ' + $scope.rfp.emailhoteles[email]);
+						$http.post('/rfp/sendHotelMail', {
+							rfp: $scope.rfp,
+							options: {
+								to: $scope.rfp.emailhoteles[email],
+								subject: 'RFP Recibida ✔'
+							}
+						}).success(function(data) {
+							console.log(data);
+						});
+					}
+				}
 				//Crear customer si no existe
 				var customerInList = false;
-				$scope.myCustomers.forEach(function (customer) {
-					if (customer.name == $scope.rfp.nombreCliente) {
+				for (var i in $scope.myCustomers) {
+					if ($scope.myCustomers[i].nombreCliente == $scope.rfp.nombreCliente) {
 						customerInList = true;
 					}
-				});
-
+				}
 				if (!customerInList) {
 					$http.post('/customer/addcustomer', {
 						nombreCliente: $scope.rfp.nombreCliente,
@@ -189,6 +204,8 @@ angular.module('rfp-module', [])
 						ciudadText: $scope.rfp.ciudadText
 					}).success(function(data) {
 						console.log('Customer Creado', data);
+						//Añadir el customer al RFP
+						$scope.rfp.customer = data.customer.id;
 					}).error(function (err) {
 						console.log(err);
 					});

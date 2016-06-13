@@ -10,6 +10,10 @@ module.exports = {
   attributes: {
     user: {
       model: 'user'
+    },
+    rfps: {
+      collection: 'rfp',
+      via: 'customer'
     }
   }
 };

@@ -25,6 +25,9 @@ module.exports = {
         },
         createdBy:{
             model:'user'
+        },
+        customer: {
+          model: 'customer'
         }
 
     },
