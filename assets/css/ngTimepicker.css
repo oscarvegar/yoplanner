@@ -12,9 +12,11 @@
 	border: 1px solid #d4d4d4;
 	border-radius: 2px;
 	color: #333;
-	font-size: 18px;
+	font-size: 12px;
+	font-family: Arial;
 	padding:  3px 5px;
 	background: #fff;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .ng-timepicker > table > tbody > tr > td {
@@ -23,7 +25,7 @@
 }
 
 .ng-timepicker > table > tbody > tr > td > i {
-	font-size: 22px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
@@ -66,5 +68,3 @@
 	background: #3399FF;
 	color: #fff;
 }
-
-

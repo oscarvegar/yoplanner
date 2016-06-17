@@ -36,8 +36,18 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
     };
 
+		$scope.initGallery = function () {
+			//Adaptar imagenes la formato de la directiva
+			$scope.galleryPictures = [];
+			$http.get("/recinto/findById/"+$scope.hotelid).success(function(hotel){
+				hotel.pictures.forEach(function (picture) {
+					$scope.galleryPictures.push({img: picture, thumb: picture});
+				});
+			})
+
+		};
+
     $scope.agregarYRegresar = function() {
-			console.log('wea');
     	notify('Hotel agregado a Mi Selección');
       $rootScope.hotelesSeleccionados.push($scope.currentHotel);
 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);

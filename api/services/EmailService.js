@@ -217,33 +217,10 @@ module.exports = {
 },
 
 sendHotel: function (options, rfp, user) {
-  var header = `<!DOCTYPE html">
-      <html>
-      <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-       <style media="screen"> body{font-family: 'Roboto', sans-serif; margin: 0;}.container{padding: 0 2em 0;}.header1{min-height: 100px; background-color: #005B8A;}.header2{min-height: 30px; background-color: #D5E000;}.title-container{padding: 2em; font-size: 30px;}.header-section{width: 100%;}.header-title{background-color: #D3E203; display: inline-block; min-width: 30%; text-align: center; color: white; font-size: 2em; padding: 0.5em;}.dots{border-bottom: thick dotted rgb(182, 182, 182); display: inline-block; min-width: 33%;}.body-section{padding: 1em; margin-top: 1em;}.element-value{margin: 1em; border-radius: 5px; border: thin solid rgb(181, 181, 181); padding: 0.5em;}.body-element{display: inline-block;}</style>
-       <title>Yo Planner</title> </head>
-        <body style="font-family: 'Roboto', sans-serif;margin: 0;"> <div class="header1" style="min-height: 100px;background-color: #005B8A;"></div><div class="header2" style="min-height: 30px;background-color: #D5E000;"></div><div class="title-container" style="color: rgb(85, 85, 85);padding: 2em;font-size: 30px;"> Solicitud de <span style="font-size: 36px;"><strong>COTIZACIÓN</strong></span> </div><div class="container" style="padding: 0 2em 0;">`;
-      var close = '</div></body></html>';
-      var datosGrupo = `<div class="body-element" style="width: 50%;display: inline-block;">
-        <strong>Nombre</strong><br>
-        <div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">`+rfp.nombre+`</div>
-      </div>
-      <div class="body-element" style="width: 25%;display: inline-block;">
-        <strong>Fecha de entrada</strong><br>
-        <div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">`+moment(rfp.fechaInicial).format('DD/MM/YYYY')+`</div>
-      </div>
-      <div class="body-element" style="width: 24%;display: inline-block;">
-        <strong>Fecha de salida</strong><br>
-        <div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">`+moment(rfp.fechaFinal).format('DD/MM/YYYY')+`</div>
-      </div>
-      <div class="body-element" style="width: 33%;display: inline-block;">
-        <strong>Asistentes</strong><br>
-        <div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">`+rfp.asistenciaEsperada+`</div>
-      </div>`;
-      var habTemp1 = '';
+  var header = '<!DOCTYPE html"><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"><style media="screen"> body{font-family: "Roboto", sans-serif; margin: 0;}.container{padding: 0 2em 0;}.header1{min-height: 100px; background-color: #005B8A;}.header2{min-height: 30px; background-color: #D5E000;}.title-container{padding: 2em; font-size: 30px;}.header-section{width: 100%;}.header-title{background-color: #D3E203; display: inline-block; min-width: 30%; text-align: center; color: white; font-size: 2em; padding: 0.5em;}.dots{border-bottom: thick dotted rgb(182, 182, 182); display: inline-block; min-width: 33%;}.body-section{padding: 1em; margin-top: 1em;}.element-value{margin: 1em; border-radius: 5px; border: thin solid rgb(181, 181, 181); padding: 0.5em;}.body-element{display: inline-block;}</style><title>Yo Planner</title> </head><body style="font-family: "Roboto", sans-serif;margin: 0;"> <div class="header1" style="min-height: 100px;background-color: #005B8A;"></div><div class="header2" style="min-height: 30px;background-color: #D5E000;"></div><div class="title-container" style="color: rgb(85, 85, 85);padding: 2em;font-size: 30px;"> Solicitud de <span style="font-size: 36px;"><strong>COTIZACIÓN</strong></span> </div><div class="container" style="padding: 0 2em 0;">';
+  var close = '</div></body></html>';
+  var datosGrupo = 'div class="body-element" style="width: 50%;display: inline-block;"><strong>Nombre</strong><br><div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">'+rfp.nombre+'</div></div><div class="body-element" style="width: 25%;display: inline-block;"><strong>Fecha de entrada</strong><br><div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">'+moment(rfp.fechaInicial).format('DD/MM/YYYY')+'</div></div><div class="body-element" style="width: 24%;display: inline-block;"><strong>Fecha de salida</strong><br><div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">'+moment(rfp.fechaFinal).format('DD/MM/YYYY')+'</div></div><div class="body-element" style="width: 33%;display: inline-block;"><strong>Asistentes</strong><br><div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">'+rfp.asistenciaEsperada+'</div></div>';
+  var habTemp1 = '';
       rfp.configuracionHabitaciones.forEach(function (hab) {
         if (hab.tipoHabitacion == 1) {
           habTemp1 += moment(hab.fecha).format('DD/MM');
@@ -252,10 +229,7 @@ sendHotel: function (options, rfp, user) {
           habTemp1 += '<br>';
         }
       });
-      var habSencillas = `<div class="body-element" style="width: 33%;display: inline-block;">
-        <strong>Hab. Dobles</strong><br>
-        <div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">`+habTemp1+`</div>
-      </div>`;
+      var habSencillas = '<div class="body-element" style="width: 33%;display: inline-block;"><strong>Hab. Dobles</strong><br><div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">'+habTemp1+'</div></div>';
       var habTemp2 = '';
       rfp.configuracionHabitaciones.forEach(function (hab) {
         if (hab.tipoHabitacion == 2) {
@@ -265,10 +239,7 @@ sendHotel: function (options, rfp, user) {
           habTemp2 += '<br>';
         }
       });
-      var habDobles = `<div class="body-element" style="width: 33%;display: inline-block;">
-        <strong>Hab. Dobles</strong><br>
-        <div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">`+habTemp2+`</div>
-      </div>`;
+      var habDobles = '<div class="body-element" style="width: 33%;display: inline-block;"><strong>Hab. Dobles</strong><br><div class="element-value" style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">'+habTemp2+'</div></div>';
       var datosGrupo1 = `
       <div class="body-element" style="width: 100%;display: inline-block;">
         <strong>Comentarios adicionales</strong><br>
