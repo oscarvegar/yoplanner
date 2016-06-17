@@ -43,8 +43,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				hotel.pictures.forEach(function (picture) {
 					$scope.galleryPictures.push({img: picture, thumb: picture});
 				});
-			})
-
+			});
 		};
 
     $scope.agregarYRegresar = function() {
