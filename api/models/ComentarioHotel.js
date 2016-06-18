@@ -17,6 +17,14 @@ module.exports = {
     text: {
       type: 'string',
       required: true
+    },
+    title: {
+      type: 'string',
+      required: true
+    },
+    likes: {
+      type: 'array',
+      defaultsTo: []
     }
   }
 };

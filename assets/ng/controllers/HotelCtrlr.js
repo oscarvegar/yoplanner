@@ -89,9 +89,29 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		//Comentarios en detalle hotel
 		// TODO: Implementar paginación
 		$scope.loadComentarios = function () {
-			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid}).success(function(data) {
-				console.log(data);
+			$scope.comentariosCargados = 0;
+			$scope.comentariosCargados = true;
+			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid, offset: $scope.comentariosCargados}).success(function(data) {
+				$scope.comentariosCargados += 10;
 				$scope.comentarios = data.comentarios;
+				$scope.comentariosCargados = false;
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.loadMoreComentarios = function () {
+			$scope.comentariosCargados = true;
+			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid, offset: $scope.comentariosCargados}).success(function(data) {
+				$scope.comentariosCargados += 10;
+				$scope.comentariosCargados = false;
+				if (data.comentarios.length <= 0) {
+					notify('No hay más comentarios que cargar...');
+				} else {
+					data.comentarios.forEach(function (comentario) {
+						$scope.comentarios.push(comentario);
+					});
+				}
 			}).error(function (err) {
 				console.log(err);
 			});
@@ -101,13 +121,32 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			if(!$scope.postcomentario.text)
 				return;
 
-			$http.post('/comentariohotel/postComentario', {text: $scope.postcomentario.text, hotel: $scope.hotelid}).success(function(data) {
+			$http.post('/comentariohotel/postComentario', {text: $scope.postcomentario.text, title:$scope.postcomentario.title, hotel: $scope.hotelid}).success(function(data) {
 				$scope.postcomentario = null;
 				console.log(data);
 				notify('Comentario enviado correctamente.');
 				$scope.comentarios.push(data.comentario);
 			}).error(function (err) {
 				console.log(err);
+			});
+		};
+
+		$scope.like = function (comentario) {
+			if (!comentario.likes) {
+				comentario.likes = [];
+			}
+			$http.post('/comentariohotel/like', {comentario: comentario}).success(function(data) {
+				console.log(data);
+				if (data.error) {
+					notify(data.message);
+					return;
+				}
+				for (var a in $scope.comentarios) {
+					if ($scope.comentarios[a].id == data.id) {
+						$scope.comentarios[a].likes = data.likes;
+						return;
+					}
+				}
 			});
 		};
 
