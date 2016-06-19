@@ -274,7 +274,25 @@
 				<button type="button" class="btn btn-default" ng-click="loadMoreComentarios()">Cargar más</button>
 				<div class="loader" ng-show="cargandoComentarios"></div>
 			</div>
+			<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
+				<div class="form-group" style="text-align: center;">
+					<form ng-submit="postComentario()">
+						<div class="row">
+							<div class="col-md-12" style="margin-bottom: 1em;">
+								<input type="text" ng-model="postcomentario.title" style="width:100%;" placeholder="Titulo del comentario" class="form-control comentario-textarea" required>
+							</div>
+							<div class="col-md-12">
+								<textarea ng-model="postcomentario.text" style="width:100%;" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea" required></textarea>
+							</div>
+							<div class="col-md-4 col-md-offset-4">
+								<input type="submit" value="Enviar Comentario" class="boton-sendcomentario" style="margin-top: 0.5em;">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
+
 		<!-- Social -->
 		<div class="col-md-4">
 			<div class="row">
@@ -326,6 +344,7 @@
 		</div>
 	-->
 		<!-- Mostar un comentario -->
+		<!--
 		<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
 			<div class="form-group" style="text-align: center;">
 				<form ng-submit="postComentario()">
@@ -343,6 +362,8 @@
 				</form>
 			</div>
 		</div>
+	 	-->
+
 
 		<div class="col-md-12" ng-hide="_hasSession">
 			<h3 style="color: black;">Inicia sesión para enviar un comentario.</h3>

@@ -159,12 +159,22 @@ angular.module('rfp-module', [])
             return;
         }
 
-				//Enviar correo
+				//Enviar correo al cliente
 				$http.post('/rfp/sendCustomerMail', {
 					rfp: $scope.rfp,
 					options: {
 						to: $scope.rfp.email,
-						subject: 'RFP Recibida ✔'
+						subject: 'RFP Recibida ✔ | Customer'
+					}
+				}).success(function(data) {
+					console.log(data);
+				});
+
+				//Enviar correo al planner
+				$http.post('/rfp/sendPlannerMail', {
+					rfp: $scope.rfp,
+					options: {
+						subject: 'RFP Recibida ✔ | Planner'
 					}
 				}).success(function(data) {
 					console.log(data);
@@ -178,7 +188,7 @@ angular.module('rfp-module', [])
 							rfp: $scope.rfp,
 							options: {
 								to: $scope.rfp.emailhoteles[email],
-								subject: 'RFP Recibida ✔'
+								subject: 'RFP Recibida ✔ | Hotel'
 							}
 						}).success(function(data) {
 							console.log(data);
