@@ -28,7 +28,8 @@ module.exports = {
                       callback(decoded && decoded.toString());
                     })
                   } else {
-                    callback(null, buffer.toString());
+                    
+                    callback(buffer.toString());
                   }
                   
                 // your code here if you want to use the results !
