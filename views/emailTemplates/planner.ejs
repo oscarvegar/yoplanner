@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="margin: 0;padding: 0;">
+<head style="margin: 0;padding: 0;">
+<!-- If you delete this meta tag, Half Life 3 will never be released. -->
+<meta name="viewport" content="width=device-width" style="margin: 0;padding: 0;">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" style="margin: 0;padding: 0;">
+<title style="margin: 0;padding: 0;">YoPlanner</title>
+</head>
+
+<body bgcolor="#FFFFFF" style="margin: 0;padding: 0;-webkit-font-smoothing: antialiased;-webkit-text-size-adjust: none;height: 100%;width: 100%!important;">
+
+<!-- HEADER -->
+<table class="head-wrap" bgcolor="#005B8A" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+	<tr style="margin: 0;padding: 0;">
+		<td style="margin: 0;padding: 0;"></td>
+		<td class="header container" style="margin: 0 auto!important;padding: 0;display: block!important;max-width: 600px!important;clear: both!important;">
+
+				<div class="content" style="margin: 0 auto;padding: 15px;max-width: 600px;display: block;">
+				<table bgcolor="#005B8A" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+					<tr style="margin: 0;padding: 0;">
+						<td style="margin: 0;padding: 0;"><br style="margin: 0;padding: 0;"><br style="margin: 0;padding: 0;"></td>
+					</tr>
+				</table>
+				</div>
+
+		</td>
+		<td style="margin: 0;padding: 0;"></td>
+	</tr>
+</table><!-- /HEADER -->
+<table class="head-wrap" bgcolor="#D5E000" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+	<tr style="margin: 0;padding: 0;">
+		<td style="margin: 0;padding: 0;"></td>
+		<td class="header container" style="margin: 0 auto!important;padding: 0;display: block!important;max-width: 600px!important;clear: both!important;">
+
+				<div class="content" style="margin: 0 auto;padding: 15px;max-width: 600px;display: block;">
+				<table bgcolor="#D5E000" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+					<tr style="margin: 0;padding: 0;">
+						<td style="margin: 0;padding: 0;"></td>
+					</tr>
+				</table>
+				</div>
+
+		</td>
+		<td style="margin: 0;padding: 0;"></td>
+	</tr>
+</table>
+
+<!-- BODY -->
+<table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+	<tr style="margin: 0;padding: 0;">
+		<td style="margin: 0;padding: 0;"></td>
+		<td class="container" bgcolor="#FFFFFF" style="margin: 0 auto!important;padding: 0;display: block!important;max-width: 600px!important;clear: both!important;">
+
+			<div class="content" style="margin: 0 auto;padding: 15px;max-width: 600px;display: block;">
+			<table style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+				<!-- Imagen -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<img src="http://admin.yoplanner.com/assets/images/logoland.png" alt="logo" style="margin: 1em;width: 90%;padding: 0;max-width: 100%;">
+					</td>
+				</tr>
+				<!-- Header -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<h3 style="color: rgb(85, 85, 85);margin: 0;padding: 0;font-family: &quot;HelveticaNeue-Light&quot;, &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;line-height: 1.1;margin-bottom: 15px;font-weight: 500;font-size: 27px;">Solicitud de <strong style="margin: 0;padding: 0;">COTIZACIÓN</strong></h3>
+					</td>
+				</tr>
+				<!-- Dots -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="background-color: #D3E203;display: inline-block;width: 60%;text-align: center;color: white;font-size: 2em;padding: 0.5em;margin:1em;border-radius:5px;">
+			        Datos del <strong style="margin: 0;padding: 0;">GRUPO</strong>
+			      </div>
+					</td>
+				</tr>
+				<!-- Componente -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Nombre</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.nombre %></div>
+			      </div>
+					</td>
+				</tr>
+				<!-- Comp -->
+				<!-- Componente -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Fecha de entrada</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= moment(rfp.fechaInicial).format('DD/MM/YYYY') %></div>
+			      </div>
+					</td>
+				</tr>
+				<!-- Comp -->
+				<!-- Componente -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Fecha de salida</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= moment(rfp.fechaInicial).format('DD/MM/YYYY') %></div>
+			      </div>
+					</td>
+				</tr>
+				<!-- Comp -->
+				<!-- Componente -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Asistentes</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.asistenciaEsperada %></div>
+			      </div>
+					</td>
+				</tr>
+				<!-- Comp -->
+				<!-- Componente -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Hab. Sencillas</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">
+                <% for (var i = 0; i < rfp.configuracionHabitaciones.length; i++) {
+                    if (rfp.configuracionHabitaciones[i].tipoHabitacion == 1) { %>
+                      <p style="margin: 0;padding: 0;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><%= moment(rfp.configuracionHabitaciones[i].fecha).format('DD/MM') %> | <%= rfp.configuracionHabitaciones[i].habitaciones %></p>
+                  <% }
+                  } %>
+              </div>
+			      </div>
+					</td>
+				</tr>
+				<!-- Comp -->
+        <!-- Componente -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Hab. Dobles</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">
+                <% for (var i = 0; i < rfp.configuracionHabitaciones.length; i++) {
+                    if (rfp.configuracionHabitaciones[i].tipoHabitacion == 2) { %>
+                      <p style="margin: 0;padding: 0;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;"><%= moment(rfp.configuracionHabitaciones[i].fecha).format('DD/MM') %> | <%= rfp.configuracionHabitaciones[i].habitaciones %></p>
+                  <% }
+                  } %>
+              </div>
+			      </div>
+					</td>
+				</tr>
+				<!-- Comp -->
+				<!-- Componente -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Comentarios</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.comentarios %></div>
+			      </div>
+					</td>
+				</tr>
+				<!-- Comp -->
+				<!-- Dots -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="background-color: #D3E203;display: inline-block;width: 60%;text-align: center;color: white;font-size: 2em;padding: 0.5em;margin:1em;border-radius:5px;">
+			        <strong style="margin: 0;padding: 0;">EVENTOS</strong>
+			      </div>
+					</td>
+				</tr>
+        <!-- FOR EVENTOS -->
+        <% for (var i = 0; i < rfp.salones.length; i++) { %>
+          <!-- EVENTO -->
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Nombre del evento</strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.salones[i].nombreEvento %></div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Fecha</strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= moment(rfp.salones[i].nombreEvento).format('DD/MM/YYYY') %></div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Hora Inicio</strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.salones[i].horaInicio %></div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Hora fin</strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.salones[i].horaFin %></div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Tipo Evento</strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">
+									<% if (rfp.salones[i].tipoEvento == 1) { %>
+										<span style="margin: 0;padding: 0;">Desayuno</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 2) { %>
+										<span style="margin: 0;padding: 0;">Comida</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 3) { %>
+										<span style="margin: 0;padding: 0;">Cena</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 4) { %>
+										<span style="margin: 0;padding: 0;">Cocktail</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 5) { %>
+										<span style="margin: 0;padding: 0;">Sesión</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 6) { %>
+										<span style="margin: 0;padding: 0;">Breakout</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 7) { %>
+										<span style="margin: 0;padding: 0;">Oficina</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 8) { %>
+										<span style="margin: 0;padding: 0;">Bodega</span>
+									<% }
+									if (rfp.salones[i].tipoEvento == 9) { %>
+										<span style="margin: 0;padding: 0;">Otro</span>
+									<% } %>
+                </div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Montaje</strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;">
+									<% if (rfp.salones[i].tipoSalon == 1) { %>
+										<span style="margin: 0;padding: 0;">Auditorios</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 2) { %>
+										<span style="margin: 0;padding: 0;">Banquete</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 3) { %>
+										<span style="margin: 0;padding: 0;">Coctel</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 4) { %>
+										<span style="margin: 0;padding: 0;">Escuela</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 5) { %>
+										<span style="margin: 0;padding: 0;">Herradura</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 6) { %>
+										<span style="margin: 0;padding: 0;">Imperial</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 7) { %>
+										<span style="margin: 0;padding: 0;">Mesas Redondas</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 8) { %>
+										<span style="margin: 0;padding: 0;">Medias Lunas</span>
+									<% }
+									if (rfp.salones[i].tipoSalon == 9) { %>
+										<span style="margin: 0;padding: 0;">Otro</span>
+									<% } %>
+                </div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Comentarios adicionales</strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.salones[i].comentarios %></div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<!-- /EVENTO -->
+        <% } %>
+        <!-- SELECCION DE HOTELES -->
+        <!-- Dots -->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="background-color: #D3E203;display: inline-block;width: 60%;text-align: center;color: white;font-size: 2em;padding: 0.5em;margin:1em;border-radius:5px;">
+			        Selección de <strong style="margin: 0;padding: 0;">HOTELES</strong>
+			      </div>
+					</td>
+				</tr>
+        <!-- FOR RECINTOS -->
+        <% for (var i = 0; i < rfp.recintos.length; i++) { %>
+          <!-- Componente -->
+  				<tr style="margin: 0;padding: 0;">
+  					<td style="margin: 0;padding: 0;">
+  						<div style="width: 100%;margin: 0;padding: 0;">
+  			        <strong style="margin: 0;padding: 0;">Hotel #<%= i+1 %></strong><br style="margin: 0;padding: 0;">
+  			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.recintos[i].name %></div>
+  			      </div>
+  					</td>
+  				</tr>
+  				<!-- Comp -->
+        <% } %>
+				<!-- DATOS DE CONTACTO | Hotel:Planner | Planner:Customer | Customer:Planner-->
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="background-color: #D3E203;display: inline-block;width: 60%;text-align: center;color: white;font-size: 2em;padding: 0.5em;margin:1em;border-radius:5px;">
+			        Datos del <strong style="margin: 0;padding: 0;">CLIENTE</strong>
+			      </div>
+					</td>
+				</tr>
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Nombre</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.nombre %></div>
+			      </div>
+					</td>
+				</tr>
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Email</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.email %></div>
+			      </div>
+					</td>
+				</tr>
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Teléfono</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.telefonoContacto %></div>
+			      </div>
+					</td>
+				</tr>
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Empresa</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.empresa %></div>
+			      </div>
+					</td>
+				</tr>
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Cargo</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.puesto %></div>
+			      </div>
+					</td>
+				</tr>
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">País</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.paisText %></div>
+			      </div>
+					</td>
+				</tr>
+				<tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Estado</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.estadoText %></div>
+			      </div>
+					</td>
+				</tr>
+        <tr style="margin: 0;padding: 0;">
+					<td style="margin: 0;padding: 0;">
+						<div style="width: 100%;margin: 0;padding: 0;">
+			        <strong style="margin: 0;padding: 0;">Ciudad</strong><br style="margin: 0;padding: 0;">
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.ciudadText %></div>
+			      </div>
+					</td>
+				</tr>
+				<!-- /DATOS DE CONTACTO -->
+			</table>
+			</div>
+
+		</td>
+		<td style="margin: 0;padding: 0;"></td>
+	</tr>
+</table><!-- /BODY -->
+
+<!-- FOOTER -->
+<table class="footer-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;clear: both!important;">
+	<tr style="margin: 0;padding: 0;">
+		<td style="margin: 0;padding: 0;"></td>
+		<td class="container" style="margin: 0 auto!important;padding: 0;display: block!important;max-width: 600px!important;clear: both!important;">
+
+				<!-- content -->
+				<div class="content" style="margin: 0 auto;padding: 15px;max-width: 600px;display: block;">
+				<table style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;width: 100%;">
+				<tr style="margin: 0;padding: 0;">
+					<td align="center" style="margin: 0;padding: 0;">
+						<p style="margin: 0;padding: 0;margin-bottom: 10px;font-weight: normal;font-size: 14px;line-height: 1.6;">
+              © Powered by YoPlanner
+						</p>
+					</td>
+				</tr>
+			</table>
+				</div><!-- /content -->
+
+		</td>
+		<td style="margin: 0;padding: 0;"></td>
+	</tr>
+</table><!-- /FOOTER -->
+
+</body>
+</html>

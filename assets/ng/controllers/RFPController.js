@@ -11,9 +11,6 @@ angular.module('rfp-module', [])
 	    	$scope.rfp.fechaFinal = parseDate($scope.fechaFinalFor);
 	    }
 	}
-
-
-
 	$rootScope.mostrarRFP = function(){
 		$.fancybox([
  	        	{href : '#rfp_view', title : 'Datos Generales'},

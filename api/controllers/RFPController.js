@@ -76,7 +76,7 @@ module.exports = {
 
   //Enviar mail de customer
   sendCustomerMail: function (req, res) {
-    EmailService.sendCustomer(req.param('options'), req.param('rfp'));
+    EmailService.sendCustomer(req.param('options'), req.param('rfp'), req.user);
     console.log('Enviando correo a customer...');
   },
 
