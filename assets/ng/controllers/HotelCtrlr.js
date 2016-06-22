@@ -117,6 +117,11 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		};
 
+		//Auxiliar para las imágenes anteriores al cambio de ruta
+		$scope.imagenValida = function (url) {
+			return url.includes('admin.yoplanner.com');
+		};
+
 		$scope.postComentario = function () {
 			if(!$scope.postcomentario.text)
 				return;
