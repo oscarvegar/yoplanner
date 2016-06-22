@@ -248,7 +248,8 @@
 				<div class="row">
 					<div class="col-md-2 comentario-user">
 						<img ng-src="/image/ypcover.jpg" class="avatar-border" ng-if="!comentario.user.avatar" />
-						<img ng-src="{{comentario.user.avatar}}" class="avatar-border" ng-if="comentario.user.avatar" />
+						<img ng-src="{{comentario.user.avatar}}" class="avatar-border" ng-if="imagenValida(comentario.user.avatar)" />
+						<img ng-src="http://admin.yoplanner.com{{comentario.user.avatar}}" class="avatar-border" ng-if="!imagenValida(comentario.user.avatar)" />
 						<span>{{comentario.user.username}}</span>
 					</div>
 					<div class="col-md-10 new-comentario">
