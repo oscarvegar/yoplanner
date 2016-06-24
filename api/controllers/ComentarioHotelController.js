@@ -103,6 +103,24 @@ module.exports = {
 		} else {
 			return res.json({error: true, message: 'Usuario no logeado'});
 		}
+	},
+
+	deleteComment: function (req, res) {
+		var id = req.param('id');
+		ComentarioHotel.destroy({id: id}).then(function (com) {
+			return res.json(com);
+		}).catch(console.log);
+	},
+
+	editComment: function (req, res) {
+		var id = req.param('id');
+		var newtext = req.param('newtext');
+		ComentarioHotel.findOne({id: id}).then(function (comentario) {
+			comentario.text = newtext;
+			ComentarioHotel.update({id: id}, comentario).then(function (com) {
+				return res.json(com[0]);
+			}).catch(console.log);
+		}).catch(console.log);;
 	}
 
 };

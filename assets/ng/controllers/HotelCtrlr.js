@@ -136,8 +136,6 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		$http.get('/comentariohotel/getUser').success(function(data) {
 			$scope.rootuser = data;
-			console.log('USER', $scope.rootuser);
-			console.log('INDEX', $scope.rootuser.roles.indexOf('otro'));
 		}).error(function (err) {
 			console.log(err);
 		});
@@ -170,9 +168,19 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 			$http.post('/comentariohotel/postComentario', {text: $scope.postcomentario.text, title:$scope.postcomentario.title, hotel: $scope.hotelid}).success(function(data) {
 				$scope.postcomentario = null;
-				console.log(data);
 				notify('Comentario enviado correctamente.');
 				$scope.comentarios.push(data.comentario);
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.saveComment = function (comentario) {
+			var newtext = comentario.editText;
+			$http.post('/comentariohotel/editComment', {id: comentario.id, newtext: newtext}).success(function(data) {
+				$scope.comentarios[$scope.comentarios.indexOf(comentario)].isEditing = false;
+				$scope.comentarios[$scope.comentarios.indexOf(comentario)].text = data.text;
+				notify('Comentario editado.');
 			}).error(function (err) {
 				console.log(err);
 			});
@@ -200,7 +208,16 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.fechaComentario = function (comentario) {
 			var fecha = new Date(comentario.createdAt);
 			return fecha;
-		}
+		};
+
+		$scope.deleteComment = function (comentario) {
+			$http.post('/comentariohotel/deleteComment', {id: comentario.id}).success(function(data) {
+			  console.log('DELETE COMMENT', data);
+				$scope.comentarios.splice($scope.comentarios.indexOf(comentario), 1);
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
 
 	$scope.init = function() {
 		$scope.moreHotels = [];

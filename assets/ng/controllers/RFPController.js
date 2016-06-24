@@ -157,6 +157,7 @@ angular.module('rfp-module', [])
         }
 
 				//Enviar correo al cliente
+				/*
 				$http.post('/rfp/sendCustomerMail', {
 					rfp: $scope.rfp,
 					options: {
@@ -166,6 +167,7 @@ angular.module('rfp-module', [])
 				}).success(function(data) {
 					console.log(data);
 				});
+				*/
 
 				//Enviar correo al planner
 				$http.post('/rfp/sendPlannerMail', {
