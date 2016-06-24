@@ -38,6 +38,71 @@ module.exports = {
 			console.log(comentario);
 			return res.json(comentario[0]);
 		}).catch(console.log);
+	},
+
+	addReply: function (req, res) {
+		var id = req.param('id');
+		var text = req.param('replytext');
+		ComentarioHotel.findOne({id: id}).then(function (comentario) {
+			var reply = {
+				text: text,
+				user: req.user.id,
+				name: req.user.name || req.user.username,
+				createdAt: new Date().toISOString()
+			};
+			if (!comentario.replies) {
+				comentario.replies = [reply];
+			} else {
+				comentario.replies.push(reply);
+			}
+			ComentarioHotel.update({id: id}, comentario).then(function (com) {
+				console.log('Anadida respuesta a comentario...');
+				return res.json(com[0]);
+			}).catch(console.log);
+		}).catch(console.log);
+	},
+
+	deleteReply: function (req, res) {
+		var id = req.param('id');
+		var reply = req.param('reply');
+		ComentarioHotel.findOne({id: id}).then(function (comentario) {
+			for (var i = 0; i < comentario.replies.length; i++) {
+				if (comentario.replies[i].user == reply.user && comentario.replies[i].text == reply.text && comentario.replies[i].createdAt == reply.createdAt) {
+					comentario.replies.splice(i, 1);
+					break;
+				}
+			}
+			ComentarioHotel.update({id: id}, comentario).then(function (com) {
+				console.log('Borrando respuesta...');
+				return res.json(com[0]);
+			}).catch(console.log);
+		}).catch(console.log);
+	},
+
+	editReply: function (req, res) {
+		var id = req.param('id');
+		var reply = req.param('reply');
+		var newtext = req.param('newtext');
+		ComentarioHotel.findOne({id: id}).then(function (comentario) {
+			for (var i = 0; i < comentario.replies.length; i++) {
+				if (comentario.replies[i].user == reply.user && comentario.replies[i].text == reply.text && comentario.replies[i].createdAt == reply.createdAt) {
+					comentario.replies[i].text = newtext;
+					break;
+				}
+			}
+			ComentarioHotel.update({id: id}, comentario).then(function (com) {
+				console.log('Editando respuesta...');
+				return res.json(com[0]);
+			}).catch(console.log);
+		}).catch(console.log);
+	},
+
+	getUser: function (req, res) {
+		if (req.user) {
+			return res.json(req.user);
+		} else {
+			return res.json({error: true, message: 'Usuario no logeado'});
+		}
 	}
 
 };

@@ -685,3 +685,13 @@ div.carbonad-image {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+.reply {
+	margin: 0.5em;
+	background-color: white;
+	padding: 1em;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 4px solid #e0e0e0;
+}

@@ -25,6 +25,10 @@ module.exports = {
     likes: {
       type: 'array',
       defaultsTo: []
+    },
+    replies: {
+      type: 'array',
+      defaultsTo: []
     }
   }
 };

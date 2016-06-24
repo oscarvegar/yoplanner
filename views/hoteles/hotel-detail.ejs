@@ -241,7 +241,7 @@
 
 <!-- Tab #4 Comentarios -->
 <div class="tab-pane" id="comentarios" ng-init="loadComentarios()">
-	<div class="row">
+	<div class="row" ng-init="reply.text = {}">
 		<!-- Comentario test -->
 		<div class="col-md-8 row">
 			<div class="col-md-12" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true" style="margin-top: 1em;">
@@ -266,6 +266,38 @@
 							<div class="col-m-12 footer-comentario" style="text-align: right;">
 								<a class="footer-boton" ng-hide="!_hasSession" ng-click="like(comentario)"><i class="fa fa-thumbs-up"></i> <strong>Comentario Útil</strong></a>
 								<a class="footer-boton" ng-if="!_hasSession"><i class="fa fa-thumbs-up"></i> <strong><del>Comentario Útil</del></strong></a>
+							</div>
+							<div class="col-md-12" style="margin-top: 1em;" ng-show="_hasSession">
+								<form>
+									<textarea msd-elastic ng-model="reply.text[comentario.id]" placeholder="Responder comentario..." class="form-control" style="resize: none" rows="1"></textarea>
+							</div>
+							<div class="col-md-12" style="margin-top: 1em;" ng-show="!_hasSession">
+								<textarea placeholder="Inicia sesión para responder..." class="form-control" style="resize: none" rows="1" disabled=""></textarea>
+							</div>
+							<div class="col-md-12" ng-show="reply.text[comentario.id].length > 0">
+									<button type="submit" class="btn btn-primary pull-right" ng-click="replyComentario(comentario)" style="margin-top:1em;">Enviar respuesta</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- Reply -->
+					<div class="col-md-8 pull-right reply" ng-repeat="respuesta in comentario.replies">
+						<div class="row">
+							<div class="col-md-12">
+								<em style="color: rgb(0, 133, 199)">{{respuesta.name}}</em>
+							</div>
+							<hr>
+							<div class="col-md-12">
+								<p ng-hide="reply.isEditing[respuesta.createdAt]">{{respuesta.text}}</p>
+								<textarea msd-elastic ng-show="reply.isEditing[respuesta.createdAt]" ng-model="reply.text_edit[respuesta.createdAt]" ng-init="reply.text_edit[respuesta.createdAt] = respuesta.text" placeholder="Editar comentario..." class="form-control" style="resize: none; margin-bottom: 1em;" rows="1"></textarea>
+							</div>
+							<div class="col-md-12" ng-show="reply.isEditing[respuesta.createdAt]">
+								<button type="submit" class="btn btn-primary pull-right" ng-click="saveReply(comentario, respuesta)" style="margin-bottom:1em;">Guardar Cambios</button>
+							</div>
+							<div class="col-md-12 footer-reply">
+								<span am-time-ago="respuesta.createdAt"></span>
+								<span class="pull-right" style="margin-left: 1em;" ng-click="reply.isEditing[respuesta.createdAt] = !reply.isEditing[respuesta.createdAt]" ng-show="respuesta.user == rootuser.id"><a>Editar</a></span>
+								<span class="pull-right" ng-click="deleteReply(comentario, respuesta)" ng-show="rootuser.roles.indexOf('ROLE_ADMIN') > -1"><a>Eliminar</a></span>
 							</div>
 						</div>
 					</div>

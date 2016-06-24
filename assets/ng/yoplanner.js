@@ -1,5 +1,5 @@
 var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
-	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline', 'angularMoment', 'jkuri.timepicker', 'angucomplete-alt', 'jkuri.gallery']);
+	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline', 'angularMoment', 'jkuri.timepicker', 'angucomplete-alt', 'jkuri.gallery', 'monospaced.elastic']);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
@@ -118,6 +118,7 @@ yoPlannerApp.controller('LoginCtrl',function($scope,$http,$rootScope){
 
 	$scope.login = function(){
 		$http.post("/login",$scope.usr).then(function(data){
+			$rootScope._user = data.data.user;
 			$rootScope._hasSession = true;
 		}).catch(function(ex){
 			console.error(ex);

@@ -68,6 +68,40 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		};
 
+		//Reply logic
+		$scope.replyComentario = function (comentario) {
+			var text = $scope.reply.text[comentario.id];
+			$http.post('/comentariohotel/addReply', {id: comentario.id, replytext: text}).success(function(data) {
+				$scope.reply.text[comentario.id] = null;
+				console.log(data);
+				$scope.comentarios[$scope.comentarios.indexOf(comentario)].replies = data.replies;
+				notify('Respuesta enviada.');
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.deleteReply = function (comentario, reply) {
+			$http.post('/comentariohotel/deleteReply', {id: comentario.id, reply: reply}).success(function(data) {
+				$scope.comentarios[$scope.comentarios.indexOf(comentario)].replies = data.replies;
+				notify('Respuesta eliminada.');
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.saveReply = function (comentario, reply) {
+			console.log('EDITANDO REPLY', $scope.reply.text_edit[reply.createdAt]);
+			var newtext = $scope.reply.text_edit[reply.createdAt];
+			$http.post('/comentariohotel/editReply', {id: comentario.id, reply: reply, newtext: newtext}).success(function(data) {
+				$scope.reply.isEditing[reply.createdAt] = false;
+				$scope.comentarios[$scope.comentarios.indexOf(comentario)].replies = data.replies;
+				notify('Respuesta editada.');
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
     $rootScope.existeEnSeleccion = function(hotel){
     	$log.info("HOTEL>>>>>>>>>>>>>>>>",hotel);
     	$log.info("SELS>>>>>>>>>>>>>>>>",$rootScope.hotelesSeleccionados);
@@ -99,6 +133,14 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				console.log(err);
 			});
 		};
+
+		$http.get('/comentariohotel/getUser').success(function(data) {
+			$scope.rootuser = data;
+			console.log('USER', $scope.rootuser);
+			console.log('INDEX', $scope.rootuser.roles.indexOf('otro'));
+		}).error(function (err) {
+			console.log(err);
+		});
 
 		$scope.loadMoreComentarios = function () {
 			$scope.comentariosCargados = true;
