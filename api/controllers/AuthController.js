@@ -8,7 +8,7 @@
 var passport = require('passport');
 var uuid = require('uuid');
 module.exports = {
- 
+
   login: function (req, res) {
   	var user = req.allParams();
   	user.id = user.username;
@@ -34,7 +34,7 @@ module.exports = {
         	message: 'login failed'
         });
         res.json(405,err);
-      	}      
+      	}
       	req.logIn(user, function(err) {
         if (err) return res.send(err);
         req.session.authenticated = true;
@@ -42,9 +42,10 @@ module.exports = {
         var sessuid = uuid.v4();
         User.update(user,{sessuid:sessuid}).then(function(data){})
           return res.send({
-            message: 'login successful'
+            message: 'login successful',
+            user: req.user
           });
-        
+
       });
     })(req, res);
   },
@@ -59,29 +60,29 @@ module.exports = {
       User.findOne(req.user.id).then(function(usres){
         return res.json(usres.sessuid)
       })
-  		
+
   	}else{
   		return res.json(401,{})
 
   	}
   }
 
- }	
+ }
 
 module.exports.blueprints = {
- 
+
   // Expose a route for every method,
   // e.g.
   // `/auth/foo` => `foo: function (req, res) {}`
   actions: true,
- 
+
   // Expose a RESTful API, e.g.
   // `post /auth` => `create: function (req, res) {}`
   rest: true,
- 
+
   // Expose simple CRUD shortcuts, e.g.
   // `/auth/create` => `create: function (req, res) {}`
   // (useful for prototyping)
   shortcuts: true
- 
+
 };
