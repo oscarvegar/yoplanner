@@ -13,30 +13,34 @@ module.exports = {
         //if(id.length > 10)
         //return res.json(500)
         var tmpId = encodeURIComponent(id);
-        console.log("PATH >>>>>/autocomplete/cities/" + tmpId);
+        console.log( "/v3/autocomplete?query="+tmpId+"&product=HOTELS&locale=es-MX&city_result=5");
         var options = {
             hostname: "api.despegar.com",
-            path: "/autocomplete/cities/" + tmpId,
+            path: "/v3/autocomplete?query="+tmpId+"&product=HOTELS&locale=es-MX&city_result=5",
             //options.method = "GET";
             headers: {
-                "X-ApiKey": "53df4ffd-5adb-48ce-9738-72cea4a5da30MX"
+                "X-ApiKey": "a3172e4050774a9a9bdca7f6ebe50a2f"
             },
         };
         HttpClientService.httpsGET(options, function(response) {
+            console.log("response AUTOCOMPLETE>>>",response);
             if (!response) res.json(500);
-            var ciudades = JSON.parse(response).autocomplete;
+            var ciudades = JSON.parse(response);
             for (var i in ciudades) {
                 var ciudad = ciudades[i];
-                ciudad.slug = ciudad.name.toLowerCase().replace(/,/g, "-").replace(/ /g, "");
+                ciudad.idDes = ciudad.id;
+                ciudad.name = ciudad.description;
+                ciudad.id = ciudad.code;
+                ciudad.slug = ciudad.description.toLowerCase().replace(/,/g, "-").replace(/ /g, "");
                 console.log("ciudad", ciudad)
                 Ciudad.findOrCreate({
-                    id: ciudad.id
+                    id: ciudad.code
                 }, ciudad).then(function(ciudad) {
                     console.log("Ciudad Nueva >>>>>", ciudad.id)
                 })
 
             }
-            res.send(response);
+            res.json({autocomplete:ciudades});
 
         });
 
