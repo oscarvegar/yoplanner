@@ -5,7 +5,8 @@
     <!-- Section Title-->
     <div class="section-title-01">
         <!-- Parallax Background -->
-        <div class="bg_parallax image_{{valDest.imgBgAcronym}}_parallax"></div>
+        <div class="bg_parallax" style='background: url("img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg");
+  background-size: 100% 450px;'></div>
         <!-- Parallax Background -->
 
         <!-- Content Parallax-->
@@ -31,7 +32,79 @@
     <section class="content-central" style="{{valDest.searchId == valDest.imgBgAcronym ? 'margin-top:-120px;' : ''}}">
         <br><br><br>
         <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-1 col-lg-8 col-lg-offset-2">
+             <div class="col-md-3 col-md-offset-1 col-lg-2 col-lg-offset-1">
+                                <div class="container-by-widget-filter bg-dark color-white">
+                                   
+
+                                    <!-- Widget Filter Price Range-->
+                                    <aside class="widget padding-top-mini">
+                                        <h3 class="title-widget">Aplica un Filtro</h3>
+                                        <h4>Nombre:</h4>
+                                        <input type="text" class="form-control">
+                                      
+                                    </aside>
+                                    <!-- End Widget Filter Price Range-->
+
+                                    <!-- Widget Filter Stars-->
+                                    <aside class="widget">
+                                        <h4>Star Rating:</h4>
+                                        <ul class="starts">
+                                            <li><input type="checkbox" checked></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><span>5 Stars</span></li>
+                                        </ul>
+
+                                        <ul class="starts">
+                                            <li><input type="checkbox" checked></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><span>4 Stars</span></li>
+                                        </ul>
+
+                                        <ul class="starts">
+                                            <li><input type="checkbox"></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><span>3 Stars</span></li>
+                                        </ul>
+
+                                        <ul class="starts">
+                                            <li><input type="checkbox" checked></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><span>2 Stars</span></li>
+                                        </ul>
+
+                                        <ul class="starts">
+                                            <li><input type="checkbox"></li>
+                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                                            <li><span>1 Stars</span></li>
+                                        </ul>
+                                    </aside>
+                                    <!-- End Widget Filter Stars-->
+
+                               
+                                  
+                                </div>
+                            </div>
+            <div class="col-md-8  col-sm-1 col-lg-8 ">
 
 
             	<% hoteles.forEach(function(hotel){ %>
