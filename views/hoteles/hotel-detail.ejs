@@ -318,9 +318,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-12 text-center" style="margin: 1em;">
+			<div class="col-md-12 text-center" style="margin: 1em;" ng-show="comentarios.length < comment_count">
 				<button type="button" class="btn btn-default" ng-click="loadMoreComentarios()">Cargar más</button>
-				<div class="loader" ng-show="cargandoComentarios"></div>
+				<div class="loader" ng-show="comentariosCargados"></div>
 			</div>
 			<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
 				<div class="form-group" style="text-align: center;">

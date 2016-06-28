@@ -9,9 +9,12 @@ module.exports = {
 
 	getComentarios: function (req, res) {
 		var id = req.param('id');
-		var offset = req.param('offset');
-		ComentarioHotel.find({hotel: id}).populate('user').limit(10).skip(offset).then(function (comentarios) {
-			return res.json({comentarios: comentarios});
+		var page = req.param('page');
+		ComentarioHotel.count({hotel: id}).then(function (cuantos) {
+			var count_comentarios = cuantos;
+			ComentarioHotel.find({hotel: id}).populate('user').paginate({page: page, limit: 10}).then(function (comentarios) {
+				return res.json({comentarios: comentarios, count: count_comentarios});
+			}).catch(console.log);
 		}).catch(console.log);
 	},
 
