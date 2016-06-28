@@ -123,12 +123,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		//Comentarios en detalle hotel
 		// TODO: Implementar paginación
 		$scope.loadComentarios = function () {
-			$scope.comentariosCargados = 0;
+			$scope.pagina = 1;
+			$scope.comment_count = 0;
 			$scope.comentariosCargados = true;
-			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid, offset: $scope.comentariosCargados}).success(function(data) {
-				$scope.comentariosCargados += 10;
+			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid, page: $scope.pagina}).success(function(data) {
+				$scope.pagina += 1;
+				$scope.comment_count = data.count;
 				$scope.comentarios = data.comentarios;
 				$scope.comentariosCargados = false;
+				console.log('COUNT COMMET', $scope.comment_count);
 			}).error(function (err) {
 				console.log(err);
 			});
@@ -142,12 +145,14 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		$scope.loadMoreComentarios = function () {
 			$scope.comentariosCargados = true;
-			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid, offset: $scope.comentariosCargados}).success(function(data) {
-				$scope.comentariosCargados += 10;
+			$http.post('/comentariohotel/getComentarios/', {id: $scope.hotelid, page: $scope.pagina}).success(function(data) {
+				$scope.pagina += 1;
+				$scope.comment_count = data.count;
 				$scope.comentariosCargados = false;
 				if (data.comentarios.length <= 0) {
 					notify('No hay más comentarios que cargar...');
 				} else {
+					console.log('NUEVO COMMENTS', data.comentarios);
 					data.comentarios.forEach(function (comentario) {
 						$scope.comentarios.push(comentario);
 					});
