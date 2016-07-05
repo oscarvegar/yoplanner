@@ -36,6 +36,21 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
     };
 
+		//Cargar hoteles
+		$scope.loadNewHoteles = function () {
+			$http.get('/recinto/findByCiudadId/' + $scope.searchId).success(function(data) {
+				console.log(data);
+				for (var i = 0; i < data.length; i++) {
+					data[i]['starRatingRange'] = new Array(data[i].starRating);
+				};
+				$scope.hotelesNew = data;
+			});
+		}
+
+		$scope.getStars = function (num) {
+			return new Array(num);
+		}
+
 		$scope.initGallery = function () {
 			//Adaptar imagenes la formato de la directiva
 			$scope.galleryPictures = [];
@@ -51,6 +66,17 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
       $rootScope.hotelesSeleccionados.push($scope.currentHotel);
 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
       $localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
+
+			$http.post('/recinto/getHotelEmail', {id: id}).success(function(data) {
+				console.log($rootScope.hotelesSeleccionados);
+				console.log(data.id);
+				for (var i in $rootScope.hotelesSeleccionados) {
+					if ($rootScope.hotelesSeleccionados[i].id == data.id) {
+						$rootScope.hotelesSeleccionados[i].email = data.email;
+						console.log('Email cargado');
+					}
+				}
+			});
     };
 
 		$scope.addSeleccion = function (id) {
@@ -65,6 +91,18 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				$rootScope.hotelesSeleccionados.push(hotel.data);
 				$localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
 				notify('Hotel ' + hotel.data.name + ' agregado a Mi Selección');
+
+				$http.post('/recinto/getHotelEmail', {id: id}).success(function(data) {
+					console.log($rootScope.hotelesSeleccionados);
+					console.log(data.id);
+					for (var i in $rootScope.hotelesSeleccionados) {
+						if ($rootScope.hotelesSeleccionados[i].id == data.id) {
+							$rootScope.hotelesSeleccionados[i].email = data.email;
+							console.log('Email cargado');
+						}
+					}
+				});
+
 			});
 		};
 
@@ -213,6 +251,19 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.fechaComentario = function (comentario) {
 			var fecha = new Date(comentario.createdAt);
 			return fecha;
+		};
+
+		//Test cargar info de contacto
+		$scope.initInfoContacto = function (id) {
+			$http.post('/recinto/getContactoInfo', {id: id}).success(function(data) {
+			  console.log(data);
+				if (data.length > 0) {
+					$scope.contactoinfo = data[0];
+					console.log(data[0]);
+				}
+			}).error(function (err) {
+				console.log(err);
+			});
 		};
 
 		$scope.deleteComment = function (comentario) {

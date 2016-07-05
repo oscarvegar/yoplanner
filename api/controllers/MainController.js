@@ -58,6 +58,7 @@ module.exports = {
 					})
 			} else {
 				RecintoService.findByCiudadId(ciudad.id).then(function(hoteles) {
+					console.log('CIUDAD', ciudad);
 					res.view('hoteles/hoteles-list', {
 						layout:"layout_old",
 						hoteles: hoteles,

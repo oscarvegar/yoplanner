@@ -128,6 +128,7 @@ angular.module('rfp-module', [])
         	$scope.rfp.salones[i].fecha = parseDate($scope.rfp.salones[i].fechaStr);
         }
         window.localStorage.setItem('rfp',JSON.stringify($scope.rfp));
+
         $.fancybox.next();
     };
 
@@ -149,6 +150,15 @@ angular.module('rfp-module', [])
 			$scope.rfp.ciudadText = $scope.selectedCustomer.originalObject.ciudadText;
 			$scope.rfp.customer = $scope.selectedCustomer.originalObject.id;
 		});
+
+		//Get hotel mail
+		$scope.loadHotelEmail = function (id) {
+			console.log('CARGANDO HOTEL', id);
+			$http.post('/recinto/getHotelEmail', {id: id}).success(function(data) {
+				$scope.rfp.emailhoteles[id] = data.email;
+				console.log('Email cargado');
+			});
+		};
 
     $scope.rfp_create = function(){
         if($scope.hotelesSeleccionados.length<1){

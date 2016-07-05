@@ -100,7 +100,16 @@
     <div class="tab-pane active" id="hotel">
         <h2>Información del hotel</h2>
         <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
-
+				<div class="row" ng-show="_hasSession">
+					<div class="col-md-12" ng-init="initInfoContacto(hotelid)">
+						<h3>Datos de contacto</h3>
+						<p>
+							<strong>Nombre: </strong>{{contactoinfo.name || '--'}}
+							<strong> Email: </strong>{{contactoinfo.username || '--'}}
+							<strong> Teléfono: </strong>{{contactoinfo.telefono || '--'}}
+						</p>
+					</div>
+				</div>
         <h3>Equipamiento y servicios del hotel</h3>
 
         <div class="row">

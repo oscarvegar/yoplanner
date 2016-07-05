@@ -287,10 +287,11 @@
                         </div>
                     </div>
                     <hr>
+                    <!-- Emails de hoteles -->
                     <div class="row">
                       <div class="col-md-11" ng-repeat="hotel in hotelesSeleccionados" style="margin-top: 0.5em">
                         <label class="rfp-label">Email: {{hotel.name}}</label><br>
-                        <input class="form-control" type="email" ng-model="rfp.emailhoteles[hotel.id]" placeholder="{{hotel.name}}"/>
+                        <input class="form-control" type="email" ng-model="hotel.email" placeholder="{{hotel.name}}"/>
                       </div>
                     </div>
 

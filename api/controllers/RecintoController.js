@@ -72,5 +72,23 @@ module.exports = {
 
     images:function(req,res){
         res.redirect(sails.config.constants.CUSTOM_PICTURES+req.param('id'));
+    },
+
+    getContactoInfo: function (req, res) {
+      var idhotel = req.param('id');
+      User.find({ hotels: [idhotel] }).then(function (user) {
+        return res.json(user);
+      }).catch(console.log);
+    },
+
+    getHotelEmail: function (req, res) {
+      var id = req.param('id');
+      User.find({ hotels: [id] }).then(function (user) {
+        if (user.length > 0) {
+          return res.json({email: user[0].username, id: id});
+        } else {
+          return res.json({email: 'perfil_sin_mail', id: id});
+        }
+      }).catch(console.log);
     }
 };
