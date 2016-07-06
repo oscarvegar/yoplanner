@@ -24,8 +24,8 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				};
 			}
 
-			$log.info(data);
-			$scope.moreHotels = $scope.moreHotels.concat(data);
+			console.log('MAS HOTELES', data);
+			$scope.hotelesNew = $scope.hotelesNew.concat(data);
 			if(data && data.length > 0) {
 				$scope.currentPage++;
 			}
@@ -50,6 +50,37 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.getStars = function (num) {
 			return new Array(num);
 		}
+
+		//Buscar por estrellas
+		$scope.filterStar = function (buscar) {
+			return function (item) {
+				if (buscar.fivestar) {
+					if (item.starRating == 5) {
+						return item;
+					} else {
+						if (buscar.fourstar) {
+							if (item.starRating == 4) {
+								return item;
+							} else {
+								console.log('ni 4 ni 5');
+							}
+						}
+					}
+				} else if (buscar.fourstar) {
+					if (item.starRating == 4) {
+						return item;
+					} else {
+						console.log('ni 4 ni 5');
+					}
+				} else if (buscar.threestar) {
+					if (item.starRating == 3) {
+						return item;
+					} else {
+						console.log('ni 4 ni 5 ni 3');
+					}
+				}
+			};
+		};
 
 		$scope.initGallery = function () {
 			//Adaptar imagenes la formato de la directiva
