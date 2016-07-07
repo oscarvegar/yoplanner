@@ -166,44 +166,6 @@ angular.module('rfp-module', [])
             return;
         }
 
-				//Enviar correo al cliente
-				/*
-				$http.post('/rfp/sendCustomerMail', {
-					rfp: $scope.rfp,
-					options: {
-						to: $scope.rfp.email,
-						subject: 'RFP Recibida ✔ | Customer'
-					}
-				}).success(function(data) {
-					console.log(data);
-				});
-				*/
-
-				//Enviar correo al planner
-				$http.post('/rfp/sendPlannerMail', {
-					rfp: $scope.rfp,
-					options: {
-						subject: 'RFP Recibida ✔ | Planner'
-					}
-				}).success(function(data) {
-					console.log(data);
-				});
-
-				//Enviar correo a Hoteles
-				for (var email in $scope.rfp.emailhoteles) {
-					if ($scope.rfp.emailhoteles.hasOwnProperty(email)) {
-						console.log('Enviado correo: ' + $scope.rfp.emailhoteles[email]);
-						$http.post('/rfp/sendHotelMail', {
-							rfp: $scope.rfp,
-							options: {
-								to: $scope.rfp.emailhoteles[email],
-								subject: 'RFP Recibida ✔ | Hotel'
-							}
-						}).success(function(data) {
-							console.log(data);
-						});
-					}
-				}
 				//Crear customer si no existe
 				var customerInList = false;
 				for (var i in $scope.myCustomers) {
@@ -241,6 +203,31 @@ angular.module('rfp-module', [])
                  countryId:$scope.hotelesSeleccionados[i].countryId,
                  cityId:$scope.hotelesSeleccionados[i].cityId });
         };
+
+				//Cachear rfp
+				var rfp_temp = $scope.rfp;
+				//Enviar correo al planner
+				$http.post('/rfp/sendPlannerMail', {
+					rfp: rfp_temp,
+					options: {
+						subject: 'RFP Recibida ✔ | Planner'
+					}
+				}).success(function(data) {
+					console.log(data);
+				});
+
+				//Enviar correo a Hoteles
+				for (var hotel in $rootScope.hotelesSeleccionados) {
+					$http.post('/rfp/sendHotelMail', {
+						rfp: rfp_temp,
+						options: {
+							to: hotel.email,
+							subject: 'RFP Recibida ✔ | Hotel'
+						}
+					}).success(function(data) {
+						console.log(data);
+					});
+				}
 
 
         //console.log(angular.toJson( $scope.rfp));

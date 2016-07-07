@@ -51,6 +51,7 @@ module.exports = {
   },
 
   sendPlanner: function (options, rfp, user) {
+    console.log('RFP', rfp);
     var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/planner.ejs'), 'utf8');
     var htmlfinal =  ejs.render(template, {rfp: rfp, moment: moment});
     smtpTransport.sendMail({
@@ -63,7 +64,7 @@ module.exports = {
      if(error){
        console.log(error);
      }else{
-       console.log("Mensaje enviado: " + info.response);
+       console.log("Mensaje enviado planner: " + info.response);
      }
     });
   }
