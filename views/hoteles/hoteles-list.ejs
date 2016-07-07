@@ -43,7 +43,17 @@
                                         <input type="text" class="form-control" ng-model="buscar.nombre.name" placeholder="Nombre del hotel">
                                         <hr class="separator">
                                         <h4>Número de salones:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.salones" placeholder="Salones del hotel">
+                                        <input type="number" class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
+                                        <hr class="separator">
+                                        <h4>Número de habitaciones:</h4>
+                                        <input type="number" class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
+                                        <hr class="separator">
+                                        <h4>Tipo de plan:</h4>
+                                        <select class="form-control" ng-model="buscar.plan" ng-init="buscar.plan = default">
+                                          <option value="default" selected> Cualquiera </option>
+                                          <option value="Todo Incluido">Todo Incluido</option>
+                                          <option value="Europeo">Europeo</option>
+                                        </select>
                                     </aside>
                                     <!-- End Widget Filter Price Range-->
 
@@ -101,16 +111,17 @@
                                         </ul>
                                     </aside>
                                     <!-- End Widget Filter Stars-->
-
-
-
+                                    <aside class="widget" style="text-align: center;">
+                                      <button type="button" class="btn btn-primary" style="width: 80%;" ng-click="buscarTodos(buscar)">Buscar</button>
+                                    </aside>
                                 </div>
                             </div>
 
             <!-- Hoteles Angular -->
             <div class="col-md-9  col-sm-12 col-lg-9" ng-init="loadNewHoteles()">
+              <div class="loader" ng-show="cargandoBusqueda"></div>
               <br>
-              <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | filter:buscar.nombre | filter:filterStar(buscar)">
+              <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | filter:buscar.nombre | filter:filterStar(buscar) | filter:filterSalones(buscar.salones) | filter:filterHabitaciones(buscar.habitaciones) | filter:filterPlan(buscar.plan)">
                    <div class="img-hover">
                       <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive"  style="width: 100%;height: 166px">
                   </div>
@@ -132,7 +143,7 @@
                               <a href="{{hotel.urlslug?hotel.urlslug:hotel.id}}"class="btn btn-primary">Ver Detalles</a>
                           </div>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-1" ng-show="_hasSession">
                           <div class="content-btn" ng-click="addSeleccion(hotel.id)" ng-show="!hotel.inList">
                             <a class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                           </div>
@@ -269,7 +280,7 @@
 
 
 
-        <div class="row" ng-if="showMostrarMas" >
+        <div class="row" ng-show="showMostrarMas">
 
             <div class="col-md-12" style="margin: 2em;">
                 <button ng-click="masResultados()"  class="btn btn-primary col-md-12" style="width:100%;">Más Resultados</button>

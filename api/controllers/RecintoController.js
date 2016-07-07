@@ -90,5 +90,62 @@ module.exports = {
           return res.json({email: 'perfil_sin_mail', id: id});
         }
       }).catch(console.log);
+    },
+
+    findBySearch: function (req, res) {
+      var parametros = req.param('buscar');
+      var cityId = req.param('id');
+      //Estrellas
+      var estrellas = [];
+      var tipo_plan = 'default';
+      if (parametros.onestar) {
+        estrellas.push(1);
+      }
+      if (parametros.twostar) {
+        estrellas.push(2);
+      }
+      if (parametros.threestar) {
+        estrellas.push(3);
+      }
+      if (parametros.fourstar) {
+        estrellas.push(4);
+      }
+      if (parametros.fivestar) {
+        estrellas.push(5);
+      }
+      if (parametros.plan == 'default') {
+        var busqueda = {
+          name: {
+            'contains': parametros.nombre.name
+          },
+          /*numeroSalones: {
+            '>=': parametros.salones
+          },
+          totalHabitaciones: {
+            '>=': parametros.habitaciones
+          },*/
+          starRating: estrellas,
+          cityId: cityId
+        };/*
+      } else {
+        var busqueda = {
+          name: {
+            'contains': parametros.nombre.name
+          },
+          numeroSalones: {
+            '>=': parametros.salones
+          },
+          totalHabitaciones: {
+            '>=': parametros.habitaciones
+          },
+          starRating: estrellas,
+          plan: parametros.plan
+        };
+      }*/
+      //Retornar json
+      Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
+        console.log('Buscando hoteles', busqueda);
+        return res.json(hoteles);
+      }).catch(console.log);
     }
 };

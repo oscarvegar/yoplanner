@@ -82,6 +82,50 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			};
 		};
 
+		//Filter numero de salones
+		$scope.filterSalones = function (num) {
+			return function (hotel) {
+				if (!num) {
+					return hotel;
+				}
+				if (!hotel.numeroSalones) {
+					return null;
+				}
+				return hotel.numeroSalones >= num;
+			}
+		};
+		//Filter numero de habitaciones
+		$scope.filterHabitaciones = function (num) {
+			return function (hotel) {
+				if (!num) {
+					return hotel;
+				}
+				if (!hotel.totalHabitaciones) {
+					return null;
+				}
+				return hotel.totalHabitaciones >= num;
+			}
+		};
+		//Filter tipo plan
+		$scope.filterPlan = function (plan) {
+			return function (hotel) {
+				if (plan == 'default') {
+					return hotel;
+				}
+				return hotel.plan == plan;
+			}
+		};
+
+		//Filtrado de hoteles  por http
+		$scope.buscarTodos = function (buscar) {
+			$scope.cargandoBusqueda = true;
+			$http.post('/recinto/findBySearch', {buscar: buscar, id: $scope.searchId}).success(function(data) {
+				$scope.cargandoBusqueda = false;
+				$scope.showMostrarMas = false;
+				$scope.hotelesNew = data;
+			});
+		};
+
 		$scope.initGallery = function () {
 			//Adaptar imagenes la formato de la directiva
 			$scope.galleryPictures = [];
