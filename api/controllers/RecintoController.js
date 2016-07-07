@@ -126,8 +126,8 @@ module.exports = {
           },*/
           starRating: estrellas,
           cityId: cityId
-        };/*
-      } else {
+        };
+      } /*else {
         var busqueda = {
           name: {
             'contains': parametros.nombre.name
