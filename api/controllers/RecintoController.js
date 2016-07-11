@@ -149,7 +149,7 @@ module.exports = {
         },
         starRating: estrellas,
         cityId: cityId
-      }).sort("place ASC").sort("starRating DESC").then(function (hoteles) {
+      }).sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
         return res.json(hoteles);
       }).catch(console.log);

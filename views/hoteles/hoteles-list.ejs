@@ -121,7 +121,8 @@
             <div class="col-md-9  col-sm-12 col-lg-9" ng-init="loadNewHoteles()">
               <div class="loader" ng-show="cargandoBusqueda"></div>
               <br>
-              <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | filter:buscar.nombre | filter:filterStar(buscar) | filter:filterSalones(buscar.salones) | filter:filterHabitaciones(buscar.habitaciones) | filter:filterPlan(buscar.plan)">
+              <!--  | filter:filterSalones(buscar.salones) | filter:filterHabitaciones(buscar.habitaciones) | filter:filterPlan(buscar.plan) -->
+              <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | filter:buscar.nombre | filter:filterStar(buscar) | orderBy:place:true">
                    <div class="img-hover">
                       <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive"  style="width: 100%;height: 166px">
                   </div>
