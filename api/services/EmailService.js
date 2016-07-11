@@ -56,7 +56,7 @@ module.exports = {
     var htmlfinal =  ejs.render(template, {rfp: rfp, moment: moment});
     smtpTransport.sendMail({
      from: "Notificación ✔ YoPlanner <grupos@yoplanner.com>",
-     to: user.username, //user.username
+     to: user.username,
      bcc: "oscarman2001@hotmail.com",
      subject: 'RFP Recibida ✔ | Planner',
      html: htmlfinal

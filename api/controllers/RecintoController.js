@@ -143,8 +143,14 @@ module.exports = {
         };
       }*/
       //Retornar json
-      Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
-        console.log('Buscando hoteles', busqueda);
+      Recinto.find({
+        name: {
+          'contains': parametros.nombre.name
+        },
+        starRating: estrellas,
+        cityId: cityId
+      }).sort("place ASC").sort("starRating DESC").then(function (hoteles) {
+        console.log('HOTELES BUSCAR', hoteles.length);
         return res.json(hoteles);
       }).catch(console.log);
     }

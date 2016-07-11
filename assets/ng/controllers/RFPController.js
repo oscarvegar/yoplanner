@@ -221,7 +221,7 @@ angular.module('rfp-module', [])
 					$http.post('/rfp/sendHotelMail', {
 						rfp: rfp_temp,
 						options: {
-							to: hotel.email,
+							to: $rootScope.hotelesSeleccionados[hotel].email,
 							subject: 'RFP Recibida ✔ | Hotel'
 						}
 					}).success(function(data) {

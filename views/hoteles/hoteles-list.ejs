@@ -43,13 +43,13 @@
                                         <input type="text" class="form-control" ng-model="buscar.nombre.name" placeholder="Nombre del hotel">
                                         <hr class="separator">
                                         <h4>Número de salones:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
+                                        <input type="number" disabled class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
                                         <hr class="separator">
                                         <h4>Número de habitaciones:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
+                                        <input type="number" disabled class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
                                         <hr class="separator">
                                         <h4>Tipo de plan:</h4>
-                                        <select class="form-control" ng-model="buscar.plan" ng-init="buscar.plan = default">
+                                        <select class="form-control" disabled ng-model="buscar.plan" ng-init="buscar.plan = default">
                                           <option value="default" selected> Cualquiera </option>
                                           <option value="Todo Incluido">Todo Incluido</option>
                                           <option value="Europeo">Europeo</option>
