@@ -76,17 +76,29 @@ module.exports = {
 
   //Enviar mail de customer
   sendCustomerMail: function (req, res) {
-    EmailService.sendCustomer(req.param('options'), req.param('rfp'), req.user);
+		var rfp = req.param('rfp');
+		if (!rfp.salones) {
+			rfp.salones = [];
+		}
+    EmailService.sendCustomer(req.param('options'), rfp, req.user);
     console.log('Enviando correo a customer...');
   },
 
-	sendHotelMail: function (req, res) {
-    EmailService.sendHotel(req.param('options'), req.param('rfp'), req.user);
+	sendHotelMail: function (req, res) {}
+		var rfp = req.param('rfp');
+		if (!rfp.salones) {
+			rfp.salones = [];
+		}
+    EmailService.sendHotel(req.param('options'), rfp, req.user);
     console.log('Enviando correo a hotel...');
   },
 
 	sendPlannerMail: function (req, res) {
-    EmailService.sendPlanner(req.param('options'), req.param('rfp'), req.user);
+		var rfp = req.param('rfp');
+		if (!rfp.salones) {
+			rfp.salones = [];
+		}
+    EmailService.sendPlanner(req.param('options'), rfp, req.user);
     console.log('Enviando correo a planner...');
   }
 };
