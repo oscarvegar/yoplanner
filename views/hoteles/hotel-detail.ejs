@@ -98,6 +98,10 @@
 <div class="tab-content">
     <!-- Tab One - Hotel -->
     <div class="tab-pane active" id="hotel">
+				<h3>Calificación de usuarios</h3>
+				<p style="font-size: 24px;" ng-init="initRatings(hotelid)">
+					<strong>{{averageRating(hotelRatings)}}</strong>/10 <span style="font-size: 12px;"> {{hotelRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="hotelRating" ng-click="rateHotel()" ng-show="_hasSession" ng-init="loadUserRating(hotelid)"></input-stars>
+				</p>
         <h2>Información del hotel</h2>
         <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
 				<div class="row" ng-show="_hasSession">

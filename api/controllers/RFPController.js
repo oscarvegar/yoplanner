@@ -84,7 +84,7 @@ module.exports = {
     console.log('Enviando correo a customer...');
   },
 
-	sendHotelMail: function (req, res) {}
+	sendHotelMail: function (req, res) {
 		var rfp = req.param('rfp');
 		if (!rfp.salones) {
 			rfp.salones = [];

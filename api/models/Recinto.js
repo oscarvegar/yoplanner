@@ -34,6 +34,10 @@ module.exports = {
         comentarios: {
           collection: 'comentariohotel',
           via: 'hotel'
+        },
+        ratings: {
+          type: 'array',
+          defaultsTo: []
         }
     }
 };

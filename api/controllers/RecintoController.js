@@ -149,9 +149,62 @@ module.exports = {
         },
         starRating: estrellas,
         cityId: cityId
-      }).sort("starRating DESC").then(function (hoteles) {
+      }).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
         return res.json(hoteles);
+      }).catch(console.log);
+    },
+
+    getRatings: function (req, res) {
+      var id = req.param('id');
+      Recinto.findOne({id: id}).then(function (hotel) {
+        if (!hotel.ratings) {
+          tempRatings = [];
+        } else {
+          tempRatings = hotel.ratings;
+        }
+        return res.json({ratings: tempRatings});
+      }).catch(console.log);
+    },
+
+    rateHotel: function (req, res) {
+      var id = req.param('hotel');
+      var rating = req.param('rating');
+      var user = req.user.id;
+      var tempRate = [];
+      Recinto.findOne({id: id}).then(function (hotel) {
+        if (!hotel.ratings) {
+          tempRate.push({user: user, rating: rating});
+        } else {
+          for (var i in hotel.ratings) {
+            if (hotel.ratings[i].user == user) {
+              hotel.ratings[i].rating = rating;
+              break;
+            }
+          }
+          tempRate = hotel.ratings;
+        }
+        Recinto.update({id: id}, {ratings: tempRate}).then(function (hotel) {
+          return res.json({hotel: hotel[0]});
+        }).catch(console.log);
+      }).catch(console.log);
+    },
+
+    getUserRating: function (req, res) {
+      var id = req.param('id');
+      var user = req.user.id;
+      Recinto.findOne({id: id}).then(function (hotel) {
+        if (!hotel.ratings) {
+          tempRating = 0;
+        } else {
+          for (var i in hotel.ratings) {
+            if (hotel.ratings[i].user == user) {
+              tempRating = hotel.ratings[i].rating;
+              break;
+            }
+          }
+        }
+        return res.json({rating: tempRating});
       }).catch(console.log);
     }
 };
