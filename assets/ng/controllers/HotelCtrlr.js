@@ -365,7 +365,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			ratings.forEach(function (rate) {
 				suma += rate.rating;
 			});
-			return (suma / ratings.length) ;
+			return (suma / ratings.length) || 0;
 		}
 
 		$scope.loadUserRating = function (hotel) {
