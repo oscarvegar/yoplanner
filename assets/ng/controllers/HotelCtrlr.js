@@ -14,6 +14,7 @@ HotelModule.config(function(uiGmapGoogleMapApiProvider) {
 
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,$localStorage,notify){
 	$scope.searchId;
+	$scope.hotelRatings = [];
 	$scope.masResultados = function(){
 		console.debug("masResultados",$scope.searchId)
 		var searchId = $scope.searchId;
@@ -349,6 +350,39 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				console.log(err);
 			});
 		};
+
+		//Ratings
+		$scope.rateHotel = function () {
+			console.log('RATING', $scope.hotelRating);
+			$http.post('/recinto/rateHotel', {hotel: $scope.hotelid, rating: $scope.hotelRating}).success(function(data) {
+				$scope.hotelRatings = data.hotel.ratings;
+				notify('Hotel calificado con ' + $scope.hotelRating + ' estrellas.');
+			});
+		}
+
+		$scope.averageRating = function (ratings) {
+			var suma = 0;
+			ratings.forEach(function (rate) {
+				suma += rate.rating;
+			});
+			return (suma / ratings.length) || 0;
+		}
+
+		$scope.loadUserRating = function (hotel) {
+			$http.post('/recinto/getUserRating', {id: hotel}).success(function(data) {
+			  $scope.hotelRating = data.rating;
+			}).error(function (err) {
+				console.log(err);
+			});
+		}
+
+		$scope.initRatings = function (id) {
+			$http.post('/recinto/getRatings', {id: id}).success(function(data) {
+			  $scope.hotelRatings = data.ratings;
+			}).error(function (err) {
+				console.log(err);
+			});
+		}
 
 	$scope.init = function() {
 		$scope.moreHotels = [];

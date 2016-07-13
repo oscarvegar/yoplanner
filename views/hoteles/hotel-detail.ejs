@@ -27,9 +27,10 @@
                 <div class="row">
                     <div class="col-md-9">
                         <ul class="starts">
-                            <% for(var i=0 ;i<currentHotel.starRating;i++) { %>
-                                <li><a href="#"><i class="fa fa-star"></i></a></li>
-                            <% } %>
+													<h3 style="color: white;text-shadow: 0 4px 10px black;font-size:20px;">Calificación de usuarios</h3>
+													<p style="font-size: 18px; color: white;text-shadow: 0 4px 10px black;" ng-init="initRatings(hotelid)">
+														<strong>{{averageRating(hotelRatings)}}</strong>/10 <span style="font-size: 12px;"> {{hotelRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="hotelRating" ng-click="rateHotel()" ng-show="_hasSession" ng-init="loadUserRating(hotelid)"></input-stars>
+													</p>
                         </ul>
                         <h2><%=currentHotel.name%>
                             <span><%=currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
@@ -98,6 +99,7 @@
 <div class="tab-content">
     <!-- Tab One - Hotel -->
     <div class="tab-pane active" id="hotel">
+
         <h2>Información del hotel</h2>
         <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
 				<div class="row" ng-show="_hasSession">
