@@ -11,7 +11,7 @@
         <!-- Content Parallax-->
         <div class="opacy_bg_02">
             <div class="container">
-                <h1>Hoteles en <%=ciudad.name%></h1>
+                <!-- HOTELES EN -->
                 <div class="crumbs">
                     <!-- ChildView - Destination Review -->
                     <div ui-view></div>
@@ -119,6 +119,17 @@
 
             <!-- Hoteles Angular -->
             <div class="col-md-9  col-sm-12 col-lg-9" ng-init="loadNewHoteles()">
+              <div class="row">
+                <div class="col-md-12 bg-dark color-white flexbox-container" style="padding: 1em;margin: 0; width: 100%;margin-left: -1em;">
+                  <span>Ordenar por </span>
+                  <button type="button" class="btn btn-primary" style="margin: 0 1em 0;margin-left: auto;">Calificación de usuario</button>
+                  <button type="button" class="btn btn-primary" style="margin: 0 1em 0;">Comentarios</button>
+                  <button type="button" class="btn btn-primary" style="margin: 0 1em 0;">Visitas</button>
+                </div>
+                <div class="col-md-12 text-center" style="padding-top: 1em;">
+                  <h3>Hoteles en <%=ciudad.name%></h3>
+                </div>
+              </div>
               <div class="loader" ng-show="cargandoBusqueda"></div>
               <br>
               <!--  | filter:filterSalones(buscar.salones) | filter:filterHabitaciones(buscar.habitaciones) | filter:filterPlan(buscar.plan) -->
