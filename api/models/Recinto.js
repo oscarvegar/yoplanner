@@ -38,6 +38,10 @@ module.exports = {
         ratings: {
           type: 'array',
           defaultsTo: []
+        },
+        likes: {
+          type: 'array',
+          defaultsTo: []
         }
     }
 };

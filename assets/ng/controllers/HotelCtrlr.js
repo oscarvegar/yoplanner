@@ -414,6 +414,45 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			}
 		}
 
+		//favoritos
+		$scope.isOnFav = function (id) {
+			$http.get('/recinto/isonfav/', {id: id}).success(function(data) {
+				$scope.isFav = data.isFav;
+			});
+			$http.get('/recinto/isliked/', {id: id}).success(function(data) {
+				$scope.isLiked = data.isLiked;
+			});
+		}
+
+		$scope.addFav = function (id) {
+			$http.post('/recinto/addfav/', {id: id}).success(function(data) {
+				console.log('ADDED FAV', data.favoritos);
+				$scope.isFav = true;
+			});
+		}
+
+		$scope.removeFav = function (id) {
+			$http.post('/recinto/removefav/', {id: id}).success(function(data) {
+				console.log('REMOVED FAV', data.favoritos);
+				$scope.isFav = false;
+			});
+		}
+
+		//likes
+		$scope.likeHotel = function (id) {
+			$http.post('/recinto/likeHotel/', {id: id}).success(function(data) {
+				console.log('ADDED LIKE', data.likes);
+				$scope.isLiked = true;
+			});
+		}
+
+		$scope.notlikeHotel = function (id) {
+			$http.post('/recinto/notlikeHotel/', {id: id}).success(function(data) {
+				console.log('REMOVED LIKE', data.likes);
+				$scope.isLiked = false;
+			});
+		}
+
 	$scope.init = function() {
 		$scope.moreHotels = [];
  		$scope.showMostrarMas = true;

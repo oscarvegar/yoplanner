@@ -5,19 +5,22 @@
 
         <!-- Single Carousel -->
         <div id="single-carousel">
-
         	<% 	var currentHotel = hotel;
         		for(var i in hotel.pictures){
 							if (i >= 3) {
 								break;
 							}
-        		var pic = hotel.pictures[i];
-    		%>
-            <div class="img-hover"  >
-
-                <img src="<%=pic%>" alt="" class="img-responsive" style="width: 100%; height: 600px;">
+        			var pic = hotel.pictures[i];
+    			%>
+            <div class="img-hover">
+              <img src="<%=pic%>" alt="" class="img-responsive" style="width: 100%; height: 600px;">
             </div>
             <% } %>
+						<% if(!hotel.pictures || hotel.pictures.length <= 0) { %>
+						<div class="img-hover">
+							<img src="/img/banner/banneryp.jpg" alt="" class="img-responsive" style="width: 100%; height: 600px;">
+            </div>
+						<%}%>
         </div>
         <!-- End Single Carousel -->
 
@@ -102,7 +105,12 @@
 <div class="tab-content">
     <!-- Tab One - Hotel -->
     <div class="tab-pane active" id="hotel">
-
+			<div class="favbuttons" ng-init="isOnFav(hotelid)" ng-show="_hasSession">
+				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isFav" ng-click="addFav(hotelid)"><i class="fa fa-star"></i> Agregar a Favoritos</button>
+				<button type="button" class="btn btn-danger" style="margin: 0 1em 1em;" ng-show="isFav" ng-click="removeFav(hotelid)"><i class="fa fa-star-o"></i>  Quitar de Favoritos</button>
+				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isLiked" ng-click="likeHotel(hotelid)"><i class="fa fa-thumbs-up"></i> Me gusta</button>
+				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-show="isLiked" ng-click="notlikeHotel(hotelid)"><i class="fa fa-thumbs-o-up"></i> Ya no me gusta</button>
+			</div>
         <h2>Información del hotel</h2>
         <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
 				<div class="row" ng-show="_hasSession">
@@ -458,12 +466,12 @@
 <div class="tab-pane" id="promociones">
 	<div class="row">
 		<!-- Gallery -->
-		<div class="col-md-10 col-md-offset-1">
-			<img ng-src="galleryPromotions[0]" alt="Promoción" style="width: 100%;" />
+		<div class="col-md-10 col-md-offset-1" ng-show="hotel.promotions.length > 0">
+			<img ng-src="{{galleryPromotions[0]}}" alt="Promoción" style="width: 100%;" />
 		</div>
 		<div class="col-md-12 text-center">
-			<ng-gallery images="galleryPromotions" ng-if="galleryPromotions.length <= 0"></ng-gallery>
-			<h3>No hay promociones por el momento...</h3>
+			<ng-gallery images="galleryPromotions" ng-show="hotel.promotions.length > 0"></ng-gallery>
+			<h3 ng-show="hotel.promotions.length <= 0">No hay promociones por el momento...</h3>
 		</div>
 		<hr>
 		<!-- Youtube -->

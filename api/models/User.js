@@ -26,6 +26,10 @@ module.exports = {
       collection: 'customer',
       via: 'user'
     },
+    favoritos: {
+      type: 'array',
+      defaultsTo: []
+    },
 
     toJSON: function() {
       var obj = this.toObject();
