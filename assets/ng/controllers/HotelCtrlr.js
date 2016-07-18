@@ -130,10 +130,16 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.initGallery = function () {
 			//Adaptar imagenes la formato de la directiva
 			$scope.galleryPictures = [];
+			$scope.galleryPromotions = [];
 			$http.get("/recinto/findById/"+$scope.hotelid).success(function(hotel){
 				hotel.pictures.forEach(function (picture) {
 					$scope.galleryPictures.push({img: picture, thumb: picture});
 				});
+				if (hotel.promotions) {
+					hotel.promotions.forEach(function (picture) {
+						$scope.galleryPromotions.push({img: picture, thumb: picture});
+					});
+				}
 			});
 		};
 
@@ -382,6 +388,30 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			}).error(function (err) {
 				console.log(err);
 			});
+		}
+
+		$scope.sorthotel = 0;
+
+		$scope.sortSocial = function (hotel) {
+			switch ($scope.sorthotel) {
+				case 0:
+					return hotel.place;
+					break;
+				case 1:
+					return hotel.likes.length;
+					break;
+				case 2:
+					return hotel.visitas;
+					break;
+				case 3:
+					if (hotel.comentarios) {
+						return hotel.comentarios.length;
+					}
+					return hotel.place;
+					break;
+				default:
+					return hotel.place;
+			}
 		}
 
 	$scope.init = function() {

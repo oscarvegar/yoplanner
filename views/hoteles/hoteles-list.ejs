@@ -11,7 +11,7 @@
         <!-- Content Parallax-->
         <div class="opacy_bg_02">
             <div class="container">
-                <h1>Hoteles en <%=ciudad.name%></h1>
+                <!-- HOTELES EN -->
                 <div class="crumbs">
                     <!-- ChildView - Destination Review -->
                     <div ui-view></div>
@@ -119,10 +119,24 @@
 
             <!-- Hoteles Angular -->
             <div class="col-md-9  col-sm-12 col-lg-9" ng-init="loadNewHoteles()">
-              <div class="loader" ng-show="cargandoBusqueda"></div>
+              <div class="row">
+                <div class="col-md-12 text-center" style="padding-top: 1em;margin-bottom: 1em;">
+                  <h3>Hoteles en <%=ciudad.name%></h3>
+                </div>
+                <div class="col-md-8 col-md-offset-2 bg-dark color-white flexbox-container text-center" style="min-height: 60px;">
+                  <span>Ordenar por:&nbsp;&nbsp;&nbsp;</span>
+                  <a class="linksort" ng-click="sorthotel = 1" ng-class="{'sort-active': sorthotel == 1, 'sort-inactive': sorthotel != 1}">Mejor Votado</a><span style="color: white">&nbsp;/&nbsp;</span>
+                  <a class="linksort" ng-click="sorthotel = 2" ng-class="{'sort-active': sorthotel == 2, 'sort-inactive': sorthotel != 2}">Más Visto</a><span style="color: white">&nbsp;/&nbsp;</span>
+                  <a class="linksort" ng-click="sorthotel = 3" ng-class="{'sort-active': sorthotel == 3, 'sort-inactive': sorthotel != 3}">Más Comentado</a><span style="color: white">&nbsp;/&nbsp;</span>
+                  <a class="linksort" ng-click="sorthotel = 4" ng-class="{'sort-active': sorthotel == 4, 'sort-inactive': sorthotel != 4}">Mis Favoritos</a>
+                </div>
+                <div class="col-md-12 text-center" style="padding: 1em;"ng-show="cargandoBusqueda">
+                  <div class="loader"></div>
+                </div>
+              </div>
               <br>
               <!--  | filter:filterSalones(buscar.salones) | filter:filterHabitaciones(buscar.habitaciones) | filter:filterPlan(buscar.plan) -->
-              <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | filter:buscar.nombre | filter:filterStar(buscar) | orderBy:place:true">
+              <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew.slice().reverse() | orderBy:sortSocial">
                    <div class="img-hover">
                       <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive"  style="width: 100%;height: 166px">
                   </div>
