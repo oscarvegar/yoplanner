@@ -710,3 +710,19 @@ div.carbonad-image {
 
 	align-items: center;
 }
+
+.margin-right-half {
+	margin-right: 1em;
+}
+
+.sort-active {
+	text-shadow: 2px 2px 10px black;
+}
+
+.sort-inactive {
+	color: rgb(0, 148, 255);
+}
+
+.linksort:hover {
+	color: rgb(91, 166, 255);
+}

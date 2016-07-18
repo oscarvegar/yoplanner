@@ -82,6 +82,9 @@
 																<li>
                                     <a href="?#galeria" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-picture-o"></i> Galería</a>
                                 </li>
+																<li>
+                                    <a href="?#promociones" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-newspaper-o"></i> Promociones</a>
+                                </li>
                                 <li ng-if="_hasSession">
                                     <a href="javascript:void(0);" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0"><i class="fa fa-cart-plus"></i>Cotiza Grupo</a>
                                 </li>
@@ -443,6 +446,24 @@
 		<!-- Gallery -->
 		<div class="col-md-12" ng-init="initGallery()">
 			<ng-gallery images="galleryPictures"></ng-gallery>
+		</div>
+		<hr>
+		<!-- Youtube -->
+		 <div class="col-md-4 col-md-offset-4" style="background: #000; margin-top: 1em;">
+
+		 </div>
+ </div>
+</div>
+<!-- Tab #5 promociones -->
+<div class="tab-pane" id="promociones">
+	<div class="row">
+		<!-- Gallery -->
+		<div class="col-md-10 col-md-offset-1">
+			<img ng-src="galleryPromotions[0]" alt="Promoción" style="width: 100%;" />
+		</div>
+		<div class="col-md-12 text-center">
+			<ng-gallery images="galleryPromotions" ng-if="galleryPromotions.length <= 0"></ng-gallery>
+			<h3>No hay promociones por el momento...</h3>
 		</div>
 		<hr>
 		<!-- Youtube -->
