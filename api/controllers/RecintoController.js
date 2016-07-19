@@ -212,8 +212,16 @@ module.exports = {
       var user = req.user.id;
       var idhotel = req.param('id');
       User.findOne({id: user}).then(function (hotel) {
-        var isfav = hotel.favoritos.indexOf(idhotel) > -1 ? true : false;
-        return res.json({isFav: isfav});
+        console.log('HOTEL FAVS', hotel.favoritos);
+        console.log('USER ID', user);
+        console.log('FAV INDEX', hotel.favoritos.indexOf(idhotel));
+        hotel.favoritos.forEach(function (hotelfav) {
+          if (hotelfav == idhotel) {
+            return res.json({isFav: true});
+          } else {
+            return res.json({isFav: true});
+          }
+        });
       }).catch(console.log);
     },
 
@@ -246,8 +254,14 @@ module.exports = {
       var user = req.user.id;
       var idhotel = req.param('id');
       Recinto.findOne({id: idhotel}).then(function (hotel) {
-        var isliked = hotel.likes.indexOf(user) > -1 ? true : false;
-        return res.json({isLiked: isliked});
+        console.log('HOTEL IS LIKED', hotel);
+        hotel.likes.forEach(function (like) {
+          if (like == user) {
+            return res.json({isLiked: true});
+          } else {
+            return res.json({isLiked: false});
+          }
+        });
       }).catch(console.log);
     },
 

@@ -398,9 +398,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					return hotel.place;
 					break;
 				case 1:
+					if (!hotel.likes) {
+						return hotel.place;
+					}
 					return hotel.likes.length;
 					break;
 				case 2:
+					if (!hotel.visitas) {
+						return hotel.place;
+					}
 					return hotel.visitas;
 					break;
 				case 3:
@@ -417,10 +423,18 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		//favoritos
 		$scope.isOnFav = function (id) {
 			$http.get('/recinto/isonfav/', {id: id}).success(function(data) {
+				console.log('IS ON FAV', data);
 				$scope.isFav = data.isFav;
 			});
+		}
+
+		$scope.isLiked = function (id) {
+			console.log('GETTING IS LIKED', id);
 			$http.get('/recinto/isliked/', {id: id}).success(function(data) {
+				console.log('IS LIKED', data);
 				$scope.isLiked = data.isLiked;
+			}).error(function (err) {
+				console.log('ERR LIKED', err);
 			});
 		}
 

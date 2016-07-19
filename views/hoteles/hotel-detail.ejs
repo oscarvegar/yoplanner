@@ -106,6 +106,7 @@
     <!-- Tab One - Hotel -->
     <div class="tab-pane active" id="hotel">
 			<div class="favbuttons" ng-init="isOnFav(hotelid)" ng-show="_hasSession">
+				<input type="hidden" ng-init="isLiked(hotelid)">
 				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isFav" ng-click="addFav(hotelid)"><i class="fa fa-star"></i> Agregar a Favoritos</button>
 				<button type="button" class="btn btn-danger" style="margin: 0 1em 1em;" ng-show="isFav" ng-click="removeFav(hotelid)"><i class="fa fa-star-o"></i>  Quitar de Favoritos</button>
 				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isLiked" ng-click="likeHotel(hotelid)"><i class="fa fa-thumbs-up"></i> Me gusta</button>
