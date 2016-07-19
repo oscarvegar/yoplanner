@@ -206,5 +206,115 @@ module.exports = {
         }
         return res.json({rating: tempRating});
       }).catch(console.log);
+    },
+
+    isOnFav: function (req, res) {
+      var user = req.user.id;
+      var idhotel = req.param('id');
+      User.findOne({id: user}).then(function (hotel) {
+        hotel.favoritos.forEach(function (hotelfav) {
+          if (hotelfav === idhotel) {
+            return res.json({isFav: true});
+          } else {
+            if (hotel.favoritos.indexOf(idhotel) > -1) {
+              return res.json({isFav: true});
+            }
+            return res.json({isFav: false});
+          }
+        });
+      }).catch(console.log);
+    },
+
+    addFav: function (req, res) {
+      var userid = req.user.id;
+      var idhotel = req.param('id');
+      User.findOne({id: userid}).then(function (user) {
+        if (!user.favoritos) {
+          user.favoritos = [];
+        }
+        user.favoritos.push(idhotel);
+        User.update({id: userid}, {favoritos: user.favoritos}).then(function (users) {
+          return res.json(users[0]);
+        }).catch(console.log);
+      }).catch(console.log);
+    },
+
+    removeFav: function (req, res) {
+      var userid = req.user.id;
+      var idhotel = req.param('id');
+      User.findOne({id: userid}).then(function (user) {
+        user.favoritos.splice(user.favoritos.indexOf(idhotel), 1);
+        User.update({id: userid}, {favoritos: user.favoritos}).then(function (users) {
+          return res.json(users[0]);
+        }).catch(console.log);
+      }).catch(console.log);
+    },
+
+    isLiked: function (req, res) {
+      var user = req.user.id;
+      var idhotel = req.param('id');
+      Recinto.findOne({id: idhotel}).then(function (hotel) {
+        console.log('HOTEL IS LIKED', hotel.id);
+        console.log('HOTEL LIKES', hotel.likes);
+        console.log('USER TO LIKE', req.user.id);
+        if (!hotel.likes || hotel.likes.length <= 0) {
+          return res.json({isLiked: false});
+        }
+        for (var i in hotel.likes) {
+          if (hotel.likes[i] == user) {
+            return res.json({isLiked: true});
+          } else {
+            if (hotel.likes.indexOf(user) > -1) {
+              return res.json({isLiked: true});
+            }
+            return res.json({isLiked: false});
+          }
+        }
+      }).catch(console.log);
+    },
+
+    likeHotel: function (req, res) {
+      var user = req.user.id;
+      var idhotel = req.param('id');
+      Recinto.findOne({id: idhotel}).then(function (hotel) {
+        if (!hotel.likes) {
+          hotel.likes = [];
+        }
+        hotel.likes.push(user);
+        Recinto.update({id: idhotel}, {likes: hotel.likes}).then(function (hotelupdate) {
+          return res.json(hotelupdate[0]);
+        }).catch(console.log);
+      }).catch(console.log);
+    },
+
+    notlikeHotel: function (req, res) {
+      var user = req.user.id;
+      var idhotel = req.param('id');
+      Recinto.findOne({id: idhotel}).then(function (hotel) {
+        hotel.likes.splice(hotel.likes.indexOf(user), 1);
+        Recinto.update({id: idhotel}, {likes: hotel.likes}).then(function (hotelupdate) {
+          return res.json(hotelupdate[0]);
+        }).catch(console.log);
+      }).catch(console.log);
+    },
+
+    getfavlist: function (req, res) {
+      var user = req.user.id;
+      User.findOne({id: user}).then(function(data) {
+        return res.json({favlist: data.favoritos});
+      }).catch(console.log);
+    },
+
+    findByIdAndCiudad: function (req, res) {
+      var idhotel = req.param('id');
+      var idciudad = req.param('ciudad');
+      Recinto.findOne({id: idhotel}).then(function(data) {
+        console.log('DATA HOTEL', data);
+        if (data.cityId == idciudad) {
+          return res.json({hotel: data});
+        } else {
+          return res.json({error: true, message: 'Hotel no es del destino actual.'});
+        }
+      });
     }
 };

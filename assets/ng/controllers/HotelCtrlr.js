@@ -398,9 +398,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					return hotel.place;
 					break;
 				case 1:
+					if (!hotel.likes) {
+						return hotel.place;
+					}
 					return hotel.likes.length;
 					break;
 				case 2:
+					if (!hotel.visitas) {
+						return hotel.place;
+					}
 					return hotel.visitas;
 					break;
 				case 3:
@@ -413,6 +419,78 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					return hotel.place;
 			}
 		}
+
+		//favoritos
+		$scope.isOnFav = function (id) {
+			$http.post('/recinto/isonfav/', {id: id}).success(function(data) {
+				console.log('IS ON FAV', data);
+				$scope.isFav = data.isFav;
+			});
+		}
+
+		$scope.isLiked = function (id) {
+			console.log('GETTING IS LIKED', id);
+			$http.post('/recinto/isliked/', {id: id}).success(function(data) {
+				console.log('IS LIKED', data);
+				$scope.isLiked = data.isLiked;
+			}).error(function (err) {
+				console.log('ERR LIKED', err);
+			});
+		}
+
+		$scope.addFav = function (id) {
+			$http.post('/recinto/addfav/', {id: id}).success(function(data) {
+				console.log('ADDED FAV', data.favoritos);
+				$scope.isFav = true;
+			});
+		}
+
+		$scope.removeFav = function (id) {
+			$http.post('/recinto/removefav/', {id: id}).success(function(data) {
+				console.log('REMOVED FAV', data.favoritos);
+				$scope.isFav = false;
+			});
+		}
+
+		//likes
+		$scope.likeHotel = function (id) {
+			$http.post('/recinto/likeHotel/', {id: id}).success(function(data) {
+				console.log('ADDED LIKE', data.likes);
+				$scope.isLiked = true;
+			});
+		}
+
+		$scope.notlikeHotel = function (id) {
+			$http.post('/recinto/notlikeHotel/', {id: id}).success(function(data) {
+				console.log('REMOVED LIKE', data.likes);
+				$scope.isLiked = false;
+			});
+		}
+
+		//Watcher sorthotel
+		$scope.$watch('sorthotel', function (sort) {
+			if (sort == 4) {
+				$scope.templist = $scope.hotelesNew;
+				$scope.hotelesNew = [];
+				//Get Fav array
+				$http.get('/recinto/getfavlist').success(function(data) {
+					console.log('GETTIN FAV LIST', data);
+				  var favlist = data.favlist;
+					for (var i in favlist) {
+						$http.post('/recinto/findByIdAndCiudad', {id: favlist[i], ciudad: $scope.searchId}).success(function(data) {
+							console.log('FAV LIST', data);
+							if (!data.error) {
+								$scope.hotelesNew.push(data.hotel);
+							}
+						});
+					}
+				});
+			} else {
+				if ($scope.templist) {
+					$scope.hotelesNew = $scope.templist;
+				}
+			}
+		});
 
 	$scope.init = function() {
 		$scope.moreHotels = [];

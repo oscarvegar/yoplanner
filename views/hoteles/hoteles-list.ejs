@@ -127,8 +127,8 @@
                   <span>Ordenar por:&nbsp;&nbsp;&nbsp;</span>
                   <a class="linksort" ng-click="sorthotel = 1" ng-class="{'sort-active': sorthotel == 1, 'sort-inactive': sorthotel != 1}">Mejor Votado</a><span style="color: white">&nbsp;/&nbsp;</span>
                   <a class="linksort" ng-click="sorthotel = 2" ng-class="{'sort-active': sorthotel == 2, 'sort-inactive': sorthotel != 2}">Más Visto</a><span style="color: white">&nbsp;/&nbsp;</span>
-                  <a class="linksort" ng-click="sorthotel = 3" ng-class="{'sort-active': sorthotel == 3, 'sort-inactive': sorthotel != 3}">Más Comentado</a><span style="color: white">&nbsp;/&nbsp;</span>
-                  <a class="linksort" ng-click="sorthotel = 4" ng-class="{'sort-active': sorthotel == 4, 'sort-inactive': sorthotel != 4}">Mis Favoritos</a>
+                  <a class="linksort" ng-click="sorthotel = 3" ng-class="{'sort-active': sorthotel == 3, 'sort-inactive': sorthotel != 3}">Más Comentado</a><span style="color: white" ng-show="_hasSession">&nbsp;/&nbsp;</span>
+                  <a ng-show="_hasSession" class="linksort" ng-click="sorthotel = 4" ng-class="{'sort-active': sorthotel == 4, 'sort-inactive': sorthotel != 4}">Mis Favoritos</a>
                 </div>
                 <div class="col-md-12 text-center" style="padding: 1em;"ng-show="cargandoBusqueda">
                   <div class="loader"></div>
