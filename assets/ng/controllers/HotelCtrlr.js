@@ -367,6 +367,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
 		$scope.averageRating = function (ratings) {
+			if (!ratings) {
+				return 0;
+			}
 			var suma = 0;
 			ratings.forEach(function (rate) {
 				suma += rate.rating;
@@ -399,7 +402,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					break;
 				case 1:
 					if (!hotel.likes) {
-						return hotel.place;
+						return 0;
 					}
 					return hotel.likes.length;
 					break;
@@ -502,6 +505,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			if(hotel){
 				$scope.currentHotel = hotel;
 				$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
+				$scope.videoHotel = hotel.youtube ? hotel.youtube : 'https://www.youtube.com/v/JGmFl_gyaew';
 			}
 		})
 

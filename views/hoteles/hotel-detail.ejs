@@ -28,7 +28,7 @@
         <div class="title-detailed">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-7" style="background-color: rgba(0, 0, 0, 0.5);padding: 1em;border-radius: 15px;">
                         <ul class="starts">
 													<h3 style="color: white;text-shadow: 0 4px 10px black;font-size:20px;">Calificación de usuarios</h3>
 													<p style="font-size: 18px; color: white;text-shadow: 0 4px 10px black;" ng-init="initRatings(hotelid)">
@@ -40,7 +40,7 @@
                         </h2>
                     </div>
 
-                    <div class="col-md-3"></div>
+                    <div class="col-md-5"></div>
                 </div>
             </div>
         </div>
@@ -145,7 +145,10 @@
 						<div class="col-md-6">
 							<h3>Video de la propiedad</h3>
 							<div class="testimonial-info-2">
-		 						 <iframe width="100%" height="400px" src="<%=hotel.youtube?hotel.youtube.replace("watch?v=","/v/") : 'https://www.youtube.com/v/JGmFl_gyaew'%>" frameborder="0" allowfullscreen></iframe>
+								<!--
+								<iframe width="100%" height="400px" src="<%=hotel.youtube?hotel.youtube.replace("watch?v=","/v/") : 'https://www.youtube.com/v/JGmFl_gyaew'%>" frameborder="0" allowfullscreen></iframe>
+							 -->
+							 <youtube-video video-url="videoHotel" style="width: 100%;"></youtube-video>
 		 				 </div>
 						</div>
 						<!-- Ubicación -->
