@@ -726,3 +726,6 @@ div.carbonad-image {
 .linksort:hover {
 	color: rgb(91, 166, 255);
 }
+.btn-red {
+	background-color: rgb(186, 32, 32);
+}

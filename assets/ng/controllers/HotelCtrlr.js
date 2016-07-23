@@ -394,31 +394,37 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
 		$scope.sorthotel = 0;
+		$scope.sortAsc = true;
 
 		$scope.sortSocial = function (hotel) {
 			switch ($scope.sorthotel) {
 				case 0:
+					$scope.sortAsc = false;
 					return hotel.place;
 					break;
 				case 1:
 					if (!hotel.likes) {
 						return 0;
 					}
+					$scope.sortAsc = true;
 					return hotel.likes.length;
 					break;
 				case 2:
 					if (!hotel.visitas) {
 						return hotel.place;
 					}
+					$scope.sortAsc = true;
 					return hotel.visitas;
 					break;
 				case 3:
 					if (hotel.comentarios) {
 						return hotel.comentarios.length;
 					}
-					return hotel.place;
+					$scope.sortAsc = true;
+					return 0;
 					break;
 				default:
+				$scope.sortAsc = false;
 					return hotel.place;
 			}
 		}
@@ -515,5 +521,23 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 	$scope.$evalAsync(function() {
 		$log.info('HotelController.$evalAsync');
 		$scope.init();
+	});
+})
+.directive('pull-bottom', function () {
+	return {
+    restrict: 'A',
+    link: function ($scope, iElement, iAttrs) {
+      var $parent = iElement.parent();
+      var $parentHeight = $parent.height();
+      var height = iElement.height();
+      iElement.css('margin-top', $parentHeight - height);
+    }
+  };
+});
+
+$(document).ready(function () {
+	$('.pull-down').each(function() {
+	  var $this=$(this);
+		$this.css('margin-top', $this.parent().height()-$this.height())
 	});
 });
