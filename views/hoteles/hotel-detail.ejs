@@ -26,23 +26,47 @@
 
         <!-- Section Title-->
         <div class="title-detailed">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7" style="background-color: rgba(0, 0, 0, 0.5);padding: 1em;border-radius: 15px;">
-                        <ul class="starts">
-													<h3 style="color: white;text-shadow: 0 4px 10px black;font-size:20px;">Calificación de usuarios</h3>
-													<p style="font-size: 18px; color: white;text-shadow: 0 4px 10px black;" ng-init="initRatings(hotelid)">
-														<strong>{{averageRating(hotelRatings)}}</strong>/10 <span style="font-size: 12px;"> {{hotelRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="hotelRating" ng-click="rateHotel()" ng-show="_hasSession" ng-init="loadUserRating(hotelid)"></input-stars>
-													</p>
-                        </ul>
-                        <h2><%=currentHotel.name%>
-                            <span><%=currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
-                        </h2>
-                    </div>
-
-                    <div class="col-md-5"></div>
-                </div>
+          <div class="container">
+            <div class="row boxtest">
+              <div class="col-md-8 boxtest" style="background-color: rgba(0, 0, 0, 0.5);padding: 1em;border-radius: 15px;">
+								<ul class="starts">
+									<h3 style="color: white;text-shadow: 0 4px 10px black;font-size:20px;">Calificación de usuarios</h3>
+									<p style="font-size: 18px; color: white;text-shadow: 0 4px 10px black;" ng-init="initRatings(hotelid)">
+										<strong>{{averageRating(hotelRatings)}}</strong>/10 <span style="font-size: 12px;"> {{hotelRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="hotelRating" ng-click="rateHotel()" ng-show="_hasSession" ng-init="loadUserRating(hotelid)"></input-stars>
+									</p>
+								</ul>
+								<h2><%=currentHotel.name%>
+										<span><%=currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
+								</h2>
+              </div>
+							<div ng-init="isOnFav(hotelid)" ng-show="_hasSession" class="col-md-3 col-md-offset-1 pull-down text-center boxtest" style="background-color: rgba(0, 0, 0, 0.5);border-radius: 15px;">
+								<!--
+								<div class="favbuttons" ng-init="isOnFav(hotelid)" ng-show="_hasSession">
+									<input type="hidden" ng-init="isLiked(hotelid)">
+									<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isFav" ng-click="addFav(hotelid)"><i class="fa fa-star"></i> Agregar a Favoritos</button>
+									<button type="button" class="btn btn-danger" style="margin: 0 1em 1em;" ng-show="isFav" ng-click="removeFav(hotelid)"><i class="fa fa-star-o"></i>  Quitar de Favoritos</button>
+									<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isLiked" ng-click="likeHotel(hotelid)"><i class="fa fa-thumbs-up"></i> Me gusta</button>
+									<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-show="isLiked" ng-click="notlikeHotel(hotelid)"><i class="fa fa-thumbs-o-up"></i> Ya no me gusta</button>
+								</div>
+							 	-->
+								<button class="btn btn-primary margin1em" ng-hide="isFav" ng-click="addFav(hotelid)" style="border-radius: 50%;" title="Añadir a Favoritos" tooltip>
+									<i class="fa fa-star"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-show="isFav" ng-click="removeFav(hotelid)" style="border-radius: 50%;" title="Quitar de Favoritos" tooltip>
+									<i class="fa fa-star-o"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-hide="isLiked" ng-click="likeHotel(hotelid)" style="border-radius: 50%;" title="Me gusta" tooltip>
+									<i class="fa fa-thumbs-up"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-show="isLiked" ng-click="notlikeHotel(hotelid)" style="border-radius: 50%;" title="Ya no me gusta" tooltip>
+									<i class="fa fa-thumbs-o-up"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0" style="border-radius: 50%;" title="Cotiza grupo" tooltip>
+									<i class="fa fa-cart-plus"></i>
+								</button>
+							</div>
             </div>
+          </div>
         </div>
         <!-- End Section Title-->
     </div>
@@ -88,9 +112,12 @@
 																<li>
                                     <a href="?#promociones" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-newspaper-o"></i> Promociones</a>
                                 </li>
-                                <li ng-if="_hasSession">
+																<!--
+																<li ng-if="_hasSession">
                                     <a href="javascript:void(0);" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0"><i class="fa fa-cart-plus"></i>Cotiza Grupo</a>
                                 </li>
+															 -->
+
 <!--li>
 <a href="?#bookHotel" ng-click="renderMap(true);" data-toggle="tab"><i class="fa fa-cart-plus"></i>Reserva Hotel</a>
 </li-->
@@ -105,13 +132,6 @@
 <div class="tab-content">
     <!-- Tab One - Hotel -->
     <div class="tab-pane active" id="hotel">
-			<div class="favbuttons" ng-init="isOnFav(hotelid)" ng-show="_hasSession">
-				<input type="hidden" ng-init="isLiked(hotelid)">
-				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isFav" ng-click="addFav(hotelid)"><i class="fa fa-star"></i> Agregar a Favoritos</button>
-				<button type="button" class="btn btn-danger" style="margin: 0 1em 1em;" ng-show="isFav" ng-click="removeFav(hotelid)"><i class="fa fa-star-o"></i>  Quitar de Favoritos</button>
-				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isLiked" ng-click="likeHotel(hotelid)"><i class="fa fa-thumbs-up"></i> Me gusta</button>
-				<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-show="isLiked" ng-click="notlikeHotel(hotelid)"><i class="fa fa-thumbs-o-up"></i> Ya no me gusta</button>
-			</div>
         <h2>Información del hotel</h2>
         <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
 				<div class="row" ng-show="_hasSession">
