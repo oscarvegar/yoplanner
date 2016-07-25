@@ -729,3 +729,9 @@ div.carbonad-image {
 .btn-red {
 	background-color: rgb(186, 32, 32);
 }
+.margin1em {
+	margin: 1em;
+}
+.boxtest {
+	box-sizing: border-box;
+}

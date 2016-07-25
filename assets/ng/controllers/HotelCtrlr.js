@@ -533,11 +533,24 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
       iElement.css('margin-top', $parentHeight - height);
     }
   };
+}).directive('tooltip', function(){
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs){
+            $(element).hover(function(){
+                // on mouseenter
+                $(element).tooltip('show');
+            }, function(){
+                // on mouseleave
+                $(element).tooltip('hide');
+            });
+        }
+    };
 });
 
 $(document).ready(function () {
 	$('.pull-down').each(function() {
 	  var $this=$(this);
-		$this.css('margin-top', $this.parent().height()-$this.height())
+		$this.css('margin-top', $this.parent().height()-$this.height() - 50)
 	});
 });
