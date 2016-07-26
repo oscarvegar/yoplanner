@@ -490,18 +490,15 @@
 <div class="tab-pane" id="promociones">
 	<div class="row">
 		<!-- Gallery -->
-		<div class="col-md-10 col-md-offset-1" ng-show="hotel.promotions.length > 0">
-			<img ng-src="{{galleryPromotions[0]}}" alt="Promoción" style="width: 100%;" />
+		<div class="col-md-10 col-md-offset-1" ng-show="hotel.promotions.length > 0 || hotel.promotions">
+			<img ng-src="{{galleryPromotions[0].img}}" alt="Promoción" style="width: 100%;" />
 		</div>
-		<div class="col-md-12 text-center">
-			<ng-gallery images="galleryPromotions" ng-show="hotel.promotions.length > 0"></ng-gallery>
-			<h3 ng-show="hotel.promotions.length <= 0">No hay promociones por el momento...</h3>
+		<div class="col-md-12" ng-show="hotel.promotions.length > 0 || hotel.promotions">
+			<ng-gallery images="galleryPromotions"></ng-gallery>
 		</div>
-		<hr>
-		<!-- Youtube -->
-		 <div class="col-md-4 col-md-offset-4" style="background: #000; margin-top: 1em;">
-
-		 </div>
+		<div class="col-md-12 text-center" ng-show="hotel.promotions.length < 0 || !hotel.promotions">
+			<h3>No hay promociones por el momento...</h3>
+		</div>
  </div>
 </div>
 
