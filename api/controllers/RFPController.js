@@ -104,7 +104,7 @@ module.exports = {
 
 	testMail: function (req, res) {
 		RFP.find({}).limit(1).then(function(data) {
-		  return res.view('emailTemplates/plannernew.ejs', {rfp: data[0], moment: moment});
+		  return res.view('emailTemplates/plannernew.ejs', {rfp: data[0], moment: moment, user: req.user});
 		}).catch(console.log);
 	}
 };

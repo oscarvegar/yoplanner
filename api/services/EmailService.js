@@ -51,9 +51,9 @@ module.exports = {
   },
 
   sendPlanner: function (options, rfp, user) {
-    console.log('RFP', rfp);
+    console.log('USER!!!! PLANNER EMAIL', user);
     var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/plannernew.ejs'), 'utf8');
-    var htmlfinal =  ejs.render(template, {rfp: rfp, moment: moment});
+    var htmlfinal =  ejs.render(template, {rfp: rfp, moment: moment, user: user});
     smtpTransport.sendMail({
      from: "Notificación ✔ YoPlanner <grupos@yoplanner.com>",
      //to: user.username,
