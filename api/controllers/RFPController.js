@@ -100,5 +100,11 @@ module.exports = {
 		}
     EmailService.sendPlanner(req.param('options'), rfp, req.user);
     console.log('Enviando correo a planner...');
-  }
+  },
+
+	testMail: function (req, res) {
+		RFP.find({}).limit(1).then(function(data) {
+		  return res.view('emailTemplates/plannernew.ejs', {rfp: data[0], moment: moment});
+		}).catch(console.log);
+	}
 };

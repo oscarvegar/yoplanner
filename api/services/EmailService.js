@@ -15,7 +15,7 @@ var smtpTransport = nodemailer.createTransport({
 module.exports = {
 
   sendHotel: function (options, rfp, user) {
-    var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/hotel.ejs'), 'utf8');
+    var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/hotelnew.ejs'), 'utf8');
     var htmlfinal =  ejs.render(template, {rfp: rfp, user: user, moment: moment});
     smtpTransport.sendMail({
      from: "Notificación ✔ YoPlanner <grupos@yoplanner.com>",
@@ -52,11 +52,12 @@ module.exports = {
 
   sendPlanner: function (options, rfp, user) {
     console.log('RFP', rfp);
-    var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/planner.ejs'), 'utf8');
+    var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/plannernew.ejs'), 'utf8');
     var htmlfinal =  ejs.render(template, {rfp: rfp, moment: moment});
     smtpTransport.sendMail({
      from: "Notificación ✔ YoPlanner <grupos@yoplanner.com>",
-     to: user.username,
+     //to: user.username,
+     to: 'arcaniteamp@gmail.com',
      bcc: "oscarman2001@hotmail.com",
      subject: 'RFP Recibida ✔ | Planner',
      html: htmlfinal
