@@ -85,20 +85,48 @@ module.exports = {
   },
 
 	sendHotelMail: function (req, res) {
+		var user = req.user;
 		var rfp = req.param('rfp');
-		if (!rfp.salones) {
-			rfp.salones = [];
-		}
-    EmailService.sendHotel(req.param('options'), rfp, req.user);
-    console.log('Enviando correo a hotel...');
+		User.findOne({account: user.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
+			if (!data.logoagencia) {
+				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
+			}
+			console.log('LOGO DE AGENCIA', data.logoagencia);
+			if (!rfp.salones) {
+				rfp.salones = [];
+			}
+			EmailService.sendHotel(req.param('options'), rfp, req.user, data.logoagencia);
+			console.log('Enviando correo a hotel...');
+		});
   },
 
 	sendPlannerMail: function (req, res) {
+		var user = req.user;
 		var rfp = req.param('rfp');
-		if (!rfp.salones) {
-			rfp.salones = [];
-		}
-    EmailService.sendPlanner(req.param('options'), rfp, req.user);
-    console.log('Enviando correo a planner...');
-  }
+		User.findOne({account: user.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
+			if (!data.logoagencia) {
+				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
+			}
+			console.log('LOGO DE AGENCIA', data.logoagencia);
+			if (!rfp.salones) {
+				rfp.salones = [];
+			}
+			EmailService.sendPlanner(req.param('options'), rfp, req.user, data.logoagencia);
+			console.log('Enviando correo a hotel...');
+		});
+  },
+
+	testMail: function (req, res) {
+		RFP.find({}).limit(1).then(function(data) {
+		  return res.view('emailTemplates/plannernew.ejs', {rfp: data[0], moment: moment, user: req.user});
+		}).catch(console.log);
+	},
+
+	findAgenciaLogo: function (req, res) {
+		var user = req.user;
+		User.findOne({account: user.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
+			console.log('LOGO DE AGENCIA', data);
+		  return res.json(data);
+		});
+	}
 };

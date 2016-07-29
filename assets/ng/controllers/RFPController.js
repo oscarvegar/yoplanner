@@ -2,6 +2,7 @@ angular.module('rfp-module', [])
 .controller('RFPController', function($scope,$http,$rootScope,$timeout) {
 	$scope.init = function(){
 	 	$scope.rfp =  window.localStorage.rfp!=null?JSON.parse(window.localStorage.rfp):{};
+		console.log('RPF', $scope.rfp);
 	  	$scope.configuracionHabitacionesDobles = $scope.rfp.configuracionHabitaciones!=null?$scope.divideTipoHabitaciones(2,$scope.rfp.configuracionHabitaciones):[];
 	    $scope.configuracionHabitacionesSencillas = $scope.rfp.configuracionHabitaciones!=null?$scope.divideTipoHabitaciones(1,$scope.rfp.configuracionHabitaciones):[];
 	    $scope.fechaInicialFor = $scope.rfp.fechaInicial!=null?moment($scope.rfp.fechaInicial).format('YYYY-MM-DD'):null;

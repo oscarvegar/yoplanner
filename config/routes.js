@@ -32,14 +32,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'post /deploy': 'DeployController.webhook',
+  'get /testmail': 'RFPController.testmail',
   'post /login': {
     controller: 'AuthController',
-    action: 'process'  
+    action: 'process'
   },
   'get /logout': {
     controller: 'AuthController',
     action: 'logout'
-  },  
+  },
   'get /hs':{
     controller: 'AuthController',
     action: 'hasSession'
@@ -47,6 +48,6 @@ module.exports.routes = {
   'GET /api/recinto/images/:id': 'RecintoController.images',
   'get /:id':'MainController.root',
   'get /':'MainController.root',
-  
+
 
 };

@@ -317,7 +317,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
 					<td style="width: 33%;">
 						<div>
 			        <strong>Fecha de salida</strong><br>
-			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= moment(rfp.fechaInicial).format('DD/MM/YYYY') %></div>
+			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= moment(rfp.fechaFinal).format('DD/MM/YYYY') %></div>
 			      </div>
 					</td>
 				</tr>
@@ -519,7 +519,7 @@ ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.s
   				<tr>
   					<td>
   						<div style="width: 100%;">
-  			        <strong>Hotel #<%= i+1 %></strong><br>
+  			        <strong>Hotel #</strong><br>
   			        <div style="margin: 1em;border-radius: 5px;border: thin solid rgb(181, 181, 181);padding: 0.5em;"><%= rfp.recintos[i].name %></div>
   			      </div>
   					</td>
