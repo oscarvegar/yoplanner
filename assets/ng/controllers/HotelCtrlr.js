@@ -511,7 +511,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			if(hotel){
 				$scope.currentHotel = hotel;
 				$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
-				$scope.videoHotel = hotel.youtube ? hotel.youtube : 'https://www.youtube.com/v/JGmFl_gyaew';
+				$scope.videoHotel = hotel.youtube ? hotel.youtube : 'https://www.youtube.com/watch?v=YqyYenoVADU';
 			}
 		})
 
