@@ -88,12 +88,19 @@ module.exports = {
 		var user = req.user;
 		var rfp = req.param('rfp');
 		User.findOne({account: user.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
+			//Cargar logo de agencia
 			if (!data.logoagencia) {
 				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
-			}
-			console.log('LOGO DE AGENCIA', data.logoagencia);
+			}/* else {
+				data.logoagencia = 'http://admin.yoplanner.com' + data.logoagencia;
+			}*/
+			//Si el evento no trae salones, poner un array en blanco para que no truene
 			if (!rfp.salones) {
 				rfp.salones = [];
+			}
+			//Sacar agencia del admin agencia para el planner
+			if (!user.empresa || user.empresa == null) {
+				user.empresa = data.empresa;
 			}
 			EmailService.sendHotel(req.param('options'), rfp, req.user, data.logoagencia);
 			console.log('Enviando correo a hotel...');
@@ -104,12 +111,19 @@ module.exports = {
 		var user = req.user;
 		var rfp = req.param('rfp');
 		User.findOne({account: user.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
+			//Cargar logo de agencia
 			if (!data.logoagencia) {
 				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
-			}
-			console.log('LOGO DE AGENCIA', data.logoagencia);
+			}/* else {
+				data.logoagencia = 'http://admin.yoplanner.com' + data.logoagencia;
+			}*/
+			//Si el evento no trae salones, poner un array en blanco para que no truene
 			if (!rfp.salones) {
 				rfp.salones = [];
+			}
+			//Sacar agencia del admin agencia para el planner
+			if (!user.empresa || user.empresa == null) {
+				user.empresa = data.empresa;
 			}
 			EmailService.sendPlanner(req.param('options'), rfp, req.user, data.logoagencia);
 			console.log('Enviando correo a hotel...');
