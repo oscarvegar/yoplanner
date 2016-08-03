@@ -91,9 +91,9 @@ module.exports = {
 			//Cargar logo de agencia
 			if (!data.logoagencia) {
 				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
-			} else {
+			}/* else {
 				data.logoagencia = 'http://admin.yoplanner.com' + data.logoagencia;
-			}
+			}*/
 			//Si el evento no trae salones, poner un array en blanco para que no truene
 			if (!rfp.salones) {
 				rfp.salones = [];
@@ -114,9 +114,9 @@ module.exports = {
 			//Cargar logo de agencia
 			if (!data.logoagencia) {
 				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
-			} else {
+			}/* else {
 				data.logoagencia = 'http://admin.yoplanner.com' + data.logoagencia;
-			}
+			}*/
 			//Si el evento no trae salones, poner un array en blanco para que no truene
 			if (!rfp.salones) {
 				rfp.salones = [];
