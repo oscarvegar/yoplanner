@@ -70,8 +70,11 @@ module.exports = {
 		})
 	},
 	test:function(req,res){
-		console.log("user",req.user)
-		res.json("ok")
+		var from = req.param('from');
+		var to = req.param('to');
+		console.log("from to",from,to);
+		EmailService.sendTest({from:from,to:to});
+		res.json("ok");
 	},
 
   //Enviar mail de customer
