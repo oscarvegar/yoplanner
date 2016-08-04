@@ -127,19 +127,24 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		};
 
-		$scope.initGallery = function () {
-			//Adaptar imagenes la formato de la directiva
-			$scope.galleryPictures = [];
+		$scope.initPromotions = function () {
 			$scope.galleryPromotions = [];
 			$http.get("/recinto/findById/"+$scope.hotelid).success(function(hotel){
-				hotel.pictures.forEach(function (picture) {
-					$scope.galleryPictures.push({img: picture, thumb: picture});
-				});
 				if (hotel.promotions) {
 					hotel.promotions.forEach(function (picture) {
 						$scope.galleryPromotions.push({img: picture, thumb: picture});
 					});
 				}
+			});
+		}
+
+		$scope.initGallery = function () {
+			//Adaptar imagenes la formato de la directiva
+			$scope.galleryPictures = [];
+			$http.get("/recinto/findById/"+$scope.hotelid).success(function(hotel){
+				hotel.pictures.forEach(function (picture) {
+					$scope.galleryPictures.push({img: picture, thumb: picture});
+				});
 			});
 		};
 
