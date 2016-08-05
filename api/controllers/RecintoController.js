@@ -83,13 +83,13 @@ module.exports = {
 
     getHotelEmail: function (req, res) {
       var id = req.param('id');
-      User.find({ hotels: [id] }).then(function (user) {
-        if (user.length > 0) {
-          return res.json({email: user[0].username, id: id});
+      Recinto.findOne({id: id}).then(function(data) {
+        if (data.correoPrincipal) {
+          return res.json({email: data.correoPrincipal});
         } else {
-          return res.json({email: 'perfil_sin_mail', id: id});
+          return res.json({email: ''});
         }
-      }).catch(console.log);
+      });
     },
 
     findBySearch: function (req, res) {
