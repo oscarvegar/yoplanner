@@ -298,12 +298,13 @@
 						<img ng-src="/image/ypcover.jpg" class="avatar-border" ng-if="!comentario.user.avatar" />
 						<img ng-src="{{comentario.user.avatar}}" class="avatar-border" ng-if="imagenValida(comentario.user.avatar)" />
 						<img ng-src="http://admin.yoplanner.com{{comentario.user.avatar}}" class="avatar-border" ng-if="!imagenValida(comentario.user.avatar)" />
-						<span>{{comentario.user.username}}</span>
+						<span><strong>{{comentario.user.username}}</strong></span>
+						<span>{{comentario.user.empresa || ''}}</span>
 					</div>
 					<div class="col-md-10 new-comentario">
 						<div class="row">
 							<div class="col-md-12">
-								<span class="titulo-comentario"><strong><em>{{comentario.title ? comentario.title : 'Comentario sin titulo'}}</em></strong></span> | <span am-time-ago="comentario.createdAt"></span>
+								<span class="titulo-comentario"><strong><em>{{comentario.title ? comentario.title : 'Comentario sin titulo'}}</em></strong></span>
 								<span uib-dropdown class="pull-right" style="margin-left: 1em;" ng-show="comentario.user.id == rootuser.id  || rootuser.roles.indexOf('ROLE_ADMIN') > -1" ng-if="rootuser">
 						      <a href id="simple-dropdown" uib-dropdown-toggle>
 						        <i class="fa fa-bars"></i>
@@ -327,8 +328,11 @@
 								<button type="button" class="btn btn-primary pull-right" ng-click="saveComment(comentario)" style="margin-bottom:1em;">Guardar Cambios</button>
 							</div>
 							<div class="col-m-12 footer-comentario" style="text-align: right;">
-								<a class="footer-boton" ng-hide="!_hasSession" ng-click="like(comentario)"><i class="fa fa-thumbs-up"></i> <strong>Comentario Útil</strong></a>
-								<a class="footer-boton" ng-if="!_hasSession"><i class="fa fa-thumbs-up"></i> <strong><del>Comentario Útil</del></strong></a>
+								<div class="pull-left" style="margin-left: 1em;">
+									<span am-time-ago="comentario.createdAt" style="font-size: 12px;"></span>
+								</div>
+								<a class="footer-boton" ng-hide="!_hasSession" ng-click="like(comentario)"><i class="fa fa-thumbs-up"></i> <strong>Like</strong></a>
+								<a class="footer-boton" ng-if="!_hasSession"><i class="fa fa-thumbs-up"></i> <strong><del>Like</del></strong></a>
 							</div>
 							<div class="col-md-12" ng-show="comentario.replies.length > 0">
 								<div class="row">
@@ -340,15 +344,19 @@
 									<hr>
 									<div class="col-md-12" ng-show="comentario.showReplies == true">
 										<div class="row" ng-repeat="respuesta in comentario.replies">
+											<div class="col-md-12" title="{{respuesta.userobj.name || respuesta.name}}{{'\n'+respuesta.userobj.empresa || ''}}" tooltip>
+												<img ng-src="{{respuesta.avatar || '/img/icons/apple-touch-icon.png'}}" alt="Avatar" style="width:48px;height:48px;" />
+												<em style="color: rgb(0, 133, 199)">{{respuesta.name}} </em>
+											</div>
 											<div class="col-md-12">
-												<p ng-hide="reply.isEditing[respuesta.createdAt]"><em style="color: rgb(0, 133, 199)">{{respuesta.name}} </em>{{respuesta.text}}</p>
+												<p ng-hide="reply.isEditing[respuesta.createdAt]">{{respuesta.text}}</p>
 												<textarea msd-elastic ng-show="reply.isEditing[respuesta.createdAt]" ng-model="reply.text_edit[respuesta.createdAt]" ng-init="reply.text_edit[respuesta.createdAt] = respuesta.text" placeholder="Editar comentario..." class="form-control" style="resize: none; margin-bottom: 1em;" rows="1"></textarea>
 											</div>
 											<div class="col-md-12" ng-show="reply.isEditing[respuesta.createdAt]">
 												<button type="submit" class="btn btn-primary pull-right" ng-click="saveReply(comentario, respuesta)" style="margin-bottom:1em;">Guardar Cambios</button>
 											</div>
 											<div class="col-md-12 footer-reply">
-												<span am-time-ago="respuesta.createdAt"></span>
+												<span am-time-ago="respuesta.createdAt" style="font-size: 12px;"></span>
 												<span class="pull-right" style="margin-left: 1em;" ng-click="reply.isEditing[respuesta.createdAt] = !reply.isEditing[respuesta.createdAt]" ng-show="respuesta.user == rootuser.id"><a>Editar</a></span>
 												<span class="pull-right" ng-click="deleteReply(comentario, respuesta)" ng-show="rootuser.roles.indexOf('ROLE_ADMIN') > -1"><a>Eliminar</a></span>
 											</div>
