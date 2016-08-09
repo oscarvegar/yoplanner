@@ -13,7 +13,7 @@
         			var pic = hotel.pictures[i];
     			%>
             <div class="img-hover">
-              <img src="<%=pic%>" alt="" class="img-responsive" style="width: 100%; height: 600px;">
+              <img src="<%=pic.url || pic%>" alt="" class="img-responsive" style="width: 100%; height: 600px;">
             </div>
             <% } %>
 						<% if(!hotel.pictures || hotel.pictures.length <= 0) { %>
@@ -483,15 +483,27 @@
 <!-- Tab #5 Galeria -->
 <div class="tab-pane" id="galeria">
 	<div class="row">
-		<!-- Gallery -->
-		<div class="col-md-12" ng-init="initGallery()">
+		<div class="col-md-12" ng-init="initGallery()" oncontextmenu="return false">
+			<h3>General</h3>
 			<ng-gallery images="galleryPictures"></ng-gallery>
 		</div>
+		<div class="col-md-12" ng-if="galleryInstalaciones.length > 0" oncontextmenu="return false">
+			<h3>Instalaciones</h3>
+			<ng-gallery images="galleryInstalaciones"></ng-gallery>
+		</div>
+		<div class="col-md-12" ng-if="galleryHabitaciones.length > 0" oncontextmenu="return false">
+			<h3>Habitaciones</h3>
+			<ng-gallery images="galleryHabitaciones"></ng-gallery>
+		</div>
+		<div class="col-md-12" ng-if="gallerySalones.length > 0" oncontextmenu="return false">
+			<h3>Salones</h3>
+			<ng-gallery images="gallerySalones"></ng-gallery>
+		</div>
+		<div class="col-md-12" ng-if="galleryRestaurantes.length > 0" oncontextmenu="return false">
+			<h3>Restaurantes</h3>
+			<ng-gallery images="galleryRestaurantes"></ng-gallery>
+		</div>
 		<hr>
-		<!-- Youtube -->
-		 <div class="col-md-4 col-md-offset-4" style="background: #000; margin-top: 1em;">
-
-		 </div>
  </div>
 </div>
 <!-- Tab #5 promociones -->

@@ -141,9 +141,28 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.initGallery = function () {
 			//Adaptar imagenes la formato de la directiva
 			$scope.galleryPictures = [];
+			$scope.galleryInstalaciones = [];
+			$scope.galleryHabitaciones = [];
+			$scope.gallerySalones = [];
+			$scope.galleryRestaurantes = [];
 			$http.get("/recinto/findById/"+$scope.hotelid).success(function(hotel){
 				hotel.pictures.forEach(function (picture) {
-					$scope.galleryPictures.push({img: picture, thumb: picture});
+					if (picture.category) {
+						if (picture.category == "1") {
+							$scope.galleryInstalaciones.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+						if (picture.category == "2") {
+							$scope.galleryHabitaciones.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+						if (picture.category == "3") {
+							$scope.gallerySalones.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+						if (picture.category == "4") {
+							$scope.galleryRestaurantes.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+					} else {
+						$scope.galleryPictures.push({img: picture.url || picture, thumb: picture.url || picture});
+					}
 				});
 			});
 		};
