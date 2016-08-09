@@ -55,7 +55,6 @@ module.exports = {
         Recinto.findOne().where({cityId:condition}).then(function(data){
             if(!data){
                 CityService.importCity(idciudad).then(function(data){
-                    console.log("aqui regresa del import",data)
                     return res.json(data);
                 }).catch(function(err){
                     console.log(err);
@@ -63,7 +62,6 @@ module.exports = {
                 })
             }else{
                 Recinto.find().where({cityId:condition}).paginate({page: page, limit: pagesize}).populate('comentarios').sort("place DESC").sort("starRating DESC").then(function(data){
-                    console.log("data res",data)
                     return res.json(data);
                 })
             }
@@ -113,21 +111,24 @@ module.exports = {
       if (parametros.fivestar) {
         estrellas.push(5);
       }
+      if (!parametros.onestar && !parametros.twostar && !parametros.threestar && !parametros.fourstar && !parametros.fivestar) {
+        estrellas = [1, 2, 3, 4, 5];
+      }
       if (parametros.plan == 'default') {
         var busqueda = {
           name: {
             'contains': parametros.nombre.name
           },
-          /*numeroSalones: {
+          numeroSalones: {
             '>=': parametros.salones
           },
           totalHabitaciones: {
             '>=': parametros.habitaciones
-          },*/
+          },
           starRating: estrellas,
           cityId: cityId
         };
-      } /*else {
+      } else {
         var busqueda = {
           name: {
             'contains': parametros.nombre.name
@@ -141,15 +142,10 @@ module.exports = {
           starRating: estrellas,
           plan: parametros.plan
         };
-      }*/
+      }
+      busqueda.cityId = cityId;
       //Retornar json
-      Recinto.find({
-        name: {
-          'contains': parametros.nombre.name
-        },
-        starRating: estrellas,
-        cityId: cityId
-      }).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
+      Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
         return res.json(hoteles);
       }).catch(console.log);

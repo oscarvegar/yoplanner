@@ -120,6 +120,10 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		//Filtrado de hoteles  por http
 		$scope.buscarTodos = function (buscar) {
 			$scope.cargandoBusqueda = true;
+			if (!buscar.nombre || !buscar.nombre.name) {
+				buscar.nombre = {};
+				buscar.nombre.name = '';
+			}
 			$http.post('/recinto/findBySearch', {buscar: buscar, id: $scope.searchId}).success(function(data) {
 				$scope.cargandoBusqueda = false;
 				$scope.showMostrarMas = false;
@@ -455,6 +459,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		//favoritos
 		$scope.isOnFav = function (id) {
+			if (!$rootScope._hasSession) {
+				return;
+			}
 			$http.post('/recinto/isonfav/', {id: id}).success(function(data) {
 				console.log('IS ON FAV', data);
 				$scope.isFav = data.isFav;
@@ -462,6 +469,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
 		$scope.isLiked = function (id) {
+			if (!$rootScope._hasSession) {
+				return;
+			}
 			console.log('GETTING IS LIKED', id);
 			$http.post('/recinto/isliked/', {id: id}).success(function(data) {
 				console.log('IS LIKED', data);
