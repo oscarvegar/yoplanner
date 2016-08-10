@@ -5,7 +5,9 @@
     <div class="section-title-01">
         <!-- Parallax Background -->
         <div class="bg_parallax" style='background: url("img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg");
-  background-size: 100% 450px;'></div>
+  background-size: 100% 450px;' ng-if="searchId != 'CUN'"></div>
+  <div class="bg_parallax" style='background: url("img/fondocancun.jpg");
+background-size: 100% 450px;' ng-if="searchId == 'CUN'"></div>
         <!-- Parallax Background -->
 
         <!-- Content Parallax-->
