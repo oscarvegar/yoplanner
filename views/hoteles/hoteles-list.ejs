@@ -5,7 +5,9 @@
     <div class="section-title-01">
         <!-- Parallax Background -->
         <div class="bg_parallax" style='background: url("img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg");
-  background-size: 100% 450px;'></div>
+  background-size: 100% 450px;' ng-if="searchId != 'CUN'"></div>
+  <div class="bg_parallax" style='background: url("img/fondocancun.jpg");
+background-size: 100% 450px;' ng-if="searchId == 'CUN'"></div>
         <!-- Parallax Background -->
 
         <!-- Content Parallax-->
@@ -43,13 +45,13 @@
                                         <input type="text" class="form-control" ng-model="buscar.nombre.name" placeholder="Nombre del hotel">
                                         <hr class="separator">
                                         <h4>Número de salones:</h4>
-                                        <input type="number" disabled class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
+                                        <input type="number" class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
                                         <hr class="separator">
                                         <h4>Número de habitaciones:</h4>
-                                        <input type="number" disabled class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
+                                        <input type="number" class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
                                         <hr class="separator">
                                         <h4>Tipo de plan:</h4>
-                                        <select class="form-control" disabled ng-model="buscar.plan" ng-init="buscar.plan = default">
+                                        <select class="form-control" ng-model="buscar.plan" ng-init="buscar.plan = default">
                                           <option value="default" selected> Cualquiera </option>
                                           <option value="Todo Incluido">Todo Incluido</option>
                                           <option value="Europeo">Europeo</option>
@@ -61,7 +63,7 @@
                                     <aside class="widget">
                                         <h4>Estrellas:</h4>
                                         <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.fivestar" ng-init="buscar.fivestar = true"></li>
+                                            <li><input type="checkbox" ng-model="buscar.fivestar" ng-init="buscar.fivestar = false"></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
@@ -71,7 +73,7 @@
                                         </ul>
 
                                         <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.fourstar" ng-init="buscar.fourstar = true"></li>
+                                            <li><input type="checkbox" ng-model="buscar.fourstar" ng-init="buscar.fourstar = false"></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
@@ -81,7 +83,7 @@
                                         </ul>
 
                                         <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.threestar" ng-init="buscar.threestar = true"></li>
+                                            <li><input type="checkbox" ng-model="buscar.threestar" ng-init="buscar.threestar = false"></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
@@ -91,7 +93,7 @@
                                         </ul>
 
                                         <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.twostar" ng-init="buscar.twostar = true"></li>
+                                            <li><input type="checkbox" ng-model="buscar.twostar" ng-init="buscar.twostar = false"></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star"></i></a></li>
                                             <li><a><i class="fa fa-star-o"></i></a></li>
@@ -101,7 +103,7 @@
                                         </ul>
 
                                         <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.onestar" ng-init="buscar.onestar = true"></li>
+                                            <li><input type="checkbox" ng-model="buscar.onestar" ng-init="buscar.onestar = false"></li>
                                             <li><a href="#"><i class="fa fa-star"></i></a></li>
                                             <li><a href="#"><i class="fa fa-star-o"></i></a></li>
                                             <li><a href="#"><i class="fa fa-star-o"></i></a></li>

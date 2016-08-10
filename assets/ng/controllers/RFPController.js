@@ -36,9 +36,11 @@ angular.module('rfp-module', [])
 
 	//Cargar customers
 	$scope.loadCustomers = function () {
-		$http.get('/customer/getbyuser').success(function(data) {
-			$scope.myCustomers = data;
-		});
+		if ($rootScope._hasSession) {
+			$http.get('/customer/getbyuser').success(function(data) {
+				$scope.myCustomers = data;
+			});
+		}		
 	};
 
     $scope.muestraCuadritos = function(){

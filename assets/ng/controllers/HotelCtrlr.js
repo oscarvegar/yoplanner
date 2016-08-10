@@ -120,6 +120,10 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		//Filtrado de hoteles  por http
 		$scope.buscarTodos = function (buscar) {
 			$scope.cargandoBusqueda = true;
+			if (!buscar.nombre || !buscar.nombre.name) {
+				buscar.nombre = {};
+				buscar.nombre.name = '';
+			}
 			$http.post('/recinto/findBySearch', {buscar: buscar, id: $scope.searchId}).success(function(data) {
 				$scope.cargandoBusqueda = false;
 				$scope.showMostrarMas = false;
@@ -141,9 +145,28 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.initGallery = function () {
 			//Adaptar imagenes la formato de la directiva
 			$scope.galleryPictures = [];
+			$scope.galleryInstalaciones = [];
+			$scope.galleryHabitaciones = [];
+			$scope.gallerySalones = [];
+			$scope.galleryRestaurantes = [];
 			$http.get("/recinto/findById/"+$scope.hotelid).success(function(hotel){
 				hotel.pictures.forEach(function (picture) {
-					$scope.galleryPictures.push({img: picture, thumb: picture});
+					if (picture.category) {
+						if (picture.category == "1") {
+							$scope.galleryInstalaciones.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+						if (picture.category == "2") {
+							$scope.galleryHabitaciones.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+						if (picture.category == "3") {
+							$scope.gallerySalones.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+						if (picture.category == "4") {
+							$scope.galleryRestaurantes.push({img: picture.url || picture, thumb: picture.url || picture});
+						}
+					} else {
+						$scope.galleryPictures.push({img: picture.url || picture, thumb: picture.url || picture});
+					}
 				});
 			});
 		};
@@ -366,8 +389,11 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.rateHotel = function () {
 			console.log('RATING', $scope.hotelRating);
 			$http.post('/recinto/rateHotel', {hotel: $scope.hotelid, rating: $scope.hotelRating}).success(function(data) {
+				console.log('HOTEL RATE', data);
 				$scope.hotelRatings = data.hotel.ratings;
 				notify('Hotel calificado con ' + $scope.hotelRating + ' estrellas.');
+			}).error(function (err) {
+				console.log(err);
 			});
 		}
 
@@ -383,6 +409,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
 		$scope.loadUserRating = function (hotel) {
+			if (!$rootScope._hasSession) {
+				return;
+			}
 			$http.post('/recinto/getUserRating', {id: hotel}).success(function(data) {
 			  $scope.hotelRating = data.rating;
 			}).error(function (err) {
@@ -436,6 +465,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		//favoritos
 		$scope.isOnFav = function (id) {
+			if (!$rootScope._hasSession) {
+				return;
+			}
 			$http.post('/recinto/isonfav/', {id: id}).success(function(data) {
 				console.log('IS ON FAV', data);
 				$scope.isFav = data.isFav;
@@ -443,6 +475,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
 		$scope.isLiked = function (id) {
+			if (!$rootScope._hasSession) {
+				return;
+			}
 			console.log('GETTING IS LIKED', id);
 			$http.post('/recinto/isliked/', {id: id}).success(function(data) {
 				console.log('IS LIKED', data);

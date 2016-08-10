@@ -55,7 +55,6 @@ module.exports = {
         Recinto.findOne().where({cityId:condition}).then(function(data){
             if(!data){
                 CityService.importCity(idciudad).then(function(data){
-                    console.log("aqui regresa del import",data)
                     return res.json(data);
                 }).catch(function(err){
                     console.log(err);
@@ -63,7 +62,6 @@ module.exports = {
                 })
             }else{
                 Recinto.find().where({cityId:condition}).paginate({page: page, limit: pagesize}).populate('comentarios').sort("place DESC").sort("starRating DESC").then(function(data){
-                    console.log("data res",data)
                     return res.json(data);
                 })
             }
@@ -83,13 +81,13 @@ module.exports = {
 
     getHotelEmail: function (req, res) {
       var id = req.param('id');
-      User.find({ hotels: [id] }).then(function (user) {
-        if (user.length > 0) {
-          return res.json({email: user[0].username, id: id});
+      Recinto.findOne({id: id}).then(function(data) {
+        if (data.correoPrincipal) {
+          return res.json({email: data.correoPrincipal});
         } else {
-          return res.json({email: 'perfil_sin_mail', id: id});
+          return res.json({email: ''});
         }
-      }).catch(console.log);
+      });
     },
 
     findBySearch: function (req, res) {
@@ -113,21 +111,24 @@ module.exports = {
       if (parametros.fivestar) {
         estrellas.push(5);
       }
+      if (!parametros.onestar && !parametros.twostar && !parametros.threestar && !parametros.fourstar && !parametros.fivestar) {
+        estrellas = [1, 2, 3, 4, 5];
+      }
       if (parametros.plan == 'default') {
         var busqueda = {
           name: {
             'contains': parametros.nombre.name
           },
-          /*numeroSalones: {
+          numeroSalones: {
             '>=': parametros.salones
           },
           totalHabitaciones: {
             '>=': parametros.habitaciones
-          },*/
+          },
           starRating: estrellas,
           cityId: cityId
         };
-      } /*else {
+      } else {
         var busqueda = {
           name: {
             'contains': parametros.nombre.name
@@ -141,15 +142,10 @@ module.exports = {
           starRating: estrellas,
           plan: parametros.plan
         };
-      }*/
+      }
+      busqueda.cityId = cityId;
       //Retornar json
-      Recinto.find({
-        name: {
-          'contains': parametros.nombre.name
-        },
-        starRating: estrellas,
-        cityId: cityId
-      }).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
+      Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
         return res.json(hoteles);
       }).catch(console.log);
@@ -157,6 +153,7 @@ module.exports = {
 
     getRatings: function (req, res) {
       var id = req.param('id');
+      var tempRatings = [];
       Recinto.findOne({id: id}).then(function (hotel) {
         if (!hotel.ratings) {
           tempRatings = [];
@@ -171,10 +168,9 @@ module.exports = {
       var id = req.param('hotel');
       var rating = req.param('rating');
       var user = req.user.id;
-      var tempRate = [];
       Recinto.findOne({id: id}).then(function (hotel) {
         if (!hotel.ratings) {
-          tempRate.push({user: user, rating: rating});
+          var tempRate = [{user: user, rating: rating}];
         } else {
           for (var i in hotel.ratings) {
             if (hotel.ratings[i].user == user) {
@@ -182,9 +178,9 @@ module.exports = {
               break;
             }
           }
-          tempRate = hotel.ratings;
+          var tempRate = hotel.ratings;
         }
-        Recinto.update({id: id}, {ratings: tempRate}).then(function (hotel) {
+        Recinto.update({id: hotel.id}, {ratings: tempRate}).then(function (hotel) {
           return res.json({hotel: hotel[0]});
         }).catch(console.log);
       }).catch(console.log);

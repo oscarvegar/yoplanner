@@ -50,6 +50,8 @@ module.exports = {
 			var reply = {
 				text: text,
 				user: req.user.id,
+				avatar: 'http://admin.yoplanner.com'+req.user.avatar,
+				userobj: req.user,
 				name: req.user.name || req.user.username,
 				createdAt: new Date().toISOString()
 			};
