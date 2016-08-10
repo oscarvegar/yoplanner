@@ -389,8 +389,11 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.rateHotel = function () {
 			console.log('RATING', $scope.hotelRating);
 			$http.post('/recinto/rateHotel', {hotel: $scope.hotelid, rating: $scope.hotelRating}).success(function(data) {
+				console.log('HOTEL RATE', data);
 				$scope.hotelRatings = data.hotel.ratings;
 				notify('Hotel calificado con ' + $scope.hotelRating + ' estrellas.');
+			}).error(function (err) {
+				console.log(err);
 			});
 		}
 
@@ -406,6 +409,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
 		$scope.loadUserRating = function (hotel) {
+			if (!$rootScope._hasSession) {
+				return;
+			}
 			$http.post('/recinto/getUserRating', {id: hotel}).success(function(data) {
 			  $scope.hotelRating = data.rating;
 			}).error(function (err) {

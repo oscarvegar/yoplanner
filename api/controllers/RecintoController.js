@@ -153,6 +153,7 @@ module.exports = {
 
     getRatings: function (req, res) {
       var id = req.param('id');
+      var tempRatings = [];
       Recinto.findOne({id: id}).then(function (hotel) {
         if (!hotel.ratings) {
           tempRatings = [];
@@ -167,10 +168,9 @@ module.exports = {
       var id = req.param('hotel');
       var rating = req.param('rating');
       var user = req.user.id;
-      var tempRate = [];
       Recinto.findOne({id: id}).then(function (hotel) {
         if (!hotel.ratings) {
-          tempRate.push({user: user, rating: rating});
+          var tempRate = [{user: user, rating: rating}];
         } else {
           for (var i in hotel.ratings) {
             if (hotel.ratings[i].user == user) {
@@ -178,9 +178,9 @@ module.exports = {
               break;
             }
           }
-          tempRate = hotel.ratings;
+          var tempRate = hotel.ratings;
         }
-        Recinto.update({id: id}, {ratings: tempRate}).then(function (hotel) {
+        Recinto.update({id: hotel.id}, {ratings: tempRate}).then(function (hotel) {
           return res.json({hotel: hotel[0]});
         }).catch(console.log);
       }).catch(console.log);
