@@ -11,6 +11,11 @@
 
 module.exports.bootstrap = function(cb) {
 
+ 	String.prototype.replaceAll = function(search, replacement) {
+     	var target = this;
+     	return target.replace(new RegExp(search, 'g'), replacement);
+   	};
+
 	TipoEvento.find({_id:"1"}).exec(function(err,data){
 		if(data.length == 0)
 			TipoEvento.create({id:1,description:"Desayuno"}).exec(console.log);
