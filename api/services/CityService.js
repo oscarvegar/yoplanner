@@ -56,7 +56,6 @@ var _this = module.exports = {
 				};
 				console.log("antes de ir al httpget",options.url);
 				HTTP.get(options).then(function(response){
-					console.log("regresa de petición a despegar :::",response);
 					if(!response.availability || response.availability.length==0)
 						return deferred.resolve("ok");
 					var ids = "";
