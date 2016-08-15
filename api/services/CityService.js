@@ -73,6 +73,22 @@ var _this = module.exports = {
 						var amensids = [];
 						for(var i in response.hotels){
 
+							response.hotels[i].urlslug = response.hotels[i].name.toLowerCase()
+			                    .replace(/,/g, "-")
+			                    .replace(/ /g, "-")
+			                    .replaceAll("á","a")
+			                    .replaceAll("Á","A")
+			                    .replaceAll("é","e")
+			                    .replaceAll("É","E")
+			                    .replaceAll("í","i")
+			                    .replaceAll("Í","I")
+			                    .replaceAll("ó","o")
+			                    .replaceAll("Ó","O")
+			                    .replaceAll("ú","u")
+			                    .replaceAll("Ú","U")
+			                    .replaceAll("ñ","n")
+			                    .replaceAll("Ñ","N");
+		                    console.log("urlslug",response.hotels[i].urlslug);
 							for(var j in response.hotels[i].pictures){
 								response.hotels[i].pictures[j] = sails.config.constants.URL_PICTURES+response.hotels[i].pictures[j];
 							}
