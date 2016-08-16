@@ -52,6 +52,11 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			return new Array(num);
 		}
 
+		//Go cancun
+		$scope.goCancun = function () {
+			window.location.href = "/destino/cancun";
+		}
+
 		//Buscar por estrellas
 		$scope.filterStar = function (buscar) {
 			return function (item) {
