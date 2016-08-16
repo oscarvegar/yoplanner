@@ -48,6 +48,7 @@ module.exports.routes = {
   'GET /api/recinto/images/:id': 'RecintoController.images',
   'get /:id':'MainController.root',
   'get /':'MainController.root',
-
+  //Test route cancun
+  'get /destino/cancun': 'MainController.serveCancun'
 
 };

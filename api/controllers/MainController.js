@@ -103,7 +103,18 @@ module.exports = {
 				layout: "infoLayout"
 			})
 		}
-	}
+	},
 
+	serveCancun: function (req, res) {
+		User.findOne({username: 'cancun@yoplanner.com'}).then(function(data) {
+		  if (data) {
+		  	return res.view('destino-detail', {
+					destino: data
+				});
+		  } else {
+				return res.json(500, {error: true, message: 'Error con el usuario del destino.'});
+			}
+		});
+	}
 
 };
