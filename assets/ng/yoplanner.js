@@ -12,7 +12,12 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	$rootScope._hasSession = false;
 
 
-	
+	$rootScope.hasSession = function(){
+		$http.get('/hs').success(function(hs){
+			$rootScope._hasSession = true;
+
+		})
+	}
 
 
 	$rootScope.logout = function(){
@@ -27,7 +32,7 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 		})
 	}
 
-	
+	$rootScope.hasSession();
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider) {

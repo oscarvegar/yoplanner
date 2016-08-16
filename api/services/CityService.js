@@ -57,7 +57,7 @@ var _this = module.exports = {
 				console.log("antes de ir al httpget",options.url);
 				HTTP.get(options).then(function(response){
 					if(!response.availability || response.availability.length==0)
-						return deferred.resolve("ok");
+						return deferred.resolve([]);
 					var ids = "";
 					for(var i in response.availability){
 						ids = ids+response.availability[i].hotel.id+",";
