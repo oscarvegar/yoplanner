@@ -186,6 +186,42 @@ module.exports = {
       }).catch(console.log);
     },
 
+    rateDestino: function (req, res) {
+      var iduser = req.param('iduser');
+      var rating = req.param('rating');
+      var user = req.user.id;
+      User.findOne({id: iduser}).then(function(data) {
+        if (!data.destino.ratings) {
+          var tempRate = [{user: user, rating: rating}];
+        } else {
+          for (var i in data.destino.ratings) {
+            if (data.destino.ratings[i].user == user) {
+              data.destino.ratings[i].rating = rating;
+              break;
+            }
+          }
+          var tempRate = data.destino.ratings;
+        }
+        data.destino.ratings = tempRate;
+        User.update({id: data.id}, {destino: data.destino}).then(function(destinoupdate) {
+          return res.json(destinoupdate[0]);
+        }).catch(console.log);
+      }).catch(console.log);
+    },
+
+    getRatingsDestino: function (req, res) {
+      var id = req.param('id');
+      var tempRatings = [];
+      User.findOne({id: id}).then(function (destino) {
+        if (!destino.destino.ratings) {
+          tempRatings = [];
+        } else {
+          tempRatings = destino.destino.ratings;
+        }
+        return res.json({ratings: tempRatings});
+      }).catch(console.log);
+    },
+
     getUserRating: function (req, res) {
       var id = req.param('id');
       var user = req.user.id;

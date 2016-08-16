@@ -1,0 +1,409 @@
+<div  ng-controller="HotelController">
+	<input type="hidden"  ng-init="destinoid = '<%=destino.id%>'">
+    <!-- Section Title-->
+    <div class="section-title-detailed" class="ng-cloak">
+
+        <!-- Single Carousel -->
+        <div id="single-carousel">
+					<div class="img-hover">
+						<img src="/img/fondocancun.jpg" alt="Cancún" class="img-responsive" style="width: 100%; height: 600px;">
+					</div>
+        </div>
+        <!-- End Single Carousel -->
+
+        <!-- Section Title-->
+        <div class="title-detailed">
+          <div class="container">
+            <div class="row boxtest">
+              <div class="col-md-8 boxtest" style="background-color: rgba(0, 0, 0, 0.5);padding: 1em;border-radius: 15px;">
+								<ul class="starts">
+									<h3 style="color: white;text-shadow: 0 4px 10px black;font-size:20px;">Calificación de usuarios</h3>
+									<p style="font-size: 18px; color: white;text-shadow: 0 4px 10px black;" ng-init="initRatingsDestino(destinoid)">
+										<strong>{{averageRating(destinoRatings)}}</strong>/10 <span style="font-size: 12px;"> {{destinoRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="destinoRating" ng-click="rateDestino()" ng-show="_hasSession" ng-init="loadUserRating(destinoid)"></input-stars>
+									</p>
+								</ul>
+								<h2><%=destino.destino.name%>
+
+								</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Section Title-->
+    </div>
+    <!-- End Section Title-->
+
+    <!--Content Central -->
+    <div class="content-central" ng-show="!showloading">
+        <!-- Shadow Semiboxed -->
+        <div class="semiboxshadow text-center">
+            <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+        </div>
+        <!-- End Shadow Semiboxed -->
+
+        <!-- content info - Features-->
+        <div class="content_info skin_base no-overflow">
+            <div class="col-md-4">
+                <h4><a href="#" onclick=" window.history.back();" style="text-decoration: underline;">&lt;&lt; Volver a su búsqueda</a></h4>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <!-- End content info - Grey Section-->
+        <div class="content_info">
+            <!-- Info Resalt-->
+            <div class="content_resalt paddings-mini tabs-detailed" style="padding: 25px 0px;">
+                <div class="container wow fadeInUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Nav Tabs-->
+                            <ul class="nav nav-tabs" id="myTab">
+                                <li class="active">
+                                    <a href="?#destino" ng-click="renderMap(false)" data-toggle="tab"><i class="fa fa-home"></i> Descripción</a>
+                                </li>
+                                <li>
+                                    <a href="?#saloons" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-wifi"></i> Conectividad</a>
+                                </li>
+																<li>
+                                    <a href="?#comentarios" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-comments"></i> Comentarios</a>
+                                </li>
+																<li>
+                                    <a href="?#galeria" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-picture-o"></i> Recintos</a>
+                                </li>
+																<li>
+                                    <a href="?#promociones" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-newspaper-o"></i> Contacto</a>
+                                </li>
+																<!--
+																<li ng-if="_hasSession">
+                                    <a href="javascript:void(0);" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0"><i class="fa fa-cart-plus"></i>Cotiza Grupo</a>
+                                </li>
+															 -->
+
+<!--li>
+<a href="?#bookdestino" ng-click="renderMap(true);" data-toggle="tab"><i class="fa fa-cart-plus"></i>Reserva destino</a>
+</li-->
+<!--
+<li>
+<button ng-click="agregarYRegresar()" ng-show="showAddButtonCurHot<0" class="btn btn-success col-md-12">Agregar a Mi Selección</button>
+</li>
+-->
+</ul>
+<!-- End Nav Tabs-->
+
+<div class="tab-content">
+    <!-- Tab One - destino -->
+    <div class="tab-pane active" id="destino">
+        <h2><%=destino.destino.name%></h2>
+				<p>
+					<%=destino.destino.description%>
+				</p>
+        <div class="row">
+
+				<!-- Video YT -->
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-6">
+							<h3>Video del destino</h3>
+							<div class="testimonial-info-2">
+								<!--
+								<iframe width="100%" height="400px" src="<%=destino.youtube?destino.youtube.replace("watch?v=","/v/") : 'https://www.youtube.com/v/JGmFl_gyaew'%>" frameborder="0" allowfullscreen></iframe>
+							 -->
+							 <youtube-video video-url="'https://www.youtube.com/watch?v=YqyYenoVADU'" style="width: 100%;"></youtube-video>
+		 				 </div>
+						</div>
+						<!-- Ubicación -->
+						<div class="col-md-6">
+							<h3>Ubicación</h3>
+							<iframe
+								width="100%"
+								height="450"
+								frameborder="0" style="border:0"
+								src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q=<%=destino.geoLocation.latitude%>,<%=destino.geoLocation.longitude%>&zoom=13" allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+    <!-- end Tab One - destino -->
+    <!-- Tab Two - Salones -->
+    <div class="tab-pane" id="saloons">
+        <div class="row">
+          <div class="col-md-12">
+          	<%= destino.destino.conectividad %>
+          </div>
+        </div>
+    </div>
+    <!-- end Tab Two - Salones -->
+
+    <!-- Tab Theree - Informacion Extra -->
+    <div class="tab-pane" id="extraInfo">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+			</div>
+		</div>
+</div>
+<!-- end Tab Theree - Informacion Extra -->
+
+<!-- Tab #4 Comentarios -->
+<div class="tab-pane" id="comentarios" ng-init="loadComentarios()">
+	<div class="row" ng-init="reply.text = {}">
+		<!-- Comentario test -->
+		<div class="col-md-8 row">
+			<div class="col-md-12" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true" style="margin-top: 1em;">
+				<div class="row" ng-init="comentario.showReplies = false">
+					<div class="col-md-2 comentario-user">
+						<img ng-src="/image/ypcover.jpg" class="avatar-border" ng-if="!comentario.user.avatar" />
+						<img ng-src="{{comentario.user.avatar}}" class="avatar-border" ng-if="imagenValida(comentario.user.avatar)" />
+						<img ng-src="http://admin.yoplanner.com{{comentario.user.avatar}}" class="avatar-border" ng-if="!imagenValida(comentario.user.avatar)" />
+						<span><strong>{{comentario.user.username}}</strong></span>
+						<span>{{comentario.user.empresa || ''}}</span>
+					</div>
+					<div class="col-md-10 new-comentario">
+						<div class="row">
+							<div class="col-md-12">
+								<span class="titulo-comentario"><strong><em>{{comentario.title ? comentario.title : 'Comentario sin titulo'}}</em></strong></span>
+								<span uib-dropdown class="pull-right" style="margin-left: 1em;" ng-show="comentario.user.id == rootuser.id  || rootuser.roles.indexOf('ROLE_ADMIN') > -1" ng-if="rootuser">
+						      <a href id="simple-dropdown" uib-dropdown-toggle>
+						        <i class="fa fa-bars"></i>
+						      </a>
+						      <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+						        <li>
+						          <a href ng-show="comentario.user.id == rootuser.id" ng-click="comentario.isEditing = !comentario.isEditing">Editar</a>
+											<a href ng-show="comentario.user.roles.indexOf('ROLE_ADMIN') > -1" ng-click="deleteComment(comentario)">Eliminar</a>
+						        </li>
+						      </ul>
+						    </span>
+								<span class="pull-right"><i class="fa fa-thumbs-up"></i> {{comentario.likes.length ? comentario.likes.length : 0}}</span>
+							</div>
+							<div class="col-md-12">
+								<p style="margin-top: 1em;" ng-hide="comentario.isEditing">
+									{{comentario.text}}
+								</p>
+								<textarea msd-elastic ng-show="comentario.isEditing" ng-model="comentario.editText" ng-init="comentario.isEditing = false; comentario.editText = comentario.text" class="form-control" style="resize: none; margin-top: 1em;margin-bottom: 1em;" rows="1"></textarea>
+							</div>
+							<div class="col-md-12" ng-show="comentario.isEditing">
+								<button type="button" class="btn btn-primary pull-right" ng-click="saveComment(comentario)" style="margin-bottom:1em;">Guardar Cambios</button>
+							</div>
+							<div class="col-m-12 footer-comentario" style="text-align: right;">
+								<div class="pull-left" style="margin-left: 1em;">
+									<span am-time-ago="comentario.createdAt" style="font-size: 12px;"></span>
+								</div>
+								<a class="footer-boton" ng-hide="!_hasSession" ng-click="like(comentario)"><i class="fa fa-thumbs-up"></i> <strong>Like</strong></a>
+								<a class="footer-boton" ng-if="!_hasSession"><i class="fa fa-thumbs-up"></i> <strong><del>Like</del></strong></a>
+							</div>
+							<div class="col-md-12" ng-show="comentario.replies.length > 0">
+								<div class="row">
+									<div class="col-md-12" ng-class="{'margin-bottom-1em': comentario.showReplies}">
+										<h5><strong>Respuestas</strong></h5>
+										<span ng-click="comentario.showReplies = true" ng-show="comentario.showReplies == false"><a>Mostrar respuestas</a></span>
+										<span ng-click="comentario.showReplies = false" ng-show="comentario.showReplies == true"><a>Ocultar respuestas</a></span>
+									</div>
+									<hr>
+									<div class="col-md-12" ng-show="comentario.showReplies == true">
+										<div class="row" ng-repeat="respuesta in comentario.replies">
+											<div class="col-md-12" title="{{respuesta.userobj.name || respuesta.name}}{{'\n'+respuesta.userobj.empresa || ''}}" tooltip>
+												<img ng-src="{{respuesta.avatar || '/img/icons/apple-touch-icon.png'}}" alt="Avatar" style="width:48px;height:48px;" />
+												<em style="color: rgb(0, 133, 199)">{{respuesta.name}} </em>
+											</div>
+											<div class="col-md-12">
+												<p ng-hide="reply.isEditing[respuesta.createdAt]">{{respuesta.text}}</p>
+												<textarea msd-elastic ng-show="reply.isEditing[respuesta.createdAt]" ng-model="reply.text_edit[respuesta.createdAt]" ng-init="reply.text_edit[respuesta.createdAt] = respuesta.text" placeholder="Editar comentario..." class="form-control" style="resize: none; margin-bottom: 1em;" rows="1"></textarea>
+											</div>
+											<div class="col-md-12" ng-show="reply.isEditing[respuesta.createdAt]">
+												<button type="submit" class="btn btn-primary pull-right" ng-click="saveReply(comentario, respuesta)" style="margin-bottom:1em;">Guardar Cambios</button>
+											</div>
+											<div class="col-md-12 footer-reply">
+												<span am-time-ago="respuesta.createdAt" style="font-size: 12px;"></span>
+												<span class="pull-right" style="margin-left: 1em;" ng-click="reply.isEditing[respuesta.createdAt] = !reply.isEditing[respuesta.createdAt]" ng-show="respuesta.user == rootuser.id"><a>Editar</a></span>
+												<span class="pull-right" ng-click="deleteReply(comentario, respuesta)" ng-show="rootuser.roles.indexOf('ROLE_ADMIN') > -1"><a>Eliminar</a></span>
+											</div>
+											<div class="col-md-12" ng-hide="$last"><hr></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12" style="margin-top: 1em;" ng-show="_hasSession">
+								<form>
+									<textarea msd-elastic ng-model="reply.text[comentario.id]" placeholder="Responder comentario..." class="form-control" style="resize: none" rows="1"></textarea>
+							</div>
+							<div class="col-md-12" style="margin-top: 1em;" ng-show="!_hasSession">
+								<textarea placeholder="Inicia sesión para responder..." class="form-control" style="resize: none" rows="1" disabled=""></textarea>
+							</div>
+							<div class="col-md-12" ng-show="reply.text[comentario.id].length > 0">
+									<button type="submit" class="btn btn-primary pull-right" ng-click="replyComentario(comentario)" style="margin-top:1em;">Enviar respuesta</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 text-center" style="margin: 1em;" ng-show="comentarios.length < comment_count">
+				<button type="button" class="btn btn-default" ng-click="loadMoreComentarios()">Cargar más</button>
+				<div class="loader" ng-show="comentariosCargados"></div>
+			</div>
+			<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
+				<div class="form-group" style="text-align: center;">
+					<form ng-submit="postComentario()">
+						<div class="row">
+							<div class="col-md-12" style="margin-bottom: 1em;">
+								<input type="text" ng-model="postcomentario.title" style="width:100%;" placeholder="Titulo del comentario" class="form-control comentario-textarea" required>
+							</div>
+							<div class="col-md-12">
+								<textarea ng-model="postcomentario.text" style="width:100%;" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea" required></textarea>
+							</div>
+							<div class="col-md-4 col-md-offset-4">
+								<input type="submit" value="Enviar Comentario" class="boton-sendcomentario" style="margin-top: 0.5em;">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Social -->
+		<div class="col-md-4">
+			<div class="row">
+				<!-- Col Facebook -->
+				<div class="col-md-12">
+					<%var facebook = destino.facebook?destino.facebook : "https://www.facebook.com/yoplanner" %>
+					<div class="col-md-4">
+							<h3>Facebook</h3>
+							<div class="fb-page" data-href="<%=facebook%>" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="<%=facebook%>">
+							<a href="<%=facebook%>"> </a></blockquote></div></div>
+					</div>
+				</div>
+				<!-- Col Twitter -->
+				<div class="col-md-12">
+					<h3>Twitter</h3>
+					<div>
+						<a class="twitter-timeline" data-widget-id="<%=destino.twitter?destino.twitter : "715213025549152256"%>"
+							href="https://twitter.com/TwitterDev"
+							width="100%"
+							height="500">
+						</a>
+					</div>
+				</div>
+				<!-- Col GPlus -->
+				<div class="col-md-12">
+					<h3>Google+</h3>
+					<div style="height:500px;overflow-y: scroll;">
+						<div class="gplusfeed"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- old
+		<div class="col-md-12">
+			<h3 style="color: black;">Comentarios</h3>
+			<div class="comentarios-container" ng-init="loadComentarios()">
+				<div class="comentario row" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true | limitTo: 3">
+					<div class="col-md-2 header-comentario">
+						<img ng-src="{{comentario.user.avatar}}" class="avatar-comentario" />
+					</div>
+					<div class="col-md-10">
+						<span style="color: white;">{{comentario.user.username}}</span> - <span am-time-ago="comentario.createdAt"></span>
+					</div>
+					<div class="col-md-10">
+						<p style="color: #c5c5c5;">{{comentario.text}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	-->
+		<!-- Mostar un comentario -->
+		<!--
+		<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
+			<div class="form-group" style="text-align: center;">
+				<form ng-submit="postComentario()">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2" style="margin-bottom: 1em;">
+							<input type="text" ng-model="postcomentario.title" style="width:100%;" placeholder="Titulo del comentario" class="form-control comentario-textarea" required>
+						</div>
+						<div class="col-md-8 col-md-offset-2">
+							<textarea ng-model="postcomentario.text" style="width:100%;" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea" required></textarea>
+						</div>
+						<div class="col-md-4 col-md-offset-4">
+							<input type="submit" value="Enviar Comentario" class="boton-sendcomentario" style="margin-top: 0.5em;">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	 	-->
+
+
+		<div class="col-md-12" ng-hide="_hasSession">
+			<h3 style="color: black;">Inicia sesión para enviar un comentario.</h3>
+		</div>
+	</div>
+</div>
+<!-- Tab #5 Galeria -->
+<div class="tab-pane" id="galeria">
+	<div class="col-md-12">
+		<%= destino.destino.recintos %>
+	</div>
+</div>
+<!-- Tab #5 promociones -->
+<div class="tab-pane" id="promociones">
+	<div class="row">
+		<div class="col-md-12" ng-init="initPromotions()">
+			<%= destino.destino.contacto %>
+		</div>
+ </div>
+</div>
+
+<!-- end Tab Four - Book destino -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End Info Resalt-->
+</div>
+<!-- End content info - Grey Section-->
+
+<!-- content info - testimonials-->
+<div class="content_info">
+<!-- Parallax Background ->
+<div class="bg_parallax image_{{imgBgAcronym}}_parallax"></div>
+<!- Parallax Background -->
+
+
+</div>
+<!-- End content info - testimonials-->
+</div>
+<!-- End Content Central -->
+</div>
+
+
+<script type="text/javascript">
+	console.log("esta bien loco y no imprime : <%= destino.gplus %>")
+	setTimeout(function() {
+		FB.XFBML.parse();
+		$('.gplusfeed').kycoGooglePlusFeed2({
+        id: '<%= destino.gplus?destino.gplus : "113624413123385492768" %>',
+        feedPosts: 5,
+    });
+
+		window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+
+     }, 5000);
+</script>

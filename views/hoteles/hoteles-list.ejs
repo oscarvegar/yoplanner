@@ -7,7 +7,7 @@
         <div class="bg_parallax" style='background: url("img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg");
   background-size: 100% 450px;' ng-if="searchId != 'CUN'"></div>
   <div class="bg_parallax" style='background: url("img/fondocancun.jpg");
-background-size: 100% 450px;' ng-if="searchId == 'CUN'"></div>
+background-size: 100% 450px;cursor:pointer;' ng-if="searchId == 'CUN'" ng-click="goCancun()"></div>
         <!-- Parallax Background -->
 
         <!-- Content Parallax-->
@@ -123,7 +123,7 @@ background-size: 100% 450px;' ng-if="searchId == 'CUN'"></div>
             <div class="col-md-9  col-sm-12 col-lg-9" ng-init="loadNewHoteles()">
               <div class="row">
                 <div class="col-md-12 text-center" style="padding-top: 1em;margin-bottom: 1em;">
-                  <h3>Hoteles en <%=ciudad.name%></h3>
+                  <h3>Hoteles en <a href="/destino/cancun"><%=ciudad.name%></a></h3>
                 </div>
                 <div class="col-md-8 col-md-offset-2 bg-dark color-white flexbox-container text-center" style="min-height: 60px;">
                   <span>Ordenar por:&nbsp;&nbsp;&nbsp;</span>
