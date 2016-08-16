@@ -401,6 +401,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				console.log(err);
 			});
 		}
+		$scope.rateDestino = function () {
+			$http.post('/recinto/rateDestino', {iduser: $scope.destinoid, rating: $scope.destinoRating}).success(function(data) {
+				console.log('HOTEL RATE', data);
+				$scope.destinoRatings = data.destino.ratings;
+				notify('Hotel calificado con ' + $scope.destinoRating + ' estrellas.');
+			}).error(function (err) {
+				console.log(err);
+			});
+		}
 
 		$scope.averageRating = function (ratings) {
 			if (!ratings) {
@@ -427,6 +436,14 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.initRatings = function (id) {
 			$http.post('/recinto/getRatings', {id: id}).success(function(data) {
 			  $scope.hotelRatings = data.ratings;
+			}).error(function (err) {
+				console.log(err);
+			});
+		}
+
+		$scope.initRatingsDestino = function (id) {
+			$http.post('/recinto/getRatingsDestino', {id: id}).success(function(data) {
+			  $scope.destinoRatings = data.ratings;
 			}).error(function (err) {
 				console.log(err);
 			});
