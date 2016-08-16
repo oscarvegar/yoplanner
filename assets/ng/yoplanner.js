@@ -12,25 +12,7 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	$rootScope._hasSession = false;
 
 
-	$rootScope.hasSession = function(){
-		$http.get('/hs').success(function(hs){
-			$rootScope._hasSession = true;
-
-		}).catch(function(err){
-			$http.get("http://admin.yoplanner.com/hs").success(function(sd){
-				console.debug("SESSION ON YPADM")
-				console.log("sd",sd)
-				$http.post("/login",{username:sd,password:"123"}).success(function(data){
-					$rootScope._hasSession = true;
-				}).catch(function(err){
-					console.error(err);
-					swal("¡Error!", "Usuario y/o contraseña incorrectos. \n Intenta nuevamente", "error");
-				})
-			}).error(function(err){
-				console.debug("NO SESSION ON YP")
-			})
-		})
-	}
+	
 
 
 	$rootScope.logout = function(){
@@ -45,7 +27,7 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 		})
 	}
 
-	$rootScope.hasSession();
+	
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider) {

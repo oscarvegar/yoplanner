@@ -31,7 +31,21 @@ module.exports = {
                 ciudad.idDes = ciudad.id;
                 ciudad.name = ciudad.description;
                 ciudad.id = ciudad.code;
-                ciudad.slug = ciudad.description.toLowerCase().replace(/,/g, "-").replace(/ /g, "");
+                ciudad.slug = ciudad.description.toLowerCase()
+                    .replace(/,/g, "-")
+                    .replace(/ /g, "")
+                    .replaceAll("á","a")
+                    .replaceAll("Á","A")
+                    .replaceAll("é","e")
+                    .replaceAll("É","E")
+                    .replaceAll("í","i")
+                    .replaceAll("Í","I")
+                    .replaceAll("ó","o")
+                    .replaceAll("Ó","O")
+                    .replaceAll("ú","u")
+                    .replaceAll("Ú","U")
+                    .replaceAll("ñ","n")
+                    .replaceAll("Ñ","N");
                 console.log("ciudad", ciudad)
                 Ciudad.findOrCreate({
                     id: ciudad.code

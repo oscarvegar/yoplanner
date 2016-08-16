@@ -54,9 +54,8 @@ var _this = module.exports = {
 					url: "http://api.despegar.com/availability/cities/"+cities[k]+"/hotels?sort=stars&order=desc&includehotel=true&stars=3-4-5&type=RSR-HOT&pagesize=500",
 					headers : {"X-ApiKey":"53df4ffd-5adb-48ce-9738-72cea4a5da30MX"},
 				};
-				console.log("antes de ir al httpget")
+				console.log("antes de ir al httpget",options.url);
 				HTTP.get(options).then(function(response){
-					console.log("regresa de petición a despegar :::",response);
 					if(!response.availability || response.availability.length==0)
 						return deferred.resolve("ok");
 					var ids = "";
@@ -73,7 +72,7 @@ var _this = module.exports = {
 						var amensids = [];
 						for(var i in response.hotels){
 
-							for(var j in resposne.hotels[i].pictures){
+							for(var j in response.hotels[i].pictures){
 								response.hotels[i].pictures[j] = sails.config.constants.URL_PICTURES+response.hotels[i].pictures[j];
 							}
 							response.hotels[i].fotoPrincipal = response.hotels[i].pictures[0];
