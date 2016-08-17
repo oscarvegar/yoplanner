@@ -114,37 +114,30 @@ module.exports = {
       if (!parametros.onestar && !parametros.twostar && !parametros.threestar && !parametros.fourstar && !parametros.fivestar) {
         estrellas = [1, 2, 3, 4, 5];
       }
-      if (parametros.plan == 'default') {
-        var busqueda = {
-          name: {
-            'contains': parametros.nombre.name
-          },
-          numeroSalones: {
-            '>=': parametros.salones
-          },
-          totalHabitaciones: {
-            '>=': parametros.habitaciones
-          },
-          starRating: estrellas,
-          cityId: cityId
-        };
-      } else {
-        var busqueda = {
-          name: {
-            'contains': parametros.nombre.name
-          },
-          numeroSalones: {
-            '>=': parametros.salones
-          },
-          totalHabitaciones: {
-            '>=': parametros.habitaciones
-          },
-          starRating: estrellas,
-          plan: parametros.plan
+      var busqueda = {
+        starRating: estrellas
+      }
+      if (parametros.nombre.name) {
+        busqueda.name = {
+          'contains': parametros.nombre.name
         };
       }
+      if (parametros.plan) {
+        if (parametros.plan == 'Todo Incluido' || parametros.plan == 'Europeo') {
+          busqueda.plan = parametros.plan;
+        }
+      }
+      if (parametros.salones) {
+        busqueda.numeroSalones = {
+          '>=': parametros.salones
+        };
+      }
+      if (parametros.habitaciones) {
+        busqueda.totalHabitaciones = {
+          '>=': parametros.habitaciones
+        };
+      }      
       busqueda.cityId = cityId;
-      //Retornar json
       Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
         return res.json(hoteles);
