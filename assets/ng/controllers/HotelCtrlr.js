@@ -45,7 +45,12 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					data[i]['starRatingRange'] = new Array(data[i].starRating);
 				};
 				$scope.hotelesNew = data;
+				$scope.hotelesOriginales = data;
 			});
+		}
+
+		$scope.limpiarFiltros = function () {
+			$scope.hotelesNew = $scope.hotelesOriginales;
 		}
 
 		$scope.getStars = function (num) {
