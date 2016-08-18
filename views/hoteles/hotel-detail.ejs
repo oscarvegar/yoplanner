@@ -58,7 +58,7 @@
 								<button class="btn btn-primary btn-red margin1em" ng-hide="isLiked" ng-click="likeHotel(hotelid)" style="border-radius: 50%;" title="Me gusta" tooltip>
 									<i class="fa fa-thumbs-up"></i>
 								</button>
-								<button class="btn btn-primary btn-red margin1em" ng-show="isLiked" ng-click="notlikeHotel(hotelid)" style="border-radius: 50%;" title="Ya no me gusta" tooltip>
+								<button class="btn btn-primary btn-red margin1em" ng-if="isLiked" ng-click="notlikeHotel(hotelid)" style="border-radius: 50%;" title="Ya no me gusta" tooltip>
 									<i class="fa fa-thumbs-o-up"></i>
 								</button>
 								<button class="btn btn-primary btn-red margin1em" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0" style="border-radius: 50%;" title="Cotiza grupo" tooltip>

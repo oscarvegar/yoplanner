@@ -513,6 +513,17 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		}
 
+		$rootScope.$watch('_hasSession', function (logeado) {
+			if (logeado && $scope.hotelid) {
+				$http.post('/recinto/isliked/', {id: $scope.hotelid}).success(function(data) {
+					console.log('IS LIKED', data);
+					$scope.isLiked = data.isLiked;
+				}).error(function (err) {
+					console.log('ERR LIKED', err);
+				});
+			}
+		});
+
 		$scope.addFav = function (id) {
 			$http.post('/recinto/addfav/', {id: id}).success(function(data) {
 				console.log('ADDED FAV', data.favoritos);
