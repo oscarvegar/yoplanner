@@ -219,7 +219,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 							console.log('id match');
 							$rootScope.hotelesSeleccionados[i].email = data.email;
 						}
-					});					
+					});
 				});
 
 			});

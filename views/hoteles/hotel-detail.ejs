@@ -32,7 +32,7 @@
 								<ul class="starts">
 									<h3 style="color: white;text-shadow: 0 4px 10px black;font-size:20px;">Calificación de usuarios</h3>
 									<p style="font-size: 18px; color: white;text-shadow: 0 4px 10px black;" ng-init="initRatings(hotelid)">
-										<strong>{{averageRating(hotelRatings)}}</strong>/10 <span style="font-size: 12px;"> {{hotelRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="hotelRating" ng-click="rateHotel()" ng-show="_hasSession" ng-init="loadUserRating(hotelid)"></input-stars>
+										<strong>{{averageRating(hotelRatings) | number:2}}</strong>/10 <span style="font-size: 12px;"> {{hotelRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="hotelRating" ng-click="rateHotel()" ng-show="_hasSession" ng-init="loadUserRating(hotelid)"></input-stars>
 									</p>
 								</ul>
 								<h2><%=currentHotel.name%>

@@ -162,11 +162,16 @@ module.exports = {
         if (!hotel.ratings) {
           var tempRate = [{user: user, rating: rating}];
         } else {
+          var inList = false;
           for (var i in hotel.ratings) {
             if (hotel.ratings[i].user == user) {
               hotel.ratings[i].rating = rating;
+              inList = true;
               break;
             }
+          }
+          if (!inList) {
+            hotel.ratings.push({user: user, rating: rating});
           }
           var tempRate = hotel.ratings;
         }
