@@ -187,7 +187,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
       $localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
 
-			$http.post('/recinto/getHotelEmail', {id: id}).success(function(data) {
+			$http.post('/recinto/getHotelEmail', {id: $scope.currentHotel.id}).success(function(data) {
 				console.log($rootScope.hotelesSeleccionados);
 				console.log(data.id);
 				for (var i in $rootScope.hotelesSeleccionados) {
@@ -213,14 +213,13 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				notify('Hotel ' + hotel.data.name + ' agregado a Mi Selección');
 
 				$http.post('/recinto/getHotelEmail', {id: id}).success(function(data) {
-					console.log($rootScope.hotelesSeleccionados);
-					console.log(data.id);
-					for (var i in $rootScope.hotelesSeleccionados) {
-						if ($rootScope.hotelesSeleccionados[i].id == data.id) {
+					console.log(data);
+					$rootScope.hotelesSeleccionados.forEach(function (hotel, i) {
+						if (hotel.id == data.id) {
+							console.log('id match');
 							$rootScope.hotelesSeleccionados[i].email = data.email;
-							console.log('Email cargado');
 						}
-					}
+					});					
 				});
 
 			});

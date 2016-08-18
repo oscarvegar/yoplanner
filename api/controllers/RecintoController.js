@@ -81,13 +81,10 @@ module.exports = {
 
     getHotelEmail: function (req, res) {
       var id = req.param('id');
+      console.log('Getting email from:', id);
       Recinto.findOne({id: id}).then(function(data) {
-        if (data.correoPrincipal) {
-          return res.json({email: data.correoPrincipal});
-        } else {
-          return res.json({email: ''});
-        }
-      });
+        return res.json({id: data.id, email: data.correoPrincipal || ''});
+      }).catch(console.log);
     },
 
     findBySearch: function (req, res) {
@@ -136,7 +133,7 @@ module.exports = {
         busqueda.totalHabitaciones = {
           '>=': parametros.habitaciones
         };
-      }      
+      }
       busqueda.cityId = cityId;
       Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
