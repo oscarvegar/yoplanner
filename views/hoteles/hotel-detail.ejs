@@ -343,24 +343,28 @@
 									</div>
 									<hr>
 									<div class="col-md-12" ng-show="comentario.showReplies == true">
-										<div class="row" ng-repeat="respuesta in comentario.replies">
-											<div class="col-md-12" title="{{respuesta.userobj.name || respuesta.name}}{{'\n'+respuesta.userobj.empresa || ''}}" tooltip>
-												<img ng-src="{{respuesta.avatar || '/img/icons/apple-touch-icon.png'}}" alt="Avatar" style="width:48px;height:48px;" />
-												<em style="color: rgb(0, 133, 199)">{{respuesta.name}} </em>
+										<div class="row">
+											<div class="col-md-12 reply-comentario" ng-repeat="respuesta in comentario.replies">
+												<div class="row" style="border-left: 1px solid rgb(177, 177, 177); margin-left:1em;box-sizing:border-box;">
+													<div class="col-md-12" title="{{respuesta.userobj.name || respuesta.name}}{{'\n'+respuesta.userobj.empresa || ''}}" tooltip>
+														<img ng-src="{{respuesta.avatar || '/img/icons/apple-touch-icon.png'}}" alt="Avatar" style="width:48px;height:48px;" />
+														<em style="color: rgb(0, 133, 199)">{{respuesta.name}} </em>
+													</div>
+													<div class="col-md-12">
+														<p ng-hide="reply.isEditing[respuesta.createdAt]">{{respuesta.text}}</p>
+														<textarea msd-elastic ng-show="reply.isEditing[respuesta.createdAt]" ng-model="reply.text_edit[respuesta.createdAt]" ng-init="reply.text_edit[respuesta.createdAt] = respuesta.text" placeholder="Editar comentario..." class="form-control" style="resize: none; margin-bottom: 1em;" rows="1"></textarea>
+													</div>
+													<div class="col-md-12" ng-show="reply.isEditing[respuesta.createdAt]">
+														<button type="submit" class="btn btn-primary pull-right" ng-click="saveReply(comentario, respuesta)" style="margin-bottom:1em;">Guardar Cambios</button>
+													</div>
+													<div class="col-md-12 footer-reply">
+														<span am-time-ago="respuesta.createdAt" style="font-size: 12px;"></span>
+														<span class="pull-right" style="margin-left: 1em;" ng-click="reply.isEditing[respuesta.createdAt] = !reply.isEditing[respuesta.createdAt]" ng-show="respuesta.user == rootuser.id"><a>Editar</a></span>
+														<span class="pull-right" ng-click="deleteReply(comentario, respuesta)" ng-show="rootuser.roles.indexOf('ROLE_ADMIN') > -1"><a>Eliminar</a></span>
+													</div>
+													<div class="col-md-12" ng-hide="$last"><hr></div>
+												</div>
 											</div>
-											<div class="col-md-12">
-												<p ng-hide="reply.isEditing[respuesta.createdAt]">{{respuesta.text}}</p>
-												<textarea msd-elastic ng-show="reply.isEditing[respuesta.createdAt]" ng-model="reply.text_edit[respuesta.createdAt]" ng-init="reply.text_edit[respuesta.createdAt] = respuesta.text" placeholder="Editar comentario..." class="form-control" style="resize: none; margin-bottom: 1em;" rows="1"></textarea>
-											</div>
-											<div class="col-md-12" ng-show="reply.isEditing[respuesta.createdAt]">
-												<button type="submit" class="btn btn-primary pull-right" ng-click="saveReply(comentario, respuesta)" style="margin-bottom:1em;">Guardar Cambios</button>
-											</div>
-											<div class="col-md-12 footer-reply">
-												<span am-time-ago="respuesta.createdAt" style="font-size: 12px;"></span>
-												<span class="pull-right" style="margin-left: 1em;" ng-click="reply.isEditing[respuesta.createdAt] = !reply.isEditing[respuesta.createdAt]" ng-show="respuesta.user == rootuser.id"><a>Editar</a></span>
-												<span class="pull-right" ng-click="deleteReply(comentario, respuesta)" ng-show="rootuser.roles.indexOf('ROLE_ADMIN') > -1"><a>Eliminar</a></span>
-											</div>
-											<div class="col-md-12" ng-hide="$last"><hr></div>
 										</div>
 									</div>
 								</div>

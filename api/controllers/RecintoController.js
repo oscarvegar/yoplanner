@@ -281,9 +281,6 @@ module.exports = {
       var user = req.user.id;
       var idhotel = req.param('id');
       Recinto.findOne({id: idhotel}).then(function (hotel) {
-        console.log('HOTEL IS LIKED', hotel.id);
-        console.log('HOTEL LIKES', hotel.likes);
-        console.log('USER TO LIKE', req.user.id);
         if (!hotel.likes || hotel.likes.length <= 0) {
           return res.json({isLiked: false});
         }

@@ -405,6 +405,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				console.log(err);
 			});
 		}
+
 		$scope.rateDestino = function () {
 			$http.post('/recinto/rateDestino', {iduser: $scope.destinoid, rating: $scope.destinoRating}).success(function(data) {
 				console.log('HOTEL RATE', data);

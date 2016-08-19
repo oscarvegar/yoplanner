@@ -803,3 +803,9 @@ div.carbonad-image {
     height: 34px;
     width: 34px;
 }
+
+.reply-comentario {
+	margin-bottom: 1em;
+	padding-left: 1em;
+	box-sizing: border-box;
+}
