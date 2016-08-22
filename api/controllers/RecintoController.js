@@ -81,13 +81,10 @@ module.exports = {
 
     getHotelEmail: function (req, res) {
       var id = req.param('id');
+      console.log('Getting email from:', id);
       Recinto.findOne({id: id}).then(function(data) {
-        if (data.correoPrincipal) {
-          return res.json({email: data.correoPrincipal});
-        } else {
-          return res.json({email: ''});
-        }
-      });
+        return res.json({id: data.id, email: data.correoPrincipal || ''});
+      }).catch(console.log);
     },
 
     findBySearch: function (req, res) {
@@ -114,37 +111,30 @@ module.exports = {
       if (!parametros.onestar && !parametros.twostar && !parametros.threestar && !parametros.fourstar && !parametros.fivestar) {
         estrellas = [1, 2, 3, 4, 5];
       }
-      if (parametros.plan == 'default') {
-        var busqueda = {
-          name: {
-            'contains': parametros.nombre.name
-          },
-          numeroSalones: {
-            '>=': parametros.salones
-          },
-          totalHabitaciones: {
-            '>=': parametros.habitaciones
-          },
-          starRating: estrellas,
-          cityId: cityId
+      var busqueda = {
+        starRating: estrellas
+      }
+      if (parametros.nombre.name) {
+        busqueda.name = {
+          'contains': parametros.nombre.name
         };
-      } else {
-        var busqueda = {
-          name: {
-            'contains': parametros.nombre.name
-          },
-          numeroSalones: {
-            '>=': parametros.salones
-          },
-          totalHabitaciones: {
-            '>=': parametros.habitaciones
-          },
-          starRating: estrellas,
-          plan: parametros.plan
+      }
+      if (parametros.plan) {
+        if (parametros.plan == 'Todo Incluido' || parametros.plan == 'Europeo') {
+          busqueda.plan = parametros.plan;
+        }
+      }
+      if (parametros.salones) {
+        busqueda.numeroSalones = {
+          '>=': parametros.salones
+        };
+      }
+      if (parametros.habitaciones) {
+        busqueda.totalHabitaciones = {
+          '>=': parametros.habitaciones
         };
       }
       busqueda.cityId = cityId;
-      //Retornar json
       Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
         return res.json(hoteles);
@@ -172,11 +162,16 @@ module.exports = {
         if (!hotel.ratings) {
           var tempRate = [{user: user, rating: rating}];
         } else {
+          var inList = false;
           for (var i in hotel.ratings) {
             if (hotel.ratings[i].user == user) {
               hotel.ratings[i].rating = rating;
+              inList = true;
               break;
             }
+          }
+          if (!inList) {
+            hotel.ratings.push({user: user, rating: rating});
           }
           var tempRate = hotel.ratings;
         }
@@ -286,9 +281,6 @@ module.exports = {
       var user = req.user.id;
       var idhotel = req.param('id');
       Recinto.findOne({id: idhotel}).then(function (hotel) {
-        console.log('HOTEL IS LIKED', hotel.id);
-        console.log('HOTEL LIKES', hotel.likes);
-        console.log('USER TO LIKE', req.user.id);
         if (!hotel.likes || hotel.likes.length <= 0) {
           return res.json({isLiked: false});
         }

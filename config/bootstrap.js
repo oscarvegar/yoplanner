@@ -105,10 +105,13 @@ module.exports.bootstrap = function(cb) {
 	Recinto.update({id:290585},{$set:{place:3}}).then(console.log);
 	Recinto.update({id:290585},{$set:{place:2}}).then(console.log);
 
-	Recinto.create({id:290286,place:1}).then(console.log)
-	Recinto.update({id:290286},{place:1,starRating:4,name:"Sheraton Santa Fe",cityId:"MEX",pictures:[],address:{fullAddress:"Guillermo González Camarena 200,Álvaro Obregón,Sta Fé,01210 Ciudad de México, D.F."},geoLocation:{ "latitude" : 19.3683322, "longitude" : -99.261204 }}).then(console.log);
+	//Recinto.create({id:290286,place:1}).then(console.log)
+	//Recinto.update({id:290286},).then(console.log);
+  Recinto.findOrCreate({id:290286}, {place:1,starRating:4,name:"Sheraton Santa Fe",cityId:"MEX",pictures:[],address:{fullAddress:"Guillermo González Camarena 200,Álvaro Obregón,Sta Fé,01210 Ciudad de México, D.F."},geoLocation:{ "latitude" : 19.3683322, "longitude" : -99.261204 }}).then(function(data) {
+    console.log('Creaedo o encontrado Sheraton Santa fe');
+  }).catch(console.log);
 
-	Recinto.update({id:290286},{starRating:4}).then(console.log)
+	//Recinto.update({id:290286},{starRating:4}).then(console.log)
 	/*SalonRecinto.find().exec(function(err,data){
 		for(var i in data){
 			var registro = data[i];

@@ -45,7 +45,12 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					data[i]['starRatingRange'] = new Array(data[i].starRating);
 				};
 				$scope.hotelesNew = data;
+				$scope.hotelesOriginales = data;
 			});
+		}
+
+		$scope.limpiarFiltros = function () {
+			$scope.hotelesNew = $scope.hotelesOriginales;
 		}
 
 		$scope.getStars = function (num) {
@@ -182,7 +187,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			$scope.showAddButtonCurHot = $scope.existeEnSeleccion($scope.currentHotel);
       $localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
 
-			$http.post('/recinto/getHotelEmail', {id: id}).success(function(data) {
+			$http.post('/recinto/getHotelEmail', {id: $scope.currentHotel.id}).success(function(data) {
 				console.log($rootScope.hotelesSeleccionados);
 				console.log(data.id);
 				for (var i in $rootScope.hotelesSeleccionados) {
@@ -208,14 +213,13 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				notify('Hotel ' + hotel.data.name + ' agregado a Mi Selección');
 
 				$http.post('/recinto/getHotelEmail', {id: id}).success(function(data) {
-					console.log($rootScope.hotelesSeleccionados);
-					console.log(data.id);
-					for (var i in $rootScope.hotelesSeleccionados) {
-						if ($rootScope.hotelesSeleccionados[i].id == data.id) {
+					console.log(data);
+					$rootScope.hotelesSeleccionados.forEach(function (hotel, i) {
+						if (hotel.id == data.id) {
+							console.log('id match');
 							$rootScope.hotelesSeleccionados[i].email = data.email;
-							console.log('Email cargado');
 						}
-					}
+					});
 				});
 
 			});
@@ -401,6 +405,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				console.log(err);
 			});
 		}
+
 		$scope.rateDestino = function () {
 			$http.post('/recinto/rateDestino', {iduser: $scope.destinoid, rating: $scope.destinoRating}).success(function(data) {
 				console.log('HOTEL RATE', data);
@@ -508,6 +513,17 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				console.log('ERR LIKED', err);
 			});
 		}
+
+		$rootScope.$watch('_hasSession', function (logeado) {
+			if (logeado && $scope.hotelid) {
+				$http.post('/recinto/isliked/', {id: $scope.hotelid}).success(function(data) {
+					console.log('IS LIKED', data);
+					$scope.isLiked = data.isLiked;
+				}).error(function (err) {
+					console.log('ERR LIKED', err);
+				});
+			}
+		});
 
 		$scope.addFav = function (id) {
 			$http.post('/recinto/addfav/', {id: id}).success(function(data) {
