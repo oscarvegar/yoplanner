@@ -12,7 +12,7 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	$rootScope._hasSession = false;
 
 
-	
+
 
 
 	$rootScope.logout = function(){
@@ -27,7 +27,7 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 		})
 	}
 
-	
+
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider) {
@@ -35,6 +35,14 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, 
 	$httpProvider.defaults.withCredentials = true;
 
 
+});
+
+yoPlannerApp.controller('NotificacionesCtrl', function ($scope, $state, $http) {
+	$scope.initNotis = function () {
+		$http.get('/notificacion/getNotifications').success(function(data) {
+			$scope.notificaciones = data.notis;
+		});
+	}
 });
 
 yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeout, $rootScope, $location, $state,

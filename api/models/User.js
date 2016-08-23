@@ -26,6 +26,10 @@ module.exports = {
       collection: 'customer',
       via: 'user'
     },
+    notificacionesRecibidas: {
+      type: 'array',
+      defaultsTo: []
+    },
     favoritos: {
       type: 'array',
       defaultsTo: []
