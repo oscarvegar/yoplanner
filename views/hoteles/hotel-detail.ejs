@@ -13,7 +13,7 @@
         			var pic = hotel.pictures[i];
     			%>
             <div class="img-hover">
-              <img src="<%=pic.url || pic%>" alt="" class="img-responsive" style="width: 100%; height: 600px;">
+              <img src="<%=pic.url ? pic.url : pic%>" alt="" class="img-responsive" style="width: 100%; height: 600px;">
             </div>
             <% } %>
 						<% if(!hotel.pictures || hotel.pictures.length <= 0) { %>
