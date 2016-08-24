@@ -11,6 +11,7 @@ module.exports = {
 		if (req.isSocket) {
 			sails.sockets.join(req, 'notificaciones-room', function (err) {
 				if (err) {
+					console.log(err);
 					console.log('Error al conrectar al sockets de notis');
 				}
 			});

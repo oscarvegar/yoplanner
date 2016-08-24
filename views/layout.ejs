@@ -134,7 +134,7 @@
                        <!--<span ng-show="getNotiNotReadCount(notificaciones.slice(0, 9)) > 0" class="badge bg-warning-400">{{getNotiNotReadCount(notificaciones.slice(0, 9))}}</span>-->
                      </a>
 
-                     <div class="dropdown-menu dropdown-content pull-left" style="padding: 1em;" ng-init="initNotis()">
+                     <div class="dropdown-menu dropdown-content pull-left" style="padding: 1em;" ng-init="initNotis(sails_env)">
                        <div class="dropdown-content-heading" style="color:black;">
                          <h4>Notificaciones</h4>
                        </div>
@@ -349,6 +349,8 @@
     <script type="text/javascript" src="/js/angular-mod/angular-notify.min.js"></script>
     <script type="text/javascript" src="/js/angular-mod/twitter-timeline.js"></script>
     <script src="/js/moment/angular-moment.min.js"></script>
+    <script src="/js/sails.io.js"></script>
+    <script src="/js/angular-sails.min.js"></script>
     <script src="/js/ngTimepicker.min.js"></script>
     <script src="/js/angucomplete-alt.min.js"></script>
     <script src="/js/ngGallery.js"></script>
