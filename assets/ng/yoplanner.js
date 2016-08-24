@@ -34,8 +34,8 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider, $sailsProvider) {
 
 	$httpProvider.defaults.withCredentials = true;
-	$sailsProvider.url = 'http://localhost:1337';
-
+	//$sailsProvider.url = 'http://localhost:1337';
+	$sailsProvider.url = 'http://admin.yoplanner.com';
 });
 
 yoPlannerApp.controller('NotificacionesCtrl', function ($scope, $state, $http, $sails, $rootScope) {
@@ -44,8 +44,8 @@ yoPlannerApp.controller('NotificacionesCtrl', function ($scope, $state, $http, $
 			console.log('Get onotificacions', data);
 			$scope.notificaciones = data.notis;
 		});
-		//$sails.get('http://admin.yoplanner/api/notificacion/subscribe').success(function(data) {
-		$sails.get('http://localhost:1337/api/notificacion/subscribe').success(function(data) {
+		$sails.get('http://admin.yoplanner/api/notificacion/subscribe').success(function(data) {
+		//$sails.get('http://localhost:1337/api/notificacion/subscribe').success(function(data) {
 		  console.log(data);
 			$rootScope.sails_env = data.env;
 		}).error(function(err) {
