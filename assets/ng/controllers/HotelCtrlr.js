@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var HotelModule = angular.module('yoPlannerApp.hotel', ['ngAnimate', 'ngStorage', 'uiGmapgoogle-maps','cgNotify']);
+var HotelModule = angular.module('yoPlannerApp.hotel', ['ngAnimate', 'ngStorage', 'uiGmapgoogle-maps','cgNotify', 'ngSails']);
 
 
 HotelModule.config(function(uiGmapGoogleMapApiProvider) {
