@@ -75,5 +75,36 @@ module.exports = {
             })
         })
         return deferred.promise;
+    },
+
+    generateSlugs: function() {
+        Recinto.find().where({
+            urlslug: null
+        }).then(function(recintos) {
+            console.log("Recintos length", recintos.length)
+            var updates = []
+            recintos.forEach(function(recinto) {
+                updates.push(Recinto.update(recinto.id, {
+                    urlslug: recinto.name.toLowerCase()
+                    .replace(/,/g, "-")
+                    .replace(/ /g, "-")
+                    .replaceAll("á","a")
+                    .replaceAll("Á","A")
+                    .replaceAll("é","e")
+                    .replaceAll("É","E")
+                    .replaceAll("í","i")
+                    .replaceAll("Í","I")
+                    .replaceAll("ó","o")
+                    .replaceAll("Ó","O")
+                    .replaceAll("ú","u")
+                    .replaceAll("Ú","U")
+                    .replaceAll("ñ","n")
+                    .replaceAll("Ñ","N")
+                }));
+            })
+            Q.all(updates).then(function(data) {
+                console.log(data.length, " registros actualizados")
+            })
+        });
     }
 }

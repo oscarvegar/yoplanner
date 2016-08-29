@@ -57,7 +57,7 @@ var _this = module.exports = {
 				console.log("antes de ir al httpget",options.url);
 				HTTP.get(options).then(function(response){
 					if(!response.availability || response.availability.length==0)
-						return deferred.resolve("ok");
+						return deferred.resolve([]);
 					var ids = "";
 					for(var i in response.availability){
 						ids = ids+response.availability[i].hotel.id+",";
@@ -72,6 +72,22 @@ var _this = module.exports = {
 						var amensids = [];
 						for(var i in response.hotels){
 
+							response.hotels[i].urlslug = response.hotels[i].name.toLowerCase()
+			                    .replace(/,/g, "-")
+			                    .replace(/ /g, "-")
+			                    .replaceAll("á","a")
+			                    .replaceAll("Á","A")
+			                    .replaceAll("é","e")
+			                    .replaceAll("É","E")
+			                    .replaceAll("í","i")
+			                    .replaceAll("Í","I")
+			                    .replaceAll("ó","o")
+			                    .replaceAll("Ó","O")
+			                    .replaceAll("ú","u")
+			                    .replaceAll("Ú","U")
+			                    .replaceAll("ñ","n")
+			                    .replaceAll("Ñ","N");
+		                    console.log("urlslug",response.hotels[i].urlslug);
 							for(var j in response.hotels[i].pictures){
 								response.hotels[i].pictures[j] = sails.config.constants.URL_PICTURES+response.hotels[i].pictures[j];
 							}
