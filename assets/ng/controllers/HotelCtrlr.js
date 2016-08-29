@@ -62,6 +62,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			window.location.href = "/destino/cancun";
 		}
 
+		//Filter image
+		$scope.loadImageHotelList = function (hotel) {
+			if (hotel.fotoPrincipal) {
+				return hotel.fotoPrincipal;
+			} else {
+				return hotel.pictures[0].url ? hotel.pictures[0].url : hotel.pictures[0];
+			}
+		}
+
 		//Buscar por estrellas
 		$scope.filterStar = function (buscar) {
 			return function (item) {
