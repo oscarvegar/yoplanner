@@ -64,10 +64,11 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		//Filter image
 		$scope.loadImageHotelList = function (hotel) {
+			console.log(hotel.pictures);
 			if (hotel.fotoPrincipal) {
 				return hotel.fotoPrincipal;
 			} else {
-				return hotel.pictures[0].url ? hotel.pictures[0].url : hotel.pictures[0];
+				return hotel.pictures[0].url;
 			}
 		}
 
