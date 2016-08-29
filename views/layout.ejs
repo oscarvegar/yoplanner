@@ -24,7 +24,7 @@
         <% } %>
 
 
-    <% } else  {%>    
+    <% } else  {%>
         <title>Yo Planner: Cotiza en línea Hoteles para Grupos y Eventos</title>
         <meta name="description" content="Yo Planner RFP: Cotiza en línea grupos, convenciones y eventos. Encuentra los mejores destinos, hoteles y proveedores para la organización de tu evento.">
         <meta name="keywords" content="Hoteles, Destinos, Cruceros, Grupos, Convenciones, Organización de Eventos, Bodas, Eventos Sociales, Viajes Individuales, Reservaciones, Cotizaciones de Eventos, Asesoría en Eventos, Negociación de Eventos, Como planear un eventos, como contratar un hotel, Cotiza en Linea Hoteles, RFP">
@@ -126,6 +126,39 @@
                     <!-- End website title - Logo class -->
                     <li><a href="/">INICIO </a></li>
 
+                    <!-- Notificaciones -->
+                    <li class="dropdown" ng-controller="NotificacionesCtrl" ng-if="_hasSession">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                       <i class="fa fa-comment"></i>
+                       <span class="visible-xs-inline-block position-right">Notificaciones</span>
+                       <!--<span ng-show="getNotiNotReadCount(notificaciones.slice(0, 9)) > 0" class="badge bg-warning-400">{{getNotiNotReadCount(notificaciones.slice(0, 9))}}</span>-->
+                     </a>
+
+                     <div class="dropdown-menu dropdown-content pull-left" style="padding: 1em;" ng-init="initNotis(sails_env)">
+                       <div class="dropdown-content-heading" style="color:black;">
+                         <h4>Notificaciones</h4>
+                       </div>
+
+                       <ul class="media-list dropdown-content-body" style="width:300px;">
+                         <li class="media" data-toggle="modal" data-target="#modal-noti" ng-click="setModalData(noti)" ng-repeat="noti in notificaciones | orderBy:createdAt:true">
+                           <img src="http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png" alt="Imágen de notificación" style="width:48px;border: none; margin-right: 8px;background-color: white;"/>
+                           <div class="media-body">
+                             <a class="media-heading">
+                               <span class="text-semibold">{{noti.title}}</span>
+                               <span class="media-annotation pull-right">{{noti.createdAt | date}}</span>
+                             </a>
+                             <span class="text-muted">{{noti.text | limitTo:100}}</span>
+                           </div>
+                           <hr>
+                         </li>
+                         <li ng-show="notificaciones.length <= 0" style="color:black;">No hay notificaciones...</li>
+                       </ul>
+
+                         <div class="dropdown-content-footer">
+                           <a href="#" data-popup="tooltip" title="Ver todas"><i class="icon-menu display-block"></i></a>
+                         </div>
+                       </div>
+                     </li>
 
                     <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-sign-out " ng-click="logout()">&ensp;CERRAR SESIÓN</i></li>
                     <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-tachometer " onclick='window.location = "//admin.yoplanner.com"'>&ensp;ADMIN</i></li>
@@ -303,6 +336,8 @@
 
     <!-- ======================= Angular libs =========================== -->
     <script type="text/javascript" src="/js/angular.min.js"></script>
+    <script src="/js/sails.io.js"></script>
+    <script src="/js/angular-sails.min.js"></script>
     <script type="text/javascript" src="/js/angular/angular-route.min.js"></script>
     <script type="text/javascript" src="/js/angular/angular-animate.min.js"></script>
     <script type="text/javascript" src="/js/angular-ui/angular-ui-router.min.js"></script>

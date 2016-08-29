@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var http = require('request');
+
 module.exports = {
 
 	getComentarios: function (req, res) {
@@ -24,6 +26,17 @@ module.exports = {
 		ComentarioHotel.create(comentarioParams).then(function (comentario) {
 			ComentarioHotel.findOne({id: comentario.id}).populate('user').then(function (comentario_final) {
 				console.log('Comentario creado', comentario_final);
+				http.post('http://localhost:1337/api/notificacion/sendNotificationHotelComment', {
+					form: {
+						comentario: comentario_final
+					}
+				}, function (err, httpResponse, body) {
+					if (err) {
+						 console.log('ERROR NOTI HOTEL COMMENT:', err);
+					} else {
+						console.log('Conectado con el server para mandar notificacion', body);
+					}
+				});
 				return res.json({comentario: comentario_final});
 			}).catch(console.log);
 		}).catch(console.log);

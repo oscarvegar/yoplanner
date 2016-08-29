@@ -1,6 +1,21 @@
-var yoPlannerApp = angular.module('yoPlannerApp', ['rfp-module','autocomplete', 'ngRoute', 'ui.router', 'ngAnimate',
-	'ngStorage', 'yoPlannerApp.hotel', 'twitter.timeline', 'angularMoment', 'jkuri.timepicker',
-	'angucomplete-alt', 'jkuri.gallery', 'monospaced.elastic', 'ui.bootstrap', 'youtube-embed']);
+var yoPlannerApp = angular.module('yoPlannerApp', [
+	'ngSails',
+	'rfp-module',
+	'autocomplete',
+	'ngRoute',
+	'ui.router',
+	'ngAnimate',
+	'ngStorage',
+	'yoPlannerApp.hotel',
+	'twitter.timeline',
+	'angularMoment',
+	'jkuri.timepicker',
+	'angucomplete-alt',
+	'jkuri.gallery',
+	'monospaced.elastic',
+	'ui.bootstrap',
+	'youtube-embed']
+	);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	// It's very handy to add references to $state and $stateParams to the $rootScope
@@ -35,11 +50,34 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	$rootScope.hasSession();
 });
 
-yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider) {
+yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider, $sailsProvider) {
 
 	$httpProvider.defaults.withCredentials = true;
+	//$sailsProvider.url = 'http://localhost:1337';
+	$sailsProvider.url = 'http://admin.yoplanner.com';
+});
 
-
+yoPlannerApp.controller('NotificacionesCtrl', function ($scope, $state, $http, $sails, $rootScope) {
+	$scope.initNotis = function () {
+		$http.get('/notificacion/getNotifications').success(function(data) {
+			console.log('Get onotificacions', data);
+			$scope.notificaciones = data.notis;
+		});
+		$sails.get('http://admin.yoplanner/api/notificacion/subscribe').success(function(data) {
+		//$sails.get('http://localhost:1337/api/notificacion/subscribe').success(function(data) {
+		  console.log(data);
+			$rootScope.sails_env = data.env;
+		}).error(function(err) {
+		  console.log(err);
+		});
+	}
+	//Manage Sockets
+	$sails.on('notificacionsocket', function (msg) {
+		console.log(msg);
+		if (msg.room == 'hotel-comment') {
+			$scope.notificaciones.push(msg.notificacion);
+		}
+	});
 });
 
 yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeout, $rootScope, $location, $state,

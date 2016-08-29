@@ -809,3 +809,8 @@ div.carbonad-image {
 	padding-left: 1em;
 	box-sizing: border-box;
 }
+
+.notificacion {
+	border-bottom: 1px solid rgb(208, 208, 208);
+	padding-bottom: 1em;
+}

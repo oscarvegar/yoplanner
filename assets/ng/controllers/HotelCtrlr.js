@@ -3,7 +3,7 @@
  */
 'use strict';
 
-var HotelModule = angular.module('yoPlannerApp.hotel', ['ngAnimate', 'ngStorage', 'uiGmapgoogle-maps','cgNotify']);
+var HotelModule = angular.module('yoPlannerApp.hotel', ['ngAnimate', 'ngStorage', 'uiGmapgoogle-maps','cgNotify', 'ngSails']);
 
 
 HotelModule.config(function(uiGmapGoogleMapApiProvider) {
@@ -428,10 +428,8 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		}
 
 		$scope.loadUserRating = function (hotel) {
-			if (!$rootScope._hasSession) {
-				return;
-			}
 			$http.post('/recinto/getUserRating', {id: hotel}).success(function(data) {
+				console.log('GET USER RATING', data);
 			  $scope.hotelRating = data.rating;
 			}).error(function (err) {
 				console.log(err);
