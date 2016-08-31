@@ -66,9 +66,10 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.loadImageHotelList = function (hotel) {
 			console.log(hotel.pictures);
 			if (hotel.fotoPrincipal) {
-				return hotel.fotoPrincipal;
+				return (hotel.fotoPrincipal.url ? hotel.fotoPrincipal.url : hotel.fotoPrincipal);
 			} else {
-				return hotel.pictures[0].url;
+				var pic = hotel.pictures[0];
+				return (pic.url ? pic.url : pic);
 			}
 		}
 

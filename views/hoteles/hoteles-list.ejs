@@ -226,7 +226,7 @@ background-size: 100% 450px;cursor:pointer;' ng-if="searchId == 'CUN'" ng-click=
                     <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(<%=hotel.id%>)">
 
                          <div class="img-hover">
-                            <img src="<%=(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])%>" alt="" class="img-responsive"  style="width: 100%;height: 166px">
+                            <img src="<%=(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0].url)%>" alt="" class="img-responsive"  style="width: 100%;height: 166px">
 
                         </div>
 
