@@ -21,7 +21,7 @@ module.exports = {
       var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/hotelnew.ejs'), 'utf8');
       var htmlfinal = ejs.render(template, {
          rfp: rfp,
-         user: user,
+         user: req.user,
          moment: moment,
          logo: logoagencia
       });
@@ -101,7 +101,7 @@ module.exports = {
             console.log(error);
          } else {
             console.log("Mensaje enviado planner: " + info.response);
-           
+
          }
       });
    },
