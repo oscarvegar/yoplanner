@@ -370,5 +370,23 @@ module.exports = {
           return res.json({error: true, message: 'Hotel no es del destino actual.'});
         }
       });
+    },
+
+    addVisita: function (req, res) {
+      var idhotel = req.param('id');
+      var ip = req.ip;
+      var fecha = new Date().toISOString();
+
+      Recinto.findOne({id: idhotel}).then(function(data) {
+        data.visitas = data.visitas ? data.visitas : [];
+        data.visitas.push({
+          ip: ip,
+          fecha: fecha
+        });
+        Recinto.update({id: data.id}, {visitas: data.visitas}).then(function(data) {
+          console.log('Añadida visita a', data[0].name);
+          return res.json(data[0]);
+        }).catch(console.log);
+      }).catch(console.log);
     }
 };
