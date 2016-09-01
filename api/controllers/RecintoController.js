@@ -134,6 +134,36 @@ module.exports = {
           '>=': parametros.habitaciones
         };
       }
+      if (parametros.suites) {
+        busqueda.totalSuites = {
+          '>=': parametros.suites
+        };
+      }
+      if (parametros.unacama) {
+        busqueda.totalUnaCama = {
+          '>=': parametros.unacama
+        };
+      }
+      if (parametros.doscamas) {
+        busqueda.totalDosCamas = {
+          '>=': parametros.doscamas
+        };
+      }
+      if (parametros.metroscuadrados) {
+        busqueda.metrosTotales = {
+          '>=': parametros.metroscuadrados
+        };
+      }
+      if (parametros.masgrandecuadrados) {
+        busqueda.salonMasGrandeMetros = {
+          '>=': parametros.masgrandecuadrados
+        };
+      }
+      if (parametros.maxcapacidadsalon) {
+        busqueda.salonMasGrandePersonas = {
+          '>=': parametros.maxcapacidadsalon
+        };
+      }
       busqueda.cityId = cityId;
       Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
