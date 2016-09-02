@@ -134,6 +134,36 @@ module.exports = {
           '>=': parametros.habitaciones
         };
       }
+      if (parametros.suites) {
+        busqueda.totalSuites = {
+          '>=': parametros.suites
+        };
+      }
+      if (parametros.unacama) {
+        busqueda.totalUnaCama = {
+          '>=': parametros.unacama
+        };
+      }
+      if (parametros.doscamas) {
+        busqueda.totalDosCamas = {
+          '>=': parametros.doscamas
+        };
+      }
+      if (parametros.metroscuadrados) {
+        busqueda.metrosTotales = {
+          '>=': parametros.metroscuadrados
+        };
+      }
+      if (parametros.masgrandecuadrados) {
+        busqueda.salonMasGrandeMetros = {
+          '>=': parametros.masgrandecuadrados
+        };
+      }
+      if (parametros.maxcapacidadsalon) {
+        busqueda.salonMasGrandePersonas = {
+          '>=': parametros.maxcapacidadsalon
+        };
+      }
       busqueda.cityId = cityId;
       Recinto.find(busqueda).sort("place DESC").sort("starRating DESC").then(function (hoteles) {
         console.log('HOTELES BUSCAR', hoteles.length);
@@ -340,5 +370,23 @@ module.exports = {
           return res.json({error: true, message: 'Hotel no es del destino actual.'});
         }
       });
+    },
+
+    addVisita: function (req, res) {
+      var idhotel = req.param('id');
+      var ip = req.ip;
+      var fecha = new Date().toISOString();
+
+      Recinto.findOne({id: idhotel}).then(function(data) {
+        data.visitas = data.visitas ? data.visitas : [];
+        data.visitas.push({
+          ip: ip,
+          fecha: fecha
+        });
+        Recinto.update({id: data.id}, {visitas: data.visitas}).then(function(data) {
+          console.log('Añadida visita a', data[0].name);
+          return res.json(data[0]);
+        }).catch(console.log);
+      }).catch(console.log);
     }
 };

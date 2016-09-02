@@ -12,7 +12,7 @@ HotelModule.config(function(uiGmapGoogleMapApiProvider) {
 
 });
 
-HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,$localStorage,notify){
+HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,$localStorage,notify, $location){
 	$scope.searchId;
 	$scope.hotelRatings = [];
 	$scope.masResultados = function(){
@@ -40,7 +40,6 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		//Cargar hoteles
 		$scope.loadNewHoteles = function () {
 			$http.get('/recinto/findByCiudadId/' + $scope.searchId).success(function(data) {
-				console.log(data);
 				for (var i = 0; i < data.length; i++) {
 					data[i]['starRatingRange'] = new Array(data[i].starRating);
 				};
@@ -64,7 +63,6 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		//Filter image
 		$scope.loadImageHotelList = function (hotel) {
-			console.log(hotel.pictures);
 			if (hotel.fotoPrincipal) {
 				return (hotel.fotoPrincipal.url ? hotel.fotoPrincipal.url : hotel.fotoPrincipal);
 			} else {
@@ -481,22 +479,27 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 					break;
 				case 2:
 					if (!hotel.visitas) {
-						return hotel.place;
+						return 0;
 					}
 					$scope.sortAsc = true;
-					return hotel.visitas;
+					return hotel.visitas.length;
 					break;
 				case 3:
-					if (hotel.comentarios) {
-						return hotel.comentarios.length;
-					}
 					$scope.sortAsc = true;
-					return 0;
+					return hotel.comentarios ? hotel.comentarios.length : 0;
 					break;
 				default:
 				$scope.sortAsc = false;
 					return hotel.place;
 			}
+		}
+
+		//visitas
+		$scope.addVisitaAndGo = function (hotel) {
+			$http.post('/recinto/addVisita', {id: hotel.id}).success(function(data) {
+				console.log('Visita agregada', data);
+			});
+			//$location.path(hotel.urlslug ? hotel.urlslug : hotel.id);
 		}
 
 		//favoritos
