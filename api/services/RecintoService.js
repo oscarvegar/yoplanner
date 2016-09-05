@@ -66,6 +66,7 @@ module.exports = {
     findById: function(id) {
         var deferred = Q.defer();
         Recinto.findOne(id).populate("amenities").then(function(recinto) {
+          if(!recinto) return deferred.resolve(null);
           if (recinto) {
             SalonRecinto.find({
                 recinto: recinto.id,
