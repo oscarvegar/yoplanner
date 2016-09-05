@@ -6,7 +6,7 @@
         <!-- Single Carousel -->
         <div id="single-carousel">
 					<div class="img-hover">
-						<img src="/img/fondocancun.jpg" alt="Cancún" class="img-responsive" style="width: 100%; height: 600px;">
+						<img src="<%= destino.fotoPrincipal ? destino.fotoPrincipal : '/img/fondocancun.jpg' %>" alt="Cancún" class="img-responsive" style="width: 100%; height: 600px;">
 					</div>
         </div>
         <!-- End Single Carousel -->
@@ -23,7 +23,7 @@
 									</p>
 									<span ng-init="loadUserRating(destinoid)" ng-if="_hasSession"></span>
 								</ul>
-								<h2><%=destino.destino.name%>
+								<h2><%=destino.name%>
 
 								</h2>
               </div>
@@ -94,9 +94,9 @@
 <div class="tab-content">
     <!-- Tab One - destino -->
     <div class="tab-pane active" id="destino">
-        <h2><%=destino.destino.name%></h2>
+        <h2><%=destino.name%></h2>
 				<p>
-					<%=destino.destino.description%>
+					<%=destino.description%>
 				</p>
         <div class="row">
 
@@ -109,7 +109,7 @@
 								<!--
 								<iframe width="100%" height="400px" src="<%=destino.youtube?destino.youtube.replace("watch?v=","/v/") : 'https://www.youtube.com/v/JGmFl_gyaew'%>" frameborder="0" allowfullscreen></iframe>
 							 -->
-							 <youtube-video video-url="'<%= destino.destino.youtube %>'" style="width: 100%;"></youtube-video>
+							 <youtube-video video-url="'<%= destino.youtube %>'" style="width: 100%;"></youtube-video>
 		 				 </div>
 						</div>
 						<!-- Ubicación -->
@@ -131,7 +131,7 @@
     <div class="tab-pane" id="saloons">
         <div class="row">
           <div class="col-md-12">
-          	<%= destino.destino.conectividad %>
+          	<%= destino.conectividad %>
           </div>
         </div>
     </div>
@@ -344,14 +344,14 @@
 <!-- Tab #5 Galeria -->
 <div class="tab-pane" id="galeria">
 	<div class="col-md-12">
-		<%= destino.destino.recintos %>
+		<%= destino.recintos %>
 	</div>
 </div>
 <!-- Tab #5 promociones -->
 <div class="tab-pane" id="promociones">
 	<div class="row">
 		<div class="col-md-12" ng-init="initPromotions()">
-			<%= destino.destino.contacto %>
+			<%= destino.contacto %>
 		</div>
  </div>
 </div>
