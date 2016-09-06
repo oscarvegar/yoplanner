@@ -21,7 +21,7 @@ module.exports = {
       var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/hotelnew.ejs'), 'utf8');
       var htmlfinal = ejs.render(template, {
          rfp: rfp,
-         user: req.user,
+         user: user,
          moment: moment,
          logo: logoagencia
       });
