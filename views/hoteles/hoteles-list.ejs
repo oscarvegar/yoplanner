@@ -289,7 +289,7 @@ background-size: 100% 450px;cursor:pointer;' ng-if="searchId == 'CUN'" ng-click=
                 <!-- Item Gallery - More Results -->
                 <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="hotel in moreHotels" ng-click="selectResult(hotel)">
                     <div class="img-hover">
-                        <img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="" class="img-responsive" style="width: 100%;height: 166px">
+                        <img ng-src="{{sanitizeImgHotelList(hotel)}}" alt="" class="img-responsive" style="width: 100%;height: 166px">
                     </div>
 
                     <div class="info-gallery">
