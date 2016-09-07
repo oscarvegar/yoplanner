@@ -74,6 +74,9 @@
 																<li>
                                     <a href="?#promociones" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-newspaper-o"></i> Contacto</a>
                                 </li>
+																<li>
+                                    <a href="?#gallery" ng-click="renderMap(true)" data-toggle="tab"><i class="fa fa-picture-o"></i> Galería</a>
+                                </li>
 																<!--
 																<li ng-if="_hasSession">
                                     <a href="javascript:void(0);" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0"><i class="fa fa-cart-plus"></i>Cotiza Grupo</a>
@@ -133,6 +136,13 @@
           <div class="col-md-12">
           	<%= destino.conectividad %>
           </div>
+        </div>
+    </div>
+		<div class="tab-pane" id="gallery">
+        <div class="row">
+					<div class="col-md-12" ng-init="initDestinoGallery(destinoid)" oncontextmenu="return false">
+						<ng-gallery images="destinoGaleria"></ng-gallery>
+					</div>
         </div>
     </div>
     <!-- end Tab Two - Salones -->

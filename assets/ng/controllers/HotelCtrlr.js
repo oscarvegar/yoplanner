@@ -593,6 +593,20 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		}
 
+		$scope.initDestinoGallery = function (id) {
+			$scope.destinoGaleria = [];
+			$http.post('/destino/getById', {id: id}).success(function(data) {
+				console.log(data);
+				var tempGaleria = data.gallery ? data.gallery : [];
+				tempGaleria.forEach(function (foto) {
+					$scope.destinoGaleria.push({
+						img: foto,
+						thumb: foto
+					});
+				});
+			});
+		}
+
 		//Watcher sorthotel
 		$scope.$watch('sorthotel', function (sort) {
 			if (sort == 4) {
