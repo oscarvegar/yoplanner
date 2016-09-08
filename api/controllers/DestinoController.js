@@ -32,6 +32,15 @@ module.exports = {
 		Destino.destroy({id: id}).then(function(data) {
 		  return res.json(data[0]);
 		}).catch(console.log);
+	},
+
+	getById: function (req, res) {
+		var id = req.param('id');
+		Destino.findOne({id: id}).then(function(data) {
+		  return res.json(data);
+		}).catch(function(err) {
+		  return res.json(500, {err: err});
+		});
 	}
 
 };
