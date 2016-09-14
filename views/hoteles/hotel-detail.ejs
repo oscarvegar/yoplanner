@@ -191,46 +191,65 @@
     <div class="tab-pane" id="saloons">
         <div class="row">
             <div class="col-md-3">
-                <h3>Información General</h3>
-                <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
-                    <tr>
-                        <td>Total de Habitaciones</td>
-                        <td><%=currentHotel.totalHabitaciones?currentHotel.totalHabitaciones : "N/A"%></td>
-                    </tr>
-                    <tr>
-                        <td>Total de Suites</td>
-                        <td><%=currentHotel.totalSuites?currentHotel.totalSuites : "N/A"%></td>
-                    </tr>
-                    <tr>
-                        <td>Habitaciones Una Cama</td>
-                        <td><%=currentHotel.totalUnaCama?currentHotel.totalUnaCama : "N/A"%></td>
-                    </tr>
-                    <tr>
-                        <td>Habitaciones Dos Camas</td>
-                        <td><%=currentHotel.totalDosCamas?currentHotel.totalDosCamas : "N/A"%></td>
-                    </tr>
+            	<div class="row">
+            		<div class="col-md-12">
+									<h3>Información General</h3>
+	                <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
+	                    <tr>
+	                        <td>Total de Habitaciones</td>
+	                        <td><%=currentHotel.totalHabitaciones?currentHotel.totalHabitaciones : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Total de Suites</td>
+	                        <td><%=currentHotel.totalSuites?currentHotel.totalSuites : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Habitaciones Una Cama</td>
+	                        <td><%=currentHotel.totalUnaCama?currentHotel.totalUnaCama : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Habitaciones Dos Camas</td>
+	                        <td><%=currentHotel.totalDosCamas?currentHotel.totalDosCamas : "N/A"%></td>
+	                    </tr>
 
-                    <tr>
-                        <td>Total de Salones</td>
-                        <td><%=currentHotel.numeroSalones?currentHotel.numeroSalones : "N/A"%></td>
-                    </tr>
-                    <tr>
-                        <td>Total Metros Cuadrados</td>
-                        <td><%=currentHotel.metrosTotales?currentHotel.metrosTotales : "N/A"%></td>
-                    </tr>
-                    <tr>
-                        <td>Salon Más Grande (Mts2)</td>
-                        <td><%=currentHotel.salonMasGrandeMetros?currentHotel.salonMasGrandeMetros : "N/A"%></td>
-                    </tr>
-                    <tr>
-                        <td>Máxima Capacidad en Salón (Pax)</td>
-                        <td><%=currentHotel.salonMasGrandePersonas?currentHotel.salonMasGrandePersonas : "N/A"%></td>
-                    </tr>
-                    <tr>
-                        <td>Plan</td>
-                        <td><%=currentHotel.plan?currentHotel.plan : "N/A"%></td>
-                    </tr>
-                </table>
+	                    <tr>
+	                        <td>Total de Salones</td>
+	                        <td><%=currentHotel.numeroSalones?currentHotel.numeroSalones : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Total Metros Cuadrados</td>
+	                        <td><%=currentHotel.metrosTotales?currentHotel.metrosTotales : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Salon Más Grande (Mts2)</td>
+	                        <td><%=currentHotel.salonMasGrandeMetros?currentHotel.salonMasGrandeMetros : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Máxima Capacidad en Salón (Pax)</td>
+	                        <td><%=currentHotel.salonMasGrandePersonas?currentHotel.salonMasGrandePersonas : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Plan</td>
+	                        <td><%=currentHotel.plan?currentHotel.plan : "N/A"%></td>
+	                    </tr>
+	                </table>
+            		</div>
+								<div class="col-md-12">
+									<h3>Descargables</h3>
+									<table class="table table-default" ng-init="initSalonPDF(hotelid)">
+										<thead>
+											<tr>
+												<th>Nombre</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="pdf in salonpdf">
+												<td><a href="http://admin.yoplanner.com{{pdf.file}}" target="_blank">{{pdf.title}}</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+            	</div>
             </div>
 
             <div class="col-md-9">
@@ -253,7 +272,12 @@
                         <tbody>
                         	<% currentHotel.salones.forEach(function(saloon){%>
                             <tr >
-                                <td><%=saloon.nombre%></td>
+																<% if(saloon.descargable) { %>
+																	<td><a href="<%= saloon.descargable %>" target="_blank"><%=saloon.nombre%></a></td>
+																<%} else {%>
+																	<td><%=saloon.nombre%></td>
+																<%}%>
+
                                 <td><%=saloon.tamano%></td>
                                 <td><%=saloon.alto%></td>
                                 <td><%=saloon.ancho%></td>
