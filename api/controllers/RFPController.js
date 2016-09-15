@@ -88,9 +88,9 @@ module.exports = {
   },
 
 	sendHotelMail: function (req, res) {
-		var user = req.user;
+		var userPlanner = req.user;
 		var rfp = req.param('rfp');
-		User.findOne({account: user.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
+		User.findOne({account: userPlanner.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
 			//Cargar logo de agencia
 			if (!data.logoagencia) {
 				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
@@ -102,10 +102,11 @@ module.exports = {
 				rfp.salones = [];
 			}
 			//Sacar agencia del admin agencia para el planner
-			if (!user.empresa || user.empresa == null) {
-				user.empresa = data.empresa;
+			if (!userPlanner.empresa || userPlanner.empresa == null) {
+				userPlanner.empresa = data.empresa;
 			}
-			EmailService.sendHotel(req.param('options'), rfp, req.user, data.logoagencia);
+			console.log('USER SEND EMAIL HOTEL', userPlanner);
+			EmailService.sendHotel(req.param('options'), rfp, userPlanner, data.logoagencia);
 			console.log('Enviando correo a hotel...');
 		});
   },
@@ -129,7 +130,7 @@ module.exports = {
 				user.empresa = data.empresa;
 			}
 			EmailService.sendPlanner(req.param('options'), rfp, req.user, data.logoagencia);
-			console.log('Enviando correo a hotel...');
+			console.log('Enviando correo a planner...');
 		});
   },
 

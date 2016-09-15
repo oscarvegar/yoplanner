@@ -235,6 +235,13 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
     };
 
+		$scope.initSalonPDF = function (id) {
+			$http.post('/recinto/getsalonpdf/', {id: id}).success(function(data) {
+				console.log(data);
+				$scope.salonpdf = data;
+			});
+		}
+
 		$scope.addSeleccion = function (id) {
 			for (var i in $rootScope.hotelesSeleccionados) {
 				if ($rootScope.hotelesSeleccionados[i].id == id) {

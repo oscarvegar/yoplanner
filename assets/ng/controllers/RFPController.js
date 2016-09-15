@@ -40,7 +40,7 @@ angular.module('rfp-module', [])
 			$http.get('/customer/getbyuser').success(function(data) {
 				$scope.myCustomers = data;
 			});
-		}		
+		}
 	};
 
     $scope.muestraCuadritos = function(){

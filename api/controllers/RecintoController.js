@@ -388,5 +388,12 @@ module.exports = {
           return res.json(data[0]);
         }).catch(console.log);
       }).catch(console.log);
+    },
+
+    getsalonpdf: function (req, res) {
+      var id = req.param('id');
+      Recinto.findOne({id: id}).then(function(data) {
+        return res.json(data.salonPDF ? data.salonPDF : []);
+      }).catch(console.log);
     }
 };

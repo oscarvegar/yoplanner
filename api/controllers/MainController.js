@@ -65,18 +65,34 @@ module.exports = {
 								})
 						} else {
 							RecintoService.findByCiudadId(ciudad.id).then(function(hoteles) {
-								console.log('CIUDAD', ciudad);
-								res.view('hoteles/hoteles-list', {
-									layout:"layout_old",
-									hoteles: hoteles,
-									ciudad: ciudad,
-									metas: {
-										title: 'Hoteles en ' + ciudad.name,
-										description: 'Organiza eventos en ' + ciudad.name,
-										keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
-										image: ciudad.image
-									}
-								})
+								Destino.findOne({cityId: hoteles[0].cityId}).then(function(destino) {
+									console.log('CIUDAD', ciudad);
+									res.view('hoteles/hoteles-list', {
+										layout:"layout_old",
+										hoteles: hoteles,
+										ciudad: ciudad,
+										destinoUrl: destino.urlslug,
+										metas: {
+											title: 'Hoteles en ' + ciudad.name,
+											description: 'Organiza eventos en ' + ciudad.name,
+											keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
+											image: ciudad.image
+										}
+									})
+								}).catch(function(err) {
+									console.log('CIUDAD', ciudad);
+									res.view('hoteles/hoteles-list', {
+										layout:"layout_old",
+										hoteles: hoteles,
+										ciudad: ciudad,
+										metas: {
+											title: 'Hoteles en ' + ciudad.name,
+											description: 'Organiza eventos en ' + ciudad.name,
+											keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
+											image: ciudad.image
+										}
+									})
+								});
 							}).catch(function(err) {
 								res.view('hoteles/hoteles-list', {
 									layout:"layout_old",
