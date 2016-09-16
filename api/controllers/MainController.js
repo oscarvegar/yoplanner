@@ -85,6 +85,7 @@ module.exports = {
 										layout:"layout_old",
 										hoteles: hoteles,
 										ciudad: ciudad,
+										destinoUrl: '',
 										metas: {
 											title: 'Hoteles en ' + ciudad.name,
 											description: 'Organiza eventos en ' + ciudad.name,
@@ -98,6 +99,7 @@ module.exports = {
 									layout:"layout_old",
 									hoteles: [],
 									ciudad: ciudad,
+									destinoUrl: '',
 									metas: {
 										title: 'Hoteles en ' + ciudad.name,
 										description: 'Organiza eventos en ' + ciudad.name,
