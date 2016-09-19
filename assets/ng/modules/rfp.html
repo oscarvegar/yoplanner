@@ -195,6 +195,30 @@
                     </div>
                 </div>
                 <div class="row">
+
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h4>Descargables</h4>
+                      </div>
+                      <div class="col-md-12 text-right">
+                        <button ng-click="addAttachment()" type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Agregar</button>
+                      </div>
+                      <div class="col-md-12" ng-repeat="desc in rfp.attachments">
+                        <div class="row">
+                          <div class="col-md-9">
+                            <label>Titulo</label>
+                            <input type="text" class="form-control" placeholder="Título del descargable" ng-model="desc.title">
+                          </div>
+                          <div class="col-md-3" style="margin-bottom: 1em;">
+                            <label>Archivo</label><br>
+                            <div class="btn btn-primary" ngf-select ng-model="desc.tempfile" name="image" ng-change="uploadAttachment(desc, $index)">Seleccionar</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
                 <br>
                 <br>
                     <div class="col col-md-4 text-left">

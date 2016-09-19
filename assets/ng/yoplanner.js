@@ -14,6 +14,7 @@ var yoPlannerApp = angular.module('yoPlannerApp', [
 	'jkuri.gallery',
 	'monospaced.elastic',
 	'ui.bootstrap',
+	'ngFileUpload',
 	'youtube-embed']
 	);
 
