@@ -1,5 +1,19 @@
 angular.module('rfp-module', [])
-.controller('RFPController', function($scope,$http,$rootScope,$timeout) {
+.directive('file', function () {
+    return {
+        scope: {
+            file: '='
+        },
+        link: function (scope, el, attrs) {
+            el.bind('change', function (event) {
+                var file = event.target.files[0];
+                scope.file = file ? file : undefined;
+                scope.$apply();
+            });
+        }
+    };
+})
+.controller('RFPController', function($scope,$http,$rootScope,$timeout, Upload, notify) {
 	$scope.init = function(){
 	 	$scope.rfp =  window.localStorage.rfp!=null?JSON.parse(window.localStorage.rfp):{};
 		console.log('RPF', $scope.rfp);
@@ -42,6 +56,44 @@ angular.module('rfp-module', [])
 			});
 		}
 	};
+
+	$scope.saveAttachments = function (attachments, id) {
+		attachments.forEach(function (att) {
+			console.log(att.tempfile);
+			$http.post('/rfp/upload', {image: att.tempfile}).success(function(data) {
+				console.log('UPLOAD ATT', data);
+			}).error(function (err) {
+				console.log(err);
+			});
+		});
+	}
+
+	$scope.uploadAttachment = function (desc, i) {
+		if (!desc.tempfile) {
+			return;
+		}
+		console.log(desc.title);
+		Upload.upload({
+      url: '/rfp/upload',
+      data: {
+        image: desc.tempfile
+      }
+    }).then(function(data) {
+      notify('Descargable subido correctamnete.');
+			console.log(data.data);
+      $scope.rfp.attachments[i].url = data.data.url;
+    }, function (err) {
+      console.log(err);
+      notify('Error al subir Descargable.');
+    });
+	}
+
+	$scope.addAttachment = function () {
+		if (!$scope.rfp.attachments) {
+			$scope.rfp.attachments = [];
+		}
+		$scope.rfp.attachments.push({title: '', file: null});
+	}
 
     $scope.muestraCuadritos = function(){
 			//Cambiar fecha minima a la inicia

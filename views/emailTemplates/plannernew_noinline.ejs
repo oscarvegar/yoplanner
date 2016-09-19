@@ -1884,6 +1884,34 @@ body.outlook p {
                         </tr>
                       </tbody>
                     </table>
+                    <!-- attachments -->
+                    <table class="row">
+                      <tbody>
+                        <tr>
+                          <th class="small-12 large-12 columns first last">
+                            <table>
+                              <tr>
+                                <th>
+                                  <table class="tabla-eventos">
+                                    <tr class="header-tabla">
+                                      <th>#</th>
+                                      <th>Nombre</th>
+                                    </tr>
+                                    <% rfp.attachments.forEach(function(attach, i) {
+                                      <tr class="hotel-tabla">
+                                        <td>#<%= i+1 %></td>
+                                        <td><a href="<%= attach.url %>" target="_blank"><%= attach.name %></a></td>
+                                      </tr>
+                                    <% }) %>
+                                  </table>
+                                </th>
+                              </tr>
+                            </table>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- /attachments -->
                     <table class="row collapsed footer">
                       <tbody>
                         <tr>

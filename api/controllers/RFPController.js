@@ -7,9 +7,45 @@
  */
 var Q = require('q');
 var moment = require('moment');
-
+var fs = require('fs');
 
 module.exports = {
+
+	upload: function (req, res) {
+		try {
+			console.log('Uploading image...');
+			var imagen = req.file('image').upload({ maxBytes: 10000000 }, function (err, uploadedFiles) {
+			console.log(" uploadedFiles[0].fd", uploadedFiles[0].fd)
+			var file = uploadedFiles[0].fd.substr(uploadedFiles[0].fd.lastIndexOf("/")+1);
+			if (err) {
+				console.log('Error: ', err);
+				return res.json(500, { error: err });
+			} else {
+				console.log(file);
+				return res.json({
+					message: 'File uploaded successfully.',
+          //url: "http://localhost:3000/rfp/serve/"+uploadedFiles[0].fd.substr(uploadedFiles[0].fd.lastIndexOf("\\")+1),
+				  url: "http://rfp.yoplanner.com/rfp/serve/"+uploadedFiles[0].fd.substr(uploadedFiles[0].fd.lastIndexOf("/")+1),
+					file: uploadedFiles
+				});
+			}
+			});
+		} catch (err) {
+			return res.json(500, { error: err });
+		}
+	},
+
+	serve: function (req, res) {
+    //var file = __dirname.replace('api\\controllers', '.tmp\\uploads\\' + req.param('id'));
+	  var file = __dirname.replace('api/controllers', '.tmp/uploads/' + req.param('id'));
+		if(fs.existsSync(file)){
+			var filestream = fs.createReadStream(file);
+			filestream.pipe(res);
+		}else{
+			res.json(500,"bad file")
+		}
+	},
+
 	crear:function(req,res){
 		var rfp = req.allParams();
 		var recintos = rfp.recintos;
