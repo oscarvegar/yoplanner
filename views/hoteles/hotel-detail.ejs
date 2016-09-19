@@ -37,7 +37,9 @@
 									<span ng-init="loadUserRating(hotelid)" ng-if="_hasSession"></span>
 								</ul>
 								<h2><%=currentHotel.name%>
-										<span><%=currentHotel.address.fullAddress + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
+									<% if(currentHotel.address) { %>
+										<span><%=(currentHotel.address.fullAddress ? currentHotel.address.fullAddress : '') + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
+									<% } %>
 								</h2>
               </div>
 							<div ng-init="isOnFav(hotelid)" ng-show="_hasSession" class="col-md-3 col-md-offset-1 pull-down text-center boxtest" style="background-color: rgba(0, 0, 0, 0.5);border-radius: 15px;">
@@ -179,7 +181,7 @@
 								width="100%"
 								height="450"
 								frameborder="0" style="border:0"
-								src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q=<%=hotel.geoLocation.latitude%>,<%=hotel.geoLocation.longitude%>&zoom=13" allowfullscreen>
+								src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q=<%=hotel.geoLocation ? hotel.geoLocation.latitude : ''%>,<%= hotel.geoLocation ? hotel.geoLocation.longitude : '' %>&zoom=13" allowfullscreen>
 							</iframe>
 						</div>
 					</div>
