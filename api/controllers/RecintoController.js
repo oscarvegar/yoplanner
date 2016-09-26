@@ -247,6 +247,17 @@ module.exports = {
       }).catch(console.log);
     },
 
+    getBackgroundDestino: function (req, res) {
+      var id = req.param('id');
+      Destino.findOne({cityId: id}).then(function(data) {
+        console.log(data);
+        return res.json({foto: data.fotoPrincipal ? data.fotoPrincipal : 'img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg'});
+      }).catch(function (err) {
+        console.log(err);
+        return res.json({foto: 'img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg'});
+      });
+    },
+
     getUserRating: function (req, res) {
       var id = req.param('id');
       var user = req.user.id;

@@ -48,6 +48,13 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		}
 
+		$scope.getBackgroundDestino = function (id) {
+			$http.post('/recinto/getBackgroundDestino', {id: id}).success(function(data) {
+				console.log(data);
+				$scope.fotoDestinoParallax = data.foto;
+			});
+		}
+
 		$scope.limpiarFiltros = function () {
 			$scope.hotelesNew = $scope.hotelesOriginales;
 		}

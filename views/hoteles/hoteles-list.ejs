@@ -2,12 +2,10 @@
 <input type="hidden"  ng-init="searchId = '<%=ciudad.id%>'">
 <input type="hidden"  ng-init="ciudadName = '<%=ciudad.name%>'">
     <!-- Section Title-->
-    <div class="section-title-01">
+    <div class="section-title-01" ng-init="getBackgroundDestino(searchId)">
         <!-- Parallax Background -->
-        <div class="bg_parallax" style='background: url("img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg");
-  background-size: 100% 450px;' ng-if="searchId != 'CUN'"></div>
-  <div class="bg_parallax" style='background: url("img/fondocancun.jpg");
-background-size: 100% 450px;cursor:pointer;' ng-if="searchId == 'CUN'" ng-click="goCancun()"></div>
+        <div class="bg_parallax" style='background: url("{{fotoDestinoParallax}}");
+        background-size: 100% 450px;'></div>
         <!-- Parallax Background -->
 
         <!-- Content Parallax-->
@@ -152,10 +150,10 @@ background-size: 100% 450px;cursor:pointer;' ng-if="searchId == 'CUN'" ng-click=
                 </div>
                 <div class="col-md-8 col-md-offset-2 bg-dark color-white flexbox-container text-center" style="min-height: 60px;">
                   <span>Ordenar por:&nbsp;&nbsp;&nbsp;</span>
-                  <a class="linksort" ng-click="sorthotel = 1" ng-class="{'sort-active': sorthotel == 1, 'sort-inactive': sorthotel != 1}">Mejor Votado</a><span style="color: white">&nbsp;/&nbsp;</span>
-                  <a class="linksort" ng-click="sorthotel = 2" ng-class="{'sort-active': sorthotel == 2, 'sort-inactive': sorthotel != 2}">Más Visto</a><span style="color: white">&nbsp;/&nbsp;</span>
-                  <a class="linksort" ng-click="sorthotel = 3" ng-class="{'sort-active': sorthotel == 3, 'sort-inactive': sorthotel != 3}">Más Comentado</a><span style="color: white" ng-show="_hasSession">&nbsp;/&nbsp;</span>
-                  <a ng-show="_hasSession" class="linksort" ng-click="sorthotel = 4" ng-class="{'sort-active': sorthotel == 4, 'sort-inactive': sorthotel != 4}">Mis Favoritos</a>
+                  <a style="cursor:pointer;" class="linksort" ng-click="sorthotel = 1" ng-class="{'sort-active': sorthotel == 1, 'sort-inactive': sorthotel != 1}">Mejor Votado</a><span style="color: white">&nbsp;/&nbsp;</span>
+                  <a style="cursor:pointer;" class="linksort" ng-click="sorthotel = 2" ng-class="{'sort-active': sorthotel == 2, 'sort-inactive': sorthotel != 2}">Más Visto</a><span style="color: white">&nbsp;/&nbsp;</span>
+                  <a style="cursor:pointer;" class="linksort" ng-click="sorthotel = 3" ng-class="{'sort-active': sorthotel == 3, 'sort-inactive': sorthotel != 3}">Más Comentado</a><span style="color: white" ng-show="_hasSession">&nbsp;/&nbsp;</span>
+                  <a style="cursor:pointer;" ng-show="_hasSession" class="linksort" ng-click="sorthotel = 4" ng-class="{'sort-active': sorthotel == 4, 'sort-inactive': sorthotel != 4}">Mis Favoritos</a>
                 </div>
                 <div class="col-md-12 text-center" style="padding: 1em;"ng-show="cargandoBusqueda">
                   <div class="loader"></div>
