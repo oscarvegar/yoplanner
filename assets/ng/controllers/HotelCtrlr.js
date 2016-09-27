@@ -48,6 +48,16 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		}
 
+		$scope.sanitizeAttachUrl = function (url) {
+			if (url.includes('http://admin.yoplanner.com')) {
+				return url;
+			} else if (url.includes('http//admin.yoplanner.com')) {
+				return 'http://admin.yoplanner.com' + url.replace('http//admin.yoplanner.com', '');
+			} else {
+				return 'http://admin.yoplanner.com' + url;
+			}
+		}
+
 		$scope.getBackgroundDestino = function (id) {
 			$http.post('/recinto/getBackgroundDestino', {id: id}).success(function(data) {
 				console.log(data);
