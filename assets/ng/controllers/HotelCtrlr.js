@@ -182,6 +182,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			//(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])
 			if (hotel.fotoPrincipal) {
 				if (!hotel.fotoPrincipal.includes('admin.yoplanner.com')) {
+					if (hotel.fotoPrincipal.includes('http://')) {
+						return hotel.fotoPrincipal;
+					}
 					return 'http://admin.yoplanner.com' + hotel.fotoPrincipal;
 				} else {
 					return hotel.fotoPrincipal;
@@ -189,13 +192,13 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			} else {
 				if (hotel.pictures) {
 					if (hotel.pictures[0].url) {
-						if (!hotel.pictures[0].url.includes('admin.yoplanner.com')) {
+						if (!hotel.pictures[0].url.includes('http://')) {
 							return 'http://admin.yoplanner.com' + hotel.pictures[0].url;
 						} else {
 							return hotel.pictures[0].url;
 						}
 					} else {
-						if (!hotel.pictures[0].includes('admin.yoplanner.com')) {
+						if (!hotel.pictures[0].includes('http://')) {
 							return 'http://admin.yoplanner.com' + hotel.pictures[0];
 						} else {
 							return hotel.pictures[0];
