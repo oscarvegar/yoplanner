@@ -105,4 +105,27 @@ module.exports = {
          }
       });
    },
+
+   sendActivacion: function (options, user) {
+     var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/activacion.ejs'), 'utf8');
+     var htmlfinal = ejs.render(template, {
+        user: user
+     });
+     smtpTransport.sendMail({
+        from: "Notificación ✔ YoPlanner",
+        //from: "Notificación ✔ "+user.empresa+" <" + user.username + ">",
+        to: user.username,
+        //to: 'arcaniteamp@gmail.com',
+        bcc: "oscarman2001@hotmail.com",
+        subject: 'Acceso a plataforma YoPlanner Solutions',
+        html: htmlfinal
+     }, function(error, info) {
+        if (error) {
+           console.log(error);
+        } else {
+           console.log("Mensaje enviado a usuario activado: " + info.response);
+        }
+     });
+   }
+
 }

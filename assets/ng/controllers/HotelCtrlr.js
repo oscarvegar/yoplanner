@@ -65,6 +65,32 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		}
 
+		$scope.registroPendiente = function (user) {
+			var userData = {
+				username: user.email,
+				fullName: user.name,
+				name: user.name,
+				email: user.email,
+				emailPrincipal: user.email,
+				empresa: user.empresa,
+				telefono: user.telefono,
+				ciudad: user.ciudad,
+				pais: user.pais,
+				cantLogin: true,
+				roles: ['ROLE_DEMO'],
+				demoCantidad: user.cantidadEventos,
+				password: 'p4ssw0rd'
+			};
+			console.log(userData);
+			$http.post('/user/registerAprove', {data: userData}).success(function(data) {
+				swal('Exito!', 'Se enviaron tus datos al sistema, espera tu aprovación.', 'success');
+				$scope.registerData = null;
+			}).error(function (err) {
+				console.log(err);
+				swal('Error!', 'Ocurrió un error en el servidor.', 'error');
+			});
+		}
+
 		$scope.limpiarFiltros = function () {
 			$scope.hotelesNew = $scope.hotelesOriginales;
 		}
@@ -384,6 +410,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		//Auxiliar para las imágenes anteriores al cambio de ruta
 		$scope.imagenValida = function (url) {
+			if (!url) {
+				return;
+			}
 			return url.includes('admin.yoplanner.com');
 		};
 

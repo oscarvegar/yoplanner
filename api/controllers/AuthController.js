@@ -65,6 +65,10 @@ module.exports = {
   		return res.json(401,{})
 
   	}
+  },
+
+  getLoggedUser: function (req, res) {
+    return res.json(req.user ? req.user : {});
   }
 
  }

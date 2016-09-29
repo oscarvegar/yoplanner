@@ -32,6 +32,8 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 		$http.get('/hs').success(function(hs){
 			$rootScope._hasSession = true;
 
+		}).error(function (err) {
+			console.log('HS', err);
 		})
 	}
 
@@ -49,6 +51,11 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams,$location,$http) {
 	}
 
 	$rootScope.hasSession();
+
+	$http.get('/auth/getLoggedUser').success(function(data) {
+		console.log('LOGGED USER', data);
+		$rootScope._user = data;
+	});
 });
 
 yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider,$httpProvider, $sailsProvider) {

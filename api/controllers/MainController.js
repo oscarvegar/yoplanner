@@ -139,6 +139,10 @@ module.exports = {
 				return res.json(500, {error: true, message: 'Error con el usuario del destino.'});
 			}
 		});
+	},
+
+	registro: function (req, res) {
+		return res.view('register.ejs');
 	}
 
 };
