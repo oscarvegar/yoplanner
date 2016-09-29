@@ -246,7 +246,7 @@
 										</thead>
 										<tbody>
 											<tr ng-repeat="pdf in salonpdf">
-												<td><a href="http://admin.yoplanner.com{{pdf.file}}" target="_blank">{{pdf.title}}</a></td>
+												<td><a href="{{sanitizeAttachUrl(pdf.file)}}" target="_blank">{{pdf.title}}</a></td>
 											</tr>
 										</tbody>
 									</table>

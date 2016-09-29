@@ -48,6 +48,49 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		}
 
+		$scope.sanitizeAttachUrl = function (url) {
+			if (url.includes('http://admin.yoplanner.com')) {
+				return url;
+			} else if (url.includes('http//admin.yoplanner.com')) {
+				return 'http://admin.yoplanner.com' + url.replace('http//admin.yoplanner.com', '');
+			} else {
+				return 'http://admin.yoplanner.com' + url;
+			}
+		}
+
+		$scope.getBackgroundDestino = function (id) {
+			$http.post('/recinto/getBackgroundDestino', {id: id}).success(function(data) {
+				console.log(data);
+				$scope.fotoDestinoParallax = data.foto;
+			});
+		}
+
+		$scope.registroPendiente = function (user) {
+			var userData = {
+				username: user.email,
+				fullName: user.name,
+				name: user.name,
+				email: user.email,
+				emailPrincipal: user.email,
+				empresa: user.empresa,
+				telefono: user.telefono,
+				ciudad: user.ciudad,
+				pais: user.pais,
+				cantLogin: true,
+				roles: ['ROLE_DEMO'],
+				demoCantidad: user.cantidadEventos,
+				password: 'p4ssw0rd'
+			};
+			console.log(userData);
+			$http.post('/user/registerAprove', {data: userData}).success(function(data) {
+				swal('Exito!', 'Se enviaron tus datos al sistema, espera tu aprovación.', 'success');
+				$scope.registerData = null;
+			}).error(function (err) {
+				console.log(err);
+				swal('Error!', 'Ocurrió un error en el servidor.', 'error');
+			});
+		}
+
 		$scope.limpiarFiltros = function () {
 			$scope.hotelesNew = $scope.hotelesOriginales;
 		}
@@ -165,6 +208,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			//(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])
 			if (hotel.fotoPrincipal) {
 				if (!hotel.fotoPrincipal.includes('admin.yoplanner.com')) {
+					if (hotel.fotoPrincipal.includes('http://')) {
+						return hotel.fotoPrincipal;
+					}
 					return 'http://admin.yoplanner.com' + hotel.fotoPrincipal;
 				} else {
 					return hotel.fotoPrincipal;
@@ -172,13 +218,13 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			} else {
 				if (hotel.pictures) {
 					if (hotel.pictures[0].url) {
-						if (!hotel.pictures[0].url.includes('admin.yoplanner.com')) {
+						if (!hotel.pictures[0].url.includes('http://')) {
 							return 'http://admin.yoplanner.com' + hotel.pictures[0].url;
 						} else {
 							return hotel.pictures[0].url;
 						}
 					} else {
-						if (!hotel.pictures[0].includes('admin.yoplanner.com')) {
+						if (!hotel.pictures[0].includes('http://')) {
 							return 'http://admin.yoplanner.com' + hotel.pictures[0];
 						} else {
 							return hotel.pictures[0];
@@ -364,6 +410,9 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 
 		//Auxiliar para las imágenes anteriores al cambio de ruta
 		$scope.imagenValida = function (url) {
+			if (!url) {
+				return;
+			}
 			return url.includes('admin.yoplanner.com');
 		};
 

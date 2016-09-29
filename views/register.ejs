@@ -1,0 +1,120 @@
+<div class="row" style="padding-top: 5em;overflow-x:hidden;" ng-controller="HotelController">
+  <div class="col-md-12 text-center">
+    <h1>Registro</h1>
+  </div>
+  <div class="col-md-12">
+    <div class="row" style="padding: 0 1em 0;">
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="promotion-box">
+          <div class="promotion-box-header">
+            <h3>Acceso Básico</h3>
+          </div>
+          <div class="promotion-box-center color-2">
+           <div class="">
+              <span style="font-size:2em;">Sin Costo</span>
+            </div>
+            <div class="percentage">
+
+            </div>
+          </div>
+          <div class="promotion-box-info">
+            <div class="row">
+              <div class="col-md-12">
+                <ul>
+                  <li>Usuario individual</li>
+                  <li>Consulta y búsqueda de información</li>
+                  <li>Califica destinos y proveedores</li>
+                  <li>Escribe reseñas e interactúa con la comunidad</li>
+                  <li>Genera RFP´s directo a proveedores</li>
+                  <li>Recibe notificaciones</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="promotion-box">
+          <div class="promotion-box-header">
+            <h3>Acceso Premium</h3>
+          </div>
+          <div class="promotion-box-center color-3">
+           <div class="">
+              (Aplica costos por usuario o agencia)
+            </div>
+            <div class="percentage">
+              <span>Info: <strong>daniel.muller@yoplanner.com</strong></span>
+            </div>
+          </div>
+          <div class="promotion-box-info">
+            <div class="row">
+              <div class="col-md-12">
+                <ul>
+                  <li>Acceso básico +</li>
+                  <li>Usuarios por equipo/agencia</li>
+                  <li>Administración de grupos y eventos</li>
+                  <li>Historial de RFP's en línea</li>
+                  <li>Base de datos en línea</li>
+                  <li>Herramientas administrativas</li>
+                  <li>Rooming List</li>
+                  <li>Control de mi equipo</li>
+                  <li>Módulo de reportes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="promotion-box">
+          <div class="promotion-box-header">
+            <h3>Registro</h3>
+          </div>
+          <div class="promotion-box-info">
+            <form ng-submit="registroPendiente(registerData)">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" ng-model="registerData.name" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <label>Agencia/Empresa</label>
+                  <input type="text" class="form-control" ng-model="registerData.empresa" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <label>Correo Electrónico</label>
+                  <input type="email" class="form-control" ng-model="registerData.email" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <label>Teléfono</label>
+                  <input type="text" class="form-control" ng-model="registerData.telefono" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <label>Ciudad</label>
+                  <input type="text" class="form-control" ng-model="registerData.ciudad" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <label>País</label>
+                  <input type="text" class="form-control" ng-model="registerData.pais" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <label>¿Cuántos eventos/grupos organizas al año?</label>
+                  <select class="form-control" ng-model="registerData.cantidadEventos" ng-init="registerData.cantidadEventos = '1-10'">
+                    <option ng-value="'1-10'">1-10</option>
+                    <option ng-value="'11-25'">11-25</option>
+                    <option ng-value="'26-50'">26-50</option>
+                    <option ng-value="'51-100'">51-100</option>
+                    <option ng-value="'100+'">100+</option>
+                  </select>
+                </div>
+                <div class="col-md-12 text-right">
+                  <button type="submit" class="btn btn-block btn-primary">Enviar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

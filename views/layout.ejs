@@ -125,6 +125,7 @@
                     </li>
                     <!-- End website title - Logo class -->
                     <li><a href="/">INICIO </a></li>
+                    <li ng-if="!_hasSession"><a href="/main/registro">REGISTRO </a></li>
 
                     <!-- Notificaciones -->
                     <li class="dropdown" ng-controller="NotificacionesCtrl" ng-if="_hasSession">
@@ -162,7 +163,8 @@
 
                     <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-sign-out " ng-click="logout()">&ensp;CERRAR SESIÓN</i></li>
                     <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-tachometer " onclick='window.location = "//admin.yoplanner.com"'>&ensp;ADMIN</i></li>
-                    <li class="mi-seleccion" ng-if="_hasSession"> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
+
+                    <li class="mi-seleccion" ng-if="_hasSession && _user.roles.indexOf('ROLE_DEMO') < 0 "> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
                         <div class="drop-down full-width hover-expand row" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
                             <div class="row">
                                 <div class="col col-md-3 content-btn" style="margin-left:20px;">
@@ -179,8 +181,8 @@
                                 <div class="col col-md-12">
                                     <ul ng-repeat="hotel in hotelesSeleccionados track by $index" class="col col-md-3"><!-- column $index -->
                                         <li height="200px">
-                                            <h2 style="font-size: 1.4em;;line-height:1.4em;height: 2.8em;overflow: hidden;">{{hotel.name}}</h2>
-                                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])}}" alt="image 1" style="widrh:250px;height:150px;"> </a>
+                                            <h2 style="font-size: 1.4em;;line-height:1.4em;height: 2.8em;overflow: hidden;">{{hotel.name}}</h2> <!-- (hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]) -->
+                                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{ sanitizeImgHotelList(hotel) }}" alt="image 1" style="widrh:250px;height:150px;"> </a>
                                             <p style="font-size:1em; line-height:1em;height: 4em;overflow: hidden;text-align:justify;text-justify: inter-word;">{{hotel.description}}</p>
                                             <div class="row">
                                                 <div class="col col-md-3 content-btn" ng-click="selectResult(hotel)">
