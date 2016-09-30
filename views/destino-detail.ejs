@@ -99,7 +99,7 @@
     <div class="tab-pane active" id="destino">
         <h2><%=destino.name%></h2>
 				<p>
-					<%=destino.description%>
+					<%-destino.description%>
 				</p>
         <div class="row">
 
@@ -134,7 +134,7 @@
     <div class="tab-pane" id="saloons">
         <div class="row">
           <div class="col-md-12">
-          	<%= destino.conectividad %>
+          	<%- destino.conectividad %>
           </div>
         </div>
     </div>
@@ -354,14 +354,14 @@
 <!-- Tab #5 Galeria -->
 <div class="tab-pane" id="galeria">
 	<div class="col-md-12">
-		<%= destino.recintos %>
+		<%- destino.recintos %>
 	</div>
 </div>
 <!-- Tab #5 promociones -->
 <div class="tab-pane" id="promociones">
 	<div class="row">
 		<div class="col-md-12" ng-init="initPromotions()">
-			<%= destino.contacto %>
+			<%- destino.contacto %>
 		</div>
  </div>
 </div>
