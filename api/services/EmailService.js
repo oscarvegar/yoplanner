@@ -107,7 +107,7 @@ module.exports = {
    },
 
    sendActivacion: function (options, user) {
-     var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/activacion.ejs'), 'utf8');
+     var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/activacion.ejs'), 'utf8');
      var htmlfinal = ejs.render(template, {
         user: user
      });
