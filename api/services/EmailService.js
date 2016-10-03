@@ -123,7 +123,7 @@ module.exports = {
         if (error) {
            console.log(error);
         } else {
-           console.log("Mensaje enviado a usuario activado: " + info.response);
+           console.log("Mensaje enviado a usuario activado: " + info.response + " EMAIL: " + user.username);
         }
      });
    }

@@ -83,7 +83,7 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			};
 			console.log(userData);
 			$http.post('/user/registerAprove', {data: userData}).success(function(data) {
-				swal('Exito!', 'Se enviaron tus datos al sistema, espera tu aprovación.', 'success');
+				swal('Exito!', 'Se enviaron tus datos al sistema, espera tu aprobación.', 'success');
 				$scope.registerData = null;
 			}).error(function (err) {
 				console.log(err);
@@ -207,13 +207,24 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.sanitizeImgHotelList = function (hotel) {
 			//(hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0])
 			if (hotel.fotoPrincipal) {
-				if (!hotel.fotoPrincipal.includes('admin.yoplanner.com')) {
-					if (hotel.fotoPrincipal.includes('http://')) {
+				if (hotel.fotoPrincipal.url) {
+					if (!hotel.fotoPrincipal.url.includes('admin.yoplanner.com')) {
+						if (hotel.fotoPrincipal.url.includes('http://')) {
+							return hotel.fotoPrincipal.url;
+						}
+						return 'http://admin.yoplanner.com' + hotel.fotoPrincipal.url;
+					} else {
+						return hotel.fotoPrincipal.url;
+					}
+				} else {
+					if (!hotel.fotoPrincipal.includes('admin.yoplanner.com')) {
+						if (hotel.fotoPrincipal.includes('http://')) {
+							return hotel.fotoPrincipal;
+						}
+						return 'http://admin.yoplanner.com' + hotel.fotoPrincipal;
+					} else {
 						return hotel.fotoPrincipal;
 					}
-					return 'http://admin.yoplanner.com' + hotel.fotoPrincipal;
-				} else {
-					return hotel.fotoPrincipal;
 				}
 			} else {
 				if (hotel.pictures) {

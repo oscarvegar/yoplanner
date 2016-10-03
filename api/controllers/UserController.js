@@ -20,6 +20,7 @@ module.exports = {
 	sendMailActivacion: function (req, res) {
 		var id = req.param('id');
 		User.findOne({id: id}).then(function(data) {
+			console.log('Usuario enviando mail', data);
 			EmailService.sendActivacion({}, data);
 		}).catch(function(err) {
 		  return res.json(500, {err: err});
