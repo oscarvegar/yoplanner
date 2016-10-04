@@ -394,6 +394,21 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		};
 
+		$scope.loadComentariosDestino = function () {
+			$scope.pagina = 1;
+			$scope.comment_count = 0;
+			$scope.comentariosCargados = true;
+			$http.post('/comentariohotel/getComentariosDestino/', {id: $scope.destinoid, page: $scope.pagina}).success(function(data) {
+				$scope.pagina += 1;
+				$scope.comment_count = data.count;
+				$scope.comentarios = data.comentarios;
+				$scope.comentariosCargados = false;
+				console.log('COUNT COMMET', $scope.comment_count);
+			}).error(function (err) {
+				console.log(err);
+			});
+		}
+
 		$http.get('/comentariohotel/getUser').success(function(data) {
 			$scope.rootuser = data;
 		}).error(function (err) {
@@ -432,6 +447,19 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				return;
 
 			$http.post('/comentariohotel/postComentario', {text: $scope.postcomentario.text, title:$scope.postcomentario.title, hotel: $scope.hotelid}).success(function(data) {
+				$scope.postcomentario = null;
+				notify('Comentario enviado correctamente.');
+				$scope.comentarios.push(data.comentario);
+			}).error(function (err) {
+				console.log(err);
+			});
+		};
+
+		$scope.postComentarioDestino = function () {
+			if(!$scope.postcomentario.text)
+				return;
+
+			$http.post('/comentariohotel/postComentarioDestino', {text: $scope.postcomentario.text, title:$scope.postcomentario.title, destino: $scope.destinoid}).success(function(data) {
 				$scope.postcomentario = null;
 				notify('Comentario enviado correctamente.');
 				$scope.comentarios.push(data.comentario);

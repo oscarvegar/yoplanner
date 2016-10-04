@@ -20,6 +20,39 @@ module.exports = {
 		}).catch(console.log);
 	},
 
+	getComentariosDestino: function (req, res) {
+		var id = req.param('id');
+		var page = req.param('page');
+		ComentarioHotel.count({destino: id}).then(function (cuantos) {
+			var count_comentarios = cuantos;
+			ComentarioHotel.find({destino: id}).populate('user').paginate({page: page, limit: 10}).then(function (comentarios) {
+				return res.json({comentarios: comentarios, count: count_comentarios});
+			}).catch(console.log);
+		}).catch(console.log);
+	},
+
+	postComentarioDestino: function (req, res) {
+		var comentarioParams = req.allParams();
+		comentarioParams.user = req.user.id;
+		ComentarioHotel.create(comentarioParams).then(function (comentario) {
+			ComentarioHotel.findOne({id: comentario.id}).populate('user').then(function (comentario_final) {
+				console.log('Comentario creado', comentario_final);
+				http.post('http://localhost:1337/api/notificacion/sendNotificationHotelComment', {
+					form: {
+						comentario: comentario_final
+					}
+				}, function (err, httpResponse, body) {
+					if (err) {
+						 console.log('ERROR NOTI HOTEL COMMENT:', err);
+					} else {
+						console.log('Conectado con el server para mandar notificacion', body);
+					}
+				});
+				return res.json({comentario: comentario_final});
+			}).catch(console.log);
+		}).catch(console.log);
+	},
+
 	postComentario: function (req, res) {
 		var comentarioParams = req.allParams();
 		comentarioParams.user = req.user.id;
