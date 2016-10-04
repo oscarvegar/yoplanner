@@ -137,6 +137,9 @@ module.exports = {
 			if (!rfp.salones) {
 				rfp.salones = [];
 			}
+			if (!rfp.attachments) {
+				rfp.attachments = [];
+			}
 			//Sacar agencia del admin agencia para el planner
 			if (!userPlanner.empresa || userPlanner.empresa == null) {
 				userPlanner.empresa = data.empresa;
@@ -160,6 +163,9 @@ module.exports = {
 			//Si el evento no trae salones, poner un array en blanco para que no truene
 			if (!rfp.salones) {
 				rfp.salones = [];
+			}
+			if (!rfp.attachments) {
+				rfp.attachments = [];
 			}
 			//Sacar agencia del admin agencia para el planner
 			if (!user.empresa || user.empresa == null) {
