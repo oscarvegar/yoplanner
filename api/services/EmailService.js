@@ -106,13 +106,14 @@ module.exports = {
       });
    },
 
-   sendActivacion: function (options, user) {
+   sendActivacion: function (options, user, pass) {
      var template = fs.readFileSync(require('path').resolve(sails.config.appPath, 'views/emailTemplates/activacion.ejs'), 'utf8');
      var htmlfinal = ejs.render(template, {
-        user: user
+        user: user,
+        noCryptPass: pass
      });
      smtpTransport.sendMail({
-        from: "Notificación ✔ YoPlanner",
+        from: "Notificación ✔ YoPlanner <grupos@yoplanner.com>",
         //from: "Notificación ✔ "+user.empresa+" <" + user.username + ">",
         to: user.username,
         //to: 'arcaniteamp@gmail.com',
@@ -123,7 +124,7 @@ module.exports = {
         if (error) {
            console.log(error);
         } else {
-           console.log("Mensaje enviado a usuario activado: " + info.response);
+           console.log("Mensaje enviado a usuario activado: " + info.response + " EMAIL: " + user.username);
         }
      });
    }

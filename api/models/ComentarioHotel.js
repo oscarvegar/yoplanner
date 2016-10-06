@@ -29,6 +29,9 @@ module.exports = {
     replies: {
       type: 'array',
       defaultsTo: []
+    },
+    destino: {
+      model: 'destino'
     }
   }
 };

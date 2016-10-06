@@ -11,6 +11,11 @@ module.exports = {
 
     user: {
       model: 'user'
+    },
+
+    comentarios: {
+      collection: 'ComentarioHotel',
+      via: 'destino'
     }
 
   }

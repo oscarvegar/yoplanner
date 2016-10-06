@@ -23,9 +23,7 @@
 									</p>
 									<span ng-init="loadUserRating(destinoid)" ng-if="_hasSession"></span>
 								</ul>
-								<h2><%=destino.name%>
-
-								</h2>
+								<h2><%=destino.name%></h2>
               </div>
             </div>
           </div>
@@ -159,7 +157,7 @@
 <!-- end Tab Theree - Informacion Extra -->
 
 <!-- Tab #4 Comentarios -->
-<div class="tab-pane" id="comentarios" ng-init="loadComentarios()">
+<div class="tab-pane" id="comentarios" ng-init="loadComentariosDestino()">
 	<div class="row" ng-init="reply.text = {}">
 		<!-- Comentario test -->
 		<div class="col-md-8 row">
@@ -257,7 +255,7 @@
 			</div>
 			<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
 				<div class="form-group" style="text-align: center;">
-					<form ng-submit="postComentario()">
+					<form ng-submit="postComentarioDestino()">
 						<div class="row">
 							<div class="col-md-12" style="margin-bottom: 1em;">
 								<input type="text" ng-model="postcomentario.title" style="width:100%;" placeholder="Titulo del comentario" class="form-control comentario-textarea" required>

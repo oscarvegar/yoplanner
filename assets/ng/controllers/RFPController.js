@@ -52,6 +52,7 @@ angular.module('rfp-module', [])
 	$scope.loadCustomers = function () {
 		if ($rootScope._hasSession) {
 			$http.get('/customer/getbyuser').success(function(data) {
+        console.log('MY CUSTOMERS', data);
 				$scope.myCustomers = data;
 			});
 		}

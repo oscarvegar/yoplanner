@@ -19,8 +19,11 @@ module.exports = {
 
 	sendMailActivacion: function (req, res) {
 		var id = req.param('id');
+		var pass = req.param('pass');
 		User.findOne({id: id}).then(function(data) {
-			EmailService.sendActivacion({}, data);
+			console.log('Usuario enviando mail', data, pass);
+			data.noCryptPass = pass;
+			EmailService.sendActivacion({}, data, pass);
 		}).catch(function(err) {
 		  return res.json(500, {err: err});
 		});
