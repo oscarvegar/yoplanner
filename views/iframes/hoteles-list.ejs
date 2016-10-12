@@ -1,0 +1,187 @@
+<div ng-controller="HotelController">
+<input type="hidden"  ng-init="searchId = '<%=ciudad.id%>'">
+<input type="hidden"  ng-init="ciudadName = '<%=ciudad.name%>'">
+
+  <div class="row">
+    <div class="col-md-12" style="height: 200px;padding: 1em;text-align:center; background: url('<%= destinoImg %>');padding-top: 2em;">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3" style="background-color: white;border-radius: 10px;padding: 1em;">
+          <% if(destinoUrl != '') { %>
+            <h3>Hoteles en <a href="http://rfp.yoplanner.com/<%= destinoUrl ? destinoUrl : '' %>"><%=ciudad.name%></a></h3>
+          <% } else { %>
+            <h3>Hoteles en <%=ciudad.name%></h3>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <!-- Filtros -->
+    <div class="col-md-12" style="background-color:#3A4749">
+      <div class="row" style="padding: 1em;">
+        <div class="col-md-6">
+          <h3 style="color: white;">Filtros</h3>
+        </div>
+        <div class="col-md-6 text-right">
+          <button data-toggle="collapse" data-target="#collapseFiltros" class="btn btn-primary">
+            <i class="fa fa-angle-down"></i>
+          </button>
+        </div>
+        <div class="col-md-12 collapse" id="collapseFiltros">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Nombre</label>
+                  <input type="text" class="form-control" ng-model="buscar.nombre.name" placeholder="Nombre del hotel">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Número de salones</label>
+                  <input type="number" class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Número de habitaciones</label>
+                  <input type="number" class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Número de suites</label>
+                  <input type="number" class="form-control" ng-model="buscar.suites" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Número de habitaciones de una cama</label>
+                  <input type="number" class="form-control" ng-model="buscar.unacama" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Número de habitaciones de dos camas</label>
+                  <input type="number" class="form-control" ng-model="buscar.doscamas" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Metros Cuadrados</label>
+                  <input type="number" class="form-control" ng-model="buscar.metroscuadrados" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Salón más grande (Metros cuadrados)</label>
+                  <input type="number" class="form-control" ng-model="buscar.masgrandecuadrados" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Máxima capacidad en salón</label>
+                  <input type="number" class="form-control" ng-model="buscar.maxcapacidadsalon" placeholder="Número mayor a">
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <label style="color:rgb(62, 155, 214)">Tipo de Plan</label>
+                  <select class="form-control" ng-model="buscar.plan" ng-init="buscar.plan = default">
+                    <option value="default" selected> Cualquiera </option>
+                    <option value="Todo Incluido">Todo Incluido</option>
+                    <option value="Europeo">Europeo</option>
+                  </select>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12" style="padding-top: 1.5em">
+                  <button type="button" class="btn btn-primary btn-block" ng-click="buscarTodos(buscar)">Buscar</button>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12" style="padding-top: 1.5em">
+                  <button type="button" class="btn btn-primary btn-block" ng-click="limpiarFiltros()">Limpiar Filtros</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="col-md-12">
+                <label style="color:rgb(62, 155, 214)">Estrellas</label>
+                <ul class="starts">
+                    <li><input type="checkbox" ng-model="buscar.fivestar" ng-init="buscar.fivestar = false"></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><span>5 estrellas</span></li>
+                </ul>
+
+                <ul class="starts">
+                    <li><input type="checkbox" ng-model="buscar.fourstar" ng-init="buscar.fourstar = false"></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star-o"></i></a></li>
+                    <li><span>4 estrellas</span></li>
+                </ul>
+
+                <ul class="starts">
+                    <li><input type="checkbox" ng-model="buscar.threestar" ng-init="buscar.threestar = false"></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star-o"></i></a></li>
+                    <li><a><i class="fa fa-star-o"></i></a></li>
+                    <li><span>3 estrellas</span></li>
+                </ul>
+
+                <ul class="starts">
+                    <li><input type="checkbox" ng-model="buscar.twostar" ng-init="buscar.twostar = false"></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star"></i></a></li>
+                    <li><a><i class="fa fa-star-o"></i></a></li>
+                    <li><a><i class="fa fa-star-o"></i></a></li>
+                    <li><a><i class="fa fa-star-o"></i></a></li>
+                    <li><span>2 estrellas</span></li>
+                </ul>
+
+                <ul class="starts">
+                    <li><input type="checkbox" ng-model="buscar.onestar" ng-init="buscar.onestar = false"></li>
+                    <li><a href="#"><i class="fa fa-star"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                    <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                    <li><span>1 estrellas</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Lista de hoteles -->
+    <div class="col-md-12"ng-init="loadNewHoteles()">
+      <div class="row" style="padding: 1em;">
+        <!-- Hotel -->
+        <div class="col-xs-6 col-sm-4 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | orderBy:sortSocial:sortAsc">
+             <div class="img-hover">
+                <img ng-src="{{loadImageHotelList(hotel)}}" alt="" class="img-responsive"  style="width: 100%;height: 166px">
+            </div>
+            <div class="info-gallery">
+                <h3 style="height: 3.5em;overflow: hidden;">
+                    <div>{{hotel.name}}</div>
+                </h3>
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="/img/icons/apple-touch-icon.png" alt="Logo YP" style="width: 24px;height" />
+                    <span>{{averageRating(hotel.ratings)}} / 10</span>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> {{hotel.likes.length || 0}}</span>
+                  </div>
+                </div>
+                <h3><span style="white-space: normal"><%=ciudad.name%></span></h3>
+                <hr class="separator">
+                <p style="height:80px;text-align: justify;text-justify: inter-word;font-size:1em; line-height:1.2em;height: 4.8em;overflow: hidden;">{{hotel.description}}</p>
+
+                <ul class="starts">
+                  <li ng-repeat="star in [1, 2, 3, 4 ,5] | limitTo:hotel.starRating"><a href="#"><i class="fa fa-star"></i></a></li>
+                </ul>
+                <!-- Botones -->
+                <div class="row">
+                  <div class="col-md-4 col-md-offset-3">
+                    <div class="content-btn">
+                        <a href="{{hotel.urlslug?hotel.urlslug:hotel.id}}"class="btn btn-primary" ng-click="addVisitaAndGo(hotel)">Ver Detalles</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 text-center" ng-show="showMostrarMas">
+      <button type="button" class="btn btn-primary btn-block" ng-click="masResultados()">Cargar más...</button>
+    </div>
+  </div>
+
+</div>

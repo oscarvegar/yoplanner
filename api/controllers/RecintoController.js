@@ -406,5 +406,66 @@ module.exports = {
       Recinto.findOne({id: id}).then(function(data) {
         return res.json(data.salonPDF ? data.salonPDF : []);
       }).catch(console.log);
+    },
+
+    serveIFrame: function (req, res) {
+      var id = req.param('id');
+      var tipo = req.param('tipo');
+
+      if (tipo == 'list') {
+        Ciudad.findOne({id: id}).then(function(ciudad) {
+          var ciudadID = ciudad.id;
+          Recinto.find({cityId: ciudadID}).then(function(hoteles) {
+            Destino.findOne({cityId: hoteles[0].cityId}).then(function(destino) {
+              console.log('>>CIUDAD NAME', ciudad.id);
+              console.log('>>HOTELES LENGTH', hoteles.length);
+              console.log('>>DESTINO NAME', destino);
+              return res.view('iframes/hoteles-list', {
+                ciudad: ciudad,
+                hoteles: hoteles,
+                destinoUrl: destino ? destino.urlslug : '',
+                hideNav: 'holamundo',
+                destinoImg: destino ? destino.fotoPrincipal : '/img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg',
+                metas: {
+                  title: 'Hoteles en ' + ciudad.name,
+                  description: 'Organiza eventos en ' + ciudad.name,
+                  keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
+                  image: ciudad.image
+                }
+              });
+            })
+          })
+        }).catch(function(err) {
+          return res.view('homepage');
+        });
+      } else if (tipo == 'hotel') {
+        Recinto.findOne({id: id}).populateAll().then(function(hotel) {
+          res.view("iframes/hotel-detail", {
+            hotel: hotel,
+            hideNav: 'true',
+            metas: {
+              title: hotel.name,
+              description: hotel.description,
+              keywords: hotel.name,
+              image: hotel.pictures ? hotel.pictures[0] : 'http://rfp.yoplanner.com/img/banner/banneryp.jpg'
+            }
+          });
+        }).catch(function(err) {
+          console.log(err);
+          return res.view('homepage');
+        });
+      } else if (tipo == 'destino') {
+        Destino.findOne({id: id}).populateAll().then(function(data) {
+          res.view('iframes/destino-detail', {
+            destino: data,
+            hideNav: 'sisi'
+          });
+        }).catch(function(err) {
+          console.log(err);
+          return res.view('homepage');
+        });
+      } else {
+        return res.view('homepage');
+      }
     }
 };

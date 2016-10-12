@@ -1,0 +1,556 @@
+<div  ng-controller="HotelController">
+	<input type="hidden"  ng-init="hotelid = <%=hotel.id%>">
+    <!-- Section Title-->
+    <div class="section-title-detailed" class="ng-cloak">
+
+        <!-- Single Carousel -->
+
+        <!-- End Single Carousel -->
+
+        <!-- Section Title-->
+        <div class="title-detailed">
+          <div class="container">
+            <div class="row boxtest">
+              <div class="col-md-8 boxtest" style="background-color: rgba(0, 0, 0, 0.5);padding: 1em;border-radius: 15px;">
+								<ul class="starts">
+									<h3 style="color: white;text-shadow: 0 4px 10px black;font-size:20px;">Calificación de usuarios</h3>
+									<p style="font-size: 18px; color: white;text-shadow: 0 4px 10px black;" ng-init="initRatings(hotelid)">
+										<strong>{{averageRating(hotelRatings) | number:2}}</strong>/10 <span style="font-size: 12px;"> {{hotelRatings.length}} opiniones</span> |	<input-stars max="10" ng-model="hotelRating" ng-click="rateHotel()" ng-show="_hasSession"></input-stars>
+									</p>
+									<span ng-init="loadUserRating(hotelid)" ng-if="_hasSession"></span>
+								</ul>
+								<h2><%=currentHotel.name%>
+									<% if(currentHotel.address) { %>
+										<span><%=(currentHotel.address.fullAddress ? currentHotel.address.fullAddress : '') + (currentHotel.address.postalCode ? ', C. P. ' + currentHotel.address.postalCode : '')%></span>
+									<% } %>
+								</h2>
+              </div>
+							<div ng-init="isOnFav(hotelid)" ng-show="_hasSession" class="col-md-3 col-md-offset-1 pull-down text-center boxtest" style="background-color: rgba(0, 0, 0, 0.5);border-radius: 15px;">
+								<!--
+								<div class="favbuttons" ng-init="isOnFav(hotelid)" ng-show="_hasSession">
+									<input type="hidden" ng-init="isLiked(hotelid)">
+									<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isFav" ng-click="addFav(hotelid)"><i class="fa fa-star"></i> Agregar a Favoritos</button>
+									<button type="button" class="btn btn-danger" style="margin: 0 1em 1em;" ng-show="isFav" ng-click="removeFav(hotelid)"><i class="fa fa-star-o"></i>  Quitar de Favoritos</button>
+									<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-hide="isLiked" ng-click="likeHotel(hotelid)"><i class="fa fa-thumbs-up"></i> Me gusta</button>
+									<button type="button" class="btn btn-primary" style="margin: 0 1em 1em;" ng-show="isLiked" ng-click="notlikeHotel(hotelid)"><i class="fa fa-thumbs-o-up"></i> Ya no me gusta</button>
+								</div>
+							 	-->
+								<button class="btn btn-primary margin1em" ng-hide="isFav" ng-click="addFav(hotelid)" style="border-radius: 50%;" title="Añadir a Favoritos" tooltip>
+									<i class="fa fa-star"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-show="isFav" ng-click="removeFav(hotelid)" style="border-radius: 50%;" title="Quitar de Favoritos" tooltip>
+									<i class="fa fa-star-o"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-hide="isLiked" ng-click="likeHotel(hotelid)" style="border-radius: 50%;" title="Me gusta" tooltip>
+									<i class="fa fa-thumbs-up"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-if="isLiked" ng-click="notlikeHotel(hotelid)" style="border-radius: 50%;" title="Ya no me gusta" tooltip>
+									<i class="fa fa-thumbs-o-up"></i>
+								</button>
+								<button class="btn btn-primary btn-red margin1em" ng-click="renderMap(true);agregarYRegresar();" ng-show="showAddButtonCurHot<0" style="border-radius: 50%;" title="Cotiza grupo" tooltip>
+									<i class="fa fa-cart-plus"></i>
+								</button>
+							</div>
+            </div>
+          </div>
+        </div>
+        <!-- End Section Title-->
+    </div>
+    <!-- End Section Title-->
+
+    <!--Content Central -->
+    <div class="content-central" ng-show="!showloading">
+        <!-- Shadow Semiboxed -->
+        <div class="semiboxshadow text-center">
+            <img src="img/img-theme/shp.png" class="img-responsive" alt="">
+        </div>
+        <!-- End Shadow Semiboxed -->
+
+        <!-- content info - Features-->
+        <div class="content_info skin_base no-overflow">
+            <div class="col-md-4">
+                <h4><a href="#" onclick=" window.history.back();" style="text-decoration: underline;">&lt;&lt; Volver a su búsqueda</a></h4>
+            </div>
+            <div class="col-md-8"></div>
+        </div>
+
+        <!-- End content info - Grey Section-->
+        <div class="content_info">
+            <!-- Info Resalt-->
+            <div class="content_resalt paddings-mini tabs-detailed" style="padding: 25px 0px;">
+                <div class="container wow fadeInUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- Nav Tabs-->
+                            
+<!-- End Nav Tabs-->
+
+<div class="tab-content">
+    <!-- Tab One - Hotel -->
+    <div class="tab-pane active" id="hotel">
+        <h2>Información del hotel</h2>
+        <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
+				<div class="row" ng-show="_hasSession">
+					<div class="col-md-12" ng-init="initInfoContacto(hotelid)">
+						<h3>Datos de contacto para grupos</h3>
+						<p>
+							<strong>Nombre: </strong><%=currentHotel.contactoPrincipal || ' -- '%>
+							<strong> Email: </strong><%=currentHotel.correoPrincipal || ' -- '%>
+							<strong> Teléfono: </strong><%=currentHotel.oficinaPrincipal || ' -- '%>
+						</p>
+					</div>
+				</div>
+        <h3>Equipamiento y servicios del hotel</h3>
+
+        <div class="row">
+
+        <%	currentHotel.amenities.forEach(function(amenity){ %>
+
+
+            <div class="col-md-4">
+                <ul class="list-styles" style="margin-bottom:0px">
+                    <li ><i class="fa fa-check"></i> <%=amenity.description%></li>
+                </ul>
+            </div>
+
+        <% })%>
+
+				<!-- Video YT -->
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-6">
+							<h3>Video de la propiedad</h3>
+							<div class="testimonial-info-2">
+								<!--
+								<iframe width="100%" height="400px" src="<%=hotel.youtube?hotel.youtube.replace("watch?v=","/v/") : 'https://www.youtube.com/v/JGmFl_gyaew'%>" frameborder="0" allowfullscreen></iframe>
+							 -->
+							 <youtube-video video-url="videoHotel" style="width: 100%;"></youtube-video>
+		 				 </div>
+						</div>
+						<!-- Ubicación -->
+						<div class="col-md-6">
+							<h3>Ubicación</h3>
+							<iframe
+								width="100%"
+								height="450"
+								frameborder="0" style="border:0"
+								src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBwFDofYVj2wDbbrdZl1_Bossxi-_hdlhU&q=<%=hotel.geoLocation ? hotel.geoLocation.latitude : ''%>,<%= hotel.geoLocation ? hotel.geoLocation.longitude : '' %>&zoom=13" allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+    <!-- end Tab One - Hotel -->
+    <!-- Tab Two - Salones -->
+    <div class="tab-pane" id="saloons">
+        <div class="row">
+            <div class="col-md-3">
+            	<div class="row">
+            		<div class="col-md-12">
+									<h3>Información General</h3>
+	                <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px;">
+	                    <tr>
+	                        <td>Total de Habitaciones</td>
+	                        <td><%=currentHotel.totalHabitaciones?currentHotel.totalHabitaciones : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Total de Suites</td>
+	                        <td><%=currentHotel.totalSuites?currentHotel.totalSuites : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Habitaciones Una Cama</td>
+	                        <td><%=currentHotel.totalUnaCama?currentHotel.totalUnaCama : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Habitaciones Dos Camas</td>
+	                        <td><%=currentHotel.totalDosCamas?currentHotel.totalDosCamas : "N/A"%></td>
+	                    </tr>
+
+	                    <tr>
+	                        <td>Total de Salones</td>
+	                        <td><%=currentHotel.numeroSalones?currentHotel.numeroSalones : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Total Metros Cuadrados</td>
+	                        <td><%=currentHotel.metrosTotales?currentHotel.metrosTotales : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Salon Más Grande (Mts2)</td>
+	                        <td><%=currentHotel.salonMasGrandeMetros?currentHotel.salonMasGrandeMetros : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Máxima Capacidad en Salón (Pax)</td>
+	                        <td><%=currentHotel.salonMasGrandePersonas?currentHotel.salonMasGrandePersonas : "N/A"%></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Plan</td>
+	                        <td><%=currentHotel.plan?currentHotel.plan : "N/A"%></td>
+	                    </tr>
+	                </table>
+            		</div>
+								<div class="col-md-12">
+									<h3>Descargables</h3>
+									<table class="table table-default" ng-init="initSalonPDF(hotelid)">
+										<thead>
+											<tr>
+												<th>Nombre</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-repeat="pdf in salonpdf">
+												<td><a href="{{sanitizeAttachUrl(pdf.file)}}" target="_blank">{{pdf.title}}</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+            	</div>
+            </div>
+
+            <div class="col-md-9">
+                <h3>Tabla de medidas y capacidades </h3>
+                <div style="width: 95%; height:auto; overflow-x:scroll-temp;">
+                    <table class="table table-striped table-bordered" style="font-size: 12px;width: 0px; border-radius:5px;">
+                        <thead>
+                            <th class="header-table-salones"><br>Salón</th>
+                            <th class="header-table-salones"><br>Tamaño</th>
+                            <th class="header-table-salones"><br>Alto</th>
+                            <th class="header-table-salones"><br>Ancho</th>
+                            <th class="header-table-salones"><br>Herradura</th>
+                            <th class="header-table-salones"><br>Banquete</th>
+                            <th class="header-table-salones"><br>Coctel</th>
+                            <th class="header-table-salones"><br>Escuela</th>
+                            <th class="header-table-salones"><br>Auditorio</th>
+                            <th class="header-table-salones"><br>1/2 Luna</th>
+                            <th class="header-table-salones"><br>Imperial</th>
+                        </thead>
+                        <tbody>
+                        	<% currentHotel.salones.forEach(function(saloon){%>
+                            <tr >
+																<% if(saloon.descargable) { %>
+																	<td><a href="<%= saloon.descargable %>" target="_blank"><%=saloon.nombre%></a></td>
+																<%} else {%>
+																	<td><%=saloon.nombre%></td>
+																<%}%>
+
+                                <td><%=saloon.tamano%></td>
+                                <td><%=saloon.alto%></td>
+                                <td><%=saloon.ancho%></td>
+                                <td><%=saloon.herradura%></td>
+                                <td><%=saloon.banquete%></td>
+                                <td><%=saloon.coctel%></td>
+                                <td><%=saloon.escuela%></td>
+                                <td><%=saloon.auditorio%></td>
+                                <td><%=saloon.medialuna%></td>
+                                <td><%=saloon.imperial%></td>
+                            </tr>
+                            <%})%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+        </div>
+    </div>
+    <!-- end Tab Two - Salones -->
+
+    <!-- Tab Theree - Informacion Extra -->
+    <div class="tab-pane" id="extraInfo">
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+
+			</div>
+		</div>
+</div>
+<!-- end Tab Theree - Informacion Extra -->
+
+<!-- Tab #4 Comentarios -->
+<div class="tab-pane" id="comentarios" ng-init="loadComentarios()">
+	<div class="row" ng-init="reply.text = {}">
+		<!-- Comentario test -->
+		<div class="col-md-8 row">
+			<div class="col-md-12" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true" style="margin-top: 1em;">
+				<div class="row" ng-init="comentario.showReplies = false">
+					<div class="col-md-2 comentario-user">
+						<img ng-src="/image/ypcover.jpg" class="avatar-border" ng-if="!comentario.user.avatar" />
+						<img ng-src="{{comentario.user.avatar}}" class="avatar-border" ng-if="imagenValida(comentario.user.avatar)" />
+						<img ng-src="http://admin.yoplanner.com{{comentario.user.avatar}}" class="avatar-border" ng-if="!imagenValida(comentario.user.avatar)" />
+						<span><strong>{{comentario.user.username}}</strong></span>
+						<span>{{comentario.user.empresa || ''}}</span>
+					</div>
+					<div class="col-md-10 new-comentario">
+						<div class="row">
+							<div class="col-md-12">
+								<span class="titulo-comentario"><strong><em>{{comentario.title ? comentario.title : 'Comentario sin titulo'}}</em></strong></span>
+								<span uib-dropdown class="pull-right" style="margin-left: 1em;" ng-show="comentario.user.id == rootuser.id  || rootuser.roles.indexOf('ROLE_ADMIN') > -1" ng-if="rootuser">
+						      <a href id="simple-dropdown" uib-dropdown-toggle>
+						        <i class="fa fa-bars"></i>
+						      </a>
+						      <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+						        <li>
+						          <a href ng-show="comentario.user.id == rootuser.id" ng-click="comentario.isEditing = !comentario.isEditing">Editar</a>
+											<a href ng-show="comentario.user.roles.indexOf('ROLE_ADMIN') > -1" ng-click="deleteComment(comentario)">Eliminar</a>
+						        </li>
+						      </ul>
+						    </span>
+								<span class="pull-right"><i class="fa fa-thumbs-up"></i> {{comentario.likes.length ? comentario.likes.length : 0}}</span>
+							</div>
+							<div class="col-md-12">
+								<p style="margin-top: 1em;" ng-hide="comentario.isEditing">
+									{{comentario.text}}
+								</p>
+								<textarea msd-elastic ng-show="comentario.isEditing" ng-model="comentario.editText" ng-init="comentario.isEditing = false; comentario.editText = comentario.text" class="form-control" style="resize: none; margin-top: 1em;margin-bottom: 1em;" rows="1"></textarea>
+							</div>
+							<div class="col-md-12" ng-show="comentario.isEditing">
+								<button type="button" class="btn btn-primary pull-right" ng-click="saveComment(comentario)" style="margin-bottom:1em;">Guardar Cambios</button>
+							</div>
+							<div class="col-m-12 footer-comentario" style="text-align: right;">
+								<div class="pull-left" style="margin-left: 1em;">
+									<span am-time-ago="comentario.createdAt" style="font-size: 12px;"></span>
+								</div>
+								<a class="footer-boton" ng-hide="!_hasSession" ng-click="like(comentario)"><i class="fa fa-thumbs-up"></i> <strong>Like</strong></a>
+								<a class="footer-boton" ng-if="!_hasSession"><i class="fa fa-thumbs-up"></i> <strong><del>Like</del></strong></a>
+							</div>
+							<div class="col-md-12" ng-show="comentario.replies.length > 0">
+								<div class="row">
+									<div class="col-md-12" ng-class="{'margin-bottom-1em': comentario.showReplies}">
+										<h5><strong>Respuestas</strong></h5>
+										<span ng-click="comentario.showReplies = true" ng-show="comentario.showReplies == false"><a>Mostrar respuestas</a></span>
+										<span ng-click="comentario.showReplies = false" ng-show="comentario.showReplies == true"><a>Ocultar respuestas</a></span>
+									</div>
+									<hr>
+									<div class="col-md-12" ng-show="comentario.showReplies == true">
+										<div class="row">
+											<div class="col-md-12 reply-comentario" ng-repeat="respuesta in comentario.replies">
+												<div class="row" style="border-left: 1px solid rgb(177, 177, 177); margin-left:1em;box-sizing:border-box;">
+													<div class="col-md-12" title="{{respuesta.userobj.name || respuesta.name}}{{'\n'+respuesta.userobj.empresa || ''}}" tooltip>
+														<img ng-src="{{respuesta.avatar || '/img/icons/apple-touch-icon.png'}}" alt="Avatar" style="width:48px;height:48px;" />
+														<em style="color: rgb(0, 133, 199)">{{respuesta.name}} </em>
+													</div>
+													<div class="col-md-12">
+														<p ng-hide="reply.isEditing[respuesta.createdAt]">{{respuesta.text}}</p>
+														<textarea msd-elastic ng-show="reply.isEditing[respuesta.createdAt]" ng-model="reply.text_edit[respuesta.createdAt]" ng-init="reply.text_edit[respuesta.createdAt] = respuesta.text" placeholder="Editar comentario..." class="form-control" style="resize: none; margin-bottom: 1em;" rows="1"></textarea>
+													</div>
+													<div class="col-md-12" ng-show="reply.isEditing[respuesta.createdAt]">
+														<button type="submit" class="btn btn-primary pull-right" ng-click="saveReply(comentario, respuesta)" style="margin-bottom:1em;">Guardar Cambios</button>
+													</div>
+													<div class="col-md-12 footer-reply">
+														<span am-time-ago="respuesta.createdAt" style="font-size: 12px;"></span>
+														<span class="pull-right" style="margin-left: 1em;" ng-click="reply.isEditing[respuesta.createdAt] = !reply.isEditing[respuesta.createdAt]" ng-show="respuesta.user == rootuser.id"><a>Editar</a></span>
+														<span class="pull-right" ng-click="deleteReply(comentario, respuesta)" ng-show="rootuser.roles.indexOf('ROLE_ADMIN') > -1"><a>Eliminar</a></span>
+													</div>
+													<div class="col-md-12" ng-hide="$last"><hr></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12" style="margin-top: 1em;" ng-show="_hasSession">
+								<form>
+									<textarea msd-elastic ng-model="reply.text[comentario.id]" placeholder="Responder comentario..." class="form-control" style="resize: none" rows="1"></textarea>
+							</div>
+							<div class="col-md-12" style="margin-top: 1em;" ng-show="!_hasSession">
+								<textarea placeholder="Inicia sesión para responder..." class="form-control" style="resize: none" rows="1" disabled=""></textarea>
+							</div>
+							<div class="col-md-12" ng-show="reply.text[comentario.id].length > 0">
+									<button type="submit" class="btn btn-primary pull-right" ng-click="replyComentario(comentario)" style="margin-top:1em;">Enviar respuesta</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 text-center" style="margin: 1em;" ng-show="comentarios.length < comment_count">
+				<button type="button" class="btn btn-default" ng-click="loadMoreComentarios()">Cargar más</button>
+				<div class="loader" ng-show="comentariosCargados"></div>
+			</div>
+			<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
+				<div class="form-group" style="text-align: center;">
+					<form ng-submit="postComentario()">
+						<div class="row">
+							<div class="col-md-12" style="margin-bottom: 1em;">
+								<input type="text" ng-model="postcomentario.title" style="width:100%;" placeholder="Titulo del comentario" class="form-control comentario-textarea" required>
+							</div>
+							<div class="col-md-12">
+								<textarea ng-model="postcomentario.text" style="width:100%;" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea" required></textarea>
+							</div>
+							<div class="col-md-4 col-md-offset-4">
+								<input type="submit" value="Enviar Comentario" class="boton-sendcomentario" style="margin-top: 0.5em;">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Social -->
+		<div class="col-md-4">
+			<div class="row">
+				<!-- Col Facebook -->
+				<div class="col-md-12">
+					<%var facebook = hotel.facebook?hotel.facebook : "https://www.facebook.com/yoplanner" %>
+					<div class="col-md-4">
+							<h3>Facebook</h3>
+							<div class="fb-page" data-href="<%=facebook%>" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="<%=facebook%>">
+							<a href="<%=facebook%>"> </a></blockquote></div></div>
+					</div>
+				</div>
+				<!-- Col Twitter -->
+				<div class="col-md-12">
+					<h3>Twitter</h3>
+					<div>
+						<a class="twitter-timeline" data-widget-id="<%=hotel.twitter?hotel.twitter : "715213025549152256"%>"
+							href="https://twitter.com/TwitterDev"
+							width="100%"
+							height="500">
+						</a>
+					</div>
+				</div>
+				<!-- Col GPlus -->
+				<div class="col-md-12">
+					<h3>Google+</h3>
+					<div style="height:500px;overflow-y: scroll;">
+						<div class="gplusfeed"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- old
+		<div class="col-md-12">
+			<h3 style="color: black;">Comentarios</h3>
+			<div class="comentarios-container" ng-init="loadComentarios()">
+				<div class="comentario row" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true | limitTo: 3">
+					<div class="col-md-2 header-comentario">
+						<img ng-src="{{comentario.user.avatar}}" class="avatar-comentario" />
+					</div>
+					<div class="col-md-10">
+						<span style="color: white;">{{comentario.user.username}}</span> - <span am-time-ago="comentario.createdAt"></span>
+					</div>
+					<div class="col-md-10">
+						<p style="color: #c5c5c5;">{{comentario.text}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	-->
+		<!-- Mostar un comentario -->
+		<!--
+		<div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
+			<div class="form-group" style="text-align: center;">
+				<form ng-submit="postComentario()">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2" style="margin-bottom: 1em;">
+							<input type="text" ng-model="postcomentario.title" style="width:100%;" placeholder="Titulo del comentario" class="form-control comentario-textarea" required>
+						</div>
+						<div class="col-md-8 col-md-offset-2">
+							<textarea ng-model="postcomentario.text" style="width:100%;" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea" required></textarea>
+						</div>
+						<div class="col-md-4 col-md-offset-4">
+							<input type="submit" value="Enviar Comentario" class="boton-sendcomentario" style="margin-top: 0.5em;">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	 	-->
+
+
+		<div class="col-md-12" ng-hide="_hasSession">
+			<h3 style="color: black;">Inicia sesión para enviar un comentario.</h3>
+		</div>
+	</div>
+</div>
+<!-- Tab #5 Galeria -->
+<div class="tab-pane" id="galeria">
+	<div class="row">
+		<div class="col-md-12" ng-init="initGallery()" oncontextmenu="return false">
+			<h3>General</h3>
+			<ng-gallery images="galleryPictures"></ng-gallery>
+		</div>
+		<div class="col-md-12" ng-if="galleryInstalaciones.length > 0" oncontextmenu="return false">
+			<h3>Instalaciones</h3>
+			<ng-gallery images="galleryInstalaciones"></ng-gallery>
+		</div>
+		<div class="col-md-12" ng-if="galleryHabitaciones.length > 0" oncontextmenu="return false">
+			<h3>Habitaciones</h3>
+			<ng-gallery images="galleryHabitaciones"></ng-gallery>
+		</div>
+		<div class="col-md-12" ng-if="gallerySalones.length > 0" oncontextmenu="return false">
+			<h3>Salones</h3>
+			<ng-gallery images="gallerySalones"></ng-gallery>
+		</div>
+		<div class="col-md-12" ng-if="galleryRestaurantes.length > 0" oncontextmenu="return false">
+			<h3>Restaurantes</h3>
+			<ng-gallery images="galleryRestaurantes"></ng-gallery>
+		</div>
+		<hr>
+ </div>
+</div>
+<!-- Tab #5 promociones -->
+<div class="tab-pane" id="promociones">
+	<div class="row">
+		<div class="col-md-12" ng-init="initPromotions()">
+			<ng-gallery images="galleryPromotions"></ng-gallery>
+		</div>
+		<div class="col-md-12 text-center" ng-show="hotel.promotions.length <= 0">
+			<h3>No hay promociones por el momento...</h3>
+		</div>
+ </div>
+</div>
+
+<!-- end Tab Four - Book Hotel -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End Info Resalt-->
+</div>
+<!-- End content info - Grey Section-->
+
+<!-- content info - testimonials-->
+<div class="content_info">
+<!-- Parallax Background ->
+<div class="bg_parallax image_{{imgBgAcronym}}_parallax"></div>
+<!- Parallax Background -->
+
+
+</div>
+<!-- End content info - testimonials-->
+</div>
+<!-- End Content Central -->
+</div>
+
+
+<script type="text/javascript">
+	console.log("esta bien loco y no imprime : <%= hotel.gplus %>")
+	setTimeout(function() {
+		FB.XFBML.parse();
+		$('.gplusfeed').kycoGooglePlusFeed2({
+        id: '<%= hotel.gplus?hotel.gplus : "113624413123385492768" %>',
+        feedPosts: 5,
+    });
+
+		window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+
+     }, 5000);
+</script>

@@ -814,3 +814,12 @@ div.carbonad-image {
 	border-bottom: 1px solid rgb(208, 208, 208);
 	padding-bottom: 1em;
 }
+
+.hotel-item-frame {
+	height: 400px;
+}
+
+.hotel-new-frame {
+	border: 1px solid rgb(144, 199, 255);
+	border-radius: 10px;
+}
