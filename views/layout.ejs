@@ -107,142 +107,144 @@
 
     <!-- layout-->
     <div id="" class="layout-wide">
-
         <!-- Header-->
-        <header id="header" class="header-v1">
+        <% if(typeof hideNav == 'undefined') { %>
+          <header id="header" class="header-v1">
 
-            <!-- Main Nav -->
-            <nav class="flat-mega-menu" style="z-index:88888">
+              <!-- Main Nav -->
+              <nav class="flat-mega-menu" style="z-index:88888">
 
-                <!-- flat-mega-menu class -->
-                <label for="mobile-button"> <i class="fa fa-bars"></i></label><!-- mobile click button to show menu -->
-                <input id="mobile-button" type="checkbox">
+                  <!-- flat-mega-menu class -->
+                  <label for="mobile-button"> <i class="fa fa-bars"></i></label><!-- mobile click button to show menu -->
+                  <input id="mobile-button" type="checkbox">
 
-                <ul class="collapse" onclick="document.getElementById('mobile-button').click()"><!-- collapse class for collapse the drop down -->
-                    <!-- website title - Logo class -->
-                    <li class="title">
-                        <a href="/"></a>
-                    </li>
-                    <!-- End website title - Logo class -->
-                    <li><a href="/">INICIO </a></li>
-                    <li ng-if="!_hasSession"><a href="/main/registro">REGISTRO </a></li>
+                  <ul class="collapse" onclick="document.getElementById('mobile-button').click()"><!-- collapse class for collapse the drop down -->
+                      <!-- website title - Logo class -->
+                      <li class="title">
+                          <a href="/"></a>
+                      </li>
+                      <!-- End website title - Logo class -->
+                      <li><a href="/">INICIO </a></li>
+                      <li ng-if="!_hasSession"><a href="/main/registro">REGISTRO </a></li>
 
-                    <!-- Notificaciones -->
-                    <li class="dropdown" ng-controller="NotificacionesCtrl" ng-if="_hasSession">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                       <i class="fa fa-comment"></i>
-                       <span class="visible-xs-inline-block position-right">Notificaciones</span>
-                       <!--<span ng-show="getNotiNotReadCount(notificaciones.slice(0, 9)) > 0" class="badge bg-warning-400">{{getNotiNotReadCount(notificaciones.slice(0, 9))}}</span>-->
-                     </a>
+                      <!-- Notificaciones -->
+                      <li class="dropdown" ng-controller="NotificacionesCtrl" ng-if="_hasSession">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         <i class="fa fa-comment"></i>
+                         <span class="visible-xs-inline-block position-right">Notificaciones</span>
+                         <!--<span ng-show="getNotiNotReadCount(notificaciones.slice(0, 9)) > 0" class="badge bg-warning-400">{{getNotiNotReadCount(notificaciones.slice(0, 9))}}</span>-->
+                       </a>
 
-                     <div class="dropdown-menu dropdown-content pull-left" style="padding: 1em;" ng-init="initNotis(sails_env)">
-                       <div class="dropdown-content-heading" style="color:black;">
-                         <h4>Notificaciones</h4>
-                       </div>
-
-                       <ul class="media-list dropdown-content-body" style="width:300px;">
-                         <li class="media" data-toggle="modal" data-target="#modal-noti" ng-click="setModalData(noti)" ng-repeat="noti in notificaciones | orderBy:createdAt:true">
-                           <img src="http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png" alt="Imágen de notificación" style="width:48px;border: none; margin-right: 8px;background-color: white;"/>
-                           <div class="media-body">
-                             <a class="media-heading">
-                               <span class="text-semibold">{{noti.title}}</span>
-                               <span class="media-annotation pull-right">{{noti.createdAt | date}}</span>
-                             </a>
-                             <span class="text-muted">{{noti.text | limitTo:100}}</span>
-                           </div>
-                           <hr>
-                         </li>
-                         <li ng-show="notificaciones.length <= 0" style="color:black;">No hay notificaciones...</li>
-                       </ul>
-
-                         <div class="dropdown-content-footer">
-                           <a href="#" data-popup="tooltip" title="Ver todas"><i class="icon-menu display-block"></i></a>
+                       <div class="dropdown-menu dropdown-content pull-left" style="padding: 1em;" ng-init="initNotis(sails_env)">
+                         <div class="dropdown-content-heading" style="color:black;">
+                           <h4>Notificaciones</h4>
                          </div>
-                       </div>
-                     </li>
 
-                    <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-sign-out " ng-click="logout()">&ensp;CERRAR SESIÓN</i></li>
-                    <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-tachometer " onclick='window.location = "//admin.yoplanner.com"'>&ensp;ADMIN</i></li>
+                         <ul class="media-list dropdown-content-body" style="width:300px;">
+                           <li class="media" data-toggle="modal" data-target="#modal-noti" ng-click="setModalData(noti)" ng-repeat="noti in notificaciones | orderBy:createdAt:true">
+                             <img src="http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png" alt="Imágen de notificación" style="width:48px;border: none; margin-right: 8px;background-color: white;"/>
+                             <div class="media-body">
+                               <a class="media-heading">
+                                 <span class="text-semibold">{{noti.title}}</span>
+                                 <span class="media-annotation pull-right">{{noti.createdAt | date}}</span>
+                               </a>
+                               <span class="text-muted">{{noti.text | limitTo:100}}</span>
+                             </div>
+                             <hr>
+                           </li>
+                           <li ng-show="notificaciones.length <= 0" style="color:black;">No hay notificaciones...</li>
+                         </ul>
 
-                    <li class="mi-seleccion" ng-if="_hasSession && _user.roles.indexOf('ROLE_DEMO') < 0 "> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
-                        <div class="drop-down full-width hover-expand row" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
-                            <div class="row">
-                                <div class="col col-md-3 content-btn" style="margin-left:20px;">
+                           <div class="dropdown-content-footer">
+                             <a href="#" data-popup="tooltip" title="Ver todas"><i class="icon-menu display-block"></i></a>
+                           </div>
+                         </div>
+                       </li>
 
-                                    <a ng-if="hotelesSeleccionados.length > 0" href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
-                                </div>
-                            </div>
+                      <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-sign-out " ng-click="logout()">&ensp;CERRAR SESIÓN</i></li>
+                      <li class="mi-seleccion" ng-if="_hasSession"><i class="fa fa-tachometer " onclick='window.location = "//admin.yoplanner.com"'>&ensp;ADMIN</i></li>
 
-                            <ul ng-if="hotelesSeleccionados.length == 0">
-                                <li><h2>No hay hoteles seleccionados</h2></li>
-                            </ul>
+                      <li class="mi-seleccion" ng-if="_hasSession && _user.roles.indexOf('ROLE_DEMO') < 0 "> <i class="fa fa-cart-plus"> MI SELECCIÓN<div ng-show="hotelesSeleccionados.length>0" class="numberCircle">{{hotelesSeleccionados.length}}</div></i>
+                          <div class="drop-down full-width hover-expand row" ng-controller="HotelController" style="{{hotelesSeleccionados.length == 0 ? '' : 'overflow-x: hidden;overflow-y: scroll;height: 423px;'}}"><!-- full width drop down with 4 columns + images -->
+                              <div class="row">
+                                  <div class="col col-md-3 content-btn" style="margin-left:20px;">
 
-                            <div class="row">
-                                <div class="col col-md-12">
-                                    <ul ng-repeat="hotel in hotelesSeleccionados track by $index" class="col col-md-3"><!-- column $index -->
-                                        <li height="200px">
-                                            <h2 style="font-size: 1.4em;;line-height:1.4em;height: 2.8em;overflow: hidden;">{{hotel.name}}</h2> <!-- (hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]) -->
-                                            <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{ sanitizeImgHotelList(hotel) }}" alt="image 1" style="widrh:250px;height:150px;"> </a>
-                                            <p style="font-size:1em; line-height:1em;height: 4em;overflow: hidden;text-align:justify;text-justify: inter-word;">{{hotel.description}}</p>
-                                            <div class="row">
-                                                <div class="col col-md-3 content-btn" ng-click="selectResult(hotel)">
-                                                <br>
-                                                    <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalle</a>
-                                                </div>
-                                                <div class="col col-md-9">
-                                                <br>
-                                                    <a href="javascript:void(0);" ng-click="deleteSelection(hotel)" class="btn btn-danger" style="background: #d9534f !important;">Quitar de Mi Selección</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                                      <a ng-if="hotelesSeleccionados.length > 0" href="javascript:void(0);" ng-click="mostrarRFP()" class="btn btn-success" style="background: #5cb85c !important; padding: 5px 10px;">Cotizar Mi Selección</a>
+                                  </div>
+                              </div>
 
-                    <li class="search-bar"> <i class="fa fa-search"></i><!-- search bar -->
-                        <ul class="drop-down hover-expand">
-                            <li>
-                                <div class="filter-header" ng-controller="AutocompleteController" style="max-width: 95%;">
-                                    <form action="#">
-                                        <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Ingresa tu destino y cotiza"></autocomplete>
-                                        <img src="/img/lblue.gif" style="width: 30px; height: 30px;" ng-show="showLoader || false" class="ng-hide">
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- login form -->
-                    <li class="login-form" ng-controller="LoginCtrl" ng-if="!_hasSession"> <i class="fa fa-user">   LOGIN</i>
-                        <ul class="drop-down hover-expand">
-                            <li>
-                                <form method="post" ng-submit="login()">
-                                    <table>
-                                        <tr>
-                                            <td colspan="2">
-                                                <input type="email" required="required" ng-model="usr.username" placeholder="tu email">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">
-                                                <input type="password" required="required" ng-model="usr.password" placeholder="Password">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td> <input type="submit"> </td>
-                                            <!--td> <label> <input type="checkbox" name="check_box"> Keep me signed in </label> </td-->
-                                        </tr>
-                                    </table>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
+                              <ul ng-if="hotelesSeleccionados.length == 0">
+                                  <li><h2>No hay hoteles seleccionados</h2></li>
+                              </ul>
 
-                </ul>
-            </nav>
-            <!-- Main Nav -->
-        </header>
+                              <div class="row">
+                                  <div class="col col-md-12">
+                                      <ul ng-repeat="hotel in hotelesSeleccionados track by $index" class="col col-md-3"><!-- column $index -->
+                                          <li height="200px">
+                                              <h2 style="font-size: 1.4em;;line-height:1.4em;height: 2.8em;overflow: hidden;">{{hotel.name}}</h2> <!-- (hotel.fotoPrincipal!=null?hotel.fotoPrincipal:hotel.pictures[0]) -->
+                                              <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" ng-click="selectResult(hotel)"><img ng-src="{{ sanitizeImgHotelList(hotel) }}" alt="image 1" style="widrh:250px;height:150px;"> </a>
+                                              <p style="font-size:1em; line-height:1em;height: 4em;overflow: hidden;text-align:justify;text-justify: inter-word;">{{hotel.description}}</p>
+                                              <div class="row">
+                                                  <div class="col col-md-3 content-btn" ng-click="selectResult(hotel)">
+                                                  <br>
+                                                      <a ui-sref="hotel_detail({searchId: hotel.cityId, hotelId: hotel.id})" class="btn btn-primary">Ver Detalle</a>
+                                                  </div>
+                                                  <div class="col col-md-9">
+                                                  <br>
+                                                      <a href="javascript:void(0);" ng-click="deleteSelection(hotel)" class="btn btn-danger" style="background: #d9534f !important;">Quitar de Mi Selección</a>
+                                                  </div>
+                                              </div>
+                                          </li>
+                                      </ul>
+                                  </div>
+                              </div>
+                          </div>
+                      </li>
+
+                      <li class="search-bar"> <i class="fa fa-search"></i><!-- search bar -->
+                          <ul class="drop-down hover-expand">
+                              <li>
+                                  <div class="filter-header" ng-controller="AutocompleteController" style="max-width: 95%;">
+                                      <form action="#">
+                                          <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Ingresa tu destino y cotiza"></autocomplete>
+                                          <img src="/img/lblue.gif" style="width: 30px; height: 30px;" ng-show="showLoader || false" class="ng-hide">
+                                      </form>
+                                  </div>
+                              </li>
+                          </ul>
+                      </li>
+                      <!-- login form -->
+                      <li class="login-form" ng-controller="LoginCtrl" ng-if="!_hasSession"> <i class="fa fa-user">   LOGIN</i>
+                          <ul class="drop-down hover-expand">
+                              <li>
+                                  <form method="post" ng-submit="login()">
+                                      <table>
+                                          <tr>
+                                              <td colspan="2">
+                                                  <input type="email" required="required" ng-model="usr.username" placeholder="tu email">
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td colspan="2">
+                                                  <input type="password" required="required" ng-model="usr.password" placeholder="Password">
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td> <input type="submit"> </td>
+                                              <!--td> <label> <input type="checkbox" name="check_box"> Keep me signed in </label> </td-->
+                                          </tr>
+                                      </table>
+                                  </form>
+                              </li>
+                          </ul>
+                      </li>
+
+                  </ul>
+              </nav>
+              <!-- Main Nav -->
+          </header>
+        <% } %>
+
         <!-- End Header-->
 
         <%- body %>
@@ -254,37 +256,39 @@
 
         <!-- Modal -->
 
+        <% if(typeof hideNav == 'undefined') { %>
+          <footer id="footer" class="footer-v1" style="margin-top:20px">
+              <!-- footer Down-->
+              <div class="footer-down">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-6 pull-right">
+                              <p>&copy; Powered by <a target="_blank" href="http://www.yoplanner.com"><img src="/img/logo.png" style="background-color: transparent;border:0;margin-top:0px;width:80px;box-shadow:0px 0px 0px 0px; "></a> <!--a target="_blank" href="http://atomicware.mx"><img src="/img/logoatomic.png" style="width:50px; "></a-->.    All Rights Reserved.  2010 - 2016</p>
+                          </div>
+                          <div class="col-md-6 pull-left">
+                            <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='mailto:daniel.muller@yoplanner.com';">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                            <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='http://facebook.com/yoplanner';">
+                              <i class="fa fa-facebook"></i>
+                            </button>
+                            <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='https://plus.google.com/+YoPlannerMx/';">
+                              <i class="fa fa-google"></i>
+                            </button>
+                            <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='https://www.linkedin.com/company/yo-planner';">
+                              <i class="fa fa-linkedin"></i>
+                            </button>
+                            <button type="button" class="btn btn-default btn-icon btn-rounded" onclick="location.href='http://twitter.com/yoplanner';">
+                              <i class="fa fa-twitter"></i>
+                            </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- footer Down-->
+          </footer>
+        <% } %>
 
-        <footer id="footer" class="footer-v1" style="margin-top:20px">
-            <!-- footer Down-->
-            <div class="footer-down">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 pull-right">
-                            <p>&copy; Powered by <a target="_blank" href="http://www.yoplanner.com"><img src="/img/logo.png" style="background-color: transparent;border:0;margin-top:0px;width:80px;box-shadow:0px 0px 0px 0px; "></a> <!--a target="_blank" href="http://atomicware.mx"><img src="/img/logoatomic.png" style="width:50px; "></a-->.    All Rights Reserved.  2010 - 2016</p>
-                        </div>
-                        <div class="col-md-6 pull-left">
-                          <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='mailto:daniel.muller@yoplanner.com';">
-                            <i class="fa fa-envelope"></i>
-                          </button>
-                          <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='http://facebook.com/yoplanner';">
-                            <i class="fa fa-facebook"></i>
-                          </button>
-                          <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='https://plus.google.com/+YoPlannerMx/';">
-                            <i class="fa fa-google"></i>
-                          </button>
-                          <button type="button" class="btn btn-default btn-icon btn-rounded margin-right-half" onclick="location.href='https://www.linkedin.com/company/yo-planner';">
-                            <i class="fa fa-linkedin"></i>
-                          </button>
-                          <button type="button" class="btn btn-default btn-icon btn-rounded" onclick="location.href='http://twitter.com/yoplanner';">
-                            <i class="fa fa-twitter"></i>
-                          </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- footer Down-->
-        </footer>
         <!-- End footer-->
 
     </div>

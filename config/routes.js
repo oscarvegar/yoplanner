@@ -49,6 +49,7 @@ module.exports.routes = {
   'get /:id':'MainController.root',
   'get /':'MainController.root',
   //Test route cancun
-  'get /destino/cancun': 'MainController.serveCancun'
+  'get /destino/cancun': 'MainController.serveCancun',
+  'get /recinto/iframe/:tipo/:id': 'RecintoController.serveIFrame'
 
 };
