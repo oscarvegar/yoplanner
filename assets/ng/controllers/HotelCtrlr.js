@@ -12,6 +12,13 @@ HotelModule.config(function(uiGmapGoogleMapApiProvider) {
 
 });
 
+HotelModule
+.filter('htmlToPlaintext', function() {
+    return function(text) {
+      return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    };
+  });
+
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,$localStorage,notify, $location){
 	$scope.searchId;
 	$scope.hotelRatings = [];
@@ -102,6 +109,33 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		//Go cancun
 		$scope.goCancun = function () {
 			window.location.href = "/destino/cancun";
+		}
+
+		$scope.setChevron = function (data) {
+			console.log(data);
+			$scope.tempFiltroCollapse = data;
+		}
+
+		$scope.loadRecintos = function (id) {
+			console.log('loading recintos', id);
+			$scope.tempHotelesList = $scope.hotelesNew;
+			$http.post('/recinto/getRecintosByCity/', {id: id}).success(function(data) {
+				console.log(data);
+				$scope.hotelesNew = data;
+			});
+		}
+
+		$scope.mostrarHotelesOriginales = function () {
+			$scope.hotelesNew = $scope.hotelesOriginales;
+		}
+
+		$scope.loadProveedores = function (id) {
+			console.log('loading proveedores', id);
+			$scope.tempHotelesList = $scope.hotelesNew;
+			$http.post('/recinto/getProveedoresByCity/', {id: id}).success(function(data) {
+				console.log(data);
+				$scope.hotelesNew = data;
+			});
 		}
 
 		//Filter image

@@ -32,111 +32,153 @@
         <div class="content_info">
         <div class="container">
         <div class="row">
-             <div class="col-md-3  col-lg-3 ">
-                                <div class="container-by-widget-filter bg-dark color-white">
+           <div class="col-md-3  col-lg-3 ">
+              <div class="container-by-widget-filter bg-dark color-white">
+                <div class="row" style="padding: 1em;">
+                  <div class="col-md-12">
+                    <img src="/img/logo.png" class="img-responsive" />
+                  </div>
+                  <div class="col-md-12">
+                    <hr class="divider">
+                  </div>
+                  <div class="col-md-12">
+                    <h3>¿Buscas algo más?</h3>
+                  </div>
+                  <% if(destinoUrl != '') { %>
+                    <div class="col-md-12">
+                      <a href="/<%= destinoUrl ? destinoUrl : '' %>">Perfil del destino</a>
+                    </div>
+                  <% } %>
+                  <div class="col-md-12">
+                    <a ng-click="loadRecintos(searchId)" style="cursor: pointer;">Lista de <strong>recintos</strong></a>
+                  </div>
+                  <div class="col-md-12">
+                    <a ng-click="loadProveedores(searchId)" style="cursor: pointer;">Lista de <strong>proveedores</strong></a>
+                  </div>
+                  <div class="col-md-12" ng-show="tempHotelesList">
+                    <a ng-click="mostrarHotelesOriginales()" style="cursor: pointer;">Mostrar hoteles...</a>
+                  </div>
+                  <div class="col-md-12">
+                    <hr class="divider">
+                  </div>
+                  <div class="col-md-12">
+                    <aside class="widget padding-top-mini">
+                        <h3 class="title-widget">Aplica un Filtro</h3>
+                        <h4>Nombre:</h4>
+                        <input type="text" class="form-control" ng-model="buscar.nombre.name" placeholder="Nombre del hotel">
+                    </aside>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>Más filtros</h4>
+                  </div>
+                  <div class="col-md-4 text-right" ng-init="tempFiltroCollapse = true" style="cursor: pointer;" ng-click="setChevron(tempFiltroCollapse ?  false : true)" data-toggle="collapse" data-target=".filtroCollapse">
+                    <i ng-show="tempFiltroCollapse" class="fa fa-chevron-down"></i>
+                    <i ng-hide="tempFiltroCollapse" class="fa fa-chevron-up"></i>
+                  </div>
+                  <div class="col-md-12">
+                    <aside class="widget padding-top-mini collapse filtroCollapse">
+                        <h4>Número de salones:</h4>
+                        <input type="number" class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Número de habitaciones:</h4>
+                        <input type="number" class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Número de suites:</h4>
+                        <input type="number" class="form-control" ng-model="buscar.suites" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Número de habitaciones de una cama:</h4>
+                        <input type="number" class="form-control" ng-model="buscar.unacama" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Número de habitaciones de dos camas:</h4>
+                        <input type="number" class="form-control" ng-model="buscar.doscamas" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Metos cuadrados:</h4>
+                        <input type="number" class="form-control" ng-model="buscar.metroscuadrados" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Salón más grande (Metros cuadrados):</h4>
+                        <input type="number" class="form-control" ng-model="buscar.masgrandecuadrados" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Máxima capacidad en salón:</h4>
+                        <input type="number" class="form-control" ng-model="buscar.maxcapacidadsalon" placeholder="Número mayor a">
+                        <hr class="separator">
+                        <h4>Tipo de plan:</h4>
+                        <select class="form-control" ng-model="buscar.plan" ng-init="buscar.plan = default">
+                          <option value="default" selected> Cualquiera </option>
+                          <option value="Todo Incluido">Todo Incluido</option>
+                          <option value="Europeo">Europeo</option>
+                        </select>
+                    </aside>
+                    <!-- End Widget Filter Price Range-->
 
+                    <!-- Widget Filter Stars-->
+                    <aside class="widget collapse filtroCollapse">
+                        <h4>Estrellas:</h4>
+                        <ul class="starts">
+                            <li><input type="checkbox" ng-model="buscar.fivestar" ng-init="buscar.fivestar = false"></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><span>5 estrellas</span></li>
+                        </ul>
 
-                                    <!-- Widget Filter Price Range-->
-                                    <aside class="widget padding-top-mini">
-                                        <h3 class="title-widget">Aplica un Filtro</h3>
-                                        <h4>Nombre:</h4>
-                                        <input type="text" class="form-control" ng-model="buscar.nombre.name" placeholder="Nombre del hotel">
-                                        <hr class="separator">
-                                        <h4>Número de salones:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.salones" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Número de habitaciones:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.habitaciones" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Número de suites:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.suites" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Número de habitaciones de una cama:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.unacama" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Número de habitaciones de dos camas:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.doscamas" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Metos cuadrados:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.metroscuadrados" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Salón más grande (Metros cuadrados):</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.masgrandecuadrados" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Máxima capacidad en salón:</h4>
-                                        <input type="number" class="form-control" ng-model="buscar.maxcapacidadsalon" placeholder="Número mayor a">
-                                        <hr class="separator">
-                                        <h4>Tipo de plan:</h4>
-                                        <select class="form-control" ng-model="buscar.plan" ng-init="buscar.plan = default">
-                                          <option value="default" selected> Cualquiera </option>
-                                          <option value="Todo Incluido">Todo Incluido</option>
-                                          <option value="Europeo">Europeo</option>
-                                        </select>
-                                    </aside>
-                                    <!-- End Widget Filter Price Range-->
+                        <ul class="starts">
+                            <li><input type="checkbox" ng-model="buscar.fourstar" ng-init="buscar.fourstar = false"></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star-o"></i></a></li>
+                            <li><span>4 estrellas</span></li>
+                        </ul>
 
-                                    <!-- Widget Filter Stars-->
-                                    <aside class="widget">
-                                        <h4>Estrellas:</h4>
-                                        <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.fivestar" ng-init="buscar.fivestar = false"></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><span>5 estrellas</span></li>
-                                        </ul>
+                        <ul class="starts">
+                            <li><input type="checkbox" ng-model="buscar.threestar" ng-init="buscar.threestar = false"></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star-o"></i></a></li>
+                            <li><a><i class="fa fa-star-o"></i></a></li>
+                            <li><span>3 estrellas</span></li>
+                        </ul>
 
-                                        <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.fourstar" ng-init="buscar.fourstar = false"></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star-o"></i></a></li>
-                                            <li><span>4 estrellas</span></li>
-                                        </ul>
+                        <ul class="starts">
+                            <li><input type="checkbox" ng-model="buscar.twostar" ng-init="buscar.twostar = false"></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star"></i></a></li>
+                            <li><a><i class="fa fa-star-o"></i></a></li>
+                            <li><a><i class="fa fa-star-o"></i></a></li>
+                            <li><a><i class="fa fa-star-o"></i></a></li>
+                            <li><span>2 estrellas</span></li>
+                        </ul>
 
-                                        <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.threestar" ng-init="buscar.threestar = false"></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star-o"></i></a></li>
-                                            <li><a><i class="fa fa-star-o"></i></a></li>
-                                            <li><span>3 estrellas</span></li>
-                                        </ul>
+                        <ul class="starts">
+                            <li><input type="checkbox" ng-model="buscar.onestar" ng-init="buscar.onestar = false"></li>
+                            <li><a href="#"><i class="fa fa-star"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
+                            <li><span>1 estrellas</span></li>
+                        </ul>
+                    </aside>
+                  </div>
+                  <div class="col-md-12">
+                    <aside class="widget" style="text-align: center;">
+                      <button type="button" class="btn btn-primary" style="width: 80%;" ng-click="buscarTodos(buscar)">Buscar</button>
+                    </aside>
+                    <aside class="widget" style="text-align: center;">
+                      <button type="button" class="btn btn-primary btn-xs" ng-click="limpiarFiltros()">Limpiar Filtros</button>
+                    </aside>
+                  </div>
+                </div>
+                  <!-- Widget Filter Price Range-->
 
-                                        <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.twostar" ng-init="buscar.twostar = false"></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star"></i></a></li>
-                                            <li><a><i class="fa fa-star-o"></i></a></li>
-                                            <li><a><i class="fa fa-star-o"></i></a></li>
-                                            <li><a><i class="fa fa-star-o"></i></a></li>
-                                            <li><span>2 estrellas</span></li>
-                                        </ul>
+                  <!-- End Widget Filter Stars-->
 
-                                        <ul class="starts">
-                                            <li><input type="checkbox" ng-model="buscar.onestar" ng-init="buscar.onestar = false"></li>
-                                            <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                            <li><span>1 estrellas</span></li>
-                                        </ul>
-                                    </aside>
-                                    <!-- End Widget Filter Stars-->
-                                    <aside class="widget" style="text-align: center;">
-                                      <button type="button" class="btn btn-primary" style="width: 80%;" ng-click="buscarTodos(buscar)">Buscar</button>
-                                    </aside>
-                                    <aside class="widget" style="text-align: center;">
-                                      <button type="button" class="btn btn-primary btn-xs" ng-click="limpiarFiltros()">Limpiar Filtros</button>
-                                    </aside>
-                                </div>
-                            </div>
+              </div>
+          </div>
 
             <!-- Hoteles Angular -->
             <div class="col-md-9  col-sm-12 col-lg-9" ng-init="loadNewHoteles()">
@@ -148,12 +190,21 @@
                     <h3>Hoteles en <%=ciudad.name%></h3>
                   <% } %>
                 </div>
-                <div class="col-md-8 col-md-offset-2 bg-dark color-white flexbox-container text-center" style="min-height: 60px;">
-                  <span>Ordenar por:&nbsp;&nbsp;&nbsp;</span>
+                <div class="col-md-11 bg-dark color-white flexbox-container text-center" style="min-height: 60px;">
+                  <span>Ordenar por:</span>
+                  <button type="button" class="btn btn-default" ng-click="sorthotel = 1" style="margin-left: 2em; margin-right: 1em;">Mejor Votado</button>
+                  <button type="button" class="btn btn-default" ng-click="sorthotel = 2" style="margin-right: 1em;">Más Visto</button>
+                  <button type="button" class="btn btn-default" ng-click="sorthotel = 3" style="margin-right: 1em;">Más Comentado</button>
+                  <button type="button" class="btn btn-default" ng-show="_hasSession" ng-click="sorthotel = 4">Mis Favoritos</button>
+                  <!--
                   <a style="cursor:pointer;" class="linksort" ng-click="sorthotel = 1" ng-class="{'sort-active': sorthotel == 1, 'sort-inactive': sorthotel != 1}">Mejor Votado</a><span style="color: white">&nbsp;/&nbsp;</span>
                   <a style="cursor:pointer;" class="linksort" ng-click="sorthotel = 2" ng-class="{'sort-active': sorthotel == 2, 'sort-inactive': sorthotel != 2}">Más Visto</a><span style="color: white">&nbsp;/&nbsp;</span>
                   <a style="cursor:pointer;" class="linksort" ng-click="sorthotel = 3" ng-class="{'sort-active': sorthotel == 3, 'sort-inactive': sorthotel != 3}">Más Comentado</a><span style="color: white" ng-show="_hasSession">&nbsp;/&nbsp;</span>
                   <a style="cursor:pointer;" ng-show="_hasSession" class="linksort" ng-click="sorthotel = 4" ng-class="{'sort-active': sorthotel == 4, 'sort-inactive': sorthotel != 4}">Mis Favoritos</a>
+                  -->
+                </div>
+                <div class="col-md-1" style="min-height: 60px; background-color:#42A9D3;">
+                  &nbsp;
                 </div>
                 <div class="col-md-12 text-center" style="padding: 1em;"ng-show="cargandoBusqueda">
                   <div class="loader"></div>
@@ -180,7 +231,7 @@
                       </div>
                       <h3><span style="white-space: normal"><%=ciudad.name%></span></h3>
                       <hr class="separator">
-                      <p style="height:80px;text-align: justify;text-justify: inter-word;font-size:1em; line-height:1.2em;height: 4.8em;overflow: hidden;">{{hotel.description}}</p>
+                      <p style="height:80px;text-align: justify;text-justify: inter-word;font-size:1em; line-height:1.2em;height: 4.8em;overflow: hidden;">{{hotel.description | htmlToPlaintext}}</p>
 
                       <ul class="starts">
                         <li ng-repeat="star in [1, 2, 3, 4 ,5] | limitTo:hotel.starRating"><a href="#"><i class="fa fa-star"></i></a></li>
