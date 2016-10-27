@@ -136,7 +136,7 @@
     <!-- Tab One - Hotel -->
     <div class="tab-pane active" id="hotel">
         <h2>Información del hotel</h2>
-        <p style="text-align: justify;text-justify: inter-word;"><%=currentHotel.description%></p>
+        <p style="text-align: justify;text-justify: inter-word;"><%- currentHotel.description %></p>
 				<div class="row" ng-show="_hasSession">
 					<div class="col-md-12" ng-init="initInfoContacto(hotelid)">
 						<h3>Datos de contacto para grupos</h3>

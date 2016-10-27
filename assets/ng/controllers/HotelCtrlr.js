@@ -138,6 +138,12 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			});
 		}
 
+    $scope.loadRestaurantes = function (id) {
+			$http.post('/recinto/getRestaurantesByCity/', {id: id}).success(function(data) {
+				$scope.hotelesNew = data;
+			});
+		}
+
 		//Filter image
 		$scope.loadImageHotelList = function (hotel) {
 			if (hotel.fotoPrincipal) {
