@@ -424,7 +424,6 @@ module.exports = {
                 ciudad: ciudad,
                 hoteles: hoteles,
                 destinoUrl: destino ? destino.urlslug : '',
-                hideNav: 'holamundo',
                 destinoImg: destino ? destino.fotoPrincipal : '/img/yp-backgrounds/ACA/Hoteles en Acapulco.jpg',
                 metas: {
                   title: 'Hoteles en ' + ciudad.name,
@@ -442,7 +441,6 @@ module.exports = {
         Recinto.findOne({id: id}).populateAll().then(function(hotel) {
           res.view("iframes/hotel-detail", {
             hotel: hotel,
-            hideNav: 'true',
             metas: {
               title: hotel.name,
               description: hotel.description,
@@ -457,8 +455,7 @@ module.exports = {
       } else if (tipo == 'destino') {
         Destino.findOne({id: id}).populateAll().then(function(data) {
           res.view('iframes/destino-detail', {
-            destino: data,
-            hideNav: 'sisi'
+            destino: data
           });
         }).catch(function(err) {
           console.log(err);
@@ -467,5 +464,25 @@ module.exports = {
       } else {
         return res.view('homepage');
       }
+    },
+
+    getRecintosByCity: function (req, res) {
+      var id = req.param('id');
+      Recinto.find({isRecinto: true, cityId: id}).populateAll().then(function(data) {
+        return res.json(data);
+      }).catch(function(err) {
+        console.log(err);
+        return res.json(500, {err: err});
+      });
+    },
+
+    getProveedoresByCity: function (req, res) {
+      var id = req.param('id');
+      Recinto.find({isProveedor: true, cityId: id}).populateAll().then(function(data) {
+        return res.json(data);
+      }).catch(function(err) {
+        console.log(err);
+        return res.json(500, {err: err});
+      });
     }
 };
