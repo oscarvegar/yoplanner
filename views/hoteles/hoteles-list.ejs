@@ -46,17 +46,17 @@
                   </div>
                   <% if(destinoUrl != '') { %>
                     <div class="col-md-12">
-                      <a href="/<%= destinoUrl ? destinoUrl : '' %>">Perfil del destino</a>
+                      <a href="/<%= destinoUrl ? destinoUrl : '' %>">Destino</a>
                     </div>
                   <% } %>
                   <div class="col-md-12">
-                    <a ng-click="loadRecintos(searchId)" style="cursor: pointer;">Lista de <strong>recintos</strong></a>
+                    <a ng-click="loadRecintos(searchId)" style="cursor: pointer;">Recintos</a>
                   </div>
                   <div class="col-md-12">
-                    <a ng-click="loadProveedores(searchId)" style="cursor: pointer;">Lista de <strong>proveedores</strong></a>
+                    <a ng-click="loadProveedores(searchId)" style="cursor: pointer;">Proveedores</a>
                   </div>
                   <div class="col-md-12">
-                    <a ng-click="loadRestaurantes(searchId)" style="cursor: pointer;">Lista de <strong>restauranes</strong></a>
+                    <a ng-click="loadRestaurantes(searchId)" style="cursor: pointer;">Restaurantes</a>
                   </div>
                   <div class="col-md-12" ng-show="tempHotelesList">
                     <a ng-click="mostrarHotelesOriginales()" style="cursor: pointer;">Mostrar hoteles...</a>
