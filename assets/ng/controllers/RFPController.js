@@ -231,7 +231,7 @@ angular.module('rfp-module', [])
 				}
 				if (!customerInList) {
 					$http.post('/customer/addcustomer', {
-						nombreCliente: $scope.rfp.nombreCliente,
+						nombreCliente: $scope.rfp.nombreCliente ? $scope.rfp.nombreCliente : $scope.selectedCustomer.originalObject.nombreCliente,
 						email: $scope.rfp.email,
 						telefonoContacto: $scope.rfp.telefonoContacto,
 						empresa: $scope.rfp.empresa,

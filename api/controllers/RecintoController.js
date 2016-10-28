@@ -9,8 +9,6 @@
 ///availability/cities/{id}/hotels
 var URL_PICTURES = "http://media.staticontent.com/media/pictures/";
 var URL_CUSTOM_PICTURES = "./img/hoteles/";
-
-
 var AGRUPADORES_CIUDAD = [["SD6","SJD","CL1"]];
 
 module.exports = {
@@ -482,6 +480,21 @@ module.exports = {
         return res.json(data);
       }).catch(function(err) {
         console.log(err);
+        return res.json(500, {err: err});
+      });
+    },
+
+    serveIframeSearch: function (req, res) {
+      return res.view('search-iframe', {
+        hideNav: 'si'
+      });
+    },
+
+    getRestaurantesByCity: function (req, res) {
+      var id = req.param('id');
+      Recinto.find({isRestaurante: true, cityId: id}).populateAll().then(function(data) {
+        return res.json(data);
+      }).catch(function(err) {
         return res.json(500, {err: err});
       });
     }
