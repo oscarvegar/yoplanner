@@ -122,10 +122,12 @@ yoPlannerApp.controller('AutocompleteController',function($scope, $http, $timeou
 	}
 
 	$scope.searchCity = function(selected){
-
-
-		console.log("$scope.searchId",$scope.searchId);
-		window.location = "/search/findByCityCode/"+$scope.searchId;
+		if ($scope.isWidget) {
+			$scope.searchString = null;
+			window.open("/search/findByCityCode/"+$scope.searchId,'_blank');
+		} else {
+			window.location = "/search/findByCityCode/"+$scope.searchId;
+		}
 	}
 });
 
