@@ -8,14 +8,24 @@
     <% if(typeof metas != 'undefined') { %>
         <% if(typeof metas.title != 'undefined'){ %>
             <title>Yo Planner - <%= metas.title %></title>
-            <meta property="og:title" content="<%=metas.title%>" >
+            <meta property="og:title" content="<%=metas.title%>" />
         <% } %>
+            <meta property="og:type" content="website" />
+
+        <% if(typeof hotel != 'undefined'){ %>
+            <meta property="og:url" content="http://rfp.yoplanner.com/<%= hotel.urlslug %>" />
+        <% } %>
+
+        <% if(typeof metas.url != 'undefined'){ %>
+            <meta property="og:url" content="<%= metas.url %>" />
+        <% } %>
+
         <% if(typeof metas.description != 'undefined'){ %>
-            <meta name="description" content="<%=metas.description%>">
-            <meta property="og:description" content="<%=metas.description%>" >
+            <meta name="description" content="<%=metas.description.substr(0,159) %>" />
+            <meta property="og:description" content="<%=metas.description.substr(0,159) %>" />
         <% } %>
         <% if(typeof metas.keywords != 'undefined'){ %>
-            <meta name="keywords" content="<%=metas.keywords%>">
+            <meta name="keywords" content="<%=metas.keywords%>" />
         <% } %>
         <% if(metas.image != undefined) { %>
             <meta property="og:image" content="<%=metas.image%>" >

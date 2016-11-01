@@ -259,16 +259,6 @@
                     <div class="row">
                         <div class="col col-md-3">
                             <label class="rfp-label">Nombre Completo<span class="rfp-red">*</span></label><br>
-                            <!-- <angucomplete-alt id="ex1"
-                              placeholder="Nombre con apellidos"
-                              pause="100"
-                              selected-object="selectedCustomer"
-                              local-data="myCustomers"
-                              search-fields="nombreCliente"
-                              title-field="nombreCliente"
-                              minlength="2"
-                              input-class="form-control"
-                              input-changed="changeNombre" /> -->
                               <angucomplete-alt id="members"
                                 placeholder="Nombre"
                                 pause="400"
@@ -277,6 +267,7 @@
                                 remote-url-data-field="customers"
                                 title-field="nombreCliente"
                                 minlength="1"
+                                ng-model="rfp.nombreCliente"
                                 input-class="form-control"/>
                         </div>
                         <div class="col col-md-3">

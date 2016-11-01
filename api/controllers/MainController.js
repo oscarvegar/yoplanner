@@ -17,7 +17,14 @@ module.exports = {
 				console.log(data);
 			  if (data) {
 					return res.view('destino-detail', {
-						destino: data
+						destino: data,
+						metas: {
+							title: data.name,
+							description: data.description,
+							keywords: 'Visita ' + data.name,
+							image: data.fotoPrincipal,
+							url: 'http://rfp.yoplanner.com/' + data.urlslug
+						}
 					});
 			  } else {
 					Ciudad.findOne({
@@ -133,7 +140,14 @@ module.exports = {
 		User.findOne({username: 'cancun@yoplanner.com'}).then(function(data) {
 		  if (data) {
 		  	return res.view('destino-detail', {
-					destino: data
+					destino: data,
+					metas: {
+						title: data.name,
+						description: data.description,
+						keywords: 'Visita ' + data.name,
+						image: data.fotoPrincipal,
+						url: 'http://rfp.yoplanner.com/' + data.urlslug
+					}
 				});
 		  } else {
 				return res.json(500, {error: true, message: 'Error con el usuario del destino.'});
