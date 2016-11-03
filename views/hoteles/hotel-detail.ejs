@@ -135,32 +135,84 @@
 <div class="tab-content">
     <!-- Tab One - Hotel -->
     <div class="tab-pane active" id="hotel">
-        <h2>Información del hotel</h2>
-        <p style="text-align: justify;text-justify: inter-word;"><%- currentHotel.description %></p>
-				<div class="row" ng-show="_hasSession">
-					<div class="col-md-12" ng-init="initInfoContacto(hotelid)">
-						<h3>Datos de contacto para grupos</h3>
-						<p>
-							<strong>Nombre: </strong><%=currentHotel.contactoPrincipal || ' -- '%>
-							<strong> Email: </strong><%=currentHotel.correoPrincipal || ' -- '%>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Información del hotel
+						</div>
+						<div class="panel-body">
+							<p style="text-align: justify;text-justify: inter-word;"><%- currentHotel.description %></p>
+						</div>
+					</div>
+					<div class="panel panel-default" ng-show="_hasSession">
+						<div class="panel-heading">
+							Datos de contacto para grupos
+						</div>
+						<div class="panel-body" ng-init="initInfoContacto(hotelid)">
+							<strong>Nombre: </strong><%=currentHotel.contactoPrincipal || ' -- '%><br>
+							<strong> Email: </strong><%=currentHotel.correoPrincipal || ' -- '%><br>
 							<strong> Teléfono: </strong><%=currentHotel.oficinaPrincipal || ' -- '%>
-						</p>
+						</div>
 					</div>
 				</div>
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Mejores comentarios de <%= currentHotel.name %>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<!-- Comentario -->
+								<div class="col-md-12" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true | limitTo:3" style="padding-bottom: -1em;">
+									<div class="row" style="padding-top: 1em;">
+										<div class="col-md-2">
+											<img ng-src="/image/ypcover.jpg" class="avatar-border" ng-if="!comentario.user.avatar" />
+											<img ng-src="{{comentario.user.avatar}}" class="avatar-border" ng-if="imagenValida(comentario.user.avatar)" />
+											<img ng-src="http://admin.yoplanner.com{{comentario.user.avatar}}" class="avatar-border" ng-if="!imagenValida(comentario.user.avatar)" />
+										</div>
+										<div class="col-md-10">
+											<div class="row">
+												<div class="col-md-12">
+													<span>{{comentario.user.name || comentario.user.fullName || comentario.user.username}}</span>
+													<span class="pull-right" am-time-ago="comentario.createdAt" style="font-size: 12px; color: rgb(116, 116, 116)"></span>
+												</div>
+												<div class="col-md-12">
+													<p>
+														{{comentario.text | limitTo:297}}<span ng-if="comentario.text.length > 279">...</span>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<hr class="divider">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12" style="text-align: right;">
+									<a href="?#comentarios" ng-click="renderMap(true)" data-toggle="tab"><span style="color: #42A9D3; cursor:pointer;">Leer todos...</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         <h3>Equipamiento y servicios del hotel</h3>
 
         <div class="row">
-
-        <%	currentHotel.amenities.forEach(function(amenity){ %>
-
-
-            <div class="col-md-4">
-                <ul class="list-styles" style="margin-bottom:0px">
+					<!-- Amenities -->
+					<div class="col-md-12">
+						<div class="row">
+							<%	currentHotel.amenities.forEach(function(amenity){ %>
+		            <div class="col-md-4">
+	                <ul class="list-styles" style="margin-bottom:0px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                     <li ><i class="fa fa-check"></i> <%=amenity.description%></li>
-                </ul>
-            </div>
-
-        <% })%>
+	                </ul>
+		            </div>
+			        <% })%>
+						</div>
+					</div>
+					<!-- Comentarios -->
 
 				<!-- Video YT -->
 				<div class="col-md-12">
