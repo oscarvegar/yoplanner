@@ -20,6 +20,12 @@ HotelModule
   });
 
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,$localStorage,notify, $location){
+
+  $scope.toggleFiltrosXS = function (bool) {
+    console.log($scope.mostrarFiltros);
+    $scope.mostrarFiltros = !bool;
+  }
+  
 	$scope.searchId;
 	$scope.hotelRatings = [];
 	$scope.masResultados = function(){
@@ -105,6 +111,8 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 		$scope.getStars = function (num) {
 			return new Array(num);
 		}
+
+
 
 		//Go cancun
 		$scope.goCancun = function () {
