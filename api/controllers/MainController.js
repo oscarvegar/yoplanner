@@ -16,11 +16,12 @@ module.exports = {
 			Destino.findOne({urlslug: url}).then(function(data) {
 				console.log(data);
 			  if (data) {
+					var descTemp = data.description.replace(/<(?:.|\n)*?>/gm, '');
 					return res.view('destino-detail', {
 						destino: data,
 						metas: {
 							title: data.name,
-							description: data.description,
+							description: descTemp,
 							keywords: 'Visita ' + data.name,
 							image: data.fotoPrincipal,
 							url: 'http://rfp.yoplanner.com/' + data.urlslug
@@ -40,13 +41,24 @@ module.exports = {
 												hotel.amenities.forEach(function(amen) {
 													amens += "Hotel con " + amen.description + ",";
 												})
+
+												//Sanitize pictures
+												var tempFoto = '';
+												if (hotel.fotoPrincipal) {
+													tempFoto = hotel.fotoPrincipal.url ? hotel.fotoPrincipal.url : hotel.fotoPrincipal;
+												} else if (hotel.pictures) {
+													tempFoto = hotel.pictures[0].url ? hotel.pictures[0].url : hotel.pictures[0];
+												} else {
+													tempFoto = 'http://rfp.yoplanner.com/img/banner/banneryp.jpg';
+												}
+
 												res.view("hoteles/hotel-detail", {
 													hotel: hotel,
 													metas: {
 														title: hotel.name,
 														description: hotel.description,
 														keywords: hotel.name + "," + amens,
-														image: hotel.pictures ? hotel.pictures[0] : 'http://rfp.yoplanner.com/img/banner/banneryp.jpg'
+														image: tempFoto
 													}
 												});
 											})
@@ -56,13 +68,24 @@ module.exports = {
 										hotel.amenities.forEach(function(amen) {
 											amens += "Hotel con " + amen.description + ",";
 										})
+
+										//Sanitize pictures
+										var tempFoto = '';
+										if (hotel.fotoPrincipal) {
+											tempFoto = hotel.fotoPrincipal.url ? hotel.fotoPrincipal.url : hotel.fotoPrincipal;
+										} else if (hotel.pictures) {
+											tempFoto = hotel.pictures[0].url ? hotel.pictures[0].url : hotel.pictures[0];
+										} else {
+											tempFoto = 'http://rfp.yoplanner.com/img/banner/banneryp.jpg';
+										}
+
 										res.view("hoteles/hotel-detail", {
 											hotel: hotel,
 											metas: {
 												title: hotel.name,
 												description: hotel.description,
 												keywords: hotel.name + "," + amens,
-												image: hotel.pictures ? hotel.pictures[0] : 'http://rfp.yoplanner.com/img/banner/banneryp.jpg'
+												image: tempFoto
 											}
 										});
 									}
@@ -139,11 +162,12 @@ module.exports = {
 	serveCancun: function (req, res) {
 		User.findOne({username: 'cancun@yoplanner.com'}).then(function(data) {
 		  if (data) {
+				var descTemp = data.description.replace(/<(?:.|\n)*?>/gm, '');
 		  	return res.view('destino-detail', {
 					destino: data,
 					metas: {
 						title: data.name,
-						description: data.description,
+						description: descTemp,
 						keywords: 'Visita ' + data.name,
 						image: data.fotoPrincipal,
 						url: 'http://rfp.yoplanner.com/' + data.urlslug
