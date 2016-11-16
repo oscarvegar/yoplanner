@@ -309,11 +309,7 @@
             <div class="col-md-9  col-sm-12 col-lg-9" ng-init="loadNewHoteles()">
               <div class="row">
                 <div class="col-md-12 text-center" style="padding-top: 1em;margin-bottom: 1em;">
-                  <% if(destinoUrl != '') { %>
-                    <h3>Hoteles en <a href="/<%= destinoUrl ? destinoUrl : '' %>"><%=ciudad.name%></a></h3>
-                  <% } else { %>
-                    <h3>Hoteles en <%=ciudad.name%></h3>
-                  <% } %>
+                  <h3>Hoteles en <%=ciudad.name%></h3>
                 </div>
                 <div class="col-xs-12 visible-xs bg-dark color-white" style="padding: 1em;">
                   <div class="row">
