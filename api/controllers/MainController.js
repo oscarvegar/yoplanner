@@ -106,7 +106,7 @@ module.exports = {
 											title: 'Hoteles en ' + ciudad.name,
 											description: 'Organiza eventos en ' + ciudad.name,
 											keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
-											image: ciudad.image
+											image: destino ? destino.fotoPrincipal : 'http://rfp.yoplanner.com/img/yp-backgrounds/ACA/Hoteles%20en%20Acapulco.jpg'
 										}
 									})
 								}).catch(function(err) {
@@ -120,7 +120,7 @@ module.exports = {
 											title: 'Hoteles en ' + ciudad.name,
 											description: 'Organiza eventos en ' + ciudad.name,
 											keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
-											image: ciudad.image
+											image: 'http://rfp.yoplanner.com/img/yp-backgrounds/ACA/Hoteles%20en%20Acapulco.jpg'
 										}
 									})
 								});
