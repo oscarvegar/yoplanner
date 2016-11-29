@@ -20,7 +20,7 @@ var yoPlannerApp = angular.module('yoPlannerApp', [
 ]);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams, $location, $http, $FB) {
-	$FB.init('1417482881843966');
+	$FB.init('1817741651841161');
 	$rootScope.$state = $state;
 	$rootScope.$stateParams = $stateParams;
 	$rootScope._hasSession = false;

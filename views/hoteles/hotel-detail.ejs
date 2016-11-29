@@ -2,6 +2,24 @@
 	<input type="hidden"  ng-init="hotelid = <%=hotel.id%>">
     <!-- Section Title-->
     <div class="section-title-detailed" class="ng-cloak">
+			<!-- Test meta -->
+			<span itemscope itemtype="http://schema.org/Review">
+			  <span itemprop="itemReviewed" itemscope itemtype="http://schema.org/Thing">
+			    <span itemprop="name"><%= hotel.name %></span>
+			  </span>
+			  <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			    <span itemprop="name"><%= hotel.name %></span>
+			  </span>
+			  <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+			  Calificacion:
+			    <span itemprop="ratingValue">10</span> de
+			    <span itemprop="bestRating">10</span>
+			  </span>
+			  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+			    <meta itemprop="name" content="YoPlanner">
+			  </span>
+			</span>
+			<!-- !Test Meta review -->
 
         <!-- Single Carousel -->
         <div id="single-carousel">
@@ -42,7 +60,7 @@
 									<% } %>
 								</h2>
 								<a facebook class="facebookShare" data-url='http://rfp.yoplanner.com/<%=currentHotel.urlslug %>' data-shares='shares'>{{ shares }}</a>
-								<a twitter data-lang="es" data-count='horizontal' data-url='http://rfp.yoplanner.com/<%=currentHotel.urlslug %>' data-via='yoplanner' data-size="medium" data-text='YoPlanner' ></a>
+								<a twitter data-lang="es" data-count='horizontal' data-url='http://rfp.yoplanner.com/<%=currentHotel.urlslug %>' data-via='yoplanner' data-size="medium" data-text=''></a>
               </div>
 							<div ng-init="isOnFav(hotelid)" ng-show="_hasSession" class="col-md-3 col-md-offset-1 pull-down text-center boxtest" style="background-color: rgba(0, 0, 0, 0.5);border-radius: 15px;">
 								<!--
