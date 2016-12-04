@@ -2,31 +2,31 @@
 <br><br>
 <div class="content-central">
   <!-- Slide And Filter Section-->
-  <section class="tp-banner-container">
+  <section class="tp-banner-container" style="max-height: 650px;">
     <!-- SLIDE  -->
-    <div class="tp-banner" >
+    <div class="tp-banner">
       <!-- SLIDES CONTENT-->
       <ul>
         <!-- SLIDE  -->
-        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
           <!-- MAIN IMAGE -->
-          <img src="img/slide/00.jpg"  alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+          <img src="img/slide/00.jpg" alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
           <!-- LAYERS -->
         </li>
-        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
           <!-- MAIN IMAGE -->
-          <img src="img/slide/slideotra.jpg"  alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+          <img src="img/slide/slideotra.jpg" alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
           <!-- LAYERS -->
         </li>
         <!-- SLIDE  -->
-        <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+        <li data-transition="slidehorizontal" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
           <!-- MAIN IMAGE -->
-          <img src="img/slide/001.jpg"  alt="fullslide1" data-bgposition="top center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+          <img src="img/slide/001.jpg" alt="fullslide1" data-bgposition="top center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
           <!-- LAYERS -->
         </li>
-        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"  data-title="Slide">
+        <li data-transition="slidevertical" data-slotamount="1" data-masterspeed="1000" data-saveperformance="off" data-title="Slide">
           <!-- MAIN IMAGE -->
-          <img src="img/slide/slideotra2.jpg"  alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
+          <img src="img/slide/slideotra2.jpg" alt="fullslide1" data-bgposition="center center" data-kenburns="on" data-duration="4000" data-ease="Linear.easeNone" data-bgfit="130" data-bgfitend="100" data-bgpositionend="right center">
           <!-- LAYERS -->
         </li>
       </ul>
@@ -36,7 +36,7 @@
     <!-- SLIDE CONTENT-->
 
     <!-- FILTER HEADER - TITLE HEADER-->
-    <div class="filter-title">
+    <div class="filter-title" style="padding-top: 20px;">
       <!-- TITLE HEADER-->
       <div class="title-header">
         <h1 style="font-size: 3em;">Encuentra los mejores hoteles para grupos</h1>
@@ -51,7 +51,7 @@
       <!-- FILTER HEADER-->
       <div class="filter-header col-sm-10 col-md-6 col-centered hidden-xs" ng-controller="AutocompleteController" style="overflow:visible;">
         <form action="#">
-          <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Ingresa tu destino y cotiza"></autocomplete>
+          <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Encuentra Destinos y Hoteles"></autocomplete>
           <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
         </form>
       </div>
@@ -73,19 +73,20 @@
       <div class="container" style="margin-top: 3em;">
         <div class="row">
           <div class="col-xs-12 filter-header visible-xs" ng-controller="AutocompleteController" style="overflow:visible; margin-bottom: 1em;">
-            <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Ingresa tu destino y cotiza"></autocomplete>
+            <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Encuentra Destinos y Hoteles"></autocomplete>
             <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
           </div>
           <!-- Info Resalt - Info Services -->
           <div class="col-md-5 col-xs-12">
             <div class="services-lines-info">
               <!-- h2>We Provide You An Ultimate Travel Experience</h2 -->
-              <h1>La red de proveedores en línea para <strong>MEETING PLANNERS</strong></h1>
+              <h1>Únete a la comunidad de profesionales en la industria de grupos y eventos</h1>
               <p class="lead">
                 <span class="line"></span>
               </p>
 
-              <p><strong>YO PLANNER SOLUTIONS</strong> es una plataforma en línea diseñada para expertos en la organización de grupos, convenciones y eventos. Esta herramienta tecnológica es utilizada por los principales meeting planners del país para la búsqueda de destinos, selección de hoteles y administración de sus grupos y eventos.</p>
+              <p><strong>La única plataforma en línea y en español donde tú como experto tienes la habilidad de calificar y comentar miles de hoteles, destinos y proveedores, así como de accesar a contenido exclusivo y convertirte en líder de opinión
+en nuestra industria.</p>
               <br>
             </div>
           </div>
@@ -123,59 +124,99 @@
       <!-- End Title-->
 
       <!-- content-->
-      <div class="container">
+      <!-- <div class="container">
         <div class="row padding-bottom">
           <div class="col-md-12 text-center">
             <h3>Nuestros <strong>Usuarios:</strong></h3>
+            </div>
+            <div class="col-md-12">
+              <ul id="sponsors" class="tooltip-hover">
+                <li data-toggle="tooltip" title data-original-title="YoPlanner Solutions">
+                  <a href="#"><img src="image/cliente1final.png" alt="Image" class="img-responsive"></a>
+                </li>
+                <li data-toggle="tooltip" title data-original-title="TT Events">
+                  <a href="#"><img src="image/cliente2final.jpg" alt="Image" class="img-responsive" style="margin-left: 2em;"></a>
+                </li>
+                <li data-toggle="tooltip" title data-original-title="Globar Star Group">
+                  <a href="#"><img src="image/cliente3final.png" alt="Image" class="img-responsive" style="margin-left: -2em;"></a>
+                </li>
+                <li data-toggle="tooltip" title data-original-title="Vivir Mexico">
+                  <a href="#"><img src="image/cliente4.jpg" alt="Image" class="img-responsive" style="margin-left: 2em;"></a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-md-12">
-            <ul id="sponsors" class="tooltip-hover">
-              <li data-toggle="tooltip" title data-original-title="YoPlanner Solutions"> <a href="#"><img src="image/cliente1final.png" alt="Image" class="img-responsive"></a></li>
-              <li data-toggle="tooltip" title data-original-title="TT Events"> <a href="#"><img src="image/cliente2final.jpg" alt="Image" class="img-responsive" style="margin-left: 2em;"></a></li>
-              <li data-toggle="tooltip" title data-original-title="Globar Star Group"> <a href="#"><img src="image/cliente3final.png" alt="Image" class="img-responsive" style="margin-left: -2em;"></a></li>
-              <li data-toggle="tooltip" title data-original-title="Vivir Mexico"> <a href="#"><img src="image/cliente4.jpg" alt="Image" class="img-responsive" style="margin-left: 2em;"></a></li>
-            </ul>
+        </div> -->
+      </div>
+      <!-- End content info - Sponsors-->
+      <div class="content_info" ng-init="getLastFive()">
+        <!-- Parallax Background -->
+        <div class="bg_parallax image_02_parallax"></div>
+        <!-- Parallax Background -->
+
+        <div class="opacy_bg_02">
+          <!-- Testimonial Propertie-->
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="info-testimonial">
+                  <ul id="testimonials">
+                    <li ng-repeat="comentario in lastFiveComments">
+                      <p><i class="fa fa-quote-left"></i>{{comentario.text | limitTo:200}}<i class="fa fa-quote-right"></i></p>
+
+                      <div class="image-testimonials">
+                        <img ng-src="{{comentario.user.avatar}}" alt="">
+                      </div>
+                      <h4>{{comentario.user.name || comentario.user.fullName || comentario.user.username}}</h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="col-md-8">
+                <div class="testimonial-info">
+                  <h2>Últimos Comentarios</h2>
+                  <P>Conoce los últimos comentarios en nuestra plataforma.</P>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- End Testimonial Propertie-->
         </div>
       </div>
-      <!-- End content-->
-    </div>
-    <!-- End content info - Sponsors-->
+      <!-- End content info - testimonials-->
   </section>
   <!-- End Content Central -->
-</div>
+  </div>
 
-
-<!--Slider Function-->
-<script type="text/javascript">
-  $(document).ready(function() {
-
-//=================================== Carousel features  ==================================//
-$("#slide-features-2").owlCarousel({
-  autoPlay: true,
-  items : 1,
-  navigation : true,
-  autoHeight : true,
-  slideSpeed : 400,
-  singleItem: true,
-  pagination : true
-});
-
-// Slider Function-->
-$('.tp-banner').show().revolution({
-  dottedOverlay:"none",
-  delay:5000,
-  startwidth:1170,
-  startheight:925,
-  minHeight:500,
-  navigationType:"none",
-  navigationArrows:"solo",
-  navigationStyle:"preview1"
-});
-// End Slider Function-->
-
-$('html, body').animate({scrollTop:0}, 500, 'linear');
-
-}); //ready
-</script>
-<!--End Slider Function-->
+  <!--Slider Function-->
+  <script type="text/javascript">
+    $(document).ready(function() {
+      //=================================== Carousel features  ==================================//
+      $("#slide-features-2").owlCarousel({
+        autoPlay: true,
+        items: 1,
+        navigation: true,
+        autoHeight: true,
+        slideSpeed: 400,
+        singleItem: true,
+        pagination: true
+      });
+      // Slider Function-->
+      $('.tp-banner').show().revolution({
+        dottedOverlay: "none",
+        delay: 5000,
+        startwidth: 1170,
+        startheight: 925,
+        minHeight: 500,
+        navigationType: "none",
+        navigationArrows: "solo",
+        navigationStyle: "preview1"
+      });
+      // End Slider Function-->
+      $('html, body').animate({
+        scrollTop: 0
+      }, 500, 'linear');
+    }); //ready
+  </script>
+  <!--End Slider Function-->

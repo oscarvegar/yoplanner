@@ -132,16 +132,31 @@ yoPlannerApp.controller('AutocompleteController', function($scope, $http, $timeo
 });
 
 yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, $rootScope, $location, $state, $log, $q, HotelSrvc) {
-	$log.info('HomePageController');
 
+
+	$scope.getLastFive = function () {
+		$http.get('/ComentarioHotel/getLastFive').then(function(data) {
+		  $scope.lastFiveComments = data.data;
+			setTimeout(function () {
+				$("#testimonials").owlCarousel({
+							items : 5,
+							autoPlay: 3200,
+							navigation : false,
+							autoHeight : true,
+							slideSpeed : 400,
+							singleItem: true,
+							pagination : true
+					});
+			}, 100);
+
+		});
+	}
 
 	$scope.init = function() {
-		$log.info('HomePageController.init');
 
 	};
 
 	$scope.$evalAsync(function() {
-		$log.info('HomePageController.$evalAsync');
 		$scope.init();
 	});
 });

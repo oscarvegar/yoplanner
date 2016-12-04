@@ -84,7 +84,7 @@ app.directive('autocomplete', function() {
           $scope.searchParam = suggestion.substr(suggestion.indexOf(' ')+1);
           $scope.searchFilter = suggestion;
             $scope.$parent.searchId = suggestion.substr(0,suggestion.indexOf(' '));
-            
+
           if($scope.onSelect)
             $scope.onSelect(suggestion);
         }
@@ -92,7 +92,7 @@ app.directive('autocomplete', function() {
         $scope.completing = false;
         setTimeout(function(){watching = true;},1000);
         $scope.setIndex(-1);
-         
+
           //$scope.$parent.search();
       };
 
@@ -104,7 +104,7 @@ app.directive('autocomplete', function() {
 
       // Default atts
       scope.attrs = {
-        "placeholder": "¿Qué destino quieres buscar?",
+        "placeholder": "Encuentra Destinos y Hoteles",
         "class": "",
         "id": "",
         "inputclass": "",
@@ -144,7 +144,7 @@ app.directive('autocomplete', function() {
         }
       }, true);
 
-     
+
 
       element[0].addEventListener("keydown",function (e){
         var keycode = e.keyCode || e.which;
