@@ -172,6 +172,23 @@ module.exports = {
 				return res.json(com[0]);
 			}).catch(console.log);
 		}).catch(console.log);;
+	},
+
+	getLastFive: function (req, res) {
+		ComentarioHotel.find({}).limit(5).sort('createdAt DESC').populateAll().then(function(data) {
+		  return res.json(data);
+		}).catch(function(err) {
+		  return res.json(500, {err: err});
+		});
+	},
+
+	getRango: function (req, res) {
+		var id = req.param('id');
+		ComentarioHotel.find({user: id}).then(function(data) {
+		  return res.json({rango: data.length});
+		}).catch(function(err) {
+		  return res.json(500, {err: err});
+		});
 	}
 
 };

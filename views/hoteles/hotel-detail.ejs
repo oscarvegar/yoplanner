@@ -393,12 +393,13 @@
 		<div class="col-md-8 row">
 			<div class="col-md-12" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true" style="margin-top: 1em;">
 				<div class="row" ng-init="comentario.showReplies = false">
-					<div class="col-md-2 comentario-user">
+					<div class="col-md-2 comentario-user" ng-init="getRangoArray(comentario.user.id, $index)">
 						<img ng-src="/image/ypcover.jpg" class="avatar-border" ng-if="!comentario.user.avatar" />
 						<img ng-src="{{comentario.user.avatar}}" class="avatar-border" ng-if="imagenValida(comentario.user.avatar)" />
 						<img ng-src="http://admin.yoplanner.com{{comentario.user.avatar}}" class="avatar-border" ng-if="!imagenValida(comentario.user.avatar)" />
 						<span><strong>{{comentario.user.username}}</strong></span>
 						<span>{{comentario.user.empresa || ''}}</span>
+						<i class="fa fa-star" ng-repeat="star in comentario.user.rango"></i>
 					</div>
 					<div class="col-md-10 new-comentario">
 						<div class="row">
