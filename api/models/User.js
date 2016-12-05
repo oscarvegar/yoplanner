@@ -37,6 +37,7 @@ module.exports = {
 
     toJSON: function() {
       var obj = this.toObject();
+      obj.rango = obj.comentarios ? Math.floor(obj.comentarios.length / 10) : 0;
       delete obj.password;
       return obj;
     }

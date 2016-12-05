@@ -21,6 +21,18 @@ HotelModule
 
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $localStorage, notify, $location) {
 
+	$scope.getRangoArray = function (id, index) {
+		console.log(id);
+		$http.post('/comentariohotel/getRango', {id: id}).success(function(data) {
+			var estrellas = [];
+			var cache = Math.floor(data.rango / 10);
+			for (var i = 0; i < cache; i++) {
+				estrellas.push(i);
+			}
+			$scope.comentarios[index].user.rango = estrellas;
+		});
+	}
+
 		$scope.toggleFiltrosXS = function(bool) {
 			console.log($scope.mostrarFiltros);
 			$scope.mostrarFiltros = !bool;

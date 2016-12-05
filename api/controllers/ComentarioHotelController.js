@@ -180,6 +180,15 @@ module.exports = {
 		}).catch(function(err) {
 		  return res.json(500, {err: err});
 		});
+	},
+
+	getRango: function (req, res) {
+		var id = req.param('id');
+		ComentarioHotel.find({user: id}).then(function(data) {
+		  return res.json({rango: data.length});
+		}).catch(function(err) {
+		  return res.json(500, {err: err});
+		});
 	}
 
 };
