@@ -39,12 +39,12 @@
     <div class="filter-title" style="padding-top: 20px;">
       <!-- TITLE HEADER-->
       <div class="title-header">
-        <h1 style="font-size: 3em;">Encuentra los mejores hoteles para grupos</h1>
-        <p class="lead" style="font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">La manera más fácil de buscar proveedores para tus grupos, convenciones, eventos en cualquier destino y hotel.</p>
+        <h1 style="font-size: 3em;">Encuentra hoteles para grupos, eventos y comenta</h1>
+        <p class="lead" style="font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">Yo Planner es la plataforma exclusiva para los profesionales en la industria de grupos y eventos, comparte y recomienda tus experiencias a otros expertos.</p>
       </div>
       <div class="visible-xs text-center">
-        <h1 style="font-size: 3em; color: white; text-shadow: 2px 3px 3px rgba(0,0,0,1);">Encuentra los mejores hoteles para grupos</h1>
-        <p class="lead" style="color: white;font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">La manera más fácil de buscar proveedores para tus grupos, convenciones, eventos en cualquier destino y hotel.</p>
+        <h1 style="font-size: 3em; color: white; text-shadow: 2px 3px 3px rgba(0,0,0,1);">Encuentra hoteles para grupos, eventos y comenta</h1>
+        <p class="lead" style="color: white;font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">Yo Planner es la plataforma exclusiva para los profesionales en la industria de grupos y eventos, comparte y recomienda tus experiencias a otros expertos.  </p>
       </div>
       <!-- END TITLE HEADER-->
 
@@ -165,7 +165,7 @@ en nuestra industria.</p>
                       <p><i class="fa fa-quote-left"></i>{{comentario.text | limitTo:200}}<i class="fa fa-quote-right"></i></p>
 
                       <div class="image-testimonials">
-                        <img ng-src="{{comentario.user.avatar}}" alt="">
+                        <img ng-src="{{comentario.hotel.fotoPrincipal}}" alt="">
                       </div>
                       <h4>{{comentario.user.name || comentario.user.fullName || comentario.user.username}}</h4>
                     </li>
