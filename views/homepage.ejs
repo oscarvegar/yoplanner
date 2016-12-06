@@ -2,7 +2,7 @@
 <br><br>
 <div class="content-central">
   <!-- Slide And Filter Section-->
-  <section class="tp-banner-container" style="max-height: 650px;">
+  <section class="tp-banner-container" style="">
     <!-- SLIDE  -->
     <div class="tp-banner">
       <!-- SLIDES CONTENT-->
@@ -42,14 +42,14 @@
         <h1 style="font-size: 3em;">Encuentra hoteles para grupos, eventos y comenta</h1>
         <p class="lead" style="font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">Yo Planner es la plataforma exclusiva para los profesionales en la industria de grupos y eventos, comparte y recomienda tus experiencias a otros expertos.</p>
       </div>
-      <div class="visible-xs text-center">
+      <div class="visible-xs hidden-lg hidden-xl text-center">
         <h1 style="font-size: 3em; color: white; text-shadow: 2px 3px 3px rgba(0,0,0,1);">Encuentra hoteles para grupos, eventos y comenta</h1>
         <p class="lead" style="color: white;font-weight: 500;text-shadow: 2px 3px 3px rgba(0,0,0,1);">Yo Planner es la plataforma exclusiva para los profesionales en la industria de grupos y eventos, comparte y recomienda tus experiencias a otros expertos.  </p>
       </div>
       <!-- END TITLE HEADER-->
 
       <!-- FILTER HEADER-->
-      <div class="filter-header col-sm-10 col-md-6 col-centered hidden-xs" ng-controller="AutocompleteController" style="overflow:visible;">
+      <div class="filter-header col-sm-10 col-md-6 col-centered hidden-xs hidden-sm" ng-controller="AutocompleteController" style="overflow:visible;">
         <form action="#">
           <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Encuentra Destinos y Hoteles"></autocomplete>
           <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
@@ -61,7 +61,7 @@
   <!-- End Slide And Filter Section-->
 
   <!--Content Central -->
-  <section class="content-central" ng-controller="HomePageController">
+  <section class="content-central" ng-controller="HomePageController" style="margin: 3rem; margin-top: -10rem;">
     <!-- Shadow Semiboxed Layout -->
     <div class="semiboxshadow text-center">
       <img src="img/img-theme/shp.png" class="img-responsive" alt="">
@@ -72,7 +72,7 @@
       <!-- content-->
       <div class="container" style="margin-top: 3em;">
         <div class="row">
-          <div class="col-xs-12 filter-header visible-xs" ng-controller="AutocompleteController" style="overflow:visible; margin-bottom: 1em;">
+          <div class="col-xs-12 filter-header visible-xs hidden-lg" ng-controller="AutocompleteController" style="overflow:visible; margin-bottom: 1em;">
             <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="Encuentra Destinos y Hoteles"></autocomplete>
             <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
           </div>
@@ -101,6 +101,44 @@ en nuestra industria.</p>
 
     </div>
     <!-- End content - Slide Features-->
+    <div class="content_info" ng-init="getLastFive()">
+      <!-- Parallax Background -->
+      <div class="bg_parallax image_02_parallax"></div>
+      <!-- Parallax Background -->
+
+      <div class="opacy_bg_02">
+        <!-- Testimonial Propertie-->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="info-testimonial">
+                <ul id="testimonials">
+                  <li ng-repeat="comentario in lastFiveComments">
+                    <p><strong><a href="/{{comentario.hotel.urlslug}}">{{comentario.hotel.name}}</a></strong></p>
+                    <p><i class="fa fa-quote-left"></i>{{comentario.text | limitTo:200}}<i class="fa fa-quote-right"></i></p>
+
+                    <div class="image-testimonials">
+                      <img ng-src="{{comentario.user.avatar}}" alt="">
+                    </div>
+                    <h4>{{comentario.user.name || comentario.user.fullName || comentario.user.username}}</h4>
+                    <h5>{{comentario.user.empresa || 'Empresa no asignada.'}}</h5>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="testimonial-info">
+                <h2>Últimos Comentarios</h2>
+                <P>Conoce los últimos comentarios en nuestra plataforma.</P>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Testimonial Propertie-->
+      </div>
+    </div>
+    <!-- End content info - testimonials-->
     <!-- End content info - Sponsors-->
     <div class="content_info">
       <!-- Title -->
@@ -149,42 +187,7 @@ en nuestra industria.</p>
         </div> -->
       </div>
       <!-- End content info - Sponsors-->
-      <div class="content_info" ng-init="getLastFive()">
-        <!-- Parallax Background -->
-        <div class="bg_parallax image_02_parallax"></div>
-        <!-- Parallax Background -->
 
-        <div class="opacy_bg_02">
-          <!-- Testimonial Propertie-->
-          <div class="container">
-            <div class="row">
-              <div class="col-md-4">
-                <div class="info-testimonial">
-                  <ul id="testimonials">
-                    <li ng-repeat="comentario in lastFiveComments">
-                      <p><i class="fa fa-quote-left"></i>{{comentario.text | limitTo:200}}<i class="fa fa-quote-right"></i></p>
-
-                      <div class="image-testimonials">
-                        <img ng-src="{{comentario.user.avatar}}" alt="">
-                      </div>
-                      <h4>{{comentario.user.name || comentario.user.fullName || comentario.user.username}}</h4>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="col-md-8">
-                <div class="testimonial-info">
-                  <h2>Últimos Comentarios</h2>
-                  <P>Conoce los últimos comentarios en nuestra plataforma.</P>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Testimonial Propertie-->
-        </div>
-      </div>
-      <!-- End content info - testimonials-->
   </section>
   <!-- End Content Central -->
   </div>
