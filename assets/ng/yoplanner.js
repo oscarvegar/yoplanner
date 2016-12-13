@@ -16,7 +16,8 @@ var yoPlannerApp = angular.module('yoPlannerApp', [
 	'ui.bootstrap',
 	'ngFileUpload',
 	'youtube-embed',
-	'djds4rce.angular-socialshare'
+	'djds4rce.angular-socialshare',
+	'satellizer'
 ]);
 
 yoPlannerApp.run(function($rootScope, $state, $stateParams, $location, $http, $FB) {
@@ -56,7 +57,20 @@ yoPlannerApp.run(function($rootScope, $state, $stateParams, $location, $http, $F
 	});
 });
 
-yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, $sailsProvider) {
+yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider,
+	$urlRouterProvider, $httpProvider, $sailsProvider, $authProvider) {
+
+		$authProvider.linkedin({
+			clientId: '78w80b3w1y1la8',
+			url: '/user/getLinkedinToken', //Llega acá después para sacar el token y regresar la info
+		  authorizationEndpoint: 'https://www.linkedin.com/uas/oauth2/authorization',
+		  redirectUri: 'http://localhost:1337/user/registerLinkedin', //Primero llega a este con el CODE
+		  requiredUrlParams: ['state'],
+		  scope: ['r_basicprofile', 'r_emailaddress'],
+		  state: 'STATE',
+		  oauthType: '2.0',
+		  popupOptions: { width: 527, height: 582 }
+		});
 
 	$httpProvider.defaults.withCredentials = true;
 	//$sailsProvider.url = 'http://localhost:1337';

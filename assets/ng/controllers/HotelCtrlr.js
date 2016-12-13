@@ -19,7 +19,45 @@ HotelModule
 		};
 	});
 
-HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope, $localStorage, notify, $location) {
+HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,
+	$localStorage, notify, $location, $auth) {
+
+	//Register linkedin
+	$scope.registerLinkedin = function () {
+		$auth.authenticate('linkedin').then(function(data) {
+			console.log(data);
+			var body1 = JSON.parse(data.data.body);
+			var body2 = JSON.parse(data.data.body2);
+			var userData = {
+				username: body2.emailAddress,
+				fullName: body1.firstName + ' ' + body1.lastName,
+				name: body1.firstName + ' ' + body1.lastName,
+				email: body2.emailAddress,
+				emailPrincipal: body2.emailAddress,
+				empresa: 'No asignada.',
+				telefono: 'No asignado',
+				ciudad: 'No asignada',
+				pais: 'No asignado',
+				cantLogin: true,
+				roles: ['ROLE_DEMO'],
+				demoCantidad: 'No asignado',
+				password: 'p4ssw0rd',
+				fromLinkedin: true
+			};
+			console.log(userData);
+			$http.post('/user/registerAprove', {
+				data: userData
+			}).success(function(data2) {
+				swal('Exito!', 'Se enviaron tus datos al sistema, espera tu aprobación.', 'success');
+				$scope.registerData = null;
+			}).error(function(err) {
+				console.log(err);
+				swal('Error!', 'Ocurrió un error en el servidor.', 'error');
+			});
+		}).catch(function(err) {
+		  console.log(err);
+		});
+	}
 
 	$scope.getRangoArray = function (id, index) {
 		console.log(id);
