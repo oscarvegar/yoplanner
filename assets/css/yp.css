@@ -833,3 +833,28 @@ div.carbonad-image {
 	border: none;
 	border-radius: 10px;
 }
+
+.table-rankings * {
+	color: white;
+}
+
+.table-rankings thead {
+	background-color: rgb(54, 54, 54);
+}
+
+.table-rankings tbody tr {
+	background-color: rgb(60, 60, 60);
+}
+
+.table-rankings tbody tr td {
+	border-right: 1px solid rgb(92, 92, 92);
+}
+
+.table-rankings tbody tr td.puntos {
+	color: rgb(39, 238, 71);
+}
+
+.table-rankings tbody tr td * {
+	display: flex;
+	align-items: center;
+}

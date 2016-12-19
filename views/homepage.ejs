@@ -87,22 +87,34 @@
                 <span class="line"></span>
               </p>
 
-              <p><strong>La única plataforma en línea y en español donde tú como experto tienes la habilidad de calificar y comentar miles de hoteles, destinos y proveedores, así como de accesar a contenido exclusivo y convertirte en líder de opinión
-en nuestra industria.</p>
+              <p><strong>La única plataforma en línea y en español donde tú como experto tienes la habilidad de calificar y comentar miles de hoteles, destinos y proveedores, así como de accesar a contenido exclusivo y convertirte en líder de opinión en nuestra industria.</p>
               <br>
             </div>
           </div>
 
-          <div class="col-md-7 col-xs-12">
-            <iframe style="width:100%;height:400px;"
-            src="https://www.youtube.com/embed/2hHD1q-sf7Q">
-            </iframe>
+          <div class="col-md-7 col-xs-12 text-center">
+            <h3>Últimos comentarios</h3>
+            <div class="text-center" style="margin-bottom: 1rem;">
+              <ul id="testimonials">
+                <li ng-repeat="comentario in lastFiveComments" style="background: url('{{comentario.hotel.fotoPrincipal}}') no-repeat center center; background-size: 100%; padding: 1rem; border-radius: 20px;">
+                  <p><strong><a href="/{{comentario.hotel.urlslug}}" style="color: white; text-shadow: 2px 3px 3px rgba(0,0,0,1);">{{comentario.hotel.name}}</a></strong></p>
+                  <p style="text-shadow: 2px 3px 3px rgba(0,0,0,1); color: white;"><i class="fa fa-quote-left" style="margin-right: 1rem;"></i>{{comentario.text | limitTo:200}}<i class="fa fa-quote-right" style="margin-left: 1rem;"></i></p>
+
+                  <div class="image-testimonials">
+                    <img ng-src="{{comentario.user.avatar}}" alt="">
+                  </div>
+                  <h4 style="color: white; text-shadow: 2px 3px 3px rgba(0,0,0,1);">{{comentario.user.name || comentario.user.fullName || comentario.user.username}}</h4>
+                  <h5 style="color: white; text-shadow: 2px 3px 3px rgba(0,0,0,1);">{{comentario.user.empresa || 'Empresa no asignada.'}}</h5>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
     <!-- End content - Slide Features-->
+
     <div class="content_info" ng-init="getLastFive()">
       <!-- Parallax Background -->
       <div class="bg_parallax image_02_parallax"></div>
@@ -112,24 +124,14 @@ en nuestra industria.</p>
         <!-- Testimonial Propertie-->
         <div class="container">
           <div class="row">
-            <div class="col-md-4">
-              <div class="info-testimonial">
-                <ul id="testimonials">
-                  <li ng-repeat="comentario in lastFiveComments">
-                    <p><strong><a href="/{{comentario.hotel.urlslug}}">{{comentario.hotel.name}}</a></strong></p>
-                    <p><i class="fa fa-quote-left"></i>{{comentario.text | limitTo:200}}<i class="fa fa-quote-right"></i></p>
+            <div class="col-md-6" style="padding: 1rem;">
+              <iframe style="width:100%;height:400px;" style="border: none;"
+              src="https://www.youtube.com/embed/2hHD1q-sf7Q">
+              </iframe>
 
-                    <div class="image-testimonials">
-                      <img ng-src="{{comentario.user.avatar}}" alt="">
-                    </div>
-                    <h4>{{comentario.user.name || comentario.user.fullName || comentario.user.username}}</h4>
-                    <h5>{{comentario.user.empresa || 'Empresa no asignada.'}}</h5>
-                  </li>
-                </ul>
-              </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="testimonial-info">
                 <h2>Últimos Comentarios</h2>
                 <P>Conoce los últimos comentarios en nuestra plataforma.</P>
@@ -141,6 +143,36 @@ en nuestra industria.</p>
       </div>
     </div>
     <!-- End content info - testimonials-->
+
+    <!-- Mejores comentadores -->
+    <div class="content_info" style="margin-top: 1rem;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center" ng-init="loadRankingUsers()" style="padding: 1rem; background-color: rgb(43, 43, 43)">
+            <h3 style="color: white;">Ranking de Usuarios</h3>
+            <table class="table table-default table-rankings" style="border: 1px solid rgb(82, 82, 82)">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Foto</th>
+                  <th>Nombre</th>
+                  <th>Puntos</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="user in rankingUsers | limitTo:5 | orderBy:user.puntos:true">
+                  <td>{{$index + 1}}</td>
+                  <td><img ng-src="{{user.avatar}}" alt="Avatar {{$index + 1}}" style="width: 64px; height: 64px; border-radius: 50%;"></td>
+                  <td>{{user.fullName}}</td>
+                  <td class="puntos">{{user.puntos}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- End content info - Sponsors-->
     <div class="content_info">
       <!-- Title -->

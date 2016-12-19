@@ -22,6 +22,9 @@ HotelModule
 HotelModule.controller('HotelController', function($scope, $http, $log, $timeout, $rootScope,
 	$localStorage, notify, $location, $auth) {
 
+
+
+
 	//Register linkedin
 	$scope.registerLinkedin = function () {
 		$auth.authenticate('linkedin').then(function(data) {
