@@ -79,6 +79,36 @@ module.exports = {
 				});
 			});
 		});
+	},
+
+	rankingUsers : function (req, res) {
+		User.find({}).populateAll().then(function(data) {
+		  data.sort(function (a, b) {
+		  	return b.comentarios.length - a.comentarios.length;
+		  });
+
+			data = data.map(function (user) {
+				var tempPuntos = user.comentarios ? user.comentarios.length * 5 : 0;
+				tempPuntos += user.likes ? user.likes.length : 0;
+				if (user.comentarios) {
+					user.comentarios.forEach(function (com) {
+						if (com.likes) {
+							tempPuntos += com.likes.indexOf(user.id) ? com.likes.length - 1 : com.likes.length;
+						}
+					});
+				}
+				user.puntos = tempPuntos;
+				return user;
+			});
+
+			data.sort(function (a, b) {
+				return b.puntos - a.puntos;
+			});
+
+			return res.json(data);
+		}).catch(function(err) {
+		  return res.json(500, {err: err});
+		});
 	}
 
 };

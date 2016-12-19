@@ -147,6 +147,12 @@ yoPlannerApp.controller('AutocompleteController', function($scope, $http, $timeo
 
 yoPlannerApp.controller('HomePageController', function($scope, $http, $timeout, $rootScope, $location, $state, $log, $q, HotelSrvc) {
 
+	$scope.loadRankingUsers = function () {
+		$http.get('/user/rankingUsers').success(function(data) {
+			console.log(data);
+		  $scope.rankingUsers =  data;
+		});
+	}
 
 	$scope.getLastFive = function () {
 		$http.get('/ComentarioHotel/getLastFive').then(function(data) {
