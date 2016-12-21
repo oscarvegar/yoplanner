@@ -92,7 +92,7 @@
             </div>
           </div>
 
-          <div class="col-md-7 col-xs-12 text-center">
+          <div class="col-md-7 col-xs-12 text-center" ng-init="getLastFive()">
             <h3>Últimos comentarios</h3>
             <div class="text-center" style="margin-bottom: 1rem;">
               <ul id="testimonials">
@@ -115,7 +115,7 @@
     </div>
     <!-- End content - Slide Features-->
 
-    <div class="content_info" ng-init="getLastFive()">
+    <div class="content_info">
       <!-- Parallax Background -->
       <div class="bg_parallax image_02_parallax"></div>
       <!-- Parallax Background -->
@@ -124,17 +124,31 @@
         <!-- Testimonial Propertie-->
         <div class="container">
           <div class="row">
-            <div class="col-md-6" style="padding: 1rem;">
-              <iframe style="width:100%;height:400px;" style="border: none;"
-              src="https://www.youtube.com/embed/2hHD1q-sf7Q">
-              </iframe>
-
+            <div class="col-md-6 text-center" ng-init="loadRankingUsers()" style="padding: 1rem; background-color: rgb(43, 43, 43)">
+              <table class="table table-default table-rankings" style="border: 1px solid rgb(82, 82, 82)">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Puntos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="user in rankingUsers | limitTo:5 | orderBy:user.puntos:true">
+                    <td>{{$index + 1}}</td>
+                    <td><img ng-src="{{user.avatar}}" alt="Avatar {{$index + 1}}" style="width: 64px; height: 64px; border-radius: 50%;"></td>
+                    <td>{{user.fullName}}</td>
+                    <td class="puntos">{{user.puntos}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
 
             <div class="col-md-6">
               <div class="testimonial-info">
-                <h2>Últimos Comentarios</h2>
-                <P>Conoce los últimos comentarios en nuestra plataforma.</P>
+                <h2>Ranking de Usuarios</h2>
+                <P>Conoce los mejores usuarios en nuestra plataforma.</P>
               </div>
             </div>
           </div>
@@ -143,35 +157,6 @@
       </div>
     </div>
     <!-- End content info - testimonials-->
-
-    <!-- Mejores comentadores -->
-    <div class="content_info" style="margin-top: 1rem;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 text-center" ng-init="loadRankingUsers()" style="padding: 1rem; background-color: rgb(43, 43, 43)">
-            <h3 style="color: white;">Ranking de Usuarios</h3>
-            <table class="table table-default table-rankings" style="border: 1px solid rgb(82, 82, 82)">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Foto</th>
-                  <th>Nombre</th>
-                  <th>Puntos</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="user in rankingUsers | limitTo:5 | orderBy:user.puntos:true">
-                  <td>{{$index + 1}}</td>
-                  <td><img ng-src="{{user.avatar}}" alt="Avatar {{$index + 1}}" style="width: 64px; height: 64px; border-radius: 50%;"></td>
-                  <td>{{user.fullName}}</td>
-                  <td class="puntos">{{user.puntos}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- End content info - Sponsors-->
     <div class="content_info">

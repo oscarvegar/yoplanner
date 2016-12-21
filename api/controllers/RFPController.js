@@ -25,7 +25,7 @@ module.exports = {
 				return res.json({
 					message: 'File uploaded successfully.',
           //url: "http://localhost:3000/rfp/serve/"+uploadedFiles[0].fd.substr(uploadedFiles[0].fd.lastIndexOf("\\")+1),
-				  url: "http://rfp.yoplanner.com/rfp/serve/"+uploadedFiles[0].fd.substr(uploadedFiles[0].fd.lastIndexOf("/")+1),
+				  url: "http://yoplanner.com/rfp/serve/"+uploadedFiles[0].fd.substr(uploadedFiles[0].fd.lastIndexOf("/")+1),
 					file: uploadedFiles
 				});
 			}
@@ -129,7 +129,7 @@ module.exports = {
 		User.findOne({account: userPlanner.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
 			//Cargar logo de agencia
 			if (!data.logoagencia) {
-				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
+				data.logoagencia = 'http://yoplanner.com/img/icons/apple-touch-icon-114x114.png';
 			}/* else {
 				data.logoagencia = 'http://admin.yoplanner.com' + data.logoagencia;
 			}*/
@@ -156,7 +156,7 @@ module.exports = {
 		User.findOne({account: user.account, roles: ['ROLE_ADMIN_PLANNERS']}).then(function(data) {
 			//Cargar logo de agencia
 			if (!data.logoagencia) {
-				data.logoagencia = 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png';
+				data.logoagencia = 'http://yoplanner.com/img/icons/apple-touch-icon-114x114.png';
 			}/* else {
 				data.logoagencia = 'http://admin.yoplanner.com' + data.logoagencia;
 			}*/

@@ -443,7 +443,7 @@ module.exports = {
               title: hotel.name,
               description: hotel.description,
               keywords: hotel.name,
-              image: hotel.pictures ? hotel.pictures[0] : 'http://rfp.yoplanner.com/img/banner/banneryp.jpg'
+              image: hotel.pictures ? hotel.pictures[0] : 'http://yoplanner.com/img/banner/banneryp.jpg'
             }
           });
         }).catch(function(err) {

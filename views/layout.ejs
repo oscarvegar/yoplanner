@@ -16,7 +16,7 @@
           <meta property="og:type" content="website" />
 
           <% if(typeof hotel != 'undefined'){ %>
-            <meta property="og:url" content="http://rfp.yoplanner.com/<%= hotel.urlslug %>" />
+            <meta property="og:url" content="http://yoplanner.com/<%= hotel.urlslug %>" />
             <% } %>
 
               <% if(typeof metas.url != 'undefined'){ %>
@@ -33,14 +33,14 @@
                           <% if(metas.image != undefined) { %>
                             <meta property="og:image" content="<%=metas.image%>">
                             <% } else { %>
-                              <meta property="og:image" content="http://rfp.yoplanner.com/img/slide/slideotra.jpg">
+                              <meta property="og:image" content="http://yoplanner.com/img/slide/slideotra.jpg">
                               <% } %>
 
                                 <% } else  {%>
                                   <title>Yo Planner: Encuentra hoteles para grupos, eventos y comenta.</title>
                                   <meta name="description" content="Yo Planner es la plataforma exclusiva para los profesionales en la industria de grupos y eventos, comparte y recomienda tus experiencias a otros expertos.">
                                   <meta name="keywords" content="Hoteles, Destinos, Cruceros, Grupos, Convenciones, Organización de Eventos, Bodas, Eventos Sociales, Viajes Individuales, Reservaciones, Cotizaciones de Eventos, Asesoría en Eventos, Negociación de Eventos, Como planear un eventos, como contratar un hotel, Cotiza en Linea Hoteles, RFP">
-                                  <meta property="og:image" content="http://rfp.yoplanner.com/img/slide/slideotra.jpg">
+                                  <meta property="og:image" content="http://yoplanner.com/img/slide/slideotra.jpg">
                                   <meta property="og:title" content="Yo Planner: Encuentra hoteles para grupos, eventos y comenta.">
                                   <meta property="og:description" content="Yo Planner es la plataforma exclusiva para los profesionales en la industria de grupos y eventos, comparte y recomienda tus experiencias a otros expertos." />
                                   <%}%>
@@ -159,7 +159,7 @@
 
                   <ul class="media-list dropdown-content-body" style="width:300px;">
                     <li class="media" data-toggle="modal" data-target="#modal-noti" ng-click="setModalData(noti)" ng-repeat="noti in notificaciones | orderBy:createdAt:true">
-                      <img src="http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png" alt="Imágen de notificación" style="width:48px;border: none; margin-right: 8px;background-color: white;" />
+                      <img src="http://yoplanner.com/img/icons/apple-touch-icon-114x114.png" alt="Imágen de notificación" style="width:48px;border: none; margin-right: 8px;background-color: white;" />
                       <div class="media-body">
                         <a class="media-heading">
                           <span class="text-semibold">{{noti.title}}</span>
