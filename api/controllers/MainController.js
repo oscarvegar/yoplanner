@@ -24,7 +24,7 @@ module.exports = {
 							description: descTemp,
 							keywords: 'Visita ' + data.name,
 							image: data.fotoPrincipal,
-							url: 'http://rfp.yoplanner.com/' + data.urlslug
+							url: 'http://yoplanner.com/' + data.urlslug
 						}
 					});
 			  } else {
@@ -49,7 +49,7 @@ module.exports = {
 												} else if (hotel.pictures) {
 													tempFoto = hotel.pictures[0].url ? hotel.pictures[0].url : hotel.pictures[0];
 												} else {
-													tempFoto = 'http://rfp.yoplanner.com/img/banner/banneryp.jpg';
+													tempFoto = 'http://yoplanner.com/img/banner/banneryp.jpg';
 												}
 
 												res.view("hoteles/hotel-detail", {
@@ -76,7 +76,7 @@ module.exports = {
 										} else if (hotel.pictures) {
 											tempFoto = hotel.pictures[0].url ? hotel.pictures[0].url : hotel.pictures[0];
 										} else {
-											tempFoto = 'http://rfp.yoplanner.com/img/banner/banneryp.jpg';
+											tempFoto = 'http://yoplanner.com/img/banner/banneryp.jpg';
 										}
 
 										res.view("hoteles/hotel-detail", {
@@ -106,7 +106,7 @@ module.exports = {
 											title: 'Hoteles en ' + ciudad.name,
 											description: 'Organiza eventos en ' + ciudad.name,
 											keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
-											image: destino ? destino.fotoPrincipal : 'http://rfp.yoplanner.com/img/yp-backgrounds/ACA/Hoteles%20en%20Acapulco.jpg'
+											image: destino ? destino.fotoPrincipal : 'http://yoplanner.com/img/yp-backgrounds/ACA/Hoteles%20en%20Acapulco.jpg'
 										}
 									})
 								}).catch(function(err) {
@@ -120,7 +120,7 @@ module.exports = {
 											title: 'Hoteles en ' + ciudad.name,
 											description: 'Organiza eventos en ' + ciudad.name,
 											keywords: 'Hoteles en ' + ciudad.name + ',Eventos en ' + ciudad.name + ',Convenciones en ' + ciudad.name,
-											image: 'http://rfp.yoplanner.com/img/yp-backgrounds/ACA/Hoteles%20en%20Acapulco.jpg'
+											image: 'http://yoplanner.com/img/yp-backgrounds/ACA/Hoteles%20en%20Acapulco.jpg'
 										}
 									})
 								});
@@ -170,7 +170,7 @@ module.exports = {
 						description: descTemp,
 						keywords: 'Visita ' + data.name,
 						image: data.fotoPrincipal,
-						url: 'http://rfp.yoplanner.com/' + data.urlslug
+						url: 'http://yoplanner.com/' + data.urlslug
 					}
 				});
 		  } else {

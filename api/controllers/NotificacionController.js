@@ -132,7 +132,7 @@ module.exports = {
 			var tempNoti = {
 				title: 'Nuevo comentario recibido en ' + comentario.hotel.name,
 				text: 'El usuario: ' + (userhotel.name ? userhotel.name : userhotel.username) + ' ha comentado en el hotel: ' + comentario.hotel.name,
-				thumbnail: 'http://rfp.yoplanner.com/img/icons/apple-touch-icon-114x114.png',
+				thumbnail: 'http://yoplanner.com/img/icons/apple-touch-icon-114x114.png',
 				destino: {
 					hotel: true
 				}
