@@ -102,8 +102,8 @@ module.exports.bootstrap = function(cb) {
 			Config.create({key:"defaultGPost",value:"https://plus.google.com/113624413123385492768/posts/gXtfiJkXv1a"}).exec(console.log);
 	});
 
-	Recinto.update({id:290585},{$set:{place:3}}).then(console.log);
-	Recinto.update({id:290585},{$set:{place:2}}).then(console.log);
+	//Recinto.update({id:290585},{$set:{place:3}}).then(console.log);
+	//Recinto.update({id:290585},{$set:{place:2}}).then(console.log);
 
 	//Recinto.create({id:290286,place:1}).then(console.log)
 	//Recinto.update({id:290286},).then(console.log);
