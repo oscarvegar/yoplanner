@@ -61,6 +61,7 @@
 								</h2>
 								<a facebook class="facebookShare" data-url='http://yoplanner.com/<%=currentHotel.urlslug %>' data-shares='shares'>{{ shares }}</a>
 								<a twitter data-lang="es" data-count='horizontal' data-url='http://yoplanner.com/<%=currentHotel.urlslug %>' data-via='yoplanner' data-size="medium" data-text=''></a>
+								<button type="button" class="btn-comentario" data-toggle="modal" data-target="#new-comment" ng-show="_hasSession">Comentar</button>
               </div>
 							<div ng-init="isOnFav(hotelid)" ng-show="_hasSession" class="col-md-3 col-md-offset-1 pull-down text-center boxtest" style="background-color: rgba(0, 0, 0, 0.5);border-radius: 15px;">
 								<!--
@@ -643,6 +644,45 @@
 <!-- End content info - testimonials-->
 </div>
 <!-- End Content Central -->
+
+	<!-- Modal new comment -->
+
+	<div id="new-comment" class="modal fade" role="dialog" style="margin-top: 4rem;">
+     <div class="modal-dialog">
+
+       <!-- Modal content-->
+				 <form ng-submit="postComentario()">
+       <div class="modal-content">
+         <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4 class="modal-title">Nuevo comentario</h4>
+         </div>
+         <div class="modal-body">
+           <div class="row">
+						 <div class="col-md-12" ng-show="_hasSession" style="margin-top: 1em;">
+			 				<div class="form-group" style="text-align: center;">
+			 						<div class="row">
+			 							<div class="col-md-12" style="margin-bottom: 1em;">
+			 								<input type="text" ng-model="postcomentario.title" style="width:100%;" placeholder="Titulo del comentario" class="form-control comentario-textarea" required>
+			 							</div>
+			 							<div class="col-md-12">
+			 								<textarea ng-model="postcomentario.text" style="width:100%;" placeholder="¡Envianos un comentario!" class="form-control comentario-textarea" required></textarea>
+			 							</div>
+			 						</div>
+			 				</div>
+			 			</div>
+					 </div>
+         </div>
+         <div class="modal-footer">
+           <button type="submit" class="btn btn-primary">Comentar</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+         </div>
+       </div>
+		 </form>
+
+     </div>
+   </div>
+
 </div>
 
 
