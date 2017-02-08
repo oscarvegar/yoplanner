@@ -8,9 +8,19 @@
     background: url('/image/bodas1.jpg') no-repeat center center;
     background-size: cover;
   }
+  .text-container {
+    text-align: center;
+  }
+  .text-container h1 {
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.84);
+  }
+  .text-container p {
+    color: white;
+  }
 </style>
-<div class="iframe-container">
-  <div class="text-container title-header">
+<div class="iframe-container" ng-init="isBodas = true">
+  <div class="text-container">
     <h1>Texto Prueba, Texto Prueba.</h1>
     <p class="lead">Otro texto de prueba, más texto de prueba.</p>
     <div class="filter-header col-sm-12 col-md-12" ng-controller="AutocompleteController" style="overflow:visible;">
