@@ -1,0 +1,23 @@
+<style media="screen">
+  .iframe-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('/image/bodas1.jpg') no-repeat center center;
+    background-size: cover;
+  }
+</style>
+<div class="iframe-container">
+  <div class="text-container title-header">
+    <h1>Texto Prueba, Texto Prueba.</h1>
+    <p class="lead">Otro texto de prueba, más texto de prueba.</p>
+    <div class="filter-header col-sm-12 col-md-12" ng-controller="AutocompleteController" style="overflow:visible;">
+      <form action="#" style="text-align: center;" ng-init="isWidget = true">
+        <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="¿Qué destino quieres buscar?"></autocomplete>
+        <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
+      </form>
+    </div>
+  </div>
+</div>

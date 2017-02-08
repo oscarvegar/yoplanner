@@ -630,6 +630,14 @@ module.exports = {
 		});
 	},
 
+	serveBodas1: function (req, res) {
+		return res.view('iframe-bodas-1', {hideNav: 'si'});
+	},
+
+	serveBodas2: function (req, res) {
+		return res.view('iframe-bodas-2', {hideNav: 'si'});
+	},
+
 	getRestaurantesByCity: function(req, res) {
 		var id = req.param('id');
 		Recinto.find({
