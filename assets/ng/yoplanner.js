@@ -137,8 +137,13 @@ yoPlannerApp.controller('AutocompleteController', function($scope, $http, $timeo
 
 	$scope.searchCity = function(selected) {
 		if ($scope.isWidget) {
-			$scope.searchString = null;
-			window.open("/search/findByCityCode/" + $scope.searchId, '_blank');
+			if ($scope.isBodas) {
+				$scope.searchString = null;
+				top.window.location.href = '/search/findByCityCode/' + $scope.searchId;
+			} else {
+				$scope.searchString = null;
+				window.open("/search/findByCityCode/" + $scope.searchId, '_blank');
+			}
 		} else {
 			window.location = "/search/findByCityCode/" + $scope.searchId;
 		}
