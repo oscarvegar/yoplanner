@@ -80,7 +80,7 @@
                        <h4>Número de habitaciones de dos camas:</h4>
                        <input type="number" class="form-control" ng-model="buscar.doscamas" placeholder="Número mayor a">
                        <hr class="separator">
-                       <h4>Metos cuadrados:</h4>
+                       <h4>Metros cuadrados:</h4>
                        <input type="number" class="form-control" ng-model="buscar.metroscuadrados" placeholder="Número mayor a">
                        <hr class="separator">
                        <h4>Salón más grande (Metros cuadrados):</h4>
@@ -354,6 +354,7 @@
               <!--  | filter:filterSalones(buscar.salones) | filter:filterHabitaciones(buscar.habitaciones) | filter:filterPlan(buscar.plan) -->
               <div class="col-xs-12 col-sm-6 col-md-4"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | orderBy:sortSocial:sortAsc">
                    <div class="img-hover">
+                     <img src="/image/hotel-member.png" alt="Certificación Bodas" ng-if="hotel.bodasCertificado" style="position: absolute; width:64px; height: 64px;;">
                       <img ng-src="{{loadImageHotelList(hotel)}}" alt="" class="img-responsive"  style="width: 100%;height: 166px">
                   </div>
                   <div class="info-gallery">

@@ -24,15 +24,11 @@ module.exports = {
 		});
 	},
 	findById: function(req, res) {
-		var params = req.allParams();
-		var id = params.id;
+		let id = req.param('id');
 		console.log("id", id)
-		Recinto.findOne(id).populate("amenities").then(function(hotel) {
-
-			res.json(hotel);
-		})
-
-
+		Recinto.findOne(id).populateAll().then(function(hotel) {
+			return res.json(hotel);
+		});
 	},
 	findByCiudadId: function(req, res) {
 		var idciudad = req.param('id');
