@@ -24,15 +24,11 @@ module.exports = {
 		});
 	},
 	findById: function(req, res) {
-		var params = req.allParams();
-		var id = params.id;
+		let id = req.param('id');
 		console.log("id", id)
-		Recinto.findOne(id).populate("amenities").then(function(hotel) {
-
-			res.json(hotel);
-		})
-
-
+		Recinto.findOne(id).populateAll().then(function(hotel) {
+			return res.json(hotel);
+		});
 	},
 	findByCiudadId: function(req, res) {
 		var idciudad = req.param('id');
@@ -631,7 +627,12 @@ module.exports = {
 	},
 
 	serveBodas1: function (req, res) {
-		return res.view('iframe-bodas-1', {hideNav: 'si'});
+		return res.view('iframe-bodas-1', {metas: {
+			title: 'Encuentra hoteles, recintos y provedores para bodas y eventos',
+			description: 'Se parte de la comunidad de wedding planners y compradores de eventos, consulta, califica y comparte tu experiencia en nuestra exclusiva plataforma.',
+			keywords: 'Hoteles, Destinos, Cruceros, Grupos, Convenciones, Organización de Eventos, Bodas, Eventos Sociales, Viajes Individuales, Reservaciones, Cotizaciones de Eventos, Asesoría en Eventos, Negociación de Eventos, Como planear un eventos, como contratar un hotel, Cotiza en Linea Hoteles, RFP',
+			image: 'http://yoplanner.com/image/bodas1.jpg'
+		}});
 	},
 
 	serveBodas2: function (req, res) {
