@@ -28,7 +28,7 @@
     </div>
     <h1>Encuentra hoteles, recintos y provedores para bodas y eventos</h1>
     <p class="lead">Se parte de la comunidad de wedding planners y compradores de eventos, consulta, califica y comparte tu experiencia en nuestra exclusiva plataforma.</p>
-    <div class="filter-header" ng-controller="AutocompleteController" style="overflow:visible;">
+    <div class="filter-header" ng-controller="AutocompleteController" style="overflow:visible; width: 50%;">
       <form action="#" style="text-align: center;" ng-init="isWidget = true">
         <autocomplete ng-model="searchString" data="cities" on-type="findCities" on-select="searchCity" attr-placeholder="¿Qué destino quieres buscar?"></autocomplete>
         <img src="img/lblue.gif" style="width:30px;height:30px;" ng-show="showLoader || false" class="ng-hide">
