@@ -528,6 +528,15 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 			$localStorage.hotelesSeleccionados = JSON.stringify($rootScope.hotelesSeleccionados);
 		};
 
+		$scope.loadFeaturedComments = function (id) {
+			$http.post('/comentariohotel/getFeatured', {id: id}).then(function(data) {
+			  console.log(data);
+				$scope.featuredComentarios = data.data;
+			}).catch(function(err) {
+			  console.log(err);
+			});
+		}
+
 		//Comentarios en detalle hotel
 		// TODO: Implementar paginación
 		$scope.loadComentarios = function() {
