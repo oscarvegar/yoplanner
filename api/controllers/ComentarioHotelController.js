@@ -189,6 +189,16 @@ module.exports = {
 		}).catch(function(err) {
 		  return res.json(500, {err: err});
 		});
+	},
+
+	getFeatured: function (req, res) {
+		let id = req.param('id');
+		console.log(id);
+		ComentarioHotel.find({hotel: [id, id.toString()], featured: true}).populateAll().then(function(data) {
+		  return res.json(data);
+		}).catch(function(err) {
+		  return res.json(500, {err: err});
+		});
 	}
 
 };

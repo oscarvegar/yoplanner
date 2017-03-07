@@ -60,7 +60,7 @@
 									<% } %>
 								</h2>
 								<% if(currentHotel.bodasCertificado) { %>
-									<img src="/image/hotel-member.png" alt="Certificación Bodas" style="width: 100px; height: 100px; display: inline-block; margin-left: 2rem;">
+									<img src="/image/hotel-member.png" alt="Certificación Bodas" style="max-width: 100px; max-height: 100px; display: inline-block; margin-left: 2rem;">
 								<% } %>
 								<div class="" style="display: block;">
 									<a facebook class="facebookShare" data-url='http://yoplanner.com/<%=currentHotel.urlslug %>' data-shares='shares'>{{ shares }}</a>
@@ -182,7 +182,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6" ng-init="loadFeaturedComments(hotelid)">
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							Mejores comentarios de <%= currentHotel.name %>
@@ -190,7 +190,7 @@
 						<div class="panel-body">
 							<div class="row">
 								<!-- Comentario -->
-								<div class="col-md-12" ng-repeat="comentario in comentarios | orderBy:fechaComentario:true | limitTo:3" style="padding-bottom: -1em;">
+								<div class="col-md-12" ng-repeat="comentario in featuredComentarios | orderBy:fechaComentario:true" style="padding-bottom: -1em;">
 									<div class="row" style="padding-top: 1em;">
 										<div class="col-md-2">
 											<img ng-src="/image/ypcover.jpg" class="avatar-border" ng-if="!comentario.user.avatar" />
