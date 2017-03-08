@@ -192,7 +192,7 @@ module.exports = {
 	},
 
 	getFeatured: function (req, res) {
-		let id = req.param('id');
+		var id = req.param('id');
 		console.log(id);
 		ComentarioHotel.find({hotel: [id, id.toString()], featured: true}).populateAll().then(function(data) {
 		  return res.json(data);

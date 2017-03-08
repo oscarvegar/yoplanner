@@ -24,7 +24,7 @@ module.exports = {
 		});
 	},
 	findById: function(req, res) {
-		let id = req.param('id');
+		var id = req.param('id');
 		console.log("id", id)
 		Recinto.findOne(id).populateAll().then(function(hotel) {
 			return res.json(hotel);
