@@ -50,6 +50,7 @@ module.exports.routes = {
   'get /':'MainController.root',
   //Test route cancun
   'get /destino/cancun': 'MainController.serveCancun',
-  'get /recinto/iframe/:tipo/:id': 'RecintoController.serveIFrame'
+  'get /recinto/iframe/:tipo/:id': 'RecintoController.serveIFrame',
+  'post /api/notificacion/read': 'NotificacionController.read',
 
 };
