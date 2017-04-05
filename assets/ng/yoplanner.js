@@ -181,6 +181,7 @@ yoPlannerApp.controller('NotificacionesCtrl', function($scope, $state, $http, $s
 			$scope.notimodal.image = noti.image;
 			$http.post('/api/notificacion/read', {id: noti.id}).then(function(data) {
 			  $scope.notificaciones[i].read = true;
+				console.log(data);
 			}).catch(function(err) {
 			  console.log(err);
 			});

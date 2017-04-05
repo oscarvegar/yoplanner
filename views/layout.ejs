@@ -146,19 +146,49 @@
 
               <!-- Notificaciones -->
               <li class="dropdown" ng-controller="NotificacionesCtrl" ng-if="_hasSession">
+                <div id="modal-noti" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" style="color:black;">{{notimodal.title}}</h4>
+            <span style="color:rgb(119, 119, 119);">{{notimodal.createdAt | date:'medium'}}</span>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12 modal-noti-text" style="color:black;">
+                {{notimodal.text}}
+              </div>
+              <div class="col-md-12" ng-show="notimodal.image" style="padding: 1em;">
+                <img ng-src="{{notimodal.image}}" alt="Imágen de notificación" style="width:100%" class="img-responsive"/>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-comment"></i>
                   <span class="visible-xs-inline-block position-right">Notificaciones</span>
-                  <!--<span ng-show="getNotiNotReadCount(notificaciones.slice(0, 9)) > 0" class="badge bg-warning-400">{{getNotiNotReadCount(notificaciones.slice(0, 9))}}</span>-->
+                  <span ng-show="getNotiNotReadCount(notificaciones) > 0" class="badge bg-warning-400">{{getNotiNotReadCount(notificaciones)}}</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-content pull-left" style="padding: 1em;" ng-init="initNotis(sails_env)">
                   <div class="dropdown-content-heading" style="color:black;">
                     <h4>Notificaciones</h4>
                   </div>
-
+                  <style media="screen">
+             .noti-not-read {
+               background-color: #eee;
+             }
+           </style>
                   <ul class="media-list dropdown-content-body" style="width:300px;">
-                    <li class="media" data-toggle="modal" data-target="#modal-noti" ng-click="setModalData(noti)" ng-repeat="noti in notificaciones | orderBy:createdAt:true">
+                    <li class="media" data-toggle="modal" data-target="#modal-noti" ng-repeat="noti in notificaciones | orderBy:createdAt:true"
+                    ng-click="setModalData(noti, $index)"
+                    ng-class="{'noti-not-read': !isRead(noti)}">
                       <img src="http://yoplanner.com/img/icons/apple-touch-icon-114x114.png" alt="Imágen de notificación" style="width:48px;border: none; margin-right: 8px;background-color: white;" />
                       <div class="media-body">
                         <a class="media-heading">
