@@ -276,8 +276,14 @@ angular.module('rfp-module', [])
 				}
 			}
 			if (!customerInList) {
+				var tempClienteName = '';
+				if ($scope.rfp.nombreCliente) {
+					tempClienteName = $scope.rfp.nombreCliente;
+				} else if ($scope.selectedCustomer) {
+					tempClienteName = $scope.selectedCustomer.originalObject.nombreCliente;
+				}
 				$http.post('/customer/addcustomer', {
-					nombreCliente: $scope.rfp.nombreCliente ? $scope.rfp.nombreCliente : $scope.selectedCustomer.originalObject.nombreCliente,
+					nombreCliente: tempClienteName,
 					email: $scope.rfp.email,
 					telefonoContacto: $scope.rfp.telefonoContacto,
 					empresa: $scope.rfp.empresa,
