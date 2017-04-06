@@ -64,7 +64,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider,
 			clientId: '78w80b3w1y1la8',
 			url: '/user/getLinkedinToken', //Llega acá después para sacar el token y regresar la info
 		  authorizationEndpoint: 'https://www.linkedin.com/uas/oauth2/authorization',
-		  redirectUri: 'http://localhost:1337/user/registerLinkedin', //Primero llega a este con el CODE
+		  redirectUri: 'http://admin.yoplanner.com/user/registerLinkedin', //Primero llega a este con el CODE
 		  requiredUrlParams: ['state'],
 		  scope: ['r_basicprofile', 'r_emailaddress'],
 		  state: 'STATE',
