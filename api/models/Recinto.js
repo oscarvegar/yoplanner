@@ -42,6 +42,10 @@ module.exports = {
         likes: {
           type: 'array',
           defaultsTo: []
-        }
+        },
+		listas: {
+			collection: 'listacustom',
+			via: 'hoteles'
+		}
     }
 };

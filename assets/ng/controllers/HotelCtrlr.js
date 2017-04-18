@@ -23,8 +23,6 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 	$localStorage, notify, $location, $auth) {
 
 
-
-
 	//Register linkedin
 	$scope.registerLinkedin = function () {
 		$auth.authenticate('linkedin').then(function(data) {
@@ -111,6 +109,17 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				};
 				$scope.hotelesNew = data;
 				$scope.hotelesOriginales = data;
+			});
+		}
+
+		// Hoteles Custom List
+		$scope.loadCustomList = function (id) {
+			var id = $scope.list_id;
+			console.log(id);
+			$http.get('/ListaCustom/' + id).then(function(data) {
+			  $scope.hotelesNew = data.data.hoteles;
+			}).catch(function(err) {
+			  console.log(err);
 			});
 		}
 
@@ -227,6 +236,10 @@ HotelModule.controller('HotelController', function($scope, $http, $log, $timeout
 				var pic = hotel.pictures[0];
 				return (pic.url ? pic.url : pic);
 			}
+		}
+
+		$scope.loadImageAlt = function (img) {
+			if(!img) return 'http://yoplanner.com/image/ypsolu.png';
 		}
 
 		//Buscar por estrellas
