@@ -154,5 +154,36 @@ module.exports = {
 			console.log(err);
 		  return res.json(500, {err: err});
 		});
+	},
+
+	read: function (req, res) {
+		var id = req.param('id');
+		Notificacion.update(id, {read: true}).then(function(data) {
+		  User.find().exec(function (err, users) {
+		  	if(err) return res.json(500, {err: err});
+				async.eachSeries(users, function (user, next) {
+					if(!user.notificacionesRecibidas) {
+						next();
+					} else {
+						user.notificacionesRecibidas.forEach(function (i, noti) {
+							if(noti.id == id) {
+								user.notificacionesRecibidas[i].read = true;
+								return;
+							}
+						});
+						user.save(function (err) {
+							if(err) return res.json(500, {err: err});
+							next();
+						});
+					}
+				}, function () {
+					console.log('marcada como leida', id);
+					return res.json(data);
+				});
+		  });
+		}).catch(function(err) {
+		  return res.json(500, {err: err});
+		});
 	}
+
 };

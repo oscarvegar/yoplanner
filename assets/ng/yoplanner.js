@@ -64,7 +64,7 @@ yoPlannerApp.config(function($routeProvider, $locationProvider, $stateProvider,
 			clientId: '78w80b3w1y1la8',
 			url: '/user/getLinkedinToken', //Llega acá después para sacar el token y regresar la info
 		  authorizationEndpoint: 'https://www.linkedin.com/uas/oauth2/authorization',
-		  redirectUri: 'http://localhost:1337/user/registerLinkedin', //Primero llega a este con el CODE
+		  redirectUri: 'http://admin.yoplanner.com/user/registerLinkedin', //Primero llega a este con el CODE
 		  requiredUrlParams: ['state'],
 		  scope: ['r_basicprofile', 'r_emailaddress'],
 		  state: 'STATE',
@@ -91,13 +91,102 @@ yoPlannerApp.controller('NotificacionesCtrl', function($scope, $state, $http, $s
 				console.log(err);
 			});
 		}
-		//Manage Sockets
-	$sails.on('notificacionsocket', function(msg) {
-		console.log(msg);
-		if (msg.room == 'hotel-comment') {
-			$scope.notificaciones.push(msg.notificacion);
+
+		$sails.on('notificacionsocket', function(msg) {
+			//console.log(msg);
+
+			//Notificaciones de agencia a sus planners
+			if (msg.room == 'my-planners-notis') {
+				if (msg.notificacion.planners.indexOf($rootScope._user.id) >= 0) {
+					//console.log('Recibida notificacion de agencia');
+					$scope.toastyNotificacion(msg.notificacion);
+					$scope.notificaciones.push(msg.notificacion);
+					//$scope.saveNotificacion(msg.notificacion);
+				}
+			}
+
+			//Notificaciones de un usuario a TODOS los usuarios del sistema
+			if (msg.room == 'all-users-notis') {
+				//console.log('notificacion recibida de un usario a todos los usuarios');
+				//console.log(msg.notificacion);
+				$scope.toastyNotificacion(msg.notificacion);
+				$scope.notificaciones.push(msg.notificacion);
+				//$scope.saveNotificacion(msg.notificacion);
+			}
+
+			//notificacion de un usaurio a TODOS los PLANNERS el sistema
+			if (msg.room == 'all-planners-notis') {
+				if ($rootScope._user.roles.indexOf('ROLE_PLANNER') >= 0) {
+					//console.log('notificacion recibida de un usario a todos los usuarios');
+					$scope.toastyNotificacion(msg.notificacion);
+					$scope.notificaciones.push(msg.notificacion);
+					//$scope.saveNotificacion(msg.notificacion);
+				}
+			}
+
+			//Notificacion de admin agencia a super planners
+			if (msg.room == 'my-superplanners-notis') {
+				if (msg.notificacion.superplanners.indexOf($rootScope._user.id) >= 0) {
+					//console.log('notificacion recibida de un admin agencia a todos los super planners');
+					$scope.toastyNotificacion(msg.notificacion);
+					$scope.notificaciones.push(msg.notificacion);
+					//$scope.saveNotificacion(msg.notificacion);
+				}
+			}
+
+			//De un admin a todos los super planners
+			if (msg.room == 'all-superplanners-notis') {
+				if ($rootScope._user.roles.indexOf('ROLE_SUPER_PLANNERS') >= 0) {
+					//console.log('notificacion recibida de un admin a todos los super planners');
+					$scope.toastyNotificacion(msg.notificacion);
+					$scope.notificaciones.push(msg.notificacion);
+					//$scope.saveNotificacion(msg.notificacion);
+				}
+			}
+
+			//De un admin a TODOS los admins
+			if (msg.room == 'all-admins-notis') {
+				if ($rootScope._user.roles.indexOf('ROLE_ADMIN') >= 0) {
+					//console.log('notificacion recibida de un admin a todos los admins');
+					$scope.toastyNotificacion(msg.notificacion);
+					$scope.notificaciones.push(msg.notificacion);
+					//$scope.saveNotificacion(msg.notificacion);
+				}
+			}
+
+		});
+
+		$scope.toastyNotificacion = function (noti) {
+			notiy(noti.text);
 		}
-	});
+
+		$scope.getNotiNotReadCount = function(notis) {
+			if(!notis) return 0;
+			var temp = 0;
+			notis.forEach(function (noti) {
+				if (!noti.read) temp++;
+			});
+			return temp;
+		}
+
+		$scope.isRead = function (noti) {
+			return noti.read;
+		}
+
+		$scope.setModalData = function(noti, i) {
+			$scope.notimodal = {};
+			$scope.notimodal.text = noti.text;
+			$scope.notimodal.title = noti.title;
+			$scope.notimodal.createdAt = noti.createdAt;
+			$scope.notimodal.image = noti.image;
+			$http.post('/api/notificacion/read', {id: noti.id}).then(function(data) {
+			  $scope.notificaciones[i].read = true;
+				console.log(data);
+			}).catch(function(err) {
+			  console.log(err);
+			});
+		}
+
 });
 
 yoPlannerApp.controller('AutocompleteController', function($scope, $http, $timeout, $rootScope, $location, $state,
