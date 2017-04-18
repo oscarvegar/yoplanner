@@ -52,5 +52,6 @@ module.exports.routes = {
   'get /destino/cancun': 'MainController.serveCancun',
   'get /recinto/iframe/:tipo/:id': 'RecintoController.serveIFrame',
   'post /api/notificacion/read': 'NotificacionController.read',
+  'get /custom/list/:id': 'ListaCustomController.renderList'
 
 };

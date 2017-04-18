@@ -1,0 +1,93 @@
+
+<div class="main123" ng-controller="HotelController">
+<input type="hidden"  ng-init="list_id = '<%=id%>'">
+<div class="main-container" ng-init="loadCustomList(list_id)" style="padding: 1rem; padding-top: 5rem; background: url(http://admin.yoplanner.com<%= bg ? bg : '' %>); background-size: cover;">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | orderBy:sortSocial:sortAsc">
+         <div class="img-hover">
+           <img src="/image/hotel-member.png" alt="Certificación Bodas" ng-if="hotel.bodasCertificado" style="position: absolute; width:64px; height: 64px;;">
+            <img ng-src="{{loadImageHotelList(hotel)}}" alt="" class="img-responsive"  style="width: 100%;height: 166px">
+        </div>
+        <div class="info-gallery" style="background-color: white">
+            <h3 style="height: 3.5em;overflow: hidden;">
+                <div>{{hotel.name}}</div>
+            </h3>
+            <div class="row">
+              <div class="col-md-6">
+                <img src="/img/icons/apple-touch-icon.png" alt="Logo YP" style="width: 24px;height" />
+                <span>{{averageRating(hotel.ratings)}} / 10</span>
+              </div>
+              <div class="col-md-6">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> {{hotel.likes.length || 0}}</span>
+              </div>
+            </div>
+            <hr class="separator">
+            <p style="height:80px;text-align: justify;text-justify: inter-word;font-size:1em; line-height:1.2em;height: 4.8em;overflow: hidden;">{{hotel.description | htmlToPlaintext}}</p>
+
+            <ul class="starts">
+              <li ng-repeat="star in [1, 2, 3, 4 ,5] | limitTo:hotel.starRating"><a><i class="fa fa-star"></i></a></li>
+            </ul>
+            <!-- Botones -->
+            <div class="row">
+              <div class="col-md-4 col-md-offset-3">
+                <div class="content-btn">
+                    <a href="{{hotel.urlslug?hotel.urlslug:hotel.id}}"class="btn btn-primary" ng-click="addVisitaAndGo(hotel)">Ver Detalles</a>
+                </div>
+              </div>
+              <div class="col-md-1" ng-show="_hasSession">
+                <div class="content-btn" ng-click="addSeleccion(hotel.id)" ng-show="!hotel.inList">
+                  <a class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding: 1rem" ng-hide="true">
+    <% list.forEach(function(hotel) { %>
+      <div class="col-xs-12 col-sm-6 col-md-3" ng-click="selectResult(hotel.id)">
+           <div class="img-hover">
+             <img src="/image/hotel-member.png" alt="Certificación Bodas" ng-if="hotel.bodasCertificado" style="position: absolute; width:64px; height: 64px;;">
+              <img src="<%= hotel.fotoPrincipal ? (hotel.fotoPrincipal.url ? hotel.fotoPrincipal.url : hotel.fotoPrincipal) : (hotel.pictures[0].url ? hotel.pictures[0].url : hotel.pictures[0]) %>" alt="" class="img-responsive"  style="width: 100%;height: 166px">
+          </div>
+          <div class="info-gallery" style="background-color: white">
+              <h3 style="height: 3.5em;overflow: hidden;">
+                  <div><%= hotel.name %></div>
+              </h3>
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="/img/icons/apple-touch-icon.png" alt="Logo YP" style="width: 24px;height" />
+                  <span>{{averageRating(hotel.ratings)}} / 10</span>
+                </div>
+                <div class="col-md-6">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> {{hotel.likes.length || 0}}</span>
+                </div>
+              </div>
+              <h3><span style="white-space: normal"><%=name%></span></h3>
+              <hr class="separator">
+              <p style="height:80px;text-align: justify;text-justify: inter-word;font-size:1em; line-height:1.2em;height: 4.8em;overflow: hidden;"><%= hotel.description %></p>
+
+              <ul class="starts">
+                <li ng-repeat="star in [1, 2, 3, 4 ,5] | limitTo:hotel.starRating"><a href="#"><i class="fa fa-star"></i></a></li>
+              </ul>
+              <!-- Botones -->
+              <div class="row">
+                <div class="col-md-4 col-md-offset-3">
+                  <div class="content-btn">
+                      <a href="{{hotel.urlslug?hotel.urlslug:hotel.id}}"class="btn btn-primary" ng-click="addVisitaAndGo(hotel)">Ver Detalles</a>
+                  </div>
+                </div>
+                <div class="col-md-1" ng-show="_hasSession">
+                  <div class="content-btn" ng-click="addSeleccion(hotel.id)" ng-show="!hotel.inList">
+                    <a class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+
+</div>
