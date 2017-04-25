@@ -14,7 +14,8 @@ module.exports = {
 				list: data.hoteles,
 				name: data.name,
 				bg: data.bg ? data.bg : false,
-				id: data.id
+				id: data.id,
+				hideYP: 'si'
 			});
 		}).catch(function(err) {
 			console.log(err);
