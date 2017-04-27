@@ -143,7 +143,12 @@
               <% } %>
               </li>
               <!-- End website title - Logo class -->
-              <li><a href="/">INICIO </a></li>
+
+              <% if(typeof inicioCustomList == 'undefined') { %>
+                <li><a href="/">INICIO </a></li>
+              <% } else { %>
+                <li><a href="/custom/list/<%= id %>">INICIO </a></li>
+              <% } %>
               <li ng-if="!_hasSession"><a href="/main/registro">REGISTRO </a></li>
 
               <!-- Notificaciones -->
