@@ -66,21 +66,22 @@
 /*	 Version 1000px
 /* ---------------------------------------------------------------------- */
 @media handheld, only screen and (max-width: 999px) {
+
 	html {
 		font-size: 14px;
 	}
-	
-	header{		
-		position: relative;		
+
+	header{
+		position: relative;
 	}
-	.content-info{	
+	.content-info{
 		max-width: auto;
 		margin-top: 0;
 		margin-bottom: -120px;
 	}
 
-	.layout-wide .content-info{	
-		max-width: auto;	
+	.layout-wide .content-info{
+		max-width: auto;
 	}
 	.layout-wide .semiboxshadow{
 		display: none;
@@ -107,9 +108,9 @@
 	}
 
 	/* Filter Header - Title Header ------------------------------*/
-	.header-v1{	
+	.header-v1{
 		background: rgba(0,0,0,0.7);
-		max-height: 2000px !important;	
+		max-height: 2000px !important;
 	}
 	.flat-mega-menu > ul > .title > a{
 		padding-left: 0;
@@ -137,7 +138,7 @@
 	.filter-header{
 		max-width: 100%;
 	}
-	.content-central{	
+	.content-central{
 		margin-top: -50px;
 		margin-bottom: -150px;
 	}
@@ -213,7 +214,7 @@
 /*	 Mobile Version 768px
 /* ---------------------------------------------------------------------- */
 @media handheld, only screen and (max-width: 768px) {
-	
+
 
 }
 /* ---------------------------------------------------------------------- */
@@ -229,7 +230,7 @@
 	.filter-header{
 		max-width: 100%;
 	}
-	.content-central{	
+	.content-central{
 		margin-top: 0;
 		margin-bottom: -150px;
 	}
@@ -287,9 +288,12 @@
 /*	 Version 480px
 /* ---------------------------------------------------------------------- */
 @media handheld, only screen and (max-width: 470px) {
+	.content-central {
+		margin: 0 !important;
+	}
 	.title-header p,
 	.title-header h1{
-		display: none;
+		/*display: none;*/
 	}
 	.filter-header .input-large{
 		width: 100%;

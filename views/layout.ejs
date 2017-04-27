@@ -138,7 +138,9 @@
               <!-- collapse class for collapse the drop down -->
               <!-- website title - Logo class -->
               <li class="title" style="margin: 0; padding: 0; border: none; background: none;">
+              <% if(typeof hideYP == 'undefined') { %>
                 <img src="image/ypsolu.png" alt="YoPlanner Solutions" style="width: 140px; padding: 0; margin: 0; border: none; background: none; padding-top: 0.5em; box-shadow: none;">
+              <% } %>
               </li>
               <!-- End website title - Logo class -->
               <li><a href="/">INICIO </a></li>
@@ -313,6 +315,7 @@
                 <div class="footer-down">
                   <div class="container">
                     <div class="row">
+                    <% if(typeof hideYP == 'undefined') { %>
                       <div class="col-md-6 pull-right">
                         <a href="http://ethicus.com"><img src="/image/ethicus.png" class="img-responsive" style="display: inline-block; height: 32px;"></a>
                         <p style="display: inline-block;">&copy; Powered by
@@ -336,6 +339,7 @@
                               <i class="fa fa-twitter"></i>
                             </button>
                       </div>
+                    <% } %>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,8 @@
 
 <div class="main123" ng-controller="HotelController">
 <input type="hidden"  ng-init="list_id = '<%=id%>'">
-<div class="main-container" ng-init="loadCustomList(list_id)" style="padding: 1rem; padding-top: 5rem; background: url('<%= bg ? bg : '' %>'); background-size: cover;">
+<img src="<%= bg %>" style="margin-top: 3.7rem; width: 100%">
+<div class="main-container" ng-init="loadCustomList(list_id)" style="padding: 1rem;">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3"  ng-click="selectResult(hotel.id)" ng-repeat="hotel in hotelesNew | orderBy:sortSocial:sortAsc">
          <div class="img-hover">
