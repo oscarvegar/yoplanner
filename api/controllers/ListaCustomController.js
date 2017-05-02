@@ -15,7 +15,8 @@ module.exports = {
 				name: data.name,
 				bg: data.bg ? data.bg : false,
 				id: data.id,
-				hideYP: 'si'
+				hideYP: 'si',
+				inicioCustomList: 'si'
 			});
 		}).catch(function(err) {
 			console.log(err);
